@@ -14,9 +14,9 @@ export const TERMS: Term[] = [
     topic: 'dasar',
     term: { id: 'Domain', en: 'Domain', ms: 'Domain' },
     def: {
-      id: 'Domain adalah alamat website yang diketik orang di browser, misalnya pintuweb.com. Domain disewa per tahun dari registrar dan harus diperpanjang agar tidak hilang.',
-      en: 'A domain is the website address people type into a browser, such as pintuweb.com. Domains are rented yearly from a registrar and must be renewed so you do not lose them.',
-      ms: 'Domain ialah alamat laman web yang ditaip orang dalam pelayar, contohnya pintuweb.com. Domain disewa setiap tahun daripada pendaftar dan perlu diperbaharui supaya tidak hilang.',
+      id: 'Domain adalah alamat website yang diketik orang di browser, misalnya pintuweb.id. Domain disewa per tahun dari registrar dan harus diperpanjang agar tidak hilang.',
+      en: 'A domain is the website address people type into a browser, such as pintuweb.id. Domains are rented yearly from a registrar and must be renewed so you do not lose them.',
+      ms: 'Domain ialah alamat laman web yang ditaip orang dalam pelayar, contohnya pintuweb.id. Domain disewa setiap tahun daripada pendaftar dan perlu diperbaharui supaya tidak hilang.',
     },
     see: { key: 'articles', article: 'domain-hosting' },
   },

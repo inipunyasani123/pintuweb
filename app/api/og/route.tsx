@@ -74,7 +74,7 @@ export async function GET(req: Request) {
             <img src={logo} width={Math.round(46 * LOGO_RATIO)} height={46} />
             <span style={{ display: 'flex', fontFamily: 'Display', fontSize: 36, color: C.ink, letterSpacing: -0.8 }}>PintuWeb</span>
           </div>
-          <span style={{ display: 'flex', fontSize: 22, color: C.ink2 }}>www.pintuweb.com · {lang.toUpperCase()}</span>
+          <span style={{ display: 'flex', fontSize: 22, color: C.ink2 }}>www.pintuweb.id · {lang.toUpperCase()}</span>
         </div>
       </div>
     ),

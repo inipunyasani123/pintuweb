@@ -1,4 +1,4 @@
-// Dibuat dari 65 situs demo yang live di akun Vercel aryasis87.
+// Dibuat dari 65 situs demo yang live di Vercel.
 // Judul diambil dari <title> tiap situs; gambar = og.jpg milik situs itu sendiri, diperkecil
 // jadi public/demos/<slug>.webp (720x378) supaya galeri ringan dan tidak bergantung pada 65 domain lain.
 

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, ArrowUpRight, CalendarClock, Check, Clock, Gauge, Github, LifeBuoy, MapPin, MessageCircle, ReceiptText, type LucideIcon } from 'lucide-react'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { DEMOS } from '../../lib/demos'
-import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, wa } from '../../lib/site'
+import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GITHUB, wa } from '../../lib/site'
 import { facts, packagesFor } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
@@ -181,9 +181,11 @@ export default async function AboutPage({ params }: Params) {
                 <Link href={path(lang, 'founder')} className="btn btn-solid btn-sm">
                   {d.links.founder} <ArrowRight size={15} className="arw" aria-hidden="true" />
                 </Link>
-                <a href="https://github.com/aryasis87" target="_blank" rel="noopener noreferrer" className="btn btn-line btn-sm">
-                  <Github size={15} aria-hidden="true" /> GitHub <span className="sr-only">{d.common.newTabShort}</span>
-                </a>
+                {GITHUB && (
+                  <a href={`https://${GITHUB}`} target="_blank" rel="noopener noreferrer" className="btn btn-line btn-sm">
+                    <Github size={15} aria-hidden="true" /> GitHub <span className="sr-only">{d.common.newTabShort}</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>

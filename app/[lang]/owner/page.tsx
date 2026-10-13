@@ -6,7 +6,7 @@ import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { Logo } from '../../components/Logo'
 import { articlesIn } from '../../content/articles'
 import { DEMOS } from '../../lib/demos'
-import { CLIENT_PROJECTS, EMAIL, FOUNDED_YEAR, WA_DISPLAY, wa } from '../../lib/site'
+import { CLIENT_PROJECTS, EMAIL, FOUNDED_YEAR, GITHUB, WA_DISPLAY, wa } from '../../lib/site'
 import { facts } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
@@ -15,7 +15,6 @@ import { FOUNDER_ID, ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
 type Params = { params: Promise<{ lang: string }> }
 
 const NAME = 'Sanzy'
-const GITHUB = 'github.com/aryasis87'
 
 // Tiga kelompok keahlian: potongan dari founder.skills (urutannya sama di ketiga bahasa) + ikonnya.
 // Judul kelompok ada di founder.skillGroups.
@@ -53,7 +52,7 @@ export default async function OwnerPage({ params }: Params) {
     { icon: MessageCircle, text: WA_DISPLAY, href: wa(p.ctaWa), rel: 'noopener noreferrer' },
     { icon: Mail, text: EMAIL, href: `mailto:${EMAIL}` },
     // rel="me": profil ini dan akun GitHub itu milik orang yang sama
-    { icon: Github, text: GITHUB, href: `https://${GITHUB}`, rel: 'noopener noreferrer me' },
+    ...(GITHUB ? [{ icon: Github, text: GITHUB, href: `https://${GITHUB}`, rel: 'noopener noreferrer me' }] : []),
   ]
 
   return (
@@ -275,7 +274,7 @@ export default async function OwnerPage({ params }: Params) {
               jobTitle: p.jobTitle,
               worksFor: { '@id': ORG_ID },
               knowsAbout: p.skills,
-              sameAs: [`https://${GITHUB}`],
+              ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
             },
           ],
         })}

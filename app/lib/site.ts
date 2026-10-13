@@ -2,8 +2,8 @@
 // Angka yang tampil di situs (tahun berdiri, jumlah proyek, jam kerja, respon, target performa)
 // wajib diambil dari sini supaya halaman tidak pernah saling bertentangan lagi.
 
-/** Domain utama. Di Vercel, www adalah domain utama; pintuweb.com di-redirect 308 ke sini. */
-export const SITE = 'https://www.pintuweb.com'
+/** Domain utama. Di Vercel, www adalah domain utama; pintuweb.id (tanpa www) dan domain lama pintuweb.com di-redirect 308 ke sini. */
+export const SITE = 'https://www.pintuweb.id'
 
 export const FOUNDED_YEAR = 2018
 export const CLIENT_PROJECTS = '20+'
@@ -13,6 +13,12 @@ export const LOCATION = 'Trenggalek, Jawa Timur'
 export const WA_NUMBER = '6285190931399'
 export const WA_DISPLAY = '+62 851 9093 1399'
 export const EMAIL = 'sanzystore@gmail.com'
+/**
+ * Profil GitHub pemilik tanpa https://, mis. 'github.com/namaakun'. Dipakai tombol di halaman Tentang, kartu founder,
+ * dan sameAs di data terstruktur. Kosong = semua tautan GitHub disembunyikan (akun GitHub lama ditutup Okt 2026;
+ * isi dengan akun baru bila ingin ditampilkan lagi).
+ */
+export const GITHUB = ''
 
 /** Jam buka dan tutup (WIB), format 24 jam. Semua tulisan jam kerja (tiga bahasa) dan JSON-LD dirakit dari sini. */
 export const OPENS = '08:00'

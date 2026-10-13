@@ -1,7 +1,7 @@
 // Metadata & JSON-LD per halaman: canonical + hreflang lengkap, Open Graph per bahasa,
 // dan graf schema.org yang konsisten (Organization, WebSite, WebPage, BreadcrumbList).
 import type { Metadata } from 'next'
-import { CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, OPENS, SITE, WA_NUMBER } from '../lib/site'
+import { CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER } from '../lib/site'
 import { PACKAGES } from '../lib/packages'
 import { LANG_INFO, LANGS, plain, type Lang } from './config'
 import { alternatesOf, langsOf, urlOf, type DocRef } from './routes'
@@ -91,7 +91,7 @@ export function siteGraph(lang: Lang) {
         areaServed: { '@type': 'Country', name: 'Indonesia' },
         knowsLanguage: LANGS.map((l) => LANG_INFO[l].htmlLang),
         knowsAbout: ['Web design', 'Web development', 'Next.js', 'Search engine optimization', 'Landing pages', 'E-commerce websites', 'Digital invitations'],
-        sameAs: ['https://github.com/aryasis87'],
+        ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
         contactPoint: {
           '@type': 'ContactPoint',
           telephone: `+${WA_NUMBER}`,
@@ -128,7 +128,7 @@ export function siteGraph(lang: Lang) {
         jobTitle: 'Founder & Developer',
         worksFor: { '@id': ORG_ID },
         url: `${SITE}/owner`,
-        sameAs: ['https://github.com/aryasis87'],
+        ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
       },
     ],
   }

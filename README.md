@@ -2,7 +2,7 @@
 
 Situs utama PintuWeb, "pintu menuju website impianmu": jasa pembuatan website untuk UMKM, startup, dan personal brand, lengkap dengan 65 demo live yang bisa dicoba langsung.
 
-**Live:** https://pintuweb.com
+**Live:** https://www.pintuweb.id
 
 ![Tangkapan layar PintuWeb](public/images/og-pintuweb.png)
 
@@ -74,11 +74,11 @@ vercel deploy --prod
 ## Portal demo
 
 Setiap kategori demo punya katalognya sendiri:
-[PortalLanding](https://www.pintuweb.com/landing-page) ·
-[PortalBio](https://www.pintuweb.com/link-in-bio) ·
-[PortalKontes](https://www.pintuweb.com/kontes-desain) ·
-[PortalUndangan](https://www.pintuweb.com/undangan-digital) ·
-[PortalPorto](https://www.pintuweb.com/website-portofolio) ·
-[PortalReservasi](https://www.pintuweb.com/website-reservasi) ·
-[PortalProperti](https://www.pintuweb.com/website-properti) ·
-[PortalTodo](https://www.pintuweb.com/aplikasi-to-do)
+[PortalLanding](https://www.pintuweb.id/landing-page) ·
+[PortalBio](https://www.pintuweb.id/link-in-bio) ·
+[PortalKontes](https://www.pintuweb.id/kontes-desain) ·
+[PortalUndangan](https://www.pintuweb.id/undangan-digital) ·
+[PortalPorto](https://www.pintuweb.id/website-portofolio) ·
+[PortalReservasi](https://www.pintuweb.id/website-reservasi) ·
+[PortalProperti](https://www.pintuweb.id/website-properti) ·
+[PortalTodo](https://www.pintuweb.id/aplikasi-to-do)
