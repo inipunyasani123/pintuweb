@@ -1,6 +1,6 @@
 // 页面文字 — 简体中文。译自 pages/en.ts。
-// 尚未提供中文版的页面（服务、术语表、法律文件、文章）沿用英文：这些页面不会为本语言生成，
-// 指向它们的链接会转到英文版。
+// 服务页面和术语表已有中文版（内容见 i18n/x/more/zh.ts）。尚未提供中文版的页面（法律文件、文章）沿用英文：
+// 这些页面不会为本语言生成，指向它们的链接会转到英文版。
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
@@ -10,6 +10,34 @@ const LOC = '东爪哇省特伦加勒'
 
 const pages: Pages = {
   ...en,
+  services: {
+    title: '网站设计与开发服务',
+    description: 'PintuWeb 提供落地页、企业官网、网店、作品集、电子请柬、Link in Bio 页面和定制网站，并标明起价、工期和可试用的在线演示。',
+    ogTitle: '服务 — PintuWeb',
+    ogDescription: '从落地页到网店和定制网站，附起价和可试用的演示。',
+    eyebrow: '服务',
+    h1: ['七项服务，从', '落地页', '到 Web 应用。'] as Hl,
+    lead: '选择您需要的网站类型。每项服务都附有起价、预计工期和可试用的示例。',
+    listAria: '服务列表',
+    from: '起价',
+    priceOnRequest: '按主题和功能定价——欢迎在 WhatsApp 上咨询',
+    seeDetail: '查看服务详情',
+    seePackages: '查看套餐',
+    includedTitle: '始终包含',
+    included: [
+      { title: '从第一天起做好 SEO', body: `元标签、站点地图、结构化数据以及 PageSpeed ${PERF_TARGET} 分的目标，是每个网站套餐的一部分。` },
+      { title: '质保与维护', body: `上线后 ${GUARANTEE_DAYS} 天内免费修复程序错误，之后按套餐提供 1–6 个月的维护。` },
+    ],
+    compareTitle: ['比较', '全部服务'] as Hl,
+    compareCaption: 'PintuWeb 服务对比：适合对象、起价和工期',
+    colService: '服务',
+    colFor: '最适合',
+    colPrice: '起价',
+    colTime: '工期',
+    ctaTitle: '不确定需要哪一项？',
+    ctaLead: '说说您的业务，我们帮您选出合适的服务，完全免费。',
+    ctaWa: '您好 PintuWeb，想请你们建议一下哪项网站服务适合我的业务。',
+  },
   pricing: {
     title: '网站套餐与价格',
     description: (min: string, n: number) => `PintuWeb 提供 ${n} 个套餐，起价 ${min}：电子请柬、Link in Bio、落地页、小微企业网站、网店、预订系统、房产网站、Web 应用和定制网站。50% 定金，${GUARANTEE_DAYS} 天质保。`,
@@ -200,6 +228,51 @@ const pages: Pages = {
     demos: '查看演示',
     wa: '或直接在 WhatsApp 上问我们',
     waText: '您好 PintuWeb，我在你们的网站上没有找到想看的页面。',
+  },
+  glossary: {
+    title: '新手网站术语表',
+    description: '用浅显的中文解释订购或运营网站时会遇到的术语——域名、主机、SSL、SEO、CMS、落地页等。',
+    eyebrow: '术语表',
+    h1: ['网站', '术语表'] as Hl,
+    lead: '订购或管理网站时会遇到的术语，简短说明，不讲行话。',
+    jump: '跳到字母',
+    related: '接着阅读',
+    search: '搜索术语',
+    searchPh: '搜索术语，例如主机…',
+    topicLabel: '主题',
+    all: '全部',
+    topics: { dasar: '网站基础', jenis: '网站类型', seo: 'SEO 与速度', bisnis: '商务与营销' },
+    count: (n: number) => `${n} 个术语`,
+    countOf: (n: number, total: number) => `${total} 个术语中的 ${n} 个`,
+    none: '没有匹配的术语。换个词试试，或直接在 WhatsApp 上问我们。',
+    linkTo: (term: string) => `指向术语“${term}”的链接`,
+    missingTitle: '找不到您要查的术语？',
+    missingBody: '直接在 WhatsApp 上问我们，我们会用浅显的话为您解释。',
+    missingCta: '在 WhatsApp 上提问',
+    missingWa: '您好 PintuWeb，我想请教这个网站术语是什么意思：',
+  },
+  service: {
+    breadcrumbServices: '服务',
+    forWho: '适合谁',
+    included: '您将获得',
+    pricing: '价格与工期',
+    pricingCaption: (name: string) => `${name}套餐：价格区间、定金和工期`,
+    colPackage: '套餐',
+    colRange: '价格区间',
+    colDeposit: '50% 定金',
+    colTime: '工期',
+    priceOnRequest: '价格取决于您选择的主题和功能。通过 WhatsApp 发送您的需求，开工前您会收到一份书面报价。',
+    process: '合作流程',
+    demos: '可以试用的示例',
+    demosLead: '这些示例都已上线。打开、试用，联系我们时提一下您喜欢的那一个。',
+    portal: (n: number, label: string) => `打开“${label}”演示集（${n} 个示例）`,
+    faq: '关于这项服务的问题',
+    readArticles: '延伸阅读',
+    other: '其他服务',
+    ctaTitle: (name: string) => `准备好拥有您的${name}了吗？`,
+    ctaLead: '免费咨询。我们帮您规划页面、功能和预算。',
+    ctaWa: (name: string) => `您好 PintuWeb，我对你们的“${name}”服务感兴趣，可以聊聊吗？`,
+    seePricing: '查看全部套餐',
   },
   // 文章相关的键中，中文只用到这三个（复制链接、作者）；其余保持英文。
   articles: {

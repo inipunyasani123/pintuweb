@@ -4,7 +4,7 @@
 // Dua lapis bahasa:
 // - BAHASA DASAR (id, en, ms): seluruh isi situs ditulis tangan, termasuk dokumen legal; id & en juga punya artikel.
 // - BAHASA TAMBAHAN (X_LANGS): terjemahan dari versi Inggris, disimpan sebagai "paket" di app/i18n/x/<kode>.ts
-//   (+ dict/<kode>.ts dan pages/<kode>.ts). URL-nya memakai segmen Inggris (/fr/pricing). Halaman yang belum
+//   (+ dict/<kode>.ts, pages/<kode>.ts, dan x/more/<kode>.ts untuk layanan & kamus). URL-nya memakai segmen Inggris (/fr/pricing). Halaman yang belum
 //   diterjemahkan untuk suatu bahasa tidak dibuat; tautan ke sana otomatis menuju versi Inggris (lihat routes.ts).
 //
 // Menambah bahasa: tulis dict, pages, dan paket x-nya, daftarkan di i18n/index.ts dan i18n/x/index.ts, lalu

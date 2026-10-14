@@ -34,7 +34,7 @@ export function llmsDoc(full: boolean) {
     `- Performance target: PageSpeed ${PERF_TARGET} (a target, not an average claim)`,
     '- Ownership: after full payment the client owns the source code, domain, hosting and admin access',
     '- Languages: Indonesian (default), English (/en) and Malay (/ms) for the whole site; ' +
-      `${X_LANGS.map((l) => `${LANG_INFO[l].name} (/${l})`).join(', ')} for the main pages (home, pricing, demos, FAQ, about, contact, founder)`,
+      `${X_LANGS.map((l) => `${LANG_INFO[l].name} (/${l})`).join(', ')} for the main pages (home, services, pricing, demos, FAQ, about, contact, founder, glossary)`,
     '',
     '## Packages (IDR)',
     '',

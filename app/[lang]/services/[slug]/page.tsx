@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { lang, slug } = await params
   const r = resolve(lang, slug)
   if (!r) return {}
-  const t = r.service.text[r.lang]
+  const t = serviceText(r.service, r.lang)
   return pageMeta({ lang: r.lang, ref: { key: 'services', service: r.service.key }, title: t.title, description: t.description })
 }
 

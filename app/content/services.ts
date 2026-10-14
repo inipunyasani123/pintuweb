@@ -1,10 +1,11 @@
-// Halaman layanan khusus (7 layanan × 3 bahasa). Harga & durasi TIDAK ditulis di sini:
+// Halaman layanan khusus (7 layanan × 3 bahasa dasar; 8 bahasa tambahan di i18n/x/more/). Harga & durasi TIDAK ditulis di sini:
 // tabel harga dirakit dari lib/packages.ts lewat `packages`. Layanan tanpa paket (undangan, link in bio)
 // sengaja tanpa angka — harganya dikonfirmasi lewat WhatsApp.
 import { isBase, type BaseLang, type Lang } from '../i18n/config'
 import type { Hl } from '../i18n/dict/id'
 import type { ArticleKey, ServiceKey } from '../i18n/slugs'
 import type { DemoCategory } from '../lib/demos'
+import { more } from '../i18n/x/more'
 
 export type ServiceText = {
   name: string
@@ -514,8 +515,5 @@ export const SERVICES: Service[] = [
 
 export const serviceOf = (key: ServiceKey) => SERVICES.find((s) => s.key === key)!
 
-/**
- * Teks layanan dalam bahasa pengunjung. Bahasa tambahan yang halaman layanannya belum diterjemahkan memakai teks
- * Inggris (tautannya pun menuju halaman Inggris, lihat path() di i18n/routes.ts).
- */
-export const serviceText = (s: Service, lang: Lang): ServiceText => (isBase(lang) ? s.text[lang] : s.text.en)
+/** Teks layanan dalam bahasa pengunjung; bahasa tambahan diambil dari i18n/x/more/<kode>.ts. */
+export const serviceText = (s: Service, lang: Lang): ServiceText => (isBase(lang) ? s.text[lang] : more(lang).services[s.key])

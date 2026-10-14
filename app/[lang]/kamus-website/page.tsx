@@ -4,10 +4,9 @@ import { ArrowUpRight } from 'lucide-react'
 import Glossary, { type GlossaryItem, type GlossaryTopic } from '../../components/Glossary'
 import PageHero from '../../components/PageHero'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
-import { TERMS, TERM_TOPICS, type TermTopic } from '../../content/glossary'
+import { TERMS, TERM_TOPICS, termLetter, termSortKey, termText, type TermTopic } from '../../content/glossary'
 import { getDict, getPages, isLang, LANG_INFO, type Lang } from '../../i18n'
 import { hasPage, langsOf, path, pathOf, urlOf } from '../../i18n/routes'
-import { isBase } from '../../i18n/config'
 import { SERVICES, serviceText } from '../../content/services'
 import { articlesIn } from '../../content/articles'
 import { pageGraph, pageMeta } from '../../i18n/seo'
@@ -29,11 +28,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function GlossaryPage({ params }: Params) {
   const lang = (await params).lang as Lang
-  // kamus hanya ada dalam bahasa dasar; bahasa lain menaut ke versi Inggris
-  if (!isBase(lang)) notFound()
+  if (!hasPage(lang, 'glossary')) notFound()
   const d = getDict(lang)
   const p = getPages(lang).glossary
-  const terms = [...TERMS].sort((a, b) => a.term[lang].localeCompare(b.term[lang], LANG_INFO[lang].intl))
+  // Urut menurut huruf indeks dulu (Mandarin: istilah berawal Latin & Han bisa jatuh di huruf yang sama), lalu abjad.
+  const terms = TERMS.map((t) => {
+    const x = termText(t, lang)
+    return { ...t, text: x.term, def: x.def, letter: x.letter ?? termLetter(lang, x.term), key: termSortKey(lang, x.term) }
+  }).sort((a, b) => a.letter.localeCompare(b.letter, LANG_INFO[lang].intl) || a.key.localeCompare(b.key, LANG_INFO[lang].intl))
   const articles = articlesIn(lang)
   const url = urlOf(lang, { key: 'glossary' })
 
@@ -51,9 +53,9 @@ export default async function GlossaryPage({ params }: Params) {
     return {
       id: t.id,
       topic: t.topic,
-      term: t.term[lang],
-      def: t.def[lang],
-      letter: t.term[lang][0].toUpperCase(),
+      term: t.text,
+      def: t.def,
+      letter: t.letter,
       ...(label && t.see ? { see: { label, href: pathOf(lang, t.see) } } : {}),
     }
   })
@@ -67,8 +69,8 @@ export default async function GlossaryPage({ params }: Params) {
     hasDefinedTerm: terms.map((t) => ({
       '@type': 'DefinedTerm',
       '@id': `${url}#${t.id}`,
-      name: t.term[lang],
-      description: t.def[lang],
+      name: t.text,
+      description: t.def,
       url: `${url}#${t.id}`,
       inDefinedTermSet: { '@id': `${url}#terms` },
     })),

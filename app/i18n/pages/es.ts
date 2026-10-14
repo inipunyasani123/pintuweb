@@ -1,6 +1,6 @@
 // Textos de página — Español. Traducción de pages/en.ts.
-// Las secciones de páginas que aún no existen en español (servicios, glosario, legal, artículos) heredan el
-// inglés: esas páginas no se generan para este idioma y sus enlaces van a la versión inglesa.
+// Las secciones de páginas que aún no existen en español (legal, artículos) heredan el inglés: esas páginas
+// no se generan para este idioma y sus enlaces van a la versión inglesa.
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
@@ -10,6 +10,34 @@ const LOC = 'Trenggalek, Java Oriental'
 
 const pages: Pages = {
   ...en,
+  services: {
+    title: 'Servicios de diseño y desarrollo web',
+    description: 'Landing pages, perfiles de empresa, tiendas en línea, portafolios, invitaciones digitales, páginas link in bio y sitios web a medida de PintuWeb, con precios desde, plazos de entrega y demos en línea.',
+    ogTitle: 'Servicios — PintuWeb',
+    ogDescription: 'Desde landing pages hasta tiendas en línea y sitios web a medida, con precios desde y demos que puedes probar.',
+    eyebrow: 'Servicios',
+    h1: ['Siete servicios, desde ', 'landing pages', ' hasta aplicaciones web.'] as Hl,
+    lead: 'Elige el tipo de sitio web que necesitas. Cada servicio viene con un precio desde, un plazo estimado y ejemplos que puedes probar.',
+    listAria: 'Lista de servicios',
+    from: 'Desde',
+    priceOnRequest: 'Precio según tema y funciones: pregúntanos por WhatsApp',
+    seeDetail: 'Ver detalles del servicio',
+    seePackages: 'Ver paquetes',
+    includedTitle: 'Siempre incluido',
+    included: [
+      { title: 'SEO desde el primer día', body: `Metaetiquetas, sitemap, datos estructurados y un objetivo de puntuación PageSpeed de ${PERF_TARGET} forman parte de cada paquete de sitio web.` },
+      { title: 'Garantía y mantenimiento', body: `Corrección gratuita de errores durante ${GUARANTEE_DAYS} días tras el lanzamiento y, después, de 1 a 6 meses de mantenimiento según el paquete.` },
+    ],
+    compareTitle: ['Compara ', 'todos los servicios'] as Hl,
+    compareCaption: 'Comparativa de servicios de PintuWeb: para quién son, precio desde y plazo de entrega',
+    colService: 'Servicio',
+    colFor: 'Ideal para',
+    colPrice: 'Desde',
+    colTime: 'Plazo',
+    ctaTitle: '¿No sabes cuál necesitas?',
+    ctaLead: 'Cuéntanos sobre tu negocio y te ayudamos a elegir el servicio adecuado. Sin coste.',
+    ctaWa: 'Hola PintuWeb, me gustaría que me aconsejaran qué servicio de sitio web conviene a mi negocio.',
+  },
   pricing: {
     title: 'Paquetes y precios de sitios web',
     description: (min: string, n: number) => `${n} paquetes de PintuWeb desde ${min}: invitaciones digitales, link in bio, landing pages, sitios para pequeñas empresas, tiendas en línea, sistemas de reservas, sitios inmobiliarios, aplicaciones web y sitios a medida. Anticipo del 50%, garantía de ${GUARANTEE_DAYS} días.`,
@@ -207,6 +235,51 @@ const pages: Pages = {
     copy: 'Copiar enlace',
     copied: 'Enlace copiado',
     authorRole: (year: number) => `Fundador y desarrollador de PintuWeb. Construye sitios web para pequeñas empresas desde ${year}.`,
+  },
+  glossary: {
+    title: 'Glosario web para principiantes',
+    description: 'Definiciones en lenguaje sencillo de los términos web que encuentras al encargar o gestionar un sitio web: dominio, hosting, SSL, SEO, CMS, landing page y más.',
+    eyebrow: 'Glosario',
+    h1: ['', 'Glosario', ' web'] as Hl,
+    lead: 'Los términos que aparecen al encargar o gestionar un sitio web, explicados de forma breve y sin tecnicismos.',
+    jump: 'Ir a la letra',
+    related: 'Lee también',
+    search: 'Buscar términos',
+    searchPh: 'Busca un término, p. ej. hosting…',
+    topicLabel: 'Tema',
+    all: 'Todos',
+    topics: { dasar: 'Conceptos básicos', jenis: 'Tipos de sitio web', seo: 'SEO y velocidad', bisnis: 'Negocio y marketing' },
+    count: (n: number) => `${n} términos`,
+    countOf: (n: number, total: number) => `${n} de ${total} términos`,
+    none: 'Ningún término coincide. Prueba con otra palabra o pregúntanos directamente por WhatsApp.',
+    linkTo: (term: string) => `Enlace al término ${term}`,
+    missingTitle: '¿No encuentras el término que buscas?',
+    missingBody: 'Pregúntanos por WhatsApp. Te lo explicamos en lenguaje sencillo.',
+    missingCta: 'Preguntar por WhatsApp',
+    missingWa: 'Hola PintuWeb, me gustaría saber qué significa este término web: ',
+  },
+  service: {
+    breadcrumbServices: 'Servicios',
+    forWho: 'Para quién es',
+    included: 'Qué incluye',
+    pricing: 'Precio y plazo',
+    pricingCaption: (name: string) => `Paquetes de ${name}: rango de precios, anticipo y plazo de entrega`,
+    colPackage: 'Paquete',
+    colRange: 'Rango de precios',
+    colDeposit: 'Anticipo del 50%',
+    colTime: 'Plazo',
+    priceOnRequest: 'El precio depende del tema y de las funciones que elijas. Envía tus necesidades por WhatsApp y recibirás un presupuesto escrito antes de empezar cualquier trabajo.',
+    process: 'Cómo funciona',
+    demos: 'Ejemplos que puedes probar',
+    demosLead: 'Todos están en línea. Ábrelos, pruébalos y, cuando nos contactes, menciona el que te guste.',
+    portal: (n: number, label: string) => `Abrir la galería de ${label} (${n} ejemplos)`,
+    faq: 'Preguntas sobre este servicio',
+    readArticles: 'Para seguir leyendo',
+    other: 'Otros servicios',
+    ctaTitle: (name: string) => `¿Listo para tu ${name}?`,
+    ctaLead: 'Consulta gratuita. Te ayudamos a definir las páginas, las funciones y el presupuesto.',
+    ctaWa: (name: string) => `Hola PintuWeb, me interesa su servicio de ${name}. ¿Podemos hablar?`,
+    seePricing: 'Ver todos los paquetes',
   },
 }
 

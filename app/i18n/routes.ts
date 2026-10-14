@@ -28,7 +28,7 @@ const BASE_SEGMENTS: Record<PageKey, Record<BaseLang, string | null>> = {
  * Halaman yang SUDAH diterjemahkan untuk tiap bahasa tambahan. Halaman di luar daftar ini tidak dibuat untuk
  * bahasa itu, dan tautan ke sana otomatis menuju versi Inggris (lihat path()). Artikel tidak pernah ada di sini.
  */
-const X_CORE: PageKey[] = ['home', 'pricing', 'demo', 'faq', 'about', 'contact', 'founder']
+const X_CORE: PageKey[] = ['home', 'services', 'pricing', 'demo', 'faq', 'about', 'contact', 'founder', 'glossary']
 const X_READY: Record<string, PageKey[]> = Object.fromEntries((X_LANGS as readonly XLang[]).map((l) => [l, X_CORE]))
 
 /** Segmen URL per halaman per bahasa; bahasa tambahan memakai segmen Inggris. null = halaman tidak ada. */

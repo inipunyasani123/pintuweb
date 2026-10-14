@@ -1,5 +1,7 @@
-// Kamus istilah website (3 bahasa). Definisi dibuka dengan kalimat "X adalah …" supaya mudah dikutip.
-import type { BaseLang } from '../i18n/config'
+// Kamus istilah website (3 bahasa dasar; 8 bahasa tambahan di i18n/x/more/). Definisi dibuka dengan kalimat
+// "X adalah …" supaya mudah dikutip.
+import { isBase, type BaseLang, type Lang } from '../i18n/config'
+import { more } from '../i18n/x/more'
 import type { DocRef } from '../i18n/routes'
 
 /** Topik istilah: dasar website, jenis website, SEO & kecepatan, bisnis & pemasaran. */
@@ -279,3 +281,35 @@ export const TERMS: Term[] = [
     },
   },
 ]
+
+/** Istilah & definisi dalam bahasa pengunjung. Istilah yang belum diterjemahkan menggagalkan build. */
+export function termText(t: Term, lang: Lang): { term: string; def: string; letter?: string } {
+  if (isBase(lang)) return { term: t.term[lang], def: t.def[lang] }
+  const x = more(lang).terms[t.id]
+  if (!x) throw new Error(`Istilah ${t.id} belum diterjemahkan ke bahasa ${lang}`)
+  return x
+}
+
+// Batas awal tiap huruf pinyin dalam urutan Intl Mandarin (karakter pertama yang dibaca dengan huruf itu).
+const ZH_BOUNDS: [string, string][] = [
+  ['A', '阿'], ['B', '八'], ['C', '嚓'], ['D', '哒'], ['E', '妸'], ['F', '发'], ['G', '旮'], ['H', '哈'], ['J', '讥'],
+  ['K', '咔'], ['L', '垃'], ['M', '妈'], ['N', '拏'], ['O', '噢'], ['P', '妑'], ['Q', '七'], ['R', '呥'], ['S', '仨'],
+  ['T', '他'], ['W', '穵'], ['X', '夕'], ['Y', '丫'], ['Z', '帀'],
+]
+const zhCollator = new Intl.Collator('zh-CN')
+
+/** Kunci urut: bahasa Arab mengabaikan kata sandang "ال" (seperti kamus Arab pada umumnya). */
+export const termSortKey = (lang: Lang, term: string) => (lang === 'ar' ? term.replace(/^ال/, '') : term)
+
+/** Huruf indeks istilah: huruf Latin pertama, huruf pinyin untuk aksara Han, alif tanpa hamzah untuk Arab. */
+export function termLetter(lang: Lang, term: string): string {
+  const c = termSortKey(lang, term).trim()[0] ?? '#'
+  if (/[A-Za-z]/.test(c)) return c.toUpperCase()
+  if (lang === 'ar') return c.replace(/[أإآ]/, 'ا')
+  if (lang === 'zh' && /\p{Script=Han}/u.test(c)) {
+    let letter = 'A'
+    for (const [l, first] of ZH_BOUNDS) if (zhCollator.compare(c, first) >= 0) letter = l
+    return letter
+  }
+  return c.toUpperCase()
+}

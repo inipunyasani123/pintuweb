@@ -1,0 +1,255 @@
+// Páginas de servicios y glosario — Español (traducción de la versión inglesa). Los precios llegan como marcadores {{…}}.
+import type { More } from '../types'
+
+const more: More = {
+  services: {
+    'landing-page': {
+      name: 'Landing Page',
+      title: 'Diseño y desarrollo de landing pages',
+      description: 'Landing pages rápidas y centradas en la conversión para lanzamientos de producto, eventos, webinars y campañas publicitarias. Precios transparentes, entrega en pocos días laborables y 17 ejemplos en línea para probar.',
+      h1: ['', 'Landing pages', ' que convierten visitantes en clientes.'],
+      lead: 'Una landing page es una sola página web creada con un objetivo: que el visitante realice una acción concreta, como comprar, inscribirse en un webinar o escribirte por WhatsApp. Como es una sola página, se construye rápido y es ideal como destino de un anuncio.',
+      intro: [
+        'A diferencia de un sitio web completo, una landing page no tiene un menú que lleve a muchas páginas. Todo, desde el problema que resuelves hasta las pruebas, el precio y la llamada a la acción, se presenta en orden para que el visitante no se distraiga antes de actuar.',
+        'Construimos las landing pages con Next.js, así que son ligeras y se abren rápido en el móvil. La velocidad importa: un anuncio que lleva a una página lenta desperdicia presupuesto.',
+      ],
+      forWho: ['Lanzamientos de producto y promociones de temporada', 'Inscripciones a webinars, clases y eventos', 'Destino de anuncios en Meta, TikTok o Google Ads', 'Startups que quieren probar una idea y captar clientes potenciales', 'Pequeños negocios que necesitan una página de ventas antes de tener un sitio web completo'],
+      short: 'Una página centrada en la conversión para lanzamientos de producto, eventos o campañas publicitarias.',
+      suits: 'Promociones, eventos, anuncios',
+      faq: [
+        { q: '¿En qué se diferencia una landing page de un sitio web de perfil de empresa?', a: 'Una landing page es una sola página con un solo objetivo, como inscripciones o ventas. Un perfil de empresa tiene varias páginas (nosotros, servicios, contacto, blog) que presentan el negocio completo. Si vas a lanzar anuncios para un solo producto, una landing page suele ser la mejor opción.' },
+        { q: '¿Puedo usar la landing page para anuncios en Facebook, Instagram o Google?', a: 'Sí. Nos aseguramos de que la página cargue rápido en móviles y esté lista para el Meta Pixel o las etiquetas de Google, de modo que puedas medir los resultados de tus anuncios.' },
+        { q: '¿Puede una landing page posicionarse en Google?', a: 'Puede, porque añadimos metaetiquetas, datos estructurados y un sitemap. Sin embargo, una sola página suele perder frente a sitios con muchos artículos en palabras clave generales; para el tráfico de pago, una landing page es muy eficaz.' },
+        { q: '¿Puede la landing page convertirse más adelante en un sitio web completo?', a: 'Sí. Su diseño y su código pueden servir de base para un sitio web de varias páginas, así que no tienes que empezar desde cero.' },
+      ],
+    },
+    'company-profile': {
+      name: 'Sitio web de perfil de empresa',
+      title: 'Sitio web de perfil de empresa para pequeños negocios',
+      description: 'Sitios web de perfil de empresa para pequeños negocios y empresas de servicios: 3–5 páginas, dominio .com, hosting, SSL, Google Maps y SEO on-page. Precios transparentes con un anticipo del 50%.',
+      h1: ['Un ', 'sitio web de perfil de empresa', ' que hace que confíen en tu negocio.'],
+      lead: 'Un sitio web de perfil de empresa es un sitio de varias páginas que presenta tu negocio por completo: quién eres, qué vendes, dónde estás y cómo contactarte. Los clientes potenciales suelen revisar tu sitio web antes de decidir comprarte o trabajar contigo.',
+      intro: [
+        'Nuestro paquete Estándar Pymes incluye 3–5 páginas principales (Inicio, Nosotros, Servicios, Blog y Contacto) con dominio .com, hosting, SSL, formulario de contacto, botón de WhatsApp y un mapa de Google.',
+        'Desde el principio escribimos una estructura de encabezados y metadatos ordenada, para que el nombre de tu negocio y tus servicios sean más fáciles de encontrar en Google, también en búsquedas locales como «servicio en tu ciudad».',
+      ],
+      forWho: ['Pequeños negocios que quieren verse profesionales en Google', 'Empresas de servicios: consultores, contratistas, talleres, lavanderías, agencias de viajes', 'Restaurantes, cafeterías y negocios de comida', 'Clínicas, escuelas y centros de formación', 'Negocios que quieren dejar de depender solo de las redes sociales'],
+      short: 'Un sitio web de 3–5 páginas que presenta tu negocio: nosotros, servicios, blog y contacto.',
+      suits: 'Pequeños negocios y servicios',
+      faq: [
+        { q: '¿Cuántas páginas recibo?', a: 'El paquete Estándar Pymes incluye 3–5 páginas principales, normalmente Inicio, Nosotros, Servicios, Blog y Contacto. Las páginas adicionales se pueden hablar según lo que necesites.' },
+        { q: '¿Puedo escribir mis propias entradas de blog?', a: 'Se puede organizar. Durante el periodo de mantenimiento, envíanos tus textos por WhatsApp y los publicamos; si prefieres gestionarlos tú mismo, se puede añadir un CMS como función.' },
+        { q: '¿Está incluido un dominio .com?', a: 'Sí, el dominio .com, el hosting y el SSL del primer año están incluidos. Los costes de renovación a partir del segundo año se indican de antemano en la página de Precios.' },
+        { q: '¿Y si todavía no tengo fotos ni textos?', a: 'Te ayudamos a redactar los textos a partir de un brief breve y podemos usar fotos de stock con licencia. Las fotos reales de tu negocio convencen más, así que también podemos recomendarte un fotógrafo.' },
+      ],
+    },
+    'toko-online': {
+      name: 'Tienda en línea',
+      title: 'Desarrollo de tiendas en línea',
+      description: 'Tu propia tienda en línea: un catálogo de productos con pedidos por WhatsApp, o una tienda completa con carrito, pasarela de pago, tarifas de envío automáticas y panel de administración.',
+      h1: ['Una ', 'tienda en línea', ' propia, sin que una plataforma se lleve una parte de cada venta.'],
+      lead: 'Una tienda en línea es un sitio web donde los clientes consultan tu catálogo de productos y te hacen el pedido directamente. Hay dos niveles: un catálogo con pedidos por WhatsApp para empezar rápido, y una tienda completa con carrito, pagos automáticos y tarifas de envío automáticas.',
+      intro: [
+        'La Tienda en línea sencilla es para negocios que todavía gestionan los pedidos a mano: el cliente elige productos en el catálogo y un mensaje de pedido bien ordenado llega a tu WhatsApp. La Tienda en línea completa es para volúmenes de pedidos mayores: carrito, pasarela de pago, tarifas de envío automáticas vía RajaOngkir (para envíos dentro de Indonesia) y un panel para gestionar productos y pedidos.',
+        'Los marketplaces siguen siendo útiles para llegar a compradores nuevos. Tu propia tienda los complementa: los datos de los clientes son tuyos, el diseño encaja con tu marca y no hay reglas de plataforma que cambien de un día para otro.',
+      ],
+      forWho: ['Tiendas minoristas, de moda y de artesanía', 'Negocios de comida que aceptan pedidos anticipados', 'Vendedores con mucho movimiento en marketplaces que quieren un canal propio', 'Distribuidores o revendedores con catálogo de productos', 'Negocios que quieren depender menos de una sola plataforma'],
+      short: 'Desde un catálogo con pedidos por WhatsApp hasta una tienda completa con carrito, pasarela de pago y envíos automáticos.',
+      suits: 'Comercio, comida, revendedores',
+      faq: [
+        { q: '¿Qué diferencia hay entre la Tienda en línea sencilla y la completa?', a: 'La sencilla es un catálogo de hasta 20 productos con pedidos por WhatsApp y un CMS ligero. La completa añade carrito de compra, proceso de pago completo, pasarela de pago, tarifas de envío automáticas y un panel de administración para los pedidos.' },
+        { q: '¿Tengo que dejar los marketplaces?', a: 'No. Muchos vendedores usan ambos: los marketplaces para compradores nuevos y su propia tienda para clientes fieles, promociones y datos de clientes que ellos controlan.' },
+        { q: '¿Puedo cambiar productos y precios yo mismo?', a: 'Sí. Los dos paquetes de tienda en línea incluyen gestión de productos, así que puedes añadir, editar u ocultar productos sin tener que contactarnos.' },
+        { q: '¿Qué métodos de pago se admiten?', a: 'En la Tienda en línea completa, los pagos pasan por una pasarela de pago que integramos según tus necesidades. En la Tienda en línea sencilla, el pago se acuerda directamente entre tú y el comprador después de que el pedido llegue por WhatsApp.' },
+      ],
+    },
+    portofolio: {
+      name: 'Sitio web de portafolio',
+      title: 'Sitios web de portafolio y marca personal',
+      description: 'Sitios web de portafolio para diseñadores, desarrolladores, fotógrafos y freelancers: páginas de trabajos, casos de estudio, blog y contacto, con SEO básico. Mira 7 ejemplos de portafolio en línea.',
+      h1: ['Un ', 'sitio web de portafolio', ' que hace que tu trabajo se note.'],
+      lead: 'Un sitio web de portafolio es un escaparate personal de tu trabajo: donde clientes o reclutadores ven lo que has hecho, cómo trabajas y cómo contactarte. Frente a un PDF o las redes sociales, tiene su propia dirección y se puede encontrar en Google.',
+      intro: [
+        'El paquete Portafolio incluye las páginas Sobre mí, Trabajos, Blog y Contacto, con enlaces a WhatsApp, LinkedIn, Instagram u otros canales tuyos. Mantenemos ordenada la estructura de encabezados para que los buscadores lean con claridad tu nombre y tus habilidades.',
+        'Los siete estilos de portafolio de nuestra galería, del editorial minimalista al neobrutalista, se pueden probar ahora mismo, con casos de estudio y modo claro/oscuro.',
+      ],
+      forWho: ['Diseñadores UI/UX y gráficos, ilustradores', 'Desarrolladores y tecnólogos creativos', 'Fotógrafos, videógrafos y escritores', 'Freelancers que buscan clientes directos', 'Profesionales que están buscando empleo'],
+      short: 'Un escaparate de trabajos para freelancers, creadores y profesionales, con casos de estudio.',
+      suits: 'Freelancers, creadores',
+      faq: [
+        { q: '¿Puedo añadir trabajos nuevos yo mismo?', a: 'Durante el periodo de mantenimiento, envíanos los trabajos nuevos por WhatsApp y los añadimos. Si actualizas tu portafolio a menudo, se puede añadir un CMS para que lo gestiones tú mismo.' },
+        { q: '¿Son reales las personas de los ejemplos de portafolio?', a: 'No. Los personajes de nuestros ejemplos de portafolio son ficticios; cuando haces el encargo, todo se sustituye por tus propios trabajos, fotos y datos de contacto.' },
+        { q: '¿Necesito un dominio con mi propio nombre?', a: 'Te lo recomendamos mucho. El dominio, el hosting y el SSL del primer año están incluidos en el paquete Portafolio, y una dirección con tu nombre es más fácil de recordar para los clientes.' },
+      ],
+    },
+    'website-custom': {
+      name: 'Sitio web a medida y aplicación web',
+      title: 'Desarrollo de sitios web a medida y aplicaciones web',
+      description: 'Sitios web a medida y aplicaciones web: sistemas de reservas, catálogos de inmuebles, áreas de miembros, formularios complejos e integraciones con API, construidos con Next.js. Prueba nuestros ejemplos de reservas e inmuebles en línea.',
+      h1: ['Sitios web a medida para ', 'necesidades que no caben en una plantilla.'],
+      lead: 'Un sitio web a medida es aquel cuyo diseño, flujo y funciones se construyen específicamente en torno a cómo funciona tu negocio; por ejemplo, un sistema de reservas, un catálogo de inmuebles con filtros, un área de miembros o una integración con un sistema que ya usas.',
+      intro: [
+        'Un proyecto a medida empieza por trazar el flujo: quiénes son los usuarios, qué datos entran y qué debe pasar después. A partir de ahí preparamos un presupuesto escrito con un alcance claro antes de escribir una sola línea de código.',
+        'Puedes probar ejemplos en nuestra galería: cinco sistemas de reservas (restaurante, hotel, clínica, pista de fútbol sala, cine), cuatro marketplaces inmobiliarios y tres aplicaciones de productividad.',
+      ],
+      forWho: ['Restaurantes, hoteles, clínicas y pistas que necesitan reservas en línea', 'Agentes y promotores inmobiliarios', 'Startups que construyen su primer producto web', 'Instituciones y escuelas con formularios o flujos de trabajo especiales', 'Negocios que conectan su sitio web con sistemas que ya tienen'],
+      short: 'Sistemas de reservas, catálogos de inmuebles, aplicaciones web u otras funciones a medida para tu negocio.',
+      suits: 'Startups, instituciones, sistemas a medida',
+      faq: [
+        { q: '¿Cómo se decide el precio de un sitio web a medida?', a: 'Según el alcance: número de páginas, funciones, integraciones y roles de usuario. Los sistemas de reservas empiezan en {{from:sistem-reservasi}}, los sitios web inmobiliarios en {{from:website-properti}}, las aplicaciones web en {{from:aplikasi-web}} y los sitios web a medida en {{from:website-custom}}; la cifra exacta figura en el presupuesto escrito que apruebas antes de empezar.' },
+        { q: '¿Se puede conectar con un sistema que ya uso?', a: 'Sí, siempre que ese sistema ofrezca una API u otra forma de intercambiar datos. Revisamos su documentación antes de prometer una integración.' },
+        { q: '¿De quién es el código?', a: 'Tuyo. Una vez hecho el pago final, se te entrega por completo el código fuente y el acceso al hosting, al dominio y a la base de datos.' },
+        { q: '¿Hay soporte después del lanzamiento?', a: 'Sí, el paquete Sitio web a medida incluye una garantía de corrección de errores y 3 meses de mantenimiento y soporte técnico, que se pueden ampliar.' },
+      ],
+    },
+    'undangan-digital': {
+      name: 'Invitación digital',
+      title: 'Invitaciones digitales en formato web',
+      description: 'Invitaciones digitales en formato web para bodas, pedidas de mano, celebraciones familiares, cumpleaños, graduaciones, reencuentros y eventos corporativos: RSVP, cuenta atrás, mapa, galería y música. Mira 8 temas en línea.',
+      h1: ['', 'Invitaciones digitales', ' que los invitados abren, leen y responden.'],
+      lead: 'Una invitación digital es una invitación a un evento en forma de página web que compartes como enlace, normalmente por WhatsApp. Desde un solo enlace, los invitados pueden ver la hora y el lugar, abrir el mapa, confirmar su asistencia (RSVP) y guardar la fecha.',
+      intro: [
+        'Cada uno de los ocho temas de nuestra galería tiene un carácter propio, en lugar de ser un mismo diseño con otros colores: una boda, una pedida de mano, dos celebraciones familiares indonesias (khitanan y aqiqah), un cumpleaños, una graduación, un reencuentro y un sitio para un evento corporativo con agenda e inscripción de asistentes.',
+        'Las funciones opcionales incluyen un sobre de apertura, cuenta atrás, mapa del lugar, galería de fotos, música de fondo y un formulario de RSVP. Una invitación de nuestra galería de temas empieza en {{from:undangan-digital}}; para eventos corporativos o un diseño a medida, el paquete Sitio de evento empieza en {{from:situs-acara}}.',
+      ],
+      forWho: ['Parejas que preparan su boda o pedida de mano', 'Familias que organizan una celebración', 'Organizadores de reencuentros, graduaciones y cumpleaños', 'Empresas que celebran conferencias, lanzamientos o encuentros', 'Cualquiera que quiera una invitación fácil de compartir por WhatsApp'],
+      includes: ['Una página de invitación con su propio enlace', 'Datos del evento: fecha, hora y lugar con mapa', 'Una cuenta atrás hasta el evento', 'Un formulario de confirmación de asistencia (RSVP)', 'Galería de fotos y música de fondo (opcional)', 'Un diseño cómodo en pantallas de móvil pequeñas'],
+      short: 'Invitaciones en formato web para bodas, eventos familiares, graduaciones, reencuentros y eventos corporativos.',
+      suits: 'Bodas, eventos familiares y corporativos',
+      faq: [
+        { q: '¿Cuánto cuesta una invitación digital?', a: 'Desde {{from:undangan-digital}} para una invitación de nuestra galería de temas (rango {{price:undangan-digital}}, lista en {{duration:undangan-digital}}), y desde {{from:situs-acara}} para un sitio de evento o un diseño a medida. Las invitaciones permanecen activas 12 meses sin coste de renovación.' },
+        { q: '¿Son reales los nombres y las fotos de los ejemplos?', a: 'No. Los nombres, fotos y datos de nuestras invitaciones de ejemplo son ficticios; cuando haces el encargo, todo se sustituye por los datos de tu evento.' },
+        { q: '¿Cómo comparto la invitación?', a: 'Solo tienes que enviar el enlace por WhatsApp, redes sociales o correo electrónico. Los invitados la abren en su navegador sin instalar ninguna aplicación.' },
+        { q: '¿Puede una invitación digital sustituir a una impresa?', a: 'En muchos eventos sí, sobre todo para los invitados que viven lejos. Algunas familias siguen imprimiendo unas cuantas invitaciones para los mayores o los invitados de honor; las dos pueden convivir.' },
+      ],
+    },
+    'link-in-bio': {
+      name: 'Link in Bio',
+      title: 'Páginas link in bio a medida',
+      description: 'Páginas link in bio con tu propio dominio y diseño para creadores, pequeños negocios, músicos y cafeterías: menús, pedidos anticipados, agendas, tiendas y un botón de WhatsApp tras un solo enlace. Mira 12 ejemplos en línea.',
+      h1: ['Una ', 'página link in bio', ' propia, no solo una lista de botones.'],
+      lead: 'Una página link in bio es una sola página web enlazada desde la biografía de tu Instagram o TikTok que reúne todos los destinos importantes: WhatsApp, tu tienda, tu agenda, tus trabajos o un formulario de pedido. Una versión a medida puede usar tu propio dominio y el diseño de tu marca, con funciones que los servicios genéricos de link in bio no ofrecen.',
+      intro: [
+        'Los doce ejemplos de nuestra galería muestran hasta dónde puede llegar una página así: el tablero de menú de un puesto de comida que indica si está abierto según la hora de Indonesia, pedidos anticipados para una cafetería, la agenda de gira de una banda con selector de entradas, una tienda de pegatinas y una página de encargos de una ilustradora.',
+        'El paquete Link in Bio empieza en {{from:link-in-bio}} y está listo en {{duration:link-in-bio}}; las páginas o funciones adicionales se presupuestan por escrito.',
+      ],
+      forWho: ['Creadores de contenido e influencers', 'Cafeterías, puestos de comida y negocios de comida que aceptan pedidos anticipados', 'Músicos, bandas y organizadores de eventos', 'Ilustradores, escritores y profesionales creativos', 'Pequeños negocios que venden activamente en Instagram o TikTok'],
+      includes: ['Una página en tu propio dominio con el diseño de tu marca', 'Un botón de WhatsApp y enlaces a todos tus canales', 'Funciones según lo que necesites: menú, pedidos anticipados, agenda, tienda o formularios', 'Carga rápida en móviles', 'SEO básico para que tu nombre se pueda encontrar en Google'],
+      short: 'Un solo enlace para la biografía de tus redes, con tu propio dominio, diseño y funciones.',
+      suits: 'Creadores, cafeterías, músicos',
+      faq: [
+        { q: '¿En qué se diferencia de un servicio gratuito de link in bio?', a: 'Los servicios gratuitos suelen ofrecer una lista de botones con un estilo limitado. Una página a medida puede usar tu dominio, el diseño de tu marca y funciones especiales como un menú, pedidos anticipados o una agenda, y el contenido es completamente tuyo.' },
+        { q: '¿Cuánto cuesta?', a: 'Desde {{from:link-in-bio}} por una página con una función especial (rango {{price:link-in-bio}}), con dominio .my.id/.biz.id y hosting del primer año incluidos. Las páginas o funciones adicionales se presupuestan por escrito antes de empezar.' },
+        { q: '¿Puedo usarla en Instagram y TikTok a la vez?', a: 'Sí. El enlace es el mismo en todas las plataformas, así que solo tienes que añadirlo a la biografía de cada cuenta.' },
+      ],
+    },
+  },
+  terms: {
+    domain: {
+      term: 'Dominio',
+      def: 'Un dominio es la dirección del sitio web que la gente escribe en el navegador, por ejemplo pintuweb.id. Los dominios se alquilan por años a un registrador y hay que renovarlos para no perderlos.',
+    },
+    hosting: {
+      term: 'Hosting (alojamiento web)',
+      def: 'El hosting es el servicio de servidor que guarda los archivos de tu sitio web y los sirve a los visitantes a todas horas. El dominio es la dirección; el hosting es la «casa» donde vive el contenido.',
+    },
+    ssl: {
+      term: 'SSL / HTTPS',
+      def: 'SSL es un certificado que cifra los datos entre el navegador y el sitio web, y se reconoce por una dirección que empieza por https://. Sin él, los navegadores marcan el sitio como «no seguro».',
+    },
+    dns: {
+      term: 'DNS',
+      def: 'DNS (Domain Name System, sistema de nombres de dominio) es el sistema que traduce un nombre de dominio en la dirección de un servidor. La configuración DNS decide a qué hosting apunta un dominio.',
+    },
+    cdn: {
+      term: 'CDN',
+      def: 'Una CDN (Content Delivery Network, red de distribución de contenidos) es una red de servidores en muchos lugares que guarda copias de tu sitio web, de modo que las páginas se sirven desde el servidor más cercano al visitante y cargan más rápido.',
+    },
+    cms: {
+      term: 'CMS',
+      def: 'Un CMS (Content Management System, sistema de gestión de contenidos) es un panel de administración para cambiar el contenido del sitio web (textos, imágenes, productos o artículos) sin tocar el código.',
+    },
+    'landing-page': {
+      term: 'Landing page',
+      def: 'Una landing page es una sola página web con un único objetivo, como una compra o una inscripción, y suele ser el destino de un anuncio.',
+    },
+    'company-profile': {
+      term: 'Sitio web de perfil de empresa',
+      def: 'Un sitio web de perfil de empresa es un sitio de varias páginas que presenta un negocio: quién es, sus servicios o productos, su ubicación y sus datos de contacto.',
+    },
+    responsive: {
+      term: 'Responsive (adaptable a móviles)',
+      def: 'Un sitio web responsive es el que adapta su diseño al tamaño de la pantalla, de modo que se lee con comodidad en móviles, tabletas y ordenadores.',
+    },
+    seo: {
+      term: 'SEO',
+      def: 'El SEO (Search Engine Optimization, posicionamiento en buscadores) es el trabajo de hacer que un sitio web sea fácil de entender y fiable para los buscadores, para que aparezca en los resultados de palabras clave relevantes.',
+    },
+    'meta-description': {
+      term: 'Meta description (metadescripción)',
+      def: 'Una meta description es un resumen breve de una página escrito en su código, que Google suele mostrar bajo el título en los resultados de búsqueda.',
+    },
+    sitemap: {
+      term: 'Sitemap (mapa del sitio)',
+      def: 'Un sitemap es un archivo que enumera las páginas de un sitio web y ayuda a los buscadores a encontrarlas todas, incluidas las nuevas.',
+    },
+    'structured-data': {
+      term: 'Datos estructurados (schema)',
+      def: 'Los datos estructurados son marcado adicional en el código de una página (normalmente JSON-LD de schema.org) que explica el contenido a los buscadores, como precios, preguntas frecuentes o artículos.',
+    },
+    'core-web-vitals': {
+      term: 'Core Web Vitals',
+      def: 'Las Core Web Vitals son las tres métricas de experiencia de página de Google: LCP (lo rápido que aparece el contenido principal, bueno con ≤ 2,5 s), INP (capacidad de respuesta a la interacción, bueno con ≤ 200 ms) y CLS (estabilidad del diseño, bueno con ≤ 0,1).',
+    },
+    pagespeed: {
+      term: 'PageSpeed',
+      def: 'PageSpeed Insights es una herramienta gratuita de Google que puntúa una página de 0 a 100 en velocidad y calidad técnica, con sugerencias de mejora.',
+    },
+    'search-console': {
+      term: 'Google Search Console',
+      def: 'Google Search Console es un servicio gratuito de Google para seguir cómo aparece tu sitio web en las búsquedas: páginas indexadas, consultas, clics y problemas técnicos.',
+    },
+    'google-business-profile': {
+      term: 'Google Business Profile',
+      def: 'Google Business Profile (Perfil de Empresa en Google) es una ficha de negocio gratuita que aparece en Google Maps y en las búsquedas locales, con tu dirección, horario, fotos y reseñas.',
+    },
+    cta: {
+      term: 'Llamada a la acción (CTA)',
+      def: 'Una llamada a la acción es un botón o mensaje que pide al visitante dar un paso siguiente concreto, como «Chatea por WhatsApp» o «Inscríbete ahora».',
+    },
+    conversion: {
+      term: 'Conversión',
+      def: 'Una conversión es el momento en que un visitante realiza la acción que buscas: comprar, inscribirse o ponerse en contacto. La tasa de conversión es el porcentaje de visitantes que lo hacen.',
+    },
+    'payment-gateway': {
+      term: 'Pasarela de pago',
+      def: 'Una pasarela de pago es un servicio que procesa los pagos en línea de un sitio web (transferencias bancarias, monederos electrónicos, códigos QR o tarjetas) y avisa a la tienda cuando un pago se completa.',
+    },
+    'link-in-bio': {
+      term: 'Link in bio',
+      def: 'Un link in bio es una sola página enlazada desde la biografía de una red social que reúne todos los destinos importantes: WhatsApp, tienda, agenda o trabajos.',
+    },
+    'undangan-digital': {
+      term: 'Invitación digital',
+      def: 'Una invitación digital es una invitación a un evento en forma de página web que se comparte como enlace, normalmente con mapa del lugar, cuenta atrás y confirmación de asistencia (RSVP).',
+    },
+    redirect: {
+      term: 'Redirección 301/308',
+      def: 'Una redirección permanente (301 o 308) lleva a los visitantes de una dirección antigua a una nueva y avisa a los buscadores de que la página se ha trasladado, para que su posicionamiento se traslade con ella.',
+    },
+    hreflang: {
+      term: 'Hreflang',
+      def: 'Hreflang es una etiqueta en el código de una página que informa a los buscadores de las versiones en otros idiomas de esa misma página, para que a cada visitante se le muestre el idioma adecuado.',
+    },
+    analytics: {
+      term: 'Analítica web (analytics)',
+      def: 'La analítica web son herramientas que registran estadísticas de visitas (número de visitantes, páginas vistas y fuentes de tráfico) para que veas qué funciona en tu sitio web.',
+    },
+    maintenance: {
+      term: 'Mantenimiento',
+      def: 'El mantenimiento web es el cuidado rutinario después del lanzamiento: pequeñas actualizaciones de contenido, parches de seguridad, actualización de dependencias y corrección de problemas técnicos.',
+    },
+  },
+}
+
+export default more

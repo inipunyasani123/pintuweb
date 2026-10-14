@@ -5,6 +5,8 @@
 // dari lib/site.ts dan lib/packages.ts, sama seperti bahasa dasar.
 import type { Paket, PaketGroup } from '../../lib/packages'
 import type { DemoCategory } from '../../lib/demos'
+import type { ServiceText } from '../../content/services'
+import type { ServiceKey } from '../slugs'
 
 /** Kalimat fakta bisnis per bahasa (dipakai kontak, FAQ, footer, dokumen). */
 export type Facts = {
@@ -65,4 +67,18 @@ export type Pack = {
   faqCategories: Record<FaqCategoryKey, { name: string; lead: string }>
   /** 29 pasang [pertanyaan, jawaban], URUTANNYA sama dengan FAQ_KEYS di content/faq.ts */
   faq: (c: FaqCtx) => [string, string | Listed][]
+}
+
+/** Teks satu istilah kamus. `letter` hanya bila huruf indeks otomatis salah (mis. aksara Han berbacaan ganda). */
+export type TermText = { term: string; def: string; letter?: string }
+
+/**
+ * Isi halaman layanan & kamus untuk bahasa tambahan (gelombang 2), disimpan terpisah dari Pack supaya paket inti
+ * tetap ringkas. Penanda harga ({{from:slug}} dst.) dipertahankan apa adanya: angkanya diisi fillFacts().
+ */
+export type More = {
+  /** 7 layanan, kuncinya ServiceKey (i18n/slugs.ts) */
+  services: Record<ServiceKey, ServiceText>
+  /** 26 istilah, kuncinya id di content/glossary.ts */
+  terms: Record<string, TermText>
 }
