@@ -31,14 +31,14 @@ export const CATEGORY_COLOR: Record<DemoCategory, { color: string; to: string; t
 }
 
 export const PORTALS: { path: string; origin: string; category: DemoCategory; image: string }[] = [
-  { path: 'landing-page', origin: 'https://portal-landing-seven.vercel.app', category: 'landing', image: '/images/galeri/landing.jpg' },
-  { path: 'link-in-bio', origin: 'https://portal-bio-neon.vercel.app', category: 'linkinbio', image: '/images/galeri/bio.jpg' },
-  { path: 'kontes-desain', origin: 'https://portal-kontes.vercel.app', category: 'kontes', image: '/images/galeri/kontes.jpg' },
-  { path: 'undangan-digital', origin: 'https://portal-undangan-eta.vercel.app', category: 'undangan', image: '/images/galeri/undangan.jpg' },
-  { path: 'website-portofolio', origin: 'https://portal-porto-neon.vercel.app', category: 'portfolio', image: '/images/galeri/porto.jpg' },
-  { path: 'website-reservasi', origin: 'https://portal-reservasi-nu.vercel.app', category: 'reservasi', image: '/images/galeri/reservasi.jpg' },
-  { path: 'website-properti', origin: 'https://portal-properti-nu.vercel.app', category: 'properti', image: '/images/galeri/properti.jpg' },
-  { path: 'aplikasi-to-do', origin: 'https://portal-todo.vercel.app', category: 'todo', image: '/images/galeri/todo.jpg' },
+  { path: 'landing-page', origin: 'https://portal-landing.pintuweb.id', category: 'landing', image: '/images/galeri/landing.jpg' },
+  { path: 'link-in-bio', origin: 'https://portal-bio.pintuweb.id', category: 'linkinbio', image: '/images/galeri/bio.jpg' },
+  { path: 'kontes-desain', origin: 'https://portal-kontes.pintuweb.id', category: 'kontes', image: '/images/galeri/kontes.jpg' },
+  { path: 'undangan-digital', origin: 'https://portal-undangan.pintuweb.id', category: 'undangan', image: '/images/galeri/undangan.jpg' },
+  { path: 'website-portofolio', origin: 'https://portal-porto.pintuweb.id', category: 'portfolio', image: '/images/galeri/porto.jpg' },
+  { path: 'website-reservasi', origin: 'https://portal-reservasi.pintuweb.id', category: 'reservasi', image: '/images/galeri/reservasi.jpg' },
+  { path: 'website-properti', origin: 'https://portal-properti.pintuweb.id', category: 'properti', image: '/images/galeri/properti.jpg' },
+  { path: 'aplikasi-to-do', origin: 'https://portal-todo.pintuweb.id', category: 'todo', image: '/images/galeri/todo.jpg' },
 ]
 
 export const portalOf = (c: DemoCategory) => PORTALS.find((p) => p.category === c)
