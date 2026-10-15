@@ -9,10 +9,8 @@ import { HlText } from './Bits'
 import PriceMap from './PriceMap'
 
 // Bagian harga di beranda: peta harga semua paket (komponen PriceMap, juga dipakai di halaman harga), lalu cara bayar
-// & masa setelah online, dan tautan ke rincian paket.
-// Ponsel (<640px): peta harga TIDAK ditampilkan di beranda. Harga mulai tiap jenis sudah ada di daftar jenis website
-// (hero) dan di "Untuk siapa" (kebutuhan → paket), jadi peta 14 baris di sini hanya mengulang dan menambah ±1.000px.
-// Peta lengkapnya tetap di halaman Harga, satu ketukan lewat tombol di bawah. Mulai 640px peta tampil seperti biasa.
+// & masa setelah online, dan tautan ke rincian paket. Peta tampil di semua ukuran layar, termasuk ponsel
+// (keputusan pemilik situs, 16 Okt 2026).
 export default function Pricing({ lang }: { lang: Lang }) {
   const t = getDict(lang).pricing
 
@@ -21,7 +19,7 @@ export default function Pricing({ lang }: { lang: Lang }) {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHead eyebrow={t.eyebrow} id="pricing-title" title={<HlText parts={t.title} />} lead={t.lead} />
 
-        <PriceMap lang={lang} base={`${path(lang, 'pricing')}#`} className="mt-12 hidden sm:block lg:mt-14" />
+        <PriceMap lang={lang} base={`${path(lang, 'pricing')}#`} className="mt-8 sm:mt-12 lg:mt-14" />
 
         <div className="mt-7 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-[1fr_1fr_auto] lg:items-center lg:gap-10">
           <p className="border-t border-[color:var(--border-light)] pt-4 leading-relaxed text-[color:var(--text-tertiary)] sm:border-0 sm:pt-0">
