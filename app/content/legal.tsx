@@ -4,17 +4,18 @@
 // yang ditaut dari beranda dan FAQ, jadi jangan diganti tanpa alasan. Tampilannya diatur components/LegalPage.tsx.
 import Link from 'next/link'
 import type { ReactNode } from 'react'
-import { EMAIL, GUARANTEE_DAYS, SITE, WA_DISPLAY } from '../lib/site'
+import { EMAIL, FACTS_UPDATED, GUARANTEE_DAYS, SITE, WA_DISPLAY, latest } from '../lib/site'
+import { PRICES_UPDATED } from '../lib/packages'
 import { facts, packagesFor } from '../i18n/facts'
 import { path } from '../i18n/routes'
 import type { BaseLang } from '../i18n/config'
 
-export const LEGAL_UPDATED: Record<BaseLang, string> = {
-  id: '28 September 2026',
-  en: '28 September 2026',
-  ms: '28 September 2026',
-}
-export const LEGAL_UPDATED_ISO = '2026-09-28'
+/** Tanggal kalimat dokumen terakhir diubah. */
+const LEGAL_TEXT_UPDATED = '2026-09-28'
+/** Tanggal berlaku: dokumen ikut berubah bila kontak (lib/site.ts) atau waktu pengerjaan paket berubah. */
+export const LEGAL_UPDATED_ISO = latest(LEGAL_TEXT_UPDATED, FACTS_UPDATED, PRICES_UPDATED)
+const fmt = (locale: string) => new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(LEGAL_UPDATED_ISO))
+export const LEGAL_UPDATED: Record<BaseLang, string> = { id: fmt('id-ID'), en: fmt('en-GB'), ms: fmt('ms-MY') }
 
 export type LegalSection = { id: string; title: string; body: ReactNode }
 export type LegalDoc = { intro: ReactNode; sections: LegalSection[] }

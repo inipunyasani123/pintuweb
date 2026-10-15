@@ -5,6 +5,7 @@ import { CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_N
 import { PACKAGES } from '../lib/packages'
 import { LANG_INFO, LANGS, plain, type Lang } from './config'
 import { alternatesOf, langsOf, urlOf, type DocRef } from './routes'
+import { queryOf } from './og'
 import { getDict } from './index'
 
 export const ORG_ID = `${SITE}/#organization`
@@ -28,11 +29,14 @@ type MetaInput = {
 }
 
 /** Naikkan bila desain gambar OG berubah, supaya perayap media sosial mengambil versi baru. */
-const OG_REV = 7
-/** Gambar OG bergaya situs dari judul halaman (semua bahasa). */
-export const ogImage = (lang: Lang, title: string) =>
+const OG_REV = 8
+/**
+ * Gambar OG bergaya situs berisi judul dokumen. URL-nya memuat kunci dokumen, bukan teks: /api/og membaca judulnya
+ * sendiri (i18n/og.ts), jadi tidak bisa dipakai membuat kartu berisi teks sembarang.
+ */
+export const ogImage = (lang: Lang, ref: DocRef) =>
   // aksara yang tidak ada di huruf OG (Mandarin, Hindi, Bengali, Arab): pakai kartu merek berbahasa Inggris
-  LANG_INFO[lang].ogText ? `${SITE}/api/og?l=${lang}&t=${encodeURIComponent(title)}&r=${OG_REV}` : ogHome(lang)
+  LANG_INFO[lang].ogText && ref.key !== 'home' ? `${SITE}/api/og?l=${lang}&${queryOf(ref)}&r=${OG_REV}` : ogHome(lang)
 /** Kartu merek beranda; angkanya dirender dari lib/site.ts sehingga tidak pernah usang. */
 export const ogHome = (lang: Lang) => `${SITE}/api/og?v=home&l=${LANG_INFO[lang].ogText ? lang : 'en'}&r=${OG_REV}`
 
@@ -44,7 +48,7 @@ export function pageMeta(m: MetaInput): Metadata {
   const description = plain(m.description)
   const ogTitle = plain(m.ogTitle ?? m.title)
   const ogDescription = plain(m.ogDescription ?? m.description)
-  const image = m.image ?? ogImage(m.lang, ogTitle)
+  const image = m.image ?? ogImage(m.lang, m.ref)
   return {
     title: m.absoluteTitle ? { absolute: title } : title,
     description,

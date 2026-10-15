@@ -75,7 +75,7 @@ export default async function ArticlePage({ params }: Params) {
     '@id': `${url}#article`,
     headline: a.title,
     description: a.description,
-    image: coverImg ? [ogImage(lang, a.title), `${SITE}${coverImg}`] : ogImage(lang, a.title),
+    image: coverImg ? [ogImage(lang, { key: 'articles', article: a.key }), `${SITE}${coverImg}`] : ogImage(lang, { key: 'articles', article: a.key }),
     datePublished: a.date,
     dateModified: a.updated,
     inLanguage: LANG_INFO[lang].htmlLang,

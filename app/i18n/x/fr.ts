@@ -57,7 +57,6 @@ const fr: Pack = {
     },
     'toko-online-simple': {
       title: 'Boutique en ligne simple',
-      badge: 'Premium',
       subtitle: 'Vendez en ligne sans complication',
       highlights: ['Catalogue de produits', 'Commandes via WhatsApp', 'Commerces de détail'],
       features: [
@@ -87,6 +86,7 @@ const fr: Pack = {
     },
     'toko-online-full': {
       title: 'Boutique en ligne complète',
+      badge: 'Premium',
       subtitle: 'Une boutique en ligne complète avec tableau de bord d’administration',
       highlights: ['E-commerce', 'Frais de livraison automatiques', 'Gestion des commandes'],
       features: [
@@ -96,7 +96,7 @@ const fr: Pack = {
         'Tableau de bord : gestion des produits et des commandes',
         'Conception mobile-first, chargement rapide et prête pour le SEO',
         '3 à 6 mois de maintenance et d’assistance',
-        'Domaine + hébergement + SSL premium',
+        'Domaine + hébergement + SSL',
       ],
     },
     portofolio: {
@@ -241,7 +241,7 @@ const fr: Pack = {
     linkinbio: 'Link in Bio',
     portfolio: 'Portfolio',
     reservasi: 'Réservation en ligne',
-    properti: 'Place de marché immobilière',
+    properti: 'Site immobilier',
     todo: 'Appli de productivité',
     kontes: 'Concours de design',
   },

@@ -91,7 +91,7 @@ export default async function DemoPage({ params }: Params) {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <DemoGallery demos={demos} cats={cats} t={t} contactHref={path(lang, 'contact')} pricingHref={path(lang, 'pricing')} />
+      <DemoGallery demos={demos.map((dm) => (dm.pkg ? { ...dm, from: pk.find((x) => x.slug === dm.pkg)!.priceFrom } : dm))} cats={cats} t={t} contactHref={path(lang, 'contact')} pricingHref={path(lang, 'pricing')} />
     </>
   )
 }

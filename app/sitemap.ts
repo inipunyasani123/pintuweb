@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
-import { SITE } from './lib/site'
+import { FACTS_UPDATED, SITE, latest } from './lib/site'
+import { PRICES_UPDATED } from './lib/packages'
 import { PORTALS } from './lib/portals'
 import { LANG_INFO } from './i18n/config'
 import { SEGMENTS, langsOf, urlOf, type DocRef, type PageKey } from './i18n/routes'
@@ -9,7 +10,7 @@ import { LEGAL_UPDATED_ISO } from './content/legal'
 
 // Setiap URL dicantumkan beserta semua versi bahasanya (hreflang + x-default),
 // dengan tanggal perubahan isi yang sebenarnya — bukan tanggal build.
-const CONTENT_UPDATED = '2026-10-13'
+const CONTENT_UPDATED = latest('2026-10-14', FACTS_UPDATED, PRICES_UPDATED)
 
 type Entry = { ref: DocRef; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency']; modified: string }
 

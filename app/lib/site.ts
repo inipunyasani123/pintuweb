@@ -2,7 +2,7 @@
 // Angka yang tampil di situs (tahun berdiri, jumlah proyek, jam kerja, respon, target performa)
 // wajib diambil dari sini supaya halaman tidak pernah saling bertentangan lagi.
 
-/** Domain utama. Di Vercel, www adalah domain utama; pintuweb.id (tanpa www) dan domain lama pintuweb.com di-redirect 308 ke sini. */
+/** Domain utama. Di Vercel, pintuweb.id (tanpa www) dan pintuweb-lac.vercel.app di-redirect 308 ke sini (setelan domain project). */
 export const SITE = 'https://www.pintuweb.id'
 
 export const FOUNDED_YEAR = 2018
@@ -12,7 +12,7 @@ export const LOCATION = 'Trenggalek, Jawa Timur'
 
 export const WA_NUMBER = '6285190931399'
 export const WA_DISPLAY = '+62 851 9093 1399'
-export const EMAIL = 'sanzystore@gmail.com'
+export const EMAIL = 'cs@pintuweb.id'
 /**
  * Profil GitHub pemilik tanpa https://, mis. 'github.com/namaakun'. Dipakai tombol di halaman Tentang, kartu founder,
  * dan sameAs di data terstruktur. Kosong = semua tautan GitHub disembunyikan (akun GitHub lama ditutup Okt 2026;
@@ -33,5 +33,14 @@ export const RESPONSE = 'Respon di hari kerja, maksimal 24 jam'
 export const PERF_TARGET = '90+'
 
 export const GUARANTEE_DAYS = 30
+
+/**
+ * Tanggal terakhir fakta di file ini (kontak, jam kerja, angka) berubah. NAIKKAN setiap kali mengubahnya:
+ * tanggal berlaku dokumen legal dan lastmod sitemap mengikuti tanggal ini.
+ */
+export const FACTS_UPDATED = '2026-10-15'
+
+/** Tanggal ISO (YYYY-MM-DD) yang paling baru. */
+export const latest = (...dates: string[]) => dates.reduce((a, b) => (b > a ? b : a))
 
 export const wa = (text: string) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`

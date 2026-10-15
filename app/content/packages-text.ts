@@ -38,7 +38,6 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
     },
     'toko-online-simple': {
       title: 'Simple Online Store',
-      badge: 'Premium',
       subtitle: 'Start selling online without the hassle',
       highlights: ['Product catalogue', 'Orders via WhatsApp', 'Retail shops'],
       features: [
@@ -68,6 +67,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
     },
     'toko-online-full': {
       title: 'Full Online Store',
+      badge: 'Premium',
       subtitle: 'A complete online store with an admin dashboard',
       highlights: ['E-commerce', 'Automatic shipping rates', 'Order management'],
       features: [
@@ -77,7 +77,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
         'Admin dashboard – manage products & orders',
         'Mobile-first design, fast loading & SEO-ready',
         '3–6 months of maintenance & support',
-        'Domain + hosting + premium SSL',
+        'Domain + hosting + SSL',
       ],
     },
     portofolio: {
@@ -234,7 +234,6 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
     },
     'toko-online-simple': {
       title: 'Kedai Online Ringkas',
-      badge: 'Premium',
       subtitle: 'Mula berniaga dalam talian tanpa kerumitan',
       highlights: ['Katalog produk', 'Pesanan melalui WhatsApp', 'Kedai runcit'],
       features: [
@@ -264,6 +263,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
     },
     'toko-online-full': {
       title: 'Kedai Online Penuh',
+      badge: 'Premium',
       subtitle: 'Kedai dalam talian lengkap dengan papan pemuka admin',
       highlights: ['E-dagang', 'Kos penghantaran automatik', 'Urus pesanan'],
       features: [
@@ -273,7 +273,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
         'Papan pemuka admin – urus produk & pesanan',
         'Reka bentuk mudah alih dahulu, pantas & sedia SEO',
         'Penyelenggaraan & sokongan 3–6 bulan',
-        'Domain + hosting + SSL premium',
+        'Domain + hosting + SSL',
       ],
     },
     portofolio: {

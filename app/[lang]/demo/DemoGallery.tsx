@@ -56,7 +56,7 @@ const vars = (c: DemoCategory) => ({ '--k': CATEGORY_COLOR[c].color, '--k2': CAT
 
 // Galeri semua demo: pencarian, saringan kategori berwarna, spanduk kategori (harga + galeri khususnya),
 // dan kisi kartu. Kategori tercermin di hash URL (/demo#undangan) supaya halaman lain bisa menautkannya.
-export default function DemoGallery({ demos, cats, t, contactHref, pricingHref }: { demos: Demo[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string }) {
+export default function DemoGallery({ demos, cats, t, contactHref, pricingHref }: { demos: (Demo & { from?: string })[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string }) {
   const catOf = useMemo(() => Object.fromEntries(cats.map((c) => [c.id, c])) as Record<DemoCategory, DemoCat>, [cats])
   const [filter, setFilterState] = useState<Filter>('semua')
   const [query, setQuery] = useState('')
@@ -265,7 +265,7 @@ export default function DemoGallery({ demos, cats, t, contactHref, pricingHref }
                     {sub && <span className={`mt-1 leading-snug text-[color:var(--text-tertiary)] ${shared ? 'block text-[0.8125rem] sm:text-[0.875rem]' : 'hidden text-[0.875rem] sm:line-clamp-2'}`}>{sub}</span>}
                     <span className="mt-auto flex items-center justify-between gap-2 pt-2 text-[0.75rem] text-[color:var(--text-tertiary)] sm:pt-3 sm:text-[0.8125rem]">
                       <span>
-                        {t.from} {catOf[d.category].from}
+                        {t.from} {d.from ?? catOf[d.category].from}
                       </span>
                       <ArrowUpRight size={15} className="arw-ne shrink-0 text-[color:var(--k)] transition-transform" aria-hidden="true" />
                     </span>

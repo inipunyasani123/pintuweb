@@ -10,7 +10,7 @@ export const DEMO_CATEGORIES: { id: DemoCategory; label: string }[] = [
   { id: 'linkinbio', label: 'Link in Bio' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'reservasi', label: 'Reservasi Online' },
-  { id: 'properti', label: 'Marketplace Properti' },
+  { id: 'properti', label: 'Website Properti' },
   { id: 'todo', label: 'Aplikasi Produktivitas' },
   { id: 'kontes', label: 'Kontes Desain' },
 ]
@@ -21,6 +21,8 @@ export type Demo = {
   tagline: string
   category: DemoCategory
   url: string
+  /** Paket harga bila berbeda dari paket kategorinya (PACKAGE_FOR_CATEGORY di lib/portals.ts). */
+  pkg?: string
 }
 
 export const DEMOS: Demo[] = [
@@ -41,7 +43,7 @@ export const DEMOS: Demo[] = [
   { slug: "tastycorner", name: "Tasty Corner", tagline: "Struk Mingguan untuk Usaha Makanan", category: 'landing', url: "https://landing-tastycorner.pintuweb.id" },
   { slug: "woodora", name: "Woodora", tagline: "Furnitur Kayu Solid Sesuai Ukuran", category: 'landing', url: "https://landing-woodora.pintuweb.id" },
   { slug: "zychrome", name: "Zychrome", tagline: "Webinar yang Bisa Membalas Anda", category: 'landing', url: "https://landing-zychrome.pintuweb.id" },
-  { slug: "corporate", name: "Situs Acara Korporat Digital", tagline: "Temu Rekayasa Nusa 2027", category: 'undangan', url: "https://undangan-corporate.pintuweb.id" },
+  { slug: "corporate", name: "Situs Acara Korporat Digital", tagline: "Temu Rekayasa Nusa 2027", category: 'undangan', url: "https://undangan-corporate.pintuweb.id", pkg: 'situs-acara' },
   { slug: "aqiqah", name: "Undangan Aqiqah Digital", tagline: "Aisyah Khairunnisa", category: 'undangan', url: "https://undangan-aqiqah.pintuweb.id" },
   { slug: "khitanan", name: "Undangan Khitanan Digital", tagline: "Kapten Fauzan", category: 'undangan', url: "https://undangan-khitanan.pintuweb.id" },
   { slug: "wedding", name: "Undangan Pernikahan Digital", tagline: "Raka & Sinta", category: 'undangan', url: "https://undangan-wedding.pintuweb.id" },

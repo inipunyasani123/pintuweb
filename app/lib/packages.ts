@@ -46,6 +46,12 @@ export type Paket = {
 
 export const PACKAGE_GROUPS: PaketGroup[] = ['bisnis', 'toko', 'personal', 'sistem', 'desain']
 
+/**
+ * Tanggal harga & waktu pengerjaan terakhir ditetapkan. NAIKKAN bila angka paket berubah: tampil sebagai
+ * "Harga berlaku per …" dan menjadi tanggal pembaruan artikel serta dokumen legal yang memuat angka paket.
+ */
+export const PRICES_UPDATED = '2026-10-13'
+
 const DATA: Omit<Paket, 'duration'>[] = [
   // ---- Website bisnis ----
   {
@@ -99,8 +105,6 @@ const DATA: Omit<Paket, 'duration'>[] = [
     title: 'Toko Online Simple',
     minPrice: 1250000,
     maxPrice: 1750000,
-    badge: 'Premium',
-    badgeColor: 'red',
     featured: true,
     subtitle: 'Mulai jualan online tanpa ribet',
     time: { min: 3, max: 5, unit: 'hari' },
@@ -121,6 +125,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     title: 'Toko Online Full',
     minPrice: 2500000,
     maxPrice: 4500000,
+    badge: 'Premium',
+    badgeColor: 'red',
     subtitle: 'Toko online lengkap dengan dashboard admin',
     time: { min: 5, max: 8, unit: 'hari' },
     highlights: ['E-commerce', 'Ongkir otomatis', 'Kelola pesanan'],
@@ -131,7 +137,7 @@ const DATA: Omit<Paket, 'duration'>[] = [
       'Dashboard admin – kelola produk & pesanan',
       'Desain mobile-first, loading cepat & SEO-ready',
       'Maintenance & support 3–6 bulan',
-      'Domain + hosting + SSL premium',
+      'Domain + hosting + SSL',
     ],
   },
   // ---- Personal & acara ----

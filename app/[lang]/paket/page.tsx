@@ -10,13 +10,10 @@ import { addonsFor, facts, groupText, minPrice, money } from '../../i18n/facts'
 import { LANG_INFO, getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
 import { ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
-import { PACKAGES, PACKAGE_GROUPS } from '../../lib/packages'
+import { PACKAGES, PACKAGE_GROUPS, PRICES_UPDATED } from '../../lib/packages'
 import { wa } from '../../lib/site'
 
 type Params = { params: Promise<{ lang: string }> }
-
-/** Tanggal harga terakhir ditinjau (tampil di halaman & dateModified). */
-const PRICES_REVIEWED = '2026-10-13'
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { lang } = await params
@@ -41,7 +38,7 @@ export default async function PaketPage({ params }: Params) {
     from: money(lang, Math.min(...PACKAGES.filter((x) => x.group === g).map((x) => x.minPrice))),
   })).filter((g) => g.cards.length)
   const addons = addonsFor(lang)
-  const reviewed = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : LANG_INFO[lang].intl, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(PRICES_REVIEWED))
+  const reviewed = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : LANG_INFO[lang].intl, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(PRICES_UPDATED))
 
   const info = [
     { title: p.payment, body: f.payment },
@@ -204,7 +201,7 @@ export default async function PaketPage({ params }: Params) {
             { name: d.common.home, url: urlOf(lang, { key: 'home' }) },
             { name: d.nav.pricing, url: urlOf(lang, { key: 'pricing' }) },
           ],
-          dates: { modified: PRICES_REVIEWED },
+          dates: { modified: PRICES_UPDATED },
           extra: [offers],
         })}
       />

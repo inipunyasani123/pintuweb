@@ -6,6 +6,8 @@ import { Marked, type Token, type Tokens } from 'marked'
 import { fillFacts } from '../i18n/facts'
 import { ARTICLE_LANGS, type Lang } from '../i18n/config'
 import { ARTICLE_SLUGS, type ArticleKey } from '../i18n/slugs'
+import { latest } from '../lib/site'
+import { PRICES_UPDATED } from '../lib/packages'
 
 export type Article = {
   key: ArticleKey
@@ -106,6 +108,8 @@ function render(lang: Lang, body: string) {
   return { html, toc, faq }
 }
 
+const PRICE_MARKER = /\{\{(from|price|max|duration|pricetable|renewal)\b/
+
 function load(lang: Lang, key: ArticleKey): Article {
   const slug = (ARTICLE_SLUGS[key] as Partial<Record<Lang, string>>)[lang]
   if (!slug) throw new Error(`Artikel ${key} tidak ada dalam ${lang}`)
@@ -123,7 +127,8 @@ function load(lang: Lang, key: ArticleKey): Article {
     title: fill(lang, String(data.title)),
     description: fill(lang, String(data.description)),
     date: String(data.date),
-    updated: String(data.updated ?? data.date),
+    // artikel yang memuat angka paket ({{from:…}} dst.) ikut berubah saat harga berubah
+    updated: PRICE_MARKER.test(raw) ? latest(String(data.updated ?? data.date), PRICES_UPDATED) : String(data.updated ?? data.date),
     tags: String(data.tags ?? '').split(',').map((s) => s.trim()).filter(Boolean),
     takeaways: list('takeaways'),
     sources: ((data.sources as string[] | undefined) ?? []).map((s) => {

@@ -1,5 +1,6 @@
 // Gambar Open Graph 1200×630 dengan gaya situs: putih lapang, logo PintuWeb, huruf Inter (padanan SF Pro yang boleh dibundel).
-//   /api/og?l=en&t=Judul      -> kartu judul halaman
+//   /api/og?l=en&p=pricing              -> kartu judul halaman (judulnya dibaca dari kamus lewat i18n/og.ts)
+//   /api/og?l=en&p=services&s=landing-page
 //   /api/og?v=home&l=id       -> kartu beranda (kalimat & angka dari kamus, lib/site.ts & lib/demos.ts)
 import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
@@ -7,6 +8,7 @@ import { join } from 'node:path'
 import { getDict } from '../../i18n'
 import { LANG_INFO, isLang, type Lang } from '../../i18n/config'
 import { DEMOS } from '../../lib/demos'
+import { ogTitleOf, refFromQuery } from '../../i18n/og'
 
 const C = { white: '#ffffff', ink: '#0f1b33', ink2: '#4d5b74', blue: '#26469c', line: '#dfe5ef', soft: '#f4f7fc' }
 
@@ -41,8 +43,11 @@ export async function GET(req: Request) {
   const lang: Lang = isLang(raw) ? (LANG_INFO[raw].ogText ? raw : 'en') : 'id'
   const d = getDict(lang)
   const home = q.get('v') === 'home'
-  const title = (q.get('t') ?? 'PintuWeb').slice(0, 120)
-  const size = title.length > 70 ? 56 : title.length > 40 ? 68 : 80
+  // kartu judul hanya untuk dokumen yang memang ada; teks bebas tidak diterima
+  const ref = home ? null : refFromQuery(q.get('p'), q.get('s'))
+  const title = ref ? ogTitleOf(lang, ref) : null
+  if (!home && !title) return new Response('Not found', { status: 404 })
+  const size = (title?.length ?? 0) > 70 ? 56 : (title?.length ?? 0) > 40 ? 68 : 80
   const [h0, h1, h2] = d.hero.title
   const logo = await logoSrc()
 

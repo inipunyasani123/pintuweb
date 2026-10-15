@@ -57,7 +57,6 @@ const zh: Pack = {
     },
     'toko-online-simple': {
       title: '简易网店',
-      badge: '高级',
       subtitle: '轻松开始线上销售',
       highlights: ['商品目录', 'WhatsApp 下单', '零售店铺'],
       features: [
@@ -87,6 +86,7 @@ const zh: Pack = {
     },
     'toko-online-full': {
       title: '完整网店',
+      badge: '高级',
       subtitle: '带管理后台的完整网店',
       highlights: ['电子商务', '自动计算运费', '订单管理'],
       features: [
@@ -96,7 +96,7 @@ const zh: Pack = {
         '管理后台：管理商品和订单',
         '移动优先、加载快速、SEO 就绪',
         '3–6 个月的维护和支持',
-        '域名 + 主机 + 高级 SSL',
+        '域名 + 主机 + SSL',
       ],
     },
     portofolio: {
@@ -241,7 +241,7 @@ const zh: Pack = {
     linkinbio: 'Link in Bio',
     portfolio: '作品集',
     reservasi: '在线预订',
-    properti: '房产交易平台',
+    properti: '房产网站',
     todo: '效率应用',
     kontes: '设计竞赛',
   },
