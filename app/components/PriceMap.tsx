@@ -52,8 +52,9 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
 
   return (
     <div className={`rounded-[1.75rem] p-2 pb-4 sm:p-4 sm:pb-5 lg:p-5 ${panel} ${className}`}>
-      {/* Sumbu: tetap terlihat selama daftar digulir */}
-      <div className={`sticky top-0 z-10 grid grid-cols-1 rounded-t-[1.25rem] px-3 pb-2 pt-3 text-[0.75rem] font-semibold text-[color:var(--text-tertiary)] md:px-4 md:text-[0.8125rem] ${bg} ${COLS}`} aria-hidden="true">
+      {/* Sumbu: tetap terlihat selama daftar digulir. Sudutnya sengaja siku: warnanya sama dengan panel, jadi saat diam
+          tidak terlihat bedanya, sedangkan sudut membulat membuat teks baris tembus di pojoknya saat sumbu menempel. */}
+      <div className={`sticky top-0 z-10 grid grid-cols-1 px-3 pb-2 pt-3 text-[0.75rem] font-semibold text-[color:var(--text-tertiary)] md:px-4 md:text-[0.8125rem] ${bg} ${COLS}`} aria-hidden="true">
         <span className="hidden md:block">{t.colPackage}</span>
         <span className="relative me-7 block h-5 md:me-0">
           <span className="absolute start-0">{currencyCode(lang)}</span>
