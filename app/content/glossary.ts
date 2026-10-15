@@ -202,7 +202,7 @@ export const TERMS: Term[] = [
     topic: 'bisnis',
     term: { id: 'Konversi', en: 'Conversion', ms: 'Penukaran (conversion)' },
     def: {
-      id: 'Konversi adalah saat pengunjung melakukan tindakan yang Anda harapkan — membeli, mendaftar, atau menghubungi. Tingkat konversi adalah persentase pengunjung yang melakukannya.',
+      id: 'Konversi adalah saat pengunjung melakukan tindakan yang kamu harapkan — membeli, mendaftar, atau menghubungi. Tingkat konversi adalah persentase pengunjung yang melakukannya.',
       en: 'A conversion is when a visitor takes the action you want — buying, signing up or getting in touch. The conversion rate is the percentage of visitors who do it.',
       ms: 'Penukaran ialah apabila pelawat melakukan tindakan yang anda harapkan — membeli, mendaftar atau menghubungi. Kadar penukaran ialah peratusan pelawat yang melakukannya.',
     },

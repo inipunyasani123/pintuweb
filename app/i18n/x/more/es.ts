@@ -6,7 +6,7 @@ const more: More = {
     'landing-page': {
       name: 'Landing Page',
       title: 'Diseño y desarrollo de landing pages',
-      description: 'Landing pages rápidas y centradas en la conversión para lanzamientos de producto, eventos, webinars y campañas publicitarias. Precios transparentes, entrega en pocos días laborables y 17 ejemplos en línea para probar.',
+      description: 'Landing pages rápidas y centradas en la conversión para lanzamientos, eventos y anuncios. Precios claros, entrega en pocos días y {{demos:landing}} ejemplos para probar.',
       h1: ['', 'Landing pages', ' que convierten visitantes en clientes.'],
       lead: 'Una landing page es una sola página web creada con un objetivo: que el visitante realice una acción concreta, como comprar, inscribirse en un webinar o escribirte por WhatsApp. Como es una sola página, se construye rápido y es ideal como destino de un anuncio.',
       intro: [
@@ -25,8 +25,8 @@ const more: More = {
     },
     'company-profile': {
       name: 'Sitio web de perfil de empresa',
-      title: 'Sitio web de perfil de empresa para pequeños negocios',
-      description: 'Sitios web de perfil de empresa para pequeños negocios y empresas de servicios: 3–5 páginas, dominio .com, hosting, SSL, Google Maps y SEO on-page. Precios transparentes con un anticipo del 50%.',
+      title: 'Sitio web de perfil de empresa para pymes',
+      description: 'Sitios web de perfil de empresa para pymes: 3–5 páginas, dominio .com, hosting, SSL, Google Maps y SEO on-page. Precios transparentes y anticipo del 50%.',
       h1: ['Un ', 'sitio web de perfil de empresa', ' que hace que confíen en tu negocio.'],
       lead: 'Un sitio web de perfil de empresa es un sitio de varias páginas que presenta tu negocio por completo: quién eres, qué vendes, dónde estás y cómo contactarte. Los clientes potenciales suelen revisar tu sitio web antes de decidir comprarte o trabajar contigo.',
       intro: [
@@ -46,7 +46,7 @@ const more: More = {
     'toko-online': {
       name: 'Tienda en línea',
       title: 'Desarrollo de tiendas en línea',
-      description: 'Tu propia tienda en línea: un catálogo de productos con pedidos por WhatsApp, o una tienda completa con carrito, pasarela de pago, tarifas de envío automáticas y panel de administración.',
+      description: 'Tu propia tienda en línea: catálogo con pedidos por WhatsApp o tienda completa con carrito, pasarela de pago, envío calculado y panel de administración.',
       h1: ['Una ', 'tienda en línea', ' propia, sin que una plataforma se lleve una parte de cada venta.'],
       lead: 'Una tienda en línea es un sitio web donde los clientes consultan tu catálogo de productos y te hacen el pedido directamente. Hay dos niveles: un catálogo con pedidos por WhatsApp para empezar rápido, y una tienda completa con carrito, pagos automáticos y tarifas de envío automáticas.',
       intro: [
@@ -66,31 +66,31 @@ const more: More = {
     portofolio: {
       name: 'Sitio web de portafolio',
       title: 'Sitios web de portafolio y marca personal',
-      description: 'Sitios web de portafolio para diseñadores, desarrolladores, fotógrafos y freelancers: páginas de trabajos, casos de estudio, blog y contacto, con SEO básico. Mira 7 ejemplos de portafolio en línea.',
+      description: 'Sitios web de portafolio para diseñadores, desarrolladores, fotógrafos y freelancers: trabajos, casos de estudio, blog y contacto. Mira {{demos:portfolio}} ejemplos.',
       h1: ['Un ', 'sitio web de portafolio', ' que hace que tu trabajo se note.'],
       lead: 'Un sitio web de portafolio es un escaparate personal de tu trabajo: donde clientes o reclutadores ven lo que has hecho, cómo trabajas y cómo contactarte. Frente a un PDF o las redes sociales, tiene su propia dirección y se puede encontrar en Google.',
       intro: [
         'El paquete Portafolio incluye las páginas Sobre mí, Trabajos, Blog y Contacto, con enlaces a WhatsApp, LinkedIn, Instagram u otros canales tuyos. Mantenemos ordenada la estructura de encabezados para que los buscadores lean con claridad tu nombre y tus habilidades.',
-        'Los siete estilos de portafolio de nuestra galería, del editorial minimalista al neobrutalista, se pueden probar ahora mismo, con casos de estudio y modo claro/oscuro.',
+        'Los {{demos:portfolio}} estilos de portafolio de nuestra galería, del editorial minimalista al neobrutalista, se pueden probar ahora mismo, con casos de estudio y modo claro/oscuro.',
       ],
       forWho: ['Diseñadores UI/UX y gráficos, ilustradores', 'Desarrolladores y tecnólogos creativos', 'Fotógrafos, videógrafos y escritores', 'Freelancers que buscan clientes directos', 'Profesionales que están buscando empleo'],
       short: 'Un escaparate de trabajos para freelancers, creadores y profesionales, con casos de estudio.',
       suits: 'Freelancers, creadores',
       faq: [
-        { q: '¿Puedo añadir trabajos nuevos yo mismo?', a: 'Durante el periodo de mantenimiento, envíanos los trabajos nuevos por WhatsApp y los añadimos. Si actualizas tu portafolio a menudo, se puede añadir un CMS para que lo gestiones tú mismo.' },
+        { q: '¿Puedo añadir trabajos nuevos yo mismo?', a: 'Envíanos los trabajos nuevos por WhatsApp y los añadimos; para actualizaciones regulares está disponible el servicio adicional de mantenimiento mensual. Si actualizas tu portafolio a menudo, se puede añadir un CMS para que lo gestiones tú mismo.' },
         { q: '¿Son reales las personas de los ejemplos de portafolio?', a: 'No. Los personajes de nuestros ejemplos de portafolio son ficticios; cuando haces el encargo, todo se sustituye por tus propios trabajos, fotos y datos de contacto.' },
         { q: '¿Necesito un dominio con mi propio nombre?', a: 'Te lo recomendamos mucho. El dominio, el hosting y el SSL del primer año están incluidos en el paquete Portafolio, y una dirección con tu nombre es más fácil de recordar para los clientes.' },
       ],
     },
     'website-custom': {
       name: 'Sitio web a medida y aplicación web',
-      title: 'Desarrollo de sitios web a medida y aplicaciones web',
-      description: 'Sitios web a medida y aplicaciones web: sistemas de reservas, catálogos de inmuebles, áreas de miembros, formularios complejos e integraciones con API, construidos con Next.js. Prueba nuestros ejemplos de reservas e inmuebles en línea.',
+      title: 'Desarrollo web a medida y aplicaciones web',
+      description: 'Sitios web y aplicaciones a medida con Next.js: sistemas de reservas, catálogos de inmuebles, áreas de miembros e integraciones API. Prueba las demos.',
       h1: ['Sitios web a medida para ', 'necesidades que no caben en una plantilla.'],
       lead: 'Un sitio web a medida es aquel cuyo diseño, flujo y funciones se construyen específicamente en torno a cómo funciona tu negocio; por ejemplo, un sistema de reservas, un catálogo de inmuebles con filtros, un área de miembros o una integración con un sistema que ya usas.',
       intro: [
         'Un proyecto a medida empieza por trazar el flujo: quiénes son los usuarios, qué datos entran y qué debe pasar después. A partir de ahí preparamos un presupuesto escrito con un alcance claro antes de escribir una sola línea de código.',
-        'Puedes probar ejemplos en nuestra galería: cinco sistemas de reservas (restaurante, hotel, clínica, pista de fútbol sala, cine), cuatro marketplaces inmobiliarios y tres aplicaciones de productividad.',
+        'Puedes probar ejemplos en nuestra galería: {{demos:reservasi}} sistemas de reservas (restaurante, hotel, clínica, pista de fútbol sala, cine), {{demos:properti}} marketplaces inmobiliarios y {{demos:todo}} aplicaciones de productividad.',
       ],
       forWho: ['Restaurantes, hoteles, clínicas y pistas que necesitan reservas en línea', 'Agentes y promotores inmobiliarios', 'Startups que construyen su primer producto web', 'Instituciones y escuelas con formularios o flujos de trabajo especiales', 'Negocios que conectan su sitio web con sistemas que ya tienen'],
       short: 'Sistemas de reservas, catálogos de inmuebles, aplicaciones web u otras funciones a medida para tu negocio.',
@@ -105,11 +105,11 @@ const more: More = {
     'undangan-digital': {
       name: 'Invitación digital',
       title: 'Invitaciones digitales en formato web',
-      description: 'Invitaciones digitales en formato web para bodas, pedidas de mano, celebraciones familiares, cumpleaños, graduaciones, reencuentros y eventos corporativos: RSVP, cuenta atrás, mapa, galería y música. Mira 8 temas en línea.',
+      description: 'Invitaciones digitales en formato web para bodas, cumpleaños, graduaciones y eventos: RSVP, cuenta atrás, mapa, galería y música. Mira {{demos:undangan}} temas en línea.',
       h1: ['', 'Invitaciones digitales', ' que los invitados abren, leen y responden.'],
       lead: 'Una invitación digital es una invitación a un evento en forma de página web que compartes como enlace, normalmente por WhatsApp. Desde un solo enlace, los invitados pueden ver la hora y el lugar, abrir el mapa, confirmar su asistencia (RSVP) y guardar la fecha.',
       intro: [
-        'Cada uno de los ocho temas de nuestra galería tiene un carácter propio, en lugar de ser un mismo diseño con otros colores: una boda, una pedida de mano, dos celebraciones familiares indonesias (khitanan y aqiqah), un cumpleaños, una graduación, un reencuentro y un sitio para un evento corporativo con agenda e inscripción de asistentes.',
+        'Cada uno de los {{demos:undangan}} temas de nuestra galería tiene un carácter propio, en lugar de ser un mismo diseño con otros colores: una boda, una pedida de mano, dos celebraciones familiares indonesias (khitanan y aqiqah), un cumpleaños, una graduación, un reencuentro y un sitio para un evento corporativo con agenda e inscripción de asistentes.',
         'Las funciones opcionales incluyen un sobre de apertura, cuenta atrás, mapa del lugar, galería de fotos, música de fondo y un formulario de RSVP. Una invitación de nuestra galería de temas empieza en {{from:undangan-digital}}; para eventos corporativos o un diseño a medida, el paquete Sitio de evento empieza en {{from:situs-acara}}.',
       ],
       forWho: ['Parejas que preparan su boda o pedida de mano', 'Familias que organizan una celebración', 'Organizadores de reencuentros, graduaciones y cumpleaños', 'Empresas que celebran conferencias, lanzamientos o encuentros', 'Cualquiera que quiera una invitación fácil de compartir por WhatsApp'],
@@ -126,11 +126,11 @@ const more: More = {
     'link-in-bio': {
       name: 'Link in Bio',
       title: 'Páginas link in bio a medida',
-      description: 'Páginas link in bio con tu propio dominio y diseño para creadores, pequeños negocios, músicos y cafeterías: menús, pedidos anticipados, agendas, tiendas y un botón de WhatsApp tras un solo enlace. Mira 12 ejemplos en línea.',
+      description: 'Páginas link in bio con tu dominio y diseño para creadores, negocios y cafeterías: menús, pedidos anticipados, tiendas y WhatsApp. Mira {{demos:linkinbio}} ejemplos.',
       h1: ['Una ', 'página link in bio', ' propia, no solo una lista de botones.'],
       lead: 'Una página link in bio es una sola página web enlazada desde la biografía de tu Instagram o TikTok que reúne todos los destinos importantes: WhatsApp, tu tienda, tu agenda, tus trabajos o un formulario de pedido. Una versión a medida puede usar tu propio dominio y el diseño de tu marca, con funciones que los servicios genéricos de link in bio no ofrecen.',
       intro: [
-        'Los doce ejemplos de nuestra galería muestran hasta dónde puede llegar una página así: el tablero de menú de un puesto de comida que indica si está abierto según la hora de Indonesia, pedidos anticipados para una cafetería, la agenda de gira de una banda con selector de entradas, una tienda de pegatinas y una página de encargos de una ilustradora.',
+        'Los {{demos:linkinbio}} ejemplos de nuestra galería muestran hasta dónde puede llegar una página así: el tablero de menú de un puesto de comida que indica si está abierto según la hora de Indonesia, pedidos anticipados para una cafetería, la agenda de gira de una banda con selector de entradas, una tienda de pegatinas y una página de encargos de una ilustradora.',
         'El paquete Link in Bio empieza en {{from:link-in-bio}} y está listo en {{duration:link-in-bio}}; las páginas o funciones adicionales se presupuestan por escrito.',
       ],
       forWho: ['Creadores de contenido e influencers', 'Cafeterías, puestos de comida y negocios de comida que aceptan pedidos anticipados', 'Músicos, bandas y organizadores de eventos', 'Ilustradores, escritores y profesionales creativos', 'Pequeños negocios que venden activamente en Instagram o TikTok'],

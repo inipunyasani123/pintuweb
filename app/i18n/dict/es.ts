@@ -5,9 +5,9 @@ import type { Dict, Hl } from './id'
 
 const es: Dict = {
   meta: {
-    homeTitle: 'PintuWeb — Diseño y desarrollo de sitios web profesionales y rápidos desde Indonesia',
+    homeTitle: 'PintuWeb — Diseño y desarrollo web desde Indonesia',
     homeDescription: (n: number) =>
-      `Sitios web profesionales, rápidos y optimizados para SEO para pequeñas empresas, startups y marcas personales, creados en Indonesia desde ${FOUNDED_YEAR}. Precios transparentes y ${n} demos en línea que puedes abrir ahora mismo.`,
+      `Sitios web profesionales, rápidos y listos para SEO, para pequeñas empresas, startups y marcas personales, desde Indonesia. Precios claros y ${n} demos.`,
     ogHomeDescription: (n: number) =>
       `Un estudio web en Trenggalek, Indonesia, desde ${FOUNDED_YEAR}. Sitios rápidos y listos para SEO para pequeñas empresas, tiendas y marcas personales. Mira ${n} demos en línea.`,
     ogAlt: 'PintuWeb — Diseño y desarrollo de sitios web profesionales',
@@ -98,6 +98,7 @@ const es: Dict = {
     title: ['Todo negocio merece una buena ', 'puerta de entrada', '.'] as Hl,
     lead: (n: number) =>
       `Diseñamos y construimos sitios web para pequeñas empresas, tiendas y marcas personales: rápidos de abrir en el móvil, listos para aparecer en Google y totalmente tuyos. ${CLIENT_PROJECTS} proyectos de clientes entregados y ${n} ejemplos de nuestro trabajo que puedes abrir hoy.`,
+    offer: (price: string, duration: string) => `Landing pages desde ${price}, listas en ${duration}. Pagas el 50% al empezar y el resto al terminar.`,
     ctaConsult: 'Consulta gratuita',
     ctaDemos: (n: number) => `Ver ${n} ejemplos`,
     facade: 'Ocho tipos de sitio web que construimos',
@@ -181,7 +182,7 @@ const es: Dict = {
     promises: [
       { fig: `${PACKAGES.length}`, unit: 'paquetes', proof: 'Escrito en la página de precios', title: 'Precios indicados de antemano', body: 'El rango de precios de cada paquete está en este sitio. La cifra exacta figura en un presupuesto escrito antes de empezar.' },
       { fig: '50%', unit: 'anticipo', proof: 'Escrito en las preguntas frecuentes', title: 'Paga la mitad primero', body: 'Un anticipo del 50% para empezar. El resto se paga cuando el sitio está terminado y lo has aprobado.' },
-      { fig: '100%', unit: 'tuyo', proof: 'Escrito en los términos', title: 'Totalmente tuyo', body: 'Una vez pagado por completo, se te entregan el código fuente, el dominio, el hosting y el acceso de administrador.' },
+      { fig: '100%', unit: 'tuyo', proof: 'Escrito en los términos', title: 'Totalmente tuyo', body: 'En los paquetes de sitio web: una vez pagado por completo, se te entregan el código fuente, el dominio, el hosting y el acceso de administrador.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Escrito en las preguntas frecuentes', title: 'Rápido en móviles', body: `Optimizamos cada sitio con el objetivo de una puntuación PageSpeed de ${PERF_TARGET}. Es una meta de trabajo, no una media declarada.` },
       { fig: `${GUARANTEE_DAYS}`, unit: 'días', proof: 'Escrito en los términos', title: `Garantía de ${GUARANTEE_DAYS} días`, body: `Los errores se corrigen gratis durante ${GUARANTEE_DAYS} días tras el lanzamiento, además del mantenimiento de tu paquete.` },
       { fig: '24', unit: 'horas', proof: 'Escrito en las preguntas frecuentes', title: 'Respuesta en días laborables', body: `Respondemos en un máximo de 24 horas en días laborables, de lunes a sábado, de ${OPENS} a ${CLOSES} WIB.` },
@@ -190,7 +191,7 @@ const es: Dict = {
   pricing: {
     eyebrow: 'Precios',
     title: ['Los precios se indican de antemano, ', 'no después de preguntar', '.'] as Hl,
-    lead: 'Todos los paquetes incluyen diseño y desarrollo; los paquetes de sitio web incluyen además SEO básico. El único coste recurrente es la renovación del dominio y el hosting a partir del segundo año.',
+    lead: 'Todos los paquetes incluyen diseño y desarrollo; los paquetes de sitio web incluyen además SEO básico. El único coste recurrente de nuestra parte es la renovación del dominio y el hosting a partir del segundo año.',
     colPrice: 'Rango de precios',
     colPackage: 'Paquete',
     openNote: 'Una cola punteada significa que el precio puede ser mayor, según las funciones.',
@@ -198,7 +199,7 @@ const es: Dict = {
     depositTitle: 'Pago',
     depositBody: 'Un anticipo del 50% para empezar; el resto cuando el sitio esté terminado y lo apruebes.',
     maintTitle: 'Tras el lanzamiento',
-    maintBody: `De 1 a 6 meses de mantenimiento según el paquete, más una garantía de corrección de errores de ${GUARANTEE_DAYS} días.`,
+    maintBody: `Mantenimiento según lo que incluya tu paquete, más una garantía de corrección de errores de ${GUARANTEE_DAYS} días.`,
   },
   pkg: {
     from: 'desde',

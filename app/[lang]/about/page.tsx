@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, CalendarClock, Check, Clock, Gauge, Github, LifeBuoy, MapPin, MessageCircle, ReceiptText, type LucideIcon } from 'lucide-react'
+import { ArrowRight, CalendarClock, Check, Gauge, Github, LifeBuoy, ReceiptText, type LucideIcon } from 'lucide-react'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { DEMOS } from '../../lib/demos'
-import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GITHUB, wa } from '../../lib/site'
+import { FOUNDED_YEAR, GITHUB } from '../../lib/site'
 import { facts, packagesFor } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
@@ -50,25 +50,16 @@ export default async function AboutPage({ params }: Params) {
   // "Tertulis di FAQ": teks yang sama dengan kupon janji di beranda
   const inFaq = d.why.promises[1].proof
 
-  const stats = [
-    { v: CLIENT_PROJECTS, l: p.stats.projects },
-    { v: `${n}`, l: p.stats.demos },
-    { v: `${FOUNDED_YEAR}`, l: p.stats.since },
-    { v: `${CATEGORY_COUNT}`, l: p.stats.categories },
-  ]
+  // Angka-angka (proyek klien, jumlah demo, tahun berdiri, jumlah kategori) cukup di judul, cerita, dan linimasa;
+  // deretan kartu angka di bawah pembuka sudah dihapus karena hanya mengulangnya.
   const timeline = p.timeline(n)
   const [vision, ...beliefs] = p.beliefs
-  const reach = [
-    { icon: MapPin, label: d.footer.location, lines: [f.location, f.serves] },
-    { icon: Clock, label: d.footer.hours, lines: [f.hoursDays, f.hoursTime] },
-    { icon: MessageCircle, label: d.footer.phone, lines: [f.response] },
-  ]
 
   return (
     <main id="main-content">
       <Breadcrumbs label={d.common.breadcrumb} items={[{ name: d.common.home, href: path(lang, 'home') }, { name: p.eyebrow }]} />
 
-      {/* Pembuka: perkenalan + tembok karya + empat angka */}
+      {/* Pembuka: perkenalan + tembok karya */}
       <section className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 sm:pt-10">
         <div className="grid grid-cols-1 items-center gap-x-10 gap-y-9 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -103,15 +94,6 @@ export default async function AboutPage({ params }: Params) {
             ))}
           </div>
         </div>
-
-        <dl className="mt-10 grid grid-cols-2 gap-2.5 sm:gap-3 lg:mt-12 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.l} className="flex flex-col-reverse justify-end rounded-[1.25rem] bg-[color:var(--surface-soft)] p-4 sm:p-5">
-              <dt className="mt-1.5 text-[0.875rem] leading-snug text-[color:var(--text-tertiary)] sm:text-[0.9375rem]">{s.l}</dt>
-              <dd className="display text-[2rem] font-semibold leading-none tracking-tight text-[color:var(--primary-700)] sm:text-[2.5rem]"><bdi>{s.v}</bdi></dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
       {/* Cerita + linimasa */}
@@ -231,7 +213,7 @@ export default async function AboutPage({ params }: Params) {
         </div>
       </section>
 
-      {/* Mengapa + ajakan */}
+      {/* Mengapa */}
       <section aria-labelledby="why-title" className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 id="why-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
@@ -241,11 +223,9 @@ export default async function AboutPage({ params }: Params) {
             {p.why(landing, business, f.response).map((w, i) => {
               const Icon = WHY[i].icon
               return (
-                // ponsel: ikon di samping teks (lebih ringkas); mulai 640px ikon di atas
-                <li key={w.title} className="flex gap-4 rounded-[1.25rem] bg-[color:var(--surface-soft)] p-5 sm:flex-col sm:p-6">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-[color:var(--primary-700)] ring-1 ring-[color:var(--border-light)]" aria-hidden="true">
-                    <Icon size={21} strokeWidth={1.75} />
-                  </span>
+                // ponsel: ikon di samping teks (lebih ringkas); mulai 640px ikon di atas. Ikon polos, tanpa ubin.
+                <li key={w.title} className="flex gap-3.5 rounded-[1.25rem] bg-[color:var(--surface-soft)] p-5 sm:flex-col sm:gap-3 sm:p-6">
+                  <Icon size={22} strokeWidth={1.75} className="mt-0.5 shrink-0 text-[color:var(--primary-700)] sm:mt-0" aria-hidden="true" />
                   <div className="flex min-w-0 flex-1 flex-col">
                     <h3 className="text-[1.1875rem] leading-snug text-[color:var(--text-primary)]">{w.title}</h3>
                     <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{w.body}</p>
@@ -258,39 +238,8 @@ export default async function AboutPage({ params }: Params) {
               )
             })}
           </ul>
-
-          <div className="mt-10 grid grid-cols-1 items-center gap-x-12 gap-y-8 rounded-[2rem] p-7 ring-1 ring-[color:var(--border-light)] sm:mt-12 sm:p-10 lg:grid-cols-12 lg:p-12">
-            <div className="lg:col-span-7">
-              <h2 className="text-[1.75rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.25rem]">{p.ctaTitle}</h2>
-              <p className="mt-3 max-w-xl leading-relaxed text-[color:var(--text-tertiary)]">{p.ctaLead}</p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a href={wa(p.ctaWa)} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
-                  {d.common.consultFree} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
-                  <span className="sr-only">{d.common.newTabShort}</span>
-                </a>
-                <Link href={path(lang, 'contact')} className="btn btn-line">
-                  {d.links.contact} <ArrowRight size={17} className="arw" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-            <ul className="space-y-4 lg:col-span-5">
-              {reach.map((r) => (
-                <li key={r.label} className="flex gap-4">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color:var(--primary-50)] text-[color:var(--primary-700)]" aria-hidden="true">
-                    <r.icon size={18} strokeWidth={1.75} />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[0.8125rem] text-[color:var(--text-tertiary)]">{r.label}</p>
-                    {r.lines.map((line, k) => (
-                      <p key={line} className={k === 0 ? 'font-semibold leading-snug text-[color:var(--text-primary)]' : 'text-[0.9375rem] leading-snug text-[color:var(--text-secondary)]'}>
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Ajakan penutup halaman ini sudah dihapus: isinya (obrolan WhatsApp gratis, lokasi, jam kerja, waktu balas)
+              sama persis dengan ajakan & kontak di footer yang langsung menyusul. */}
         </div>
       </section>
 

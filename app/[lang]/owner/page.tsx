@@ -6,7 +6,7 @@ import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { Logo } from '../../components/Logo'
 import { articlesIn } from '../../content/articles'
 import { DEMOS } from '../../lib/demos'
-import { CLIENT_PROJECTS, EMAIL, FOUNDED_YEAR, GITHUB, WA_DISPLAY, wa } from '../../lib/site'
+import { EMAIL, FOUNDED_YEAR, GITHUB, WA_DISPLAY, wa } from '../../lib/site'
 import { facts } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
@@ -41,11 +41,8 @@ export default async function OwnerPage({ params }: Params) {
   const writing = articlesIn(lang)
   const timeline = p.timeline(n)
 
-  const stats = [
-    { v: `${FOUNDED_YEAR}`, l: pages.about.stats.since },
-    { v: CLIENT_PROJECTS, l: pages.about.stats.projects },
-    { v: `${n}`, l: pages.about.stats.demos },
-  ]
+  // Tahun berdiri ada di lencana kartu nama; jumlah proyek & demo di linimasa dan tombol demo. Deretan angka di
+  // bawah pembuka sudah dihapus karena hanya mengulangnya.
   // Baris kartu nama: kontak dari lib/site.ts
   const card: { icon: LucideIcon; text: string; href?: string; rel?: string }[] = [
     { icon: MapPin, text: f.location },
@@ -77,14 +74,6 @@ export default async function OwnerPage({ params }: Params) {
                 {p.ctaDemos(n)} <ArrowRight size={17} className="arw" aria-hidden="true" />
               </Link>
             </div>
-            <dl className="mt-9 flex flex-wrap gap-x-10 gap-y-5">
-              {stats.map((s) => (
-                <div key={s.l} className="flex flex-col-reverse">
-                  <dt className="mt-1 text-[0.875rem] text-[color:var(--text-tertiary)]">{s.l}</dt>
-                  <dd className="display text-[1.75rem] font-semibold leading-none tracking-tight text-[color:var(--primary-700)] sm:text-[2rem]"><bdi>{s.v}</bdi></dd>
-                </div>
-              ))}
-            </dl>
           </div>
 
           {/* Kartu nama */}
@@ -150,7 +139,8 @@ export default async function OwnerPage({ params }: Params) {
           <h2 id="journey-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
             {p.journeyTitle}
           </h2>
-          <ol className="mt-10 grid grid-cols-1 gap-y-9 md:grid-cols-3 md:gap-x-8">
+          {/* satu kolom per tahap mulai 768px (kini dua tahap); rel mendatar tiap tahap menjangkau celah gap-x-8 sampai titik berikutnya */}
+          <ol className={`mt-10 grid grid-cols-1 gap-y-9 md:gap-x-8 ${timeline.length <= 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
             {timeline.map((t, i) => (
               <li key={t.year} className="relative ps-8 md:ps-0 md:pt-9">
                 <span className="absolute start-0 top-[0.3125rem] h-3 w-3 rounded-full bg-[color:var(--primary-700)] ring-4 ring-[color:var(--primary-100)] md:top-0" aria-hidden="true" />
@@ -178,10 +168,9 @@ export default async function OwnerPage({ params }: Params) {
             </h2>
             <ul className="mt-8 space-y-3">
               {SKILL_GROUPS.map((g, i) => (
-                <li key={p.skillGroups[i]} className="flex gap-4 rounded-[1.25rem] bg-[color:var(--surface-soft)] p-5 sm:p-6">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-[color:var(--primary-700)] ring-1 ring-[color:var(--border-light)]" aria-hidden="true">
-                    <g.icon size={21} strokeWidth={1.75} />
-                  </span>
+                <li key={p.skillGroups[i]} className="flex gap-3.5 rounded-[1.25rem] bg-[color:var(--surface-soft)] p-5 sm:p-6">
+                  {/* ikon polos (tanpa ubin), sejajar baris judul kelompok */}
+                  <g.icon size={21} strokeWidth={1.75} className="mt-px shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
                   <div className="min-w-0 flex-1">
                     <h3 className="text-[1.0625rem] font-semibold leading-snug text-[color:var(--text-primary)]">{p.skillGroups[i]}</h3>
                     <ul className="mt-2.5 flex flex-wrap gap-2">

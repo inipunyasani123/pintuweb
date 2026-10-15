@@ -1,7 +1,8 @@
 ---
 key: undangan
 title: Panduan Undangan Digital: Fitur Penting, Privasi, dan Tips Menyebarkannya
-description: Panduan memilih undangan digital berbentuk website untuk pernikahan, khitanan, aqiqah, wisuda, reuni, hingga acara kantor — fitur yang wajib ada, cara menjaga privasi, dan tips membagikannya lewat WhatsApp.
+seoTitle: Panduan Undangan Digital: Fitur, Privasi & Tips
+description: Cara memilih undangan digital berbentuk website untuk pernikahan, khitanan, wisuda, dan acara kantor: fitur wajib, privasi, dan tips berbagi via WhatsApp.
 date: 2026-10-03
 updated: 2026-10-03
 tags: undangan digital, undangan pernikahan, acara

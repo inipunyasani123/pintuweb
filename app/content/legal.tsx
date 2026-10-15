@@ -11,7 +11,7 @@ import { path } from '../i18n/routes'
 import type { BaseLang } from '../i18n/config'
 
 /** Tanggal kalimat dokumen terakhir diubah. */
-const LEGAL_TEXT_UPDATED = '2026-09-28'
+const LEGAL_TEXT_UPDATED = '2026-10-15'
 /** Tanggal berlaku: dokumen ikut berubah bila kontak (lib/site.ts) atau waktu pengerjaan paket berubah. */
 export const LEGAL_UPDATED_ISO = latest(LEGAL_TEXT_UPDATED, FACTS_UPDATED, PRICES_UPDATED)
 const fmt = (locale: string) => new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(LEGAL_UPDATED_ISO))
@@ -244,9 +244,9 @@ export function termsDoc(lang: BaseLang): LegalDoc {
           timeIntro: 'Estimated time per package:',
           timeAfter: 'The clock starts when the deposit is received and the materials (text, logo, photos) are complete. Late materials from the client shift the schedule.',
           rev: 'The number of revisions follows your package. Small changes such as text, photos or contact details are free during the maintenance period. Major changes beyond the original agreement are discussed and priced first.',
-          guar: `Bugs and technical issues are fixed free of charge for ${GUARANTEE_DAYS} days after launch. After that, maintenance applies according to your package (1–6 months) and can be extended. The guarantee does not cover damage caused by code changes made by others or requests for new features.`,
+          guar: `Bugs and technical issues are fixed free of charge for ${GUARANTEE_DAYS} days after launch. After that, maintenance applies as included in your package and can be extended. The guarantee does not cover damage caused by code changes made by others or requests for new features.`,
           dom: 'If renewal is not made, the domain and hosting may expire under the provider’s terms.',
-          own: 'Once paid in full, the website with its source code, admin access, hosting access and domain becomes entirely yours. PintuWeb only shows your project as an example of our work if you allow it.',
+          own: 'Once paid in full, the website with its source code, admin access, hosting access and domain becomes entirely yours. Exception: invitation themes from our gallery stay active for 12 months on a personal link, and the Website Design Concepts package grants the right to use the design, not the code. PintuWeb only shows your project as an example of our work if you allow it.',
           mat: 'You are responsible for making sure the materials you provide (logos, photos, text) may be used and do not infringe anyone else’s rights.',
           cancel: 'Cancellation and refund terms for each project are set out in the written quote before work starts.',
           contact1: 'Questions about these terms can be sent to ',
@@ -263,9 +263,9 @@ export function termsDoc(lang: BaseLang): LegalDoc {
           timeIntro: 'Anggaran masa setiap pakej:',
           timeAfter: 'Masa dikira sejak deposit diterima dan bahan (teks, logo, foto) lengkap. Kelewatan bahan daripada pelanggan akan menganjakkan jadual.',
           rev: 'Bilangan semakan mengikut pakej. Perubahan kecil seperti teks, foto atau maklumat hubungan dibantu tanpa caj sepanjang tempoh penyelenggaraan. Perubahan besar di luar persetujuan awal dibincangkan dan dipersetujui kosnya terlebih dahulu.',
-          guar: `Pepijat dan masalah teknikal dibaiki secara percuma selama ${GUARANTEE_DAYS} hari selepas laman web dilancarkan. Selepas itu, penyelenggaraan terpakai mengikut pakej (1–6 bulan) dan boleh dilanjutkan. Jaminan tidak meliputi kerosakan akibat perubahan kod oleh pihak lain atau permintaan ciri baharu.`,
+          guar: `Pepijat dan masalah teknikal dibaiki secara percuma selama ${GUARANTEE_DAYS} hari selepas laman web dilancarkan. Selepas itu, penyelenggaraan terpakai mengikut isi pakej dan boleh dilanjutkan. Jaminan tidak meliputi kerosakan akibat perubahan kod oleh pihak lain atau permintaan ciri baharu.`,
           dom: 'Jika pembaharuan tidak dibuat, domain dan hosting boleh tamat mengikut terma penyedianya.',
-          own: 'Selepas bayaran penuh, laman web beserta kod sumber, akses admin, akses hosting dan domain menjadi milik anda sepenuhnya. PintuWeb hanya memaparkan projek anda sebagai contoh karya jika anda membenarkannya.',
+          own: 'Selepas bayaran penuh, laman web beserta kod sumber, akses admin, akses hosting dan domain menjadi milik anda sepenuhnya. Pengecualian: tema jemputan daripada galeri kami aktif 12 bulan pada pautan peribadi, dan pakej Konsep Reka Bentuk Laman Web memberikan hak menggunakan reka bentuk, bukan kod. PintuWeb hanya memaparkan projek anda sebagai contoh karya jika anda membenarkannya.',
           mat: 'Anda bertanggungjawab memastikan bahan yang anda berikan (logo, foto, teks) boleh digunakan dan tidak melanggar hak pihak lain.',
           cancel: 'Terma pembatalan dan pemulangan wang bagi setiap projek dinyatakan dalam sebut harga bertulis sebelum kerja bermula.',
           contact1: 'Soalan tentang terma ini boleh dihantar ke ',
@@ -333,8 +333,8 @@ export function termsDoc(lang: BaseLang): LegalDoc {
         'Garansi & maintenance',
         <p>
           Bug dan masalah teknis diperbaiki gratis selama {GUARANTEE_DAYS} hari setelah website online. Setelah itu,
-          maintenance berlaku sesuai paket (1–6 bulan) dan bisa diperpanjang. Garansi tidak mencakup kerusakan akibat
-          perubahan kode oleh pihak lain atau permintaan fitur baru.
+          maintenance berlaku sesuai isi paket dan bisa diperpanjang. Garansi tidak mencakup kerusakan akibat perubahan
+          kode oleh pihak lain atau permintaan fitur baru.
         </p>,
       ),
       sec(
@@ -350,7 +350,9 @@ export function termsDoc(lang: BaseLang): LegalDoc {
         'Kepemilikan',
         <p>
           Setelah pelunasan, website beserta source code, akses admin, akses hosting, dan domain sepenuhnya menjadi milik
-          Anda. PintuWeb hanya menampilkan proyek Anda sebagai contoh karya bila Anda mengizinkannya.
+          Anda. Pengecualian: tema undangan dari galeri kami aktif 12 bulan di tautan pribadi, dan paket Konsep Desain
+          memberi hak pakai desain, bukan kode. PintuWeb hanya menampilkan proyek Anda sebagai contoh karya bila Anda
+          mengizinkannya.
         </p>,
       ),
       sec(

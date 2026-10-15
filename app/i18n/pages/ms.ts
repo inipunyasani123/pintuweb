@@ -8,7 +8,7 @@ const LOC = 'Trenggalek, Jawa Timur'
 const pages: Pages = {
   services: {
     title: 'Perkhidmatan Membina Laman Web',
-    description: 'Landing page, laman web syarikat, kedai dalam talian, portfolio, kad jemputan digital, link in bio dan laman web tersuai daripada PintuWeb, lengkap dengan harga permulaan, anggaran masa dan demo.',
+    description: 'Landing page, laman web syarikat, kedai dalam talian, portfolio, kad jemputan digital, link in bio dan laman web tersuai, lengkap dengan harga dan demo.',
     ogTitle: 'Perkhidmatan — PintuWeb',
     ogDescription: 'Dari landing page hingga kedai dalam talian dan laman web tersuai, lengkap dengan harga permulaan dan demo yang boleh dicuba.',
     eyebrow: 'Perkhidmatan',
@@ -22,7 +22,7 @@ const pages: Pages = {
     includedTitle: 'Sentiasa termasuk',
     included: [
       { title: 'SEO sejak awal', body: `Tag meta, peta laman, data berstruktur dan sasaran skor PageSpeed ${PERF_TARGET} sudah termasuk dalam setiap pakej laman web.` },
-      { title: 'Jaminan & penyelenggaraan', body: `Pembaikan pepijat percuma ${GUARANTEE_DAYS} hari selepas dilancarkan, kemudian penyelenggaraan 1–6 bulan mengikut pakej.` },
+      { title: 'Jaminan & penyelenggaraan', body: `Pembaikan pepijat percuma ${GUARANTEE_DAYS} hari selepas dilancarkan, kemudian penyelenggaraan mengikut isi pakej.` },
     ],
     compareTitle: ['Bandingkan ', 'semua perkhidmatan'] as Hl,
     compareCaption: 'Perbandingan perkhidmatan PintuWeb: sesuai untuk, harga permulaan dan tempoh siap',
@@ -36,7 +36,7 @@ const pages: Pages = {
   },
   pricing: {
     title: 'Pakej & Harga Membina Laman Web',
-    description: (min: string, n: number) => `${n} pakej PintuWeb dari ${min}: kad jemputan digital, link in bio, landing page, laman web PKS, kedai dalam talian, sistem tempahan, laman web hartanah, aplikasi web hingga laman web tersuai. Deposit 50%, jaminan ${GUARANTEE_DAYS} hari.`,
+    description: (min: string, n: number) => `${n} pakej laman web dari ${min}: kad jemputan, landing page, laman web PKS, kedai dalam talian dan laman web tersuai. Deposit 50%, jaminan ${GUARANTEE_DAYS} hari.`,
     ogTitle: 'Pakej & Harga — PintuWeb',
     ogDescription: (min: string) => `Pakej laman web dari ${min}. Harga telus, deposit 50%, baki dibayar selepas anda luluskan laman web.`,
     eyebrow: 'Harga telus',
@@ -65,12 +65,12 @@ const pages: Pages = {
     updated: 'Harga sah setakat',
   },
   demo: {
-    title: (n: number) => `Galeri Demo — ${n} Laman Web Sebenar`,
-    description: (n: number) => `Cuba sendiri ${n} laman web binaan PintuWeb: landing page, kad jemputan digital, link in bio, portfolio, tempahan dalam talian, pasaran hartanah dan banyak lagi.`,
-    ogTitle: (n: number) => `Galeri Demo PintuWeb — ${n} Laman Web Sebenar`,
+    title: (n: number) => `Galeri Demo — ${n} Laman yang Boleh Dicuba`,
+    description: (n: number) => `Cuba ${n} laman web binaan PintuWeb: landing page, kad jemputan digital, link in bio, portfolio, tempahan dalam talian, pasaran hartanah dan banyak lagi.`,
+    ogTitle: (n: number) => `Galeri Demo PintuWeb — ${n} Laman yang Boleh Dicuba`,
     ogDescription: 'Semua demo dalam talian dan boleh dibuka sekarang. Pilih gaya yang anda suka, kami sesuaikan dengan jenama anda.',
     badge: 'Galeri Demo',
-    h1: (n: number) => [`${n} laman web sebenar. `, 'Silakan cuba.'] as Hl,
+    h1: (n: number) => [`${n} laman demo. `, 'Silakan cuba.'] as Hl,
     lead: 'Semua di bawah dalam talian dan boleh dibuka sekarang, bukan mockup. Pilih yang paling hampir dengan keperluan anda, kemudian kami sesuaikan dengan jenama anda.',
     filterAria: 'Tapis mengikut kategori',
     all: 'Semua',
@@ -105,7 +105,7 @@ const pages: Pages = {
   },
   about: {
     title: 'Tentang Kami',
-    description: `Perkhidmatan membina laman web dari ${LOC}, Indonesia, ditubuhkan pada ${FOUNDED_YEAR} dengan ${CLIENT_PROJECTS} projek pelanggan untuk PKS, syarikat pemula dan penjenamaan peribadi.`,
+    description: `Membina laman web dari ${LOC}, Indonesia, sejak ${FOUNDED_YEAR} dengan ${CLIENT_PROJECTS} projek pelanggan untuk PKS, syarikat pemula dan jenama peribadi.`,
     ogTitle: 'Tentang PintuWeb',
     ogDescription: (n: number) => `Ditubuhkan pada ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} projek pelanggan dan ${n} demo langsung yang boleh anda cuba.`,
     eyebrow: 'Tentang Kami',
@@ -121,8 +121,7 @@ const pages: Pages = {
     now: 'Kini',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'PintuWeb ditubuhkan', body: `Bermula di ${LOC}, membantu PKS setempat yang belum mempunyai laman web.` },
-      { year: '2022', title: 'Fokus pada kelajuan & SEO', body: 'Menerapkan amalan terbaik prestasi, ujian Lighthouse dan struktur kandungan SEO dalam setiap projek.' },
-      { year: 'Kini', title: `${CLIENT_PROJECTS} projek pelanggan`, body: `Berkhidmat untuk pelanggan dari pelbagai kawasan, dengan ${n} demo langsung dalam ${CATEGORY_COUNT} kategori sebagai bukti karya.` },
+      { year: 'Kini', title: `${CLIENT_PROJECTS} projek pelanggan`, body: `Menjaga ${n} demo langsung dalam ${CATEGORY_COUNT} kategori sebagai bukti karya.` },
     ],
     founderTitle: 'Di sebalik PintuWeb',
     beliefTitle: ['Prinsip yang kami ', 'pegang'] as Hl,
@@ -133,7 +132,7 @@ const pages: Pages = {
     ],
     values: [
       { title: 'Kolaboratif', body: 'Kami mendengar keperluan anda dan terbuka kepada maklum balas pada setiap peringkat.' },
-      { title: 'Berperibadi', body: 'Setiap laman web mempunyai identitinya sendiri, bukan templat kitar semula.' },
+      { title: 'Berperibadi', body: 'Bermula daripada reka bentuk demo kami yang disesuaikan dengan identiti anda, atau reka bentuk khas dari awal.' },
       { title: 'Jujur', body: 'Harga telus, janji yang realistik dan tarikh akhir yang kami tepati.' },
     ],
     whyTitle: 'Mengapa memilih PintuWeb?',
@@ -202,7 +201,6 @@ const pages: Pages = {
     journeyTitle: 'Perjalanan',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Menubuhkan PintuWeb', body: 'Belajar frontend & backend secara sendiri dan mula membina laman web untuk PKS.' },
-      { year: '2022', title: 'Fokus pada UX & SEO', body: 'Menerapkan amalan terbaik prestasi, ujian Lighthouse dan struktur kandungan SEO.' },
       { year: 'Kini', title: `${CLIENT_PROJECTS} projek pelanggan`, body: `Berkhidmat untuk PKS, syarikat pemula dan penjenamaan peribadi, serta menjaga ${n} demo langsung.` },
     ],
     skillsTitle: 'Kepakaran utama',
@@ -245,7 +243,7 @@ const pages: Pages = {
       { text: 'Butiran akhir setiap projek ada dalam sebut harga bertulis yang anda luluskan.', to: '' },
       { text: 'Deposit 50% untuk bermula, baki 50% selepas laman web siap dan anda luluskan.', to: 'pembayaran' },
       { text: `Pepijat dan masalah teknikal dibaiki secara percuma selama ${days} hari selepas laman web dilancarkan.`, to: 'garansi' },
-      { text: 'Selepas bayaran penuh, laman web menjadi milik anda sepenuhnya.', to: 'kepemilikan' },
+      { text: 'Selepas bayaran penuh, laman web menjadi milik anda sepenuhnya (kecuali tema jemputan dan Konsep Reka Bentuk).', to: 'kepemilikan' },
     ],
   },
   articles: {
@@ -280,7 +278,7 @@ const pages: Pages = {
   },
   glossary: {
     title: 'Glosari Laman Web untuk Pemula',
-    description: 'Maksud istilah laman web yang sering ditemui semasa menempah atau mengurus laman web — domain, hosting, SSL, SEO, CMS, landing page dan lain-lain — diterangkan ringkas.',
+    description: 'Maksud istilah laman web yang sering ditemui semasa menempah atau mengurus laman web: domain, hosting, SSL, SEO, CMS, landing page dan lain-lain.',
     eyebrow: 'Glosari',
     h1: ['Glosari ', 'laman web'] as Hl,
     lead: 'Istilah yang sering muncul semasa menempah atau mengurus laman web, diterangkan ringkas tanpa jargon.',

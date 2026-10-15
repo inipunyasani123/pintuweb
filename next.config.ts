@@ -15,14 +15,25 @@ const securityHeaders = [
 const { rewrites: langRewrites, redirects: langRedirects } = routingRules();
 
 // Path yang TIDAK ditulis ulang ke /id. Berkas public/ & rute statis sudah dilayani sebelum
-// afterFiles; daftar ini menjaga bahasa lain, aset Next, dan API.
-const notId = ["_next", "_vercel", "api", ...LANGS.map((l) => `${l}(?:/|$)`)].join("|");
+// afterFiles; daftar ini menjaga bahasa lain, aset Next, dan API. Tiap awalan harus segmen utuh
+// ("api" hanya /api dan /api/…), supaya path lain yang kebetulan berawalan sama tetap ditulis ulang ke /id.
+const notId = ["_next", "_vercel", "api", ...LANGS].map((p) => `${p}(?:/|$)`).join("|");
+
+// Gambar di public/demos & public/images berganti NAMA bila isinya berubah (favicon memakai ?v=), jadi aman
+// disimpan browser/CDN selama seminggu.
+const assetCache = [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }];
 
 const nextConfig: NextConfig = {
   // Font TTF & logo untuk gambar OG dibaca lewat fs saat runtime: pastikan ikut terbundel.
   outputFileTracingIncludes: { "/api/og": ["./app/api/og/fonts/**", "./app/api/og/logo.png"] },
+  // Hasil optimasi next/image disimpan 30 hari (sumbernya hanya gambar lokal yang namanya berganti bila diubah).
+  images: { minimumCacheTTL: 2592000 },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/demos/:path*", headers: assetCache },
+      { source: "/images/:path*", headers: assetCache },
+    ];
   },
   async redirects() {
     return [

@@ -13,7 +13,7 @@ import { ARTICLE_LANGS } from '../../../i18n/config'
 import { ARTICLE_SLUGS, articleKeyBySlug } from '../../../i18n/slugs'
 import { getDict, getPages, isLang, LANG_INFO, type Lang } from '../../../i18n'
 import { langsOf, path, pathOf, urlOf } from '../../../i18n/routes'
-import { FOUNDER_ID, ORG_ID, ogImage, pageGraph, pageMeta } from '../../../i18n/seo'
+import { FOUNDER_PERSON, ORG_ID, ogImage, pageGraph, pageMeta } from '../../../i18n/seo'
 import { FOUNDED_YEAR, SITE, wa } from '../../../lib/site'
 
 type Params = { params: Promise<{ lang: string; slug: string }> }
@@ -46,7 +46,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMeta({
     lang: a.lang,
     ref: { key: 'articles', article: a.key },
-    title: a.title,
+    title: a.seoTitle ?? a.title,
+    ogTitle: a.title,
     description: a.description,
     type: 'article',
     published: a.date,
@@ -79,7 +80,7 @@ export default async function ArticlePage({ params }: Params) {
     datePublished: a.date,
     dateModified: a.updated,
     inLanguage: LANG_INFO[lang].htmlLang,
-    author: { '@id': FOUNDER_ID },
+    author: FOUNDER_PERSON,
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: { '@id': `${url}#webpage` },
     wordCount: a.words,
@@ -103,13 +104,8 @@ export default async function ArticlePage({ params }: Params) {
         <header className="mx-auto max-w-6xl px-4 sm:px-6" style={cover.vars}>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
             <div className="lg:col-span-8">
-              <ul className="flex flex-wrap gap-2">
-                {a.tags.map((t) => (
-                  <li key={t} className="rounded-full px-3 py-1 text-[0.8125rem] font-semibold text-[color:var(--k)]" style={{ backgroundColor: cover.c.tint }}>
-                    {t}
-                  </li>
-                ))}
-              </ul>
+              {/* topik artikel: teks kecil biasa, dipisah titik tengah (bukan pil) */}
+              <p className="kicker text-[color:var(--k)]">{a.tags.join(' · ')}</p>
               <h1 className="mt-5 text-[2.1rem] leading-[1.1] text-[color:var(--text-primary)] sm:text-[2.75rem] lg:text-[3.1rem]">{a.title}</h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[color:var(--text-tertiary)] lg:text-[1.2rem]">{a.description}</p>
             </div>

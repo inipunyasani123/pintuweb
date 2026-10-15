@@ -5,9 +5,9 @@ import type { Dict, Hl } from './id'
 
 const pt: Dict = {
   meta: {
-    homeTitle: 'PintuWeb — Criação de sites profissionais e rápidos a partir da Indonésia',
+    homeTitle: 'PintuWeb — Criação de sites profissionais na Indonésia',
     homeDescription: (n: number) =>
-      `Sites profissionais, rápidos e otimizados para SEO para pequenas empresas, startups e marcas pessoais, criados na Indonésia desde ${FOUNDED_YEAR}. Preços transparentes e ${n} demos no ar que você pode abrir agora mesmo.`,
+      `Sites profissionais, rápidos e otimizados para SEO, para pequenas empresas, startups e marcas pessoais, criados na Indonésia. Preços claros e ${n} demos.`,
     ogHomeDescription: (n: number) =>
       `Um estúdio web em Trenggalek, Indonésia, desde ${FOUNDED_YEAR}. Sites rápidos e prontos para SEO para pequenas empresas, lojas e marcas pessoais. Veja ${n} demos no ar.`,
     ogAlt: 'PintuWeb — Criação e desenvolvimento de sites profissionais',
@@ -98,6 +98,7 @@ const pt: Dict = {
     title: ['Todo negócio merece uma boa ', 'porta de entrada', '.'] as Hl,
     lead: (n: number) =>
       `Projetamos e construímos sites para pequenas empresas, lojas e marcas pessoais: rápidos de abrir no celular, prontos para aparecer no Google e totalmente seus. ${CLIENT_PROJECTS} projetos de clientes entregues e ${n} exemplos do nosso trabalho que você pode abrir hoje.`,
+    offer: (price: string, duration: string) => `Landing pages a partir de ${price}, prontas em ${duration}. Você paga 50% no início e o restante ao final.`,
     ctaConsult: 'Consulta gratuita',
     ctaDemos: (n: number) => `Ver ${n} exemplos`,
     facade: 'Oito tipos de site que construímos',
@@ -181,7 +182,7 @@ const pt: Dict = {
     promises: [
       { fig: `${PACKAGES.length}`, unit: 'pacotes', proof: 'Escrito na página de preços', title: 'Preços informados de antemão', body: 'A faixa de preço de cada pacote está neste site. O valor exato consta em um orçamento escrito antes de começarmos.' },
       { fig: '50%', unit: 'sinal', proof: 'Escrito nas perguntas frequentes', title: 'Pague metade primeiro', body: 'Um sinal de 50% para começar. O restante é pago quando o site está pronto e você o aprovou.' },
-      { fig: '100%', unit: 'seu', proof: 'Escrito nos termos', title: 'Totalmente seu', body: 'Depois do pagamento integral, o código-fonte, o domínio, a hospedagem e o acesso de administrador são entregues a você.' },
+      { fig: '100%', unit: 'seu', proof: 'Escrito nos termos', title: 'Totalmente seu', body: 'Nos pacotes de site: depois do pagamento integral, o código-fonte, o domínio, a hospedagem e o acesso de administrador são entregues a você.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Escrito nas perguntas frequentes', title: 'Rápido no celular', body: `Otimizamos cada site com a meta de uma pontuação PageSpeed de ${PERF_TARGET}. É uma meta de trabalho, não uma média declarada.` },
       { fig: `${GUARANTEE_DAYS}`, unit: 'dias', proof: 'Escrito nos termos', title: `Garantia de ${GUARANTEE_DAYS} dias`, body: `Erros são corrigidos gratuitamente por ${GUARANTEE_DAYS} dias após o lançamento, além da manutenção do seu pacote.` },
       { fig: '24', unit: 'horas', proof: 'Escrito nas perguntas frequentes', title: 'Resposta em dias úteis', body: `Respondemos em até 24 horas em dias úteis, de segunda a sábado, das ${OPENS} às ${CLOSES} WIB.` },
@@ -190,7 +191,7 @@ const pt: Dict = {
   pricing: {
     eyebrow: 'Preços',
     title: ['Os preços são informados de antemão, ', 'não depois que você pergunta', '.'] as Hl,
-    lead: 'Todos os pacotes incluem design e desenvolvimento; os pacotes de site incluem também SEO básico. O único custo recorrente é a renovação do domínio e da hospedagem a partir do segundo ano.',
+    lead: 'Todos os pacotes incluem design e desenvolvimento; os pacotes de site incluem também SEO básico. O único custo recorrente da nossa parte é a renovação do domínio e da hospedagem a partir do segundo ano.',
     colPrice: 'Faixa de preço',
     colPackage: 'Pacote',
     openNote: 'Uma cauda pontilhada significa que o preço pode ser maior, dependendo dos recursos.',
@@ -198,7 +199,7 @@ const pt: Dict = {
     depositTitle: 'Pagamento',
     depositBody: 'Um sinal de 50% para começar; o restante quando o site estiver pronto e aprovado por você.',
     maintTitle: 'Após o lançamento',
-    maintBody: `De 1 a 6 meses de manutenção, conforme o pacote, mais uma garantia de correção de erros de ${GUARANTEE_DAYS} dias.`,
+    maintBody: `Manutenção conforme o que o seu pacote inclui, mais uma garantia de correção de erros de ${GUARANTEE_DAYS} dias.`,
   },
   pkg: {
     from: 'a partir de',

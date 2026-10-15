@@ -12,7 +12,7 @@ const pages: Pages = {
   ...en,
   services: {
     title: 'Servicios de diseño y desarrollo web',
-    description: 'Landing pages, perfiles de empresa, tiendas en línea, portafolios, invitaciones digitales, páginas link in bio y sitios web a medida de PintuWeb, con precios desde, plazos de entrega y demos en línea.',
+    description: 'Landing pages, perfiles de empresa, tiendas en línea, portafolios, invitaciones digitales, páginas link in bio y sitios a medida, con precios y demos.',
     ogTitle: 'Servicios — PintuWeb',
     ogDescription: 'Desde landing pages hasta tiendas en línea y sitios web a medida, con precios desde y demos que puedes probar.',
     eyebrow: 'Servicios',
@@ -26,7 +26,7 @@ const pages: Pages = {
     includedTitle: 'Siempre incluido',
     included: [
       { title: 'SEO desde el primer día', body: `Metaetiquetas, sitemap, datos estructurados y un objetivo de puntuación PageSpeed de ${PERF_TARGET} forman parte de cada paquete de sitio web.` },
-      { title: 'Garantía y mantenimiento', body: `Corrección gratuita de errores durante ${GUARANTEE_DAYS} días tras el lanzamiento y, después, de 1 a 6 meses de mantenimiento según el paquete.` },
+      { title: 'Garantía y mantenimiento', body: `Corrección gratuita de errores durante ${GUARANTEE_DAYS} días tras el lanzamiento y, después, el mantenimiento que incluya el paquete.` },
     ],
     compareTitle: ['Compara ', 'todos los servicios'] as Hl,
     compareCaption: 'Comparativa de servicios de PintuWeb: para quién son, precio desde y plazo de entrega',
@@ -40,7 +40,7 @@ const pages: Pages = {
   },
   pricing: {
     title: 'Paquetes y precios de sitios web',
-    description: (min: string, n: number) => `${n} paquetes de PintuWeb desde ${min}: invitaciones digitales, link in bio, landing pages, sitios para pequeñas empresas, tiendas en línea, sistemas de reservas, sitios inmobiliarios, aplicaciones web y sitios a medida. Anticipo del 50%, garantía de ${GUARANTEE_DAYS} días.`,
+    description: (min: string, n: number) => `${n} paquetes web desde ${min}: invitaciones digitales, landing pages, tiendas en línea y sitios a medida. Anticipo del 50% y garantía de ${GUARANTEE_DAYS} días.`,
     ogTitle: 'Paquetes y precios — PintuWeb',
     ogDescription: (min: string) => `Paquetes de sitio web desde ${min}. Precios transparentes, anticipo del 50% y el resto cuando apruebes el sitio.`,
     eyebrow: 'Precios transparentes',
@@ -69,12 +69,12 @@ const pages: Pages = {
     updated: 'Precios vigentes a fecha de',
   },
   demo: {
-    title: (n: number) => `Galería de demos — ${n} sitios web reales`,
-    description: (n: number) => `Prueba ${n} sitios web creados por PintuWeb: landing pages, invitaciones digitales, páginas link in bio, portafolios, reservas en línea, marketplaces inmobiliarios y más.`,
-    ogTitle: (n: number) => `Galería de demos de PintuWeb — ${n} sitios web reales`,
+    title: (n: number) => `Galería de demos — ${n} sitios para probar`,
+    description: (n: number) => `Prueba ${n} sitios creados por PintuWeb: landing pages, invitaciones, link in bio, portafolios, reservas en línea, marketplaces inmobiliarios y más.`,
+    ogTitle: (n: number) => `Galería de demos de PintuWeb — ${n} sitios para probar`,
     ogDescription: 'Todas las demos están en línea y se pueden abrir ahora mismo. Elige un estilo que te guste y lo adaptamos a tu marca.',
     badge: 'Galería de demos',
-    h1: (n: number) => [`${n} sitios web reales. `, 'Adelante, pruébalos.'] as Hl,
+    h1: (n: number) => [`${n} sitios de demostración. `, 'Adelante, pruébalos.'] as Hl,
     lead: 'Todo lo que ves abajo está en línea y se puede abrir ahora mismo; nada es una maqueta. Elige el que más se parezca a lo que necesitas y lo adaptamos a tu marca.',
     filterAria: 'Filtrar por categoría',
     all: 'Todas',
@@ -109,7 +109,7 @@ const pages: Pages = {
   },
   about: {
     title: 'Sobre nosotros',
-    description: `Un estudio de diseño y desarrollo web de ${LOC}, Indonesia, fundado en ${FOUNDED_YEAR}, con ${CLIENT_PROJECTS} proyectos de clientes para pequeñas empresas, startups y marcas personales.`,
+    description: `Estudio de diseño web en ${LOC}, Indonesia, fundado en ${FOUNDED_YEAR}, con ${CLIENT_PROJECTS} proyectos para pequeñas empresas, startups y marcas personales.`,
     ogTitle: 'Sobre PintuWeb',
     ogDescription: (n: number) => `Fundado en ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} proyectos de clientes y ${n} demos en línea que puedes probar.`,
     eyebrow: 'Sobre nosotros',
@@ -125,8 +125,7 @@ const pages: Pages = {
     now: 'Hoy',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Nace PintuWeb', body: `Empezamos en ${LOC}, ayudando a pequeños negocios locales que aún no tenían sitio web.` },
-      { year: '2022', title: 'Foco en velocidad y SEO', body: 'Aplicamos buenas prácticas de rendimiento, pruebas con Lighthouse y estructura de contenido SEO en cada proyecto.' },
-      { year: 'Hoy', title: `${CLIENT_PROJECTS} proyectos de clientes`, body: `Trabajamos con clientes de muchas regiones, con ${n} demos en línea en ${CATEGORY_COUNT} categorías como prueba de nuestro trabajo.` },
+      { year: 'Hoy', title: `${CLIENT_PROJECTS} proyectos de clientes`, body: `Mantenemos ${n} demos en línea en ${CATEGORY_COUNT} categorías como prueba de nuestro trabajo.` },
     ],
     founderTitle: 'Detrás de PintuWeb',
     beliefTitle: ['Lo que ', 'defendemos'] as Hl,
@@ -137,7 +136,7 @@ const pages: Pages = {
     ],
     values: [
       { title: 'Colaborativos', body: 'Escuchamos lo que necesitas y agradecemos tus comentarios en cada etapa.' },
-      { title: 'Con carácter', body: 'Cada sitio web tiene su propia identidad, no una plantilla reciclada.' },
+      { title: 'Con carácter', body: 'Parte de uno de nuestros diseños de demostración, adaptado a tu identidad, o pide un diseño a medida desde cero.' },
       { title: 'Honestos', body: 'Precios transparentes, promesas realistas y plazos que cumplimos.' },
     ],
     whyTitle: '¿Por qué elegir PintuWeb?',
@@ -154,7 +153,7 @@ const pages: Pages = {
   },
   contact: {
     title: 'Contacto — Consulta gratuita sobre tu sitio web',
-    description: 'Contacta con PintuWeb para una consulta gratuita sobre tu sitio web. Envía tus necesidades por WhatsApp o correo electrónico y te respondemos en horario laboral.',
+    description: 'Contacta con PintuWeb para una consulta gratuita sobre tu sitio web. Envía tus necesidades por WhatsApp o correo y te respondemos en horario laboral.',
     ogTitle: 'Contacta con PintuWeb — Consulta gratuita',
     ogDescription: 'Cuéntanos qué sitio web necesitas. Envíalo por WhatsApp o correo electrónico.',
     pageName: 'Contacto de PintuWeb',
@@ -206,7 +205,6 @@ const pages: Pages = {
     journeyTitle: 'Trayectoria',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Fundación de PintuWeb', body: 'Aprendí desarrollo front-end y back-end por mi cuenta y empecé a construir sitios web para pequeños negocios.' },
-      { year: '2022', title: 'Foco en UX y SEO', body: 'Aplicación de buenas prácticas de rendimiento, pruebas con Lighthouse y estructura de contenido SEO.' },
       { year: 'Hoy', title: `${CLIENT_PROJECTS} proyectos de clientes`, body: `Trabajo con pequeñas empresas, startups y marcas personales, y mantengo ${n} demos en línea.` },
     ],
     skillsTitle: 'Habilidades principales',
@@ -238,7 +236,7 @@ const pages: Pages = {
   },
   glossary: {
     title: 'Glosario web para principiantes',
-    description: 'Definiciones en lenguaje sencillo de los términos web que encuentras al encargar o gestionar un sitio web: dominio, hosting, SSL, SEO, CMS, landing page y más.',
+    description: 'Definiciones sencillas de los términos web que encuentras al encargar o gestionar un sitio: dominio, hosting, SSL, SEO, CMS, landing page y más.',
     eyebrow: 'Glosario',
     h1: ['', 'Glosario', ' web'] as Hl,
     lead: 'Los términos que aparecen al encargar o gestionar un sitio web, explicados de forma breve y sin tecnicismos.',

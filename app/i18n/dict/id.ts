@@ -44,7 +44,7 @@ const id = {
     closeMenu: 'Tutup menu',
     menu: 'Menu',
     demosReady: (n: number) => `${n} demo siap dilihat langsung`,
-    respond: 'Respon di hari kerja',
+    respond: 'Respons di hari kerja',
     waText: 'Halo PintuWeb, saya mau konsultasi pembuatan website.',
     language: 'Bahasa',
     notAvailable: 'belum tersedia',
@@ -101,10 +101,12 @@ const id = {
     title: ['Setiap usaha butuh ', 'pintu depan', ' yang layak.'] as Hl,
     lead: (n: number) =>
       `Kami merancang dan membangun website untuk UMKM, toko, dan personal brand: cepat dibuka di ponsel, siap ditemukan di Google, dan sepenuhnya milikmu. ${CLIENT_PROJECTS} proyek klien sudah selesai, dan ${n} contoh karya bisa kamu buka sendiri hari ini.`,
+    // Satu baris penawaran di bawah paragraf pembuka; harga & durasi paket Landing Page dari lib/packages.ts.
+    offer: (price: string, duration: string) => `Landing page mulai ${price}, selesai dalam ${duration}. Bayar 50% di awal, sisanya setelah website jadi.`,
     ctaConsult: 'Konsultasi gratis',
     ctaDemos: (n: number) => `Lihat ${n} contoh`,
     facade: 'Delapan jenis website yang kami buat',
-    facadeHint: 'Sorot untuk pratinjau, klik untuk membuka galerinya',
+    facadeHint: 'Arahkan kursor untuk pratinjau, klik untuk membuka galerinya',
     openGallery: (t: string) => `Buka galeri ${t}`,
   },
   portfolio: {
@@ -127,7 +129,7 @@ const id = {
     open: 'Buka demo',
     galleryLang: '',
     allDemos: (n: number) => `Lihat semua ${n} demo`,
-    hoverHint: 'Sorot salah satu kartu untuk melihat halamannya bergulir, klik untuk membuka situs demonya.',
+    hoverHint: 'Arahkan kursor ke salah satu kartu untuk melihat halamannya bergulir, klik untuk membuka situs demonya.',
   },
   audience: {
     eyebrow: 'Untuk siapa',
@@ -169,7 +171,7 @@ const id = {
       },
       {
         title: 'Bangun',
-        desc: 'Website dibangun cepat di ponsel dan siap SEO. Progresnya kami kabarkan lewat WhatsApp.',
+        desc: 'Website dibangun agar cepat dibuka di ponsel dan siap SEO. Progresnya kami kabarkan lewat WhatsApp.',
       },
       {
         title: 'Online',
@@ -184,7 +186,7 @@ const id = {
     promises: [
       { fig: `${PACKAGES.length}`, unit: 'paket', proof: 'Tertulis di halaman harga', title: 'Harga ditulis di depan', body: 'Kisaran harga tiap paket ada di situs ini. Angka pastinya tertulis di penawaran sebelum kami mulai.' },
       { fig: '50%', unit: 'DP', proof: 'Tertulis di FAQ', title: 'Bayar separuh dulu', body: 'DP 50% untuk memulai. Sisanya dibayar setelah website selesai dan kamu setujui.' },
-      { fig: '100%', unit: 'milikmu', proof: 'Tertulis di syarat & ketentuan', title: 'Milikmu sepenuhnya', body: 'Setelah lunas, kode sumber, domain, hosting, dan akses admin diserahkan kepadamu.' },
+      { fig: '100%', unit: 'milikmu', proof: 'Tertulis di syarat & ketentuan', title: 'Milikmu sepenuhnya', body: 'Untuk paket website: setelah lunas, kode sumber, domain, hosting, dan akses admin diserahkan kepadamu.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Tertulis di FAQ', title: 'Cepat dibuka di ponsel', body: `Setiap website kami optimalkan dengan target skor PageSpeed ${PERF_TARGET}. Itu target kerja, bukan klaim rata-rata.` },
       { fig: `${GUARANTEE_DAYS}`, unit: 'hari', proof: 'Tertulis di syarat & ketentuan', title: `Garansi ${GUARANTEE_DAYS} hari`, body: `Bug diperbaiki gratis selama ${GUARANTEE_DAYS} hari setelah website online, ditambah maintenance sesuai paket.` },
       { fig: '24', unit: 'jam', proof: 'Tertulis di FAQ', title: 'Dibalas di hari kerja', body: `Pesan kami balas maksimal 24 jam di hari kerja, Senin–Sabtu pukul ${dotTime(OPENS)}–${dotTime(CLOSES)} WIB.` },
@@ -193,7 +195,7 @@ const id = {
   pricing: {
     eyebrow: 'Harga',
     title: ['Harga ditulis di depan, ', 'bukan setelah kamu bertanya', '.'] as Hl,
-    lead: 'Semua paket sudah termasuk desain dan pengerjaan; paket website juga mencakup SEO dasar. Biaya berkala hanya perpanjangan domain & hosting mulai tahun kedua.',
+    lead: 'Semua paket sudah termasuk desain dan pengerjaan; paket website juga mencakup SEO dasar. Biaya berkala dari kami hanya perpanjangan domain & hosting mulai tahun kedua.',
     colPrice: 'Kisaran harga',
     colPackage: 'Paket',
     openNote: 'Ekor titik-titik berarti harganya bisa lebih, tergantung fitur.',
@@ -201,7 +203,7 @@ const id = {
     depositTitle: 'Pembayaran',
     depositBody: 'DP 50% untuk memulai, pelunasan setelah website selesai dan kamu setujui.',
     maintTitle: 'Setelah online',
-    maintBody: `Maintenance 1–6 bulan sesuai paket, plus garansi perbaikan bug ${GUARANTEE_DAYS} hari.`,
+    maintBody: `Maintenance sesuai paket, plus garansi perbaikan bug ${GUARANTEE_DAYS} hari.`,
   },
   pkg: {
     from: 'mulai',

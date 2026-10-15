@@ -14,6 +14,8 @@ export type Article = {
   lang: Lang
   slug: string
   title: string
+  /** Judul pendek untuk <title> (frontmatter `seoTitle`, maks. 49 karakter + " | PintuWeb"); H1 tetap memakai `title`. */
+  seoTitle?: string
   description: string
   date: string
   updated: string
@@ -51,7 +53,7 @@ function parseFrontmatter(raw: string) {
       ;(data[listKey] as string[]).push(line.slice(2).trim())
       continue
     }
-    const kv = line.match(/^([a-z]+):\s*(.*)$/)
+    const kv = line.match(/^([a-zA-Z]+):\s*(.*)$/)
     if (!kv) continue
     if (kv[2] === '') {
       listKey = kv[1]
@@ -70,7 +72,8 @@ const FAQ_HEADING = /^(pertanyaan yang sering diajukan|frequently asked question
 
 function render(lang: Lang, body: string) {
   const md = new Marked({ gfm: true })
-  const tableLabel = lang === 'id' ? 'Tabel, geser untuk melihat semua kolom' : 'Table, scroll to see every column'
+  // bernomor supaya tiap wilayah gulir tabel punya nama unik (axe landmark-unique)
+  const tableLabel = (n: number) => (lang === 'id' ? `Tabel ${n}, geser untuk melihat semua kolom` : `Table ${n}, scroll to see every column`)
   md.use({
     renderer: {
       heading({ tokens, depth, text }) {
@@ -102,8 +105,9 @@ function render(lang: Lang, body: string) {
     }
   }
 
+  let tables = 0
   const html = (md.parser(tokens) as string)
-    .replace(/<table>/g, `<div class="table-wrap" role="region" tabindex="0" aria-label="${tableLabel}"><table>`)
+    .replace(/<table>/g, () => `<div class="table-wrap" role="region" tabindex="0" aria-label="${tableLabel(++tables)}"><table>`)
     .replace(/<\/table>/g, '</table></div>')
   return { html, toc, faq }
 }
@@ -125,6 +129,7 @@ function load(lang: Lang, key: ArticleKey): Article {
     lang,
     slug,
     title: fill(lang, String(data.title)),
+    ...(data.seoTitle ? { seoTitle: fill(lang, String(data.seoTitle)) } : {}),
     description: fill(lang, String(data.description)),
     date: String(data.date),
     // artikel yang memuat angka paket ({{from:…}} dst.) ikut berubah saat harga berubah

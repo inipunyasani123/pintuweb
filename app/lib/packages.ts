@@ -69,7 +69,7 @@ const DATA: Omit<Paket, 'duration'>[] = [
     features: [
       '1 halaman promosi yang fokus konversi',
       'Desain modern & mobile-friendly',
-      'Free domain .com/.xyz + SSL 1 tahun',
+      'Gratis domain .com/.xyz + SSL 1 tahun',
       'Optimasi kecepatan & SEO dasar',
       'Form kontak + tombol WhatsApp',
       'Bonus: CDN & maintenance 1 bulan',
@@ -85,7 +85,7 @@ const DATA: Omit<Paket, 'duration'>[] = [
     badgeColor: 'blue',
     featured: true,
     recommended: true,
-    subtitle: 'Pilihan terpopuler untuk bisnis',
+    subtitle: 'Website 3–5 halaman untuk usaha',
     time: { min: 2, max: 3, unit: 'hari' },
     highlights: ['Company profile', 'Jasa & layanan', 'UMKM'],
     features: [
@@ -93,9 +93,9 @@ const DATA: Omit<Paket, 'duration'>[] = [
       'Desain profesional & responsif',
       'Domain .com + hosting + SSL',
       'Form kontak, WhatsApp & Google Maps',
-      'Basic copywriting & setup SEO on-page',
+      'Copywriting dasar & setup SEO on-page',
       '2× revisi desain',
-      'Maintenance & security support 1–3 bulan',
+      'Maintenance & dukungan keamanan 1–3 bulan',
     ],
   },
   // ---- Toko online ----
@@ -206,7 +206,7 @@ const DATA: Omit<Paket, 'duration'>[] = [
     highlights: ['Freelancer', 'Kreator', 'Profesional'],
     features: [
       'Halaman Tentang, Karya, Blog & Kontak',
-      'Desain clean & profesional',
+      'Desain bersih & profesional',
       'CTA ke WhatsApp, LinkedIn, IG, dsb.',
       'SEO dasar & struktur heading rapi',
       'Domain + hosting + SSL 1 tahun',
@@ -305,11 +305,11 @@ const DATA: Omit<Paket, 'duration'>[] = [
     time: { min: 1, max: 3, unit: 'minggu', flex: true },
     highlights: ['Startup', 'Instansi', 'Sistem khusus'],
     features: [
-      'Desain & layout full custom',
+      'Desain & layout sepenuhnya custom',
       'Jumlah halaman & fitur fleksibel',
       'Integrasi API, booking, formulir kompleks',
       'Framework modern (Next.js, Tailwind, dsb.)',
-      'UX consultation & optimasi performa',
+      'Konsultasi UX & optimasi performa',
       'Maintenance & support teknis 3 bulan',
       'Cocok untuk startup & instansi',
     ],
@@ -381,5 +381,5 @@ export const RENEWAL_SUMMARY =
   'tanpa biaya perpanjangan. Kami kabari sebelum jatuh tempo.'
 
 export const PAYMENT_SUMMARY =
-  'Semua paket: DP 50% untuk memulai, pelunasan 50% setelah website selesai dan Anda setujui. ' +
+  'Semua paket: DP 50% untuk memulai, pelunasan 50% setelah website selesai dan disetujui. ' +
   'Kami terima transfer bank, e-wallet (OVO, GoPay, DANA), atau QRIS. Invoice dikirim sebelum pembayaran.'

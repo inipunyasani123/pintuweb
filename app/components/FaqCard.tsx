@@ -93,7 +93,7 @@ export default function FaqCard({ item, q, as: Q, hidden, open, onToggle, id, fo
       hidden={hidden}
       open={onToggle ? Boolean(open) : open || undefined}
       onToggle={onToggle ? (e) => onToggle(e.currentTarget.open) : undefined}
-      className={`faq-item group scroll-mt-28 rounded-[1.25rem] bg-white transition-shadow duration-300 open:shadow-[0_18px_34px_-26px_rgb(38_70_156/0.55)] ${
+      className={`faq-item group scroll-mt-4 rounded-[1.25rem] bg-white transition-shadow duration-300 open:shadow-[0_18px_34px_-26px_rgb(38_70_156/0.55)] ${
         focused ? 'ring-2 ring-[color:var(--primary-700)]' : 'ring-1 ring-[color:var(--border-light)] open:ring-[color:var(--primary-300)]'
       }`}
     >

@@ -99,7 +99,9 @@
   /* ---- Dasar ---- */
   * { border-color: var(--border-light); }
 
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  /* scroll-padding-top: elemen yang difokus/dituju (#jangkar) tidak berhenti di bawah navbar yang menempel (WCAG 2.4.11).
+     Jangkar yang butuh jarak lebih cukup menambah sedikit scroll-margin (jumlah keduanya = jarak dari atas layar). */
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; -webkit-text-size-adjust: 100%; }
 
   body {
     font-family: var(--font-sans);
@@ -131,6 +133,10 @@
     outline-offset: 3px;
     border-radius: 2px;
   }
+  /* Footer navy: biru #3459b8 di atas navy hanya 2,6:1, jadi cincin fokusnya putih. Kartu obrolan putih di dalam
+     footer (data-light) tetap memakai cincin biru. */
+  footer :focus-visible { outline-color: #fff; }
+  footer [data-light] :focus-visible { outline-color: var(--primary-600); }
 }
 
 @layer components {
@@ -152,7 +158,8 @@
     padding: 10px 16px; border-radius: var(--radius); font-weight: 600;
     transition: top .2s ease;
   }
-  .skip-link:focus { top: 12px; }
+  /* fixed saat difokus: tetap terlihat walau fokus tiba dari ujung halaman (Tab berputar dari bawah) */
+  .skip-link:focus { position: fixed; top: 12px; }
 
   /* ============================================================
      Komponen dasar
@@ -362,8 +369,9 @@
   @media (min-width: 640px) { .prose-article { font-size: 1.125rem; } }
   .prose-article > * + * { margin-top: 1.1em; }
   .prose-article > :first-child { margin-top: 0; }
-  .prose-article h2 { margin-top: 2.4em; font-size: 1.625rem; line-height: 1.2; color: var(--text-primary); scroll-margin-top: 7rem; }
-  .prose-article h3 { margin-top: 1.8em; font-size: 1.25rem; line-height: 1.3; color: var(--text-primary); scroll-margin-top: 7rem; }
+  /* scroll-margin 1rem + scroll-padding-top 6rem di html = judul berhenti 7rem dari atas layar */
+  .prose-article h2 { margin-top: 2.4em; font-size: 1.625rem; line-height: 1.2; color: var(--text-primary); scroll-margin-top: 1rem; }
+  .prose-article h3 { margin-top: 1.8em; font-size: 1.25rem; line-height: 1.3; color: var(--text-primary); scroll-margin-top: 1rem; }
   @media (min-width: 640px) {
     .prose-article h2 { font-size: 1.85rem; }
     .prose-article h3 { font-size: 1.35rem; }
@@ -393,10 +401,11 @@
   /* Garis kemajuan membaca artikel: lebar garis mengikuti seberapa jauh artikel (.read-subject) sudah digulir.
      timeline-scope di <main> membuat garis waktu milik artikel bisa dipakai garis yang posisinya fixed.
      Tanpa dukungan browser atau bila gerak dikurangi, garisnya tidak tampil. */
-  /* Tentang: "tembok karya". Kolom tangkapan layar demo bergeser pelan naik-turun; kolom tengah berlawanan arah
-     (mulai lebih tinggi, lalu turun). Murni hiasan: dengan gerak dikurangi, kolomnya diam di posisi awal. */
+  /* Tentang: "tembok karya". Kolom tangkapan layar demo bergeser pelan sekali jalan lalu berhenti (di bawah 5 detik,
+     WCAG 2.2.2 — tanpa tombol jeda); kolom tengah berlawanan arah (mulai lebih tinggi, lalu turun). Murni hiasan:
+     dengan gerak dikurangi, kolomnya diam di posisi awal. */
   @keyframes wall-drift { to { transform: translateY(var(--drift)); } }
-  .wall-col { --drift: -6rem; animation: wall-drift 18s ease-in-out infinite alternate; will-change: transform; }
+  .wall-col { --drift: -6rem; animation: wall-drift 4.5s cubic-bezier(.3,.1,.3,1) both; }
   .wall-col-rev { --drift: 6rem; margin-top: -6rem; }
 
   .read-progress {

@@ -8,7 +8,7 @@ const LOC = 'Trenggalek, East Java'
 const pages: Pages = {
   services: {
     title: 'Website Design & Development Services',
-    description: 'Landing pages, company profiles, online stores, portfolios, digital invitations, link-in-bio pages and custom websites from PintuWeb, with starting prices, turnaround times and live demos.',
+    description: 'Landing pages, company profiles, online stores, portfolios, digital invitations, link-in-bio pages and custom websites, with starting prices and demos.',
     ogTitle: 'Services — PintuWeb',
     ogDescription: 'From landing pages to online stores and custom websites, with starting prices and demos you can try.',
     eyebrow: 'Services',
@@ -22,7 +22,7 @@ const pages: Pages = {
     includedTitle: 'Always included',
     included: [
       { title: 'SEO from day one', body: `Meta tags, a sitemap, structured data and a PageSpeed score target of ${PERF_TARGET} are part of every website package.` },
-      { title: 'Guarantee & maintenance', body: `Free bug fixes for ${GUARANTEE_DAYS} days after launch, then 1–6 months of maintenance depending on the package.` },
+      { title: 'Guarantee & maintenance', body: `Free bug fixes for ${GUARANTEE_DAYS} days after launch, then maintenance as included in the package.` },
     ],
     compareTitle: ['Compare ', 'all services'] as Hl,
     compareCaption: 'PintuWeb services compared: who they suit, starting price and turnaround',
@@ -36,7 +36,7 @@ const pages: Pages = {
   },
   pricing: {
     title: 'Website Packages & Pricing',
-    description: (min: string, n: number) => `${n} PintuWeb packages from ${min}: digital invitations, link in bio, landing pages, small business websites, online stores, booking systems, property websites, web apps and custom websites. 50% deposit, ${GUARANTEE_DAYS}-day guarantee.`,
+    description: (min: string, n: number) => `${n} website packages from ${min}: invitations, landing pages, small business sites, online stores and custom builds. 50% deposit, ${GUARANTEE_DAYS}-day guarantee.`,
     ogTitle: 'Packages & Pricing — PintuWeb',
     ogDescription: (min: string) => `Website packages from ${min}. Transparent pricing, a 50% deposit and the balance paid once you approve the website.`,
     eyebrow: 'Transparent pricing',
@@ -65,12 +65,12 @@ const pages: Pages = {
     updated: 'Prices valid as of',
   },
   demo: {
-    title: (n: number) => `Demo Gallery — ${n} Real Websites`,
+    title: (n: number) => `Demo Gallery — ${n} Sites You Can Try`,
     description: (n: number) => `Try ${n} websites built by PintuWeb: landing pages, digital invitations, link-in-bio pages, portfolios, online booking, property marketplaces and more.`,
-    ogTitle: (n: number) => `PintuWeb Demo Gallery — ${n} Real Websites`,
+    ogTitle: (n: number) => `PintuWeb Demo Gallery — ${n} Sites You Can Try`,
     ogDescription: 'Every demo is online and can be opened right now. Pick a style you like and we will tailor it to your brand.',
     badge: 'Demo gallery',
-    h1: (n: number) => [`${n} real websites. `, 'Go ahead and try them.'] as Hl,
+    h1: (n: number) => [`${n} demo sites. `, 'Go ahead and try them.'] as Hl,
     lead: 'Everything below is online and can be opened right now; none of it is a mock-up. Pick the one closest to what you need and we will tailor it to your brand.',
     filterAria: 'Filter by category',
     all: 'All',
@@ -105,7 +105,7 @@ const pages: Pages = {
   },
   about: {
     title: 'About Us',
-    description: `A website design and development studio from ${LOC}, Indonesia, founded in ${FOUNDED_YEAR}, with ${CLIENT_PROJECTS} client projects for small businesses, start-ups and personal brands.`,
+    description: `A web design studio in ${LOC}, Indonesia, founded in ${FOUNDED_YEAR}, with ${CLIENT_PROJECTS} client projects for small businesses, start-ups and personal brands.`,
     ogTitle: 'About PintuWeb',
     ogDescription: (n: number) => `Founded in ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} client projects and ${n} live demos you can try.`,
     eyebrow: 'About us',
@@ -121,8 +121,7 @@ const pages: Pages = {
     now: 'Today',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'PintuWeb is founded', body: `Starting out in ${LOC}, helping local small businesses that did not yet have a website.` },
-      { year: '2022', title: 'A focus on speed & SEO', body: 'Applying performance best practice, Lighthouse testing and SEO content structure to every project.' },
-      { year: 'Today', title: `${CLIENT_PROJECTS} client projects`, body: `Working with clients from many regions, with ${n} live demos across ${CATEGORY_COUNT} categories as proof of our work.` },
+      { year: 'Today', title: `${CLIENT_PROJECTS} client projects`, body: `Maintaining ${n} live demos across ${CATEGORY_COUNT} categories as proof of our work.` },
     ],
     founderTitle: 'Behind PintuWeb',
     beliefTitle: ['What we ', 'stand for'] as Hl,
@@ -133,7 +132,7 @@ const pages: Pages = {
     ],
     values: [
       { title: 'Collaborative', body: 'We listen to what you need and welcome feedback at every stage.' },
-      { title: 'Distinctive', body: 'Every website has its own identity, not a recycled template.' },
+      { title: 'Distinctive', body: 'Start from one of our demo designs, tailored to your identity, or get a bespoke design from scratch.' },
       { title: 'Honest', body: 'Transparent prices, realistic promises and deadlines we keep.' },
     ],
     whyTitle: 'Why choose PintuWeb?',
@@ -202,7 +201,6 @@ const pages: Pages = {
     journeyTitle: 'Journey',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Founded PintuWeb', body: 'Taught myself front-end & back-end development and started building websites for small businesses.' },
-      { year: '2022', title: 'A focus on UX & SEO', body: 'Applying performance best practice, Lighthouse testing and SEO content structure.' },
       { year: 'Today', title: `${CLIENT_PROJECTS} client projects`, body: `Working with small businesses, start-ups and personal brands, and maintaining ${n} live demos.` },
     ],
     skillsTitle: 'Core skills',
@@ -245,7 +243,7 @@ const pages: Pages = {
       { text: 'The final details of each project are in the written quote you approve.', to: '' },
       { text: 'A 50% deposit to start, and the remaining 50% once the website is finished and you have approved it.', to: 'pembayaran' },
       { text: `Bugs and technical issues are fixed free of charge for ${days} days after launch.`, to: 'garansi' },
-      { text: 'Once paid in full, the website becomes entirely yours.', to: 'kepemilikan' },
+      { text: 'Once paid in full, the website becomes entirely yours (exceptions apply to invitation themes and Website Design Concepts).', to: 'kepemilikan' },
     ],
   },
   articles: {
@@ -253,7 +251,7 @@ const pages: Pages = {
     description: 'Straightforward guides to getting a website in Indonesia: costs, domains & hosting, SEO, landing pages, online stores and how to choose a web developer.',
     eyebrow: 'Articles',
     h1: ['Website guides, ', 'without the fluff.'] as Hl,
-    lead: 'Written from building websites for small businesses since 2018. Prices always match our Pricing page, and every outside figure links to its source.',
+    lead: `Written from building websites for small businesses since ${FOUNDED_YEAR}. Prices always match our Pricing page, and every outside figure links to its source.`,
     read: (m: number) => `${m} min read`,
     by: 'By',
     published: 'Published',

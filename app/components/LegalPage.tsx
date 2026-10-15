@@ -98,7 +98,7 @@ export default function LegalPage({ lang, which }: { lang: Lang; which: 'privacy
 
             <div className="divide-y divide-[color:var(--border-light)] border-t border-[color:var(--border-light)]">
               {doc.sections.map((s, i) => (
-                <section key={s.id} id={s.id} aria-labelledby={`pasal-${s.id}`} className="group scroll-mt-28 px-6 py-7 sm:grid sm:grid-cols-[2.5rem_minmax(0,1fr)] sm:gap-x-5 sm:px-9 sm:py-9">
+                <section key={s.id} id={s.id} aria-labelledby={`pasal-${s.id}`} className="group scroll-mt-4 px-6 py-7 sm:grid sm:grid-cols-[2.5rem_minmax(0,1fr)] sm:gap-x-5 sm:px-9 sm:py-9">
                   {/* nomor pasal; menyala saat pasalnya dituju lewat tautan (#jangkar) */}
                   <span
                     className="mb-3 grid h-9 w-9 place-items-center rounded-full bg-[color:var(--primary-50)] text-[0.9375rem] font-semibold text-[color:var(--primary-700)] transition-colors group-target:bg-[color:var(--primary-700)] group-target:text-white sm:mb-0 sm:h-10 sm:w-10"

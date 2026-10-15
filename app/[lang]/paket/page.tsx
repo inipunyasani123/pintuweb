@@ -115,7 +115,7 @@ export default async function PaketPage({ params }: Params) {
       </section>
 
       {groups.map((g) => (
-        <section key={g.id} id={g.id} aria-labelledby={`grup-${g.id}`} className="scroll-mt-24 border-b border-[color:var(--rule)] py-14 sm:py-20">
+        <section key={g.id} id={g.id} aria-labelledby={`grup-${g.id}`} className="border-b border-[color:var(--rule)] py-14 sm:py-20">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-8 px-4 sm:px-6 lg:grid-cols-12">
             <div className="lg:col-span-3">
               <div className="lg:sticky lg:top-28">
@@ -131,7 +131,7 @@ export default async function PaketPage({ params }: Params) {
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-9">
               {g.cards.map((c) => (
                 // kartu yang dituju dari peta harga (#slug) diberi lingkar sorot
-                <div key={c.slug} id={c.slug} className="scroll-mt-28 rounded-[1.5rem] target:shadow-[0_0_0_4px_var(--primary-200)]">
+                <div key={c.slug} id={c.slug} className="scroll-mt-4 rounded-[1.5rem] target:shadow-[0_0_0_4px_var(--primary-200)]">
                   <PackageCard p={c} labels={labels} as="h3" />
                 </div>
               ))}

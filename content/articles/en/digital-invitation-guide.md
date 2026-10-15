@@ -1,7 +1,8 @@
 ---
 key: undangan
 title: Digital Invitation Guide: Must-Have Features, Privacy and Sharing Tips
-description: How to choose a digital invitation website for a wedding, family celebration, graduation, reunion or corporate event — the features that matter, how to protect privacy and how to share it on WhatsApp.
+seoTitle: Digital Invitation Guide: Features, Privacy, Tips
+description: How to choose a digital invitation website for a wedding, graduation or corporate event: the features that matter, privacy, and sharing it on WhatsApp.
 date: 2026-10-03
 updated: 2026-10-03
 tags: digital invitation, wedding invitation, events

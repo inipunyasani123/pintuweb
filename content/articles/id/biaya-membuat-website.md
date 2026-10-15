@@ -1,14 +1,15 @@
 ---
 key: biaya
 title: Biaya Membuat Website 2026: Rincian Harga dan Faktor yang Memengaruhinya
-description: Berapa biaya membuat website untuk UMKM di 2026? Rincian harga per jenis website, biaya tahun kedua yang sering terlupa, dan cara menghemat tanpa mengorbankan kualitas.
+seoTitle: Biaya Membuat Website 2026: Rincian Harga
+description: Biaya membuat website UMKM di 2026: rincian harga per jenis website, biaya tahun kedua yang sering terlupa, dan cara berhemat tanpa mengorbankan kualitas.
 date: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-15
 tags: biaya website, harga website, UMKM
 takeaways:
 - Di PintuWeb, website bisnis mulai {{from:landing-page}} (landing page), toko online lengkap {{price:toko-online-full}}, dan sistem seperti reservasi atau aplikasi web mulai {{from:sistem-reservasi}}; harga sudah termasuk desain, pengerjaan, domain & hosting tahun pertama, dan SEO dasar.
 - Proyek kecil seperti undangan digital ({{from:undangan-digital}}) dan link in bio ({{from:link-in-bio}}) juga punya harga tetap, bukan "tanya dulu".
-- Biaya berkala yang pasti ada hanya perpanjangan domain dan hosting, sekitar {{renewal}} per tahun mulai tahun kedua.
+- Biaya berkala dari kami hanya perpanjangan domain dan hosting, sekitar {{renewal}} per tahun mulai tahun kedua.
 - Harga terutama ditentukan oleh jumlah halaman, fitur (misalnya pembayaran online), dan seberapa custom desainnya.
 - Sebelum membandingkan harga, pastikan domain dan kode menjadi milik Anda serta ada garansi tertulis.
 ---
@@ -61,7 +62,7 @@ Daftar pertanyaan yang lebih lengkap ada di artikel [cara memilih jasa pembuatan
 - **Mulai dari yang paling dibutuhkan.** Banyak usaha cukup memulai dengan [landing page](/services/landing-page), lalu berkembang menjadi website lengkap. Kode dan desainnya bisa dipakai ulang.
 - **Siapkan konten sendiri.** Deskripsi usaha, daftar produk, dan foto asli mempersingkat pengerjaan dan biasanya lebih meyakinkan pelanggan.
 - **Tunda fitur yang belum mendesak.** Toko dengan pesanan sedikit bisa memakai katalog dengan pemesanan lewat WhatsApp lebih dulu, lalu naik ke pembayaran otomatis saat pesanan bertambah.
-- **Tanyakan diskon usaha baru.** Kami memberi potongan hingga 20% untuk bisnis yang berdiri kurang dari satu tahun.
+- **Tanyakan penawaran khusus.** Untuk proyek besar atau beberapa website sekaligus, harga bisa dibicarakan.
 
 ## Pertanyaan yang sering diajukan
 
@@ -71,7 +72,7 @@ Di PintuWeb, mulai {{from:landing-page}} untuk satu halaman promosi (landing pag
 
 ### Apakah ada biaya bulanan?
 
-Tidak ada biaya bulanan wajib. Biaya berkala hanya perpanjangan domain dan hosting per tahun mulai tahun kedua, sekitar {{renewal}}. Maintenance lanjutan bersifat pilihan.
+Tidak ada biaya bulanan wajib. Biaya berkala dari kami hanya perpanjangan domain dan hosting per tahun mulai tahun kedua, sekitar {{renewal}}. Maintenance lanjutan bersifat pilihan.
 
 ### Berapa lama website selesai dibuat?
 

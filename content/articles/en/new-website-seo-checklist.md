@@ -1,7 +1,8 @@
 ---
 key: seo-checklist
 title: New Website SEO Checklist: 20 Steps to Appear on Google and in AI Answers
-description: A practical SEO checklist for a new website — technical, content, local and registration with Google Search Console and Bing — including what actually matters for Google's AI Overviews.
+seoTitle: New Website SEO Checklist: 20 Steps for Google
+description: A practical SEO checklist for a new website: technical, content, local, Google Search Console and Bing setup, and what matters for Google's AI Overviews.
 date: 2026-10-03
 updated: 2026-10-03
 tags: SEO, new website, Google, AI search

@@ -56,7 +56,8 @@ const vars = (c: DemoCategory) => ({ '--k': CATEGORY_COLOR[c].color, '--k2': CAT
 
 // Galeri semua demo: pencarian, saringan kategori berwarna, spanduk kategori (harga + galeri khususnya),
 // dan kisi kartu. Kategori tercermin di hash URL (/demo#undangan) supaya halaman lain bisa menautkannya.
-export default function DemoGallery({ demos, cats, t, contactHref, pricingHref }: { demos: (Demo & { from?: string })[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string }) {
+// thumbSrcSet = pola srcset dengan {slug} (demoSrcSet di lib/demos.ts), supaya data demo tidak ikut ke bundel klien.
+export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, thumbSrcSet }: { demos: (Demo & { from?: string })[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string; thumbSrcSet: string }) {
   const catOf = useMemo(() => Object.fromEntries(cats.map((c) => [c.id, c])) as Record<DemoCategory, DemoCat>, [cats])
   const [filter, setFilterState] = useState<Filter>('semua')
   const [query, setQuery] = useState('')
@@ -239,10 +240,13 @@ export default function DemoGallery({ demos, cats, t, contactHref, pricingHref }
                         <span className="display text-base font-semibold text-white sm:text-lg">{title}</span>
                       </span>
                     ) : (
-                      // Thumbnail lokal yang sudah diperkecil (lib/demos.ts); tidak perlu optimizer Next.
+                      // Thumbnail lokal yang sudah diperkecil (lib/demos.ts) + varian 360w/480w; tidak perlu optimizer Next.
+                      // sizes = lebar gambar di kisi: 2 kolom (ponsel), 3 kolom (md/lg), 4 kolom (xl).
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={`/demos/${d.slug}.webp`}
+                        srcSet={fill(thumbSrcSet, { slug: d.slug })}
+                        sizes="(min-width: 1280px) 245px, (min-width: 1024px) calc(33vw - 45px), (min-width: 768px) calc(33vw - 40px), calc(50vw - 36px)"
                         alt={fill(t.imgAlt, { name: shared ? `${d.name} (${d.tagline})` : d.name })}
                         width={720}
                         height={378}
@@ -264,9 +268,8 @@ export default function DemoGallery({ demos, cats, t, contactHref, pricingHref }
                     {/* keterangan: di ponsel disembunyikan, kecuali untuk nama bersama (di sana ia nama mereknya) */}
                     {sub && <span className={`mt-1 leading-snug text-[color:var(--text-tertiary)] ${shared ? 'block text-[0.8125rem] sm:text-[0.875rem]' : 'hidden text-[0.875rem] sm:line-clamp-2'}`}>{sub}</span>}
                     <span className="mt-auto flex items-center justify-between gap-2 pt-2 text-[0.75rem] text-[color:var(--text-tertiary)] sm:pt-3 sm:text-[0.8125rem]">
-                      <span>
-                        {t.from} {d.from ?? catOf[d.category].from}
-                      </span>
+                      {/* demo bertanda noPrice (konsep tidak resmi) tampil tanpa harga */}
+                      <span>{!d.noPrice && <>{t.from} {d.from ?? catOf[d.category].from}</>}</span>
                       <ArrowUpRight size={15} className="arw-ne shrink-0 text-[color:var(--k)] transition-transform" aria-hidden="true" />
                     </span>
                     <span className="sr-only">{t.newTabShort}</span>

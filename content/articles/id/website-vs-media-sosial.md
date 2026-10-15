@@ -1,7 +1,8 @@
 ---
 key: website-vs-sosmed
 title: Website vs Media Sosial untuk UMKM: Kapan Instagram Saja Tidak Cukup
-description: Perbandingan website, media sosial, dan marketplace untuk UMKM dari sisi kendali, biaya, ditemukan di Google, dan data pelanggan — plus tanda kapan usaha Anda butuh website sendiri.
+seoTitle: Website vs Media Sosial untuk UMKM
+description: Website, media sosial, atau marketplace? Perbandingan untuk UMKM: kendali, biaya, visibilitas di Google, data pelanggan, dan tanda butuh website sendiri.
 date: 2026-10-03
 updated: 2026-10-03
 tags: website UMKM, media sosial, marketplace

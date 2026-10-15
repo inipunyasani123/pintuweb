@@ -1,7 +1,8 @@
 ---
 key: landing-vs-compro
 title: Landing Page vs Company Profile: Mana yang Dibutuhkan Usahamu?
-description: Perbedaan landing page dan website company profile dari tujuan, isi, biaya, dan waktu pengerjaan, lengkap dengan cara memilih dan kapan sebaiknya memakai keduanya.
+seoTitle: Landing Page vs Company Profile: Pilih yang Mana?
+description: Perbedaan landing page dan website company profile dari tujuan, isi, biaya, dan waktu pengerjaan, plus cara memilih dan kapan sebaiknya memakai keduanya.
 date: 2026-10-03
 updated: 2026-10-03
 tags: landing page, company profile, UMKM

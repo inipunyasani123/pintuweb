@@ -1,9 +1,10 @@
 ---
 key: pilih-jasa
 title: How to Choose a Web Developer: 12 Questions to Ask Before Paying a Deposit
-description: Twelve questions to assess a web design service before paying a deposit — domain and code ownership, year-two costs, guarantee, revisions, speed and support after launch.
+seoTitle: How to Choose a Web Developer: 12 Questions
+description: Twelve questions to ask a web design service before paying a deposit: domain and code ownership, year-two costs, guarantee, revisions, speed and support.
 date: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-15
 tags: web developer, tips, small business
 takeaways:
 - Make sure the domain, hosting and source code become yours once paid in full — the single most important question.
@@ -63,7 +64,7 @@ At minimum: page titles and descriptions, a sitemap, HTTPS, a heading structure 
 ## After launch
 
 **12. What does the guarantee cover, and how does support work?**
-Get it in writing: how many days, what is covered and how to report issues. *PintuWeb: a {{guarantee}}-day bug-fix guarantee, then 1–6 months of maintenance depending on the package.*
+Get it in writing: how many days, what is covered and how to report issues. *PintuWeb: a {{guarantee}}-day bug-fix guarantee, then maintenance as included in the package.*
 
 ## Red flags to watch for
 

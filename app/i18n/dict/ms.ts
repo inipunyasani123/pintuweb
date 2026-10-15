@@ -5,9 +5,9 @@ import type { Dict, Hl } from './id'
 
 const ms: Dict = {
   meta: {
-    homeTitle: 'PintuWeb — Perkhidmatan Membina Laman Web Profesional & Pantas',
+    homeTitle: 'PintuWeb — Membina Laman Web Profesional & Pantas',
     homeDescription: (n: number) =>
-      `Laman web profesional, pantas dan mesra SEO untuk PKS, syarikat pemula dan penjenamaan peribadi, dibina di Indonesia sejak ${FOUNDED_YEAR}. Harga telus dan ${n} demo langsung yang boleh dibuka sekarang.`,
+      `Laman web profesional, pantas dan mesra SEO untuk PKS, syarikat pemula dan jenama peribadi, dibina di Indonesia sejak ${FOUNDED_YEAR}. Harga telus, ${n} demo langsung.`,
     ogHomeDescription: (n: number) =>
       `Studio web di Trenggalek sejak ${FOUNDED_YEAR}. Laman web pantas dan sedia SEO untuk PKS, kedai dan jenama peribadi. Lihat ${n} demo langsung.`,
     ogAlt: 'PintuWeb — Perkhidmatan membina laman web profesional',
@@ -98,6 +98,7 @@ const ms: Dict = {
     title: ['Setiap perniagaan layak ada ', 'pintu depan', ' yang sewajarnya.'] as Hl,
     lead: (n: number) =>
       `Kami mereka bentuk dan membina laman web untuk PKS, kedai dan jenama peribadi: pantas dibuka di telefon, sedia ditemui di Google, dan milik anda sepenuhnya. ${CLIENT_PROJECTS} projek pelanggan telah siap, dan ${n} contoh karya boleh anda buka hari ini.`,
+    offer: (price: string, duration: string) => `Landing page bermula ${price}, siap dalam ${duration}. Bayar 50% dahulu, bakinya selepas kerja selesai.`,
     ctaConsult: 'Konsultasi percuma',
     ctaDemos: (n: number) => `Lihat ${n} contoh`,
     facade: 'Lapan jenis laman web yang kami bina',
@@ -181,7 +182,7 @@ const ms: Dict = {
     promises: [
       { fig: `${PACKAGES.length}`, unit: 'pakej', proof: 'Tertulis di halaman harga', title: 'Harga dinyatakan di awal', body: 'Julat harga setiap pakej ada di laman ini. Angka tepatnya tertulis dalam sebut harga sebelum kami bermula.' },
       { fig: '50%', unit: 'deposit', proof: 'Tertulis dalam soalan lazim', title: 'Bayar separuh dahulu', body: 'Deposit 50% untuk bermula. Bakinya dibayar selepas laman web siap dan anda luluskan.' },
-      { fig: '100%', unit: 'milik anda', proof: 'Tertulis dalam terma & syarat', title: 'Milik anda sepenuhnya', body: 'Selepas bayaran penuh, kod sumber, domain, hosting dan akses pentadbir diserahkan kepada anda.' },
+      { fig: '100%', unit: 'milik anda', proof: 'Tertulis dalam terma & syarat', title: 'Milik anda sepenuhnya', body: 'Untuk pakej laman web: selepas bayaran penuh, kod sumber, domain, hosting dan akses pentadbir diserahkan kepada anda.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Tertulis dalam soalan lazim', title: 'Pantas di telefon', body: `Setiap laman web kami optimumkan ke arah skor PageSpeed ${PERF_TARGET}. Itu sasaran kerja, bukan dakwaan purata.` },
       { fig: `${GUARANTEE_DAYS}`, unit: 'hari', proof: 'Tertulis dalam terma & syarat', title: `Jaminan ${GUARANTEE_DAYS} hari`, body: `Pepijat dibaiki percuma selama ${GUARANTEE_DAYS} hari selepas pelancaran, serta penyelenggaraan mengikut pakej.` },
       { fig: '24', unit: 'jam', proof: 'Tertulis dalam soalan lazim', title: 'Dibalas pada hari bekerja', body: `Mesej kami balas dalam 24 jam pada hari bekerja, Isnin–Sabtu, ${dotTime(OPENS)}–${dotTime(CLOSES)} WIB.` },
@@ -190,7 +191,7 @@ const ms: Dict = {
   pricing: {
     eyebrow: 'Harga',
     title: ['Harga dinyatakan di awal, ', 'bukan selepas anda bertanya', '.'] as Hl,
-    lead: 'Semua pakej sudah termasuk reka bentuk dan pembinaan; pakej laman web juga merangkumi SEO asas. Kos berkala hanyalah pembaharuan domain & hosting mulai tahun kedua.',
+    lead: 'Semua pakej sudah termasuk reka bentuk dan pembinaan; pakej laman web juga merangkumi SEO asas. Kos berkala daripada kami hanyalah pembaharuan domain & hosting mulai tahun kedua.',
     colPrice: 'Julat harga',
     colPackage: 'Pakej',
     openNote: 'Ekor bertitik bermaksud harganya boleh lebih, bergantung pada ciri.',
@@ -198,7 +199,7 @@ const ms: Dict = {
     depositTitle: 'Bayaran',
     depositBody: 'Deposit 50% untuk bermula; bakinya selepas laman web siap dan anda luluskan.',
     maintTitle: 'Selepas pelancaran',
-    maintBody: `Penyelenggaraan 1–6 bulan mengikut pakej, serta jaminan pembaikan pepijat ${GUARANTEE_DAYS} hari.`,
+    maintBody: `Penyelenggaraan mengikut pakej, serta jaminan pembaikan pepijat ${GUARANTEE_DAYS} hari.`,
   },
   pkg: {
     from: 'dari',

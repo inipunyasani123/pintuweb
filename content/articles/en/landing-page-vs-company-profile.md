@@ -1,6 +1,7 @@
 ---
 key: landing-vs-compro
 title: Landing Page vs Company Profile Website: Which Does Your Business Need?
+seoTitle: Landing Page vs Company Profile: Which to Choose?
 description: The difference between a landing page and a company profile website in purpose, content, cost and turnaround — and when to use both.
 date: 2026-10-03
 updated: 2026-10-03

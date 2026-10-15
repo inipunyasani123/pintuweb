@@ -1,5 +1,5 @@
 // Satu-satunya sumber fakta bisnis & kontak PintuWeb.
-// Angka yang tampil di situs (tahun berdiri, jumlah proyek, jam kerja, respon, target performa)
+// Angka yang tampil di situs (tahun berdiri, jumlah proyek, jam kerja, respons, target performa)
 // wajib diambil dari sini supaya halaman tidak pernah saling bertentangan lagi.
 
 /** Domain utama. Di Vercel, pintuweb.id (tanpa www) dan pintuweb-lac.vercel.app di-redirect 308 ke sini (setelan domain project). */
@@ -26,8 +26,8 @@ export const CLOSES = '19:00'
 /** "08.00" — penulisan jam gaya Indonesia/Melayu. */
 export const dotTime = (t: string) => t.replace(':', '.')
 export const HOURS = `Senin – Sabtu, ${dotTime(OPENS)} – ${dotTime(CLOSES)} WIB`
-/** Janji respon yang dipakai di semua halaman. */
-export const RESPONSE = 'Respon di hari kerja, maksimal 24 jam'
+/** Janji respons yang dipakai di semua halaman. */
+export const RESPONSE = 'Respons di hari kerja, maksimal 24 jam'
 
 /** Target, bukan klaim rata-rata: situs dioptimalkan untuk mencapai skor ini. */
 export const PERF_TARGET = '90+'

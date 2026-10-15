@@ -98,6 +98,7 @@ const zh: Dict = {
     title: ['每一门生意，都值得一扇像样的', '大门', '。'] as Hl,
     lead: (n: number) =>
       `我们为小微企业、店铺和个人品牌设计并搭建网站：在手机上打开很快，为出现在 Google 上做好准备，并且完全归您所有。已交付 ${CLIENT_PROJECTS} 个客户项目，另有 ${n} 个作品示例今天就能打开。`,
+    offer: (price: string, duration: string) => `落地页 ${price} 起，${duration}完成。先付 50%，完工后再付余款。`,
     ctaConsult: '免费咨询',
     ctaDemos: (n: number) => `查看 ${n} 个示例`,
     facade: '我们制作的八类网站',
@@ -181,7 +182,7 @@ const zh: Dict = {
     promises: [
       { fig: `${PACKAGES.length}`, unit: '个套餐', proof: '写在价格页面', title: '价格事先公开', body: '每个套餐的价格区间都写在本站。确切金额会在开工前写入书面报价。' },
       { fig: '50%', unit: '定金', proof: '写在常见问题中', title: '先付一半', body: '开工先付 50% 定金。余款在网站完成并经您确认后支付。' },
-      { fig: '100%', unit: '归您', proof: '写在条款中', title: '完全归您所有', body: '付清全款后，源代码、域名、主机和管理员权限都会交给您。' },
+      { fig: '100%', unit: '归您', proof: '写在条款中', title: '完全归您所有', body: '网站类套餐付清全款后，源代码、域名、主机和管理员权限都会交给您。' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: '写在常见问题中', title: '手机上很快', body: `我们优化每个网站，以 PageSpeed ${PERF_TARGET} 分为目标。这是工作目标，而非宣称的平均值。` },
       { fig: `${GUARANTEE_DAYS}`, unit: '天', proof: '写在条款中', title: `${GUARANTEE_DAYS} 天质保`, body: `上线后 ${GUARANTEE_DAYS} 天内免费修复错误，另含套餐附带的维护。` },
       { fig: '24', unit: '小时', proof: '写在常见问题中', title: '工作日回复', body: `工作日（周一至周六，${OPENS} 至 ${CLOSES} WIB）24 小时内回复。` },
@@ -190,7 +191,7 @@ const zh: Dict = {
   pricing: {
     eyebrow: '价格',
     title: ['价格事先写明，', '而不是问了才说', '。'] as Hl,
-    lead: '所有套餐都包含设计和开发；网站类套餐还包含基础 SEO。唯一的周期性费用是从第二年起的域名和主机续费。',
+    lead: '所有套餐都包含设计和开发；网站类套餐还包含基础 SEO。我们收取的唯一周期性费用是从第二年起的域名和主机续费。',
     colPrice: '价格区间',
     colPackage: '套餐',
     openNote: '虚线尾部表示价格可能更高，视功能而定。',
@@ -198,7 +199,7 @@ const zh: Dict = {
     depositTitle: '付款',
     depositBody: '开工先付 50% 定金；余款在网站完成并经您确认后支付。',
     maintTitle: '上线之后',
-    maintBody: `按套餐提供 1 至 6 个月的维护，另有 ${GUARANTEE_DAYS} 天的错误修复质保。`,
+    maintBody: `按套餐内容提供维护，另有 ${GUARANTEE_DAYS} 天的错误修复质保。`,
   },
   pkg: {
     from: '起价',

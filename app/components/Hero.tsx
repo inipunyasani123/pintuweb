@@ -20,6 +20,10 @@ export default function Hero({ lang }: { lang: Lang }) {
   const g = d.portfolio
   const pk = packagesFor(lang)
   const fromOf = (c: DemoCategory) => pk.find((x) => x.slug === PACKAGE_FOR_CATEGORY[c])!.priceFrom
+  // Baris penawaran di bawah paragraf pembuka: harga mulai & durasi paket Landing Page (lib/packages.ts), sudah
+  // dalam bahasa pengunjung. "IDR" tidak boleh terpisah baris dari angkanya, rentang "1\u20132" juga tidak (word joiner).
+  const landing = pk.find((x) => x.slug === 'landing-page')!
+  const offer = t.offer(landing.priceFrom.replace('IDR ', 'IDR\u00a0'), landing.duration.replace(/\u2013/g, '\u2060\u2013\u2060'))
   // String siap tampil untuk komponen klien (kamus tidak ikut terkirim ke browser)
   const kinds: Kind[] = PORTALS.map((p) => {
     const gal = g.galleries[p.category]
@@ -57,6 +61,7 @@ export default function Hero({ lang }: { lang: Lang }) {
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-[color:var(--text-tertiary)] sm:text-[1.1875rem] md:text-[1.0625rem] lg:text-[1.1875rem]">{t.lead(DEMOS.length)}</p>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[color:var(--text-secondary)]">{offer}</p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a href={wa(d.header.waText)} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
@@ -75,7 +80,9 @@ export default function Hero({ lang }: { lang: Lang }) {
             - tablet & desktop: sepertiga kiri gambar kosong, jadi gambar menempel di kanan dan tepi
               kiri/atas/bawahnya melebur ke latar putih (lapisan pudar dilebihkan 2px supaya tidak ada garis). */}
         <div className="absolute right-0 top-0 -z-10 aspect-[3/2] w-[185%] sm:w-[130%] md:top-1/2 md:w-[58%] md:-translate-y-[46%] lg:w-[66%] xl:w-[63%]">
-          <Image src="/images/bgutama.png" alt={t.artAlt} fill priority sizes="(min-width: 1280px) 63vw, (min-width: 1024px) 66vw, (min-width: 768px) 58vw, 120vw" className="object-cover" />
+          {/* sizes di bawah 768px sengaja kecil (270px, bukan lebar tampilnya): di ponsel gambar tertutup tabir putih
+              72–98%, jadi varian 640w/828w sudah cukup dan LCP ponsel tidak menunggu berkas 1080w/1920w. */}
+          <Image src="/images/bgutama.png" alt={t.artAlt} fill priority fetchPriority="high" sizes="(min-width: 1280px) 63vw, (min-width: 1024px) 66vw, (min-width: 768px) 58vw, 270px" className="object-cover" />
           <span className="hero-veil absolute -inset-0.5 md:hidden" aria-hidden="true" />
           <span className="absolute -inset-y-0.5 -left-0.5 hidden w-[46%] [background-image:linear-gradient(to_right,#fff_0%,#fff_55%,rgb(255_255_255/0)_100%)] md:block" aria-hidden="true" />
           <span className="absolute -inset-x-0.5 -top-0.5 hidden h-[18%] [background-image:linear-gradient(to_bottom,#fff_0%,#fff_25%,rgb(255_255_255/0)_100%)] md:block" aria-hidden="true" />

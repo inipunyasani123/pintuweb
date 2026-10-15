@@ -1,7 +1,8 @@
 ---
 key: domain-hosting
 title: Domain dan Hosting untuk Pemula: Bedanya, Jenis Domain .id, dan Biayanya
-description: Penjelasan sederhana domain dan hosting untuk pemilik usaha — apa bedanya, cara keduanya terhubung, jenis domain Indonesia (.co.id, .biz.id, .my.id), dan biaya perpanjangannya.
+seoTitle: Domain dan Hosting untuk Pemula: Beda & Biayanya
+description: Domain dan hosting dijelaskan sederhana untuk pemilik usaha: bedanya, cara terhubung, jenis domain .id (.co.id, .biz.id, .my.id), dan biaya perpanjangan.
 date: 2026-10-03
 updated: 2026-10-03
 tags: domain, hosting, pemula

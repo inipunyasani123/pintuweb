@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import PageHero from '../../components/PageHero'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { SERVICES, serviceText } from '../../content/services'
@@ -9,7 +9,6 @@ import { serviceFrom } from '../../content/service-utils'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
 import { hasPage, path, pathOf, urlOf } from '../../i18n/routes'
 import { ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
-import { wa } from '../../lib/site'
 
 type Params = { params: Promise<{ lang: string }> }
 
@@ -106,7 +105,8 @@ export default async function ServicesPage({ params }: Params) {
               <HlText parts={p.compareTitle} />
             </h2>
           </div>
-          <div className="table-wrap mt-10" role="region" tabIndex={0} aria-labelledby="compare-title">
+          {/* nama wilayah gulir = keterangan tabel, bukan judul bagian (dua landmark tidak boleh bernama sama) */}
+          <div className="table-wrap mt-10" role="region" tabIndex={0} aria-label={p.compareCaption}>
             <table className="w-full min-w-[40rem] text-left">
               <caption className="sr-only">{p.compareCaption}</caption>
               <thead>
@@ -143,18 +143,8 @@ export default async function ServicesPage({ params }: Params) {
         </div>
       </section>
 
-      <section className="bg-[color:var(--primary-700)] py-16 text-white sm:py-20">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <h2 className="text-[2.2rem] leading-[1.08] sm:text-5xl">{p.ctaTitle}</h2>
-            <p className="mt-4 text-lg text-white/85">{p.ctaLead}</p>
-          </div>
-          <a href={wa(p.ctaWa)} target="_blank" rel="noopener noreferrer" className="btn btn-white shrink-0">
-            {d.common.consultFree} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
-          </a>
-        </div>
-      </section>
-
+      {/* Tanpa pita ajakan sendiri: ajakan penutup footer yang langsung menyusul membawa pesan & tombol yang sama
+          (konsultasi WhatsApp gratis). */}
       <JsonLd
         data={pageGraph({
           lang,

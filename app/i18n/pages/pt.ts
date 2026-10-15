@@ -12,7 +12,7 @@ const pages: Pages = {
   ...en,
   services: {
     title: 'Serviços de criação e desenvolvimento de sites',
-    description: 'Landing pages, sites institucionais, lojas online, portfólios, convites digitais, páginas link in bio e sites sob medida da PintuWeb, com preços iniciais, prazos de entrega e demos no ar.',
+    description: 'Landing pages, sites institucionais, lojas online, portfólios, convites digitais, páginas link in bio e sites sob medida, com preços e demos no ar.',
     ogTitle: 'Serviços — PintuWeb',
     ogDescription: 'De landing pages a lojas online e sites sob medida, com preços iniciais e demos que você pode testar.',
     eyebrow: 'Serviços',
@@ -26,7 +26,7 @@ const pages: Pages = {
     includedTitle: 'Sempre incluído',
     included: [
       { title: 'SEO desde o primeiro dia', body: `Meta tags, sitemap, dados estruturados e uma meta de pontuação PageSpeed de ${PERF_TARGET} fazem parte de todo pacote de site.` },
-      { title: 'Garantia e manutenção', body: `Correção gratuita de erros por ${GUARANTEE_DAYS} dias após o lançamento e, depois, de 1 a 6 meses de manutenção, conforme o pacote.` },
+      { title: 'Garantia e manutenção', body: `Correção gratuita de erros por ${GUARANTEE_DAYS} dias após o lançamento e, depois, a manutenção que o pacote inclui.` },
     ],
     compareTitle: ['Compare ', 'todos os serviços'] as Hl,
     compareCaption: 'Comparação dos serviços da PintuWeb: para quem são indicados, preço inicial e prazo',
@@ -63,7 +63,7 @@ const pages: Pages = {
   },
   glossary: {
     title: 'Glossário de sites para iniciantes',
-    description: 'Definições em linguagem simples dos termos que você encontra ao encomendar ou manter um site — domínio, hospedagem, SSL, SEO, CMS, landing page e muito mais.',
+    description: 'Definições simples dos termos que você encontra ao encomendar ou manter um site: domínio, hospedagem, SSL, SEO, CMS, landing page e muito mais.',
     eyebrow: 'Glossário',
     h1: ['', 'Glossário', ' de sites'] as Hl,
     lead: 'Os termos que aparecem ao encomendar ou gerenciar um site, explicados de forma breve e sem jargão.',
@@ -85,7 +85,7 @@ const pages: Pages = {
   },
   pricing: {
     title: 'Pacotes e preços de sites',
-    description: (min: string, n: number) => `${n} pacotes da PintuWeb a partir de ${min}: convites digitais, link in bio, landing pages, sites para pequenas empresas, lojas online, sistemas de reserva, sites imobiliários, aplicativos web e sites sob medida. Sinal de 50%, garantia de ${GUARANTEE_DAYS} dias.`,
+    description: (min: string, n: number) => `${n} pacotes a partir de ${min}: convites, landing pages, sites institucionais, lojas online e sites sob medida. Sinal de 50%, garantia de ${GUARANTEE_DAYS} dias.`,
     ogTitle: 'Pacotes e preços — PintuWeb',
     ogDescription: (min: string) => `Pacotes de site a partir de ${min}. Preços transparentes, sinal de 50% e o restante quando você aprovar o site.`,
     eyebrow: 'Preços transparentes',
@@ -114,12 +114,12 @@ const pages: Pages = {
     updated: 'Preços válidos em',
   },
   demo: {
-    title: (n: number) => `Galeria de demos — ${n} sites reais`,
-    description: (n: number) => `Teste ${n} sites criados pela PintuWeb: landing pages, convites digitais, páginas link in bio, portfólios, reservas online, marketplaces imobiliários e muito mais.`,
-    ogTitle: (n: number) => `Galeria de demos da PintuWeb — ${n} sites reais`,
+    title: (n: number) => `Galeria de demos — ${n} sites para testar`,
+    description: (n: number) => `Teste ${n} sites criados pela PintuWeb: landing pages, convites digitais, link in bio, portfólios, reservas online, marketplaces imobiliários e muito mais.`,
+    ogTitle: (n: number) => `Galeria de demos da PintuWeb — ${n} sites para testar`,
     ogDescription: 'Todas as demos estão no ar e podem ser abertas agora mesmo. Escolha um estilo de que você goste e nós o adaptamos à sua marca.',
     badge: 'Galeria de demos',
-    h1: (n: number) => [`${n} sites reais. `, 'Vá em frente, teste.'] as Hl,
+    h1: (n: number) => [`${n} sites de demonstração. `, 'Vá em frente, teste.'] as Hl,
     lead: 'Tudo o que está abaixo está no ar e pode ser aberto agora mesmo; nada é mockup. Escolha o que mais se aproxima do que você precisa e nós o adaptamos à sua marca.',
     filterAria: 'Filtrar por categoria',
     all: 'Todas',
@@ -154,7 +154,7 @@ const pages: Pages = {
   },
   about: {
     title: 'Sobre nós',
-    description: `Um estúdio de criação de sites de ${LOC}, Indonésia, fundado em ${FOUNDED_YEAR}, com ${CLIENT_PROJECTS} projetos de clientes para pequenas empresas, startups e marcas pessoais.`,
+    description: `Estúdio de criação de sites em ${LOC}, Indonésia, fundado em ${FOUNDED_YEAR}, com ${CLIENT_PROJECTS} projetos para pequenas empresas e marcas pessoais.`,
     ogTitle: 'Sobre a PintuWeb',
     ogDescription: (n: number) => `Fundada em ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} projetos de clientes e ${n} demos no ar para você testar.`,
     eyebrow: 'Sobre nós',
@@ -170,8 +170,7 @@ const pages: Pages = {
     now: 'Hoje',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Nasce a PintuWeb', body: `Começamos em ${LOC}, ajudando pequenos negócios locais que ainda não tinham site.` },
-      { year: '2022', title: 'Foco em velocidade e SEO', body: 'Aplicamos boas práticas de desempenho, testes com o Lighthouse e estrutura de conteúdo para SEO em cada projeto.' },
-      { year: 'Hoje', title: `${CLIENT_PROJECTS} projetos de clientes`, body: `Trabalhamos com clientes de várias regiões, com ${n} demos no ar em ${CATEGORY_COUNT} categorias como prova do nosso trabalho.` },
+      { year: 'Hoje', title: `${CLIENT_PROJECTS} projetos de clientes`, body: `Mantemos ${n} demos no ar em ${CATEGORY_COUNT} categorias como prova do nosso trabalho.` },
     ],
     founderTitle: 'Por trás da PintuWeb',
     beliefTitle: ['O que ', 'defendemos'] as Hl,
@@ -182,7 +181,7 @@ const pages: Pages = {
     ],
     values: [
       { title: 'Colaborativos', body: 'Ouvimos o que você precisa e recebemos bem o seu retorno em cada etapa.' },
-      { title: 'Com personalidade', body: 'Cada site tem identidade própria, não um modelo reciclado.' },
+      { title: 'Com personalidade', body: 'Comece por um dos nossos designs de demonstração, adaptado à sua identidade, ou peça um design sob medida do zero.' },
       { title: 'Honestos', body: 'Preços transparentes, promessas realistas e prazos que cumprimos.' },
     ],
     whyTitle: 'Por que escolher a PintuWeb?',
@@ -251,7 +250,6 @@ const pages: Pages = {
     journeyTitle: 'Trajetória',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Fundação da PintuWeb', body: 'Aprendi desenvolvimento front-end e back-end por conta própria e comecei a construir sites para pequenos negócios.' },
-      { year: '2022', title: 'Foco em UX e SEO', body: 'Aplicação de boas práticas de desempenho, testes com o Lighthouse e estrutura de conteúdo para SEO.' },
       { year: 'Hoje', title: `${CLIENT_PROJECTS} projetos de clientes`, body: `Trabalho com pequenas empresas, startups e marcas pessoais, e mantenho ${n} demos no ar.` },
     ],
     skillsTitle: 'Principais habilidades',

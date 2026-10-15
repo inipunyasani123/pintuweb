@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { ArrowRight, ArrowUp, ArrowUpRight } from 'lucide-react'
+import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { EMAIL, WA_DISPLAY, WA_NUMBER, wa } from '../lib/site'
+import { DEMOS } from '../lib/demos'
 import { PORTALS } from '../lib/portals'
 import { getDict } from '../i18n'
 import { facts } from '../i18n/facts'
@@ -8,6 +9,7 @@ import { LANGS, LANG_INFO, type Lang } from '../i18n/config'
 import { hasPage, path, pathOf } from '../i18n/routes'
 import { SERVICES, serviceText } from '../content/services'
 import { HlText } from './Bits'
+import FooterAction from './FooterAction'
 import { Logo, LogoMark } from './Logo'
 
 // Footer = ajakan penutup + kontak + peta tautan internal (semua layanan, galeri, sumber daya, halaman perusahaan).
@@ -66,14 +68,16 @@ export default function Footer({ lang }: { lang: Lang }) {
               <HlText parts={t.footer.title} mode="italic" tone="accent" />
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/75">{t.footer.lead(f.response)}</p>
-            <Link href={path(lang, 'pricing')} className="btn btn-ghost-dark mt-9">
-              {t.footer.seePackages} <ArrowRight size={17} className="arw" aria-hidden="true" />
-            </Link>
+            <FooterAction
+              pricing={{ href: path(lang, 'pricing'), label: t.footer.seePackages }}
+              demos={{ href: path(lang, 'demo'), label: t.portfolio.allDemos(DEMOS.length) }}
+            />
           </div>
 
-          {/* Kartu obrolan: tiap gelembung biru adalah pesan pembuka yang langsung membuka WhatsApp */}
+          {/* Kartu obrolan: tiap gelembung biru adalah pesan pembuka yang langsung membuka WhatsApp.
+              data-light: kartu terang di footer gelap, cincin fokusnya tetap biru (globals.css). */}
           <div className="lg:col-span-5">
-            <div className="max-w-md rounded-[1.75rem] bg-white p-3 text-[color:var(--text-primary)] shadow-[0_40px_70px_-40px_rgb(0_0_0/0.75)] sm:p-4">
+            <div data-light className="max-w-md rounded-[1.75rem] bg-white p-3 text-[color:var(--text-primary)] shadow-[0_40px_70px_-40px_rgb(0_0_0/0.75)] sm:p-4">
               <div className="flex items-center gap-3 px-2 pb-3 pt-1">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[color:var(--primary-50)] ring-1 ring-[color:var(--border-light)]" aria-hidden="true">
                   <LogoMark className="h-5 w-auto" />
@@ -144,14 +148,16 @@ export default function Footer({ lang }: { lang: Lang }) {
           {cols.map((c) => (
             <div key={c.title}>
               <p className="kicker text-[color:var(--accent-200)]">{c.title}</p>
-              <ul className="mt-4 space-y-2.5">
+              {/* tautan block + py-1.5 (bidang sentuh ±34px, bukan 18px); jarak antarbaris diambil dari bantalan itu,
+                  jadi susunannya tetap seperti sebelumnya */}
+              <ul className="mt-2.5">
                 {c.links.map((l) => (
                   <li key={l.href}>
                     {l.zone ? (
                       // Portal = zona Next terpisah: tautan biasa, bukan navigasi klien.
-                      <a href={l.href} className="text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</a>
+                      <a href={l.href} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</a>
                     ) : (
-                      <Link href={l.href} prefetch={false} className="text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</Link>
+                      <Link href={l.href} prefetch={false} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</Link>
                     )}
                   </li>
                 ))}

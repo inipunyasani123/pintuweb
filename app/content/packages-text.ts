@@ -24,7 +24,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
     'standar-umkm': {
       title: 'Small Business Standard',
       badge: 'Business',
-      subtitle: 'The most popular choice for businesses',
+      subtitle: 'A 3–5 page website for your business',
       highlights: ['Company profile', 'Services', 'Small businesses'],
       features: [
         '3–5 complete pages (Home, About, Services, Blog, Contact)',
@@ -220,7 +220,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
     'standar-umkm': {
       title: 'Standard PKS',
       badge: 'Perniagaan',
-      subtitle: 'Pilihan paling popular untuk perniagaan',
+      subtitle: 'Laman web 3–5 halaman untuk perniagaan anda',
       highlights: ['Profil syarikat', 'Perkhidmatan', 'PKS'],
       features: [
         '3–5 halaman lengkap (Utama, Profil, Perkhidmatan, Blog, Hubungi)',

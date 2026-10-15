@@ -9,7 +9,7 @@ import { ARTICLE_LANGS } from '../../i18n/config'
 import { getDict, getPages, isLang, LANG_INFO, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
 import type { ArticleKey } from '../../i18n/slugs'
-import { FOUNDER_ID, ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
+import { FOUNDER_PERSON, ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
 
 type Params = { params: Promise<{ lang: string }> }
 
@@ -49,9 +49,10 @@ export default async function ArticlesPage({ params }: Params) {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="kicker text-[color:var(--primary-700)]">{p.startHere}</h2>
           <ul className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6">
-            {lead.map((a) => (
+            {lead.map((a, i) => (
               <li key={a.key}>
-                <ArticleCard lang={lang} a={a} read={p.read(a.minutes)} variant="lead" />
+                {/* sampul kartu pertama = elemen LCP halaman ini: jangan ditunda (lazy) */}
+                <ArticleCard lang={lang} a={a} read={p.read(a.minutes)} variant="lead" priority={i === 0} />
               </li>
             ))}
           </ul>
@@ -96,7 +97,7 @@ export default async function ArticlesPage({ params }: Params) {
                 url: urlOf(lang, { key: 'articles', article: a.key }),
                 datePublished: a.date,
                 dateModified: a.updated,
-                author: { '@id': FOUNDER_ID },
+                author: FOUNDER_PERSON,
               })),
             },
           ],

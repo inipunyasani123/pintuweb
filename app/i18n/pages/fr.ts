@@ -12,7 +12,7 @@ const pages: Pages = {
   ...en,
   services: {
     title: 'Services de conception et de développement web',
-    description: 'Landing pages, sites vitrines, boutiques en ligne, portfolios, invitations numériques, pages link in bio et sites sur mesure par PintuWeb, avec prix de départ, délais de réalisation et démos en ligne.',
+    description: 'Landing pages, sites vitrines, boutiques en ligne, portfolios, invitations numériques, pages link in bio et sites sur mesure, avec tarifs et démos.',
     ogTitle: 'Services — PintuWeb',
     ogDescription: 'Des landing pages aux boutiques en ligne et aux sites sur mesure, avec prix de départ et démos à essayer.',
     eyebrow: 'Services',
@@ -26,7 +26,7 @@ const pages: Pages = {
     includedTitle: 'Toujours inclus',
     included: [
       { title: 'Le SEO dès le premier jour', body: `Balises meta, sitemap, données structurées et un objectif de score PageSpeed de ${PERF_TARGET} font partie de chaque formule de site web.` },
-      { title: 'Garantie et maintenance', body: `Bugs corrigés gratuitement pendant ${GUARANTEE_DAYS} jours après la mise en ligne, puis 1 à 6 mois de maintenance selon la formule.` },
+      { title: 'Garantie et maintenance', body: `Bugs corrigés gratuitement pendant ${GUARANTEE_DAYS} jours après la mise en ligne, puis la maintenance prévue par la formule.` },
     ],
     compareTitle: ['Comparer ', 'tous les services'] as Hl,
     compareCaption: 'Comparatif des services PintuWeb : pour qui, prix de départ et délai',
@@ -40,7 +40,7 @@ const pages: Pages = {
   },
   pricing: {
     title: 'Formules et tarifs de sites web',
-    description: (min: string, n: number) => `${n} formules PintuWeb à partir de ${min} : invitations numériques, link in bio, landing pages, sites pour petites entreprises, boutiques en ligne, systèmes de réservation, sites immobiliers, applications web et sites sur mesure. Acompte de 50 %, garantie de ${GUARANTEE_DAYS} jours.`,
+    description: (min: string, n: number) => `${n} formules de site web dès ${min} : invitations, landing pages, sites vitrines, boutiques et sites sur mesure. Acompte de 50 %, garantie ${GUARANTEE_DAYS} jours.`,
     ogTitle: 'Formules et tarifs — PintuWeb',
     ogDescription: (min: string) => `Des formules de site web à partir de ${min}. Tarifs transparents, acompte de 50 % et solde une fois le site validé.`,
     eyebrow: 'Tarifs transparents',
@@ -69,12 +69,12 @@ const pages: Pages = {
     updated: 'Tarifs en vigueur au',
   },
   demo: {
-    title: (n: number) => `Galerie de démos — ${n} vrais sites web`,
-    description: (n: number) => `Essayez ${n} sites web réalisés par PintuWeb : landing pages, invitations numériques, pages link in bio, portfolios, réservation en ligne, places de marché immobilières et plus encore.`,
-    ogTitle: (n: number) => `Galerie de démos PintuWeb — ${n} vrais sites web`,
+    title: (n: number) => `Galerie de démos — ${n} sites à essayer`,
+    description: (n: number) => `Essayez ${n} sites réalisés par PintuWeb : landing pages, invitations numériques, link in bio, portfolios, réservation en ligne, immobilier et plus encore.`,
+    ogTitle: (n: number) => `Galerie de démos PintuWeb — ${n} sites à essayer`,
     ogDescription: 'Chaque démo est en ligne et peut être ouverte dès maintenant. Choisissez un style qui vous plaît et nous l’adapterons à votre marque.',
     badge: 'Galerie de démos',
-    h1: (n: number) => [`${n} vrais sites web. `, 'Allez-y, essayez-les.'] as Hl,
+    h1: (n: number) => [`${n} sites de démonstration. `, 'Allez-y, essayez-les.'] as Hl,
     lead: 'Tout ce qui suit est en ligne et peut être ouvert dès maintenant ; rien n’est une maquette. Choisissez celui qui se rapproche le plus de votre besoin et nous l’adapterons à votre marque.',
     filterAria: 'Filtrer par catégorie',
     all: 'Toutes',
@@ -109,7 +109,7 @@ const pages: Pages = {
   },
   about: {
     title: 'À propos',
-    description: `Un studio de création de sites web de ${LOC}, en Indonésie, fondé en ${FOUNDED_YEAR}, avec ${CLIENT_PROJECTS} projets clients pour des petites entreprises, des start-up et des marques personnelles.`,
+    description: `Studio de création web à ${LOC}, Indonésie, fondé en ${FOUNDED_YEAR} : ${CLIENT_PROJECTS} projets clients pour petites entreprises et marques personnelles.`,
     ogTitle: 'À propos de PintuWeb',
     ogDescription: (n: number) => `Fondé en ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} projets clients et ${n} démos en ligne à essayer.`,
     eyebrow: 'À propos',
@@ -125,8 +125,7 @@ const pages: Pages = {
     now: 'Aujourd’hui',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Création de PintuWeb', body: `Des débuts à ${LOC}, pour aider les petites entreprises locales qui n’avaient pas encore de site web.` },
-      { year: '2022', title: 'Priorité à la vitesse et au SEO', body: 'Bonnes pratiques de performance, tests Lighthouse et structure de contenu SEO appliqués à chaque projet.' },
-      { year: 'Aujourd’hui', title: `${CLIENT_PROJECTS} projets clients`, body: `Nous travaillons avec des clients de nombreuses régions, avec ${n} démos en ligne dans ${CATEGORY_COUNT} catégories comme preuve de notre travail.` },
+      { year: 'Aujourd’hui', title: `${CLIENT_PROJECTS} projets clients`, body: `Nous entretenons ${n} démos en ligne dans ${CATEGORY_COUNT} catégories comme preuve de notre travail.` },
     ],
     founderTitle: 'Derrière PintuWeb',
     beliefTitle: ['Ce à quoi ', 'nous tenons'] as Hl,
@@ -137,7 +136,7 @@ const pages: Pages = {
     ],
     values: [
       { title: 'À l’écoute', body: 'Nous écoutons vos besoins et accueillons vos retours à chaque étape.' },
-      { title: 'Du caractère', body: 'Chaque site a sa propre identité, pas un modèle recyclé.' },
+      { title: 'Du caractère', body: 'Partez de l’un de nos designs de démonstration, adapté à votre identité, ou d’un design sur mesure créé de zéro.' },
       { title: 'Honnêtes', body: 'Des prix transparents, des promesses réalistes et des délais tenus.' },
     ],
     whyTitle: 'Pourquoi choisir PintuWeb ?',
@@ -153,8 +152,8 @@ const pages: Pages = {
     ctaDemos: (n: number) => `Voir ${n} démos`,
   },
   contact: {
-    title: 'Contact — Consultation gratuite pour votre site web',
-    description: 'Contactez PintuWeb pour une consultation gratuite sur votre site web. Envoyez vos besoins par WhatsApp ou par e-mail et nous répondons pendant les heures d’ouverture.',
+    title: 'Contact — Consultation gratuite pour votre site',
+    description: 'Contactez PintuWeb pour une consultation gratuite sur votre site web. Envoyez vos besoins par WhatsApp ou e-mail, nous répondons aux heures d’ouverture.',
     ogTitle: 'Contacter PintuWeb — Consultation gratuite',
     ogDescription: 'Dites-nous de quel site web vous avez besoin. Envoyez-le par WhatsApp ou par e-mail.',
     pageName: 'Contact PintuWeb',
@@ -206,7 +205,6 @@ const pages: Pages = {
     journeyTitle: 'Parcours',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Création de PintuWeb', body: 'J’ai appris le développement front-end et back-end en autodidacte et commencé à créer des sites pour de petites entreprises.' },
-      { year: '2022', title: 'Priorité à l’UX et au SEO', body: 'Application des bonnes pratiques de performance, des tests Lighthouse et d’une structure de contenu SEO.' },
       { year: 'Aujourd’hui', title: `${CLIENT_PROJECTS} projets clients`, body: `Je travaille avec des petites entreprises, des start-up et des marques personnelles, et j’entretiens ${n} démos en ligne.` },
     ],
     skillsTitle: 'Compétences principales',
@@ -231,7 +229,7 @@ const pages: Pages = {
   },
   glossary: {
     title: 'Glossaire du site web pour débutants',
-    description: 'Des définitions en langage simple des termes que vous rencontrez en commandant ou en gérant un site web — domaine, hébergement, SSL, SEO, CMS, landing page et plus encore.',
+    description: 'Définitions simples des termes rencontrés en commandant ou en gérant un site web : domaine, hébergement, SSL, SEO, CMS, landing page et plus encore.',
     eyebrow: 'Glossaire',
     h1: ['Glossaire ', 'du site web'] as Hl,
     lead: 'Les termes qui reviennent quand on commande ou gère un site web, expliqués brièvement et sans jargon.',

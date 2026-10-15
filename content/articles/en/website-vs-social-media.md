@@ -1,7 +1,8 @@
 ---
 key: website-vs-sosmed
 title: Website vs Social Media for Small Businesses: When Instagram Is Not Enough
-description: Website, social media and marketplaces compared for small businesses — control, cost, Google visibility and customer data — plus the signs your business needs its own website.
+seoTitle: Website vs Social Media for Small Businesses
+description: Website, social media and marketplaces compared for small businesses: control, cost, Google visibility, customer data and when you need your own site.
 date: 2026-10-03
 updated: 2026-10-03
 tags: small business website, social media, marketplace

@@ -1,11 +1,13 @@
 // Halaman layanan khusus (7 layanan × 3 bahasa dasar; 8 bahasa tambahan di i18n/x/more/). Harga & durasi TIDAK ditulis di sini:
 // tabel harga dirakit dari lib/packages.ts lewat `packages`. Layanan tanpa paket (undangan, link in bio)
-// sengaja tanpa angka — harganya dikonfirmasi lewat WhatsApp.
+// sengaja tanpa angka — harganya dikonfirmasi lewat WhatsApp. Jumlah demo juga tidak ditulis: pakai penanda
+// {{demos:kategori}} (diisi fillFacts dari lib/demos.ts), sama di 11 bahasa.
 import { isBase, type BaseLang, type Lang } from '../i18n/config'
 import type { Hl } from '../i18n/dict/id'
 import type { ArticleKey, ServiceKey } from '../i18n/slugs'
 import type { DemoCategory } from '../lib/demos'
 import { more } from '../i18n/x/more'
+import { fillFacts } from '../i18n/facts'
 
 export type ServiceText = {
   name: string
@@ -41,7 +43,7 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Landing Page',
         title: 'Jasa Pembuatan Landing Page',
-        description: 'Jasa pembuatan landing page yang cepat dan fokus konversi untuk promosi produk, event, webinar, dan iklan. Harga transparan, selesai dalam hitungan hari kerja, dengan 17 contoh yang bisa dicoba.',
+        description: 'Jasa pembuatan landing page cepat dan fokus konversi untuk promosi, event, dan iklan. Harga transparan, selesai dalam hitungan hari. Coba {{demos:landing}} contohnya.',
         h1: ['Jasa pembuatan ', 'landing page', ' yang mengubah pengunjung jadi pembeli.'],
         lead: 'Landing page adalah satu halaman web yang dibuat untuk satu tujuan: membuat pengunjung melakukan satu tindakan, misalnya membeli, mendaftar webinar, atau menghubungi lewat WhatsApp. Karena hanya satu halaman, landing page cepat dibuat dan cocok sebagai tujuan iklan.',
         intro: [
@@ -52,16 +54,16 @@ export const SERVICES: Service[] = [
         short: 'Satu halaman yang fokus konversi untuk promosi produk, event, atau kampanye iklan.',
         suits: 'Promosi, event, iklan',
         faq: [
-          { q: 'Apa bedanya landing page dengan website company profile?', a: 'Landing page hanya satu halaman dengan satu tujuan, misalnya pendaftaran atau penjualan. Company profile terdiri dari beberapa halaman (profil, layanan, kontak, blog) untuk memperkenalkan usaha secara menyeluruh. Kalau tujuan Anda menjalankan iklan untuk satu produk, landing page biasanya lebih tepat.' },
+          { q: 'Apa bedanya landing page dengan website company profile?', a: 'Landing page hanya satu halaman dengan satu tujuan, misalnya pendaftaran atau penjualan. Company profile terdiri dari beberapa halaman (profil, layanan, kontak, blog) untuk memperkenalkan usaha secara menyeluruh. Kalau tujuanmu menjalankan iklan untuk satu produk, landing page biasanya lebih tepat.' },
           { q: 'Apakah landing page bisa dipakai untuk iklan Facebook, Instagram, atau Google?', a: 'Bisa. Kami pastikan halaman cepat dimuat di ponsel dan siap dipasangi Meta Pixel atau tag Google, sehingga hasil iklan bisa diukur.' },
           { q: 'Apakah landing page bisa muncul di Google?', a: 'Bisa, karena kami memasang meta tag, structured data, dan sitemap. Namun landing page satu halaman biasanya kalah bersaing untuk kata kunci umum dibanding website dengan banyak artikel; untuk lalu lintas berbayar, landing page sangat efektif.' },
-          { q: 'Bisakah landing page dikembangkan menjadi website lengkap nanti?', a: 'Bisa. Desain dan kodenya bisa menjadi dasar website multi-halaman, sehingga Anda tidak perlu mulai dari nol.' },
+          { q: 'Bisakah landing page dikembangkan menjadi website lengkap nanti?', a: 'Bisa. Desain dan kodenya bisa menjadi dasar website multi-halaman, sehingga kamu tidak perlu mulai dari nol.' },
         ],
       },
       en: {
         name: 'Landing Page',
         title: 'Landing Page Design & Development',
-        description: 'Fast, conversion-focused landing pages for product launches, events, webinars and ad campaigns. Transparent pricing, delivered in a few working days, with 17 live examples to try.',
+        description: 'Fast, conversion-focused landing pages for product launches, events, webinars and ads. Transparent pricing, ready in a few working days, {{demos:landing}} live examples.',
         h1: ['', 'Landing pages', ' that turn visitors into customers.'],
         lead: 'A landing page is a single web page built for one goal: getting visitors to take one action, such as buying, registering for a webinar or messaging you on WhatsApp. Because it is a single page, it is quick to build and ideal as the destination for an ad.',
         intro: [
@@ -81,7 +83,7 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Landing Page',
         title: 'Perkhidmatan Membina Landing Page',
-        description: 'Landing page yang pantas dan fokus pada penukaran untuk pelancaran produk, acara, webinar dan iklan. Harga telus, siap dalam beberapa hari bekerja, dengan 17 contoh yang boleh dicuba.',
+        description: 'Landing page pantas yang fokus pada penukaran untuk pelancaran produk, acara dan iklan. Harga telus, siap dalam beberapa hari bekerja. Cuba {{demos:landing}} contohnya.',
         h1: ['', 'Landing page', ' yang menukar pelawat menjadi pembeli.'],
         lead: 'Landing page ialah satu halaman web yang dibina untuk satu tujuan: membuat pelawat melakukan satu tindakan, seperti membeli, mendaftar webinar atau menghubungi melalui WhatsApp. Kerana hanya satu halaman, ia cepat dibina dan sesuai sebagai destinasi iklan.',
         intro: [
@@ -110,27 +112,27 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Company Profile & Website UMKM',
         title: 'Jasa Pembuatan Website Company Profile & UMKM',
-        description: 'Jasa pembuatan website company profile untuk UMKM dan usaha jasa: 3–5 halaman, domain .com, hosting, SSL, Google Maps, dan SEO on-page. Harga transparan dengan DP 50%.',
+        description: 'Jasa pembuatan website company profile untuk UMKM: 3–5 halaman, domain .com, hosting, SSL, Google Maps, dan SEO on-page. Harga transparan, DP 50%.',
         h1: ['Website ', 'company profile', ' yang membuat usahamu dipercaya.'],
-        lead: 'Website company profile adalah website beberapa halaman yang memperkenalkan usaha secara lengkap: siapa Anda, apa yang dijual, di mana lokasinya, dan bagaimana menghubungi. Calon pelanggan sering mengecek website sebelum memutuskan membeli atau bekerja sama.',
+        lead: 'Website company profile adalah website beberapa halaman yang memperkenalkan usaha secara lengkap: siapa kamu, apa yang dijual, di mana lokasinya, dan bagaimana menghubungi. Calon pelanggan sering mengecek website sebelum memutuskan membeli atau bekerja sama.',
         intro: [
           'Paket Standar UMKM kami berisi 3–5 halaman inti — Beranda, Profil, Layanan, Blog, dan Kontak — lengkap dengan domain .com, hosting, SSL, formulir kontak, tombol WhatsApp, dan peta Google.',
-          'Kami menulis struktur judul dan meta yang rapi sejak awal, sehingga nama usaha dan layanan Anda lebih mudah ditemukan di Google, termasuk pencarian lokal seperti “jasa … di kota Anda”.',
+          'Kami menulis struktur judul dan meta yang rapi sejak awal, sehingga nama usaha dan layananmu lebih mudah ditemukan di Google, termasuk pencarian lokal seperti “jasa … di kotamu”.',
         ],
         forWho: ['UMKM yang ingin terlihat profesional di Google', 'Usaha jasa: konsultan, kontraktor, bengkel, laundry, travel', 'Restoran, kafe, dan usaha kuliner', 'Klinik, sekolah, dan lembaga kursus', 'Usaha yang ingin berhenti bergantung pada media sosial saja'],
-        short: 'Website 3–5 halaman yang memperkenalkan usaha Anda: profil, layanan, blog, dan kontak.',
+        short: 'Website 3–5 halaman yang memperkenalkan usahamu: profil, layanan, blog, dan kontak.',
         suits: 'UMKM, usaha jasa',
         faq: [
           { q: 'Berapa halaman yang saya dapat?', a: 'Paket Standar UMKM berisi 3–5 halaman inti, biasanya Beranda, Profil, Layanan, Blog, dan Kontak. Halaman tambahan bisa dibicarakan sesuai kebutuhan.' },
-          { q: 'Apakah saya bisa menulis artikel blog sendiri?', a: 'Bisa diatur. Selama masa maintenance, kirimkan tulisannya lewat WhatsApp dan kami unggah; bila Anda ingin mengelola sendiri, CMS bisa ditambahkan sebagai fitur.' },
+          { q: 'Apakah saya bisa menulis artikel blog sendiri?', a: 'Bisa diatur. Selama masa maintenance, kirimkan tulisannya lewat WhatsApp dan kami unggah; bila kamu ingin mengelola sendiri, CMS bisa ditambahkan sebagai fitur.' },
           { q: 'Apakah domain .com sudah termasuk?', a: 'Ya, domain .com, hosting, dan SSL untuk tahun pertama sudah termasuk. Biaya perpanjangan mulai tahun kedua kami sebutkan sejak awal di halaman Paket.' },
-          { q: 'Bagaimana kalau saya belum punya foto dan teks?', a: 'Kami bantu menulis teks dari brief singkat dan bisa memakai foto stok berlisensi. Foto asli usaha Anda tetap lebih meyakinkan, jadi kami juga bisa merekomendasikan fotografer.' },
+          { q: 'Bagaimana kalau saya belum punya foto dan teks?', a: 'Kami bantu menulis teks dari brief singkat dan bisa memakai foto stok berlisensi. Foto asli usahamu tetap lebih meyakinkan, jadi kami juga bisa merekomendasikan fotografer.' },
         ],
       },
       en: {
         name: 'Company Profile Website',
         title: 'Company Profile Website for Small Businesses',
-        description: 'Company profile websites for small businesses and service providers: 3–5 pages, a .com domain, hosting, SSL, Google Maps and on-page SEO. Transparent pricing with a 50% deposit.',
+        description: 'Company profile websites for small businesses: 3–5 pages, a .com domain, hosting, SSL, Google Maps and on-page SEO. Transparent pricing, 50% deposit.',
         h1: ['A ', 'company profile website', ' that makes your business trusted.'],
         lead: 'A company profile website is a multi-page website that introduces your business in full: who you are, what you sell, where you are and how to get in touch. Prospective customers often check your website before deciding to buy or work with you.',
         intro: [
@@ -150,7 +152,7 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Laman Web Profil Syarikat',
         title: 'Membina Laman Web Profil Syarikat untuk PKS',
-        description: 'Laman web profil syarikat untuk PKS dan perniagaan perkhidmatan: 3–5 halaman, domain .com, hosting, SSL, Google Maps dan SEO on-page. Harga telus dengan deposit 50%.',
+        description: 'Laman web profil syarikat untuk PKS: 3–5 halaman, domain .com, hosting, SSL, Google Maps dan SEO on-page. Harga telus dengan deposit 50%.',
         h1: ['Laman web ', 'profil syarikat', ' yang membuat perniagaan anda dipercayai.'],
         lead: 'Laman web profil syarikat ialah laman web beberapa halaman yang memperkenalkan perniagaan secara lengkap: siapa anda, apa yang dijual, di mana lokasinya dan cara menghubungi. Bakal pelanggan sering menyemak laman web sebelum membuat keputusan.',
         intro: [
@@ -179,27 +181,27 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Toko Online',
         title: 'Jasa Pembuatan Toko Online',
-        description: 'Jasa pembuatan toko online milik sendiri: katalog produk dengan order lewat WhatsApp, atau toko lengkap dengan keranjang, payment gateway, ongkir otomatis, dan dashboard admin.',
+        description: 'Jasa pembuatan toko online sendiri: katalog dengan order via WhatsApp, atau toko dengan keranjang, payment gateway, ongkir otomatis, dan dashboard admin.',
         h1: ['', 'Toko online', ' milikmu sendiri, tanpa potongan per transaksi dari platform.'],
-        lead: 'Toko online adalah website tempat pelanggan melihat katalog produk dan memesan langsung dari Anda. Ada dua tingkat: katalog dengan pemesanan lewat WhatsApp untuk mulai cepat, dan toko lengkap dengan keranjang, pembayaran otomatis, dan ongkir otomatis.',
+        lead: 'Toko online adalah website tempat pelanggan melihat katalog produk dan memesan langsung darimu. Ada dua tingkat: katalog dengan pemesanan lewat WhatsApp untuk mulai cepat, dan toko lengkap dengan keranjang, pembayaran otomatis, dan ongkir otomatis.',
         intro: [
-          'Toko Online Simple cocok untuk usaha yang pesanannya masih dilayani manual: pelanggan memilih produk di katalog, lalu pesan terkirim rapi ke WhatsApp Anda. Toko Online Full cocok bila pesanan sudah banyak: ada keranjang, payment gateway, ongkir otomatis lewat RajaOngkir, dan dashboard untuk mengelola produk serta pesanan.',
-          'Marketplace tetap berguna untuk menjangkau pembeli baru. Toko online sendiri melengkapinya: data pelanggan milik Anda, tampilan sesuai merek, dan tidak ada aturan platform yang tiba-tiba berubah.',
+          'Toko Online Simple cocok untuk usaha yang pesanannya masih dilayani manual: pelanggan memilih produk di katalog, lalu pesan terkirim rapi ke WhatsApp-mu. Toko Online Full cocok bila pesanan sudah banyak: ada keranjang, payment gateway, ongkir otomatis lewat RajaOngkir, dan dashboard untuk mengelola produk serta pesanan.',
+          'Marketplace tetap berguna untuk menjangkau pembeli baru. Toko online sendiri melengkapinya: data pelanggan milikmu, tampilan sesuai merek, dan tidak ada aturan platform yang tiba-tiba berubah.',
         ],
         forWho: ['Toko ritel, fesyen, dan produk kerajinan', 'Usaha makanan dengan pre-order', 'Penjual yang sudah ramai di marketplace dan ingin kanal sendiri', 'Distributor atau reseller dengan katalog produk', 'Usaha yang ingin mengurangi ketergantungan pada satu platform'],
         short: 'Katalog dengan order via WhatsApp, sampai toko lengkap dengan keranjang, payment gateway, dan ongkir otomatis.',
         suits: 'Toko ritel, kuliner, reseller',
         faq: [
           { q: 'Apa beda Toko Online Simple dan Toko Online Full?', a: 'Simple berisi katalog hingga 20 produk dengan pemesanan lewat WhatsApp dan CMS ringan. Full menambahkan keranjang belanja, checkout lengkap, payment gateway, ongkir otomatis, dan dashboard admin untuk pesanan.' },
-          { q: 'Apakah saya perlu meninggalkan marketplace?', a: 'Tidak perlu. Banyak penjual memakai keduanya: marketplace untuk pembeli baru, toko online sendiri untuk pelanggan setia, promosi, dan data pelanggan yang Anda kelola sendiri.' },
-          { q: 'Bisakah saya mengubah produk dan harga sendiri?', a: 'Bisa. Kedua paket toko online dilengkapi pengelolaan produk, jadi Anda bisa menambah, mengubah, atau menonaktifkan produk tanpa menghubungi kami.' },
-          { q: 'Metode pembayaran apa yang didukung?', a: 'Pada Toko Online Full, pembayaran berjalan lewat payment gateway yang kami integrasikan sesuai kebutuhan Anda. Pada Toko Online Simple, pembayaran diatur langsung antara Anda dan pembeli setelah pesanan masuk lewat WhatsApp.' },
+          { q: 'Apakah saya perlu meninggalkan marketplace?', a: 'Tidak perlu. Banyak penjual memakai keduanya: marketplace untuk pembeli baru, toko online sendiri untuk pelanggan setia, promosi, dan data pelanggan yang kamu kelola sendiri.' },
+          { q: 'Bisakah saya mengubah produk dan harga sendiri?', a: 'Bisa. Kedua paket toko online dilengkapi pengelolaan produk, jadi kamu bisa menambah, mengubah, atau menonaktifkan produk tanpa menghubungi kami.' },
+          { q: 'Metode pembayaran apa yang didukung?', a: 'Pada Toko Online Full, pembayaran berjalan lewat payment gateway yang kami integrasikan sesuai kebutuhanmu. Pada Toko Online Simple, pembayaran diatur langsung antara kamu dan pembeli setelah pesanan masuk lewat WhatsApp.' },
         ],
       },
       en: {
         name: 'Online Store',
         title: 'Online Store Development',
-        description: 'Your own online store: a product catalogue with orders via WhatsApp, or a full store with a cart, payment gateway, automatic shipping rates and an admin dashboard.',
+        description: 'Your own online store, from a WhatsApp order catalogue to a full shop with a cart, payment gateway, automatic shipping rates and an admin dashboard.',
         h1: ['An ', 'online store', ' of your own, with no platform cut on every sale.'],
         lead: 'An online store is a website where customers browse your product catalogue and order directly from you. It comes in two levels: a catalogue with ordering via WhatsApp to get started quickly, and a full store with a cart, automatic payments and automatic shipping rates.',
         intro: [
@@ -219,7 +221,7 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Kedai Dalam Talian',
         title: 'Membina Kedai Dalam Talian',
-        description: 'Kedai dalam talian milik anda sendiri: katalog produk dengan pesanan melalui WhatsApp, atau kedai lengkap dengan troli, gerbang pembayaran, kos penghantaran automatik dan papan pemuka admin.',
+        description: 'Kedai dalam talian milik anda: katalog dengan pesanan melalui WhatsApp, atau kedai lengkap dengan troli, gerbang pembayaran dan papan pemuka admin.',
         h1: ['', 'Kedai dalam talian', ' milik anda sendiri, tanpa potongan platform setiap jualan.'],
         lead: 'Kedai dalam talian ialah laman web tempat pelanggan melihat katalog produk dan membuat pesanan terus daripada anda. Terdapat dua tahap: katalog dengan pesanan melalui WhatsApp untuk bermula cepat, dan kedai lengkap dengan troli, pembayaran automatik dan kos penghantaran automatik.',
         intro: [
@@ -246,57 +248,57 @@ export const SERVICES: Service[] = [
     text: {
       id: {
         name: 'Website Portofolio',
-        title: 'Jasa Pembuatan Website Portofolio & Personal Branding',
-        description: 'Jasa pembuatan website portofolio untuk desainer, developer, fotografer, dan freelancer: halaman karya, studi kasus, blog, dan kontak dengan SEO dasar. Lihat 7 contoh portofolio live.',
+        title: 'Jasa Pembuatan Website Portofolio',
+        description: 'Website portofolio dan personal branding untuk desainer, developer, fotografer, dan freelancer: karya, studi kasus, blog, dan kontak. Lihat {{demos:portfolio}} contohnya.',
         h1: ['Website ', 'portofolio', ' yang membuat karyamu dilirik klien.'],
-        lead: 'Website portofolio adalah etalase karya pribadi: tempat klien atau perekrut melihat apa yang sudah Anda kerjakan, cara Anda bekerja, dan cara menghubungi. Dibanding PDF atau media sosial, website portofolio punya alamat sendiri dan bisa ditemukan lewat Google.',
+        lead: 'Website portofolio adalah etalase karya pribadi: tempat klien atau perekrut melihat apa yang sudah kamu kerjakan, cara kamu bekerja, dan cara menghubungi. Dibanding PDF atau media sosial, website portofolio punya alamat sendiri dan bisa ditemukan lewat Google.',
         intro: [
-          'Paket Portofolio berisi halaman Tentang, Karya, Blog, dan Kontak, dengan tautan ke WhatsApp, LinkedIn, Instagram, atau kanal Anda yang lain. Struktur judulnya kami susun rapi supaya nama dan keahlian Anda mudah dibaca mesin pencari.',
-          'Tujuh gaya portofolio di galeri kami — dari minimal editorial sampai neo-brutalis — bisa dicoba langsung, lengkap dengan studi kasus dan mode terang/gelap.',
+          'Paket Portofolio berisi halaman Tentang, Karya, Blog, dan Kontak, dengan tautan ke WhatsApp, LinkedIn, Instagram, atau kanalmu yang lain. Struktur judulnya kami susun rapi supaya nama dan keahlianmu mudah dibaca mesin pencari.',
+          'Ada {{demos:portfolio}} gaya portofolio di galeri kami — dari minimal editorial sampai neo-brutalis — yang bisa dicoba langsung, lengkap dengan studi kasus dan mode terang/gelap.',
         ],
         forWho: ['Desainer UI/UX, grafis, dan ilustrator', 'Developer dan creative technologist', 'Fotografer, videografer, dan penulis', 'Freelancer yang mencari klien langsung', 'Profesional yang sedang melamar kerja'],
         short: 'Etalase karya untuk freelancer, kreator, dan profesional, lengkap dengan studi kasus.',
         suits: 'Freelancer, kreator',
         faq: [
-          { q: 'Apakah saya bisa menambah karya baru sendiri?', a: 'Selama masa maintenance, kirim karya baru lewat WhatsApp dan kami tambahkan. Bila Anda sering memperbarui portofolio, CMS bisa ditambahkan agar Anda mengelolanya sendiri.' },
-          { q: 'Apakah persona di contoh portofolio itu nyata?', a: 'Tidak. Persona di contoh portofolio kami fiktif; saat dipesan, semua isinya diganti dengan karya, foto, dan kontak milik Anda.' },
-          { q: 'Apakah perlu domain dengan nama saya sendiri?', a: 'Sangat disarankan. Domain + hosting + SSL untuk tahun pertama sudah termasuk di paket Portofolio, dan alamat dengan nama Anda lebih mudah diingat klien.' },
+          { q: 'Apakah saya bisa menambah karya baru sendiri?', a: 'Kirim karya baru lewat WhatsApp dan kami tambahkan; untuk pembaruan rutin tersedia layanan tambahan maintenance bulanan. Bila kamu sering memperbarui portofolio, CMS bisa ditambahkan agar kamu mengelolanya sendiri.' },
+          { q: 'Apakah persona di contoh portofolio itu nyata?', a: 'Tidak. Persona di contoh portofolio kami fiktif; saat dipesan, semua isinya diganti dengan karya, foto, dan kontak milikmu.' },
+          { q: 'Apakah perlu domain dengan nama saya sendiri?', a: 'Sangat disarankan. Domain + hosting + SSL untuk tahun pertama sudah termasuk di paket Portofolio, dan alamat dengan namamu lebih mudah diingat klien.' },
         ],
       },
       en: {
         name: 'Portfolio Website',
         title: 'Portfolio & Personal Branding Websites',
-        description: 'Portfolio websites for designers, developers, photographers and freelancers: work pages, case studies, a blog and contact, with basic SEO. See 7 live portfolio examples.',
+        description: 'Portfolio websites for designers, developers, photographers and freelancers: work pages, case studies, a blog and contact. See {{demos:portfolio}} live portfolio examples.',
         h1: ['A ', 'portfolio website', ' that gets your work noticed.'],
         lead: 'A portfolio website is a personal showcase of your work: where clients or recruiters see what you have done, how you work and how to reach you. Compared with a PDF or social media, it has its own address and can be found on Google.',
         intro: [
           'The Portfolio package includes About, Work, Blog and Contact pages, with links to WhatsApp, LinkedIn, Instagram or your other channels. We keep the heading structure tidy so search engines can clearly read your name and skills.',
-          'The seven portfolio styles in our gallery — from minimal editorial to neo-brutalist — can be tried right now, complete with case studies and light/dark modes.',
+          'The {{demos:portfolio}} portfolio styles in our gallery — from minimal editorial to neo-brutalist — can be tried right now, complete with case studies and light/dark modes.',
         ],
         forWho: ['UI/UX and graphic designers, illustrators', 'Developers and creative technologists', 'Photographers, videographers and writers', 'Freelancers looking for direct clients', 'Professionals applying for jobs'],
         short: 'A showcase of work for freelancers, creators and professionals, complete with case studies.',
         suits: 'Freelancers, creators',
         faq: [
-          { q: 'Can I add new work myself?', a: 'During the maintenance period, send new work over WhatsApp and we will add it. If you update your portfolio often, a CMS can be added so you can manage it yourself.' },
+          { q: 'Can I add new work myself?', a: 'Send new work over WhatsApp and we will add it; for regular updates, a monthly maintenance add-on is available. If you update your portfolio often, a CMS can be added so you can manage it yourself.' },
           { q: 'Are the people in the portfolio examples real?', a: 'No. The personas in our portfolio examples are fictional; when you order, everything is replaced with your own work, photos and contact details.' },
           { q: 'Do I need a domain with my own name?', a: 'We strongly recommend it. A domain, hosting and SSL for the first year are included in the Portfolio package, and an address with your name is easier for clients to remember.' },
         ],
       },
       ms: {
         name: 'Laman Web Portfolio',
-        title: 'Membina Laman Web Portfolio & Penjenamaan Peribadi',
-        description: 'Laman web portfolio untuk pereka, pembangun, jurugambar dan pekerja bebas: halaman karya, kajian kes, blog dan hubungi dengan SEO asas. Lihat 7 contoh portfolio langsung.',
+        title: 'Membina Laman Web Portfolio & Jenama Peribadi',
+        description: 'Laman web portfolio dan jenama peribadi untuk pereka, pembangun, jurugambar dan pekerja bebas: karya, kajian kes, blog dan hubungi. Lihat {{demos:portfolio}} contoh.',
         h1: ['Laman web ', 'portfolio', ' yang membuatkan karya anda dilihat.'],
         lead: 'Laman web portfolio ialah pameran karya peribadi: tempat pelanggan atau perekrut melihat apa yang telah anda hasilkan, cara anda bekerja dan cara menghubungi. Berbanding PDF atau media sosial, ia mempunyai alamat sendiri dan boleh ditemui melalui Google.',
         intro: [
           'Pakej Portfolio mengandungi halaman Tentang, Karya, Blog dan Hubungi, dengan pautan ke WhatsApp, LinkedIn, Instagram atau saluran anda yang lain. Struktur tajuknya kami susun kemas supaya nama dan kepakaran anda mudah dibaca enjin carian.',
-          'Tujuh gaya portfolio dalam galeri kami — dari editorial minimalis hingga neo-brutalis — boleh dicuba sekarang, lengkap dengan kajian kes dan mod cerah/gelap.',
+          'Terdapat {{demos:portfolio}} gaya portfolio dalam galeri kami — dari editorial minimalis hingga neo-brutalis — yang boleh dicuba sekarang, lengkap dengan kajian kes dan mod cerah/gelap.',
         ],
         forWho: ['Pereka UI/UX, grafik dan ilustrator', 'Pembangun dan teknologis kreatif', 'Jurugambar, jurukamera video dan penulis', 'Pekerja bebas yang mencari pelanggan terus', 'Profesional yang sedang memohon kerja'],
         short: 'Pameran karya untuk pekerja bebas, pencipta kandungan dan profesional, lengkap dengan kajian kes.',
         suits: 'Pekerja bebas, pencipta',
         faq: [
-          { q: 'Bolehkah saya menambah karya baharu sendiri?', a: 'Sepanjang tempoh penyelenggaraan, hantar karya baharu melalui WhatsApp dan kami tambahkan. Jika anda kerap mengemas kini portfolio, CMS boleh ditambah supaya anda mengurusnya sendiri.' },
+          { q: 'Bolehkah saya menambah karya baharu sendiri?', a: 'Hantar karya baharu melalui WhatsApp dan kami tambahkan; untuk kemas kini berkala, perkhidmatan tambahan penyelenggaraan bulanan tersedia. Jika anda kerap mengemas kini portfolio, CMS boleh ditambah supaya anda mengurusnya sendiri.' },
           { q: 'Adakah persona dalam contoh portfolio itu nyata?', a: 'Tidak. Persona dalam contoh portfolio kami adalah rekaan; apabila ditempah, semua kandungan diganti dengan karya, foto dan maklumat hubungan anda.' },
           { q: 'Perlukah domain dengan nama saya sendiri?', a: 'Sangat disyorkan. Domain + hosting + SSL untuk tahun pertama sudah termasuk dalam pakej Portfolio, dan alamat dengan nama anda lebih mudah diingati pelanggan.' },
         ],
@@ -313,32 +315,32 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Website Custom & Aplikasi Web',
         title: 'Jasa Pembuatan Website Custom & Aplikasi Web',
-        description: 'Jasa pembuatan website custom dan aplikasi web: sistem reservasi, katalog properti, area member, formulir kompleks, dan integrasi API, dibangun dengan Next.js. Lihat contoh reservasi & properti live.',
+        description: 'Jasa pembuatan website custom dan aplikasi web dengan Next.js: sistem reservasi, katalog properti, area member, dan integrasi API. Coba demonya.',
         h1: ['Website custom untuk ', 'kebutuhan yang tidak muat di template.'],
-        lead: 'Website custom adalah website yang desain, alur, dan fiturnya dibuat khusus untuk proses bisnis Anda — misalnya sistem reservasi, katalog properti dengan filter, area member, atau integrasi dengan sistem yang sudah Anda pakai.',
+        lead: 'Website custom adalah website yang desain, alur, dan fiturnya dibuat khusus untuk proses bisnismu — misalnya sistem reservasi, katalog properti dengan filter, area member, atau integrasi dengan sistem yang sudah kamu pakai.',
         intro: [
           'Proyek custom dimulai dari memetakan alur: siapa penggunanya, data apa yang masuk, dan apa yang harus terjadi setelahnya. Dari situ kami menyusun penawaran tertulis dengan ruang lingkup yang jelas sebelum ada baris kode yang ditulis.',
-          'Contoh hasilnya bisa dicoba di galeri kami: lima sistem reservasi (restoran, hotel, klinik, futsal, bioskop), empat marketplace properti, dan tiga aplikasi produktivitas.',
+          'Contoh hasilnya bisa dicoba di galeri kami: {{demos:reservasi}} sistem reservasi (restoran, hotel, klinik, futsal, bioskop), {{demos:properti}} marketplace properti, dan {{demos:todo}} aplikasi produktivitas.',
         ],
         forWho: ['Restoran, hotel, klinik, dan lapangan yang butuh reservasi online', 'Agen dan pengembang properti', 'Startup yang membangun produk web pertama', 'Instansi dan sekolah dengan formulir atau alur khusus', 'Usaha yang ingin menghubungkan website dengan sistem yang sudah ada'],
         short: 'Sistem reservasi, katalog properti, aplikasi web, atau fitur khusus lain sesuai kebutuhan bisnis.',
         suits: 'Startup, instansi, sistem khusus',
         faq: [
-          { q: 'Bagaimana harga website custom ditentukan?', a: 'Dari ruang lingkup: jumlah halaman, fitur, integrasi, dan peran pengguna. Sistem reservasi mulai {{from:sistem-reservasi}}, website properti mulai {{from:website-properti}}, aplikasi web mulai {{from:aplikasi-web}}, dan website custom mulai {{from:website-custom}}; angka pastinya ada di penawaran tertulis yang Anda setujui sebelum pengerjaan.' },
+          { q: 'Bagaimana harga website custom ditentukan?', a: 'Dari ruang lingkup: jumlah halaman, fitur, integrasi, dan peran pengguna. Sistem reservasi mulai {{from:sistem-reservasi}}, website properti mulai {{from:website-properti}}, aplikasi web mulai {{from:aplikasi-web}}, dan website custom mulai {{from:website-custom}}; angka pastinya ada di penawaran tertulis yang kamu setujui sebelum pengerjaan.' },
           { q: 'Apakah bisa terhubung dengan sistem yang sudah saya pakai?', a: 'Bisa, selama sistem tersebut menyediakan API atau cara pertukaran data. Kami cek dokumentasinya dulu sebelum menjanjikan integrasi.' },
-          { q: 'Siapa pemilik kodenya?', a: 'Anda. Setelah pelunasan, source code, akses hosting, domain, dan database diserahkan sepenuhnya.' },
+          { q: 'Siapa pemilik kodenya?', a: 'Kamu. Setelah pelunasan, source code, akses hosting, domain, dan database diserahkan sepenuhnya.' },
           { q: 'Apakah ada dukungan setelah website online?', a: `Ya, ada garansi perbaikan bug dan maintenance & support teknis 3 bulan di paket Website Custom, yang bisa diperpanjang.` },
         ],
       },
       en: {
         name: 'Custom Website & Web App',
         title: 'Custom Website & Web App Development',
-        description: 'Custom websites and web apps: booking systems, property catalogues, member areas, complex forms and API integrations, built with Next.js. Try our live booking and property examples.',
+        description: 'Custom websites and web apps with Next.js: booking systems, property catalogues, member areas and API integrations. Try our booking and property demos.',
         h1: ['Custom websites for ', 'needs that do not fit a template.'],
         lead: 'A custom website is one whose design, flow and features are built specifically around how your business works — for example a booking system, a property catalogue with filters, a member area or an integration with a system you already use.',
         intro: [
           'A custom project starts by mapping the flow: who the users are, what data comes in and what must happen next. From there we prepare a written quote with a clear scope before a single line of code is written.',
-          'You can try examples in our gallery: five booking systems (restaurant, hotel, clinic, futsal court, cinema), four property marketplaces and three productivity apps.',
+          'You can try examples in our gallery: {{demos:reservasi}} booking systems (restaurant, hotel, clinic, futsal court, cinema), {{demos:properti}} property marketplaces and {{demos:todo}} productivity apps.',
         ],
         forWho: ['Restaurants, hotels, clinics and courts that need online booking', 'Property agents and developers', 'Start-ups building their first web product', 'Institutions and schools with special forms or workflows', 'Businesses connecting their website to existing systems'],
         short: 'Booking systems, property catalogues, web apps or other bespoke features for your business.',
@@ -353,12 +355,12 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Laman Web Tersuai & Aplikasi Web',
         title: 'Membina Laman Web Tersuai & Aplikasi Web',
-        description: 'Laman web tersuai dan aplikasi web: sistem tempahan, katalog hartanah, ruang ahli, borang kompleks dan integrasi API, dibina dengan Next.js. Cuba contoh tempahan & hartanah kami.',
+        description: 'Laman web tersuai dan aplikasi web dengan Next.js: sistem tempahan, katalog hartanah, ruang ahli dan integrasi API. Cuba contoh tempahan & hartanah kami.',
         h1: ['Laman web tersuai untuk ', 'keperluan yang tidak muat dalam templat.'],
         lead: 'Laman web tersuai ialah laman web yang reka bentuk, aliran dan cirinya dibina khas mengikut proses perniagaan anda — contohnya sistem tempahan, katalog hartanah dengan penapis, ruang ahli atau integrasi dengan sistem yang sedia digunakan.',
         intro: [
           'Projek tersuai bermula dengan memetakan aliran: siapa penggunanya, data apa yang masuk dan apa yang perlu berlaku seterusnya. Dari situ kami sediakan sebut harga bertulis dengan skop yang jelas sebelum sebarang kod ditulis.',
-          'Contoh hasilnya boleh dicuba dalam galeri kami: lima sistem tempahan (restoran, hotel, klinik, futsal, panggung wayang), empat pasaran hartanah dan tiga aplikasi produktiviti.',
+          'Contoh hasilnya boleh dicuba dalam galeri kami: {{demos:reservasi}} sistem tempahan (restoran, hotel, klinik, futsal, panggung wayang), {{demos:properti}} pasaran hartanah dan {{demos:todo}} aplikasi produktiviti.',
         ],
         forWho: ['Restoran, hotel, klinik dan gelanggang yang memerlukan tempahan dalam talian', 'Ejen dan pemaju hartanah', 'Syarikat pemula yang membina produk web pertama', 'Institusi dan sekolah dengan borang atau aliran khas', 'Perniagaan yang ingin menghubungkan laman web dengan sistem sedia ada'],
         short: 'Sistem tempahan, katalog hartanah, aplikasi web atau ciri khas lain mengikut keperluan perniagaan.',
@@ -381,11 +383,11 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Undangan Digital',
         title: 'Jasa Pembuatan Undangan Digital (Website)',
-        description: 'Jasa undangan digital berbentuk website untuk pernikahan, lamaran, khitanan, aqiqah, ulang tahun, wisuda, reuni, dan acara kantor: RSVP, hitung mundur, peta lokasi, galeri, dan musik. Lihat 8 tema live.',
+        description: 'Jasa undangan digital berbentuk website untuk pernikahan, khitanan, wisuda, dan acara kantor: RSVP, hitung mundur, peta, galeri, musik. Lihat {{demos:undangan}} tema live.',
         h1: ['', 'Undangan digital', ' yang dibuka, dibaca, dan dibalas tamu.'],
         lead: 'Undangan digital adalah undangan acara berbentuk halaman web yang dikirim lewat tautan — biasanya melalui WhatsApp. Tamu bisa melihat waktu dan lokasi acara, membuka peta, mengonfirmasi kehadiran (RSVP), dan menyimpan tanggalnya dari satu tautan.',
         intro: [
-          'Delapan tema di galeri kami dibuat dengan karakter berbeda, bukan satu desain yang diganti warna: pernikahan, lamaran, khitanan, aqiqah, ulang tahun, wisuda, reuni, hingga situs acara korporat dengan agenda dan pendaftaran peserta.',
+          'Galeri kami berisi {{demos:undangan}} tema dengan karakter berbeda, bukan satu desain yang diganti warna: pernikahan, lamaran, khitanan, aqiqah, ulang tahun, wisuda, reuni, hingga situs acara korporat dengan agenda dan pendaftaran peserta.',
           'Fitur yang bisa dipilih antara lain amplop pembuka, hitung mundur, peta lokasi, galeri foto, musik latar, dan formulir RSVP. Undangan dari tema galeri mulai {{from:undangan-digital}}; untuk acara kantor atau desain khusus, paket Situs Acara mulai {{from:situs-acara}}.',
         ],
         forWho: ['Pasangan yang menyiapkan pernikahan atau lamaran', 'Keluarga yang mengadakan khitanan atau aqiqah', 'Panitia reuni, wisuda, dan ulang tahun', 'Perusahaan yang mengadakan konferensi, peluncuran, atau gathering', 'Siapa pun yang ingin undangan mudah dibagikan lewat WhatsApp'],
@@ -394,7 +396,7 @@ export const SERVICES: Service[] = [
         suits: 'Pernikahan, keluarga, acara kantor',
         faq: [
           { q: 'Berapa harga undangan digital?', a: 'Mulai {{from:undangan-digital}} untuk undangan dari tema galeri (kisaran {{price:undangan-digital}}, selesai {{duration:undangan-digital}}), dan mulai {{from:situs-acara}} untuk situs acara atau desain khusus. Undangan aktif 12 bulan tanpa biaya perpanjangan.' },
-          { q: 'Apakah nama dan foto di contoh undangan itu asli?', a: 'Tidak. Nama, foto, dan data di contoh undangan kami fiktif; saat dipesan, semuanya diganti dengan data acara Anda.' },
+          { q: 'Apakah nama dan foto di contoh undangan itu asli?', a: 'Tidak. Nama, foto, dan data di contoh undangan kami fiktif; saat dipesan, semuanya diganti dengan data acaramu.' },
           { q: 'Bagaimana cara membagikan undangannya?', a: 'Cukup kirim tautannya lewat WhatsApp, media sosial, atau email. Tamu membukanya di browser tanpa perlu memasang aplikasi.' },
           { q: 'Apakah undangan digital bisa menggantikan undangan cetak?', a: 'Untuk banyak acara bisa, terutama tamu yang jauh. Sebagian keluarga tetap mencetak beberapa undangan untuk orang tua atau tamu kehormatan; keduanya bisa berjalan bersamaan.' },
         ],
@@ -402,11 +404,11 @@ export const SERVICES: Service[] = [
       en: {
         name: 'Digital Invitation',
         title: 'Digital Invitation Websites',
-        description: 'Digital invitation websites for weddings, engagements, family celebrations, birthdays, graduations, reunions and corporate events: RSVP, countdown, map, gallery and music. See 8 live themes.',
+        description: 'Digital invitation websites for weddings, birthdays, graduations and corporate events, with RSVP, countdown, map, gallery and music. See {{demos:undangan}} live themes.',
         h1: ['', 'Digital invitations', ' that guests open, read and reply to.'],
         lead: 'A digital invitation is an event invitation in the form of a web page that you share as a link — usually over WhatsApp. From one link, guests can see the time and place, open the map, confirm attendance (RSVP) and save the date.',
         intro: [
-          'The eight themes in our gallery each have a distinct character rather than one design in different colours: a wedding, an engagement, two Indonesian family celebrations (khitanan and aqiqah), a birthday, a graduation, a reunion and a corporate event site with an agenda and attendee registration.',
+          'The {{demos:undangan}} themes in our gallery each have a distinct character rather than one design in different colours: a wedding, an engagement, two Indonesian family celebrations (khitanan and aqiqah), a birthday, a graduation, a reunion and a corporate event site with an agenda and attendee registration.',
           'Optional features include an opening envelope, a countdown, a location map, a photo gallery, background music and an RSVP form. An invitation from our theme gallery starts at {{from:undangan-digital}}; for corporate events or a bespoke design, the Event Website package starts at {{from:situs-acara}}.',
         ],
         forWho: ['Couples planning a wedding or engagement', 'Families hosting a celebration', 'Organisers of reunions, graduations and birthdays', 'Companies holding conferences, launches or gatherings', 'Anyone who wants an invitation that is easy to share on WhatsApp'],
@@ -423,11 +425,11 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Kad Jemputan Digital',
         title: 'Membina Kad Jemputan Digital (Laman Web)',
-        description: 'Kad jemputan digital berbentuk laman web untuk perkahwinan, pertunangan, majlis keluarga, hari jadi, konvokesyen, reunion dan acara korporat: RSVP, kiraan detik, peta, galeri dan muzik. Lihat 8 tema langsung.',
+        description: 'Kad jemputan digital berbentuk laman web untuk perkahwinan, majlis keluarga dan acara korporat: RSVP, kiraan detik, peta, galeri dan muzik. Lihat {{demos:undangan}} tema.',
         h1: ['', 'Kad jemputan digital', ' yang dibuka, dibaca dan dibalas tetamu.'],
         lead: 'Kad jemputan digital ialah jemputan majlis berbentuk halaman web yang dihantar melalui pautan — biasanya melalui WhatsApp. Daripada satu pautan, tetamu boleh melihat masa dan lokasi, membuka peta, mengesahkan kehadiran (RSVP) dan menyimpan tarikhnya.',
         intro: [
-          'Lapan tema dalam galeri kami mempunyai watak berbeza, bukan satu reka bentuk yang ditukar warna: perkahwinan, pertunangan, majlis berkhatan, akikah, hari jadi, konvokesyen, reunion hingga laman acara korporat dengan agenda dan pendaftaran peserta.',
+          'Galeri kami mengandungi {{demos:undangan}} tema dengan watak berbeza, bukan satu reka bentuk yang ditukar warna: perkahwinan, pertunangan, majlis berkhatan, akikah, hari jadi, konvokesyen, reunion hingga laman acara korporat dengan agenda dan pendaftaran peserta.',
           'Ciri pilihan termasuk sampul pembuka, kiraan detik, peta lokasi, galeri foto, muzik latar dan borang RSVP. Jemputan daripada tema galeri bermula {{from:undangan-digital}}; untuk acara korporat atau reka bentuk khas, pakej Laman Acara bermula {{from:situs-acara}}.',
         ],
         forWho: ['Pasangan yang merancang perkahwinan atau pertunangan', 'Keluarga yang mengadakan majlis', 'Penganjur reunion, konvokesyen dan hari jadi', 'Syarikat yang mengadakan persidangan, pelancaran atau perhimpunan', 'Sesiapa yang mahu jemputan mudah dikongsi melalui WhatsApp'],
@@ -452,19 +454,19 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Link in Bio',
         title: 'Jasa Pembuatan Halaman Link in Bio',
-        description: 'Halaman link in bio dengan domain dan desain sendiri untuk kreator, UMKM, musisi, dan kafe: menu, pre-order, jadwal, toko, dan tombol WhatsApp dalam satu tautan. Lihat 12 contoh live.',
+        description: 'Halaman link in bio dengan domain dan desain sendiri untuk kreator, UMKM, musisi, dan kafe: menu, pre-order, toko, dan tombol WhatsApp. Lihat {{demos:linkinbio}} contoh.',
         h1: ['Halaman ', 'link in bio', ' milikmu sendiri — bukan sekadar daftar tombol.'],
-        lead: 'Halaman link in bio adalah satu halaman web yang ditautkan dari bio Instagram atau TikTok dan berisi semua tujuan penting: WhatsApp, toko, jadwal, karya, atau formulir pemesanan. Versi buatan sendiri bisa memakai domain dan desain merek Anda, serta memuat fitur yang tidak ada di layanan link in bio umum.',
+        lead: 'Halaman link in bio adalah satu halaman web yang ditautkan dari bio Instagram atau TikTok dan berisi semua tujuan penting: WhatsApp, toko, jadwal, karya, atau formulir pemesanan. Versi buatan sendiri bisa memakai domain dan desain merekmu, serta memuat fitur yang tidak ada di layanan link in bio umum.',
         intro: [
-          'Dua belas contoh di galeri kami menunjukkan seberapa jauh halaman ini bisa berkembang: papan menu warung yang menampilkan status buka sesuai jam WIB, pre-order kedai kopi, jadwal tur band dengan pemilih tiket, toko stiker, hingga halaman komisi ilustrator.',
+          'Ada {{demos:linkinbio}} contoh di galeri kami yang menunjukkan seberapa jauh halaman ini bisa berkembang: papan menu warung yang menampilkan status buka sesuai jam WIB, pre-order kedai kopi, jadwal tur band dengan pemilih tiket, toko stiker, hingga halaman komisi ilustrator.',
           'Paket Link in Bio mulai {{from:link-in-bio}} dan selesai {{duration:link-in-bio}}; halaman atau fitur tambahan dihitung di penawaran tertulis.',
         ],
         forWho: ['Kreator konten dan influencer', 'Kafe, warung, dan usaha kuliner dengan pre-order', 'Musisi, band, dan penyelenggara acara', 'Ilustrator, penulis, dan pekerja kreatif', 'UMKM yang aktif berjualan lewat Instagram atau TikTok'],
-        includes: ['Halaman dengan domain dan desain sesuai merek', 'Tombol WhatsApp dan tautan ke semua kanal Anda', 'Fitur sesuai kebutuhan: menu, pre-order, jadwal, toko, atau formulir', 'Tampilan yang cepat dibuka di ponsel', 'SEO dasar sehingga nama Anda bisa ditemukan di Google'],
+        includes: ['Halaman dengan domain dan desain sesuai merek', 'Tombol WhatsApp dan tautan ke semua kanalmu', 'Fitur sesuai kebutuhan: menu, pre-order, jadwal, toko, atau formulir', 'Tampilan yang cepat dibuka di ponsel', 'SEO dasar sehingga namamu bisa ditemukan di Google'],
         short: 'Satu tautan untuk bio media sosial dengan domain, desain, dan fitur milik sendiri.',
         suits: 'Kreator, kafe, musisi',
         faq: [
-          { q: 'Apa bedanya dengan layanan link in bio gratis?', a: 'Layanan gratis biasanya hanya berisi daftar tombol dengan tampilan terbatas. Halaman buatan sendiri bisa memakai domain Anda, desain sesuai merek, dan fitur khusus seperti menu, pre-order, atau jadwal — dan kontennya sepenuhnya milik Anda.' },
+          { q: 'Apa bedanya dengan layanan link in bio gratis?', a: 'Layanan gratis biasanya hanya berisi daftar tombol dengan tampilan terbatas. Halaman buatan sendiri bisa memakai domainmu, desain sesuai merek, dan fitur khusus seperti menu, pre-order, atau jadwal — dan kontennya sepenuhnya milikmu.' },
           { q: 'Berapa harganya?', a: 'Mulai {{from:link-in-bio}} untuk satu halaman dengan satu fitur khusus (kisaran {{price:link-in-bio}}), sudah termasuk domain .my.id/.biz.id dan hosting tahun pertama. Halaman atau fitur tambahan dihitung di penawaran tertulis sebelum mulai.' },
           { q: 'Apakah bisa dipakai untuk Instagram dan TikTok sekaligus?', a: 'Bisa. Tautannya sama untuk semua platform, jadi cukup dipasang di bio masing-masing akun.' },
         ],
@@ -472,11 +474,11 @@ export const SERVICES: Service[] = [
       en: {
         name: 'Link in Bio',
         title: 'Custom Link-in-Bio Pages',
-        description: 'Link-in-bio pages with your own domain and design for creators, small businesses, musicians and cafés: menus, pre-orders, schedules, shops and a WhatsApp button behind one link. See 12 live examples.',
+        description: 'Link-in-bio pages with your own domain and design for creators, small businesses and cafés: menus, pre-orders, shops and WhatsApp. See {{demos:linkinbio}} live examples.',
         h1: ['A ', 'link-in-bio page', ' of your own — not just a list of buttons.'],
         lead: 'A link-in-bio page is a single web page linked from your Instagram or TikTok bio that holds every important destination: WhatsApp, your shop, your schedule, your work or an order form. A custom version can use your own domain and brand design, with features generic link-in-bio services do not offer.',
         intro: [
-          'The twelve examples in our gallery show how far such a page can go: a food stall menu board that shows whether it is open based on Indonesian time, coffee-shop pre-orders, a band tour schedule with a ticket picker, a sticker shop and an illustrator commission page.',
+          'The {{demos:linkinbio}} examples in our gallery show how far such a page can go: a food stall menu board that shows whether it is open based on Indonesian time, coffee-shop pre-orders, a band tour schedule with a ticket picker, a sticker shop and an illustrator commission page.',
           'The Link in Bio package starts at {{from:link-in-bio}} and is ready in {{duration:link-in-bio}}; extra pages or features are priced in the written quote.',
         ],
         forWho: ['Content creators and influencers', 'Cafés, food stalls and food businesses taking pre-orders', 'Musicians, bands and event organisers', 'Illustrators, writers and creative workers', 'Small businesses selling actively on Instagram or TikTok'],
@@ -492,11 +494,11 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Link in Bio',
         title: 'Membina Halaman Link in Bio Sendiri',
-        description: 'Halaman link in bio dengan domain dan reka bentuk sendiri untuk pencipta kandungan, PKS, pemuzik dan kafe: menu, pra-tempahan, jadual, kedai dan butang WhatsApp dalam satu pautan. Lihat 12 contoh langsung.',
+        description: 'Halaman link in bio dengan domain dan reka bentuk sendiri untuk pencipta kandungan, PKS dan kafe: menu, pra-tempahan, kedai, WhatsApp. Lihat {{demos:linkinbio}} contoh.',
         h1: ['Halaman ', 'link in bio', ' milik anda sendiri — bukan sekadar senarai butang.'],
         lead: 'Halaman link in bio ialah satu halaman web yang dipautkan dari bio Instagram atau TikTok dan mengandungi semua destinasi penting: WhatsApp, kedai, jadual, karya atau borang pesanan. Versi tersuai boleh menggunakan domain dan reka bentuk jenama anda, serta ciri yang tiada dalam perkhidmatan link in bio biasa.',
         intro: [
-          'Dua belas contoh dalam galeri kami menunjukkan sejauh mana halaman ini boleh berkembang: papan menu gerai yang memaparkan status buka mengikut waktu Indonesia, pra-tempahan kedai kopi, jadual jelajah kumpulan muzik dengan pemilih tiket, kedai pelekat hingga halaman komisen ilustrator.',
+          'Terdapat {{demos:linkinbio}} contoh dalam galeri kami yang menunjukkan sejauh mana halaman ini boleh berkembang: papan menu gerai yang memaparkan status buka mengikut waktu Indonesia, pra-tempahan kedai kopi, jadual jelajah kumpulan muzik dengan pemilih tiket, kedai pelekat hingga halaman komisen ilustrator.',
           'Pakej Link in Bio bermula {{from:link-in-bio}} dan siap dalam {{duration:link-in-bio}}; halaman atau ciri tambahan dikira dalam sebut harga bertulis.',
         ],
         forWho: ['Pencipta kandungan dan pempengaruh', 'Kafe, gerai dan perniagaan makanan dengan pra-tempahan', 'Pemuzik, kumpulan muzik dan penganjur acara', 'Ilustrator, penulis dan pekerja kreatif', 'PKS yang aktif berniaga melalui Instagram atau TikTok'],
@@ -515,5 +517,32 @@ export const SERVICES: Service[] = [
 
 export const serviceOf = (key: ServiceKey) => SERVICES.find((s) => s.key === key)!
 
-/** Teks layanan dalam bahasa pengunjung; bahasa tambahan diambil dari i18n/x/more/<kode>.ts. */
-export const serviceText = (s: Service, lang: Lang): ServiceText => (isBase(lang) ? s.text[lang] : more(lang).services[s.key])
+const textCache = new Map<string, ServiceText>()
+
+/**
+ * Teks layanan dalam bahasa pengunjung; bahasa tambahan diambil dari i18n/x/more/<kode>.ts. SEMUA string sudah
+ * melewati fillFacts (harga {{from:…}}, durasi, jumlah demo {{demos:kategori}}, dst.), jadi judul, meta description,
+ * dan JSON-LD ikut berisi angka dari lib/packages.ts & lib/demos.ts, bukan penanda mentah.
+ */
+export const serviceText = (s: Service, lang: Lang): ServiceText => {
+  const cacheKey = `${lang}:${s.key}`
+  const hit = textCache.get(cacheKey)
+  if (hit) return hit
+  const raw = isBase(lang) ? s.text[lang] : more(lang).services[s.key]
+  const f = (x: string) => fillFacts(lang, x)
+  const t: ServiceText = {
+    name: f(raw.name),
+    title: f(raw.title),
+    description: f(raw.description),
+    h1: raw.h1.map((x) => (x === undefined ? x : f(x))) as Hl,
+    lead: f(raw.lead),
+    intro: raw.intro.map(f),
+    forWho: raw.forWho.map(f),
+    ...(raw.includes ? { includes: raw.includes.map(f) } : {}),
+    short: f(raw.short),
+    suits: f(raw.suits),
+    faq: raw.faq.map((x) => ({ q: f(x.q), a: f(x.a) })),
+  }
+  textCache.set(cacheKey, t)
+  return t
+}

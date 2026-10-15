@@ -27,10 +27,12 @@ type Pick = {
   dur: string
   sizes: string
 }
-const SMALL = '(min-width: 1024px) 330px, (min-width: 640px) 45vw, 100vw'
+// sizes = lebar jendela browser di kartu: lebar kartu (kisi 1/2/12 kolom) dikurangi margin bingkai (mx-6 / sm:mx-7).
+const SMALL = '(min-width: 1024px) 300px, (min-width: 640px) calc(50vw - 5.625rem), calc(100vw - 5rem)'
 const PICKS: Pick[] = [
-  { slug: 'lumora', w: 1200, h: 1969, device: 'browser', span: 'sm:col-span-2 lg:col-span-7', ratio: '16 / 10', dur: '7s', sizes: '(min-width: 1024px) 600px, 100vw' },
-  { slug: 'jajan', w: 560, h: 1310, device: 'phone', span: 'lg:col-span-5', ratio: '9 / 14', dur: '2.5s', sizes: '224px' },
+  { slug: 'lumora', w: 1200, h: 1969, device: 'browser', span: 'sm:col-span-2 lg:col-span-7', ratio: '16 / 10', dur: '7s', sizes: '(min-width: 1024px) 580px, (min-width: 640px) calc(100vw - 6.5rem), calc(100vw - 5rem)' },
+  // bingkai ponsel 14rem dengan tepi 7px: layarnya 210px di semua ukuran
+  { slug: 'jajan', w: 560, h: 1310, device: 'phone', span: 'lg:col-span-5', ratio: '9 / 14', dur: '2.5s', sizes: '210px' },
   { slug: 'cissycoffee', w: 900, h: 1336, device: 'browser', span: 'lg:col-span-4', ratio: '4 / 3', dur: '4s', sizes: SMALL },
   { slug: 'hotel', w: 900, h: 1336, device: 'browser', span: 'lg:col-span-4', ratio: '4 / 3', dur: '4s', sizes: SMALL },
   { slug: 'celeste', w: 900, h: 1336, device: 'browser', span: 'lg:col-span-4', ratio: '4 / 3', dur: '4s', sizes: SMALL },

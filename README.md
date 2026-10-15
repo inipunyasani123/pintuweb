@@ -1,84 +1,84 @@
-# PintuWeb — Jasa Pembuatan Website Profesional & Cepat
+# PintuWeb
 
-Situs utama PintuWeb, "pintu menuju website impianmu": jasa pembuatan website untuk UMKM, startup, dan personal brand, lengkap dengan 65 demo live yang bisa dicoba langsung.
+Situs studio web PintuWeb (berlokasi di Trenggalek, Jawa Timur): layanan pembuatan website, 14 paket harga, galeri 65 demo live, FAQ, artikel, kamus istilah, dan formulir kontak (WhatsApp/email, tanpa backend).
 
-**Live:** https://www.pintuweb.id
-
-![Tangkapan layar PintuWeb](public/images/og-pintuweb.png)
-
-## Halaman
-
-| Rute | Isi |
-|---|---|
-| `/` | Beranda: hero, layanan, target industri, cara kerja, showcase portal, perbandingan, ringkasan harga, FAQ |
-| `/paket` | Enam paket beserta harga, fitur, dan tombol pesan via WhatsApp |
-| `/demo` | Galeri 65 demo live dengan filter kategori |
-| `/services` | Rincian layanan |
-| `/about` | Tentang PintuWeb |
-| `/faq` | Pertanyaan umum |
-| `/kontak` | Formulir yang membuka pesan WhatsApp atau email (tanpa backend) |
-| `/owner` | Profil pemilik |
-
-## Sumber data
-
-Konten yang sering berubah dipusatkan supaya tidak pernah saling bertentangan:
-
-- `app/lib/packages.ts` — **satu-satunya sumber harga**. Dibaca oleh `/paket`, ringkasan harga di beranda, JSON-LD `offers` di layout, dan jawaban FAQ soal harga. Ubah harga hanya di file ini.
-- `app/lib/demos.ts` — daftar 65 demo (landing 17, link-in-bio 12, kontes 9, undangan 8, portfolio 7, reservasi 5, properti 4, to-do 3) untuk `/demo`.
-- `app/lib/faqData.ts` — isi FAQ, dipakai komponen FAQ dan JSON-LD `FAQPage`.
-
-## Identitas visual
-
-Tinta hangat, kertas krem, cobalt sebagai warna utama, dan aksen amber. Motif khasnya adalah **gerbang/arch** (kartu showcase dan visual hero berujung atas melengkung) serta grid cetak biru. Judul memakai Bricolage Grotesque, teks memakai Inter. Semua warna berupa variabel CSS di `app/globals.css`, jadi seluruh tema bisa diubah dari satu tempat.
+Live: https://www.pintuweb.id
 
 ## Teknologi
 
-- Next.js 15.5 (App Router), React 19, TypeScript
-- Tailwind CSS v4
-- Vercel Analytics
-- SEO: metadata dan canonical per halaman, Open Graph, JSON-LD (Organization, WebSite, Service, FAQPage, BreadcrumbList, ItemList), sitemap dan robots dinamis
-
-## Menjalankan secara lokal
+- Next.js 15.5 (App Router), React 19, TypeScript (`strict`)
+- Tailwind CSS v4; warna, tipografi, dan komponen dasar di `app/globals.css`
+- Huruf: tumpukan sistem gaya Apple (SF Pro bawaan perangkat Apple, tidak di-embed), Inter lewat `next/font` untuk perangkat lain
+- `marked` untuk artikel Markdown, `lucide-react` untuk ikon, `@vercel/analytics`
+- Gambar OG dibuat di `/api/og` dengan `next/og`
 
 ```bash
 npm install
-npm run dev
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build
 ```
 
-Buka http://localhost:3000. Untuk build produksi: `npm run build` lalu `npm start`.
+## Struktur
+
+| Folder | Isi |
+|---|---|
+| `app/[lang]/` | Semua halaman: beranda, layanan (7), paket, demo, artikel, kamus, FAQ, tentang, founder, kontak, kebijakan privasi, syarat & ketentuan |
+| `app/components/` | Komponen bersama (header, footer, kartu, FAQ, dll.) |
+| `app/content/` | Teks layanan, FAQ, kamus, dokumen legal, teks paket & demo, pemuat artikel |
+| `content/articles/{id,en}/` | Artikel Markdown; terjemahan dipasangkan lewat `key` di frontmatter dan slug di `app/i18n/slugs.ts` |
+| `app/lib/` | Data dan fakta: `site.ts`, `packages.ts`, `demos.ts`, `portals.ts` |
+| `public/demos/` | Thumbnail demo `<slug>.webp` (720×378) plus `<slug>-360.webp` dan `<slug>-480.webp` untuk `srcset` |
+| `scripts/` | Skrip perawatan (lihat di bawah) |
+
+## Multibahasa
+
+11 bahasa: Indonesia (tanpa awalan URL), lalu `/en`, `/ms`, `/es`, `/fr`, `/pt`, `/ru`, `/zh`, `/hi`, `/bn`, `/ar` (Arab, kanan-ke-kiri). Semua halaman hidup di `app/[lang]/`; `next.config.ts` menulis ulang URL publik (`/paket`, `/en/pricing`, `/ms/harga`) ke folder internal dan mengalihkan alamat internal ke alamat publiknya.
+
+Isi `app/i18n/`:
+
+- `config.ts`: daftar bahasa (bahasa dasar id/en/ms, bahasa tambahan `X_LANGS`), `LANG_INFO` (nama, hreflang, locale `Intl`, arah tulisan), `ARTICLE_LANGS`.
+- `routes.ts`: segmen URL tiap halaman per bahasa, `path()`/`pathOf()`/`urlOf()`, hreflang, pembaca path, serta aturan rewrite & redirect untuk `next.config.ts`. Halaman yang belum ada dalam suatu bahasa ditautkan ke versi Inggris.
+- `dict/<kode>.ts`: teks antarmuka (header, footer, bagian beranda).
+- `pages/<kode>.ts`: teks per halaman.
+- `x/<kode>.ts`: paket bahasa tambahan (fakta, teks 14 paket, label & tagline demo, FAQ); `x/more/<kode>.ts`: layanan dan kamus untuk bahasa tambahan.
+- `facts.ts` (fakta & harga yang sudah diformat per bahasa, pengisi penanda `{{…}}`), `seo.ts` (metadata, hreflang, JSON-LD), `og.ts` (judul gambar OG), `slugs.ts`, `plural.ts`.
+
+Cakupan: id, en, ms lengkap; bahasa tambahan punya beranda, layanan, paket, demo, FAQ, tentang, kontak, founder, dan kamus (dokumen legal menaut ke versi Inggris); artikel hanya id & en.
+
+## Sumber fakta
+
+Angka bisnis hanya ditulis di dua file:
+
+- `app/lib/site.ts`: tahun berdiri, jumlah proyek klien, lokasi, WhatsApp, email, jam kerja, waktu respons, garansi, target performa, `GITHUB` (sengaja kosong). `FACTS_UPDATED` = tanggal terakhir fakta di file ini berubah; dipakai lastmod sitemap dan tanggal berlaku dokumen legal. Naikkan setiap mengubah file ini.
+- `app/lib/packages.ts`: 14 paket (kisaran harga, durasi, kelompok, fitur), biaya tambahan, dan perpanjangan. `PRICES_UPDATED` = tanggal harga terakhir ditetapkan; tampil sebagai "Harga berlaku per …" dan menjadi tanggal pembaruan artikel serta dokumen legal yang memuat angka paket. Naikkan setiap angka paket berubah.
+
+Teks halaman, layanan, dan artikel mengambil angka lewat fungsi di `app/i18n/facts.ts` atau penanda seperti `{{from:landing-page}}`, `{{duration:toko-online-simple}}`, `{{renewal}}`, `{{pricetable}}`; penanda yang tidak dikenal menggagalkan build. Angka yang sama ditulis manual di 8 portal dan formulir 6 demo undangan (repo terpisah), jadi perbarui juga di sana. Sampul artikel `biaya` dan `pilih-jasa` berupa tangkapan layar harga: buat ulang bila harga berubah.
+
+Demo: daftar 65 demo di `app/lib/demos.ts` (`pkg` = paket harga lain dari paket kategorinya, `noPrice` = kartu tanpa harga).
+
+## Portal (multi-zone)
+
+Delapan katalog demo adalah project Next.js terpisah (`portal-*.pintuweb.id`, masing-masing dengan `basePath`) yang tayang di bawah domain ini lewat rewrite `beforeFiles` di `next.config.ts`. Path dan origin-nya di `app/lib/portals.ts`: `/landing-page`, `/link-in-bio`, `/kontes-desain`, `/undangan-digital`, `/website-portofolio`, `/website-reservasi`, `/website-properti`, `/aplikasi-to-do`. Tautan ke portal memakai `<a>` biasa, bukan `next/link`.
+
+## Gambar OG
+
+`app/api/og/route.tsx` menerima kunci dokumen, bukan teks bebas:
+
+- `/api/og?v=home&l=<bahasa>`: kartu merek beranda (angkanya dari `site.ts`).
+- `/api/og?l=<bahasa>&p=<halaman>&s=<kunci>`: kartu berjudul. `p` = kunci halaman di `routes.ts` (`pricing`, `services`, `demo`, `faq`, `about`, `contact`, `founder`, `glossary`, `privacy`, `terms`, `articles`); `s` = kunci layanan atau artikel (`app/i18n/slugs.ts`), hanya untuk `services` dan `articles`. Judulnya dibaca dari kamus lewat `app/i18n/og.ts`; dokumen yang tidak ada dalam bahasa itu menghasilkan 404.
+- `r=<angka>` = revisi desain (`OG_REV` di `app/i18n/seo.ts`); naikkan bila desain kartu berubah.
+- Huruf OG hanya Inter, jadi zh, hi, bn, dan ar digambar dalam bahasa Inggris. Font dan logo dibaca dari `app/api/og/fonts/` dan `app/api/og/logo.png`.
+
+## SEO
+
+Canonical dan hreflang (termasuk `x-default`) di setiap halaman dan sitemap; JSON-LD (antara lain ProfessionalService, WebSite, Person, WebPage, BreadcrumbList, Service, OfferCatalog, FAQPage, BlogPosting, DefinedTermSet); RSS `/artikel/rss` dan `/en/articles/rss` (ditautkan dari setiap halaman); `/sitemap.xml`, `/robots.txt` (perayap AI diizinkan), `/llms.txt`, `/llms-full.txt`. Kode verifikasi Google Search Console dan Bing lewat variabel lingkungan `GOOGLE_SITE_VERIFICATION` dan `BING_SITE_VERIFICATION`.
 
 ## Deploy
 
-Project ini ter-link ke Vercel (`.vercel/`, tidak di-commit). Deploy produksi dijalankan manual:
+Project Vercel `pintuweb` terhubung ke repo ini (Vercel Git Integration): setiap push ke `main` otomatis di-deploy ke produksi. `vercel.json` menempatkan fungsi server di region `sin1` (Singapura).
 
-```bash
-vercel deploy --prod
-```
+## Skrip
 
-## Multibahasa & SEO/GEO (sejak 3 Okt 2026)
-
-- **Bahasa:** Indonesia (utama, tanpa awalan), Inggris `/en`, Melayu `/ms`. Semua halaman ada di `app/[lang]/`;
-  `next.config.ts` menulis ulang URL publik (`/paket`, `/en/pricing`, `/ms/harga`) ke folder internal dan
-  mengalihkan alamat internal ke alamat publiknya. Peta segmen per bahasa: `app/i18n/routes.ts`.
-- **Teks:** `app/i18n/dict/*` (antarmuka), `app/i18n/pages/*` (per halaman), `app/content/*` (layanan, FAQ,
-  kamus, legal, teks paket & demo). Angka bisnis tetap hanya dari `app/lib/site.ts` & `app/lib/packages.ts`.
-- **Artikel:** Markdown di `content/articles/{id,en}/`. Penanda `{{from:slug}}`, `{{price:slug}}`, `{{max:slug}}`,
-  `{{duration:slug}}`, `{{renewal}}`, `{{pricetable}}`, dll. diisi dari packages.ts saat build. Pasangkan terjemahan
-  lewat `key` di frontmatter dan daftarkan slugnya di `app/i18n/slugs.ts`.
-- **SEO teknis:** hreflang + x-default di setiap halaman & sitemap, JSON-LD (ProfessionalService, WebPage,
-  BreadcrumbList, Service, FAQPage, BlogPosting, DefinedTermSet), RSS (`/artikel/rss`, `/en/articles/rss`),
-  `/llms.txt` & `/llms-full.txt`, robots.txt yang mengizinkan perayap AI, gambar OG per halaman (`/api/og`).
-- **Setelah deploy:** `node scripts/indexnow.mjs` untuk memberi tahu Bing & mesin IndexNow lain.
-  Kode verifikasi Google Search Console / Bing bisa diisi lewat env `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION`.
-
-## Portal demo
-
-Setiap kategori demo punya katalognya sendiri:
-[PortalLanding](https://www.pintuweb.id/landing-page) ·
-[PortalBio](https://www.pintuweb.id/link-in-bio) ·
-[PortalKontes](https://www.pintuweb.id/kontes-desain) ·
-[PortalUndangan](https://www.pintuweb.id/undangan-digital) ·
-[PortalPorto](https://www.pintuweb.id/website-portofolio) ·
-[PortalReservasi](https://www.pintuweb.id/website-reservasi) ·
-[PortalProperti](https://www.pintuweb.id/website-properti) ·
-[PortalTodo](https://www.pintuweb.id/aplikasi-to-do)
+- `node scripts/indexnow.mjs`: mengirim semua URL di sitemap live ke IndexNow (Bing dan mesin lain). Jalankan setelah deploy. Kuncinya di `app/lib/indexnow.ts` dan berkas `public/<kunci>.txt`.
+- `node scripts/ikon-dari-logo.mjs`: membuat logo rapat untuk header/footer, favicon, ikon aplikasi, dan logo OG dari `public/images/logo.png` (berkas sumber tidak diubah). Jalankan setelah logo diganti.

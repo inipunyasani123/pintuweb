@@ -1,7 +1,8 @@
 ---
 key: domain-hosting
 title: Domain and Hosting Basics: The Difference, Indonesian .id Domains and Costs
-description: A plain-English guide to domains and hosting for business owners — the difference, how they connect, Indonesian domain types (.co.id, .biz.id, .my.id) and renewal costs.
+seoTitle: Domain and Hosting Basics: Differences and Costs
+description: Domains and hosting explained for business owners: the difference, how they connect, Indonesian domains (.co.id, .biz.id, .my.id) and renewal costs.
 date: 2026-10-03
 updated: 2026-10-03
 tags: domain, hosting, beginners

@@ -19,7 +19,7 @@ const FACTS: Record<BaseLang, Facts> = {
     serves: 'Melayani seluruh Indonesia',
     payment: PAYMENT_SUMMARY,
     renewal: RENEWAL_SUMMARY,
-    guarantee: `Bug dan masalah teknis diperbaiki gratis selama ${GUARANTEE_DAYS} hari setelah website online. Setelah itu maintenance mengikuti paket (1–6 bulan) dan bisa diperpanjang.`,
+    guarantee: `Bug dan masalah teknis diperbaiki gratis selama ${GUARANTEE_DAYS} hari setelah website online. Setelah itu, maintenance mengikuti isi paket dan bisa diperpanjang.`,
   },
   en: {
     hours: `Monday – Saturday, ${OPENS} – ${CLOSES} WIB (UTC+7)`,
@@ -37,7 +37,7 @@ const FACTS: Record<BaseLang, Facts> = {
       `${money('en', RENEWAL_BIO_PER_YEAR.min)}–${money('en', RENEWAL_BIO_PER_YEAR.max).replace('IDR ', '')} for link-in-bio pages; ` +
       'for systems and web apps with a database, the cost is stated in the quote. Digital invitations stay active for 12 months ' +
       'with no renewal fee. We remind you before anything is due.',
-    guarantee: `Bugs and technical issues are fixed free of charge for ${GUARANTEE_DAYS} days after launch. After that, maintenance follows your package (1–6 months) and can be extended.`,
+    guarantee: `Bugs and technical issues are fixed free of charge for ${GUARANTEE_DAYS} days after launch. After that, maintenance follows what your package includes and can be extended.`,
   },
   ms: {
     hours: `Isnin – Sabtu, ${dotTime(OPENS)} – ${dotTime(CLOSES)} WIB (UTC+7)`,
@@ -55,7 +55,7 @@ const FACTS: Record<BaseLang, Facts> = {
       `${money('ms', RENEWAL_BIO_PER_YEAR.min)}–${money('ms', RENEWAL_BIO_PER_YEAR.max).replace('IDR ', '')} untuk link in bio; ` +
       'untuk sistem & aplikasi web dengan pangkalan data, kosnya dinyatakan dalam sebut harga. Kad jemputan digital aktif 12 bulan ' +
       'tanpa kos pembaharuan. Kami maklumkan sebelum tarikh luput.',
-    guarantee: `Pepijat dan masalah teknikal dibaiki secara percuma selama ${GUARANTEE_DAYS} hari selepas laman web dilancarkan. Selepas itu penyelenggaraan mengikut pakej (1–6 bulan) dan boleh dilanjutkan.`,
+    guarantee: `Pepijat dan masalah teknikal dibaiki secara percuma selama ${GUARANTEE_DAYS} hari selepas laman web dilancarkan. Selepas itu, penyelenggaraan mengikut isi pakej dan boleh dilanjutkan.`,
   },
 }
 
@@ -184,12 +184,22 @@ export function addonsFor(lang: Lang) {
 /** Nama & pengantar kelompok paket dalam bahasa pengunjung. */
 export const groupText = (lang: Lang) => (isBase(lang) ? PACKAGE_GROUP_TEXT[lang] : pack(lang).groups)
 
+/** Jumlah demo dalam satu kategori (lib/demos.ts); kategori tanpa demo dianggap salah ketik dan menggagalkan build. */
+function demoCount(category: string) {
+  const n = DEMOS.filter((d) => d.category === category).length
+  if (!n) throw new Error(`Kategori demo tidak dikenal: ${category}`)
+  return n
+}
+
 /**
  * Mengisi penanda harga/fakta di teks (artikel, halaman layanan):
- * {{from:slug}} {{price:slug}} {{max:slug}} {{duration:slug}} {{renewal}} {{guarantee}} {{demos}} {{perf}} {{pricetable}}.
- * Penanda yang tidak dikenal menggagalkan build supaya tidak ada angka yang lolos tanpa sumber.
+ * {{from:slug}} {{price:slug}} {{max:slug}} {{duration:slug}} {{renewal}} {{guarantee}} {{demos}} {{demos:kategori}}
+ * {{perf}} {{pricetable}}. {{demos:kategori}} = jumlah demo kategori itu (landing, undangan, linkinbio, portfolio,
+ * reservasi, properti, todo, kontes). Penanda yang tidak dikenal menggagalkan build supaya tidak ada angka yang lolos
+ * tanpa sumber.
  */
 export function fillFacts(lang: Lang, s: string): string {
+  if (!s.includes('{{')) return s
   const pk = packagesFor(lang)
   const bySlug = (slug: string) => {
     const p = pk.find((x) => x.slug === slug)
@@ -215,6 +225,7 @@ export function fillFacts(lang: Lang, s: string): string {
     .replace(/\{\{renewal\}\}/g, renewal)
     .replace(/\{\{guarantee\}\}/g, String(GUARANTEE_DAYS))
     .replace(/\{\{demos\}\}/g, String(DEMOS.length))
+    .replace(/\{\{demos:([a-z]+)\}\}/g, (_, category) => String(demoCount(category)))
     .replace(/\{\{perf\}\}/g, PERF_TARGET)
   const left = out.match(/\{\{[^}]+\}\}/)
   if (left) throw new Error(`Penanda tak dikenal: ${left[0]}`)

@@ -26,7 +26,7 @@ const pages: Pages = {
     includedTitle: '始终包含',
     included: [
       { title: '从第一天起做好 SEO', body: `元标签、站点地图、结构化数据以及 PageSpeed ${PERF_TARGET} 分的目标，是每个网站套餐的一部分。` },
-      { title: '质保与维护', body: `上线后 ${GUARANTEE_DAYS} 天内免费修复程序错误，之后按套餐提供 1–6 个月的维护。` },
+      { title: '质保与维护', body: `上线后 ${GUARANTEE_DAYS} 天内免费修复程序错误，之后按套餐内容提供维护。` },
     ],
     compareTitle: ['比较', '全部服务'] as Hl,
     compareCaption: 'PintuWeb 服务对比：适合对象、起价和工期',
@@ -40,7 +40,7 @@ const pages: Pages = {
   },
   pricing: {
     title: '网站套餐与价格',
-    description: (min: string, n: number) => `PintuWeb 提供 ${n} 个套餐，起价 ${min}：电子请柬、Link in Bio、落地页、小微企业网站、网店、预订系统、房产网站、Web 应用和定制网站。50% 定金，${GUARANTEE_DAYS} 天质保。`,
+    description: (min: string, n: number) => `PintuWeb 共 ${n} 个网站套餐，起价 ${min}：电子请柬、落地页、小微企业网站、网店和定制网站等。50% 定金，${GUARANTEE_DAYS} 天质保。`,
     ogTitle: '套餐与价格 — PintuWeb',
     ogDescription: (min: string) => `网站套餐起价 ${min}。价格透明，先付 50% 定金，余款在您确认网站后支付。`,
     eyebrow: '透明定价',
@@ -69,12 +69,12 @@ const pages: Pages = {
     updated: '价格更新于',
   },
   demo: {
-    title: (n: number) => `演示集 — ${n} 个真实网站`,
+    title: (n: number) => `演示集 — ${n} 个可试用的网站`,
     description: (n: number) => `体验 PintuWeb 制作的 ${n} 个网站：落地页、电子请柬、Link in Bio 页面、作品集、在线预订、房产交易平台等。`,
-    ogTitle: (n: number) => `PintuWeb 演示集 — ${n} 个真实网站`,
+    ogTitle: (n: number) => `PintuWeb 演示集 — ${n} 个可试用的网站`,
     ogDescription: '所有演示都已上线，现在就能打开。选一个您喜欢的风格，我们按您的品牌来调整。',
     badge: '演示集',
-    h1: (n: number) => [`${n} 个真实网站。`, '尽管试用。'] as Hl,
+    h1: (n: number) => [`${n} 个演示网站。`, '尽管试用。'] as Hl,
     lead: '下面看到的一切都已上线，现在就能打开，没有一张是效果图。选一个最接近您需求的，我们按您的品牌来调整。',
     filterAria: '按分类筛选',
     all: '全部',
@@ -125,8 +125,7 @@ const pages: Pages = {
     now: '今天',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'PintuWeb 诞生', body: `我们在${LOC}起步，帮助当地还没有网站的小生意。` },
-      { year: '2022', title: '专注速度与 SEO', body: '在每个项目中落实性能最佳实践、Lighthouse 测试和 SEO 内容结构。' },
-      { year: '今天', title: `${CLIENT_PROJECTS} 个客户项目`, body: `与来自各地的客户合作，${CATEGORY_COUNT} 个类别中的 ${n} 个在线演示就是我们工作的证明。` },
+      { year: '今天', title: `${CLIENT_PROJECTS} 个客户项目`, body: `维护着 ${CATEGORY_COUNT} 个类别中的 ${n} 个在线演示，作为我们工作的证明。` },
     ],
     founderTitle: 'PintuWeb 背后的人',
     beliefTitle: ['我们', '坚持的事'] as Hl,
@@ -137,7 +136,7 @@ const pages: Pages = {
     ],
     values: [
       { title: '乐于协作', body: '我们倾听您的需求，并欢迎您在每个阶段提出意见。' },
-      { title: '各有个性', body: '每个网站都有自己的特色，而不是翻新的模板。' },
+      { title: '各有个性', body: '可以从我们的演示设计出发，按您的品牌形象调整，也可以从零定制设计。' },
       { title: '诚实', body: '价格透明，承诺务实，工期说到做到。' },
     ],
     whyTitle: '为什么选择 PintuWeb？',
@@ -206,7 +205,6 @@ const pages: Pages = {
     journeyTitle: '历程',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: '创立 PintuWeb', body: '自学前端和后端开发，开始为小生意制作网站。' },
-      { year: '2022', title: '专注 UX 与 SEO', body: '落实性能最佳实践、Lighthouse 测试和 SEO 内容结构。' },
       { year: '今天', title: `${CLIENT_PROJECTS} 个客户项目`, body: `与小微企业、初创公司和个人品牌合作，并维护 ${n} 个在线演示。` },
     ],
     skillsTitle: '核心技能',

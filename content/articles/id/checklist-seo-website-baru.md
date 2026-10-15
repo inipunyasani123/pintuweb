@@ -1,7 +1,8 @@
 ---
 key: seo-checklist
 title: Checklist SEO untuk Website Baru: 20 Langkah agar Muncul di Google dan Mesin Jawaban AI
-description: Checklist SEO praktis untuk website baru — teknis, konten, lokal, dan pendaftaran ke Google Search Console & Bing — termasuk apa yang benar-benar dibutuhkan untuk tampil di AI Overviews.
+seoTitle: Checklist SEO untuk Website Baru: 20 Langkah
+description: Checklist SEO praktis untuk website baru: teknis, konten, lokal, daftar ke Google Search Console & Bing, dan yang perlu untuk tampil di AI Overviews.
 date: 2026-10-03
 updated: 2026-10-03
 tags: SEO, website baru, Google, AI search

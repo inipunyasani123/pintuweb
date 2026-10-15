@@ -30,9 +30,13 @@ export default async function KontakPage({ params }: Params) {
   const f = facts(lang)
   // Semua isi p.contact berupa string, jadi aman dikirim ke komponen klien.
   const t: ContactText = p
-  const packages: ContactPackage[] = packagesFor(lang).map((x) => ({ title: x.title, from: x.priceFrom, duration: x.duration, href: `${path(lang, 'pricing')}#${x.slug}` }))
+  const packages: ContactPackage[] = packagesFor(lang).map((x) => ({ slug: x.slug, title: x.title, from: x.priceFrom, duration: x.duration, href: `${path(lang, 'pricing')}#${x.slug}` }))
   // beberapa demo memakai nama yang sama (konsep kontes untuk satu merek): cukup satu saran per nama
-  const demos = Array.from(new Set(demosFor(lang).map((x) => x.name)))
+  const all = demosFor(lang)
+  const demos = Array.from(new Set(all.map((x) => x.name)))
+  // ?demo=<slug> dari situs demo -> nama demo dalam bahasa halaman; nama bersama diberi taglinenya (mis. "Positive Crave (Konsep Noir)")
+  const shared = new Set(all.filter((x, i) => all.findIndex((y) => y.name === x.name) !== i).map((x) => x.name))
+  const demoBySlug = Object.fromEntries(all.map((x) => [x.slug, shared.has(x.name) ? `${x.name} (${x.tagline})` : x.name]))
   const faq = faqFor(lang).items
   const before = BEFORE.map((k) => faq.find((q) => q.key === k)!)
 
@@ -55,9 +59,8 @@ export default async function KontakPage({ params }: Params) {
           {direct.map((c) => {
             const inner = (
               <>
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-[color:var(--primary-700)] ring-1 ring-[color:var(--border-light)]" aria-hidden="true">
-                  <c.icon size={20} strokeWidth={1.75} />
-                </span>
+                {/* ikon polos (tanpa ubin): penanda jenis kontak */}
+                <c.icon size={21} strokeWidth={1.75} className="shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
                 <span className="min-w-0 flex-1">
                   <span className="block text-[0.8125rem] text-[color:var(--text-tertiary)]">{c.label}</span>
                   <span className="mt-0.5 block break-words text-[1.0625rem] font-semibold leading-snug text-[color:var(--text-primary)] transition-colors group-hover:text-[color:var(--primary-700)]"><bdi>{c.value}</bdi></span>
@@ -91,6 +94,7 @@ export default async function KontakPage({ params }: Params) {
         t={t}
         packages={packages}
         demos={demos}
+        demoBySlug={demoBySlug}
         waNumber={WA_NUMBER}
         email={EMAIL}
         hours={`${f.hoursDays} · ${f.hoursTime}`}

@@ -241,13 +241,10 @@ export default function FaqCenter({ items, categories, t, waHref }: Props) {
           {/* Semua kategori dan pertanyaan selalu dirender; yang tidak cocok dengan pencarian disembunyikan. */}
           <div className="mt-5 flex flex-col gap-11 sm:gap-14">
             {categories.map((c, ci) => {
-              const Icon = ICON[c.id]
               return (
-                <section key={c.id} id={c.slug} aria-labelledby={`kat-${c.slug}`} hidden={perCat[ci] === 0} className="scroll-mt-28">
+                <section key={c.id} id={c.slug} aria-labelledby={`kat-${c.slug}`} hidden={perCat[ci] === 0} className="scroll-mt-4">
+                  {/* kepala kategori tanpa ikon berubin (ikon kategori cukup di daftar kategori desktop) */}
                   <div className="flex items-center gap-3.5 sm:gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-[color:var(--primary-700)] ring-1 ring-[color:var(--border-light)] sm:h-12 sm:w-12" aria-hidden="true">
-                      <Icon size={22} strokeWidth={1.75} />
-                    </span>
                     <div className="min-w-0 flex-1">
                       <h2 id={`kat-${c.slug}`} className="text-[1.375rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.625rem]">
                         {c.name}

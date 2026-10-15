@@ -5,9 +5,9 @@ import type { Dict, Hl } from './id'
 
 const fr: Dict = {
   meta: {
-    homeTitle: 'PintuWeb — Création de sites web professionnels et rapides depuis l’Indonésie',
+    homeTitle: 'PintuWeb — Création de sites web depuis l’Indonésie',
     homeDescription: (n: number) =>
-      `Des sites web professionnels, rapides et optimisés pour le SEO pour les petites entreprises, les start-up et les marques personnelles, conçus en Indonésie depuis ${FOUNDED_YEAR}. Tarifs transparents et ${n} démos en ligne à ouvrir dès maintenant.`,
+      `Création de sites web rapides et optimisés SEO pour petites entreprises, start-up et marques personnelles, depuis l’Indonésie. Tarifs clairs, ${n} démos.`,
     ogHomeDescription: (n: number) =>
       `Un studio web à Trenggalek, en Indonésie, depuis ${FOUNDED_YEAR}. Des sites rapides et prêts pour le SEO pour les petites entreprises, les boutiques et les marques personnelles. Découvrez ${n} démos en ligne.`,
     ogAlt: 'PintuWeb — Création de sites web professionnels',
@@ -98,6 +98,7 @@ const fr: Dict = {
     title: ['Chaque entreprise mérite une vraie ', 'porte d’entrée', '.'] as Hl,
     lead: (n: number) =>
       `Nous concevons et réalisons des sites web pour les petites entreprises, les boutiques et les marques personnelles : rapides à ouvrir sur mobile, prêts à être trouvés sur Google, et entièrement à vous. ${CLIENT_PROJECTS} projets clients livrés, et ${n} exemples de notre travail à ouvrir dès aujourd’hui.`,
+    offer: (price: string, duration: string) => `Landing pages à partir de ${price}, livrées en ${duration}. 50 % à la commande, le solde une fois le travail terminé.`,
     ctaConsult: 'Consultation gratuite',
     ctaDemos: (n: number) => `Voir ${n} exemples`,
     facade: 'Huit types de sites que nous réalisons',
@@ -181,7 +182,7 @@ const fr: Dict = {
     promises: [
       { fig: `${PACKAGES.length}`, unit: 'formules', proof: 'Écrit sur la page des tarifs', title: 'Des prix annoncés d’emblée', body: 'La fourchette de prix de chaque formule figure sur ce site. Le montant exact est indiqué dans un devis écrit avant le démarrage.' },
       { fig: '50 %', unit: 'acompte', proof: 'Écrit dans la FAQ', title: 'La moitié d’abord', body: 'Un acompte de 50 % pour démarrer. Le reste est réglé une fois le site terminé et validé par vous.' },
-      { fig: '100 %', unit: 'à vous', proof: 'Écrit dans les conditions', title: 'Entièrement à vous', body: 'Une fois le paiement soldé, le code source, le domaine, l’hébergement et l’accès administrateur vous sont remis.' },
+      { fig: '100 %', unit: 'à vous', proof: 'Écrit dans les conditions', title: 'Entièrement à vous', body: 'Pour les formules de site web : une fois le paiement soldé, le code source, le domaine, l’hébergement et l’accès administrateur vous sont remis.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Écrit dans la FAQ', title: 'Rapide sur mobile', body: `Nous optimisons chaque site en visant un score PageSpeed de ${PERF_TARGET}. C’est un objectif de travail, pas une moyenne revendiquée.` },
       { fig: `${GUARANTEE_DAYS}`, unit: 'jours', proof: 'Écrit dans les conditions', title: `Garantie de ${GUARANTEE_DAYS} jours`, body: `Les bugs sont corrigés gratuitement pendant ${GUARANTEE_DAYS} jours après la mise en ligne, en plus de la maintenance de votre formule.` },
       { fig: '24', unit: 'heures', proof: 'Écrit dans la FAQ', title: 'Réponse les jours ouvrés', body: `Nous répondons sous 24 heures les jours ouvrés, du lundi au samedi, de ${OPENS} à ${CLOSES} WIB.` },
@@ -190,7 +191,7 @@ const fr: Dict = {
   pricing: {
     eyebrow: 'Tarifs',
     title: ['Les prix sont annoncés d’emblée, ', 'pas après votre demande', '.'] as Hl,
-    lead: 'Chaque formule comprend le design et le développement ; les formules de site web incluent aussi le SEO de base. Le seul coût récurrent est le renouvellement du domaine et de l’hébergement à partir de la deuxième année.',
+    lead: 'Chaque formule comprend le design et le développement ; les formules de site web incluent aussi le SEO de base. Le seul coût récurrent de notre part est le renouvellement du domaine et de l’hébergement à partir de la deuxième année.',
     colPrice: 'Fourchette de prix',
     colPackage: 'Formule',
     openNote: 'Des pointillés en fin de barre signifient que le prix peut être plus élevé, selon les fonctionnalités.',
@@ -198,7 +199,7 @@ const fr: Dict = {
     depositTitle: 'Paiement',
     depositBody: 'Un acompte de 50 % pour démarrer ; le solde une fois le site terminé et validé.',
     maintTitle: 'Après la mise en ligne',
-    maintBody: `De 1 à 6 mois de maintenance selon la formule, plus une garantie de correction des bugs de ${GUARANTEE_DAYS} jours.`,
+    maintBody: `La maintenance prévue par votre formule, plus une garantie de correction des bugs de ${GUARANTEE_DAYS} jours.`,
   },
   pkg: {
     from: 'à partir de',

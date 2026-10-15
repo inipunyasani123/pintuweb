@@ -11,14 +11,16 @@ import { DEMOS } from '../lib/demos'
 import { SITE, WA_DISPLAY, wa } from '../lib/site'
 import { LANGS, LANG_INFO, getDict, isLang, type Lang } from '../i18n'
 import { hasPage, path } from '../i18n/routes'
-import { siteGraph } from '../i18n/seo'
+import { rssTypes, siteGraph } from '../i18n/seo'
 
 // Huruf bergaya Apple. Perangkat Apple memakai SF Pro bawaan sistem (-apple-system di globals.css;
 // SF Pro sendiri tidak boleh di-embed di web). Perangkat lain memakai Inter, padanan terbuka yang paling
 // dekat; sumbu optical size membuat judul besar memakai potongan "display" seperti SF Pro Display.
-// 'cyrillic' untuk versi Rusia (berkasnya hanya diunduh bila halaman memuat huruf Kiril). Aksara lain (Mandarin,
-// Hindi, Bengali, Arab) memakai huruf bawaan perangkat lewat daftar cadangan di globals.css.
-const inter = Inter({ subsets: ['latin', 'cyrillic'], axes: ['opsz'], variable: '--font-inter', display: 'swap' })
+// `subsets` hanya menentukan berkas yang di-preload di SETIAP halaman, jadi cukup 'latin'. @font-face untuk subset
+// lain (termasuk Kiril untuk versi Rusia) tetap ada di CSS dengan unicode-range-nya, dan berkasnya baru diunduh bila
+// halaman memang memuat huruf itu. Aksara lain (Mandarin, Hindi, Bengali, Arab) memakai huruf bawaan perangkat lewat
+// daftar cadangan di globals.css.
+const inter = Inter({ subsets: ['latin'], axes: ['opsz'], variable: '--font-inter', display: 'swap' })
 
 /** Naikkan bila favicon/ikon berubah: browser menyimpan favicon lama sangat lama, parameter ini memaksanya mengambil ulang. */
 const ICON_REV = 3
@@ -59,8 +61,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       ...(process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : {}),
       ...(process.env.BING_SITE_VERIFICATION ? { other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } } : {}),
     },
-    // umpan RSS artikel: versi Inggris untuk semua bahasa selain Indonesia (artikel hanya ada dalam id & en)
-    alternates: { types: { 'application/rss+xml': [{ url: lang === 'id' ? '/artikel/rss' : '/en/articles/rss', title: lang === 'id' ? 'Artikel PintuWeb' : 'PintuWeb articles' }] } },
+    // umpan RSS artikel (halaman yang memakai pageMeta memasangnya lagi, lihat rssTypes di i18n/seo.ts)
+    alternates: { types: rssTypes(lang) },
   }
 }
 
@@ -113,6 +115,7 @@ export default async function LangLayout({ children, params }: { children: React
             respond: t.header.respond,
             language: t.header.language,
             notAvailable: t.header.notAvailable,
+            newTab: t.common.newTabShort,
           }}
         />
         {children}

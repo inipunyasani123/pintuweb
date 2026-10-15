@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { flushSync } from 'react-dom'
 import { ArrowUpRight, Check, ChevronDown, Copy, Mail } from 'lucide-react'
 import { LogoMark } from '../../components/Logo'
 import { copyText } from '../../components/CopyLink'
@@ -45,13 +46,15 @@ export type ContactText = {
   faqTitle: string
 }
 
-export type ContactPackage = { title: string; from: string; duration: string; href: string }
+export type ContactPackage = { slug: string; title: string; from: string; duration: string; href: string }
 
 type Props = {
   t: ContactText
   packages: ContactPackage[]
   /** nama demo untuk saran isian "demo yang kamu suka" */
   demos: string[]
+  /** slug demo -> namanya dalam bahasa halaman, untuk isian awal dari ?demo=<slug> */
+  demoBySlug: Record<string, string>
   waNumber: string
   email: string
   /** jam kerja, satu baris */
@@ -67,11 +70,23 @@ type Props = {
  * Formulir kontak tanpa backend: isian di kiri, dan di kanan pratinjau pesan (gelembung obrolan) yang
  * tersusun saat diketik, lalu dikirim lewat WhatsApp atau email dari aplikasi pengunjung sendiri, atau disalin.
  */
-export default function ContactForm({ t, packages, demos, waNumber, email, hours, fromLabel, seePackage, newTab }: Props) {
+export default function ContactForm({ t, packages, demos, demoBySlug, waNumber, email, hours, fromLabel, seePackage, newTab }: Props) {
   const [f, setF] = useState<Form>(EMPTY)
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({})
   const [copied, setCopied] = useState(false)
   const picked = packages.find((p) => p.title === f.paket)
+
+  // Isian awal dari alamat: situs demo menaut ke /kontak?demo=<slug> (opsional &paket=<slug paket>). Dibaca dari
+  // window.location setelah halaman terpasang (bukan useSearchParams, yang membuat halaman statis ini dirender di
+  // klien). Nilai yang tidak dikenal diabaikan.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search)
+    const slug = q.get('demo') ?? ''
+    const demo = Object.prototype.hasOwnProperty.call(demoBySlug, slug) ? demoBySlug[slug] : ''
+    const pkg = packages.find((p) => p.slug === q.get('paket'))
+    if (!demo && !pkg) return
+    setF((prev) => ({ ...prev, ...(demo ? { demo } : {}), ...(pkg ? { paket: pkg.title } : {}) }))
+  }, [demoBySlug, packages])
 
   // Baris rincian pesan; baris opsional yang kosong tidak ikut terkirim.
   const details = [
@@ -98,7 +113,9 @@ export default function ContactForm({ t, packages, demos, waNumber, email, hours
     const e: typeof errors = {}
     if (!f.nama.trim()) e.nama = t.errName
     if (f.pesan.trim().length < 10) e.pesan = t.errMessage
-    setErrors(e)
+    // flushSync: aria-invalid & aria-describedby sudah terpasang di DOM sebelum fokus berpindah, jadi pembaca layar
+    // langsung membacakan galatnya saat isian itu difokus
+    flushSync(() => setErrors(e))
     // bawa pengunjung ke isian pertama yang perlu diperbaiki
     const first = (Object.keys(e) as (keyof Form)[])[0]
     if (first) document.getElementById(first)?.focus()

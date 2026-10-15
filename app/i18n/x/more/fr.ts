@@ -6,7 +6,7 @@ const more: More = {
     'landing-page': {
       name: 'Landing Page',
       title: 'Création de landing pages',
-      description: 'Des landing pages rapides et centrées sur la conversion pour les lancements de produit, les événements, les webinaires et les campagnes publicitaires. Tarifs transparents, livraison en quelques jours ouvrés, avec 17 exemples en ligne à essayer.',
+      description: 'Landing pages rapides et axées conversion pour lancements de produit, événements et publicités. Tarifs clairs, livraison en quelques jours, {{demos:landing}} exemples.',
       h1: ['Des ', 'landing pages', ' qui transforment les visiteurs en clients.'],
       lead: 'Une landing page est une page web unique conçue pour un seul objectif : amener les visiteurs à faire une action précise, comme acheter, s’inscrire à un webinaire ou vous écrire sur WhatsApp. Comme il s’agit d’une seule page, elle se réalise vite et constitue la destination idéale d’une publicité.',
       intro: [
@@ -26,7 +26,7 @@ const more: More = {
     'company-profile': {
       name: 'Site vitrine d’entreprise',
       title: 'Site vitrine pour les petites entreprises',
-      description: 'Des sites vitrines pour les petites entreprises et les prestataires de services : 3 à 5 pages, un domaine .com, l’hébergement, le SSL, Google Maps et le SEO on-page. Tarifs transparents avec un acompte de 50 %.',
+      description: 'Sites vitrines pour petites entreprises : 3 à 5 pages, domaine .com, hébergement, SSL, Google Maps et SEO on-page. Tarifs clairs, acompte de 50 %.',
       h1: ['Un ', 'site vitrine', ' qui inspire confiance en votre entreprise.'],
       lead: 'Un site vitrine est un site de plusieurs pages qui présente votre entreprise en entier : qui vous êtes, ce que vous vendez, où vous êtes et comment vous contacter. Les clients potentiels consultent souvent votre site avant de décider d’acheter ou de travailler avec vous.',
       intro: [
@@ -46,7 +46,7 @@ const more: More = {
     'toko-online': {
       name: 'Boutique en ligne',
       title: 'Création de boutique en ligne',
-      description: 'Votre propre boutique en ligne : un catalogue de produits avec commandes via WhatsApp, ou une boutique complète avec panier, passerelle de paiement, frais de livraison automatiques et tableau de bord d’administration.',
+      description: 'Votre boutique en ligne : catalogue avec commandes WhatsApp ou boutique complète avec panier, paiement en ligne, frais de port calculés et back-office.',
       h1: ['Une ', 'boutique en ligne', ' bien à vous, sans commission de plateforme sur chaque vente.'],
       lead: 'Une boutique en ligne est un site où vos clients parcourent votre catalogue de produits et commandent directement auprès de vous. Elle existe en deux niveaux : un catalogue avec commande via WhatsApp pour démarrer rapidement, et une boutique complète avec panier, paiement automatique et frais de livraison calculés automatiquement.',
       intro: [
@@ -66,31 +66,31 @@ const more: More = {
     portofolio: {
       name: 'Site portfolio',
       title: 'Sites portfolio et image personnelle',
-      description: 'Des sites portfolio pour designers, développeurs, photographes et freelances : pages de réalisations, études de cas, blog et contact, avec un SEO de base. Découvrez 7 exemples de portfolios en ligne.',
+      description: 'Sites portfolio pour designers, développeurs, photographes et freelances : réalisations, études de cas, blog et contact. Découvrez {{demos:portfolio}} exemples en ligne.',
       h1: ['Un ', 'site portfolio', ' qui met votre travail en valeur.'],
       lead: 'Un site portfolio est une vitrine personnelle de votre travail : là où clients et recruteurs voient ce que vous avez réalisé, comment vous travaillez et comment vous joindre. Contrairement à un PDF ou aux réseaux sociaux, il a sa propre adresse et peut être trouvé sur Google.',
       intro: [
         'La formule Portfolio comprend les pages À propos, Réalisations, Blog et Contact, avec des liens vers WhatsApp, LinkedIn, Instagram ou vos autres canaux. Nous soignons la structure des titres pour que les moteurs de recherche lisent clairement votre nom et vos compétences.',
-        'Les sept styles de portfolio de notre galerie — de l’éditorial minimaliste au néo-brutalisme — peuvent être essayés dès maintenant, avec études de cas et modes clair et sombre.',
+        'Les {{demos:portfolio}} styles de portfolio de notre galerie — de l’éditorial minimaliste au néo-brutalisme — peuvent être essayés dès maintenant, avec études de cas et modes clair et sombre.',
       ],
       forWho: ['Designers UI/UX et graphistes, illustrateurs', 'Développeurs et technologues créatifs', 'Photographes, vidéastes et rédacteurs', 'Freelances qui cherchent des clients en direct', 'Professionnels en recherche d’emploi'],
       short: 'Une vitrine de vos réalisations pour freelances, créateurs et professionnels, avec études de cas.',
       suits: 'Freelances, créateurs',
       faq: [
-        { q: 'Puis-je ajouter moi-même de nouvelles réalisations ?', a: 'Pendant la période de maintenance, envoyez vos nouvelles réalisations par WhatsApp et nous les ajoutons. Si vous mettez souvent votre portfolio à jour, un CMS peut être ajouté pour que vous le gériez vous-même.' },
+        { q: 'Puis-je ajouter moi-même de nouvelles réalisations ?', a: 'Envoyez vos nouvelles réalisations par WhatsApp et nous les ajoutons ; pour des mises à jour régulières, une option de maintenance mensuelle est disponible. Si vous mettez souvent votre portfolio à jour, un CMS peut être ajouté pour que vous le gériez vous-même.' },
         { q: 'Les personnes des exemples de portfolio sont-elles réelles ?', a: 'Non. Les personnages de nos exemples de portfolio sont fictifs ; lorsque vous commandez, tout est remplacé par vos propres réalisations, photos et coordonnées.' },
         { q: 'Ai-je besoin d’un domaine à mon nom ?', a: 'Nous le recommandons vivement. Un domaine, l’hébergement et le SSL pour la première année sont inclus dans la formule Portfolio, et une adresse à votre nom est plus facile à retenir pour vos clients.' },
       ],
     },
     'website-custom': {
       name: 'Site web et application web sur mesure',
-      title: 'Création de sites et d’applications web sur mesure',
-      description: 'Des sites et applications web sur mesure : systèmes de réservation, catalogues immobiliers, espaces membres, formulaires complexes et intégrations d’API, développés avec Next.js. Essayez nos exemples de réservation et d’immobilier en ligne.',
+      title: 'Création de sites et d’apps web sur mesure',
+      description: 'Sites et applications web sur mesure avec Next.js : réservation, catalogues immobiliers, espaces membres et intégrations d’API. Essayez nos démos.',
       h1: ['Des sites sur mesure pour ', 'les besoins qui n’entrent dans aucun modèle.'],
       lead: 'Un site sur mesure est un site dont le design, le parcours et les fonctionnalités sont construits spécifiquement autour du fonctionnement de votre entreprise — par exemple un système de réservation, un catalogue immobilier avec filtres, un espace membre ou une intégration avec un système que vous utilisez déjà.',
       intro: [
         'Un projet sur mesure commence par la cartographie du parcours : qui sont les utilisateurs, quelles données arrivent et ce qui doit se passer ensuite. À partir de là, nous préparons un devis écrit avec un périmètre clair avant d’écrire la moindre ligne de code.',
-        'Vous pouvez essayer des exemples dans notre galerie : cinq systèmes de réservation (restaurant, hôtel, clinique, terrain de futsal, cinéma), quatre places de marché immobilières et trois applications de productivité.',
+        'Vous pouvez essayer des exemples dans notre galerie : {{demos:reservasi}} systèmes de réservation (restaurant, hôtel, clinique, terrain de futsal, cinéma), {{demos:properti}} places de marché immobilières et {{demos:todo}} applications de productivité.',
       ],
       forWho: ['Restaurants, hôtels, cliniques et terrains de sport qui ont besoin de réservation en ligne', 'Agents et promoteurs immobiliers', 'Start-up qui construisent leur premier produit web', 'Institutions et écoles avec des formulaires ou des processus particuliers', 'Entreprises qui relient leur site à des systèmes existants'],
       short: 'Systèmes de réservation, catalogues immobiliers, applications web ou autres fonctionnalités sur mesure pour votre entreprise.',
@@ -105,11 +105,11 @@ const more: More = {
     'undangan-digital': {
       name: 'Invitation numérique',
       title: 'Invitations numériques en ligne',
-      description: 'Des invitations numériques sous forme de site web pour les mariages, fiançailles, fêtes de famille, anniversaires, remises de diplôme, retrouvailles et événements d’entreprise : RSVP, compte à rebours, plan, galerie et musique. Découvrez 8 thèmes en ligne.',
+      description: 'Invitations numériques en ligne pour mariages, anniversaires et événements d’entreprise : RSVP, compte à rebours, plan, galerie et musique. Voir {{demos:undangan}} thèmes.',
       h1: ['Des ', 'invitations numériques', ' que vos invités ouvrent, lisent et auxquelles ils répondent.'],
       lead: 'Une invitation numérique est une invitation à un événement sous forme de page web, que vous partagez par un lien — généralement sur WhatsApp. À partir d’un seul lien, les invités voient la date et le lieu, ouvrent le plan, confirment leur présence (RSVP) et notent la date.',
       intro: [
-        'Les huit thèmes de notre galerie ont chacun un caractère propre, et non un même design décliné en plusieurs couleurs : un mariage, des fiançailles, deux fêtes de famille indonésiennes (khitanan et aqiqah), un anniversaire, une remise de diplôme, des retrouvailles et un site d’événement d’entreprise avec programme et inscription des participants.',
+        'Les {{demos:undangan}} thèmes de notre galerie ont chacun un caractère propre, et non un même design décliné en plusieurs couleurs : un mariage, des fiançailles, deux fêtes de famille indonésiennes (khitanan et aqiqah), un anniversaire, une remise de diplôme, des retrouvailles et un site d’événement d’entreprise avec programme et inscription des participants.',
         'Parmi les fonctionnalités en option : une enveloppe d’ouverture, un compte à rebours, un plan d’accès, une galerie photo, une musique de fond et un formulaire RSVP. Une invitation issue de notre galerie de thèmes démarre à {{from:undangan-digital}} ; pour un événement d’entreprise ou un design sur mesure, la formule Site d’événement démarre à {{from:situs-acara}}.',
       ],
       forWho: ['Couples qui préparent un mariage ou des fiançailles', 'Familles qui organisent une fête', 'Organisateurs de retrouvailles, de remises de diplôme et d’anniversaires', 'Entreprises qui organisent des conférences, des lancements ou des rencontres', 'Toute personne qui veut une invitation facile à partager sur WhatsApp'],
@@ -126,11 +126,11 @@ const more: More = {
     'link-in-bio': {
       name: 'Link in Bio',
       title: 'Pages link in bio sur mesure',
-      description: 'Des pages link in bio avec votre propre domaine et votre design pour créateurs, petites entreprises, musiciens et cafés : menus, précommandes, agendas, boutiques et bouton WhatsApp derrière un seul lien. Découvrez 12 exemples en ligne.',
+      description: 'Pages link in bio avec votre domaine et votre design pour créateurs, commerces et cafés : menus, précommandes, boutique, WhatsApp. Découvrez {{demos:linkinbio}} exemples.',
       h1: ['Une ', 'page link in bio', ' bien à vous — pas une simple liste de boutons.'],
       lead: 'Une page link in bio est une page web unique, liée depuis votre bio Instagram ou TikTok, qui regroupe toutes vos destinations importantes : WhatsApp, votre boutique, votre agenda, vos réalisations ou un formulaire de commande. Une version sur mesure peut utiliser votre propre domaine et le design de votre marque, avec des fonctionnalités que les services link in bio génériques ne proposent pas.',
       intro: [
-        'Les douze exemples de notre galerie montrent jusqu’où une telle page peut aller : le tableau-menu d’un stand de restauration qui indique s’il est ouvert selon l’heure indonésienne, les précommandes d’un coffee shop, l’agenda de tournée d’un groupe avec choix des billets, une boutique d’autocollants et une page de commandes pour une illustratrice.',
+        'Les {{demos:linkinbio}} exemples de notre galerie montrent jusqu’où une telle page peut aller : le tableau-menu d’un stand de restauration qui indique s’il est ouvert selon l’heure indonésienne, les précommandes d’un coffee shop, l’agenda de tournée d’un groupe avec choix des billets, une boutique d’autocollants et une page de commandes pour une illustratrice.',
         'La formule Link in Bio démarre à {{from:link-in-bio}} et est prête en {{duration:link-in-bio}} ; les pages ou fonctionnalités supplémentaires sont chiffrées dans le devis écrit.',
       ],
       forWho: ['Créateurs de contenu et influenceurs', 'Cafés, stands de restauration et commerces de bouche qui prennent des précommandes', 'Musiciens, groupes et organisateurs d’événements', 'Illustrateurs, rédacteurs et métiers créatifs', 'Petites entreprises qui vendent activement sur Instagram ou TikTok'],

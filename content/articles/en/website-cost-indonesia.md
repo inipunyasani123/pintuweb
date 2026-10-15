@@ -1,14 +1,15 @@
 ---
 key: biaya
 title: How Much Does a Website Cost in Indonesia in 2026?
-description: What a professional website costs in Indonesia in 2026, by type of website — plus the second-year costs people forget and how to save without cutting corners. Prices in IDR.
+seoTitle: Website Cost in Indonesia 2026: Price Breakdown
+description: What a professional website costs in Indonesia in 2026, by type, plus the second-year costs people forget and how to save without cutting corners.
 date: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-15
 tags: website cost, pricing, Indonesia
 takeaways:
 - At PintuWeb, business websites start at {{from:landing-page}} (landing page), a full online store costs {{price:toko-online-full}}, and systems such as booking or web apps start at {{from:sistem-reservasi}}, including design, build, first-year domain and hosting, and basic SEO.
 - Small projects such as digital invitations ({{from:undangan-digital}}) and link-in-bio pages ({{from:link-in-bio}}) also have fixed prices rather than "ask us".
-- The only recurring cost is domain and hosting renewal, roughly {{renewal}} per year from the second year.
+- The only recurring cost from us is domain and hosting renewal, roughly {{renewal}} per year from the second year.
 - Price depends mainly on the number of pages, features (such as online payments) and how custom the design is.
 - Before comparing prices, make sure the domain and code become yours and there is a written guarantee.
 ---
@@ -61,7 +62,7 @@ A fuller list is in our article on [how to choose a web developer](/en/articles/
 - **Start with what you need most.** Many businesses begin with a [landing page](/en/services/landing-page) and grow it into a full website later; the code and design can be reused.
 - **Prepare your own content.** A business description, product list and real photos shorten the work and usually convince customers better.
 - **Postpone features that are not urgent.** A shop with few orders can start with a catalogue and WhatsApp ordering, then move to automatic payments as orders grow.
-- **Ask about new-business discounts.** We offer up to 20% off for businesses less than a year old.
+- **Ask for a custom quote.** For large projects or several websites at once, the price can be discussed.
 
 ## Frequently asked questions
 
@@ -71,7 +72,7 @@ At PintuWeb, from {{from:landing-page}} for a one-page landing page. A 3–5 pag
 
 ### Are there monthly fees?
 
-There are no mandatory monthly fees. The only recurring cost is the yearly domain and hosting renewal from the second year, around {{renewal}}. Ongoing maintenance is optional.
+There are no mandatory monthly fees. The only recurring cost from us is the yearly domain and hosting renewal from the second year, around {{renewal}}. Ongoing maintenance is optional.
 
 ### How long does it take to build?
 

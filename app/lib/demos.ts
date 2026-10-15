@@ -1,6 +1,8 @@
 // Dibuat dari 65 situs demo yang live di Vercel.
 // Judul diambil dari <title> tiap situs; gambar = og.jpg milik situs itu sendiri, diperkecil
 // jadi public/demos/<slug>.webp (720x378) supaya galeri ringan dan tidak bergantung pada 65 domain lain.
+// Untuk srcset ada juga <slug>-360.webp dan <slug>-480.webp (diperkecil dari berkas 720w dengan sharp, WebP q74);
+// demo baru perlu ketiganya.
 
 export type DemoCategory = 'landing' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
 
@@ -23,6 +25,8 @@ export type Demo = {
   url: string
   /** Paket harga bila berbeda dari paket kategorinya (PACKAGE_FOR_CATEGORY di lib/portals.ts). */
   pkg?: string
+  /** true = kartunya tanpa harga "mulai …" (mis. konsep redesain tidak resmi: bukan sesuatu yang dijual). */
+  noPrice?: true
 }
 
 export const DEMOS: Demo[] = [
@@ -39,7 +43,7 @@ export const DEMOS: Demo[] = [
   { slug: "rasanusantara", name: "Rasa Nusantara", tagline: "Kartu Resep Terstandar untuk Dapur Restoran", category: 'landing', url: "https://landing-rasanusantara.pintuweb.id" },
   { slug: "sanzyhub", name: "SanzyHub", tagline: "Template Landing Page Next.js yang Lebih dari Satu Halaman", category: 'landing', url: "https://landing-sanzyhub.pintuweb.id" },
   { slug: "skywings", name: "SkyWings", tagline: "Maskapai Antarkota yang Tepat Waktu", category: 'landing', url: "https://landing-skywings.pintuweb.id" },
-  { slug: "sribu", name: "Sribu", tagline: "Konsep Redesain Tidak Resmi", category: 'landing', url: "https://landing-sribu.pintuweb.id" },
+  { slug: "sribu", name: "Sribu", tagline: "Konsep Redesain Tidak Resmi", category: 'landing', url: "https://landing-sribu.pintuweb.id", noPrice: true },
   { slug: "tastycorner", name: "Tasty Corner", tagline: "Struk Mingguan untuk Usaha Makanan", category: 'landing', url: "https://landing-tastycorner.pintuweb.id" },
   { slug: "woodora", name: "Woodora", tagline: "Furnitur Kayu Solid Sesuai Ukuran", category: 'landing', url: "https://landing-woodora.pintuweb.id" },
   { slug: "zychrome", name: "Zychrome", tagline: "Webinar yang Bisa Membalas Anda", category: 'landing', url: "https://landing-zychrome.pintuweb.id" },
@@ -94,3 +98,6 @@ export const DEMOS: Demo[] = [
 ]
 
 export const demoImage = (d: Demo) => `/demos/${d.slug}.webp`
+
+/** srcset thumbnail demo: varian 360w & 480w + berkas aslinya (720w). */
+export const demoSrcSet = (slug: string) => `/demos/${slug}-360.webp 360w, /demos/${slug}-480.webp 480w, /demos/${slug}.webp 720w`

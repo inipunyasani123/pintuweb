@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useId, useRef, useState } from 'react'
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Globe } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Globe, MessageCircle } from 'lucide-react'
 import { LANGS, LANG_INFO, type Lang } from '../i18n/config'
 import { switchPath, toPublicPath } from '../i18n/routes'
 import { Logo } from './Logo'
@@ -30,6 +30,8 @@ export type HeaderProps = {
     respond: string
     language: string
     notAvailable: string
+    /** keterangan pembaca layar untuk tautan yang membuka tab baru */
+    newTab: string
   }
 }
 
@@ -42,6 +44,7 @@ function LangSwitch({ lang, label, notAvailable, onPick, big = false }: { lang: 
   const pathname = toPublicPath(usePathname() ?? '/')
   const [open, setOpen] = useState(false)
   const box = useRef<HTMLDivElement>(null)
+  const btn = useRef<HTMLButtonElement>(null)
   const listId = useId()
   const cur = LANG_INFO[lang]
 
@@ -50,12 +53,19 @@ function LangSwitch({ lang, label, notAvailable, onPick, big = false }: { lang: 
     const onDown = (e: PointerEvent) => {
       if (box.current && !box.current.contains(e.target as Node)) setOpen(false)
     }
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    // Esc menutup daftar dan mengembalikan fokus ke tombolnya. Didengar di fase capture dan ditandai
+    // preventDefault, supaya Esc yang sama tidak ikut menutup lembar menu ponsel (lihat Header).
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      e.preventDefault()
+      setOpen(false)
+      btn.current?.focus()
+    }
     document.addEventListener('pointerdown', onDown)
-    document.addEventListener('keydown', onKey)
+    document.addEventListener('keydown', onKey, true)
     return () => {
       document.removeEventListener('pointerdown', onDown)
-      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('keydown', onKey, true)
     }
   }, [open])
   // pindah halaman = tutup daftar
@@ -66,12 +76,22 @@ function LangSwitch({ lang, label, notAvailable, onPick, big = false }: { lang: 
     : 'flex min-h-10 items-center justify-between gap-3 rounded-xl px-3 text-[0.9375rem]'
 
   return (
-    <div ref={box} className={big ? 'w-full' : 'relative'}>
+    <div
+      ref={box}
+      className={big ? 'w-full' : 'relative'}
+      // fokus pindah ke luar pemilih (Tab/Shift+Tab melewati daftar): tutup daftarnya
+      onBlur={(e) => {
+        if (open && e.relatedTarget && !e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false)
+      }}
+    >
       <button
+        ref={btn}
         type="button"
         aria-expanded={open}
         aria-controls={listId}
-        aria-label={`${label}: ${cur.name}`}
+        // versi lembar menu: teks terlihatnya "Bahasa" + nama bahasa, jadi label ini memuat keduanya. Versi bilah:
+        // nama aksesibelnya dari isi tombol (kode bahasa yang terlihat lebih dulu, lalu teks sr-only), WCAG 2.5.3.
+        aria-label={big ? `${label}: ${cur.name}` : undefined}
         onClick={() => setOpen((v) => !v)}
         className={
           big
@@ -82,13 +102,20 @@ function LangSwitch({ lang, label, notAvailable, onPick, big = false }: { lang: 
         <Globe size={big ? 18 : 15} strokeWidth={1.75} className="shrink-0" aria-hidden="true" />
         {big ? (
           <>
-            <span>{label}</span>
+            {/* spasi di antara kedua span: tidak tampil (item flex), tapi teks terlihatnya jadi "Bahasa Bahasa Indonesia",
+                sesuai aria-label (WCAG 2.5.3) */}
+            <span>{label}</span>{' '}
             <span lang={cur.htmlLang} className="ms-auto font-semibold text-[color:var(--text-primary)]">
               {cur.name}
             </span>
           </>
         ) : (
-          <span>{cur.short}</span>
+          <>
+            <span>{cur.short}</span>
+            <span className="sr-only">
+              , {label}: {cur.name}
+            </span>
+          </>
         )}
         <ChevronDown size={big ? 18 : 14} className={`shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
@@ -165,6 +192,7 @@ export default function Header({ lang, homeHref, nav, waHref, waDisplay, t }: He
 
   const lastY = useRef(0)
   const ticking = useRef(false)
+  const menuBtn = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => {
@@ -186,9 +214,27 @@ export default function Header({ lang, homeHref, nav, waHref, waDisplay, t }: He
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     if (!menuOpen) return
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    // Esc menutup lembar menu dan mengembalikan fokus ke tombol Menu, kecuali Esc itu sudah dipakai pemilih bahasa
+    // untuk menutup daftarnya sendiri (defaultPrevented).
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape' || e.defaultPrevented) return
+      setMenuOpen(false)
+      menuBtn.current?.focus()
+    }
+    // Selama lembar menu terbuka, isi halaman di belakangnya inert: Tab berputar di bilah & lembar menu saja,
+    // tidak tersesat ke konten yang tertutup tirai.
+    const behind = [...document.querySelectorAll<HTMLElement>('.skip-link, main, footer')].filter((el) => !el.inert)
+    behind.forEach((el) => (el.inert = true))
+    // lembar menu hanya ada di bawah 1024px: bila layar melebar selagi terbuka, tutup (supaya halaman tidak tertinggal inert)
+    const wide = window.matchMedia('(min-width: 1024px)')
+    const onWide = () => wide.matches && setMenuOpen(false)
     document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
+    wide.addEventListener('change', onWide)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      wide.removeEventListener('change', onWide)
+      behind.forEach((el) => (el.inert = false))
+    }
   }, [menuOpen])
 
   // Pindah halaman = tutup menu
@@ -207,7 +253,7 @@ export default function Header({ lang, homeHref, nav, waHref, waDisplay, t }: He
 
       <header className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-transform duration-300 sm:px-5 ${visible || menuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
         <div
-          className={`pointer-events-auto mx-auto flex h-[3.75rem] max-w-6xl items-center justify-between gap-3 rounded-full ps-4 pe-2 ring-1 backdrop-blur-md transition-[background-color,box-shadow] duration-300 sm:ps-5 ${
+          className={`pointer-events-auto mx-auto flex h-[3.75rem] max-w-6xl items-center justify-between gap-3 rounded-full ps-4 pe-2 ring-1 backdrop-blur-md transition-[background-color,box-shadow] duration-300 max-[359px]:gap-2 sm:ps-5 ${
             scrolled || menuOpen
               ? 'bg-white/95 shadow-[0_16px_36px_-22px_rgb(15_29_58/0.45)] ring-[color:var(--border-light)]'
               : 'bg-white/80 shadow-[0_10px_28px_-22px_rgb(15_29_58/0.35)] ring-white/80'
@@ -235,7 +281,8 @@ export default function Header({ lang, homeHref, nav, waHref, waDisplay, t }: He
             })}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2">
+          {/* di bawah 360px jarak & bantalan sedikit dirapatkan supaya tombol WhatsApp + Menu muat dalam semua bahasa */}
+          <div className="flex shrink-0 items-center gap-2 max-[359px]:gap-1.5">
             <div className="hidden items-center gap-2.5 md:flex">
               <LangSwitch lang={lang} label={t.language} notAvailable={t.notAvailable} />
               <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-solid btn-sm">
@@ -243,8 +290,22 @@ export default function Header({ lang, homeHref, nav, waHref, waDisplay, t }: He
               </a>
             </div>
 
+            {/* Ponsel (<768px): konsultasi WhatsApp tetap satu ketukan, di samping Menu. Di bawah 640px hanya ikon
+                (labelnya tetap dibacakan, sr-only) supaya bilah muat di 320px dalam semua bahasa. */}
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[color:var(--primary-700)] px-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--primary-800)] sm:pe-4 md:hidden"
+            >
+              <MessageCircle size={19} strokeWidth={2} className="shrink-0" aria-hidden="true" />
+              <span className="max-sm:sr-only">{t.consult}</span>
+              <span className="sr-only"> {t.newTab}</span>
+            </a>
+
             <button
-              className="inline-flex h-11 items-center gap-2.5 rounded-full bg-[color:var(--surface-soft)] ps-4 pe-3.5 text-sm font-semibold text-[color:var(--text-primary)] ring-1 ring-[color:var(--border-light)] lg:hidden"
+              ref={menuBtn}
+              className="inline-flex h-11 items-center gap-2.5 rounded-full bg-[color:var(--surface-soft)] ps-4 pe-3.5 text-sm font-semibold text-[color:var(--text-primary)] ring-1 ring-[color:var(--border-light)] max-[359px]:gap-2 max-[359px]:ps-3.5 max-[359px]:pe-3 lg:hidden"
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? t.closeMenu : t.openMenu}
               aria-expanded={menuOpen}
@@ -272,8 +333,11 @@ export default function Header({ lang, homeHref, nav, waHref, waDisplay, t }: He
                 const active = isActive(n.href)
                 return (
                   <li key={n.href}>
+                    {/* prefetch={false}: lembar menu tertutup tetap "terlihat" oleh IntersectionObserver di ponsel,
+                        jadi tanpa ini ketujuh halaman di-prefetch di setiap kunjungan */}
                     <Link
                       href={n.href}
+                      prefetch={false}
                       onClick={() => setMenuOpen(false)}
                       aria-current={active ? 'page' : undefined}
                       className={`flex items-center justify-between gap-4 rounded-2xl px-4 py-3 text-[1.1875rem] font-semibold transition-colors ${

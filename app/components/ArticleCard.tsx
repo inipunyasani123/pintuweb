@@ -58,9 +58,11 @@ type CardProps = {
   variant?: 'lead' | 'grid'
   /** tingkat judul, mengikuti letak kartu di halaman */
   as?: 'h2' | 'h3'
+  /** true = sampulnya dimuat lebih dulu (kartu pertama di layar pembuka, biasanya elemen LCP) */
+  priority?: boolean
 }
 
-export default function ArticleCard({ lang, a, read, variant = 'grid', as: H = 'h3' }: CardProps) {
+export default function ArticleCard({ lang, a, read, variant = 'grid', as: H = 'h3', priority = false }: CardProps) {
   const lead = variant === 'lead'
   return (
     <Link
@@ -72,6 +74,7 @@ export default function ArticleCard({ lang, a, read, variant = 'grid', as: H = '
         k={a.key}
         size={lead ? 'lg' : 'sm'}
         sizes={lead ? '(min-width: 768px) 560px, 100vw' : '(min-width: 1024px) 360px, (min-width: 640px) 46vw, 120px'}
+        priority={priority}
         className={lead ? 'aspect-[5/2] rounded-[0.95rem] sm:aspect-[2/1] sm:rounded-[1.125rem]' : 'aspect-square w-[5.75rem] shrink-0 rounded-[0.95rem] sm:aspect-[2/1] sm:w-auto sm:rounded-[1.125rem]'}
       />
       <span className={`flex min-w-0 flex-1 flex-col ${lead ? 'px-3 pb-3 pt-4 sm:px-4 sm:pb-4 sm:pt-5' : 'px-3 py-1.5 sm:px-3 sm:pb-3 sm:pt-4'}`}>

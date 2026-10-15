@@ -6,7 +6,7 @@ import { path, urlOf } from '../../i18n/routes'
 import { pageGraph, pageMeta } from '../../i18n/seo'
 import { packagesFor } from '../../i18n/facts'
 import { PACKAGE_FOR_CATEGORY, portalOf } from '../../lib/portals'
-import type { DemoCategory } from '../../lib/demos'
+import { demoSrcSet, type DemoCategory } from '../../lib/demos'
 
 type Params = { params: Promise<{ lang: string }> }
 
@@ -91,7 +91,15 @@ export default async function DemoPage({ params }: Params) {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <DemoGallery demos={demos.map((dm) => (dm.pkg ? { ...dm, from: pk.find((x) => x.slug === dm.pkg)!.priceFrom } : dm))} cats={cats} t={t} contactHref={path(lang, 'contact')} pricingHref={path(lang, 'pricing')} />
+      {/* pkg = harga dari paket lain (mis. "corporate" -> situs-acara); noPrice = kartu tanpa harga (DemoGallery) */}
+      <DemoGallery
+        demos={demos.map((dm) => (dm.pkg && !dm.noPrice ? { ...dm, from: pk.find((x) => x.slug === dm.pkg)!.priceFrom } : dm))}
+        cats={cats}
+        t={t}
+        contactHref={path(lang, 'contact')}
+        pricingHref={path(lang, 'pricing')}
+        thumbSrcSet={demoSrcSet('{slug}')}
+      />
     </>
   )
 }

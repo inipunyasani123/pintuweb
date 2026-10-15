@@ -6,7 +6,7 @@ const more: More = {
     'landing-page': {
       name: 'Landing Page',
       title: 'Criação de Landing Pages',
-      description: 'Landing pages rápidas e focadas em conversão para lançamentos de produto, eventos, webinars e campanhas de anúncios. Preços transparentes, entrega em poucos dias úteis e 17 exemplos no ar para testar.',
+      description: 'Landing pages rápidas e focadas em conversão para lançamentos, eventos e anúncios. Preços transparentes, entrega em poucos dias e {{demos:landing}} exemplos no ar.',
       h1: ['', 'Landing pages', ' que transformam visitantes em clientes.'],
       lead: 'Uma landing page é uma única página web criada para um só objetivo: levar o visitante a realizar uma ação, como comprar, se inscrever em um webinar ou mandar uma mensagem pelo WhatsApp. Por ser uma única página, é rápida de construir e ideal como destino de um anúncio.',
       intro: [
@@ -26,7 +26,7 @@ const more: More = {
     'company-profile': {
       name: 'Site institucional',
       title: 'Site institucional para pequenas empresas',
-      description: 'Sites institucionais para pequenas empresas e prestadores de serviços: 3 a 5 páginas, domínio .com, hospedagem, SSL, Google Maps e SEO on-page. Preços transparentes, com sinal de 50%.',
+      description: 'Sites institucionais para pequenas empresas: 3 a 5 páginas, domínio .com, hospedagem, SSL, Google Maps e SEO on-page. Preços transparentes, sinal de 50%.',
       h1: ['Um ', 'site institucional', ' que faz o seu negócio ganhar confiança.'],
       lead: 'Um site institucional é um site com várias páginas que apresenta o seu negócio por completo: quem você é, o que vende, onde está e como entrar em contato. Muitos potenciais clientes consultam o seu site antes de decidir comprar ou trabalhar com você.',
       intro: [
@@ -46,7 +46,7 @@ const more: More = {
     'toko-online': {
       name: 'Loja online',
       title: 'Criação de loja online',
-      description: 'A sua própria loja online: um catálogo de produtos com pedidos pelo WhatsApp, ou uma loja completa com carrinho, gateway de pagamento, cálculo automático de frete e painel administrativo.',
+      description: 'Sua própria loja online: catálogo com pedidos pelo WhatsApp ou loja completa com carrinho, pagamento online, frete automático e painel administrativo.',
       h1: ['Uma ', 'loja online', ' só sua, sem comissão de plataforma em cada venda.'],
       lead: 'Uma loja online é um site em que os clientes navegam pelo seu catálogo de produtos e compram diretamente de você. Ela tem dois níveis: um catálogo com pedidos pelo WhatsApp, para começar rápido, e uma loja completa com carrinho, pagamentos automáticos e cálculo automático de frete.',
       intro: [
@@ -66,18 +66,18 @@ const more: More = {
     portofolio: {
       name: 'Site de portfólio',
       title: 'Sites de portfólio e marca pessoal',
-      description: 'Sites de portfólio para designers, desenvolvedores, fotógrafos e freelancers: páginas de trabalhos, estudos de caso, blog e contato, com SEO básico. Veja 7 exemplos de portfólio no ar.',
+      description: 'Sites de portfólio para designers, desenvolvedores, fotógrafos e freelancers: trabalhos, estudos de caso, blog e contato. Veja {{demos:portfolio}} exemplos no ar.',
       h1: ['Um ', 'site de portfólio', ' que faz o seu trabalho ser notado.'],
       lead: 'Um site de portfólio é uma vitrine pessoal do seu trabalho: o lugar em que clientes ou recrutadores veem o que você já fez, como você trabalha e como falar com você. Comparado a um PDF ou às redes sociais, ele tem endereço próprio e pode ser encontrado no Google.',
       intro: [
         'O pacote Portfólio inclui as páginas Sobre, Trabalhos, Blog e Contato, com links para WhatsApp, LinkedIn, Instagram ou outros canais seus. Mantemos a estrutura de títulos organizada para que os buscadores leiam com clareza o seu nome e as suas habilidades.',
-        'Os sete estilos de portfólio da nossa galeria — do editorial minimalista ao neobrutalista — podem ser testados agora mesmo, com estudos de caso e modos claro e escuro.',
+        'Os {{demos:portfolio}} estilos de portfólio da nossa galeria — do editorial minimalista ao neobrutalista — podem ser testados agora mesmo, com estudos de caso e modos claro e escuro.',
       ],
       forWho: ['Designers de UI/UX e designers gráficos, ilustradores', 'Desenvolvedores e tecnólogos criativos', 'Fotógrafos, videomakers e escritores', 'Freelancers em busca de clientes diretos', 'Profissionais que estão se candidatando a vagas'],
       short: 'Uma vitrine de trabalhos para freelancers, criadores e profissionais, com estudos de caso.',
       suits: 'Freelancers, criadores',
       faq: [
-        { q: 'Posso adicionar novos trabalhos eu mesmo?', a: 'Durante o período de manutenção, envie os novos trabalhos pelo WhatsApp e nós os adicionamos. Se você atualiza o portfólio com frequência, um CMS pode ser adicionado para que você mesmo o gerencie.' },
+        { q: 'Posso adicionar novos trabalhos eu mesmo?', a: 'Envie os novos trabalhos pelo WhatsApp e nós os adicionamos; para atualizações regulares, há o serviço adicional de manutenção mensal. Se você atualiza o portfólio com frequência, um CMS pode ser adicionado para que você mesmo o gerencie.' },
         { q: 'As pessoas dos exemplos de portfólio são reais?', a: 'Não. As personas dos nossos exemplos de portfólio são fictícias; quando você encomenda, tudo é substituído pelos seus próprios trabalhos, fotos e dados de contato.' },
         { q: 'Preciso de um domínio com o meu nome?', a: 'Recomendamos muito. Domínio, hospedagem e SSL do primeiro ano estão incluídos no pacote Portfólio, e um endereço com o seu nome é mais fácil de os clientes lembrarem.' },
       ],
@@ -85,12 +85,12 @@ const more: More = {
     'website-custom': {
       name: 'Site sob medida e aplicativo web',
       title: 'Criação de sites sob medida e aplicativos web',
-      description: 'Sites sob medida e aplicativos web: sistemas de reserva, catálogos de imóveis, áreas de membros, formulários complexos e integrações via API, construídos com Next.js. Teste os nossos exemplos de reservas e imóveis no ar.',
+      description: 'Sites sob medida e aplicativos web com Next.js: sistemas de reserva, catálogos de imóveis, áreas de membros e integrações via API. Teste os exemplos.',
       h1: ['Sites sob medida para ', 'necessidades que não cabem em um modelo.'],
       lead: 'Um site sob medida é aquele cujo design, fluxo e recursos são construídos especificamente em torno de como o seu negócio funciona — por exemplo, um sistema de reservas, um catálogo de imóveis com filtros, uma área de membros ou uma integração com um sistema que você já usa.',
       intro: [
         'Um projeto sob medida começa pelo mapeamento do fluxo: quem são os usuários, que dados entram e o que precisa acontecer em seguida. A partir disso preparamos um orçamento por escrito com escopo claro, antes de escrever uma única linha de código.',
-        'Você pode testar exemplos na nossa galeria: cinco sistemas de reserva (restaurante, hotel, clínica, quadra de futsal, cinema), quatro marketplaces imobiliários e três aplicativos de produtividade.',
+        'Você pode testar exemplos na nossa galeria: {{demos:reservasi}} sistemas de reserva (restaurante, hotel, clínica, quadra de futsal, cinema), {{demos:properti}} marketplaces imobiliários e {{demos:todo}} aplicativos de produtividade.',
       ],
       forWho: ['Restaurantes, hotéis, clínicas e quadras que precisam de reservas online', 'Corretores de imóveis e incorporadoras', 'Startups construindo o seu primeiro produto web', 'Instituições e escolas com formulários ou fluxos de trabalho específicos', 'Negócios que querem conectar o site a sistemas que já usam'],
       short: 'Sistemas de reserva, catálogos de imóveis, aplicativos web ou outros recursos feitos sob medida para o seu negócio.',
@@ -105,11 +105,11 @@ const more: More = {
     'undangan-digital': {
       name: 'Convite digital',
       title: 'Convites digitais em site',
-      description: 'Convites digitais em site para casamentos, noivados, celebrações em família, aniversários, formaturas, reencontros e eventos corporativos: RSVP, contagem regressiva, mapa, galeria e música. Veja 8 temas no ar.',
+      description: 'Convites digitais em site para casamentos, aniversários, formaturas e eventos: RSVP, contagem regressiva, mapa, galeria e música. Veja {{demos:undangan}} temas no ar.',
       h1: ['', 'Convites digitais', ' que os convidados abrem, leem e respondem.'],
       lead: 'Um convite digital é um convite de evento em forma de página web que você compartilha como um link — normalmente pelo WhatsApp. Com um só link, os convidados veem o horário e o local, abrem o mapa, confirmam presença (RSVP) e salvam a data.',
       intro: [
-        'Os oito temas da nossa galeria têm, cada um, personalidade própria, e não um mesmo design em cores diferentes: um casamento, um noivado, duas celebrações familiares indonésias (khitanan e aqiqah), um aniversário, uma formatura, um reencontro e um site de evento corporativo com programação e inscrição de participantes.',
+        'Os {{demos:undangan}} temas da nossa galeria têm, cada um, personalidade própria, e não um mesmo design em cores diferentes: um casamento, um noivado, duas celebrações familiares indonésias (khitanan e aqiqah), um aniversário, uma formatura, um reencontro e um site de evento corporativo com programação e inscrição de participantes.',
         'Os recursos opcionais incluem um envelope de abertura, contagem regressiva, mapa do local, galeria de fotos, música de fundo e formulário de RSVP. Um convite da nossa galeria de temas começa em {{from:undangan-digital}}; para eventos corporativos ou um design sob medida, o pacote Site de evento começa em {{from:situs-acara}}.',
       ],
       forWho: ['Casais planejando o casamento ou o noivado', 'Famílias organizando uma celebração', 'Organizadores de reencontros, formaturas e aniversários', 'Empresas que realizam conferências, lançamentos ou confraternizações', 'Qualquer pessoa que queira um convite fácil de compartilhar pelo WhatsApp'],
@@ -126,11 +126,11 @@ const more: More = {
     'link-in-bio': {
       name: 'Link in Bio',
       title: 'Páginas link in bio sob medida',
-      description: 'Páginas link in bio com domínio e design próprios para criadores, pequenos negócios, músicos e cafés: cardápios, encomendas, agendas, lojas e um botão do WhatsApp por trás de um único link. Veja 12 exemplos no ar.',
+      description: 'Páginas link in bio com domínio e design próprios para criadores, pequenos negócios e cafés: cardápios, encomendas, lojas e WhatsApp. Veja {{demos:linkinbio}} exemplos.',
       h1: ['Uma ', 'página link in bio', ' só sua — não apenas uma lista de botões.'],
       lead: 'Uma página link in bio é uma única página web, linkada na bio do seu Instagram ou TikTok, que reúne todos os destinos importantes: WhatsApp, a sua loja, a sua agenda, os seus trabalhos ou um formulário de pedidos. Uma versão sob medida pode usar o seu próprio domínio e o design da sua marca, com recursos que os serviços genéricos de link in bio não oferecem.',
       intro: [
-        'Os doze exemplos da nossa galeria mostram até onde uma página assim pode ir: um quadro de cardápio de uma barraca de comida que mostra se ela está aberta pelo horário da Indonésia, encomendas de uma cafeteria, a agenda de turnê de uma banda com seletor de ingressos, uma loja de adesivos e uma página de encomendas de uma ilustradora.',
+        'Os {{demos:linkinbio}} exemplos da nossa galeria mostram até onde uma página assim pode ir: um quadro de cardápio de uma barraca de comida que mostra se ela está aberta pelo horário da Indonésia, encomendas de uma cafeteria, a agenda de turnê de uma banda com seletor de ingressos, uma loja de adesivos e uma página de encomendas de uma ilustradora.',
         'O pacote Link in Bio começa em {{from:link-in-bio}} e fica pronto em {{duration:link-in-bio}}; páginas ou recursos extras têm o preço definido no orçamento por escrito.',
       ],
       forWho: ['Criadores de conteúdo e influenciadores', 'Cafés, barracas de comida e negócios de alimentação que trabalham com encomendas', 'Músicos, bandas e organizadores de eventos', 'Ilustradores, escritores e profissionais criativos', 'Pequenos negócios que vendem ativamente no Instagram ou no TikTok'],

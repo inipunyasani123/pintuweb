@@ -1,7 +1,8 @@
 ---
 key: website-umkm
 title: Cara Membuat Website UMKM dari Nol sampai Online (Panduan 2026)
-description: Langkah demi langkah membuat website UMKM: menentukan tujuan, memilih jenis website, domain, konten, desain, SEO, Google Business Profile, hingga merawatnya setelah online.
+seoTitle: Cara Membuat Website UMKM dari Nol (Panduan 2026)
+description: Langkah demi langkah membuat website UMKM: tujuan, jenis website, domain, konten, desain, SEO, Google Business Profile, hingga merawatnya setelah online.
 date: 2026-10-03
 updated: 2026-10-03
 tags: website UMKM, panduan, pemula

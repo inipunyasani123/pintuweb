@@ -21,6 +21,9 @@ export type Kind = {
   tint: string
 }
 
+/** "IDR 1 250 000": kode mata uang tidak boleh terpisah dari angkanya saat baris turun (spasi tak-terputus). */
+const keepPrice = (s: string) => s.replace(/IDR /g, 'IDR\u00a0')
+
 // Delapan jenis website sebagai daftar rapi + satu pratinjau besar, masing-masing dengan gradasi warna khasnya.
 // Baris adalah tautan ke galerinya; menyorot atau memfokus baris mengganti pratinjau dan warna panggungnya
 // (desktop). Di ponsel tiap baris punya gambar kecil sendiri dengan garis warna.
@@ -68,12 +71,14 @@ export default function Kinds({ items, heading, hint, note }: { items: Kind[]; h
                     >
                       {String(i + 1).padStart(2, '0')}
                     </span>
+                    {/* judul, jumlah, dan harga boleh turun baris (tanpa elipsis): di 320–360px versi Hindi, Rusia,
+                        dan Bengali tidak muat sebaris */}
                     <span className="min-w-0 flex-1">
-                      <span className={`block truncate text-[1.0625rem] font-semibold text-[color:var(--text-primary)] ${on ? 'lg:text-[color:var(--k)]' : ''}`}>{it.title}</span>
-                      <span className="block truncate text-sm text-[color:var(--text-tertiary)]">
+                      <span className={`block text-[1.0625rem] font-semibold leading-snug text-[color:var(--text-primary)] ${on ? 'lg:text-[color:var(--k)]' : ''}`}>{it.title}</span>
+                      <span className="mt-0.5 block text-pretty text-sm leading-snug text-[color:var(--text-tertiary)]">
                         {it.count}
                         {/* harga ikut di baris ini sampai layar cukup lebar untuk kolom harga sendiri */}
-                        <span className="xl:hidden"> · {it.price}</span>
+                        <span className="xl:hidden"> · {keepPrice(it.price)}</span>
                       </span>
                     </span>
                     <span className="hidden whitespace-nowrap text-sm text-[color:var(--text-secondary)] xl:block">{it.price}</span>

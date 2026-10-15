@@ -1,9 +1,10 @@
 ---
 key: pilih-jasa
 title: Cara Memilih Jasa Pembuatan Website: 12 Pertanyaan Sebelum Membayar DP
-description: Daftar 12 pertanyaan untuk menilai jasa pembuatan website sebelum membayar DP — kepemilikan domain dan kode, biaya tahun kedua, garansi, revisi, kecepatan, hingga dukungan setelah online.
+seoTitle: Cara Memilih Jasa Pembuatan Website
+description: 12 pertanyaan untuk menilai jasa pembuatan website sebelum membayar DP: kepemilikan domain dan kode, biaya tahun kedua, garansi, revisi, hingga dukungan.
 date: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-15
 tags: jasa pembuatan website, tips, UMKM
 takeaways:
 - Pastikan domain, hosting, dan source code menjadi milik Anda setelah pelunasan — ini pertanyaan terpenting.
@@ -63,7 +64,7 @@ Minimal: judul dan deskripsi halaman, sitemap, HTTPS, struktur heading, dan tamp
 ## Setelah online
 
 **12. Apa isi garansi dan bagaimana dukungannya?**
-Minta tertulis: berapa hari, apa yang ditanggung, dan bagaimana cara melapor. *PintuWeb: garansi perbaikan bug {{guarantee}} hari, lalu maintenance 1–6 bulan sesuai paket.*
+Minta tertulis: berapa hari, apa yang ditanggung, dan bagaimana cara melapor. *PintuWeb: garansi perbaikan bug {{guarantee}} hari, lalu maintenance sesuai paket.*
 
 ## Tanda bahaya yang perlu diwaspadai
 

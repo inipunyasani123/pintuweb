@@ -16,7 +16,7 @@ const pt: Pack = {
       `O domínio e a hospedagem incluídos em um pacote cobrem o primeiro ano. A partir do segundo ano, a renovação custa aproximadamente ${renewal} por ano para sites e ` +
       `${renewalBio} para páginas link in bio; para sistemas e aplicativos web com banco de dados, o custo consta no orçamento. ` +
       'Os convites digitais ficam ativos por 12 meses, sem taxa de renovação. Avisamos antes de cada vencimento.',
-    guarantee: `Erros e problemas técnicos são corrigidos gratuitamente por ${days} dias após o lançamento. Depois disso, a manutenção segue o seu pacote (1 a 6 meses) e pode ser estendida.`,
+    guarantee: `Erros e problemas técnicos são corrigidos gratuitamente por ${days} dias após o lançamento. Depois disso, a manutenção segue o que o seu pacote inclui e pode ser estendida.`,
   }),
   time: {
     day: { one: 'dia útil', other: 'dias úteis' },
@@ -43,7 +43,7 @@ const pt: Pack = {
     'standar-umkm': {
       title: 'Padrão PME',
       badge: 'Negócios',
-      subtitle: 'A escolha mais popular entre as empresas',
+      subtitle: 'Um site de 3 a 5 páginas para o seu negócio',
       highlights: ['Site institucional', 'Serviços', 'Pequenas empresas'],
       features: [
         '3 a 5 páginas completas (Início, Sobre, Serviços, Blog, Contato)',
@@ -325,16 +325,16 @@ const pt: Pack = {
     ['Nunca tive um site. Vocês podem me ajudar do zero?', 'Claro. Orientamos você passo a passo, do conceito, design e conteúdo até o site entrar no ar. Não é preciso nenhum conhecimento técnico; basta nos contar sobre o seu negócio e o que você precisa.'],
     ['Há quanto tempo a PintuWeb existe?', `A PintuWeb foi fundada em ${c.year} em Trenggalek, Java Oriental, Indonésia, e concluiu ${c.projects} projetos de clientes. Há também ${c.demos} demos no ar que você pode testar por conta própria na página de Demos.`],
     ['O meu site vai aparecer no Google?', 'Sim. Todo site é otimizado para buscas desde o primeiro dia: meta tags, dados estruturados, sitemap e uma estrutura de títulos limpa. Um site novo costuma começar a ser indexado pelo Google em 1 a 2 semanas, e o posicionamento cresce com conteúdo de qualidade.'],
-    ['O que diferencia a PintuWeb?', `Cada site é projetado em torno da sua marca, e não reciclado de um modelo. Buscamos uma pontuação PageSpeed de ${c.perf}, design mobile-first e SEO desde o início, além de uma garantia de ${c.days} dias e manutenção conforme o seu pacote.`],
-    ['Como é o processo do início ao fim?', c.listed('São seis etapas:', c.steps(['Uma consulta sobre as suas necessidades', 'Orçamento e acordo', 'Um design inicial para a sua aprovação', 'Desenvolvimento', 'Testes e revisões', 'Lançamento e entrega']), 'Mantemos você informado pelo WhatsApp em cada etapa.', true)],
-    ['O site será totalmente meu?', 'Sim. Depois do pagamento final, você recebe o código-fonte, o acesso de administrador, os acessos à hospedagem e ao domínio e todas as credenciais. O site é inteiramente seu, sem dependência de nós.'],
+    ['O que diferencia a PintuWeb?', `Você pode começar por um dos nossos designs de demonstração, adaptado à identidade do seu negócio, ou pedir um design sob medida do zero. Buscamos uma pontuação PageSpeed de ${c.perf}, design mobile-first e SEO desde o início, além de uma garantia de ${c.days} dias e manutenção conforme o seu pacote.`],
+    ['Como é o processo do início ao fim?', c.listed('O processo funciona assim:', c.steps(['Uma consulta sobre as suas necessidades', 'Orçamento e acordo', 'Um design inicial para a sua aprovação', 'Desenvolvimento', 'Testes e revisões', 'Lançamento e entrega']), 'Mantemos você informado pelo WhatsApp em cada etapa.', true)],
+    ['O site será totalmente meu?', 'Sim. Depois do pagamento final, você recebe o código-fonte, o acesso de administrador, os acessos à hospedagem e ao domínio e todas as credenciais. O site é inteiramente seu, sem dependência de nós. Exceções: os temas de convite da nossa galeria ficam ativos por 12 meses em um link pessoal, e o pacote Conceitos de design de site dá direito de uso do design, não do código.'],
     ['Posso pedir recursos sob medida para o meu negócio?', 'Sim. Sistemas de reserva, áreas de membros, calculadoras, catálogos dinâmicos ou integrações com sistemas que você já usa podem ser construídos com o pacote Site sob medida. Diga-nos o que você precisa e passaremos uma estimativa.'],
     // Preços
     ['Quanto custa um site?', c.listed('Preços iniciais por pacote, do mais barato ao mais caro:', c.prices, 'Os detalhes de cada pacote estão na página de Preços, e todos os preços estão em rupias indonésias (IDR). Cada preço inclui design e desenvolvimento; os pacotes de site incluem também SEO básico.')],
-    ['Existem custos ocultos?', `Não. O preço do pacote cobre design e desenvolvimento (mais SEO básico nos pacotes de site). O único custo recorrente é a renovação do domínio e da hospedagem: ${c.facts.renewal} Qualquer recurso importante fora do pacote é sempre discutido e combinado antes.`],
+    ['Existem custos ocultos?', `Não. O preço do pacote cobre design e desenvolvimento (mais SEO básico nos pacotes de site). O único custo recorrente da nossa parte é a renovação do domínio e da hospedagem: ${c.facts.renewal} Em lojas online com gateway de pagamento, as taxas de transação são descontadas diretamente pelo provedor do gateway (não por nós), e a conta de lojista é aberta em seu nome. Qualquer recurso importante fora do pacote é sempre discutido e combinado antes.`],
     ['Como funciona o pagamento?', c.facts.payment],
     ['E se eu não ficar satisfeito com o resultado?', 'Você aprova o design antes de o desenvolvimento começar, com o número de revisões definido pelo seu pacote. Os 50% restantes só são pagos quando o site estiver pronto e aprovado por você, então você nunca paga o valor total por um trabalho que ainda não está certo.'],
-    ['Vocês oferecem desconto para startups ou pequenas empresas?', 'Sim. Negócios com menos de um ano podem ter até 20% de desconto, e o pagamento pode ser combinado de forma mais flexível. Fale conosco para conversarmos.'],
+    ['Vocês oferecem desconto para startups ou pequenas empresas?', 'Os preços dos pacotes já foram pensados para serem acessíveis a pequenos negócios. Para projetos grandes ou vários sites de uma vez, podemos montar um orçamento especial. Fale conosco para conversarmos.'],
     // Processo
     ['Quanto tempo leva para construir um site?', c.listed('Prazo estimado por pacote, depois que o seu conteúdo estiver completo:', c.durations, 'Pode ser mais rápido ou mais demorado, dependendo de quão completo está o seu conteúdo e da complexidade dos recursos.')],
     ['O que eu preciso preparar?', 'Obrigatório: o nome do seu negócio, uma descrição da sua atividade e os dados de contato. Ajuda bastante: um logotipo, fotos dos seus produtos ou serviços e exemplos de sites de que você gosta. Se faltar algo, ajudamos você a preparar.'],
@@ -350,7 +350,7 @@ const pt: Pack = {
     ['Como o site é mantido seguro?', 'Todo site usa SSL (HTTPS), cabeçalhos de segurança e validação de entradas. O código fica em um repositório Git, para que versões anteriores possam ser restauradas, e durante a manutenção atualizamos as dependências regularmente.'],
     ['O site pode se conectar a redes sociais ou outros serviços?', 'Sim: botões do WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, e-mail marketing e até gateways de pagamento nos pacotes de loja online.'],
     // Suporte
-    ['Existe garantia?', `Sim. Por ${c.days} dias após o lançamento, erros e problemas técnicos são corrigidos gratuitamente. Depois disso, a manutenção segue o seu pacote (1 a 6 meses) e pode ser estendida mensalmente ou sob demanda.`],
+    ['Existe garantia?', `Sim. Por ${c.days} dias após o lançamento, erros e problemas técnicos são corrigidos gratuitamente. Depois disso, a manutenção segue o que o seu pacote inclui e pode ser estendida mensalmente ou sob demanda.`],
     ['Como atualizo o conteúdo depois que o site estiver pronto?', 'Nos pacotes de loja online, você mesmo gerencia os produtos. Nos demais pacotes, basta enviar as alterações pelo WhatsApp; durante o período de manutenção, pequenas atualizações, como textos, imagens ou dados de contato, são gratuitas. Também entregamos um guia curto de gestão do site.'],
     ['E se o meu site tiver um problema ou sair do ar?', `Mande uma mensagem pelo WhatsApp. ${c.facts.response}, no horário comercial (${c.facts.hours}). As correções são gratuitas durante a garantia de ${c.days} dias e, como o código fica no Git, uma versão anterior sempre pode ser restaurada.`],
     ['Vocês podem migrar o meu site antigo?', 'Sim. Transferimos o seu conteúdo, configuramos redirecionamentos dos endereços antigos para não perder o seu posicionamento em SEO e ajudamos a transferir o domínio, se necessário.'],

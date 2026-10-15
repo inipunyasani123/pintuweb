@@ -5,9 +5,9 @@ import type { Dict, Hl } from './id'
 
 const en: Dict = {
   meta: {
-    homeTitle: 'PintuWeb — Professional, Fast Website Design & Development in Indonesia',
+    homeTitle: 'PintuWeb — Website Design & Development in Indonesia',
     homeDescription: (n: number) =>
-      `Professional, fast, SEO-friendly websites for small businesses, start-ups and personal brands, built in Indonesia since ${FOUNDED_YEAR}. Transparent pricing and ${n} live demos you can open right now.`,
+      `Professional, fast, SEO-friendly websites for small businesses and personal brands, built in Indonesia since ${FOUNDED_YEAR}. Transparent pricing, ${n} live demos.`,
     ogHomeDescription: (n: number) =>
       `A web studio in Trenggalek, Indonesia, since ${FOUNDED_YEAR}. Fast, SEO-ready websites for small businesses, shops and personal brands. See ${n} live demos.`,
     ogAlt: 'PintuWeb — Professional website design and development',
@@ -98,6 +98,7 @@ const en: Dict = {
     title: ['Every business deserves a proper ', 'front door', '.'] as Hl,
     lead: (n: number) =>
       `We design and build websites for small businesses, shops and personal brands: quick to open on a phone, ready to be found on Google, and entirely yours. ${CLIENT_PROJECTS} client projects delivered, and ${n} examples of our work you can open today.`,
+    offer: (price: string, duration: string) => `Landing pages from ${price}, ready in ${duration}. Pay 50% up front and the rest once it is finished.`,
     ctaConsult: 'Free consultation',
     ctaDemos: (n: number) => `See ${n} examples`,
     facade: 'Eight kinds of website we build',
@@ -181,7 +182,7 @@ const en: Dict = {
     promises: [
       { fig: `${PACKAGES.length}`, unit: 'packages', proof: 'Written on the pricing page', title: 'Prices stated up front', body: 'Every package’s price range is on this site. The exact figure is in a written quote before we start.' },
       { fig: '50%', unit: 'deposit', proof: 'Written in the FAQ', title: 'Pay half first', body: 'A 50% deposit to start. The rest is paid once the website is finished and you have approved it.' },
-      { fig: '100%', unit: 'yours', proof: 'Written in the terms', title: 'Entirely yours', body: 'Once paid in full, the source code, domain, hosting and admin access are handed over to you.' },
+      { fig: '100%', unit: 'yours', proof: 'Written in the terms', title: 'Entirely yours', body: 'For website packages: once paid in full, the source code, domain, hosting and admin access are handed over to you.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Written in the FAQ', title: 'Fast on phones', body: `We optimise every website towards a PageSpeed score of ${PERF_TARGET}. It is a working target, not an average claim.` },
       { fig: `${GUARANTEE_DAYS}`, unit: 'days', proof: 'Written in the terms', title: `${GUARANTEE_DAYS}-day guarantee`, body: `Bugs are fixed free for ${GUARANTEE_DAYS} days after launch, plus maintenance in your package.` },
       { fig: '24', unit: 'hours', proof: 'Written in the FAQ', title: 'Replies on working days', body: `We reply within 24 hours on working days, Monday–Saturday, ${OPENS}–${CLOSES} WIB.` },
@@ -190,7 +191,7 @@ const en: Dict = {
   pricing: {
     eyebrow: 'Pricing',
     title: ['Prices are stated up front, ', 'not after you ask', '.'] as Hl,
-    lead: 'Every package includes design and build; website packages also include basic SEO. The only recurring cost is domain & hosting renewal from the second year.',
+    lead: 'Every package includes design and build; website packages also include basic SEO. The only recurring cost from us is domain & hosting renewal from the second year.',
     colPrice: 'Price range',
     colPackage: 'Package',
     openNote: 'A dotted tail means the price can go higher, depending on features.',
@@ -198,7 +199,7 @@ const en: Dict = {
     depositTitle: 'Payment',
     depositBody: 'A 50% deposit to start; the rest once the website is finished and you approve it.',
     maintTitle: 'After launch',
-    maintBody: `1–6 months of maintenance depending on the package, plus a ${GUARANTEE_DAYS}-day bug-fix guarantee.`,
+    maintBody: `Maintenance as included in your package, plus a ${GUARANTEE_DAYS}-day bug-fix guarantee.`,
   },
   pkg: {
     from: 'from',

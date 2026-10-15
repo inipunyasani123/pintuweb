@@ -1,7 +1,8 @@
 ---
 key: website-umkm
 title: How to Build a Small Business Website, Step by Step (2026 Guide)
-description: A step-by-step guide to building a small business website in Indonesia: setting the goal, choosing the type of website, domain, content, design, SEO, Google Business Profile and looking after it after launch.
+seoTitle: How to Build a Small Business Website in 2026
+description: A step-by-step guide to a small business website in Indonesia: goal, website type, domain, content, design, SEO, Google Business Profile and upkeep.
 date: 2026-10-03
 updated: 2026-10-03
 tags: small business website, guide, Indonesia

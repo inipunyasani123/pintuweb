@@ -4,13 +4,15 @@ import type { Metadata } from 'next'
 import { CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER } from '../lib/site'
 import { PACKAGES } from '../lib/packages'
 import { LANG_INFO, LANGS, plain, type Lang } from './config'
-import { alternatesOf, langsOf, urlOf, type DocRef } from './routes'
+import { alternatesOf, langsOf, path, urlOf, type DocRef } from './routes'
 import { queryOf } from './og'
 import { getDict } from './index'
 
 export const ORG_ID = `${SITE}/#organization`
 export const WEBSITE_ID = `${SITE}/#website`
 export const FOUNDER_ID = `${SITE}/owner#person`
+/** Founder sebagai node Person ringkas: dipakai utuh sebagai `author` BlogPosting (perayap tidak selalu menelusuri @id). */
+export const FOUNDER_PERSON = { '@type': 'Person', '@id': FOUNDER_ID, name: 'Sanzy', url: `${SITE}/owner` } as const
 
 type MetaInput = {
   lang: Lang
@@ -40,6 +42,16 @@ export const ogImage = (lang: Lang, ref: DocRef) =>
 /** Kartu merek beranda; angkanya dirender dari lib/site.ts sehingga tidak pernah usang. */
 export const ogHome = (lang: Lang) => `${SITE}/api/og?v=home&l=${LANG_INFO[lang].ogText ? lang : 'en'}&r=${OG_REV}`
 
+/**
+ * Umpan RSS artikel untuk <link rel="alternate" type="application/rss+xml">: versi Inggris untuk semua bahasa selain
+ * Indonesia (artikel hanya ada dalam id & en). Dipasang di layout DAN di pageMeta, karena `alternates` milik halaman
+ * menggantikan seluruh `alternates` layout (termasuk types).
+ */
+export function rssTypes(lang: Lang) {
+  const feed: Lang = lang === 'id' ? 'id' : 'en'
+  return { 'application/rss+xml': [{ url: `${path(feed, 'articles')}/rss`, title: feed === 'id' ? 'Artikel PintuWeb' : 'PintuWeb articles' }] }
+}
+
 export function pageMeta(m: MetaInput): Metadata {
   const { canonical, languages } = alternatesOf(m.lang, m.ref)
   const info = LANG_INFO[m.lang]
@@ -52,7 +64,7 @@ export function pageMeta(m: MetaInput): Metadata {
   return {
     title: m.absoluteTitle ? { absolute: title } : title,
     description,
-    alternates: { canonical, languages },
+    alternates: { canonical, languages, types: rssTypes(m.lang) },
     openGraph: {
       title: ogTitle,
       description: ogDescription,
@@ -126,12 +138,9 @@ export function siteGraph(lang: Lang) {
         publisher: { '@id': ORG_ID },
       },
       {
-        '@type': 'Person',
-        '@id': FOUNDER_ID,
-        name: 'Sanzy',
+        ...FOUNDER_PERSON,
         jobTitle: 'Founder & Developer',
         worksFor: { '@id': ORG_ID },
-        url: `${SITE}/owner`,
         ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
       },
     ],

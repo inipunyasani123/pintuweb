@@ -185,7 +185,7 @@ export default function Glossary({ items, topics, t }: { items: GlossaryItem[]; 
                   key={it.id}
                   id={it.id}
                   hidden={!show[i]}
-                  className="relative flex scroll-mt-28 flex-col rounded-[1.25rem] bg-white p-5 ring-1 ring-[color:var(--border-light)] transition-shadow duration-300 target:shadow-[0_22px_40px_-26px_var(--k)] target:ring-2 target:ring-[color:var(--k)]"
+                  className="relative flex scroll-mt-4 flex-col rounded-[1.25rem] bg-white p-5 ring-1 ring-[color:var(--border-light)] transition-shadow duration-300 target:shadow-[0_22px_40px_-26px_var(--k)] target:ring-2 target:ring-[color:var(--k)]"
                   style={{ '--k': c.color, '--k2': c.to } as CSSProperties}
                 >
                   {/* Urutan DOM: istilah, topik, definisi (dl yang sah); urutan tampil diatur dengan order. */}
@@ -193,7 +193,7 @@ export default function Glossary({ items, topics, t }: { items: GlossaryItem[]; 
                     <dfn className="not-italic">{mark(it.term, q)}</dfn>
                   </dt>
                   <dd className="order-1 flex items-center gap-2">
-                    {first && <span id={`huruf-${it.letter}`} className="pointer-events-none absolute left-0 top-0 scroll-mt-28" aria-hidden="true" />}
+                    {first && <span id={`huruf-${it.letter}`} className="pointer-events-none absolute left-0 top-0 scroll-mt-4" aria-hidden="true" />}
                     <span className="inline-flex min-w-0 flex-1 items-center gap-2 text-[0.8125rem] font-semibold text-[color:var(--k)]">
                       <span className="h-2 w-2 shrink-0 rounded-full [background-image:linear-gradient(135deg,var(--k),var(--k2))]" aria-hidden="true" />
                       <span className="truncate">{c.label}</span>

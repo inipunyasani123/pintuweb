@@ -16,7 +16,7 @@ const fr: Pack = {
       `Le domaine et l’hébergement inclus dans une formule couvrent la première année. À partir de la deuxième année, le renouvellement coûte environ ${renewal} par an pour les sites web et ` +
       `${renewalBio} pour les pages link in bio ; pour les systèmes et applications web avec base de données, le coût est indiqué dans le devis. ` +
       'Les invitations numériques restent actives 12 mois sans frais de renouvellement. Nous vous prévenons avant chaque échéance.',
-    guarantee: `Les bugs et problèmes techniques sont corrigés gratuitement pendant ${days} jours après la mise en ligne. Ensuite, la maintenance suit votre formule (1 à 6 mois) et peut être prolongée.`,
+    guarantee: `Les bugs et problèmes techniques sont corrigés gratuitement pendant ${days} jours après la mise en ligne. Ensuite, la maintenance suit ce que prévoit votre formule et peut être prolongée.`,
   }),
   time: {
     day: { one: 'jour ouvré', other: 'jours ouvrés' },
@@ -43,7 +43,7 @@ const fr: Pack = {
     'standar-umkm': {
       title: 'Standard PME',
       badge: 'Entreprise',
-      subtitle: 'Le choix le plus populaire des entreprises',
+      subtitle: 'Un site de 3 à 5 pages pour votre entreprise',
       highlights: ['Site vitrine', 'Services', 'Petites entreprises'],
       features: [
         '3 à 5 pages complètes (Accueil, À propos, Services, Blog, Contact)',
@@ -325,16 +325,16 @@ const fr: Pack = {
     ['Je n’ai jamais eu de site web. Pouvez-vous m’aider depuis le début ?', 'Bien sûr. Nous vous guidons pas à pas, du concept, du design et du contenu jusqu’à la mise en ligne du site. Aucune connaissance technique n’est nécessaire ; parlez-nous simplement de votre activité et de vos besoins.'],
     ['Depuis combien de temps PintuWeb existe-t-il ?', `PintuWeb a été fondé en ${c.year} à Trenggalek, Java oriental, en Indonésie, et a mené à bien ${c.projects} projets clients. Il y a aussi ${c.demos} démos en ligne que vous pouvez essayer vous-même sur la page Démos.`],
     ['Mon site apparaîtra-t-il sur Google ?', 'Oui. Chaque site est optimisé pour la recherche dès le premier jour : balises meta, données structurées, sitemap et structure de titres propre. Un nouveau site commence généralement à être indexé par Google sous 1 à 2 semaines, et son classement progresse avec un contenu de qualité.'],
-    ['Qu’est-ce qui distingue PintuWeb ?', `Chaque site est conçu autour de votre marque plutôt que recyclé à partir d’un modèle. Nous visons un score PageSpeed de ${c.perf}, une conception mobile-first et le SEO dès le départ, ainsi qu’une garantie de ${c.days} jours et une maintenance selon votre formule.`],
-    ['Comment se déroule le projet du début à la fin ?', c.listed('Il y a six étapes :', c.steps(['Une consultation sur vos besoins', 'Un devis et l’accord', 'Une première maquette pour validation', 'Le développement', 'Les tests et les révisions', 'La mise en ligne et la remise']), 'Nous vous tenons informé sur WhatsApp à chaque étape.', true)],
-    ['Serai-je pleinement propriétaire du site ?', 'Oui. Une fois le solde réglé, vous recevez le code source, l’accès administrateur, les accès à l’hébergement et au domaine ainsi que tous les identifiants. Le site vous appartient entièrement, sans dépendance vis-à-vis de nous.'],
+    ['Qu’est-ce qui distingue PintuWeb ?', `Vous pouvez partir de l’un de nos designs de démonstration, adapté à l’identité de votre entreprise, ou demander un design sur mesure créé de zéro. Nous visons un score PageSpeed de ${c.perf}, une conception mobile-first et le SEO dès le départ, ainsi qu’une garantie de ${c.days} jours et une maintenance selon votre formule.`],
+    ['Comment se déroule le projet du début à la fin ?', c.listed('Voici comment cela se déroule :', c.steps(['Une consultation sur vos besoins', 'Un devis et l’accord', 'Une première maquette pour validation', 'Le développement', 'Les tests et les révisions', 'La mise en ligne et la remise']), 'Nous vous tenons informé sur WhatsApp à chaque étape.', true)],
+    ['Serai-je pleinement propriétaire du site ?', 'Oui. Une fois le solde réglé, vous recevez le code source, l’accès administrateur, les accès à l’hébergement et au domaine ainsi que tous les identifiants. Le site vous appartient entièrement, sans dépendance vis-à-vis de nous. Exceptions : les thèmes d’invitation de notre galerie restent actifs 12 mois sur un lien personnel, et la formule Concepts de design web donne le droit d’utiliser le design, pas le code.'],
     ['Puis-je demander des fonctionnalités sur mesure pour mon activité ?', 'Oui. Systèmes de réservation, espaces membres, calculateurs, catalogues dynamiques ou intégrations avec des systèmes que vous utilisez déjà peuvent être réalisés avec la formule Site web sur mesure. Dites-nous ce qu’il vous faut et nous vous donnerons une estimation.'],
     // Tarifs
     ['Combien coûte un site web ?', c.listed('Prix de départ par formule, de la moins chère à la plus chère :', c.prices, 'Le détail de chaque formule se trouve sur la page Tarifs, et tous les prix sont en roupies indonésiennes (IDR). Chaque prix comprend le design et le développement ; les formules de site web incluent aussi le SEO de base.')],
-    ['Y a-t-il des frais cachés ?', `Non. Le prix de la formule couvre le design et le développement (plus le SEO de base pour les formules de site web). Le seul coût récurrent est le renouvellement du domaine et de l’hébergement : ${c.facts.renewal} Toute fonctionnalité importante hors formule est toujours discutée et convenue au préalable.`],
+    ['Y a-t-il des frais cachés ?', `Non. Le prix de la formule couvre le design et le développement (plus le SEO de base pour les formules de site web). Le seul coût récurrent de notre part est le renouvellement du domaine et de l’hébergement : ${c.facts.renewal} Pour les boutiques en ligne avec passerelle de paiement, les frais de transaction sont prélevés directement par le prestataire de la passerelle (et non par nous), et le compte marchand est ouvert à votre nom. Toute fonctionnalité importante hors formule est toujours discutée et convenue au préalable.`],
     ['Comment se passe le paiement ?', c.facts.payment],
     ['Et si le résultat ne me convient pas ?', 'Vous validez le design avant le début du développement, avec le nombre de révisions prévu par votre formule. Les 50 % restants ne sont réglés qu’une fois le site terminé et validé, vous ne payez donc jamais la totalité pour un travail qui ne convient pas encore.'],
-    ['Proposez-vous des remises pour les start-up ou les petites entreprises ?', 'Oui. Les entreprises de moins d’un an peuvent bénéficier de jusqu’à 20 % de remise, et le paiement peut être aménagé plus souplement. Contactez-nous pour en parler.'],
+    ['Proposez-vous des remises pour les start-up ou les petites entreprises ?', 'Nos prix sont déjà pensés pour rester abordables pour les petites entreprises. Pour un projet important ou plusieurs sites à la fois, nous pouvons établir un devis spécifique. Contactez-nous pour en parler.'],
     // Déroulement
     ['Combien de temps faut-il pour créer un site web ?', c.listed('Délai estimé par formule une fois votre contenu complet :', c.durations, 'Cela peut être plus rapide ou plus long selon l’état d’avancement de votre contenu et la complexité des fonctionnalités.')],
     ['Que dois-je préparer ?', 'Indispensable : le nom de votre entreprise, une description de votre activité et vos coordonnées. Utile : un logo, des photos de vos produits ou services et des exemples de sites qui vous plaisent. S’il manque quelque chose, nous vous aidons à le préparer.'],
@@ -350,7 +350,7 @@ const fr: Pack = {
     ['Comment la sécurité du site est-elle assurée ?', 'Chaque site utilise SSL (HTTPS), des en-têtes de sécurité et la validation des saisies. Le code est conservé dans un dépôt Git afin de pouvoir restaurer des versions antérieures, et pendant la maintenance nous mettons régulièrement à jour les dépendances.'],
     ['Le site peut-il se connecter aux réseaux sociaux ou à d’autres services ?', 'Oui : boutons WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, e-mail marketing et même passerelles de paiement pour les formules boutique en ligne.'],
     // Assistance
-    ['Y a-t-il une garantie ?', `Oui. Pendant ${c.days} jours après la mise en ligne, les bugs et problèmes techniques sont corrigés gratuitement. Ensuite, la maintenance suit votre formule (1 à 6 mois) et peut être prolongée au mois ou à la demande.`],
+    ['Y a-t-il une garantie ?', `Oui. Pendant ${c.days} jours après la mise en ligne, les bugs et problèmes techniques sont corrigés gratuitement. Ensuite, la maintenance suit ce que prévoit votre formule et peut être prolongée au mois ou à la demande.`],
     ['Comment mettre à jour le contenu une fois le site terminé ?', 'Avec les formules boutique en ligne, vous gérez vous-même les produits. Pour les autres formules, envoyez simplement les modifications sur WhatsApp ; pendant la période de maintenance, les petites mises à jour, comme les textes, les images ou les coordonnées, sont gratuites. Nous vous remettons aussi un court guide de gestion du site.'],
     ['Et si mon site a un problème ou devient inaccessible ?', `Écrivez-nous sur WhatsApp. ${c.facts.response}, pendant les heures d’ouverture (${c.facts.hours}). Les corrections sont gratuites pendant la garantie de ${c.days} jours et, comme le code est conservé dans Git, une version antérieure peut toujours être restaurée.`],
     ['Pouvez-vous migrer mon ancien site ?', 'Oui. Nous transférons votre contenu, mettons en place des redirections depuis les anciennes adresses pour ne pas perdre votre référencement, et vous aidons à transférer votre domaine si nécessaire.'],

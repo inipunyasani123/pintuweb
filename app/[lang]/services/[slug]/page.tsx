@@ -17,7 +17,7 @@ import { hasPage, path, pathOf, urlOf } from '../../../i18n/routes'
 import { ORG_ID, pageGraph, pageMeta } from '../../../i18n/seo'
 import { PACKAGES } from '../../../lib/packages'
 import { portalOf } from '../../../lib/portals'
-import { DEMOS } from '../../../lib/demos'
+import { DEMOS, demoSrcSet } from '../../../lib/demos'
 import { wa } from '../../../lib/site'
 
 type Params = { params: Promise<{ lang: string; slug: string }> }
@@ -85,7 +85,6 @@ export default async function ServicePage({ params }: Params) {
     url,
     provider: { '@id': ORG_ID },
     areaServed: { '@type': 'Country', name: 'Indonesia' },
-    availableLanguage: LANG_INFO[lang].htmlLang,
     ...(from
       ? {
           offers: from.list.map((pk) => {
@@ -129,7 +128,7 @@ export default async function ServicePage({ params }: Params) {
               <p key={para} className={i === 0 ? 'text-[1.25rem] font-medium leading-snug text-[color:var(--text-primary)]' : undefined}>{para}</p>
             ))}
           </div>
-          <aside className="border-t border-[color:var(--rule)] pt-5 lg:col-span-4 lg:col-start-9">
+          <div className="border-t border-[color:var(--rule)] pt-5 lg:col-span-4 lg:col-start-9">
             <h2 className="kicker text-[color:var(--primary-700)]">{p.forWho}</h2>
             <ul className="mt-3">
               {t.forWho.map((w) => (
@@ -139,7 +138,7 @@ export default async function ServicePage({ params }: Params) {
                 </li>
               ))}
             </ul>
-          </aside>
+          </div>
         </div>
       </section>
 
@@ -244,8 +243,19 @@ export default async function ServicePage({ params }: Params) {
                 <li key={dm.slug}>
                   <a href={dm.url} target="_blank" rel="noopener noreferrer" className="group block">
                     <span className="crop block">
+                      {/* sizes = lebar kartu: 1 kolom (ponsel), 2 kolom (sm), 3 kolom (lg) */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/demos/${dm.slug}.webp`} alt="" width={720} height={378} loading="lazy" decoding="async" className="aspect-[1200/630] w-full border border-[color:var(--border-light)] object-cover object-top" />
+                      <img
+                        src={`/demos/${dm.slug}.webp`}
+                        srcSet={demoSrcSet(dm.slug)}
+                        sizes="(min-width: 1152px) 352px, (min-width: 1024px) calc(33vw - 32px), (min-width: 640px) calc(50vw - 36px), calc(100vw - 32px)"
+                        alt=""
+                        width={720}
+                        height={378}
+                        loading="lazy"
+                        decoding="async"
+                        className="aspect-[1200/630] w-full border border-[color:var(--border-light)] object-cover object-top"
+                      />
                     </span>
                     <span className="mt-4 flex items-start justify-between gap-3">
                       <span className="min-w-0">
