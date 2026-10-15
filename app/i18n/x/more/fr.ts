@@ -172,6 +172,51 @@ const more: More = {
     analytics: { term: 'Analytics (statistiques)', def: 'Les outils d’analytics sont des outils qui enregistrent les statistiques de visite — nombre de visiteurs, pages consultées et sources de trafic — pour savoir ce qui fonctionne sur votre site.' },
     maintenance: { term: 'Maintenance', def: 'La maintenance d’un site est l’entretien régulier après la mise en ligne : petites mises à jour de contenu, correctifs de sécurité, mises à jour des dépendances et résolution des problèmes techniques.' },
   },
+  // Projets clients (content/clients.ts). Les noms du client et de l’entreprise ne sont pas traduits.
+  clients: {
+    freshfold: {
+      field: 'Blanchisserie',
+      project: 'Système web d’enregistrement des commandes et de l’état du linge',
+      problem: 'Les commandes étaient notées à la main, ce qui rendait difficile le suivi de l’état du linge et de l’historique des transactions des clients.',
+      solution: 'Un tableau de bord pour gérer les commandes, mettre à jour l’état du linge, enregistrer les données clients et imprimer des reçus numériques.',
+      docs: ['Tableau de bord des commandes', 'État du linge', 'Reçu numérique'],
+    },
+    'sumber-rejeki': {
+      field: 'Négoce de matériaux de construction',
+      project: 'Application web d’inventaire',
+      problem: 'Le suivi des stocks et l’enregistrement des entrées et sorties de marchandises se faisaient encore à la main.',
+      solution: 'Une application d’inventaire avec gestion des stocks, enregistrement des entrées et sorties de marchandises et rapports d’inventaire.',
+      docs: ['Tableau de bord de l’inventaire', 'Rapport de stock', 'Historique des mouvements de marchandises'],
+    },
+    'arif-motor': {
+      field: 'Garage moto',
+      project: 'Système de gestion administrative de l’entretien des véhicules',
+      problem: 'L’historique d’entretien des clients était consigné dans un carnet, si bien qu’il était difficile de le retrouver.',
+      solution: 'Enregistrement des données clients et de l’historique d’entretien des véhicules, liste des travaux des mécaniciens et création de factures.',
+      docs: ['Données clients', 'Historique d’entretien', 'Facture numérique'],
+    },
+    'cerdas-akademi': {
+      field: 'Soutien scolaire',
+      project: 'Site d’inscription des élèves et de gestion des horaires de cours',
+      problem: 'L’inscription des élèves et l’organisation des horaires se faisaient encore à la main.',
+      solution: 'Un site avec un formulaire d’inscription en ligne, un tableau de bord d’administration, la gestion des données des élèves et des informations sur les horaires des cours.',
+      docs: ['Formulaire d’inscription', 'Tableau de bord d’administration', 'Page des horaires'],
+    },
+    'lereng-coffee': {
+      field: 'Production et vente de café local',
+      project: 'Site de catalogue produits et de commande en ligne',
+      problem: 'Les informations sur les produits et les commandes dépendaient des réseaux sociaux et d’échanges manuels.',
+      solution: 'Un catalogue produits avec prix et descriptions, un formulaire de commande et une intégration WhatsApp.',
+      docs: ['Page catalogue', 'Affichage responsive', 'Formulaire de commande'],
+    },
+    'prima-distribusi': {
+      field: 'Distribution de marchandises',
+      project: 'Tableau de bord de gestion des commandes et des livraisons',
+      problem: 'Le statut des commandes et des livraisons n’était pas centralisé, ce qui compliquait l’administration des opérations.',
+      solution: 'Un tableau de bord interne pour enregistrer les commandes, mettre à jour le statut des livraisons, rechercher des données et établir des rapports par période.',
+      docs: ['Tableau de bord des commandes', 'Filtre par date', 'Rapport de livraisons'],
+    },
+  },
 }
 
 export default more

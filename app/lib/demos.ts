@@ -4,10 +4,11 @@
 // Untuk srcset ada juga <slug>-360.webp dan <slug>-480.webp (diperkecil dari berkas 720w dengan sharp, WebP q74);
 // demo baru perlu ketiganya.
 
-export type DemoCategory = 'landing' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
+export type DemoCategory = 'landing' | 'toko' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
 
 export const DEMO_CATEGORIES: { id: DemoCategory; label: string }[] = [
   { id: 'landing', label: 'Landing Page' },
+  { id: 'toko', label: 'Toko Online' },
   { id: 'undangan', label: 'Undangan Digital' },
   { id: 'linkinbio', label: 'Link in Bio' },
   { id: 'portfolio', label: 'Portfolio' },
@@ -47,6 +48,7 @@ export const DEMOS: Demo[] = [
   { slug: "tastycorner", name: "Tasty Corner", tagline: "Struk Mingguan untuk Usaha Makanan", category: 'landing', url: "https://landing-tastycorner.pintuweb.id" },
   { slug: "woodora", name: "Woodora", tagline: "Furnitur Kayu Solid Sesuai Ukuran", category: 'landing', url: "https://landing-woodora.pintuweb.id" },
   { slug: "zychrome", name: "Zychrome", tagline: "Webinar yang Bisa Membalas Anda", category: 'landing', url: "https://landing-zychrome.pintuweb.id" },
+  { slug: "tanur", name: "Tanur", tagline: "Keramik Buatan Tangan untuk Meja Sehari-hari", category: 'toko', url: "https://toko-tanur.pintuweb.id", pkg: 'toko-online-full' },
   { slug: "corporate", name: "Situs Acara Korporat Digital", tagline: "Temu Rekayasa Nusa 2027", category: 'undangan', url: "https://undangan-corporate.pintuweb.id", pkg: 'situs-acara' },
   { slug: "aqiqah", name: "Undangan Aqiqah Digital", tagline: "Aisyah Khairunnisa", category: 'undangan', url: "https://undangan-aqiqah.pintuweb.id" },
   { slug: "khitanan", name: "Undangan Khitanan Digital", tagline: "Kapten Fauzan", category: 'undangan', url: "https://undangan-khitanan.pintuweb.id" },

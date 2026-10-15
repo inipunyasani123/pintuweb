@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CalendarClock, Check, Gauge, Github, LifeBuoy, ReceiptText, type LucideIcon } from 'lucide-react'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
+import { ClientCases } from '../../components/ClientProjects'
 import { DEMOS } from '../../lib/demos'
 import { FOUNDED_YEAR, GITHUB } from '../../lib/site'
 import { facts, packagesFor } from '../../i18n/facts'
@@ -127,6 +128,10 @@ export default async function AboutPage({ params }: Params) {
           </ol>
         </div>
       </section>
+
+      {/* Proyek klien (content/clients.ts): bukti untuk "proyek klien" yang disebut cerita di atas. Beranda dan halaman
+          layanan menaut ke #proyek-klien dan ke kartu tiap proyek (#klien-<kunci>). */}
+      <ClientCases lang={lang} />
 
       {/* Orang di baliknya */}
       <section aria-labelledby="founder-title" className="py-16 sm:py-24">

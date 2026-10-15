@@ -46,7 +46,7 @@ export type DemoCat = {
   /** harga mulai, mis. "Rp600.000" */
   from: string
   packageHref: string
-  portalHref: string
+  portalHref?: string
   /** mis. "Buka galeri Landing Page" */
   openLabel: string
 }
@@ -210,9 +210,11 @@ export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, 
                     {t.seePackage} <ArrowRight size={15} className="arw" aria-hidden="true" />
                   </Link>
                   {/* Portal = zona Next terpisah: tautan biasa, bukan navigasi klien. */}
-                  <a href={banner.portalHref} hrefLang="id" className="btn btn-sm text-white transition-[filter] duration-200 hover:brightness-90" style={{ backgroundImage: 'linear-gradient(135deg, var(--k), var(--k2))' }}>
-                    {banner.openLabel} <ArrowUpRight size={15} className="arw arw-ne" aria-hidden="true" />
-                  </a>
+                  {banner.portalHref && (
+                    <a href={banner.portalHref} hrefLang="id" className="btn btn-sm text-white transition-[filter] duration-200 hover:brightness-90" style={{ backgroundImage: 'linear-gradient(135deg, var(--k), var(--k2))' }}>
+                      {banner.openLabel} <ArrowUpRight size={15} className="arw arw-ne" aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

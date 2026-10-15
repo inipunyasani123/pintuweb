@@ -173,6 +173,51 @@ const more: More = {
     analytics: { term: 'Analytics (análise de visitas)', def: 'Analytics são ferramentas que registram estatísticas de visitas — número de visitantes, páginas vistas e origem do tráfego — para que você veja o que funciona no seu site.' },
     maintenance: { term: 'Manutenção', def: 'Manutenção de site é o cuidado de rotina após o lançamento: pequenas atualizações de conteúdo, correções de segurança, atualização de dependências e correção de problemas técnicos.' },
   },
+  // Projetos de clientes (content/clients.ts). Os nomes do cliente e da empresa não são traduzidos.
+  clients: {
+    freshfold: {
+      field: 'Lavanderia',
+      project: 'Sistema web para registrar pedidos e o status da lavagem',
+      problem: 'Os pedidos eram anotados à mão, o que dificultava acompanhar o status da lavagem e o histórico de transações dos clientes.',
+      solution: 'Um painel para gerenciar pedidos, atualizar o status da lavagem, armazenar os dados dos clientes e imprimir recibos digitais.',
+      docs: ['Painel de pedidos', 'Status da lavagem', 'Recibo digital'],
+    },
+    'sumber-rejeki': {
+      field: 'Comércio de materiais de construção',
+      project: 'Aplicativo web de inventário',
+      problem: 'O controle do estoque e o registro de entradas e saídas de mercadorias ainda eram feitos à mão.',
+      solution: 'Um aplicativo de inventário com gestão de estoque, registro de entradas e saídas de mercadorias e relatórios de estoque.',
+      docs: ['Painel de estoque', 'Relatório de estoque', 'Histórico de movimentação de mercadorias'],
+    },
+    'arif-motor': {
+      field: 'Oficina de motos',
+      project: 'Sistema de administração de serviços de veículos',
+      problem: 'O histórico de serviços dos clientes ficava em um caderno, o que dificultava encontrá-lo de novo.',
+      solution: 'Registro dos dados dos clientes e do histórico de serviços dos veículos, lista de trabalhos dos mecânicos e emissão de faturas.',
+      docs: ['Dados dos clientes', 'Histórico de serviços', 'Fatura digital'],
+    },
+    'cerdas-akademi': {
+      field: 'Reforço escolar',
+      project: 'Site de matrícula de alunos e gestão de horários das aulas',
+      problem: 'A matrícula de alunos e a organização dos horários ainda eram feitas à mão.',
+      solution: 'Um site com formulário de matrícula online, painel administrativo, gestão dos dados dos alunos e informações sobre os horários das aulas.',
+      docs: ['Formulário de matrícula', 'Painel administrativo', 'Página de horários'],
+    },
+    'lereng-coffee': {
+      field: 'Produção e venda de café local',
+      project: 'Site de catálogo de produtos e pedidos online',
+      problem: 'As informações sobre os produtos e os pedidos dependiam das redes sociais e de comunicação manual.',
+      solution: 'Um catálogo de produtos com preços e descrições, um formulário de pedido e integração com o WhatsApp.',
+      docs: ['Página de catálogo', 'Layout responsivo', 'Formulário de pedido'],
+    },
+    'prima-distribusi': {
+      field: 'Distribuição de mercadorias',
+      project: 'Painel de gestão de pedidos e entregas',
+      problem: 'O status dos pedidos e das entregas não era centralizado, o que dificultava a administração operacional.',
+      solution: 'Um painel interno para registrar pedidos, atualizar o status das entregas, pesquisar dados e gerar relatórios por período.',
+      docs: ['Painel de pedidos', 'Filtro por data', 'Relatório de entregas'],
+    },
+  },
 }
 
 export default more

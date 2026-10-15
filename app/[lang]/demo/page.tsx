@@ -39,7 +39,8 @@ export default async function DemoPage({ params }: Params) {
       countText: `${count(c.id)} ${g.unit[c.id]}`,
       from: pk.find((x) => x.slug === slug)!.priceFrom,
       packageHref: `${path(lang, 'pricing')}#${slug}`,
-      portalHref: `/${portalOf(c.id)!.path}`,
+      // kategori tanpa portal katalog sendiri (mis. toko online) tidak punya tombol galeri khusus
+      portalHref: portalOf(c.id) ? `/${portalOf(c.id)!.path}` : undefined,
       openLabel: d.hero.openGallery(gal.title),
     }
   })

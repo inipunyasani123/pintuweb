@@ -33,6 +33,7 @@ const zh: Pack = {
       highlights: ['产品发布', '活动', '广告投放'],
       features: [
         '一个以转化为核心的推广页面',
+        '页面文案撰写',
         '现代设计，适配手机',
         '免费 .com/.xyz 域名 + SSL，为期 1 年',
         '速度优化和基础 SEO',
@@ -236,6 +237,7 @@ const zh: Pack = {
   },
 
   demoCategories: {
+    toko: '网店',
     landing: '落地页',
     undangan: '电子请柬',
     linkinbio: 'Link in Bio',
@@ -246,6 +248,7 @@ const zh: Pack = {
     kontes: '设计竞赛',
   },
   demos: {
+    tanur: { tagline: '日常餐桌的手工陶瓷' },
     bribu: { tagline: '设计需求平台，三份草稿都有报酬' },
     cissycoffee: { tagline: '把菜单写在黑板上的咖啡馆' },
     citarasa: { tagline: '老字号家庭餐厅，现在可以用手机点餐' },

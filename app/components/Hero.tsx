@@ -25,19 +25,22 @@ export default function Hero({ lang }: { lang: Lang }) {
   const landing = pk.find((x) => x.slug === 'landing-page')!
   const offer = t.offer(landing.priceFrom.replace('IDR ', 'IDR\u00a0'), landing.duration.replace(/\u2013/g, '\u2060\u2013\u2060'))
   // String siap tampil untuk komponen klien (kamus tidak ikut terkirim ke browser)
-  const kinds: Kind[] = PORTALS.map((p) => {
-    const gal = g.galleries[p.category]
+  const kindOf = (c: DemoCategory, href: string, image: string): Kind => {
+    const gal = g.galleries[c]
     return {
-      href: `/${p.path}`,
+      href,
       title: gal.title,
       tagline: gal.tagline,
-      count: `${count(p.category)} ${g.unit[p.category]}`,
-      price: `${d.common.from} ${fromOf(p.category)}`,
-      image: p.image,
+      count: `${count(c)} ${g.unit[c]}`,
+      price: `${d.common.from} ${fromOf(c)}`,
+      image,
       open: t.openGallery(gal.title),
-      ...CATEGORY_COLOR[p.category],
+      ...CATEGORY_COLOR[c],
     }
-  })
+  }
+  // Delapan galeri portal + toko online (belum punya portal katalog sendiri: menaut ke galeri demo yang tersaring).
+  const kinds: Kind[] = PORTALS.map((p) => kindOf(p.category, `/${p.path}`, p.image))
+  kinds.splice(1, 0, kindOf('toko', `${path(lang, 'demo')}#toko`, '/images/galeri/toko.jpg'))
 
   return (
     <section id="hero" className="pb-8" aria-label={t.aria}>

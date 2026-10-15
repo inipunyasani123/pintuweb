@@ -6,6 +6,7 @@
 import type { Paket, PaketGroup } from '../../lib/packages'
 import type { DemoCategory } from '../../lib/demos'
 import type { ServiceText } from '../../content/services'
+import type { ClientKey, ClientText } from '../../content/clients'
 import type { ServiceKey } from '../slugs'
 
 /** Kalimat fakta bisnis per bahasa (dipakai kontak, FAQ, footer, dokumen). */
@@ -73,12 +74,14 @@ export type Pack = {
 export type TermText = { term: string; def: string; letter?: string }
 
 /**
- * Isi halaman layanan & kamus untuk bahasa tambahan (gelombang 2), disimpan terpisah dari Pack supaya paket inti
- * tetap ringkas. Penanda harga ({{from:slug}} dst.) dipertahankan apa adanya: angkanya diisi fillFacts().
+ * Isi halaman layanan, kamus, dan proyek klien untuk bahasa tambahan (gelombang 2), disimpan terpisah dari Pack
+ * supaya paket inti tetap ringkas. Penanda harga ({{from:slug}} dst.) dipertahankan apa adanya: angkanya diisi fillFacts().
  */
 export type More = {
   /** 7 layanan, kuncinya ServiceKey (i18n/slugs.ts) */
   services: Record<ServiceKey, ServiceText>
   /** 26 istilah, kuncinya id di content/glossary.ts */
   terms: Record<string, TermText>
+  /** teks 6 proyek klien (content/clients.ts); nama klien & nama usaha tidak diterjemahkan, jadi tidak ada di sini */
+  clients: Record<ClientKey, ClientText>
 }

@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import AudienceSection from '../components/AudienceSection'
 import Process from '../components/Process'
 import Portfolio from '../components/Portfolio'
+import { ClientsHome } from '../components/ClientProjects'
 import WhyUs from '../components/WhyUs'
 import Pricing from '../components/Pricing'
 import FAQ from '../components/FAQ'
@@ -31,7 +32,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   })
 }
 
-// Urutan: pernyataan + deretan pintu, karya pilihan, untuk siapa, cara kerja, janji, papan harga, FAQ. Ajakan penutup ada di footer.
+// Urutan: pernyataan + deretan pintu, karya pilihan, proyek klien (ringkas), untuk siapa, cara kerja, janji, papan harga, FAQ.
+// Ajakan penutup ada di footer.
 export default async function HomePage({ params }: Params) {
   const lang = (await params).lang as Lang
   const t = getDict(lang)
@@ -41,6 +43,7 @@ export default async function HomePage({ params }: Params) {
       <main id="main-content">
         <Hero lang={lang} />
         <Portfolio lang={lang} />
+        <ClientsHome lang={lang} />
         <AudienceSection lang={lang} />
         <Process lang={lang} />
         <WhyUs lang={lang} />

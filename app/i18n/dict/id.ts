@@ -105,7 +105,7 @@ const id = {
     offer: (price: string, duration: string) => `Landing page mulai ${price}, selesai dalam ${duration}. Bayar 50% di awal, sisanya setelah website jadi.`,
     ctaConsult: 'Konsultasi gratis',
     ctaDemos: (n: number) => `Lihat ${n} contoh`,
-    facade: 'Delapan jenis website yang kami buat',
+    facade: 'Sembilan jenis website yang kami buat',
     facadeHint: 'Arahkan kursor untuk pratinjau, klik untuk membuka galerinya',
     openGallery: (t: string) => `Buka galeri ${t}`,
   },
@@ -115,6 +115,7 @@ const id = {
     lead: (n: number) => `Lima dari ${n} situs demo yang kami bangun dan biarkan tetap online. Nama usahanya rekaan; tampilan dan isinya bisa disesuaikan untuk usahamu.`,
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, sales, promo' },
+      toko: { title: 'Toko Online', tagline: 'Katalog, keranjang, checkout, dan dasbor pesanan' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu tautan untuk semua kanalmu' },
       kontes: { title: 'Kontes Desain', tagline: 'Beragam konsep untuk satu brief' },
       undangan: { title: 'Undangan Digital', tagline: 'Undangan online untuk momen spesial' },
@@ -123,13 +124,25 @@ const id = {
       properti: { title: 'Properti', tagline: 'Marketplace & katalog properti' },
       todo: { title: 'To-Do & Produktivitas', tagline: 'Aplikasi web untuk kelola tugas' },
     },
-    unit: { landing: 'demo', linkinbio: 'demo', kontes: 'entri', undangan: 'tema', portfolio: 'varian', reservasi: 'sistem', properti: 'varian', todo: 'aplikasi' },
+    unit: { landing: 'demo', toko: 'demo', linkinbio: 'demo', kontes: 'entri', undangan: 'tema', portfolio: 'varian', reservasi: 'sistem', properti: 'varian', todo: 'aplikasi' },
     previewAlt: (t: string) => `Pratinjau galeri ${t}`,
     shotAlt: (name: string) => `Tangkapan layar demo ${name}`,
     open: 'Buka demo',
     galleryLang: '',
     allDemos: (n: number) => `Lihat semua ${n} demo`,
     hoverHint: 'Arahkan kursor ke salah satu kartu untuk melihat halamannya bergulir, klik untuk membuka situs demonya.',
+  },
+  // Proyek klien: beranda (sesudah Karya pilihan), Tentang (#proyek-klien), dan halaman layanan terkait.
+  // Isi tiap proyek (bidang, masalah, solusi, yang diserahkan) ada di content/clients.ts.
+  clients: {
+    title: 'Proyek klien',
+    lead: 'Sebagian sistem dan website yang kami kerjakan untuk usaha klien.',
+    client: (name: string) => `Klien: ${name}`,
+    problem: 'Masalah',
+    solution: 'Solusi',
+    delivered: 'Yang diserahkan',
+    details: 'Lihat masalah & solusi tiap proyek',
+    shotAlt: (item: string, business: string) => `Tangkapan layar ${business}: ${item}`,
   },
   audience: {
     eyebrow: 'Untuk siapa',

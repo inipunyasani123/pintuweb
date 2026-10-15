@@ -33,6 +33,7 @@ const fr: Pack = {
       highlights: ['Lancements de produit', 'Événements', 'Campagnes publicitaires'],
       features: [
         'Une page promotionnelle centrée sur la conversion',
+        'Rédaction des textes de la page (copywriting)',
         'Design moderne et adapté au mobile',
         'Domaine .com/.xyz offert + SSL pendant 1 an',
         'Optimisation de la vitesse et SEO de base',
@@ -236,6 +237,7 @@ const fr: Pack = {
   },
 
   demoCategories: {
+    toko: 'Boutique en ligne',
     landing: 'Landing Page',
     undangan: 'Invitation numérique',
     linkinbio: 'Link in Bio',
@@ -246,6 +248,7 @@ const fr: Pack = {
     kontes: 'Concours de design',
   },
   demos: {
+    tanur: { tagline: 'Céramique artisanale pour la table de tous les jours' },
     bribu: { tagline: 'Un tableau de briefs design où trois esquisses sont rémunérées' },
     cissycoffee: { tagline: 'Un café avec son menu à l’ardoise' },
     citarasa: { tagline: 'Un restaurant familial de longue date, désormais en commande sur mobile' },

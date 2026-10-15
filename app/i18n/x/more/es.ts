@@ -250,6 +250,51 @@ const more: More = {
       def: 'El mantenimiento web es el cuidado rutinario después del lanzamiento: pequeñas actualizaciones de contenido, parches de seguridad, actualización de dependencias y corrección de problemas técnicos.',
     },
   },
+  // Proyectos de clientes (content/clients.ts). Los nombres del cliente y del negocio no se traducen.
+  clients: {
+    freshfold: {
+      field: 'Lavandería',
+      project: 'Sistema web para registrar pedidos y el estado del lavado',
+      problem: 'Los pedidos se anotaban a mano, lo que dificultaba seguir el estado del lavado y el historial de transacciones de los clientes.',
+      solution: 'Un panel para gestionar pedidos, actualizar el estado del lavado, guardar los datos de los clientes e imprimir recibos digitales.',
+      docs: ['Panel de pedidos', 'Estado del lavado', 'Recibo digital'],
+    },
+    'sumber-rejeki': {
+      field: 'Comercio de materiales de construcción',
+      project: 'Aplicación web de inventario',
+      problem: 'El control de existencias y el registro de entradas y salidas de mercancía todavía se hacían a mano.',
+      solution: 'Una aplicación de inventario con gestión de existencias, registro de entradas y salidas de mercancía e informes de inventario.',
+      docs: ['Panel de inventario', 'Informe de existencias', 'Historial de movimientos de mercancía'],
+    },
+    'arif-motor': {
+      field: 'Taller de motos',
+      project: 'Sistema de administración de servicios de vehículos',
+      problem: 'El historial de servicios de los clientes se guardaba en un cuaderno, por lo que era difícil volver a encontrarlo.',
+      solution: 'Registro de los datos de clientes y del historial de servicios de los vehículos, lista de trabajos de los mecánicos y emisión de facturas.',
+      docs: ['Datos de clientes', 'Historial de servicios', 'Factura digital'],
+    },
+    'cerdas-akademi': {
+      field: 'Centro de apoyo escolar',
+      project: 'Sitio web de inscripción de alumnos y gestión de horarios de clase',
+      problem: 'La inscripción de alumnos y la organización de horarios todavía se hacían a mano.',
+      solution: 'Un sitio web con formulario de inscripción en línea, panel de administración, gestión de datos de alumnos e información de horarios de clase.',
+      docs: ['Formulario de inscripción', 'Panel de administración', 'Página de horarios'],
+    },
+    'lereng-coffee': {
+      field: 'Producción y venta de café local',
+      project: 'Sitio web de catálogo de productos y pedidos en línea',
+      problem: 'La información de los productos y los pedidos dependían de las redes sociales y de la comunicación manual.',
+      solution: 'Un catálogo de productos con precios y descripciones, un formulario de pedido e integración con WhatsApp.',
+      docs: ['Página de catálogo', 'Diseño adaptable', 'Formulario de pedido'],
+    },
+    'prima-distribusi': {
+      field: 'Distribución de mercancía',
+      project: 'Panel de gestión de pedidos y envíos',
+      problem: 'El estado de los pedidos y envíos no estaba centralizado, lo que dificultaba la administración operativa.',
+      solution: 'Un panel interno para registrar pedidos, actualizar el estado de los envíos, buscar datos y generar informes por periodo.',
+      docs: ['Panel de pedidos', 'Filtro por fecha', 'Informe de envíos'],
+    },
+  },
 }
 
 export default more

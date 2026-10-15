@@ -12,6 +12,7 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
     portfolio: 'Portfolio',
     reservasi: 'Online Booking',
     properti: 'Property Website',
+    toko: 'Online Store',
     todo: 'Productivity App',
     kontes: 'Design Contest',
   },
@@ -22,6 +23,7 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
     portfolio: 'Portfolio',
     reservasi: 'Tempahan Dalam Talian',
     properti: 'Laman Web Hartanah',
+    toko: 'Kedai Dalam Talian',
     todo: 'Aplikasi Produktiviti',
     kontes: 'Peraduan Reka Bentuk',
   },
@@ -29,6 +31,7 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
 
 export const DEMO_TEXT: Record<'en' | 'ms', Record<string, DemoText>> = {
   en: {
+    tanur: { tagline: 'Handmade ceramics for the everyday table' },
     bribu: { tagline: 'A design-brief board where three sketches get paid' },
     cissycoffee: { tagline: 'A coffee shop with a chalkboard menu' },
     citarasa: { tagline: 'An old family restaurant, now taking orders by phone' },
@@ -96,6 +99,7 @@ export const DEMO_TEXT: Record<'en' | 'ms', Record<string, DemoText>> = {
     'crave-noir': { tagline: 'Noir concept' },
   },
   ms: {
+    tanur: { tagline: 'Seramik buatan tangan untuk meja harian' },
     bribu: { tagline: 'Papan taklimat reka bentuk, tiga lakaran dibayar' },
     cissycoffee: { tagline: 'Kedai kopi dengan menu papan kapur' },
     citarasa: { tagline: 'Restoran lama, kini terima pesanan dari telefon' },

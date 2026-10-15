@@ -174,8 +174,8 @@ export const SERVICES: Service[] = [
   {
     key: 'toko-online',
     packages: ['toko-online-simple', 'toko-online-full'],
-    demoCategories: ['linkinbio', 'landing'],
-    demoSlugs: ['jajan', 'vendra', 'luxeelectro', 'modewear'],
+    demoCategories: ['toko', 'linkinbio', 'landing'],
+    demoSlugs: ['tanur', 'jajan', 'vendra', 'luxeelectro', 'modewear'],
     articles: ['website-vs-sosmed', 'biaya', 'website-umkm'],
     text: {
       id: {

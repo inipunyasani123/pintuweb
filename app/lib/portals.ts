@@ -5,6 +5,7 @@ import type { DemoCategory } from './demos'
 /** Paket harga untuk tiap kategori demo/portal (slug di lib/packages.ts). */
 export const PACKAGE_FOR_CATEGORY: Record<DemoCategory, string> = {
   landing: 'landing-page',
+  toko: 'toko-online-simple',
   linkinbio: 'link-in-bio',
   kontes: 'konsep-desain',
   undangan: 'undangan-digital',
@@ -21,6 +22,7 @@ export const PACKAGE_FOR_CATEGORY: Record<DemoCategory, string> = {
  */
 export const CATEGORY_COLOR: Record<DemoCategory, { color: string; to: string; tint: string }> = {
   landing: { color: '#c2410c', to: '#e11d48', tint: '#fff1e6' }, // jingga -> mawar
+  toko: { color: '#be185d', to: '#7c3aed', tint: '#fdeef5' }, // merah muda -> ungu
   linkinbio: { color: '#6d28d9', to: '#2563eb', tint: '#f1ebff' }, // ungu -> biru
   kontes: { color: '#047857', to: '#4d7c0f', tint: '#e3f6ee' }, // zamrud -> hijau limau
   undangan: { color: '#be123c', to: '#a21caf', tint: '#ffecef' }, // mawar -> magenta

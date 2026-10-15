@@ -7,7 +7,7 @@ export const SITE = 'https://www.pintuweb.id'
 
 export const FOUNDED_YEAR = 2018
 export const CLIENT_PROJECTS = '20+'
-export const CATEGORY_COUNT = 8
+export const CATEGORY_COUNT = 9
 export const LOCATION = 'Trenggalek, Jawa Timur'
 
 export const WA_NUMBER = '6285190931399'

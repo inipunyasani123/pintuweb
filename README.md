@@ -25,10 +25,11 @@ npm run build
 |---|---|
 | `app/[lang]/` | Semua halaman: beranda, layanan (7), paket, demo, artikel, kamus, FAQ, tentang, founder, kontak, kebijakan privasi, syarat & ketentuan |
 | `app/components/` | Komponen bersama (header, footer, kartu, FAQ, dll.) |
-| `app/content/` | Teks layanan, FAQ, kamus, dokumen legal, teks paket & demo, pemuat artikel |
+| `app/content/` | Teks layanan, FAQ, kamus, dokumen legal, teks paket & demo, pemuat artikel, proyek klien (`clients.ts`) |
 | `content/articles/{id,en}/` | Artikel Markdown; terjemahan dipasangkan lewat `key` di frontmatter dan slug di `app/i18n/slugs.ts` |
 | `app/lib/` | Data dan fakta: `site.ts`, `packages.ts`, `demos.ts`, `portals.ts` |
 | `public/demos/` | Thumbnail demo `<slug>.webp` (720×378) plus `<slug>-360.webp` dan `<slug>-480.webp` untuk `srcset` |
+| `public/images/klien/` | (Belum ada) tangkapan layar proyek klien `<kunci>-1.webp` s.d. `-3.webp`, kunci di `app/content/clients.ts`; tampil otomatis di kartu halaman Tentang setelah build |
 | `scripts/` | Skrip perawatan (lihat di bawah) |
 
 ## Multibahasa
@@ -41,7 +42,7 @@ Isi `app/i18n/`:
 - `routes.ts`: segmen URL tiap halaman per bahasa, `path()`/`pathOf()`/`urlOf()`, hreflang, pembaca path, serta aturan rewrite & redirect untuk `next.config.ts`. Halaman yang belum ada dalam suatu bahasa ditautkan ke versi Inggris.
 - `dict/<kode>.ts`: teks antarmuka (header, footer, bagian beranda).
 - `pages/<kode>.ts`: teks per halaman.
-- `x/<kode>.ts`: paket bahasa tambahan (fakta, teks 14 paket, label & tagline demo, FAQ); `x/more/<kode>.ts`: layanan dan kamus untuk bahasa tambahan.
+- `x/<kode>.ts`: paket bahasa tambahan (fakta, teks 14 paket, label & tagline demo, FAQ); `x/more/<kode>.ts`: layanan, kamus, dan teks proyek klien untuk bahasa tambahan.
 - `facts.ts` (fakta & harga yang sudah diformat per bahasa, pengisi penanda `{{…}}`), `seo.ts` (metadata, hreflang, JSON-LD), `og.ts` (judul gambar OG), `slugs.ts`, `plural.ts`.
 
 Cakupan: id, en, ms lengkap; bahasa tambahan punya beranda, layanan, paket, demo, FAQ, tentang, kontak, founder, dan kamus (dokumen legal menaut ke versi Inggris); artikel hanya id & en.

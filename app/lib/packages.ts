@@ -68,6 +68,7 @@ const DATA: Omit<Paket, 'duration'>[] = [
     highlights: ['Promosi produk', 'Event', 'Kampanye iklan'],
     features: [
       '1 halaman promosi yang fokus konversi',
+      'Copywriting halaman promosi',
       'Desain modern & mobile-friendly',
       'Gratis domain .com/.xyz + SSL 1 tahun',
       'Optimasi kecepatan & SEO dasar',

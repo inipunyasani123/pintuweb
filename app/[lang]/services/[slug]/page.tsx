@@ -9,6 +9,7 @@ import { serviceFrom } from '../../../content/service-utils'
 import { fillFacts } from '../../../i18n/facts'
 import { cardsFor } from '../../../components/cards'
 import PackageCard from '../../../components/PackageCard'
+import { ServiceClients } from '../../../components/ClientProjects'
 import { articlesIn } from '../../../content/articles'
 import { faqJsonLd } from '../../../content/faq'
 import { categoriesFor, demosFor, getDict, getPages, isLang, LANG_INFO, type Lang } from '../../../i18n'
@@ -283,6 +284,9 @@ export default async function ServicePage({ params }: Params) {
           </div>
         </section>
       )}
+
+      {/* Proyek klien yang terkait layanan ini (content/clients.ts); tidak tampil bila tidak ada */}
+      <ServiceClients lang={lang} service={s.key} />
 
       {/* FAQ layanan */}
       <section aria-labelledby="sfaq-title" className="py-16 sm:py-24">

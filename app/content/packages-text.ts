@@ -14,6 +14,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
       highlights: ['Product launches', 'Events', 'Ad campaigns'],
       features: [
         'One promotional page focused on conversion',
+        'Copywriting for the page',
         'Modern, mobile-friendly design',
         'Free .com/.xyz domain + SSL for 1 year',
         'Speed optimisation & basic SEO',
@@ -210,6 +211,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
       highlights: ['Promosi produk', 'Acara', 'Kempen iklan'],
       features: [
         '1 halaman promosi yang fokus pada penukaran',
+        'Penulisan teks (copywriting) halaman',
         'Reka bentuk moden & mesra mudah alih',
         'Domain .com/.xyz percuma + SSL 1 tahun',
         'Pengoptimuman kelajuan & SEO asas',

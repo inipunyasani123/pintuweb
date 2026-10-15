@@ -8,6 +8,7 @@ import { urlOf, type PageKey } from '../i18n/routes'
 import { SERVICES } from './services'
 import { articlesIn } from './articles'
 import { faqFor } from './faq'
+import { clientsFor, clientsHref } from './clients'
 import { LANG_INFO, X_LANGS } from '../i18n/config'
 
 export function llmsDoc(full: boolean) {
@@ -57,6 +58,12 @@ export function llmsDoc(full: boolean) {
     ...(['home', 'pricing', 'services', 'demo', 'faq', 'about', 'founder', 'contact', 'glossary'] as PageKey[]).map(
       (key) => `- ${key}: ${urlOf('id', { key } as never)} (ID) · ${urlOf('en', { key } as never)} (EN) · ${urlOf('ms', { key } as never)} (MS)`,
     ),
+    '',
+    '## Client projects',
+    '',
+    `Selected real projects for clients (details: ${SITE}${clientsHref('en')}):`,
+    '',
+    ...clientsFor('en').map((c) => `- ${c.business} (${c.field}), client ${c.client}: ${c.project}. Problem: ${c.problem} Solution: ${c.solution}`),
     '',
     '## Demo galleries (Indonesian)',
     '',
