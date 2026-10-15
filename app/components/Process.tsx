@@ -13,15 +13,15 @@ export default function Process({ lang }: { lang: Lang }) {
   const flagAfter: Record<number, string[]> = { 0: t.pay.deposit, 2: t.pay.final }
 
   return (
-    <section aria-labelledby="process-title" className="py-24 sm:py-32">
+    <section aria-labelledby="process-title" className="section-y">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHead eyebrow={t.eyebrow} id="process-title" title={<HlText parts={t.title} />} lead={t.lead} />
 
-        <ol className="proc mt-14 grid grid-cols-1 lg:mt-16 lg:grid-cols-4 lg:gap-x-8">
+        <ol className="proc mt-9 grid grid-cols-1 sm:mt-12 lg:mt-16 lg:grid-cols-4 lg:gap-x-8">
           {t.steps.map((s, i) => {
             const flag = flagAfter[i]
             return (
-              <li key={s.title} className="proc-step relative pb-10 ps-[4.5rem] last:pb-0 lg:pb-0 lg:ps-0 lg:pt-[6.75rem]" style={{ '--i': i } as CSSProperties}>
+              <li key={s.title} className="proc-step relative pb-7 ps-[4.5rem] last:pb-0 sm:pb-10 lg:pb-0 lg:ps-0 lg:pt-[6.75rem]" style={{ '--i': i } as CSSProperties}>
                 {i < last ? (
                   // ruas lintasan menuju tahap berikutnya
                   <span className="absolute -bottom-6 start-[21px] top-6 w-1.5 overflow-hidden rounded-full bg-[color:var(--primary-100)] lg:-end-14 lg:bottom-auto lg:start-6 lg:top-[57px] lg:h-1.5 lg:w-auto" aria-hidden="true">
@@ -39,18 +39,18 @@ export default function Process({ lang }: { lang: Lang }) {
                   {i + 1}
                 </span>
 
-                <h3 className="pt-2 text-[1.375rem] leading-tight text-[color:var(--text-primary)] lg:pt-0">{s.title}</h3>
-                <p className="mt-2 max-w-xl leading-relaxed text-[color:var(--text-tertiary)] lg:pe-2">{s.desc}</p>
+                <h3 className="pt-3 text-[1.25rem] leading-tight text-[color:var(--text-primary)] sm:pt-2 sm:text-[1.375rem] lg:pt-0">{s.title}</h3>
+                <p className="mt-1.5 max-w-xl text-[0.9375rem] leading-[1.6] text-[color:var(--text-tertiary)] sm:mt-2 sm:text-base sm:leading-relaxed lg:pe-2">{s.desc}</p>
 
                 {flag && (
                   // titik bayar: di ponsel di bawah tahapnya, di desktop tepat di tengah ruas lintasan
-                  <p className="proc-flag relative mt-6 text-[0.8125rem] leading-5 lg:absolute lg:start-[calc(50%+2.5rem)] lg:top-0 lg:mt-0 lg:-translate-x-1/2 rtl:lg:translate-x-1/2 lg:whitespace-nowrap lg:text-center">
+                  <p className="proc-flag relative mt-4 text-[0.8125rem] leading-5 sm:mt-6 lg:absolute lg:start-[calc(50%+2.5rem)] lg:top-0 lg:mt-0 lg:-translate-x-1/2 rtl:lg:translate-x-1/2 lg:whitespace-nowrap lg:text-center">
                     <span className="proc-dot absolute -start-[3.375rem] top-1 z-10 h-3 w-3 rounded-full border-2 border-[color:var(--primary-700)] bg-[color:var(--primary-700)] ring-4 ring-white lg:start-1/2 lg:top-[54px] lg:-translate-x-1/2 rtl:lg:translate-x-1/2" aria-hidden="true" />
                     <strong className="font-semibold text-[color:var(--primary-700)] lg:block">{flag[0]}</strong> <span className="text-[color:var(--text-tertiary)] lg:block">{flag[1]}</span>
                   </p>
                 )}
                 {i === last && (
-                  <p className="relative mt-6 text-[0.8125rem] leading-5 lg:absolute lg:end-0 lg:top-0 lg:mt-0 lg:whitespace-nowrap lg:text-end">
+                  <p className="relative mt-4 text-[0.8125rem] leading-5 sm:mt-6 lg:absolute lg:end-0 lg:top-0 lg:mt-0 lg:whitespace-nowrap lg:text-end">
                     <span className="absolute -start-[3.375rem] top-1 z-10 h-3 w-3 rounded-full border-2 border-[color:var(--primary-300)] bg-white lg:start-auto lg:end-0 lg:top-[54px]" aria-hidden="true" />
                     <strong className="font-semibold text-[color:var(--primary-700)] lg:block">{t.pay.after[0]}</strong> <span className="text-[color:var(--text-tertiary)] lg:block">{t.pay.after[1]}</span>
                   </p>

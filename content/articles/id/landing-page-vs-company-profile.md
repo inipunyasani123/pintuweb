@@ -36,7 +36,7 @@ Landing page tepat bila Anda sudah tahu dari mana pengunjung datang dan apa yang
 - Meluncurkan produk baru atau promo musiman.
 - Menguji ide bisnis sebelum membangun website lengkap.
 
-Karena hanya satu halaman, semua isi disusun berurutan: masalah, solusi, bukti, harga, dan tombol ajakan. Tidak ada menu yang mengalihkan perhatian. Anda bisa melihat 17 contohnya di [galeri landing page](/landing-page).
+Karena hanya satu halaman, semua isi disusun berurutan: masalah, solusi, bukti, harga, dan tombol ajakan. Tidak ada menu yang mengalihkan perhatian. Anda bisa membuka {{demos:landing}} demonya di [galeri landing page](/landing-page).
 
 ## Kapan memilih company profile
 

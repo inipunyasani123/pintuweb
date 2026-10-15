@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Landing Page',
         title: 'Jasa Pembuatan Landing Page',
-        description: 'Jasa pembuatan landing page cepat dan fokus konversi untuk promosi, event, dan iklan. Harga transparan, selesai dalam hitungan hari. Coba {{demos:landing}} contohnya.',
+        description: 'Jasa pembuatan landing page cepat dan fokus konversi untuk promosi, event, dan iklan. Harga transparan, selesai dalam hitungan hari. Coba {{demos:landing}} demonya.',
         h1: ['Jasa pembuatan ', 'landing page', ' yang mengubah pengunjung jadi pembeli.'],
         lead: 'Landing page adalah satu halaman web yang dibuat untuk satu tujuan: membuat pengunjung melakukan satu tindakan, misalnya membeli, mendaftar webinar, atau menghubungi lewat WhatsApp. Karena hanya satu halaman, landing page cepat dibuat dan cocok sebagai tujuan iklan.',
         intro: [
@@ -63,7 +63,7 @@ export const SERVICES: Service[] = [
       en: {
         name: 'Landing Page',
         title: 'Landing Page Design & Development',
-        description: 'Fast, conversion-focused landing pages for product launches, events, webinars and ads. Transparent pricing, ready in a few working days, {{demos:landing}} live examples.',
+        description: 'Fast, conversion-focused landing pages for product launches, events, webinars and ads. Transparent pricing, ready in a few working days, {{demos:landing}} live demos.',
         h1: ['', 'Landing pages', ' that turn visitors into customers.'],
         lead: 'A landing page is a single web page built for one goal: getting visitors to take one action, such as buying, registering for a webinar or messaging you on WhatsApp. Because it is a single page, it is quick to build and ideal as the destination for an ad.',
         intro: [
@@ -83,7 +83,7 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Landing Page',
         title: 'Perkhidmatan Membina Landing Page',
-        description: 'Landing page pantas yang fokus pada penukaran untuk pelancaran produk, acara dan iklan. Harga telus, siap dalam beberapa hari bekerja. Cuba {{demos:landing}} contohnya.',
+        description: 'Landing page pantas yang fokus pada penukaran untuk pelancaran produk, acara dan iklan. Harga telus, siap dalam beberapa hari bekerja. Cuba {{demos:landing}} demonya.',
         h1: ['', 'Landing page', ' yang menukar pelawat menjadi pembeli.'],
         lead: 'Landing page ialah satu halaman web yang dibina untuk satu tujuan: membuat pelawat melakukan satu tindakan, seperti membeli, mendaftar webinar atau menghubungi melalui WhatsApp. Kerana hanya satu halaman, ia cepat dibina dan sesuai sebagai destinasi iklan.',
         intro: [
@@ -249,7 +249,7 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Website Portofolio',
         title: 'Jasa Pembuatan Website Portofolio',
-        description: 'Website portofolio dan personal branding untuk desainer, developer, fotografer, dan freelancer: karya, studi kasus, blog, dan kontak. Lihat {{demos:portfolio}} contohnya.',
+        description: 'Website portofolio dan personal branding untuk desainer, developer, fotografer, dan freelancer: karya, studi kasus, blog, dan kontak. Lihat {{demos:portfolio}} demonya.',
         h1: ['Website ', 'portofolio', ' yang membuat karyamu dilirik klien.'],
         lead: 'Website portofolio adalah etalase karya pribadi: tempat klien atau perekrut melihat apa yang sudah kamu kerjakan, cara kamu bekerja, dan cara menghubungi. Dibanding PDF atau media sosial, website portofolio punya alamat sendiri dan bisa ditemukan lewat Google.',
         intro: [
@@ -261,14 +261,14 @@ export const SERVICES: Service[] = [
         suits: 'Freelancer, kreator',
         faq: [
           { q: 'Apakah saya bisa menambah karya baru sendiri?', a: 'Kirim karya baru lewat WhatsApp dan kami tambahkan; untuk pembaruan rutin tersedia layanan tambahan maintenance bulanan. Bila kamu sering memperbarui portofolio, CMS bisa ditambahkan agar kamu mengelolanya sendiri.' },
-          { q: 'Apakah persona di contoh portofolio itu nyata?', a: 'Tidak. Persona di contoh portofolio kami fiktif; saat dipesan, semua isinya diganti dengan karya, foto, dan kontak milikmu.' },
+          { q: 'Apakah persona di demo portofolio itu nyata?', a: 'Tidak. Persona di demo portofolio kami fiktif; saat dipesan, semua isinya diganti dengan karya, foto, dan kontak milikmu.' },
           { q: 'Apakah perlu domain dengan nama saya sendiri?', a: 'Sangat disarankan. Domain + hosting + SSL untuk tahun pertama sudah termasuk di paket Portofolio, dan alamat dengan namamu lebih mudah diingat klien.' },
         ],
       },
       en: {
         name: 'Portfolio Website',
         title: 'Portfolio & Personal Branding Websites',
-        description: 'Portfolio websites for designers, developers, photographers and freelancers: work pages, case studies, a blog and contact. See {{demos:portfolio}} live portfolio examples.',
+        description: 'Portfolio websites for designers, developers, photographers and freelancers: work pages, case studies, a blog and contact. See {{demos:portfolio}} live portfolio demos.',
         h1: ['A ', 'portfolio website', ' that gets your work noticed.'],
         lead: 'A portfolio website is a personal showcase of your work: where clients or recruiters see what you have done, how you work and how to reach you. Compared with a PDF or social media, it has its own address and can be found on Google.',
         intro: [
@@ -280,14 +280,14 @@ export const SERVICES: Service[] = [
         suits: 'Freelancers, creators',
         faq: [
           { q: 'Can I add new work myself?', a: 'Send new work over WhatsApp and we will add it; for regular updates, a monthly maintenance add-on is available. If you update your portfolio often, a CMS can be added so you can manage it yourself.' },
-          { q: 'Are the people in the portfolio examples real?', a: 'No. The personas in our portfolio examples are fictional; when you order, everything is replaced with your own work, photos and contact details.' },
+          { q: 'Are the people in the portfolio demos real?', a: 'No. The personas in our portfolio demos are fictional; when you order, everything is replaced with your own work, photos and contact details.' },
           { q: 'Do I need a domain with my own name?', a: 'We strongly recommend it. A domain, hosting and SSL for the first year are included in the Portfolio package, and an address with your name is easier for clients to remember.' },
         ],
       },
       ms: {
         name: 'Laman Web Portfolio',
         title: 'Membina Laman Web Portfolio & Jenama Peribadi',
-        description: 'Laman web portfolio dan jenama peribadi untuk pereka, pembangun, jurugambar dan pekerja bebas: karya, kajian kes, blog dan hubungi. Lihat {{demos:portfolio}} contoh.',
+        description: 'Laman web portfolio dan jenama peribadi untuk pereka, pembangun, jurugambar dan pekerja bebas: karya, kajian kes, blog dan hubungi. Lihat {{demos:portfolio}} demo.',
         h1: ['Laman web ', 'portfolio', ' yang membuatkan karya anda dilihat.'],
         lead: 'Laman web portfolio ialah pameran karya peribadi: tempat pelanggan atau perekrut melihat apa yang telah anda hasilkan, cara anda bekerja dan cara menghubungi. Berbanding PDF atau media sosial, ia mempunyai alamat sendiri dan boleh ditemui melalui Google.',
         intro: [
@@ -299,7 +299,7 @@ export const SERVICES: Service[] = [
         suits: 'Pekerja bebas, pencipta',
         faq: [
           { q: 'Bolehkah saya menambah karya baharu sendiri?', a: 'Hantar karya baharu melalui WhatsApp dan kami tambahkan; untuk kemas kini berkala, perkhidmatan tambahan penyelenggaraan bulanan tersedia. Jika anda kerap mengemas kini portfolio, CMS boleh ditambah supaya anda mengurusnya sendiri.' },
-          { q: 'Adakah persona dalam contoh portfolio itu nyata?', a: 'Tidak. Persona dalam contoh portfolio kami adalah rekaan; apabila ditempah, semua kandungan diganti dengan karya, foto dan maklumat hubungan anda.' },
+          { q: 'Adakah persona dalam demo portfolio itu nyata?', a: 'Tidak. Persona dalam demo portfolio kami adalah rekaan; apabila ditempah, semua kandungan diganti dengan karya, foto dan maklumat hubungan anda.' },
           { q: 'Perlukah domain dengan nama saya sendiri?', a: 'Sangat disyorkan. Domain + hosting + SSL untuk tahun pertama sudah termasuk dalam pakej Portfolio, dan alamat dengan nama anda lebih mudah diingati pelanggan.' },
         ],
       },
@@ -320,7 +320,7 @@ export const SERVICES: Service[] = [
         lead: 'Website custom adalah website yang desain, alur, dan fiturnya dibuat khusus untuk proses bisnismu — misalnya sistem reservasi, katalog properti dengan filter, area member, atau integrasi dengan sistem yang sudah kamu pakai.',
         intro: [
           'Proyek custom dimulai dari memetakan alur: siapa penggunanya, data apa yang masuk, dan apa yang harus terjadi setelahnya. Dari situ kami menyusun penawaran tertulis dengan ruang lingkup yang jelas sebelum ada baris kode yang ditulis.',
-          'Contoh hasilnya bisa dicoba di galeri kami: {{demos:reservasi}} sistem reservasi (restoran, hotel, klinik, futsal, bioskop), {{demos:properti}} marketplace properti, dan {{demos:todo}} aplikasi produktivitas.',
+          'Demonya bisa dicoba di galeri kami: {{demos:reservasi}} sistem reservasi (restoran, hotel, klinik, futsal, bioskop), {{demos:properti}} marketplace properti, dan {{demos:todo}} aplikasi produktivitas.',
         ],
         forWho: ['Restoran, hotel, klinik, dan lapangan yang butuh reservasi online', 'Agen dan pengembang properti', 'Startup yang membangun produk web pertama', 'Instansi dan sekolah dengan formulir atau alur khusus', 'Usaha yang ingin menghubungkan website dengan sistem yang sudah ada'],
         short: 'Sistem reservasi, katalog properti, aplikasi web, atau fitur khusus lain sesuai kebutuhan bisnis.',
@@ -340,7 +340,7 @@ export const SERVICES: Service[] = [
         lead: 'A custom website is one whose design, flow and features are built specifically around how your business works — for example a booking system, a property catalogue with filters, a member area or an integration with a system you already use.',
         intro: [
           'A custom project starts by mapping the flow: who the users are, what data comes in and what must happen next. From there we prepare a written quote with a clear scope before a single line of code is written.',
-          'You can try examples in our gallery: {{demos:reservasi}} booking systems (restaurant, hotel, clinic, futsal court, cinema), {{demos:properti}} property marketplaces and {{demos:todo}} productivity apps.',
+          'You can try demos in our gallery: {{demos:reservasi}} booking systems (restaurant, hotel, clinic, futsal court, cinema), {{demos:properti}} property marketplaces and {{demos:todo}} productivity apps.',
         ],
         forWho: ['Restaurants, hotels, clinics and courts that need online booking', 'Property agents and developers', 'Start-ups building their first web product', 'Institutions and schools with special forms or workflows', 'Businesses connecting their website to existing systems'],
         short: 'Booking systems, property catalogues, web apps or other bespoke features for your business.',
@@ -355,12 +355,12 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Laman Web Tersuai & Aplikasi Web',
         title: 'Membina Laman Web Tersuai & Aplikasi Web',
-        description: 'Laman web tersuai dan aplikasi web dengan Next.js: sistem tempahan, katalog hartanah, ruang ahli dan integrasi API. Cuba contoh tempahan & hartanah kami.',
+        description: 'Laman web tersuai dan aplikasi web dengan Next.js: sistem tempahan, katalog hartanah, ruang ahli dan integrasi API. Cuba demo tempahan & hartanah kami.',
         h1: ['Laman web tersuai untuk ', 'keperluan yang tidak muat dalam templat.'],
         lead: 'Laman web tersuai ialah laman web yang reka bentuk, aliran dan cirinya dibina khas mengikut proses perniagaan anda — contohnya sistem tempahan, katalog hartanah dengan penapis, ruang ahli atau integrasi dengan sistem yang sedia digunakan.',
         intro: [
           'Projek tersuai bermula dengan memetakan aliran: siapa penggunanya, data apa yang masuk dan apa yang perlu berlaku seterusnya. Dari situ kami sediakan sebut harga bertulis dengan skop yang jelas sebelum sebarang kod ditulis.',
-          'Contoh hasilnya boleh dicuba dalam galeri kami: {{demos:reservasi}} sistem tempahan (restoran, hotel, klinik, futsal, panggung wayang), {{demos:properti}} pasaran hartanah dan {{demos:todo}} aplikasi produktiviti.',
+          'Demonya boleh dicuba dalam galeri kami: {{demos:reservasi}} sistem tempahan (restoran, hotel, klinik, futsal, panggung wayang), {{demos:properti}} pasaran hartanah dan {{demos:todo}} aplikasi produktiviti.',
         ],
         forWho: ['Restoran, hotel, klinik dan gelanggang yang memerlukan tempahan dalam talian', 'Ejen dan pemaju hartanah', 'Syarikat pemula yang membina produk web pertama', 'Institusi dan sekolah dengan borang atau aliran khas', 'Perniagaan yang ingin menghubungkan laman web dengan sistem sedia ada'],
         short: 'Sistem tempahan, katalog hartanah, aplikasi web atau ciri khas lain mengikut keperluan perniagaan.',
@@ -396,7 +396,7 @@ export const SERVICES: Service[] = [
         suits: 'Pernikahan, keluarga, acara kantor',
         faq: [
           { q: 'Berapa harga undangan digital?', a: 'Mulai {{from:undangan-digital}} untuk undangan dari tema galeri (kisaran {{price:undangan-digital}}, selesai {{duration:undangan-digital}}), dan mulai {{from:situs-acara}} untuk situs acara atau desain khusus. Undangan aktif 12 bulan tanpa biaya perpanjangan.' },
-          { q: 'Apakah nama dan foto di contoh undangan itu asli?', a: 'Tidak. Nama, foto, dan data di contoh undangan kami fiktif; saat dipesan, semuanya diganti dengan data acaramu.' },
+          { q: 'Apakah nama dan foto di demo undangan itu asli?', a: 'Tidak. Nama, foto, dan data di demo undangan kami fiktif; saat dipesan, semuanya diganti dengan data acaramu.' },
           { q: 'Bagaimana cara membagikan undangannya?', a: 'Cukup kirim tautannya lewat WhatsApp, media sosial, atau email. Tamu membukanya di browser tanpa perlu memasang aplikasi.' },
           { q: 'Apakah undangan digital bisa menggantikan undangan cetak?', a: 'Untuk banyak acara bisa, terutama tamu yang jauh. Sebagian keluarga tetap mencetak beberapa undangan untuk orang tua atau tamu kehormatan; keduanya bisa berjalan bersamaan.' },
         ],
@@ -417,7 +417,7 @@ export const SERVICES: Service[] = [
         suits: 'Weddings, family & corporate events',
         faq: [
           { q: 'How much does a digital invitation cost?', a: 'From {{from:undangan-digital}} for an invitation from our theme gallery (range {{price:undangan-digital}}, ready in {{duration:undangan-digital}}), and from {{from:situs-acara}} for an event website or bespoke design. Invitations stay active for 12 months with no renewal fee.' },
-          { q: 'Are the names and photos in the examples real?', a: 'No. The names, photos and details in our example invitations are fictional; when you order, everything is replaced with your event details.' },
+          { q: 'Are the names and photos in the demos real?', a: 'No. The names, photos and details in our demo invitations are fictional; when you order, everything is replaced with your event details.' },
           { q: 'How do I share the invitation?', a: 'Just send the link over WhatsApp, social media or email. Guests open it in their browser without installing an app.' },
           { q: 'Can a digital invitation replace a printed one?', a: 'For many events it can, especially for guests who live far away. Some families still print a few invitations for elders or guests of honour; both can work together.' },
         ],
@@ -438,7 +438,7 @@ export const SERVICES: Service[] = [
         suits: 'Perkahwinan, keluarga, korporat',
         faq: [
           { q: 'Berapakah harga kad jemputan digital?', a: 'Dari {{from:undangan-digital}} untuk jemputan daripada tema galeri (julat {{price:undangan-digital}}, siap dalam {{duration:undangan-digital}}), dan dari {{from:situs-acara}} untuk laman acara atau reka bentuk khas. Jemputan aktif 12 bulan tanpa kos pembaharuan.' },
-          { q: 'Adakah nama dan foto dalam contoh itu asli?', a: 'Tidak. Nama, foto dan data dalam contoh jemputan kami adalah rekaan; apabila ditempah, semuanya diganti dengan butiran majlis anda.' },
+          { q: 'Adakah nama dan foto dalam demo itu asli?', a: 'Tidak. Nama, foto dan data dalam demo jemputan kami adalah rekaan; apabila ditempah, semuanya diganti dengan butiran majlis anda.' },
           { q: 'Bagaimana cara berkongsi jemputan?', a: 'Hantar sahaja pautannya melalui WhatsApp, media sosial atau e-mel. Tetamu membukanya dalam pelayar tanpa perlu memasang aplikasi.' },
           { q: 'Bolehkah jemputan digital menggantikan kad bercetak?', a: 'Untuk banyak majlis boleh, terutamanya tetamu yang jauh. Sesetengah keluarga tetap mencetak beberapa kad untuk orang tua atau tetamu kehormat; kedua-duanya boleh digunakan bersama.' },
         ],
@@ -454,11 +454,11 @@ export const SERVICES: Service[] = [
       id: {
         name: 'Link in Bio',
         title: 'Jasa Pembuatan Halaman Link in Bio',
-        description: 'Halaman link in bio dengan domain dan desain sendiri untuk kreator, UMKM, musisi, dan kafe: menu, pre-order, toko, dan tombol WhatsApp. Lihat {{demos:linkinbio}} contoh.',
+        description: 'Halaman link in bio dengan domain dan desain sendiri untuk kreator, UMKM, musisi, dan kafe: menu, pre-order, toko, dan tombol WhatsApp. Lihat {{demos:linkinbio}} demo.',
         h1: ['Halaman ', 'link in bio', ' milikmu sendiri — bukan sekadar daftar tombol.'],
         lead: 'Halaman link in bio adalah satu halaman web yang ditautkan dari bio Instagram atau TikTok dan berisi semua tujuan penting: WhatsApp, toko, jadwal, karya, atau formulir pemesanan. Versi buatan sendiri bisa memakai domain dan desain merekmu, serta memuat fitur yang tidak ada di layanan link in bio umum.',
         intro: [
-          'Ada {{demos:linkinbio}} contoh di galeri kami yang menunjukkan seberapa jauh halaman ini bisa berkembang: papan menu warung yang menampilkan status buka sesuai jam WIB, pre-order kedai kopi, jadwal tur band dengan pemilih tiket, toko stiker, hingga halaman komisi ilustrator.',
+          'Ada {{demos:linkinbio}} demo di galeri kami yang menunjukkan seberapa jauh halaman ini bisa berkembang: papan menu warung yang menampilkan status buka sesuai jam WIB, pre-order kedai kopi, jadwal tur band dengan pemilih tiket, toko stiker, hingga halaman komisi ilustrator.',
           'Paket Link in Bio mulai {{from:link-in-bio}} dan selesai {{duration:link-in-bio}}; halaman atau fitur tambahan dihitung di penawaran tertulis.',
         ],
         forWho: ['Kreator konten dan influencer', 'Kafe, warung, dan usaha kuliner dengan pre-order', 'Musisi, band, dan penyelenggara acara', 'Ilustrator, penulis, dan pekerja kreatif', 'UMKM yang aktif berjualan lewat Instagram atau TikTok'],
@@ -474,11 +474,11 @@ export const SERVICES: Service[] = [
       en: {
         name: 'Link in Bio',
         title: 'Custom Link-in-Bio Pages',
-        description: 'Link-in-bio pages with your own domain and design for creators, small businesses and cafés: menus, pre-orders, shops and WhatsApp. See {{demos:linkinbio}} live examples.',
+        description: 'Link-in-bio pages with your own domain and design for creators, small businesses and cafés: menus, pre-orders, shops and WhatsApp. See {{demos:linkinbio}} live demos.',
         h1: ['A ', 'link-in-bio page', ' of your own — not just a list of buttons.'],
         lead: 'A link-in-bio page is a single web page linked from your Instagram or TikTok bio that holds every important destination: WhatsApp, your shop, your schedule, your work or an order form. A custom version can use your own domain and brand design, with features generic link-in-bio services do not offer.',
         intro: [
-          'The {{demos:linkinbio}} examples in our gallery show how far such a page can go: a food stall menu board that shows whether it is open based on Indonesian time, coffee-shop pre-orders, a band tour schedule with a ticket picker, a sticker shop and an illustrator commission page.',
+          'The {{demos:linkinbio}} demos in our gallery show how far such a page can go: a food stall menu board that shows whether it is open based on Indonesian time, coffee-shop pre-orders, a band tour schedule with a ticket picker, a sticker shop and an illustrator commission page.',
           'The Link in Bio package starts at {{from:link-in-bio}} and is ready in {{duration:link-in-bio}}; extra pages or features are priced in the written quote.',
         ],
         forWho: ['Content creators and influencers', 'Cafés, food stalls and food businesses taking pre-orders', 'Musicians, bands and event organisers', 'Illustrators, writers and creative workers', 'Small businesses selling actively on Instagram or TikTok'],
@@ -494,11 +494,11 @@ export const SERVICES: Service[] = [
       ms: {
         name: 'Link in Bio',
         title: 'Membina Halaman Link in Bio Sendiri',
-        description: 'Halaman link in bio dengan domain dan reka bentuk sendiri untuk pencipta kandungan, PKS dan kafe: menu, pra-tempahan, kedai, WhatsApp. Lihat {{demos:linkinbio}} contoh.',
+        description: 'Halaman link in bio dengan domain dan reka bentuk sendiri untuk pencipta kandungan, PKS dan kafe: menu, pra-tempahan, kedai, WhatsApp. Lihat {{demos:linkinbio}} demo.',
         h1: ['Halaman ', 'link in bio', ' milik anda sendiri — bukan sekadar senarai butang.'],
         lead: 'Halaman link in bio ialah satu halaman web yang dipautkan dari bio Instagram atau TikTok dan mengandungi semua destinasi penting: WhatsApp, kedai, jadual, karya atau borang pesanan. Versi tersuai boleh menggunakan domain dan reka bentuk jenama anda, serta ciri yang tiada dalam perkhidmatan link in bio biasa.',
         intro: [
-          'Terdapat {{demos:linkinbio}} contoh dalam galeri kami yang menunjukkan sejauh mana halaman ini boleh berkembang: papan menu gerai yang memaparkan status buka mengikut waktu Indonesia, pra-tempahan kedai kopi, jadual jelajah kumpulan muzik dengan pemilih tiket, kedai pelekat hingga halaman komisen ilustrator.',
+          'Terdapat {{demos:linkinbio}} demo dalam galeri kami yang menunjukkan sejauh mana halaman ini boleh berkembang: papan menu gerai yang memaparkan status buka mengikut waktu Indonesia, pra-tempahan kedai kopi, jadual jelajah kumpulan muzik dengan pemilih tiket, kedai pelekat hingga halaman komisen ilustrator.',
           'Pakej Link in Bio bermula {{from:link-in-bio}} dan siap dalam {{duration:link-in-bio}}; halaman atau ciri tambahan dikira dalam sebut harga bertulis.',
         ],
         forWho: ['Pencipta kandungan dan pempengaruh', 'Kafe, gerai dan perniagaan makanan dengan pra-tempahan', 'Pemuzik, kumpulan muzik dan penganjur acara', 'Ilustrator, penulis dan pekerja kreatif', 'PKS yang aktif berniaga melalui Instagram atau TikTok'],

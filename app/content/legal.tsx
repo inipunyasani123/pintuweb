@@ -246,7 +246,7 @@ export function termsDoc(lang: BaseLang): LegalDoc {
           rev: 'The number of revisions follows your package. Small changes such as text, photos or contact details are free during the maintenance period. Major changes beyond the original agreement are discussed and priced first.',
           guar: `Bugs and technical issues are fixed free of charge for ${GUARANTEE_DAYS} days after launch. After that, maintenance applies as included in your package and can be extended. The guarantee does not cover damage caused by code changes made by others or requests for new features.`,
           dom: 'If renewal is not made, the domain and hosting may expire under the provider’s terms.',
-          own: 'Once paid in full, the website with its source code, admin access, hosting access and domain becomes entirely yours. Exception: invitation themes from our gallery stay active for 12 months on a personal link, and the Website Design Concepts package grants the right to use the design, not the code. PintuWeb only shows your project as an example of our work if you allow it.',
+          own: 'Once paid in full, the website with its source code, admin access, hosting access and domain becomes entirely yours. Exception: invitation themes from our gallery stay active for 12 months on a personal link, and the Website Design Concepts package grants the right to use the design, not the code. PintuWeb only lists your project among its client projects if you allow it.',
           mat: 'You are responsible for making sure the materials you provide (logos, photos, text) may be used and do not infringe anyone else’s rights.',
           cancel: 'Cancellation and refund terms for each project are set out in the written quote before work starts.',
           contact1: 'Questions about these terms can be sent to ',
@@ -265,7 +265,7 @@ export function termsDoc(lang: BaseLang): LegalDoc {
           rev: 'Bilangan semakan mengikut pakej. Perubahan kecil seperti teks, foto atau maklumat hubungan dibantu tanpa caj sepanjang tempoh penyelenggaraan. Perubahan besar di luar persetujuan awal dibincangkan dan dipersetujui kosnya terlebih dahulu.',
           guar: `Pepijat dan masalah teknikal dibaiki secara percuma selama ${GUARANTEE_DAYS} hari selepas laman web dilancarkan. Selepas itu, penyelenggaraan terpakai mengikut isi pakej dan boleh dilanjutkan. Jaminan tidak meliputi kerosakan akibat perubahan kod oleh pihak lain atau permintaan ciri baharu.`,
           dom: 'Jika pembaharuan tidak dibuat, domain dan hosting boleh tamat mengikut terma penyedianya.',
-          own: 'Selepas bayaran penuh, laman web beserta kod sumber, akses admin, akses hosting dan domain menjadi milik anda sepenuhnya. Pengecualian: tema jemputan daripada galeri kami aktif 12 bulan pada pautan peribadi, dan pakej Konsep Reka Bentuk Laman Web memberikan hak menggunakan reka bentuk, bukan kod. PintuWeb hanya memaparkan projek anda sebagai contoh karya jika anda membenarkannya.',
+          own: 'Selepas bayaran penuh, laman web beserta kod sumber, akses admin, akses hosting dan domain menjadi milik anda sepenuhnya. Pengecualian: tema jemputan daripada galeri kami aktif 12 bulan pada pautan peribadi, dan pakej Konsep Reka Bentuk Laman Web memberikan hak menggunakan reka bentuk, bukan kod. PintuWeb hanya memaparkan projek anda sebagai projek pelanggan jika anda membenarkannya.',
           mat: 'Anda bertanggungjawab memastikan bahan yang anda berikan (logo, foto, teks) boleh digunakan dan tidak melanggar hak pihak lain.',
           cancel: 'Terma pembatalan dan pemulangan wang bagi setiap projek dinyatakan dalam sebut harga bertulis sebelum kerja bermula.',
           contact1: 'Soalan tentang terma ini boleh dihantar ke ',
@@ -351,7 +351,7 @@ export function termsDoc(lang: BaseLang): LegalDoc {
         <p>
           Setelah pelunasan, website beserta source code, akses admin, akses hosting, dan domain sepenuhnya menjadi milik
           Anda. Pengecualian: tema undangan dari galeri kami aktif 12 bulan di tautan pribadi, dan paket Konsep Desain
-          memberi hak pakai desain, bukan kode. PintuWeb hanya menampilkan proyek Anda sebagai contoh karya bila Anda
+          memberi hak pakai desain, bukan kode. PintuWeb hanya mencantumkan proyek Anda di daftar proyek klien bila Anda
           mengizinkannya.
         </p>,
       ),

@@ -245,7 +245,7 @@ const pt: Pack = {
     reservasi: 'Reservas online',
     properti: 'Site imobiliário',
     todo: 'App de produtividade',
-    kontes: 'Concurso de design',
+    kontes: 'Conceitos de design',
   },
   demos: {
     tanur: { tagline: 'Cerâmica feita à mão para a mesa do dia a dia' },

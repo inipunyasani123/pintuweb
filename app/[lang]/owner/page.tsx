@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, CodeXml, Database, Gauge, Github, Mail, MapPin, MessageCircle, Quote, type LucideIcon } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, CodeXml, Database, Gauge, Github, Mail, MapPin, MessageCircle, type LucideIcon } from 'lucide-react'
 import ArticleCard from '../../components/ArticleCard'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { Logo } from '../../components/Logo'
@@ -95,10 +95,11 @@ export default async function OwnerPage({ params }: Params) {
                   >
                     {NAME[0]}
                   </span>
-                  <div className="min-w-0">
-                    <p className="display text-[1.625rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)]">{NAME}</p>
-                    <p className="text-[0.9375rem] text-[color:var(--text-tertiary)]">{p.jobTitle}</p>
-                  </div>
+                  {/* nama + jabatan satu paragraf (dua baris): bukan judul bagian, jadi tidak dibuat <p> bergaya judul */}
+                  <p className="min-w-0">
+                    <span className="display block text-[1.625rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)]">{NAME}</span>
+                    <span className="block text-[0.9375rem] text-[color:var(--text-tertiary)]">{p.jobTitle}</span>
+                  </p>
                 </div>
                 <ul className="mt-6 border-t border-[color:var(--border-light)] pt-2">
                   {card.map((r) => {
@@ -160,7 +161,7 @@ export default async function OwnerPage({ params }: Params) {
       </section>
 
       {/* Keahlian + prinsip */}
-      <section aria-labelledby="skills-title" className="py-16 sm:py-24">
+      <section aria-labelledby="skills-title" className="section-y">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-10 px-4 sm:px-6 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <h2 id="skills-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
@@ -185,24 +186,26 @@ export default async function OwnerPage({ params }: Params) {
               ))}
             </ul>
           </div>
-          <figure className="flex flex-col justify-between gap-10 rounded-[1.75rem] p-7 text-white [background-image:linear-gradient(150deg,var(--primary-700),var(--primary-900))] sm:p-9 lg:col-span-5">
-            <Quote size={38} strokeWidth={0} className="fill-[color:var(--accent-300)]" aria-hidden="true" />
-            <div>
-              <blockquote className="display text-[1.5rem] font-semibold leading-snug tracking-tight sm:text-[1.75rem]">{p.quote}</blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 text-[0.9375rem] text-white/85">
-                <span className="display grid h-9 w-9 shrink-0 select-none place-items-center rounded-full bg-white text-[1.0625rem] font-semibold leading-none text-[color:var(--primary-700)]" aria-hidden="true">
-                  {NAME[0]}
-                </span>
-                {p.quoteBy}
-              </figcaption>
-            </div>
-          </figure>
+          {/* Prinsip kerja: pernyataan cara kerja dari fakta situs (harga, persetujuan desain, garansi), BUKAN kutipan
+              Sanzy. Teksnya sama dengan kartu "Di balik PintuWeb" di halaman Tentang. */}
+          <section aria-labelledby="principles-title" className="flex flex-col gap-7 rounded-[1.75rem] p-7 text-white [background-image:linear-gradient(150deg,var(--primary-700),var(--primary-900))] sm:p-9 lg:col-span-5">
+            <h2 id="principles-title" className="kicker text-[color:var(--accent-200)]">
+              {p.principlesTitle}
+            </h2>
+            <ul className="divide-y divide-white/15">
+              {p.principles.map((x) => (
+                <li key={x} className="display py-4 text-[1.3125rem] font-semibold leading-snug tracking-tight first:pt-0 last:pb-0 sm:text-[1.5rem]">
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
       </section>
 
       {/* Tulisan — sinyal keahlian (E-E-A-T). Artikel hanya ada dalam sebagian bahasa. */}
       {writing.length > 0 && (
-        <section aria-labelledby="writing-title" className="bg-[color:var(--surface-soft)] py-16 sm:py-24">
+        <section aria-labelledby="writing-title" className="bg-[color:var(--surface-soft)] section-y">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <h2 id="writing-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
@@ -224,7 +227,7 @@ export default async function OwnerPage({ params }: Params) {
       )}
 
       {/* Ajakan */}
-      <section className={writing.length > 0 ? 'py-16 sm:py-24' : 'pb-16 sm:pb-24'}>
+      <section className={writing.length > 0 ? 'section-y' : 'pb-16 sm:pb-24'}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-7 rounded-[2rem] p-7 ring-1 ring-[color:var(--border-light)] sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12">
             <div className="max-w-2xl">

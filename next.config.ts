@@ -27,7 +27,10 @@ const nextConfig: NextConfig = {
   // Font TTF & logo untuk gambar OG dibaca lewat fs saat runtime: pastikan ikut terbundel.
   outputFileTracingIncludes: { "/api/og": ["./app/api/og/fonts/**", "./app/api/og/logo.png"] },
   // Hasil optimasi next/image disimpan 30 hari (sumbernya hanya gambar lokal yang namanya berganti bila diubah).
-  images: { minimumCacheTTL: 2592000 },
+  // deviceSizes tanpa 2048 & 3840 (bawaan Next): sumber gambar terlebar di situs ini 1600px (sampul artikel) dan
+  // optimizer tidak pernah memperbesar, jadi dua ukuran itu hanya menghasilkan berkas yang sama dengan 1920 sambil
+  // menambah dua entri di setiap srcset (±7 KB HTML di beranda). Tambahkan lagi bila kelak ada sumber > 1920px.
+  images: { minimumCacheTTL: 2592000, deviceSizes: [640, 750, 828, 1080, 1200, 1920] },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

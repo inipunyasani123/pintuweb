@@ -1,6 +1,7 @@
 // Kamus antara muka — Bahasa Melayu.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
+import { demoUnits } from '../plural'
 import type { Dict, Hl } from './id'
 
 const ms: Dict = {
@@ -46,6 +47,8 @@ const ms: Dict = {
     waText: 'Hai PintuWeb, saya ingin berbincang tentang membina laman web.',
     language: 'Bahasa',
     notAvailable: 'belum tersedia',
+    allServices: 'Semua perkhidmatan',
+    allServicesLead: 'Bandingkan semua perkhidmatan beserta harga dan tempoh siapnya.',
   },
   footer: {
     aria: 'Maklumat dan hubungan PintuWeb',
@@ -97,30 +100,32 @@ const ms: Dict = {
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} projek pelanggan · ${n} demo dalam talian`,
     title: ['Setiap perniagaan layak ada ', 'pintu depan', ' yang sewajarnya.'] as Hl,
     lead: (n: number) =>
-      `Kami mereka bentuk dan membina laman web untuk PKS, kedai dan jenama peribadi: pantas dibuka di telefon, sedia ditemui di Google, dan milik anda sepenuhnya. ${CLIENT_PROJECTS} projek pelanggan telah siap, dan ${n} contoh karya boleh anda buka hari ini.`,
+      `Kami mereka bentuk dan membina laman web untuk PKS, kedai dan jenama peribadi: pantas dibuka di telefon, sedia ditemui di Google, dan milik anda sepenuhnya. ${CLIENT_PROJECTS} projek pelanggan telah siap, dan ${n} laman demo boleh anda buka hari ini.`,
     offer: (price: string, duration: string) => `Landing page bermula ${price}, siap dalam ${duration}. Bayar 50% dahulu, bakinya selepas kerja selesai.`,
     ctaConsult: 'Konsultasi percuma',
-    ctaDemos: (n: number) => `Lihat ${n} contoh`,
+    ctaDemos: (n: number) => `Lihat ${n} demo`,
     facade: 'Sembilan jenis laman web yang kami bina',
     facadeHint: 'Tuding untuk pratonton, klik untuk membuka galeri',
     openGallery: (t: string) => `Buka galeri ${t}`,
+    kindDetail: 'Butiran & harga',
+    kindDetailFor: (t: string) => `Butiran & harga ${t}`,
   },
   portfolio: {
-    eyebrow: 'Karya pilihan',
-    title: ['Contoh yang boleh anda buka dan cuba sendiri, ', 'bukan gambar mockup', '.'] as Hl,
+    eyebrow: 'Demo pilihan',
+    title: ['Demo yang boleh anda buka dan cuba sendiri, ', 'bukan gambar mockup', '.'] as Hl,
     lead: (n: number) => `Lima daripada ${n} laman demo yang kami bina dan kekalkan dalam talian. Nama perniagaannya rekaan; rupa dan isinya boleh disesuaikan untuk perniagaan anda.`,
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, jualan, promosi' },
       toko: { title: 'Kedai Dalam Talian', tagline: 'Katalog, troli, pembayaran dan papan pemuka pesanan' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu pautan untuk semua saluran anda' },
-      kontes: { title: 'Peraduan Reka Bentuk', tagline: 'Pelbagai konsep untuk satu taklimat' },
+      kontes: { title: 'Konsep Reka Bentuk', tagline: 'Beberapa konsep untuk satu taklimat peraduan reka bentuk' },
       undangan: { title: 'Kad Jemputan Digital', tagline: 'Jemputan dalam talian untuk detik istimewa' },
       portfolio: { title: 'Portfolio Peribadi', tagline: 'Penjenamaan peribadi yang diingati' },
       reservasi: { title: 'Tempahan & Booking', tagline: 'Sistem tempahan dalam talian pelbagai industri' },
       properti: { title: 'Hartanah', tagline: 'Pasaran & katalog hartanah' },
       todo: { title: 'To-Do & Produktiviti', tagline: 'Aplikasi web untuk mengurus tugasan' },
     },
-    unit: { landing: 'demo', toko: 'demo', linkinbio: 'demo', kontes: 'penyertaan', undangan: 'tema', portfolio: 'varian', reservasi: 'sistem', properti: 'varian', todo: 'aplikasi' },
+    unit: demoUnits(() => 'demo'),
     previewAlt: (t: string) => `Pratonton galeri ${t}`,
     shotAlt: (name: string) => `Tangkapan skrin demo ${name}`,
     open: 'Buka demo',
@@ -140,23 +145,13 @@ const ms: Dict = {
   },
   audience: {
     eyebrow: 'Untuk siapa',
-    title: ['Dari gerai makanan hingga klinik, ', 'contohnya sudah ada', '.'] as Hl,
-    lead: 'Setiap contoh di bawah dalam talian dan boleh dibuka. Nama perniagaannya rekaan; rupa dan isinya boleh disesuaikan untuk perniagaan anda.',
-    items: [
-      { label: 'PKS', desc: 'Link in bio kuih buatan rumah, pesanan melalui WhatsApp.' },
-      { label: 'Restoran', desc: 'Tempahan meja terus daripada pelan lantai.' },
-      { label: 'Bengkel perabot', desc: 'Perabot kayu padu yang diukur di rumah pelanggan.' },
-      { label: 'Syarikat pemula', desc: 'Landing page penyedia pelayan dengan halaman status.' },
-      { label: 'Pekerja kreatif', desc: 'Portfolio editorial untuk pereka jenama.' },
-      { label: 'Majlis perkahwinan', desc: 'Kad jemputan digital dengan RSVP dan galeri.' },
-      { label: 'Klinik', desc: 'Temu janji doktor dalam talian.' },
-      { label: 'Ejen hartanah', desc: 'Katalog kediaman mewah dengan lawatan peribadi.' },
-    ],
-    open: 'Buka',
-    otherTitle: 'Perniagaan anda tiada dalam senarai ini?',
+    title: 'Untuk apa anda memerlukan laman web?',
+    lead: 'Pilih yang paling hampir dengan rancangan anda. Setiap baris menunjuk satu pakej, lengkap dengan harga permulaan dan tempoh siapnya.',
+    all: 'Lihat semua keperluan & pakej',
+    otherTitle: 'Keperluan anda tiada dalam senarai ini?',
     otherBody: 'Ceritakan perniagaan anda melalui WhatsApp, kami cadangkan jenis laman web yang paling sesuai. Konsultasinya percuma.',
     otherCta: 'Tanya melalui WhatsApp',
-    otherWa: 'Hai PintuWeb, jenis perniagaan saya tiada dalam senarai contoh. Saya ingin bertanya dahulu.',
+    otherWa: 'Hai PintuWeb, keperluan saya tiada dalam senarai. Saya ingin bertanya dahulu.',
   },
   process: {
     eyebrow: 'Cara kami bekerja',
@@ -206,6 +201,7 @@ const ms: Dict = {
     colPrice: 'Julat harga',
     colPackage: 'Pakej',
     openNote: 'Ekor bertitik bermaksud harganya boleh lebih, bergantung pada ciri.',
+    rangeNote: 'Kedudukan harga dalam julat bergantung pada bilangan halaman, ciri dan bahan yang perlu kami sediakan; angka tepatnya tertulis dalam sebut harga sebelum kerja bermula.',
     seeAll: (n: number) => `Butiran semua ${n} pakej`,
     depositTitle: 'Bayaran',
     depositBody: 'Deposit 50% untuk bermula; bakinya selepas laman web siap dan anda luluskan.',
@@ -220,6 +216,8 @@ const ms: Dict = {
     suits: 'Sesuai untuk:',
     choose: (title: string) => (title.length > 22 ? 'Pilih pakej ini' : `Pilih ${title}`),
     free: 'Konsultasi percuma melalui WhatsApp',
+    more: (n: number) => `Lihat semua ciri (${n})`,
+    less: 'Sembunyikan ciri tambahan',
   },
   faqUi: {
     eyebrow: 'Soalan lazim',

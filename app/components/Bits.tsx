@@ -26,6 +26,7 @@ export function JsonLd({ data }: { data: unknown }) {
 /**
  * Jejak navigasi yang terlihat (pasangan BreadcrumbList di JSON-LD). Butir pertama (Beranda) tidak di-prefetch:
  * tautannya tampil di setiap halaman dalam, padahal jarang diklik dan RSC beranda paling besar.
+ * Tautannya -my-1 py-1: bidang sentuh 24px (WCAG 2.5.8) tanpa menggeser tata letak teks 12px-nya.
  */
 export function Breadcrumbs({ items, label }: { items: { name: string; href?: string }[]; label: string }) {
   return (
@@ -35,7 +36,7 @@ export function Breadcrumbs({ items, label }: { items: { name: string; href?: st
           <li key={it.name} className="inline-flex min-w-0 max-w-full items-center gap-2">
             {i > 0 && <span aria-hidden="true" className="text-[color:var(--neutral-400)]">/</span>}
             {it.href ? (
-              <Link href={it.href} prefetch={i === 0 ? false : undefined} className="underline-offset-4 hover:text-[color:var(--primary-700)] hover:underline">{it.name}</Link>
+              <Link href={it.href} prefetch={i === 0 ? false : undefined} className="-my-1 py-1 underline-offset-4 hover:text-[color:var(--primary-700)] hover:underline">{it.name}</Link>
             ) : (
               <span aria-current="page" className="line-clamp-1 text-[color:var(--text-primary)]">{it.name}</span>
             )}

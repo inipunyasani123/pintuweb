@@ -253,7 +253,7 @@ const ar: Pack = {
     reservasi: 'حجز إلكتروني',
     properti: 'موقع عقاري',
     todo: 'تطبيق إنتاجية',
-    kontes: 'مسابقة تصميم',
+    kontes: 'تصورات التصميم',
   },
   demos: {
     tanur: { tagline: 'خزف مصنوع يدويًا لمائدة كل يوم' },

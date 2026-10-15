@@ -11,11 +11,13 @@ export const DEMO_CATEGORIES: { id: DemoCategory; label: string }[] = [
   { id: 'toko', label: 'Toko Online' },
   { id: 'undangan', label: 'Undangan Digital' },
   { id: 'linkinbio', label: 'Link in Bio' },
-  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'portfolio', label: 'Portofolio' },
   { id: 'reservasi', label: 'Reservasi Online' },
   { id: 'properti', label: 'Website Properti' },
   { id: 'todo', label: 'Aplikasi Produktivitas' },
-  { id: 'kontes', label: 'Kontes Desain' },
+  // Kategori 'kontes' (URL portal tetap /kontes-desain): konsep-konsep untuk brief kontes desain. Labelnya mengikuti
+  // nama paket "Konsep Desain Website" supaya pengunjung tidak bingung antara "kontes" dan "konsep".
+  { id: 'kontes', label: 'Konsep Desain' },
 ]
 
 export type Demo = {

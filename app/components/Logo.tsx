@@ -3,11 +3,15 @@ import Image from 'next/image'
 // Logo PintuWeb milik pemilik situs: sumbernya public/images/logo.png. Yang dipakai di sini versi rapatnya
 // (logo-pintuweb.png), dibuat oleh scripts/ikon-dari-logo.mjs bersama favicon, ikon aplikasi, dan logo OG.
 const SRC = '/images/logo-pintuweb.png'
-const W = 367
-const H = 512
+// Ukuran atribut = 2× tampilan terbesar (h-8: 23×32px), rasio sama dengan berkasnya (367×512). Tanpa `sizes`, Next
+// membuat srcset 1x/2x saja (w=48 & w=96, berkas yang sama dengan sebelumnya), bukan 16 kandidat lebar per logo:
+// logo ini muncul puluhan kali (header, footer, tiap kartu FAQ), jadi HTML-nya jauh lebih ringan. Tinggi tampilnya
+// tetap diatur className (h-* w-auto).
+const W = 46
+const H = 64
 
 export function LogoMark({ className = 'h-8 w-auto', priority = false }: { className?: string; priority?: boolean }) {
-  return <Image src={SRC} alt="" width={W} height={H} sizes="40px" priority={priority} className={className} />
+  return <Image src={SRC} alt="" width={W} height={H} priority={priority} className={className} />
 }
 
 /** Logo lengkap: gambar logo + nama. Di latar gelap logonya diberi alas putih supaya biru gelapnya tetap terbaca. */

@@ -79,21 +79,22 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
           const slice = w >= 100 ? 0 : (a / (100 - w)) * 100
           return (
             <li key={p.slug}>
-              <Row href={base + p.slug} className={`group block items-center rounded-2xl px-3 py-3 transition-colors md:grid md:px-4 md:py-0 ${rowHover} ${COLS}`}>
-                <span className="block min-w-0 md:py-3">
-                  <span className="block font-semibold leading-snug text-[color:var(--text-primary)] transition-colors group-hover:text-[color:var(--primary-700)]">{p.title}</span>
-                  {/* ponsel: harga langsung di bawah nama, supaya nama tidak terdesak */}
-                  <span className="mt-0.5 block text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:hidden">
-                    <span className="whitespace-nowrap text-[0.875rem] font-semibold text-[color:var(--text-primary)]">{price}</span> · {p.duration}
+              <Row href={base + p.slug} className={`group block items-center rounded-2xl px-3 py-2.5 transition-colors md:grid md:px-4 md:py-0 ${rowHover} ${COLS}`}>
+                {/* ponsel: nama & kisaran harga sebaris, batang tepat di bawahnya (ringkas; lama pengerjaan ada di kartu
+                    paket); desktop: kolom nama (+ kelompok & lama pengerjaan) · batang · harga */}
+                <span className="flex min-w-0 items-baseline justify-between gap-3 md:block md:py-3">
+                  <span className="min-w-0">
+                    <span className="block font-semibold leading-snug text-[color:var(--text-primary)] transition-colors group-hover:text-[color:var(--primary-700)]">{p.title}</span>
+                    <span className="mt-0.5 hidden text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:block">
+                      {groupTitle[p.group].title} · {p.duration}
+                    </span>
                   </span>
-                  <span className="mt-0.5 hidden text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:block">
-                    {groupTitle[p.group].title} · {p.duration}
-                  </span>
+                  <span className="shrink-0 whitespace-nowrap text-[0.875rem] font-semibold text-[color:var(--text-primary)] md:hidden">{price}</span>
                 </span>
                 <span className="hidden whitespace-nowrap text-end text-[0.9375rem] font-semibold text-[color:var(--text-primary)] md:order-3 md:block">{price}</span>
 
                 {/* Batang kisaran harga pada skala bersama */}
-                <span className="relative me-7 mt-2.5 block h-5 md:order-2 md:me-0 md:mt-0 md:h-full md:min-h-[3.75rem]" aria-hidden="true">
+                <span className="relative me-7 mt-2 block h-3.5 md:order-2 md:me-0 md:mt-0 md:h-full md:min-h-[3.75rem]" aria-hidden="true">
                   {GRID_LINES.map((x) => (
                     <span key={x} className="absolute inset-y-0 w-px bg-[color:var(--primary-200)]" style={{ insetInlineStart: x === 100 ? 'calc(100% - 1px)' : `${x}%` }} />
                   ))}
@@ -122,16 +123,20 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
         })}
       </ul>
 
-      {hasOpen && (
-        <p className="mt-3 flex items-center gap-2.5 px-3 text-[0.8125rem] text-[color:var(--text-tertiary)] md:px-4">
-          <span className="flex shrink-0 gap-[3px]" aria-hidden="true">
-            {[0.75, 0.53, 0.31].map((o) => (
-              <span key={o} className="h-1 w-1 rounded-full bg-[color:var(--primary-700)]" style={{ opacity: o }} />
-            ))}
-          </span>
-          {t.openNote}
-        </p>
-      )}
+      <div className="mt-3 space-y-1.5 px-3 text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:px-4">
+        {hasOpen && (
+          <p className="flex items-center gap-2.5">
+            <span className="flex shrink-0 gap-[3px]" aria-hidden="true">
+              {[0.75, 0.53, 0.31].map((o) => (
+                <span key={o} className="h-1 w-1 rounded-full bg-[color:var(--primary-700)]" style={{ opacity: o }} />
+              ))}
+            </span>
+            {t.openNote}
+          </p>
+        )}
+        {/* di mana harga jatuh dalam kisarannya: kalimat netral, tanpa aturan per paket */}
+        <p className="max-w-3xl">{t.rangeNote}</p>
+      </div>
     </div>
   )
 }

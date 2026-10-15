@@ -1,6 +1,7 @@
 // Interface dictionary — English.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
+import { demoUnits } from '../plural'
 import type { Dict, Hl } from './id'
 
 const en: Dict = {
@@ -46,6 +47,8 @@ const en: Dict = {
     waText: 'Hello PintuWeb, I would like to talk about building a website.',
     language: 'Language',
     notAvailable: 'not available yet',
+    allServices: 'All services',
+    allServicesLead: 'Compare every service with its price and turnaround time.',
   },
   footer: {
     aria: 'PintuWeb contact and information',
@@ -97,30 +100,32 @@ const en: Dict = {
     meta: (n: number) => `Since ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} client projects · ${n} live demos`,
     title: ['Every business deserves a proper ', 'front door', '.'] as Hl,
     lead: (n: number) =>
-      `We design and build websites for small businesses, shops and personal brands: quick to open on a phone, ready to be found on Google, and entirely yours. ${CLIENT_PROJECTS} client projects delivered, and ${n} examples of our work you can open today.`,
+      `We design and build websites for small businesses, shops and personal brands: quick to open on a phone, ready to be found on Google, and entirely yours. ${CLIENT_PROJECTS} client projects delivered, and ${n} demo sites you can open today.`,
     offer: (price: string, duration: string) => `Landing pages from ${price}, ready in ${duration}. Pay 50% up front and the rest once it is finished.`,
     ctaConsult: 'Free consultation',
-    ctaDemos: (n: number) => `See ${n} examples`,
+    ctaDemos: (n: number) => `See ${n} demos`,
     facade: 'Nine kinds of website we build',
     facadeHint: 'Hover for a preview, click to open the gallery',
     openGallery: (t: string) => `Open ${t}`,
+    kindDetail: 'Details & pricing',
+    kindDetailFor: (t: string) => `Details & pricing: ${t}`,
   },
   portfolio: {
-    eyebrow: 'Selected work',
-    title: ['Examples you can open and try yourself, ', 'not mock-up images', '.'] as Hl,
+    eyebrow: 'Selected demos',
+    title: ['Demos you can open and try yourself, ', 'not mock-up images', '.'] as Hl,
     lead: (n: number) => `Five of the ${n} demo sites we built and keep online. The businesses are fictional; the look and content can be tailored to yours.`,
     galleries: {
       landing: { title: 'Landing Pages', tagline: 'Pages that sell: webinars, sales, promotions' },
       toko: { title: 'Online Store', tagline: 'Catalogue, cart, checkout and an order dashboard' },
       linkinbio: { title: 'Link in Bio', tagline: 'One link for all your channels' },
-      kontes: { title: 'Design Contest', tagline: 'Several concepts for one brief' },
+      kontes: { title: 'Design Concepts', tagline: 'Several concepts for one design-contest brief' },
       undangan: { title: 'Digital Invitations', tagline: 'Online invitations for special moments' },
       portfolio: { title: 'Personal Portfolios', tagline: 'Personal branding that sticks' },
       reservasi: { title: 'Reservations & Booking', tagline: 'Online booking systems for many industries' },
       properti: { title: 'Property', tagline: 'Property marketplaces & catalogues' },
       todo: { title: 'To-Do & Productivity', tagline: 'Web apps for managing tasks' },
     },
-    unit: { landing: 'demos', toko: 'demo', linkinbio: 'demos', kontes: 'entries', undangan: 'themes', portfolio: 'variants', reservasi: 'systems', properti: 'variants', todo: 'apps' },
+    unit: demoUnits((n) => (n === 1 ? 'demo' : 'demos')),
     previewAlt: (t: string) => `Preview of the ${t} gallery`,
     shotAlt: (name: string) => `Screenshot of the ${name} demo`,
     open: 'Open demo',
@@ -140,23 +145,13 @@ const en: Dict = {
   },
   audience: {
     eyebrow: 'Who it is for',
-    title: ['From food stalls to clinics, ', 'there is already an example', '.'] as Hl,
-    lead: 'Every example below is online and can be opened. The businesses are fictional; the look and content can be tailored to yours.',
-    items: [
-      { label: 'Small shops', desc: 'A link-in-bio page for home-made snacks, with orders over WhatsApp.' },
-      { label: 'Restaurants', desc: 'Table booking straight from the floor plan.' },
-      { label: 'Furniture workshops', desc: 'Solid-wood furniture measured in the customer’s home.' },
-      { label: 'Start-ups', desc: 'A landing page for a server provider, with a status page.' },
-      { label: 'Creatives', desc: 'An editorial portfolio for a brand designer.' },
-      { label: 'Weddings', desc: 'A digital invitation with RSVP and a photo gallery.' },
-      { label: 'Clinics', desc: 'Online doctor appointments.' },
-      { label: 'Property agents', desc: 'A luxury homes catalogue with private viewings.' },
-    ],
-    open: 'Open',
-    otherTitle: 'Is your business not on this list?',
+    title: 'What do you need a website for?',
+    lead: 'Pick the line closest to your plan. Each one points to a package, with its starting price and turnaround.',
+    all: 'See all needs & packages',
+    otherTitle: 'Not seeing what you need?',
     otherBody: 'Tell us about it on WhatsApp and we will suggest the kind of website that fits. The consultation is free.',
     otherCta: 'Ask on WhatsApp',
-    otherWa: 'Hello PintuWeb, my kind of business is not among your examples. I would like to ask first.',
+    otherWa: 'Hello PintuWeb, what I need is not on your list. I would like to ask first.',
   },
   process: {
     eyebrow: 'How we work',
@@ -206,6 +201,7 @@ const en: Dict = {
     colPrice: 'Price range',
     colPackage: 'Package',
     openNote: 'A dotted tail means the price can go higher, depending on features.',
+    rangeNote: 'Where a price falls within its range depends on the number of pages, the features and the content we need to prepare; the exact figure is in your written quote before we start.',
     seeAll: (n: number) => `Details of all ${n} packages`,
     depositTitle: 'Payment',
     depositBody: 'A 50% deposit to start; the rest once the website is finished and you approve it.',
@@ -220,6 +216,8 @@ const en: Dict = {
     suits: 'Suits:',
     choose: (title: string) => (title.length > 22 ? 'Choose this package' : `Choose ${title}`),
     free: 'Free consultation over WhatsApp',
+    more: (n: number) => `See all features (${n})`,
+    less: 'Hide extra features',
   },
   faqUi: {
     eyebrow: 'Common questions',

@@ -9,9 +9,8 @@ import Pricing from '../components/Pricing'
 import FAQ from '../components/FAQ'
 import { JsonLd } from '../components/Bits'
 import { faqProps } from '../components/props'
-import { faqJsonLd } from '../content/faq'
 import { DEMOS } from '../lib/demos'
-import { LANG_INFO, getDict, isLang, type Lang } from '../i18n'
+import { getDict, isLang, type Lang } from '../i18n'
 import { ogHome, pageGraph, pageMeta } from '../i18n/seo'
 import { urlOf } from '../i18n/routes'
 
@@ -32,8 +31,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   })
 }
 
-// Urutan: pernyataan + deretan pintu, karya pilihan, proyek klien (ringkas), untuk siapa, cara kerja, janji, papan harga, FAQ.
-// Ajakan penutup ada di footer.
+// Urutan: pernyataan + sembilan jenis website (harga mulai & "Detail & harga" per jenis), demo pilihan, proyek klien
+// (ringkas), untuk siapa (kebutuhan → paket), cara kerja, janji, harga (peta harga mulai 640px), FAQ.
+// Bukti dulu (demo, klien), lalu pilihan paket, cara kerja & janji, baru rincian harga. Ajakan penutup ada di footer.
+// Jarak antarbagian memakai kelas section-y (globals.css): 56px di ponsel, ±120px di layar lebar.
 export default async function HomePage({ params }: Params) {
   const lang = (await params).lang as Lang
   const t = getDict(lang)
@@ -50,8 +51,8 @@ export default async function HomePage({ params }: Params) {
         <Pricing lang={lang} />
         <FAQ {...faq} />
       </main>
-      {/* Semua pertanyaan dirender di bagian FAQ (sebagian tersembunyi di balik tab), jadi schema cocok dengan isi. */}
-      <JsonLd data={faqJsonLd(faq.items, LANG_INFO[lang].htmlLang)} />
+      {/* Tanpa JSON-LD FAQPage di sini: pertanyaan yang sama persis sudah ditandai di halaman FAQ, dan Google meminta
+          FAQ yang berulang di beberapa halaman ditandai sekali saja. Ini juga memangkas ±10 KB dari HTML + payload RSC. */}
       <JsonLd
         data={pageGraph({
           lang,

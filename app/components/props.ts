@@ -49,6 +49,7 @@ export function faqProps(lang: Lang) {
     allN: t.allN(items.length),
     askWa: t.askWa,
     more: t.more,
+    newTab: getDict(lang).common.newTabShort,
   }
   return { items, categories: faqFor(lang).categories.map(({ id, name }) => ({ id, name })), t: text, waHref: wa(t.waText), faqHref: path(lang, 'faq') }
 }

@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
+import { Fragment } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import PageHero from '../../components/PageHero'
-import PackageCard from '../../components/PackageCard'
+import { PackageGrid } from '../../components/PackageCard'
 import PriceMap from '../../components/PriceMap'
+import { NeedsList } from '../../components/AudienceSection'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { cardsFor } from '../../components/cards'
+import { needsFor } from '../../content/needs'
 import { addonsFor, facts, groupText, minPrice, money } from '../../i18n/facts'
 import { LANG_INFO, getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
@@ -23,6 +26,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMeta({ lang, ref: { key: 'pricing' }, title: p.title, description: p.description(min, PACKAGES.length), ogTitle: p.ogTitle, ogDescription: p.ogDescription(min) })
 }
 
+// Urutan: pembuka, "mulai dari kebutuhanmu" (kebutuhan → paket, plus lompatan ke kategori), peta harga, kartu paket
+// per kategori, lalu hal yang perlu diketahui + biaya tambahan. Tanpa pita ajakan sendiri: ajakan penutup footer yang
+// langsung menyusul membawa pesan & tombol yang sama; ajakan konsultasi paket ada di bagian kebutuhan.
 export default async function PaketPage({ params }: Params) {
   const lang = (await params).lang as Lang
   const d = getDict(lang)
@@ -83,111 +89,116 @@ export default async function PaketPage({ params }: Params) {
             {d.common.priceNote ? ` · ${d.common.priceNote}` : ''}
           </>
         }
-      >
-        {/* Lompat ke kelompok paket */}
-        <nav aria-label={p.groupsNav} className="mt-2">
-          <ul className="flex flex-wrap gap-2">
-            {groups.map((g) => (
-              <li key={g.id}>
-                <a
-                  href={`#${g.id}`}
-                  className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[color:var(--surface-soft)] px-4 text-[0.9375rem] text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)] transition-colors hover:text-[color:var(--primary-700)] hover:ring-[color:var(--primary-300)]"
-                >
-                  {g.title}
-                  <span className="text-[0.8125rem] font-medium text-[color:var(--text-muted)]">{g.cards.length}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </PageHero>
+      />
+
+      {/* Mulai dari kebutuhan: tiap baris melompat ke kartu paketnya di bawah (content/needs.ts) */}
+      <section id="kebutuhan" aria-labelledby="needs-title" className="pb-12 pt-8 sm:pb-16 sm:pt-12">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 id="needs-title" className="text-[1.5rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.875rem]">
+            {p.needsTitle}
+          </h2>
+          <p className="mt-2 max-w-2xl leading-relaxed text-[color:var(--text-tertiary)]">{p.needsLead}</p>
+          <NeedsList lang={lang} items={needsFor(lang)} base="#" className="mt-6 sm:mt-8" />
+
+          <div className="mt-6 flex flex-col gap-x-10 gap-y-4 lg:flex-row lg:items-start lg:justify-between">
+            {/* Lompat ke kategori: tautan teks sebaris yang membungkus ke baris berikut (tanpa gulir menyamping) */}
+            <nav aria-label={p.groupsNav}>
+              <p className="text-[0.9375rem] leading-[1.9] text-[color:var(--text-tertiary)]">
+                <span className="me-3">{p.groupsLead}</span>
+                {groups.map((g) => (
+                  <Fragment key={g.id}>
+                    <a href={`#${g.id}`} className="me-4 inline-block whitespace-nowrap py-0.5 font-semibold text-[color:var(--primary-700)] underline-offset-4 hover:underline">
+                      {g.title} <span className="text-[0.8125rem] font-medium text-[color:var(--text-muted)]">{g.cards.length}</span>
+                    </a>{' '}
+                  </Fragment>
+                ))}
+              </p>
+            </nav>
+            <p className="shrink-0 text-[0.9375rem] text-[color:var(--text-tertiary)]">
+              {p.ctaTitle}{' '}
+              <a href={wa(p.ctaWa)} target="_blank" rel="noopener noreferrer" className="link inline-flex items-center gap-1 font-semibold">
+                {d.common.consultFree} <ArrowUpRight size={15} className="arw-ne" aria-hidden="true" />
+                <span className="sr-only">{d.common.newTabShort}</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Semua paket sekilas: peta harga yang sama dengan di beranda; barisnya melompat ke kartu paket di bawah */}
-      <section aria-labelledby="map-title" className="mt-12 bg-[color:var(--surface-soft)] py-14 sm:mt-16 sm:py-20">
+      <section aria-labelledby="map-title" className="section-y bg-[color:var(--surface-soft)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="kicker text-[color:var(--primary-700)]">{p.mapKicker}</p>
-          <h2 id="map-title" className="mt-3 text-[1.875rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">
+          <h2 id="map-title" className="mt-2 text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:mt-3 sm:text-[2.25rem]">
             {p.mapTitle}
           </h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-[color:var(--text-tertiary)]">{p.mapLead}</p>
-          <PriceMap lang={lang} base="#" tone="white" className="mt-8" />
+          <PriceMap lang={lang} base="#" tone="white" className="mt-6 sm:mt-8" />
         </div>
       </section>
 
       {groups.map((g) => (
-        <section key={g.id} id={g.id} aria-labelledby={`grup-${g.id}`} className="border-b border-[color:var(--rule)] py-14 sm:py-20">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-8 px-4 sm:px-6 lg:grid-cols-12">
+        <section key={g.id} id={g.id} aria-labelledby={`grup-${g.id}`} className="border-b border-[color:var(--rule)] py-8 sm:py-14">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-5 px-4 sm:px-6 lg:grid-cols-12 lg:gap-y-8">
             <div className="lg:col-span-3">
               <div className="lg:sticky lg:top-28">
                 <p className="kicker text-[color:var(--primary-700)]">
                   {p.count(g.cards.length)} · {labels.from} {g.from}
                 </p>
-                <h2 id={`grup-${g.id}`} className="mt-3 text-[1.875rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.1rem]">
+                <h2 id={`grup-${g.id}`} className="mt-2 text-[1.625rem] leading-tight text-[color:var(--text-primary)] sm:mt-3 sm:text-[2.1rem]">
                   {g.title}
                 </h2>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{g.lead}</p>
+                {/* ponsel: pengantar kelompok disembunyikan; subjudul tiap kartu sudah menjelaskan isinya */}
+                <p className="mt-3 hidden text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)] sm:block">{g.lead}</p>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-9">
-              {g.cards.map((c) => (
-                // kartu yang dituju dari peta harga (#slug) diberi lingkar sorot
-                <div key={c.slug} id={c.slug} className="scroll-mt-4 rounded-[1.5rem] target:shadow-[0_0_0_4px_var(--primary-200)]">
-                  <PackageCard p={c} labels={labels} as="h3" />
-                </div>
-              ))}
-            </div>
+            {/* kartu berjangkar #slug: tujuan daftar kebutuhan, peta harga, dan tautan dari halaman lain */}
+            <PackageGrid cards={g.cards} labels={labels} note={false} className="lg:col-span-9" />
           </div>
         </section>
       ))}
 
-      {/* Biaya tambahan */}
-      <section aria-labelledby="addons-title" className="bg-[color:var(--surface-soft)] py-16 sm:py-20">
+      {/* Yang perlu diketahui sebelum memesan + biaya tambahan */}
+      <section aria-labelledby="info-title" className="section-y bg-[color:var(--surface-soft)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 id="addons-title" className="text-[1.875rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.1rem]">
-            <HlText parts={p.addonsTitle} />
-          </h2>
-          <p className="mt-3 max-w-2xl leading-relaxed text-[color:var(--text-tertiary)]">{p.addonsLead}</p>
-          <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
-            {addons.map((a) => (
-              <li key={a.slug} className="flex flex-col rounded-[1.25rem] bg-white p-5 ring-1 ring-[color:var(--border-light)] sm:p-6">
-                <h3 className="text-[1.125rem] leading-snug text-[color:var(--text-primary)]">{a.title}</h3>
-                <p className="display mt-3 text-[1.375rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)]">{a.range}</p>
-                <p className="mt-1 text-[0.9375rem] text-[color:var(--text-tertiary)]">{a.unit}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section aria-labelledby="info-title" className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 id="info-title" className="max-w-3xl text-[1.875rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">
+          <h2 id="info-title" className="max-w-3xl text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">
             <HlText parts={p.infoTitle} />
           </h2>
-          <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
+          <ul className="mt-6 grid grid-cols-1 gap-x-10 gap-y-6 sm:mt-8 md:grid-cols-3">
             {info.map((i) => (
-              <li key={i.title} className="rounded-[1.25rem] bg-[color:var(--surface-soft)] p-5 sm:p-6">
-                <h3 className="text-[1.1875rem] leading-snug text-[color:var(--text-primary)]">{i.title}</h3>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{i.body}</p>
+              <li key={i.title} className="border-t border-[color:var(--rule)] pt-4">
+                <h3 className="text-[1.125rem] leading-snug text-[color:var(--text-primary)]">{i.title}</h3>
+                <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{i.body}</p>
               </li>
             ))}
           </ul>
 
-          {/* Ajakan */}
-          <div className="mt-10 flex flex-col gap-6 rounded-[2rem] bg-[color:var(--primary-700)] p-8 text-white [background-image:linear-gradient(135deg,var(--primary-700),var(--primary-900))] sm:mt-12 sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-12">
-            <div className="max-w-2xl">
-              <h2 className="text-[1.75rem] leading-[1.12] sm:text-[2.25rem]">{p.ctaTitle}</h2>
-              <p className="mt-3 leading-relaxed text-white/85">{p.ctaLead}</p>
+          <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-4 sm:mt-14 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <h3 id="addons-title" className="text-[1.375rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.5rem]">
+                <HlText parts={p.addonsTitle} />
+              </h3>
+              <p className="mt-2 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{p.addonsLead}</p>
             </div>
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-              <a href={wa(p.ctaWa)} target="_blank" rel="noopener noreferrer" className="btn btn-white">
-                {d.common.consultFree} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
-              </a>
-              <Link href={path(lang, 'faq')} className="btn btn-ghost-dark">
-                {p.readFaq} <ArrowRight size={17} className="arw" aria-hidden="true" />
-              </Link>
-            </div>
+            <ul aria-labelledby="addons-title" className="lg:col-span-8">
+              {addons.map((a) => (
+                <li key={a.slug} className="border-b border-[color:var(--border-light)] py-3 first:border-t sm:flex sm:items-end sm:gap-3">
+                  <span className="block font-medium leading-snug text-[color:var(--text-primary)]">{a.title}</span>
+                  <span className="leader hidden sm:block" aria-hidden="true" />
+                  <span className="mt-0.5 block text-[0.9375rem] leading-snug sm:mt-0 sm:shrink-0 sm:text-end">
+                    <span className="font-semibold text-[color:var(--text-primary)]">{a.range}</span>{' '}
+                    <span className="text-[0.875rem] text-[color:var(--text-tertiary)]">{a.unit}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <p className="mt-8">
+            <Link href={path(lang, 'faq')} className="link inline-flex items-center gap-1.5 text-[0.9375rem] font-semibold">
+              {p.readFaq} <ArrowRight size={15} className="arw" aria-hidden="true" />
+            </Link>
+          </p>
         </div>
       </section>
 

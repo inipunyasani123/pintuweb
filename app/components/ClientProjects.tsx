@@ -22,24 +22,24 @@ const SHIFT = '[a:focus-visible_&]:[transform:translateX(3px)] [a:hover_&]:[tran
 export function ClientsHome({ lang }: { lang: Lang }) {
   const t = getDict(lang).clients
   return (
-    <section aria-labelledby="clients-title" className="pb-24 sm:pb-32">
+    <section aria-labelledby="clients-title" className="section-b">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="border-t border-[color:var(--rule)] pt-10 sm:pt-12">
+        <div className="border-t border-[color:var(--rule)] pt-7 sm:pt-12">
           {/* Seperti "Karya pilihan": tautan rincian di kanan atas pada desktop, di bawah daftar pada ponsel/tablet. */}
           <div className="flex items-end justify-between gap-10">
             <div className="max-w-2xl">
               <p className="kicker text-[color:var(--primary-700)]">{t.title}</p>
-              <h2 id="clients-title" className="mt-2 text-[1.5rem] leading-snug text-[color:var(--text-primary)] sm:text-[1.75rem]">
+              <h2 id="clients-title" className="mt-2 text-[1.375rem] leading-snug text-[color:var(--text-primary)] sm:text-[1.75rem]">
                 {t.lead}
               </h2>
             </div>
             <DetailsLink lang={lang} label={t.details} className="hidden shrink-0 lg:inline" />
           </div>
 
-          <ul className="mt-7 grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3">
+          <ul className="mt-4 grid grid-cols-1 gap-x-8 sm:mt-7 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3">
             {clientsFor(lang).map((c) => (
               <li key={c.key} className="border-t border-[color:var(--border-light)]">
-                <Link href={clientsHref(lang, c.key)} className="group block h-full py-4 sm:py-5">
+                <Link href={clientsHref(lang, c.key)} className="group block h-full py-3 sm:py-5">
                   <span className="block text-[0.8125rem] font-medium leading-snug text-[color:var(--text-tertiary)]">{c.field}</span>
                   {/* panah sebaris dengan nama usaha, berapa baris pun label bidangnya */}
                   <span className="mt-1 flex items-start justify-between gap-4">
@@ -177,10 +177,10 @@ export function ServiceClients({ lang, service }: { lang: Lang; service: Service
   if (list.length === 0) return null
   const t = getDict(lang).clients
   return (
-    <section aria-labelledby="sclients-title" className="pt-16 sm:pt-24">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-6 px-4 sm:px-6 lg:grid-cols-12">
+    <section aria-labelledby="sclients-title" className="section-t">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-5 px-4 sm:px-6 lg:grid-cols-12">
         <div className="lg:col-span-3">
-          <h2 id="sclients-title" className="text-[2rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.1rem]">
+          <h2 id="sclients-title" className="text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.1rem]">
             {t.title}
           </h2>
           <DetailsLink lang={lang} label={t.details} className="mt-3 inline-block" />

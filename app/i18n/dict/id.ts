@@ -2,6 +2,7 @@
 // Pola judul [biasa, sorotan, sisa?]: bagian kedua diberi warna aksen.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
+import { demoUnits } from '../plural'
 
 export type Hl = [string, string, string?]
 
@@ -48,6 +49,9 @@ const id = {
     waText: 'Halo PintuWeb, saya mau konsultasi pembuatan website.',
     language: 'Bahasa',
     notAvailable: 'belum tersedia',
+    // Menu "Layanan" (panel desktop & sub-daftar lembar menu ponsel)
+    allServices: 'Semua layanan',
+    allServicesLead: 'Bandingkan semua layanan beserta harga dan lama pengerjaannya.',
   },
   footer: {
     aria: 'Kontak dan info PintuWeb',
@@ -100,31 +104,35 @@ const id = {
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} proyek klien · ${n} demo online`,
     title: ['Setiap usaha butuh ', 'pintu depan', ' yang layak.'] as Hl,
     lead: (n: number) =>
-      `Kami merancang dan membangun website untuk UMKM, toko, dan personal brand: cepat dibuka di ponsel, siap ditemukan di Google, dan sepenuhnya milikmu. ${CLIENT_PROJECTS} proyek klien sudah selesai, dan ${n} contoh karya bisa kamu buka sendiri hari ini.`,
+      `Kami merancang dan membangun website untuk UMKM, toko, dan personal brand: cepat dibuka di ponsel, siap ditemukan di Google, dan sepenuhnya milikmu. ${CLIENT_PROJECTS} proyek klien sudah selesai, dan ${n} situs demo bisa kamu buka sendiri hari ini.`,
     // Satu baris penawaran di bawah paragraf pembuka; harga & durasi paket Landing Page dari lib/packages.ts.
     offer: (price: string, duration: string) => `Landing page mulai ${price}, selesai dalam ${duration}. Bayar 50% di awal, sisanya setelah website jadi.`,
     ctaConsult: 'Konsultasi gratis',
-    ctaDemos: (n: number) => `Lihat ${n} contoh`,
+    ctaDemos: (n: number) => `Lihat ${n} demo`,
     facade: 'Sembilan jenis website yang kami buat',
     facadeHint: 'Arahkan kursor untuk pratinjau, klik untuk membuka galerinya',
     openGallery: (t: string) => `Buka galeri ${t}`,
+    // Tautan kedua tiap jenis: halaman layanan / kartu paketnya. kindDetailFor = nama aksesibel (unik per baris).
+    kindDetail: 'Detail & harga',
+    kindDetailFor: (t: string) => `Detail & harga ${t}`,
   },
   portfolio: {
-    eyebrow: 'Karya pilihan',
-    title: ['Contoh yang bisa kamu buka dan coba sendiri, ', 'bukan gambar mockup', '.'] as Hl,
+    eyebrow: 'Demo pilihan',
+    title: ['Demo yang bisa kamu buka dan coba sendiri, ', 'bukan gambar mockup', '.'] as Hl,
     lead: (n: number) => `Lima dari ${n} situs demo yang kami bangun dan biarkan tetap online. Nama usahanya rekaan; tampilan dan isinya bisa disesuaikan untuk usahamu.`,
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, sales, promo' },
       toko: { title: 'Toko Online', tagline: 'Katalog, keranjang, checkout, dan dasbor pesanan' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu tautan untuk semua kanalmu' },
-      kontes: { title: 'Kontes Desain', tagline: 'Beragam konsep untuk satu brief' },
+      kontes: { title: 'Konsep Desain', tagline: 'Beberapa konsep untuk satu brief kontes desain' },
       undangan: { title: 'Undangan Digital', tagline: 'Undangan online untuk momen spesial' },
-      portfolio: { title: 'Portfolio Pribadi', tagline: 'Personal branding yang berkesan' },
+      portfolio: { title: 'Portofolio Pribadi', tagline: 'Personal branding yang berkesan' },
       reservasi: { title: 'Reservasi & Booking', tagline: 'Sistem pemesanan online multi-industri' },
       properti: { title: 'Properti', tagline: 'Marketplace & katalog properti' },
       todo: { title: 'To-Do & Produktivitas', tagline: 'Aplikasi web untuk kelola tugas' },
     },
-    unit: { landing: 'demo', toko: 'demo', linkinbio: 'demo', kontes: 'entri', undangan: 'tema', portfolio: 'varian', reservasi: 'sistem', properti: 'varian', todo: 'aplikasi' },
+    // satuan di belakang jumlah demo tiap galeri: selalu "demo" (bukan tema/varian/entri) — satu istilah untuk satu hal
+    unit: demoUnits(() => 'demo'),
     previewAlt: (t: string) => `Pratinjau galeri ${t}`,
     shotAlt: (name: string) => `Tangkapan layar demo ${name}`,
     open: 'Buka demo',
@@ -132,7 +140,7 @@ const id = {
     allDemos: (n: number) => `Lihat semua ${n} demo`,
     hoverHint: 'Arahkan kursor ke salah satu kartu untuk melihat halamannya bergulir, klik untuk membuka situs demonya.',
   },
-  // Proyek klien: beranda (sesudah Karya pilihan), Tentang (#proyek-klien), dan halaman layanan terkait.
+  // Proyek klien: beranda (sesudah Demo pilihan), Tentang (#proyek-klien), dan halaman layanan terkait.
   // Isi tiap proyek (bidang, masalah, solusi, yang diserahkan) ada di content/clients.ts.
   clients: {
     title: 'Proyek klien',
@@ -144,25 +152,16 @@ const id = {
     details: 'Lihat masalah & solusi tiap proyek',
     shotAlt: (item: string, business: string) => `Tangkapan layar ${business}: ${item}`,
   },
+  // Beranda, "Untuk siapa": kebutuhan → paket (isi daftarnya di content/needs.ts).
   audience: {
     eyebrow: 'Untuk siapa',
-    title: ['Dari warung sampai klinik, ', 'contohnya sudah ada', '.'] as Hl,
-    lead: 'Setiap contoh di bawah ini online dan bisa kamu buka. Nama usahanya rekaan; tampilan dan isinya bisa disesuaikan untuk usahamu.',
-    items: [
-      { label: 'UMKM', desc: 'Link in bio jajanan rumahan, pesan lewat WhatsApp.' },
-      { label: 'Restoran', desc: 'Reservasi meja langsung dari denah ruangan.' },
-      { label: 'Bengkel mebel', desc: 'Furnitur kayu solid yang diukur di rumah pelanggan.' },
-      { label: 'Startup', desc: 'Landing page penyedia server dengan halaman status.' },
-      { label: 'Pekerja kreatif', desc: 'Portofolio editorial untuk brand designer.' },
-      { label: 'Pernikahan', desc: 'Undangan digital dengan RSVP dan galeri.' },
-      { label: 'Klinik', desc: 'Janji temu dokter secara online.' },
-      { label: 'Agen properti', desc: 'Katalog hunian mewah dengan jadwal kunjungan privat.' },
-    ],
-    open: 'Buka',
-    otherTitle: 'Usahamu tidak ada di daftar ini?',
+    title: 'Kamu butuh website untuk apa?',
+    lead: 'Pilih yang paling mirip dengan rencanamu. Tiap baris menunjuk satu paket, lengkap dengan harga mulai dan lama pengerjaannya.',
+    all: 'Lihat semua kebutuhan & paket',
+    otherTitle: 'Kebutuhanmu tidak ada di daftar ini?',
     otherBody: 'Ceritakan usahamu lewat WhatsApp, kami sarankan jenis website yang paling pas. Konsultasinya gratis.',
     otherCta: 'Tanya lewat WhatsApp',
-    otherWa: 'Halo PintuWeb, jenis usaha saya belum ada di daftar contoh. Saya mau konsultasi dulu.',
+    otherWa: 'Halo PintuWeb, kebutuhan saya belum ada di daftar. Saya mau konsultasi dulu.',
   },
   process: {
     eyebrow: 'Cara kerja',
@@ -212,6 +211,7 @@ const id = {
     colPrice: 'Kisaran harga',
     colPackage: 'Paket',
     openNote: 'Ekor titik-titik berarti harganya bisa lebih, tergantung fitur.',
+    rangeNote: 'Posisi harga dalam kisaran bergantung pada jumlah halaman, fitur, dan materi yang perlu kami siapkan; angka pastinya tertulis di penawaran sebelum mulai.',
     seeAll: (n: number) => `Rincian semua ${n} paket`,
     depositTitle: 'Pembayaran',
     depositBody: 'DP 50% untuk memulai, pelunasan setelah website selesai dan kamu setujui.',
@@ -226,6 +226,8 @@ const id = {
     suits: 'Cocok untuk:',
     choose: (title: string) => (title.length > 22 ? 'Pilih paket ini' : `Pilih ${title}`),
     free: 'Konsultasi gratis lewat WhatsApp',
+    more: (n: number) => `Lihat semua fitur (${n})`,
+    less: 'Sembunyikan fitur tambahan',
   },
   faqUi: {
     eyebrow: 'Pertanyaan umum',

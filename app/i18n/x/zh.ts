@@ -245,7 +245,7 @@ const zh: Pack = {
     reservasi: '在线预订',
     properti: '房产网站',
     todo: '效率应用',
-    kontes: '设计竞赛',
+    kontes: '设计方案',
   },
   demos: {
     tanur: { tagline: '日常餐桌的手工陶瓷' },

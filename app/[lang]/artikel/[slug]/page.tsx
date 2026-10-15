@@ -124,7 +124,7 @@ export default async function ArticlePage({ params }: Params) {
               <div className="min-w-0 leading-snug">
                 <p className="text-[0.9375rem] text-[color:var(--text-primary)]">
                   {p.by}{' '}
-                  <Link href={path(lang, 'founder')} rel="author" className="font-semibold underline decoration-[color:var(--primary-300)] underline-offset-4 hover:decoration-[color:var(--primary-700)]">
+                  <Link href={path(lang, 'founder')} rel="author" className="py-1 font-semibold underline decoration-[color:var(--primary-300)] underline-offset-4 hover:decoration-[color:var(--primary-700)]">
                     Sanzy
                   </Link>
                 </p>
@@ -142,8 +142,8 @@ export default async function ArticlePage({ params }: Params) {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="mr-1 text-[0.8125rem] text-[color:var(--text-tertiary)]">{p.share}</span>
-              <a href={`https://wa.me/?text=${encodeURIComponent(`${a.title} ${url}`)}`} target="_blank" rel="noopener noreferrer" aria-label={p.shareWa} className={PILL}>
+              <span className="me-1 text-[0.8125rem] text-[color:var(--text-tertiary)]">{p.share}</span>
+              <a href={`https://wa.me/?text=${encodeURIComponent(`${a.title} ${url}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`${p.shareWa} ${d.common.newTabShort}`} className={PILL}>
                 WhatsApp <ArrowUpRight size={14} className="arw-ne transition-transform" aria-hidden="true" />
               </a>
               <CopyLink label={p.copy} done={p.copied} />
@@ -156,7 +156,7 @@ export default async function ArticlePage({ params }: Params) {
               {others.map((l, i) => (
                 <span key={l}>
                   {i > 0 && ', '}
-                  <a href={pathOf(l, ref)} hrefLang={LANG_INFO[l].hreflang} lang={LANG_INFO[l].htmlLang} className="font-semibold text-[color:var(--primary-700)] underline underline-offset-4">
+                  <a href={pathOf(l, ref)} hrefLang={LANG_INFO[l].hreflang} lang={LANG_INFO[l].htmlLang} className="py-1 font-semibold text-[color:var(--primary-700)] underline underline-offset-4">
                     {LANG_INFO[l].name}
                   </a>
                 </span>
@@ -190,10 +190,13 @@ export default async function ArticlePage({ params }: Params) {
             {a.sources.length > 0 && (
               <section aria-labelledby="sources-title" className="mt-12 rounded-[1.5rem] bg-[color:var(--surface-soft)] p-6 sm:p-7">
                 <h2 id="sources-title" className="kicker text-[color:var(--text-primary)]">{p.sources}</h2>
-                <ol className="mt-4 list-decimal space-y-2 pl-5 text-[0.9375rem] text-[color:var(--text-secondary)] marker:text-[color:var(--text-tertiary)]">
+                <ol className="mt-4 list-decimal space-y-2 ps-5 text-[0.9375rem] text-[color:var(--text-secondary)] marker:text-[color:var(--text-tertiary)]">
                   {a.sources.map((s) => (
                     <li key={s.url}>
-                      <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-[color:var(--primary-700)] underline underline-offset-2 [overflow-wrap:anywhere]">{s.title}</a>
+                      <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-[color:var(--primary-700)] underline underline-offset-2 [overflow-wrap:anywhere]">
+                        {s.title}
+                        <span className="sr-only"> {d.common.newTabShort}</span>
+                      </a>
                     </li>
                   ))}
                 </ol>
@@ -206,9 +209,13 @@ export default async function ArticlePage({ params }: Params) {
                 S
               </span>
               <div className="min-w-0">
-                <p className="display text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">Sanzy</p>
-                <p className="mt-0.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{p.authorRole(FOUNDED_YEAR)}</p>
-                <Link href={path(lang, 'founder')} className="mt-2 inline-flex items-center gap-1.5 text-[0.8125rem] font-semibold text-[color:var(--primary-700)] underline-offset-4 hover:underline">
+                {/* nama + peran satu paragraf (bukan <p> bergaya judul yang disusul <p> lain) */}
+                <p>
+                  <span className="display block text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">Sanzy</span>
+                  <span className="mt-0.5 block text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{p.authorRole(FOUNDED_YEAR)}</span>
+                </p>
+                {/* py-1 + margin negatif: bidang sentuh tautan teks kecil >= 24px (WCAG 2.5.8) tanpa menggeser tata letak */}
+                <Link href={path(lang, 'founder')} className="-mb-1 mt-1 inline-flex items-center gap-1.5 py-1 text-[0.8125rem] font-semibold text-[color:var(--primary-700)] underline-offset-4 hover:underline">
                   {p.authorLink} <ArrowRight size={14} className="arw" aria-hidden="true" />
                 </Link>
               </div>
@@ -226,6 +233,7 @@ export default async function ArticlePage({ params }: Params) {
           </div>
           <a href={wa(p.ctaWa(a.title))} target="_blank" rel="noopener noreferrer" className="btn btn-white shrink-0">
             {d.common.consultFree} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
+            <span className="sr-only">{d.common.newTabShort}</span>
           </a>
         </div>
       </section>
@@ -235,7 +243,7 @@ export default async function ArticlePage({ params }: Params) {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="flex items-end justify-between gap-4">
               <h2 id="related-title" className="text-[1.5rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.875rem]">{p.related}</h2>
-              <Link href={path(lang, 'articles')} className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-[color:var(--primary-700)]">
+              <Link href={path(lang, 'articles')} className="-my-1 inline-flex shrink-0 items-center gap-1.5 py-1 text-sm font-semibold text-[color:var(--primary-700)]">
                 {p.all} <ArrowRight size={15} className="arw" aria-hidden="true" />
               </Link>
             </div>

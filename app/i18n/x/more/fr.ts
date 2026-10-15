@@ -6,7 +6,7 @@ const more: More = {
     'landing-page': {
       name: 'Landing Page',
       title: 'Création de landing pages',
-      description: 'Landing pages rapides et axées conversion pour lancements de produit, événements et publicités. Tarifs clairs, livraison en quelques jours, {{demos:landing}} exemples.',
+      description: 'Landing pages rapides et axées conversion pour lancements de produit, événements et publicités. Tarifs clairs, livraison en quelques jours, {{demos:landing}} démos.',
       h1: ['Des ', 'landing pages', ' qui transforment les visiteurs en clients.'],
       lead: 'Une landing page est une page web unique conçue pour un seul objectif : amener les visiteurs à faire une action précise, comme acheter, s’inscrire à un webinaire ou vous écrire sur WhatsApp. Comme il s’agit d’une seule page, elle se réalise vite et constitue la destination idéale d’une publicité.',
       intro: [
@@ -66,7 +66,7 @@ const more: More = {
     portofolio: {
       name: 'Site portfolio',
       title: 'Sites portfolio et image personnelle',
-      description: 'Sites portfolio pour designers, développeurs, photographes et freelances : réalisations, études de cas, blog et contact. Découvrez {{demos:portfolio}} exemples en ligne.',
+      description: 'Sites portfolio pour designers, développeurs, photographes et freelances : réalisations, études de cas, blog et contact. Découvrez {{demos:portfolio}} démos en ligne.',
       h1: ['Un ', 'site portfolio', ' qui met votre travail en valeur.'],
       lead: 'Un site portfolio est une vitrine personnelle de votre travail : là où clients et recruteurs voient ce que vous avez réalisé, comment vous travaillez et comment vous joindre. Contrairement à un PDF ou aux réseaux sociaux, il a sa propre adresse et peut être trouvé sur Google.',
       intro: [
@@ -78,7 +78,7 @@ const more: More = {
       suits: 'Freelances, créateurs',
       faq: [
         { q: 'Puis-je ajouter moi-même de nouvelles réalisations ?', a: 'Envoyez vos nouvelles réalisations par WhatsApp et nous les ajoutons ; pour des mises à jour régulières, une option de maintenance mensuelle est disponible. Si vous mettez souvent votre portfolio à jour, un CMS peut être ajouté pour que vous le gériez vous-même.' },
-        { q: 'Les personnes des exemples de portfolio sont-elles réelles ?', a: 'Non. Les personnages de nos exemples de portfolio sont fictifs ; lorsque vous commandez, tout est remplacé par vos propres réalisations, photos et coordonnées.' },
+        { q: 'Les personnes des démos de portfolio sont-elles réelles ?', a: 'Non. Les personnages de nos démos de portfolio sont fictifs ; lorsque vous commandez, tout est remplacé par vos propres réalisations, photos et coordonnées.' },
         { q: 'Ai-je besoin d’un domaine à mon nom ?', a: 'Nous le recommandons vivement. Un domaine, l’hébergement et le SSL pour la première année sont inclus dans la formule Portfolio, et une adresse à votre nom est plus facile à retenir pour vos clients.' },
       ],
     },
@@ -90,7 +90,7 @@ const more: More = {
       lead: 'Un site sur mesure est un site dont le design, le parcours et les fonctionnalités sont construits spécifiquement autour du fonctionnement de votre entreprise — par exemple un système de réservation, un catalogue immobilier avec filtres, un espace membre ou une intégration avec un système que vous utilisez déjà.',
       intro: [
         'Un projet sur mesure commence par la cartographie du parcours : qui sont les utilisateurs, quelles données arrivent et ce qui doit se passer ensuite. À partir de là, nous préparons un devis écrit avec un périmètre clair avant d’écrire la moindre ligne de code.',
-        'Vous pouvez essayer des exemples dans notre galerie : {{demos:reservasi}} systèmes de réservation (restaurant, hôtel, clinique, terrain de futsal, cinéma), {{demos:properti}} places de marché immobilières et {{demos:todo}} applications de productivité.',
+        'Vous pouvez essayer des démos dans notre galerie : {{demos:reservasi}} systèmes de réservation (restaurant, hôtel, clinique, terrain de futsal, cinéma), {{demos:properti}} places de marché immobilières et {{demos:todo}} applications de productivité.',
       ],
       forWho: ['Restaurants, hôtels, cliniques et terrains de sport qui ont besoin de réservation en ligne', 'Agents et promoteurs immobiliers', 'Start-up qui construisent leur premier produit web', 'Institutions et écoles avec des formulaires ou des processus particuliers', 'Entreprises qui relient leur site à des systèmes existants'],
       short: 'Systèmes de réservation, catalogues immobiliers, applications web ou autres fonctionnalités sur mesure pour votre entreprise.',
@@ -118,7 +118,7 @@ const more: More = {
       suits: 'Mariages, fêtes de famille et événements d’entreprise',
       faq: [
         { q: 'Combien coûte une invitation numérique ?', a: 'À partir de {{from:undangan-digital}} pour une invitation issue de notre galerie de thèmes (fourchette {{price:undangan-digital}}, prête en {{duration:undangan-digital}}), et à partir de {{from:situs-acara}} pour un site d’événement ou un design sur mesure. Les invitations restent actives 12 mois sans frais de renouvellement.' },
-        { q: 'Les noms et les photos des exemples sont-ils réels ?', a: 'Non. Les noms, photos et informations de nos exemples d’invitation sont fictifs ; lorsque vous commandez, tout est remplacé par les informations de votre événement.' },
+        { q: 'Les noms et les photos des démos sont-ils réels ?', a: 'Non. Les noms, photos et informations de nos démos d’invitation sont fictifs ; lorsque vous commandez, tout est remplacé par les informations de votre événement.' },
         { q: 'Comment partager l’invitation ?', a: 'Il suffit d’envoyer le lien sur WhatsApp, les réseaux sociaux ou par e-mail. Les invités l’ouvrent dans leur navigateur, sans installer d’application.' },
         { q: 'Une invitation numérique peut-elle remplacer une invitation imprimée ?', a: 'Pour beaucoup d’événements, oui, surtout pour les invités qui habitent loin. Certaines familles impriment encore quelques invitations pour les aînés ou les invités d’honneur ; les deux peuvent très bien coexister.' },
       ],
@@ -126,11 +126,11 @@ const more: More = {
     'link-in-bio': {
       name: 'Link in Bio',
       title: 'Pages link in bio sur mesure',
-      description: 'Pages link in bio avec votre domaine et votre design pour créateurs, commerces et cafés : menus, précommandes, boutique, WhatsApp. Découvrez {{demos:linkinbio}} exemples.',
+      description: 'Pages link in bio avec votre domaine et votre design pour créateurs, commerces et cafés : menus, précommandes, boutique, WhatsApp. Découvrez {{demos:linkinbio}} démos.',
       h1: ['Une ', 'page link in bio', ' bien à vous — pas une simple liste de boutons.'],
       lead: 'Une page link in bio est une page web unique, liée depuis votre bio Instagram ou TikTok, qui regroupe toutes vos destinations importantes : WhatsApp, votre boutique, votre agenda, vos réalisations ou un formulaire de commande. Une version sur mesure peut utiliser votre propre domaine et le design de votre marque, avec des fonctionnalités que les services link in bio génériques ne proposent pas.',
       intro: [
-        'Les {{demos:linkinbio}} exemples de notre galerie montrent jusqu’où une telle page peut aller : le tableau-menu d’un stand de restauration qui indique s’il est ouvert selon l’heure indonésienne, les précommandes d’un coffee shop, l’agenda de tournée d’un groupe avec choix des billets, une boutique d’autocollants et une page de commandes pour une illustratrice.',
+        'Les {{demos:linkinbio}} démos de notre galerie montrent jusqu’où une telle page peut aller : le tableau-menu d’un stand de restauration qui indique s’il est ouvert selon l’heure indonésienne, les précommandes d’un coffee shop, l’agenda de tournée d’un groupe avec choix des billets, une boutique d’autocollants et une page de commandes pour une illustratrice.',
         'La formule Link in Bio démarre à {{from:link-in-bio}} et est prête en {{duration:link-in-bio}} ; les pages ou fonctionnalités supplémentaires sont chiffrées dans le devis écrit.',
       ],
       forWho: ['Créateurs de contenu et influenceurs', 'Cafés, stands de restauration et commerces de bouche qui prennent des précommandes', 'Musiciens, groupes et organisateurs d’événements', 'Illustrateurs, rédacteurs et métiers créatifs', 'Petites entreprises qui vendent activement sur Instagram ou TikTok'],

@@ -60,14 +60,14 @@ export default function Footer({ lang }: { lang: Lang }) {
 
   return (
     <footer id="contact" className="relative overflow-hidden bg-[color:var(--navy)] text-white" aria-label={t.footer.aria}>
-      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:pt-28">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
+      <div className="section-t relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
           <div className="lg:col-span-7">
             <p className="kicker text-[color:var(--accent-200)]">{t.footer.kicker}</p>
-            <h2 className="mt-5 text-[2.25rem] leading-[1.08] sm:text-[2.75rem] lg:text-[3.1rem]">
+            <h2 className="mt-4 text-[2.25rem] leading-[1.08] sm:mt-5 sm:text-[2.75rem] lg:text-[3.1rem]">
               <HlText parts={t.footer.title} mode="italic" tone="accent" />
             </h2>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/75">{t.footer.lead(f.response)}</p>
+            <p className="mt-4 max-w-lg text-lg leading-relaxed text-white/75 sm:mt-6">{t.footer.lead(f.response)}</p>
             <FooterAction
               pricing={{ href: path(lang, 'pricing'), label: t.footer.seePackages }}
               demos={{ href: path(lang, 'demo'), label: t.portfolio.allDemos(DEMOS.length) }}
@@ -126,14 +126,21 @@ export default function Footer({ lang }: { lang: Lang }) {
           </div>
         </div>
 
-        <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-6 border-t border-white/10 pt-10 sm:grid-cols-2 sm:gap-y-8 lg:mt-20 lg:grid-cols-4">
+        {/* dua kolom sejak ponsel: alamat email sekarang pendek (cs@pintuweb.id), jadi muat di setengah lebar */}
+        <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/10 pt-8 sm:mt-16 sm:gap-y-8 sm:pt-10 lg:mt-20 lg:grid-cols-4">
           {CONTACTS.map((c) => (
             <div key={c.label} className="min-w-0">
               <dt className="text-sm text-white/65">{c.label}</dt>
               <dd className="mt-1.5 min-w-0">
                 {c.link ? (
-                  <a href={c.link} target="_blank" rel="noopener noreferrer" className="text-white underline decoration-white/35 underline-offset-4 [overflow-wrap:anywhere] hover:decoration-white">
+                  // WhatsApp dibuka di tab baru (diumumkan lewat teks sr-only); mailto: cukup di tab yang sama
+                  <a
+                    href={c.link}
+                    {...(c.link.startsWith('mailto:') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                    className="py-1 text-white underline decoration-white/35 underline-offset-4 [overflow-wrap:anywhere] hover:decoration-white"
+                  >
                     <bdi>{c.value}</bdi>
+                    {!c.link.startsWith('mailto:') && <span className="sr-only"> {t.common.newTabShort}</span>}
                   </a>
                 ) : (
                   <span className="text-white"><bdi>{c.value}</bdi></span>
@@ -144,7 +151,32 @@ export default function Footer({ lang }: { lang: Lang }) {
           ))}
         </dl>
 
-        <nav aria-label={t.footer.linksAria} className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-white/10 pt-12 sm:grid-cols-4">
+        {/* Ponsel: tiap kelompok tautan bisa dilipat (semua tautan tetap ada di HTML); mulai 640px: empat kolom terbuka. */}
+        <nav aria-label={t.footer.linksAria} className="mt-10 sm:hidden">
+          {cols.map((c) => (
+            <details key={c.title} className="group border-t border-white/10">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 [&::-webkit-details-marker]:hidden">
+                <span className="kicker text-[color:var(--accent-200)]">{c.title}</span>
+                <span aria-hidden="true" className="relative h-3 w-3 shrink-0 text-white/65 transition-transform duration-300 group-open:rotate-45">
+                  <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-current" />
+                  <span className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-current" />
+                </span>
+              </summary>
+              <ul className="-mt-1 pb-4">
+                {c.links.map((l) => (
+                  <li key={l.href}>
+                    {l.zone ? (
+                      <a href={l.href} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</a>
+                    ) : (
+                      <Link href={l.href} prefetch={false} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </nav>
+        <nav aria-label={t.footer.linksAria} className="mt-10 hidden grid-cols-4 gap-x-6 gap-y-10 border-t border-white/10 pt-12 sm:grid">
           {cols.map((c) => (
             <div key={c.title}>
               <p className="kicker text-[color:var(--accent-200)]">{c.title}</p>
@@ -166,13 +198,13 @@ export default function Footer({ lang }: { lang: Lang }) {
           ))}
         </nav>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-white/10 py-8 text-sm text-white/65 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-4 border-t border-white/10 py-8 text-sm text-white/65 sm:mt-16 lg:flex-row lg:items-center lg:justify-between">
           <Logo tone="light" />
           <p>{t.footer.copyright(year)}</p>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span>{t.footer.otherLangs}:</span>
             {LANGS.filter((l) => l !== lang).map((l) => (
-              <a key={l} href={path(l, 'home')} hrefLang={LANG_INFO[l].hreflang} lang={LANG_INFO[l].htmlLang} className="text-white/85 underline decoration-white/30 underline-offset-4 hover:text-white">
+              <a key={l} href={path(l, 'home')} hrefLang={LANG_INFO[l].hreflang} lang={LANG_INFO[l].htmlLang} className="-my-0.5 py-0.5 text-white/85 underline decoration-white/30 underline-offset-4 hover:text-white">
                 {LANG_INFO[l].name}
               </a>
             ))}

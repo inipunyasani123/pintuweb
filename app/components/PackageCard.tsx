@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check, Clock } from 'lucide-react'
+import { ArrowUpRight, Check, ChevronDown, Clock } from 'lucide-react'
 
 export type { CardData, CardLabels } from './cards'
 import type { CardData, CardLabels } from './cards'
@@ -6,85 +6,130 @@ import type { CardData, CardLabels } from './cards'
 type Props = {
   p: CardData
   labels: CardLabels
-  /** jumlah fitur yang ditampilkan; undefined = semua */
-  maxFeatures?: number
-  /** tingkat judul kartu (h3 di halaman paket, h4 di halaman layanan) */
+  /** tingkat judul kartu (h3 di halaman paket & layanan) */
   as?: 'h2' | 'h3' | 'h4'
+  /** jumlah fitur yang langsung terlihat; sisanya di balik "Lihat semua fitur (n)". Infinity = semua terlihat. */
+  fold?: number
+  /** catatan "Konsultasi gratis lewat WhatsApp" di bawah tombol (halaman paket cukup menuliskannya sekali) */
+  note?: boolean
+  /** label kecil di atas daftar fitur, mis. "Yang kamu dapatkan" */
+  featuresTitle?: string
+  /** tombol pilih berwarna penuh (paket tunggal di halaman layanan); bawaan: hanya paket yang direkomendasikan */
+  solid?: boolean
 }
 
 /**
- * Kartu paket bersama untuk halaman harga & halaman layanan: lencana + lama pengerjaan, nama, panel harga,
- * "cocok untuk", daftar isi paket, lalu tombol pilih. Paket yang direkomendasikan diberi bingkai biru.
+ * Kartu paket bersama untuk halaman harga & halaman layanan. Semua label berupa teks biasa (tanpa bentuk pil):
+ * label paket + lama pengerjaan, nama, harga mulai dengan kisaran & DP, "Cocok untuk: a · b · c", isi paket, tombol
+ * pilih. Paket yang direkomendasikan cukup diberi bingkai biru dan tombol penuh.
+ *
+ * Tata letaknya mengikuti lebar kartu sendiri (container query), bukan lebar layar: kartu sempit bertumpuk (kepala,
+ * fitur, tombol); kartu yang cukup lebar (satu paket selebar halaman layanan, atau kartu yang melebar dua kolom di
+ * halaman paket) terbelah dua: kepala & tombol di kiri, fitur dua kolom di kanan.
+ *
+ * Fitur yang dilipat tetap ada di HTML (mesin pencari & pencarian di halaman membacanya): <details> bawaan peramban,
+ * bisa dibuka dengan papan ketik tanpa JavaScript.
  */
-export default function PackageCard({ p, labels, maxFeatures, as: Heading = 'h3' }: Props) {
-  const features = maxFeatures ? p.features.slice(0, maxFeatures) : p.features
+export default function PackageCard({ p, labels, as: Heading = 'h3', fold = 4, note = true, featuresTitle, solid }: Props) {
   const rec = p.recommended
+  const shown = p.features.slice(0, fold)
+  const rest = p.features.slice(fold)
+
+  const feature = (f: string) => (
+    <li key={f} className="flex items-start gap-2.5 text-[0.9375rem] leading-snug text-[color:var(--text-secondary)]">
+      <Check size={16} strokeWidth={2.4} className="mt-[0.15em] shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
+      <span>{f}</span>
+    </li>
+  )
+  const list = 'grid grid-cols-1 gap-x-8 gap-y-2 @2xl:grid-cols-2'
+
   return (
-    <article
-      className={`flex h-full flex-col rounded-[1.5rem] bg-white p-5 sm:p-6 ${
-        rec ? 'shadow-[0_26px_50px_-34px_rgb(38_70_156/0.6)] ring-2 ring-[color:var(--primary-700)]' : 'ring-1 ring-[color:var(--border-light)]'
-      }`}
-    >
-      <div className="flex min-h-7 items-center justify-between gap-3">
-        {p.badge ? (
-          <span className={`rounded-full px-3 py-1 text-[0.8125rem] font-semibold leading-tight ${rec ? 'bg-[color:var(--primary-700)] text-white' : 'bg-[color:var(--primary-50)] text-[color:var(--primary-700)]'}`}>{p.badge}</span>
-        ) : (
-          <span />
-        )}
-        <span className="inline-flex items-center gap-1.5 text-end text-[0.8125rem] leading-tight text-[color:var(--text-tertiary)]">
-          <Clock size={14} className="shrink-0" aria-hidden="true" />
-          <span>
-            <span className="sr-only">{labels.duration}: </span>
-            {p.duration}
-          </span>
-        </span>
-      </div>
-
-      <Heading className="mt-4 text-[1.5rem] leading-tight text-[color:var(--text-primary)]">{p.title}</Heading>
-      <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{p.subtitle}</p>
-
-      {/* Harga */}
-      <div className={`mt-5 rounded-[1.125rem] p-4 sm:p-5 ${rec ? 'bg-[color:var(--primary-50)]' : 'bg-[color:var(--surface-soft)]'}`}>
-        <p className="text-[0.8125rem] font-semibold text-[color:var(--text-tertiary)]">{labels.from}</p>
-        <p className="display mt-0.5 text-[2rem] font-semibold leading-none tracking-tight text-[color:var(--text-primary)]">{p.priceFrom}</p>
-        <dl className="mt-3 space-y-1 text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)]">
-          <div className="flex flex-wrap justify-between gap-x-3">
-            <dt>{labels.range}</dt>
-            <dd className="font-semibold text-[color:var(--text-secondary)]">{p.priceRange}</dd>
+    <article className={`@container h-full rounded-[1.25rem] bg-white p-4 sm:p-6 ${rec ? 'ring-2 ring-[color:var(--primary-700)]' : 'ring-1 ring-[color:var(--border-light)]'}`}>
+      {/* sempit: kepala / fitur / tombol (baris fitur merenggang, jadi tombol kartu sebaris selalu sejajar di dasar);
+          lebar: kepala & tombol di kiri, fitur di kanan */}
+      <div className="grid h-full grid-rows-[auto_1fr_auto] [grid-template-areas:'head'_'feat'_'cta'] @2xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] @2xl:grid-rows-[auto_1fr] @2xl:gap-x-10 @2xl:[grid-template-areas:'head_feat'_'cta_feat']">
+        <div className="[grid-area:head]">
+          <div className="flex min-h-5 flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            {/* label paket ("Starter", "Bisnis", ...) sebagai teks biasa; paket tanpa label tetap menyisakan barisnya */}
+            {p.badge ? <p className="kicker text-[color:var(--primary-700)]">{p.badge}</p> : <span aria-hidden="true" />}
+            <p className="inline-flex items-center gap-1.5 text-[0.8125rem] leading-tight text-[color:var(--text-tertiary)]">
+              <Clock size={14} className="shrink-0 self-center" aria-hidden="true" />
+              <span>
+                <span className="sr-only">{labels.duration}: </span>
+                {p.duration}
+              </span>
+            </p>
           </div>
-          <div className="flex flex-wrap justify-between gap-x-3">
-            <dt>{labels.deposit}</dt>
-            <dd className="font-semibold text-[color:var(--text-secondary)]">{p.deposit}</dd>
-          </div>
-        </dl>
-      </div>
 
-      {p.highlights.length > 0 && (
-        <div className="mt-5">
-          <p className="text-[0.8125rem] font-semibold text-[color:var(--text-primary)]">{labels.suits}</p>
-          <ul className="mt-2 flex flex-wrap gap-1.5">
-            {p.highlights.map((h) => (
-              <li key={h} className="rounded-full bg-[color:var(--surface-soft)] px-2.5 py-1 text-[0.8125rem] leading-tight text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)]">
-                {h}
-              </li>
-            ))}
-          </ul>
+          <Heading className="mt-2 text-[1.375rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.5rem]">{p.title}</Heading>
+          <p className="mt-1 text-[0.9375rem] leading-snug text-[color:var(--text-tertiary)]">{p.subtitle}</p>
+
+          {/* Harga: "mulai" + angka besar, lalu kisaran dan DP sebagai baris kecil */}
+          <div className="mt-3.5">
+            <p className="flex flex-wrap items-baseline gap-x-2">
+              <span className="text-[0.875rem] font-semibold text-[color:var(--text-tertiary)]">{labels.from}</span>
+              <span className="display text-[1.875rem] font-semibold leading-none tracking-tight text-[color:var(--text-primary)]">{p.priceFrom}</span>
+            </p>
+            <dl className="mt-2 space-y-0.5 text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)]">
+              <div className="flex flex-wrap gap-x-1.5">
+                <dt>{labels.range}</dt>
+                <dd className="font-semibold text-[color:var(--text-secondary)]">{p.priceRange}</dd>
+              </div>
+              <div className="flex flex-wrap gap-x-1.5">
+                <dt>{labels.deposit}</dt>
+                <dd className="font-semibold text-[color:var(--text-secondary)]">{p.deposit}</dd>
+              </div>
+            </dl>
+          </div>
+
+          {p.highlights.length > 0 && (
+            <p className="mt-2.5 text-[0.875rem] leading-snug text-[color:var(--text-tertiary)]">
+              <span className="font-semibold text-[color:var(--text-secondary)]">{labels.suits}</span> {p.highlights.join(' · ')}
+            </p>
+          )}
         </div>
-      )}
 
-      <ul className="mt-5 flex-1 space-y-2.5 border-t border-[color:var(--rule)] pt-5">
-        {features.map((f) => (
-          <li key={f} className="flex items-start gap-2.5 text-[0.9375rem] leading-snug text-[color:var(--text-secondary)]">
-            <Check size={16} strokeWidth={2.4} className="mt-[0.15em] shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
+        <div className="mt-4 border-t border-[color:var(--rule)] pt-4 [grid-area:feat] @2xl:mt-0 @2xl:border-s @2xl:border-t-0 @2xl:ps-10 @2xl:pt-0">
+          {featuresTitle && <p className="kicker mb-3 text-[color:var(--text-primary)]">{featuresTitle}</p>}
+          <ul className={list}>{shown.map(feature)}</ul>
+          {rest.length > 0 && (
+            <details className="group/more">
+              <summary className="mt-1 inline-flex min-h-8 cursor-pointer list-none items-center gap-1.5 rounded-md text-[0.875rem] font-semibold text-[color:var(--primary-700)] hover:text-[color:var(--primary-800)] [&::-webkit-details-marker]:hidden">
+                <span className="group-open/more:hidden">{labels.more(p.features.length)}</span>
+                <span className="hidden group-open/more:inline">{labels.less}</span>
+                <ChevronDown size={15} strokeWidth={2.4} className="shrink-0 transition-transform duration-200 group-open/more:rotate-180" aria-hidden="true" />
+              </summary>
+              <ul className={`mt-1 ${list}`}>{rest.map(feature)}</ul>
+            </details>
+          )}
+        </div>
 
-      <a href={p.waHref} target="_blank" rel="noopener noreferrer" className={`btn mt-6 w-full ${rec ? 'btn-solid' : 'btn-line'}`}>
-        {p.choose} <ArrowUpRight size={16} className="arw arw-ne" aria-hidden="true" />
-      </a>
-      <p className="mt-3 text-center text-[0.8125rem] text-[color:var(--text-tertiary)]">{labels.free}</p>
+        <div className="mt-4 [grid-area:cta] @2xl:mt-5 @2xl:flex @2xl:flex-wrap @2xl:items-center @2xl:gap-x-5 @2xl:gap-y-2.5 @2xl:self-start">
+          <a href={p.waHref} target="_blank" rel="noopener noreferrer" className={`btn w-full @2xl:w-auto ${rec || solid ? 'btn-solid' : 'btn-line'}`}>
+            {p.choose} <ArrowUpRight size={16} className="arw arw-ne" aria-hidden="true" />
+            <span className="sr-only">{labels.newTab}</span>
+          </a>
+          {note && <p className="mt-2.5 text-center text-[0.8125rem] text-[color:var(--text-tertiary)] @2xl:mt-0 @2xl:text-start">{labels.free}</p>}
+        </div>
+      </div>
     </article>
+  )
+}
+
+/**
+ * Kisi kartu paket dua kolom (ponsel satu kolom). Jumlah ganjil: kartu terakhir melebar dua kolom (kartunya otomatis
+ * terbelah dua), jadi tidak ada sel kosong di samping kartu. Tiap kartu berjangkar #slug untuk tautan dari daftar
+ * kebutuhan, peta harga, dan halaman lain; kartu yang dituju diberi lingkar sorot.
+ */
+export function PackageGrid({ cards, labels, note = true, className = '' }: { cards: CardData[]; labels: CardLabels; note?: boolean; className?: string }) {
+  const odd = cards.length % 2 === 1
+  return (
+    <div className={`grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 ${className}`}>
+      {cards.map((c, i) => (
+        <div key={c.slug} id={c.slug} className={`scroll-mt-4 rounded-[1.25rem] target:shadow-[0_0_0_4px_var(--primary-200)] ${odd && i === cards.length - 1 ? 'sm:col-span-2' : ''}`}>
+          <PackageCard p={c} labels={labels} as="h3" note={note} />
+        </div>
+      ))}
+    </div>
   )
 }

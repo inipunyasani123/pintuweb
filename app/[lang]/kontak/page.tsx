@@ -76,7 +76,9 @@ export default async function KontakPage({ params }: Params) {
                   <a
                     href={c.href}
                     {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className={`group ${box} ring-inset ring-transparent transition-[background-color,box-shadow] duration-200 hover:bg-white sm:ring-1 sm:hover:ring-[color:var(--primary-300)]`}
+                    // ponsel: kartu-kartu ini satu blok ber-overflow-hidden, jadi cincin fokusnya digambar di DALAM
+                    // (offset negatif, sudut membulat) supaya tidak terpotong tepi kartu
+                    className={`group ${box} ring-inset ring-transparent transition-[background-color,box-shadow] duration-200 hover:bg-white max-sm:rounded-[1.25rem] max-sm:focus-visible:-outline-offset-2 sm:ring-1 sm:hover:ring-[color:var(--primary-300)]`}
                   >
                     {inner}
                     {c.external && <span className="sr-only">{d.common.newTabShort}</span>}
@@ -104,7 +106,7 @@ export default async function KontakPage({ params }: Params) {
       />
 
       {/* Sebelum bertanya: empat jawaban yang paling sering dicari */}
-      <section aria-labelledby="before-title" className="py-16 sm:py-20">
+      <section aria-labelledby="before-title" className="section-y">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <h2 id="before-title" className="text-[1.75rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.25rem]">

@@ -25,6 +25,8 @@ export type FaqText = {
   allN: string
   askWa: string
   more: string
+  /** keterangan pembaca layar untuk tautan yang membuka tab baru */
+  newTab: string
 }
 
 type Props = {
@@ -36,8 +38,8 @@ type Props = {
 }
 
 /**
- * Bagian FAQ di beranda. Semua pertanyaan & jawaban selalu ada di HTML (<details>), sehingga JSON-LD FAQPage
- * cocok dengan isi yang terlihat; kategori & pencarian hanya menyembunyikan item.
+ * Bagian FAQ di beranda. Semua pertanyaan & jawaban selalu ada di HTML (<details>); kategori & pencarian hanya
+ * menyembunyikan item. JSON-LD FAQPage cukup sekali di situs, yaitu di halaman FAQ (pertanyaannya sama persis).
  * Halaman FAQ sendiri memakai FaqCenter (kartu pertanyaannya sama: FaqCard).
  */
 export default function FAQ({ items, categories, t, waHref, faqHref }: Props) {
@@ -63,23 +65,32 @@ export default function FAQ({ items, categories, t, waHref, faqHref }: Props) {
   const tabs = [{ id: 'all' as const, name: t.all, n: items.length }, ...categories.map((c) => ({ ...c, n: items.filter((i) => i.category === c.id).length }))]
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="bg-[color:var(--surface-soft)] py-24 sm:py-32">
+    <section id="faq" aria-labelledby="faq-title" className="section-y bg-[color:var(--surface-soft)]">
       <div className="mx-auto flex max-w-6xl flex-col px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-12">
         {/* Ponsel: judul, daftar, lalu kartu (urutan lewat order). Desktop: judul + kartu menempel di kiri. */}
         <div className="contents lg:sticky lg:top-24 lg:col-span-4 lg:block lg:self-start">
-          <div className="order-1 mb-10 lg:mb-0">
+          <div className="order-1 mb-6 sm:mb-10 lg:mb-0">
             <SectionHead eyebrow={t.eyebrow} id="faq-title" title={<HlText parts={t.title} />} lead={t.lead} />
           </div>
-          {/* Kartu "belum terjawab" */}
-          <div className="order-3 mt-8 lg:mt-9">
-            <div className="rounded-[1.5rem] bg-white p-6 ring-1 ring-[color:var(--border-light)]">
-              <p className="display text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">{t.unanswered}</p>
-              <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">
-                {t.askLead} {t.note}
+          {/* Kartu "belum terjawab". Ponsel (<640px): cukup tombol ke semua pertanyaan; ajakan WhatsApp-nya sudah ada di
+              footer tepat di bawah bagian ini (kartu obrolan), jadi tidak diulang dua kali berturut-turut. */}
+          <div className="order-3 mt-6 sm:mt-8 lg:mt-9">
+            <Link href={faqHref} className="btn btn-line w-full sm:hidden">
+              {t.allN} <ArrowRight size={16} className="arw" aria-hidden="true" />
+            </Link>
+            <div className="hidden rounded-[1.5rem] bg-white p-6 ring-1 ring-[color:var(--border-light)] sm:block">
+              {/* satu paragraf dengan dua baris (bukan <p> tebal + <p>): axe menganggap paragraf tebal di atas paragraf
+                  lain sebagai judul palsu (p-as-heading) */}
+              <p className="text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">
+                <span className="display block text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">{t.unanswered}</span>
+                <span className="mt-1.5 block">
+                  {t.askLead} {t.note}
+                </span>
               </p>
-              <div className="mt-5 flex flex-col gap-2.5 sm:flex-row lg:flex-col">
+              <div className="mt-4 flex flex-col gap-2.5 sm:mt-5 sm:flex-row lg:flex-col">
                 <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-solid btn-sm">
                   {t.askWa} <ArrowUpRight size={15} className="arw arw-ne" aria-hidden="true" />
+                  <span className="sr-only"> {t.newTab}</span>
                 </a>
                 <Link href={faqHref} className="btn btn-line btn-sm">
                   {t.allN} <ArrowRight size={15} className="arw" aria-hidden="true" />
@@ -134,7 +145,7 @@ export default function FAQ({ items, categories, t, waHref, faqHref }: Props) {
           </div>
 
           {/* Daftar: semua item selalu dirender */}
-          <div className="mt-6 flex flex-col gap-2.5">
+          <div className="mt-5 flex flex-col gap-2.5 sm:mt-6">
             {items.map((item, i) => (
               <FaqCard key={item.key} item={item} q={q} as="h3" hidden={!state[i].show} open={state[i].reveal} moreLabel={t.more} />
             ))}

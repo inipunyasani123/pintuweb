@@ -1,5 +1,7 @@
 // Teks per halaman — Bahasa Indonesia. Kalimat lama dipertahankan apa adanya.
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, LOCATION, PERF_TARGET } from '../../lib/site'
+import { PACKAGES } from '../../lib/packages'
+import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 
 const pages = {
@@ -10,7 +12,7 @@ const pages = {
     ogDescription: 'Dari landing page sampai toko online dan website custom, lengkap dengan harga mulai dan demo yang bisa dicoba.',
     eyebrow: 'Layanan',
     h1: ['Tujuh layanan, dari ', 'landing page', ' sampai aplikasi web.'] as Hl,
-    lead: 'Pilih jenis website yang kamu butuhkan. Setiap layanan dilengkapi harga mulai, perkiraan waktu, dan contoh yang bisa dicoba.',
+    lead: 'Pilih jenis website yang kamu butuhkan. Setiap layanan dilengkapi harga mulai, perkiraan waktu, dan demo yang bisa dicoba.',
     listAria: 'Daftar layanan',
     from: 'Mulai',
     priceOnRequest: 'Harga sesuai tema & fitur — tanyakan lewat WhatsApp',
@@ -60,6 +62,9 @@ const pages = {
     ctaConsult: 'Bingung pilih? Konsultasi gratis',
     readFaq: 'Baca FAQ lengkap',
     updated: 'Harga berlaku per',
+    needsTitle: 'Mulai dari kebutuhanmu',
+    needsLead: 'Pilih yang paling mirip dengan rencanamu. Tautannya membawamu langsung ke paket yang pas.',
+    groupsLead: 'Atau lihat per kategori:',
   },
   demo: {
     title: (n: number) => `Galeri Demo — ${n} Situs yang Bisa Dicoba`,
@@ -108,30 +113,32 @@ const pages = {
     ogDescription: (n: number) => `Berdiri sejak ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} proyek klien, dan ${n} demo live yang bisa kamu coba.`,
     eyebrow: 'Tentang Kami',
     h1: ['Studio web kecil dari Trenggalek, ', `sejak ${FOUNDED_YEAR}`, '.'] as Hl,
-    lead: 'PintuWeb membantu UMKM, startup, dan personal brand punya website yang profesional, cepat, dan mudah ditemukan.',
+    lead: 'PintuWeb merancang dan membangun website untuk UMKM, startup, dan personal brand, dari obrolan pertama di WhatsApp sampai websitenya online.',
     stats: { projects: 'Proyek klien selesai', demos: 'Demo live', since: 'Berdiri sejak', categories: 'Kategori website' },
     storyTitle: 'Cerita kami',
     story: (n: number) => [
-      'PintuWeb dimulai dari kepedulian pada UMKM yang produknya bagus tapi belum terlihat di internet, hanya karena belum punya website yang layak.',
-      `Berangkat dari ${LOCATION} pada ${FOUNDED_YEAR}, kami membangun website berkualitas dengan harga yang masuk akal. Setiap website adalah investasi untuk masa depan digital klien kami.`,
-      `Sampai hari ini kami sudah menyelesaikan ${CLIENT_PROJECTS} proyek klien, dan membuka ${n} demo live yang bisa kamu coba sendiri sebelum memutuskan.`,
+      'PintuWeb dimulai dari UMKM yang produknya bagus tapi sulit ditemukan di internet, karena belum punya website yang layak.',
+      `Berangkat dari ${LOCATION} pada ${FOUNDED_YEAR}, kami memegang aturan yang sama untuk setiap klien: harga ditulis di depan, DP 50% untuk memulai, dan pelunasan setelah websitenya kamu setujui.`,
+      `Sampai hari ini sudah ${CLIENT_PROJECTS} proyek klien selesai, dan ${n} situs demo tetap online supaya kamu bisa mencobanya sendiri sebelum memutuskan.`,
     ],
     now: 'Kini',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'PintuWeb berdiri', body: `Berangkat dari ${LOCATION}, mulai membantu UMKM setempat yang belum punya website.` },
-      { year: 'Kini', title: `${CLIENT_PROJECTS} proyek klien`, body: `Merawat ${n} demo live di ${CATEGORY_COUNT} kategori sebagai bukti karya.` },
+      { year: 'Kini', title: `${CLIENT_PROJECTS} proyek klien`, body: `${n} situs demo di ${CATEGORY_COUNT} kategori tetap online dan bisa kamu coba.` },
     ],
     founderTitle: 'Di balik PintuWeb',
     beliefTitle: ['Yang kami ', 'pegang'] as Hl,
-    beliefs: [
-      { title: 'Visi', body: 'Menjadi mitra digital yang memberdayakan UMKM dan startup di seluruh Indonesia lewat kehadiran online yang profesional.' },
-      { title: 'Misi', body: 'Membangun website berkualitas dengan harga terjangkau, disertai dukungan setelah website online.' },
-      { title: 'Fokus', body: 'Kecepatan loading, keamanan, SEO, dan pengalaman pengguna yang mendorong pertumbuhan bisnis.' },
+    // Visi/misi/fokus & nilai: hanya fakta yang sudah tertulis di situs (paket, demo, bahasa, DP, garansi, target
+    // PageSpeed), tanpa slogan. Angkanya dari lib/site.ts, lib/packages.ts, lib/demos.ts, dan i18n/config.ts.
+    beliefs: (n: number) => [
+      { title: 'Visi', body: 'Setiap pemilik usaha bisa melihat harga, mencoba demo, dan bertanya dulu sebelum membayar apa pun.' },
+      { title: 'Misi', body: `Menulis harga ${PACKAGES.length} paket di depan, menjaga ${n} situs demo tetap online, dan menyajikan harga, layanan, serta FAQ dalam ${LANGS.length} bahasa.` },
+      { title: 'Fokus', body: `Ponsel lebih dulu: halaman dirancang untuk layar kecil, dengan target PageSpeed ${PERF_TARGET} dan SEO dasar sejak awal.` },
     ],
     values: [
-      { title: 'Kolaboratif', body: 'Kami mendengarkan kebutuhanmu dan terbuka pada masukan di setiap tahap.' },
-      { title: 'Berkarakter', body: 'Mulai dari desain demo kami yang disesuaikan dengan identitasmu, atau desain khusus dari nol.' },
-      { title: 'Jujur', body: 'Harga transparan, janji yang realistis, dan tenggat yang kami jaga.' },
+      { title: 'Ngobrol dulu, gratis', body: 'Konsultasi lewat WhatsApp tidak mewajibkan apa pun. Penawaran tertulis datang sebelum pekerjaan dimulai.' },
+      { title: 'Coba sebelum memesan', body: 'Buka demonya, pilih yang paling dekat dengan usahamu, lalu kami sesuaikan. Atau mulai dari desain baru.' },
+      { title: 'Angkanya sama di semua halaman', body: 'Harga dan lama pengerjaan di halaman harga, layanan, FAQ, dan artikel diambil dari daftar yang sama.' },
     ],
     whyTitle: 'Mengapa memilih PintuWeb?',
     why: (landing: string, business: string, response: string) => [
@@ -205,8 +212,10 @@ const pages = {
     // Judul tiga kelompok keahlian; pembagiannya (4, 3, 3 butir dari `skills`) ada di halaman founder.
     skillGroups: ['Frontend', 'Hosting & data', 'Mutu & pengalaman'],
     skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', 'SEO teknis', 'Audit performa', 'UI/UX'],
-    quote: 'Website bukan hanya soal desain. Ia adalah citra, kepercayaan, dan strategi bisnis.',
-    quoteBy: 'Sanzy, Founder PintuWeb',
+    // Prinsip kerja (halaman Founder & kartu "Di balik PintuWeb" di Tentang): pernyataan cara kerja dari fakta situs,
+    // BUKAN kutipan; jangan ditulis sebagai ucapan Sanzy.
+    principlesTitle: 'Prinsip kerja',
+    principles: ['Harga tertulis sebelum pekerjaan dimulai.', 'Desain disetujui dulu, baru dibangun.', `Bug diperbaiki gratis ${GUARANTEE_DAYS} hari setelah website online.`],
     writing: 'Tulisan Sanzy',
     ctaTitle: 'Tertarik bekerja sama?',
     ctaLead: 'Saya terbuka untuk proyek baru, konsultasi, maupun kerja sama jangka panjang.',
@@ -311,9 +320,9 @@ const pages = {
     colTime: 'Pengerjaan',
     priceOnRequest: 'Harga mengikuti tema dan fitur yang kamu pilih. Kirim kebutuhanmu lewat WhatsApp untuk mendapat penawaran tertulis sebelum pengerjaan dimulai.',
     process: 'Cara kerjanya',
-    demos: 'Contoh yang bisa dicoba',
-    demosLead: 'Semua contoh ini online. Buka, coba, lalu sebutkan nama yang kamu suka saat menghubungi kami.',
-    portal: (n: number, label: string) => `Buka galeri ${label} (${n} contoh)`,
+    demos: 'Demo yang bisa dicoba',
+    demosLead: 'Semua demo ini online. Buka, coba, lalu sebutkan nama yang kamu suka saat menghubungi kami.',
+    portal: (n: number, label: string) => `Buka galeri ${label} (${n} demo)`,
     faq: 'Pertanyaan seputar layanan ini',
     readArticles: 'Bacaan terkait',
     other: 'Layanan lain',
@@ -321,6 +330,7 @@ const pages = {
     ctaLead: 'Konsultasi gratis. Kami bantu petakan halaman, fitur, dan anggarannya.',
     ctaWa: (name: string) => `Halo PintuWeb, saya tertarik dengan layanan ${name}. Boleh konsultasi?`,
     seePricing: 'Lihat semua paket',
+    guarantee: `Garansi ${GUARANTEE_DAYS} hari`,
   },
 }
 

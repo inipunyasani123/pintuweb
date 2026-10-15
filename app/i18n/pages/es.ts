@@ -2,6 +2,8 @@
 // Las secciones de páginas que aún no existen en español (legal, artículos) heredan el inglés: esas páginas
 // no se generan para este idioma y sus enlaces van a la versión inglesa.
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { PACKAGES } from '../../lib/packages'
+import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
@@ -17,7 +19,7 @@ const pages: Pages = {
     ogDescription: 'Desde landing pages hasta tiendas en línea y sitios web a medida, con precios desde y demos que puedes probar.',
     eyebrow: 'Servicios',
     h1: ['Siete servicios, desde ', 'landing pages', ' hasta aplicaciones web.'] as Hl,
-    lead: 'Elige el tipo de sitio web que necesitas. Cada servicio viene con un precio desde, un plazo estimado y ejemplos que puedes probar.',
+    lead: 'Elige el tipo de sitio web que necesitas. Cada servicio viene con un precio desde, un plazo estimado y demos que puedes probar.',
     listAria: 'Lista de servicios',
     from: 'Desde',
     priceOnRequest: 'Precio según tema y funciones: pregúntanos por WhatsApp',
@@ -67,6 +69,9 @@ const pages: Pages = {
     ctaConsult: '¿Dudas? Pide una consulta gratuita',
     readFaq: 'Leer todas las preguntas frecuentes',
     updated: 'Precios vigentes a fecha de',
+    needsTitle: 'Empieza por lo que necesitas',
+    needsLead: 'Elige lo que más se parezca a tu plan; el enlace te lleva directo al paquete adecuado.',
+    groupsLead: 'O explora por categoría:',
   },
   demo: {
     title: (n: number) => `Galería de demos — ${n} sitios para probar`,
@@ -114,30 +119,30 @@ const pages: Pages = {
     ogDescription: (n: number) => `Fundado en ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} proyectos de clientes y ${n} demos en línea que puedes probar.`,
     eyebrow: 'Sobre nosotros',
     h1: ['Un pequeño estudio web en Trenggalek, ', `desde ${FOUNDED_YEAR}`, '.'] as Hl,
-    lead: 'PintuWeb ayuda a pequeñas empresas, startups y marcas personales a tener sitios web profesionales, rápidos y fáciles de encontrar.',
+    lead: 'PintuWeb diseña y construye sitios web para pequeñas empresas, startups y marcas personales, desde la primera conversación por WhatsApp hasta el día en que el sitio sale en línea.',
     stats: { projects: 'Proyectos de clientes terminados', demos: 'Demos en línea', since: 'Fundado en', categories: 'Categorías de sitios web' },
     storyTitle: 'Nuestra historia',
     story: (n: number) => [
-      'PintuWeb nació pensando en pequeños negocios con productos estupendos pero invisibles en internet, simplemente porque no tenían un sitio web decente.',
-      `Empezamos en ${LOC} en ${FOUNDED_YEAR} y construimos sitios web de calidad a precios razonables. Cada sitio es una inversión en el futuro digital de nuestros clientes.`,
-      `Hasta hoy hemos terminado ${CLIENT_PROJECTS} proyectos de clientes y publicado ${n} demos en línea que puedes probar por ti mismo antes de decidir.`,
+      'PintuWeb nació con pequeños negocios que tenían buenos productos pero eran difíciles de encontrar en internet, porque no tenían un sitio web decente.',
+      `Empezamos en ${LOC} en ${FOUNDED_YEAR} y mantenemos las mismas reglas con cada cliente: precios escritos de antemano, un anticipo del 50% para empezar y el resto cuando apruebas el sitio.`,
+      `Hasta hoy hemos terminado ${CLIENT_PROJECTS} proyectos de clientes, y ${n} sitios de demostración siguen en línea para que los pruebes tú mismo antes de decidir.`,
     ],
     now: 'Hoy',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Nace PintuWeb', body: `Empezamos en ${LOC}, ayudando a pequeños negocios locales que aún no tenían sitio web.` },
-      { year: 'Hoy', title: `${CLIENT_PROJECTS} proyectos de clientes`, body: `Mantenemos ${n} demos en línea en ${CATEGORY_COUNT} categorías como prueba de nuestro trabajo.` },
+      { year: 'Hoy', title: `${CLIENT_PROJECTS} proyectos de clientes`, body: `${n} sitios de demostración en ${CATEGORY_COUNT} categorías siguen en línea para que los pruebes.` },
     ],
     founderTitle: 'Detrás de PintuWeb',
     beliefTitle: ['Lo que ', 'defendemos'] as Hl,
-    beliefs: [
-      { title: 'Visión', body: 'Ser un socio digital que impulsa a pequeñas empresas y startups mediante una presencia en línea profesional.' },
-      { title: 'Misión', body: 'Construir sitios web de calidad a precios asequibles, con soporte después de la puesta en línea.' },
-      { title: 'Enfoque', body: 'Velocidad de carga, seguridad, SEO y una experiencia de usuario que impulsa el crecimiento del negocio.' },
+    beliefs: (n: number) => [
+      { title: 'Visión', body: 'Que cualquier dueño de un negocio pueda ver el precio, probar una demo y preguntar antes de pagar nada.' },
+      { title: 'Misión', body: `Publicar de antemano el precio de los ${PACKAGES.length} paquetes, mantener ${n} sitios de demostración en línea y explicar precios, servicios y preguntas frecuentes en ${LANGS.length} idiomas.` },
+      { title: 'Enfoque', body: `Primero el móvil: páginas pensadas para pantallas pequeñas, con un objetivo PageSpeed de ${PERF_TARGET} y SEO básico desde el inicio.` },
     ],
     values: [
-      { title: 'Colaborativos', body: 'Escuchamos lo que necesitas y agradecemos tus comentarios en cada etapa.' },
-      { title: 'Con carácter', body: 'Parte de uno de nuestros diseños de demostración, adaptado a tu identidad, o pide un diseño a medida desde cero.' },
-      { title: 'Honestos', body: 'Precios transparentes, promesas realistas y plazos que cumplimos.' },
+      { title: 'Primero hablamos, gratis', body: 'Una consulta por WhatsApp no te compromete a nada. El presupuesto por escrito llega antes de empezar el trabajo.' },
+      { title: 'Prueba antes de encargar', body: 'Abre las demos, elige la más cercana a tu negocio y la adaptamos. O empieza con un diseño nuevo.' },
+      { title: 'Las mismas cifras en todas las páginas', body: 'Los precios y plazos de la página de precios, las páginas de servicios y las preguntas frecuentes salen de la misma lista.' },
     ],
     whyTitle: '¿Por qué elegir PintuWeb?',
     why: (landing: string, business: string, response: string) => [
@@ -210,8 +215,8 @@ const pages: Pages = {
     skillsTitle: 'Habilidades principales',
     skillGroups: ['Front-end', 'Hosting y datos', 'Calidad y experiencia'],
     skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', 'SEO técnico', 'Auditorías de rendimiento', 'UI/UX'],
-    quote: 'Un sitio web no es solo diseño. Es tu imagen, tu credibilidad y tu estrategia de negocio.',
-    quoteBy: 'Sanzy, fundador de PintuWeb',
+    principlesTitle: 'Principios de trabajo',
+    principles: ['El precio queda por escrito antes de empezar.', 'Primero se aprueba el diseño, luego se construye.', `Los errores se corrigen gratis durante ${GUARANTEE_DAYS} días tras la puesta en línea.`],
     writing: 'Artículos de Sanzy',
     ctaTitle: '¿Te interesa que trabajemos juntos?',
     ctaLead: 'Estoy abierto a nuevos proyectos, consultas y colaboraciones a largo plazo.',
@@ -268,9 +273,9 @@ const pages: Pages = {
     colTime: 'Plazo',
     priceOnRequest: 'El precio depende del tema y de las funciones que elijas. Envía tus necesidades por WhatsApp y recibirás un presupuesto escrito antes de empezar cualquier trabajo.',
     process: 'Cómo funciona',
-    demos: 'Ejemplos que puedes probar',
-    demosLead: 'Todos están en línea. Ábrelos, pruébalos y, cuando nos contactes, menciona el que te guste.',
-    portal: (n: number, label: string) => `Abrir la galería de ${label} (${n} ejemplos)`,
+    demos: 'Demos que puedes probar',
+    demosLead: 'Todas están en línea. Ábrelas, pruébalas y, cuando nos contactes, menciona la que te guste.',
+    portal: (n: number, label: string) => `Abrir la galería de ${label} (${n} demos)`,
     faq: 'Preguntas sobre este servicio',
     readArticles: 'Para seguir leyendo',
     other: 'Otros servicios',
@@ -278,6 +283,7 @@ const pages: Pages = {
     ctaLead: 'Consulta gratuita. Te ayudamos a definir las páginas, las funciones y el presupuesto.',
     ctaWa: (name: string) => `Hola PintuWeb, me interesa su servicio de ${name}. ¿Podemos hablar?`,
     seePricing: 'Ver todos los paquetes',
+    guarantee: `Garantía de ${GUARANTEE_DAYS} días`,
   },
 }
 

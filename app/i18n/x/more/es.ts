@@ -6,7 +6,7 @@ const more: More = {
     'landing-page': {
       name: 'Landing Page',
       title: 'Diseño y desarrollo de landing pages',
-      description: 'Landing pages rápidas y centradas en la conversión para lanzamientos, eventos y anuncios. Precios claros, entrega en pocos días y {{demos:landing}} ejemplos para probar.',
+      description: 'Landing pages rápidas y centradas en la conversión para lanzamientos, eventos y anuncios. Precios claros, entrega en pocos días y {{demos:landing}} demos para probar.',
       h1: ['', 'Landing pages', ' que convierten visitantes en clientes.'],
       lead: 'Una landing page es una sola página web creada con un objetivo: que el visitante realice una acción concreta, como comprar, inscribirse en un webinar o escribirte por WhatsApp. Como es una sola página, se construye rápido y es ideal como destino de un anuncio.',
       intro: [
@@ -66,7 +66,7 @@ const more: More = {
     portofolio: {
       name: 'Sitio web de portafolio',
       title: 'Sitios web de portafolio y marca personal',
-      description: 'Sitios web de portafolio para diseñadores, desarrolladores, fotógrafos y freelancers: trabajos, casos de estudio, blog y contacto. Mira {{demos:portfolio}} ejemplos.',
+      description: 'Sitios web de portafolio para diseñadores, desarrolladores, fotógrafos y freelancers: trabajos, casos de estudio, blog y contacto. Mira {{demos:portfolio}} demos.',
       h1: ['Un ', 'sitio web de portafolio', ' que hace que tu trabajo se note.'],
       lead: 'Un sitio web de portafolio es un escaparate personal de tu trabajo: donde clientes o reclutadores ven lo que has hecho, cómo trabajas y cómo contactarte. Frente a un PDF o las redes sociales, tiene su propia dirección y se puede encontrar en Google.',
       intro: [
@@ -78,7 +78,7 @@ const more: More = {
       suits: 'Freelancers, creadores',
       faq: [
         { q: '¿Puedo añadir trabajos nuevos yo mismo?', a: 'Envíanos los trabajos nuevos por WhatsApp y los añadimos; para actualizaciones regulares está disponible el servicio adicional de mantenimiento mensual. Si actualizas tu portafolio a menudo, se puede añadir un CMS para que lo gestiones tú mismo.' },
-        { q: '¿Son reales las personas de los ejemplos de portafolio?', a: 'No. Los personajes de nuestros ejemplos de portafolio son ficticios; cuando haces el encargo, todo se sustituye por tus propios trabajos, fotos y datos de contacto.' },
+        { q: '¿Son reales las personas de las demos de portafolio?', a: 'No. Los personajes de nuestras demos de portafolio son ficticios; cuando haces el encargo, todo se sustituye por tus propios trabajos, fotos y datos de contacto.' },
         { q: '¿Necesito un dominio con mi propio nombre?', a: 'Te lo recomendamos mucho. El dominio, el hosting y el SSL del primer año están incluidos en el paquete Portafolio, y una dirección con tu nombre es más fácil de recordar para los clientes.' },
       ],
     },
@@ -90,7 +90,7 @@ const more: More = {
       lead: 'Un sitio web a medida es aquel cuyo diseño, flujo y funciones se construyen específicamente en torno a cómo funciona tu negocio; por ejemplo, un sistema de reservas, un catálogo de inmuebles con filtros, un área de miembros o una integración con un sistema que ya usas.',
       intro: [
         'Un proyecto a medida empieza por trazar el flujo: quiénes son los usuarios, qué datos entran y qué debe pasar después. A partir de ahí preparamos un presupuesto escrito con un alcance claro antes de escribir una sola línea de código.',
-        'Puedes probar ejemplos en nuestra galería: {{demos:reservasi}} sistemas de reservas (restaurante, hotel, clínica, pista de fútbol sala, cine), {{demos:properti}} marketplaces inmobiliarios y {{demos:todo}} aplicaciones de productividad.',
+        'Puedes probar demos en nuestra galería: {{demos:reservasi}} sistemas de reservas (restaurante, hotel, clínica, pista de fútbol sala, cine), {{demos:properti}} marketplaces inmobiliarios y {{demos:todo}} aplicaciones de productividad.',
       ],
       forWho: ['Restaurantes, hoteles, clínicas y pistas que necesitan reservas en línea', 'Agentes y promotores inmobiliarios', 'Startups que construyen su primer producto web', 'Instituciones y escuelas con formularios o flujos de trabajo especiales', 'Negocios que conectan su sitio web con sistemas que ya tienen'],
       short: 'Sistemas de reservas, catálogos de inmuebles, aplicaciones web u otras funciones a medida para tu negocio.',
@@ -118,7 +118,7 @@ const more: More = {
       suits: 'Bodas, eventos familiares y corporativos',
       faq: [
         { q: '¿Cuánto cuesta una invitación digital?', a: 'Desde {{from:undangan-digital}} para una invitación de nuestra galería de temas (rango {{price:undangan-digital}}, lista en {{duration:undangan-digital}}), y desde {{from:situs-acara}} para un sitio de evento o un diseño a medida. Las invitaciones permanecen activas 12 meses sin coste de renovación.' },
-        { q: '¿Son reales los nombres y las fotos de los ejemplos?', a: 'No. Los nombres, fotos y datos de nuestras invitaciones de ejemplo son ficticios; cuando haces el encargo, todo se sustituye por los datos de tu evento.' },
+        { q: '¿Son reales los nombres y las fotos de las demos?', a: 'No. Los nombres, fotos y datos de nuestras invitaciones demo son ficticios; cuando haces el encargo, todo se sustituye por los datos de tu evento.' },
         { q: '¿Cómo comparto la invitación?', a: 'Solo tienes que enviar el enlace por WhatsApp, redes sociales o correo electrónico. Los invitados la abren en su navegador sin instalar ninguna aplicación.' },
         { q: '¿Puede una invitación digital sustituir a una impresa?', a: 'En muchos eventos sí, sobre todo para los invitados que viven lejos. Algunas familias siguen imprimiendo unas cuantas invitaciones para los mayores o los invitados de honor; las dos pueden convivir.' },
       ],
@@ -126,11 +126,11 @@ const more: More = {
     'link-in-bio': {
       name: 'Link in Bio',
       title: 'Páginas link in bio a medida',
-      description: 'Páginas link in bio con tu dominio y diseño para creadores, negocios y cafeterías: menús, pedidos anticipados, tiendas y WhatsApp. Mira {{demos:linkinbio}} ejemplos.',
+      description: 'Páginas link in bio con tu dominio y diseño para creadores, negocios y cafeterías: menús, pedidos anticipados, tiendas y WhatsApp. Mira {{demos:linkinbio}} demos.',
       h1: ['Una ', 'página link in bio', ' propia, no solo una lista de botones.'],
       lead: 'Una página link in bio es una sola página web enlazada desde la biografía de tu Instagram o TikTok que reúne todos los destinos importantes: WhatsApp, tu tienda, tu agenda, tus trabajos o un formulario de pedido. Una versión a medida puede usar tu propio dominio y el diseño de tu marca, con funciones que los servicios genéricos de link in bio no ofrecen.',
       intro: [
-        'Los {{demos:linkinbio}} ejemplos de nuestra galería muestran hasta dónde puede llegar una página así: el tablero de menú de un puesto de comida que indica si está abierto según la hora de Indonesia, pedidos anticipados para una cafetería, la agenda de gira de una banda con selector de entradas, una tienda de pegatinas y una página de encargos de una ilustradora.',
+        'Las {{demos:linkinbio}} demos de nuestra galería muestran hasta dónde puede llegar una página así: el tablero de menú de un puesto de comida que indica si está abierto según la hora de Indonesia, pedidos anticipados para una cafetería, la agenda de gira de una banda con selector de entradas, una tienda de pegatinas y una página de encargos de una ilustradora.',
         'El paquete Link in Bio empieza en {{from:link-in-bio}} y está listo en {{duration:link-in-bio}}; las páginas o funciones adicionales se presupuestan por escrito.',
       ],
       forWho: ['Creadores de contenido e influencers', 'Cafeterías, puestos de comida y negocios de comida que aceptan pedidos anticipados', 'Músicos, bandas y organizadores de eventos', 'Ilustradores, escritores y profesionales creativos', 'Pequeños negocios que venden activamente en Instagram o TikTok'],

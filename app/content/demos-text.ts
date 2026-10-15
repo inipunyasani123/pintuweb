@@ -14,7 +14,7 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
     properti: 'Property Website',
     toko: 'Online Store',
     todo: 'Productivity App',
-    kontes: 'Design Contest',
+    kontes: 'Design Concepts',
   },
   ms: {
     landing: 'Landing Page',
@@ -25,7 +25,7 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
     properti: 'Laman Web Hartanah',
     toko: 'Kedai Dalam Talian',
     todo: 'Aplikasi Produktiviti',
-    kontes: 'Peraduan Reka Bentuk',
+    kontes: 'Konsep Reka Bentuk',
   },
 }
 

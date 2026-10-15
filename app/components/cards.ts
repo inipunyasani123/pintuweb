@@ -1,4 +1,5 @@
-// Data kartu paket per bahasa (dirakit di server; hasilnya string saja sehingga aman dikirim ke komponen klien).
+// Data kartu paket per bahasa, dirakit di server. CardData berisi string saja; CardLabels memuat fungsi (more), jadi
+// kartunya (PackageCard) tetap komponen server.
 import type { Lang } from '../i18n/config'
 import { getDict } from '../i18n'
 import { packagesFor, waPackageText } from '../i18n/facts'
@@ -21,10 +22,22 @@ export type CardData = {
   waHref: string
   choose: string
 }
-export type CardLabels = { from: string; range: string; deposit: string; duration: string; suits: string; free: string }
+export type CardLabels = {
+  from: string
+  range: string
+  deposit: string
+  duration: string
+  suits: string
+  free: string
+  /** "Lihat semua fitur (n)" */
+  more: (n: number) => string
+  less: string
+  newTab: string
+}
 
 export function cardsFor(lang: Lang, filter?: (slug: string, featured?: boolean) => boolean): { cards: CardData[]; labels: CardLabels } {
-  const t = getDict(lang).pkg
+  const d = getDict(lang)
+  const t = d.pkg
   const cards = packagesFor(lang)
     .filter((p) => (filter ? filter(p.slug, p.featured) : true))
     .map((p) => ({
@@ -43,6 +56,9 @@ export function cardsFor(lang: Lang, filter?: (slug: string, featured?: boolean)
       waHref: wa(waPackageText(lang, p.title)),
       choose: t.choose(p.title),
     }))
-  return { cards, labels: { from: t.from, range: t.range, deposit: t.deposit, duration: t.duration, suits: t.suits, free: t.free } }
+  return {
+    cards,
+    labels: { from: t.from, range: t.range, deposit: t.deposit, duration: t.duration, suits: t.suits, free: t.free, more: t.more, less: t.less, newTab: d.common.newTabShort },
+  }
 }
 

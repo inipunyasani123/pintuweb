@@ -36,7 +36,7 @@ A landing page is right when you already know where visitors come from and what 
 - Launching a new product or a seasonal promotion.
 - Testing a business idea before building a full website.
 
-Because it is one page, everything is laid out in order: the problem, the solution, proof, price and a call to action, with no menu to pull attention away. You can browse 17 examples in our [landing page gallery](/landing-page) (in Indonesian).
+Because it is one page, everything is laid out in order: the problem, the solution, proof, price and a call to action, with no menu to pull attention away. You can open {{demos:landing}} demos in our [landing page gallery](/landing-page) (in Indonesian).
 
 ## When to choose a company profile
 

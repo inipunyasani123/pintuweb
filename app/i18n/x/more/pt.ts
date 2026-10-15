@@ -6,7 +6,7 @@ const more: More = {
     'landing-page': {
       name: 'Landing Page',
       title: 'Criação de Landing Pages',
-      description: 'Landing pages rápidas e focadas em conversão para lançamentos, eventos e anúncios. Preços transparentes, entrega em poucos dias e {{demos:landing}} exemplos no ar.',
+      description: 'Landing pages rápidas e focadas em conversão para lançamentos, eventos e anúncios. Preços transparentes, entrega em poucos dias e {{demos:landing}} demos no ar.',
       h1: ['', 'Landing pages', ' que transformam visitantes em clientes.'],
       lead: 'Uma landing page é uma única página web criada para um só objetivo: levar o visitante a realizar uma ação, como comprar, se inscrever em um webinar ou mandar uma mensagem pelo WhatsApp. Por ser uma única página, é rápida de construir e ideal como destino de um anúncio.',
       intro: [
@@ -66,7 +66,7 @@ const more: More = {
     portofolio: {
       name: 'Site de portfólio',
       title: 'Sites de portfólio e marca pessoal',
-      description: 'Sites de portfólio para designers, desenvolvedores, fotógrafos e freelancers: trabalhos, estudos de caso, blog e contato. Veja {{demos:portfolio}} exemplos no ar.',
+      description: 'Sites de portfólio para designers, desenvolvedores, fotógrafos e freelancers: trabalhos, estudos de caso, blog e contato. Veja {{demos:portfolio}} demos no ar.',
       h1: ['Um ', 'site de portfólio', ' que faz o seu trabalho ser notado.'],
       lead: 'Um site de portfólio é uma vitrine pessoal do seu trabalho: o lugar em que clientes ou recrutadores veem o que você já fez, como você trabalha e como falar com você. Comparado a um PDF ou às redes sociais, ele tem endereço próprio e pode ser encontrado no Google.',
       intro: [
@@ -78,19 +78,19 @@ const more: More = {
       suits: 'Freelancers, criadores',
       faq: [
         { q: 'Posso adicionar novos trabalhos eu mesmo?', a: 'Envie os novos trabalhos pelo WhatsApp e nós os adicionamos; para atualizações regulares, há o serviço adicional de manutenção mensal. Se você atualiza o portfólio com frequência, um CMS pode ser adicionado para que você mesmo o gerencie.' },
-        { q: 'As pessoas dos exemplos de portfólio são reais?', a: 'Não. As personas dos nossos exemplos de portfólio são fictícias; quando você encomenda, tudo é substituído pelos seus próprios trabalhos, fotos e dados de contato.' },
+        { q: 'As pessoas das demos de portfólio são reais?', a: 'Não. As personas das nossas demos de portfólio são fictícias; quando você encomenda, tudo é substituído pelos seus próprios trabalhos, fotos e dados de contato.' },
         { q: 'Preciso de um domínio com o meu nome?', a: 'Recomendamos muito. Domínio, hospedagem e SSL do primeiro ano estão incluídos no pacote Portfólio, e um endereço com o seu nome é mais fácil de os clientes lembrarem.' },
       ],
     },
     'website-custom': {
       name: 'Site sob medida e aplicativo web',
       title: 'Criação de sites sob medida e aplicativos web',
-      description: 'Sites sob medida e aplicativos web com Next.js: sistemas de reserva, catálogos de imóveis, áreas de membros e integrações via API. Teste os exemplos.',
+      description: 'Sites sob medida e aplicativos web com Next.js: sistemas de reserva, catálogos de imóveis, áreas de membros e integrações via API. Teste as demos.',
       h1: ['Sites sob medida para ', 'necessidades que não cabem em um modelo.'],
       lead: 'Um site sob medida é aquele cujo design, fluxo e recursos são construídos especificamente em torno de como o seu negócio funciona — por exemplo, um sistema de reservas, um catálogo de imóveis com filtros, uma área de membros ou uma integração com um sistema que você já usa.',
       intro: [
         'Um projeto sob medida começa pelo mapeamento do fluxo: quem são os usuários, que dados entram e o que precisa acontecer em seguida. A partir disso preparamos um orçamento por escrito com escopo claro, antes de escrever uma única linha de código.',
-        'Você pode testar exemplos na nossa galeria: {{demos:reservasi}} sistemas de reserva (restaurante, hotel, clínica, quadra de futsal, cinema), {{demos:properti}} marketplaces imobiliários e {{demos:todo}} aplicativos de produtividade.',
+        'Você pode testar demos na nossa galeria: {{demos:reservasi}} sistemas de reserva (restaurante, hotel, clínica, quadra de futsal, cinema), {{demos:properti}} marketplaces imobiliários e {{demos:todo}} aplicativos de produtividade.',
       ],
       forWho: ['Restaurantes, hotéis, clínicas e quadras que precisam de reservas online', 'Corretores de imóveis e incorporadoras', 'Startups construindo o seu primeiro produto web', 'Instituições e escolas com formulários ou fluxos de trabalho específicos', 'Negócios que querem conectar o site a sistemas que já usam'],
       short: 'Sistemas de reserva, catálogos de imóveis, aplicativos web ou outros recursos feitos sob medida para o seu negócio.',
@@ -118,7 +118,7 @@ const more: More = {
       suits: 'Casamentos, eventos familiares e corporativos',
       faq: [
         { q: 'Quanto custa um convite digital?', a: 'A partir de {{from:undangan-digital}} para um convite da nossa galeria de temas (faixa de {{price:undangan-digital}}, pronto em {{duration:undangan-digital}}), e a partir de {{from:situs-acara}} para um site de evento ou um design sob medida. Os convites ficam ativos por 12 meses, sem taxa de renovação.' },
-        { q: 'Os nomes e as fotos dos exemplos são reais?', a: 'Não. Os nomes, as fotos e os dados dos nossos convites de exemplo são fictícios; quando você encomenda, tudo é substituído pelos dados do seu evento.' },
+        { q: 'Os nomes e as fotos das demos são reais?', a: 'Não. Os nomes, as fotos e os dados dos nossos convites demo são fictícios; quando você encomenda, tudo é substituído pelos dados do seu evento.' },
         { q: 'Como compartilho o convite?', a: 'Basta enviar o link pelo WhatsApp, pelas redes sociais ou por e-mail. Os convidados o abrem no navegador, sem instalar nenhum aplicativo.' },
         { q: 'Um convite digital pode substituir o impresso?', a: 'Em muitos eventos, sim, principalmente para convidados que moram longe. Algumas famílias ainda imprimem alguns convites para os mais velhos ou para convidados de honra; os dois podem funcionar juntos.' },
       ],
@@ -126,11 +126,11 @@ const more: More = {
     'link-in-bio': {
       name: 'Link in Bio',
       title: 'Páginas link in bio sob medida',
-      description: 'Páginas link in bio com domínio e design próprios para criadores, pequenos negócios e cafés: cardápios, encomendas, lojas e WhatsApp. Veja {{demos:linkinbio}} exemplos.',
+      description: 'Páginas link in bio com domínio e design próprios para criadores, pequenos negócios e cafés: cardápios, encomendas, lojas e WhatsApp. Veja {{demos:linkinbio}} demos.',
       h1: ['Uma ', 'página link in bio', ' só sua — não apenas uma lista de botões.'],
       lead: 'Uma página link in bio é uma única página web, linkada na bio do seu Instagram ou TikTok, que reúne todos os destinos importantes: WhatsApp, a sua loja, a sua agenda, os seus trabalhos ou um formulário de pedidos. Uma versão sob medida pode usar o seu próprio domínio e o design da sua marca, com recursos que os serviços genéricos de link in bio não oferecem.',
       intro: [
-        'Os {{demos:linkinbio}} exemplos da nossa galeria mostram até onde uma página assim pode ir: um quadro de cardápio de uma barraca de comida que mostra se ela está aberta pelo horário da Indonésia, encomendas de uma cafeteria, a agenda de turnê de uma banda com seletor de ingressos, uma loja de adesivos e uma página de encomendas de uma ilustradora.',
+        'As {{demos:linkinbio}} demos da nossa galeria mostram até onde uma página assim pode ir: um quadro de cardápio de uma barraca de comida que mostra se ela está aberta pelo horário da Indonésia, encomendas de uma cafeteria, a agenda de turnê de uma banda com seletor de ingressos, uma loja de adesivos e uma página de encomendas de uma ilustradora.',
         'O pacote Link in Bio começa em {{from:link-in-bio}} e fica pronto em {{duration:link-in-bio}}; páginas ou recursos extras têm o preço definido no orçamento por escrito.',
       ],
       forWho: ['Criadores de conteúdo e influenciadores', 'Cafés, barracas de comida e negócios de alimentação que trabalham com encomendas', 'Músicos, bandas e organizadores de eventos', 'Ilustradores, escritores e profissionais criativos', 'Pequenos negócios que vendem ativamente no Instagram ou no TikTok'],

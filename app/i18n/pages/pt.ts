@@ -2,6 +2,8 @@
 // As seções das páginas que ainda não existem em português (documentos legais, artigos) herdam o inglês:
 // essas páginas não são geradas para este idioma e seus links levam à versão em inglês.
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { PACKAGES } from '../../lib/packages'
+import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
@@ -17,7 +19,7 @@ const pages: Pages = {
     ogDescription: 'De landing pages a lojas online e sites sob medida, com preços iniciais e demos que você pode testar.',
     eyebrow: 'Serviços',
     h1: ['Sete serviços, de ', 'landing pages', ' a aplicativos web.'] as Hl,
-    lead: 'Escolha o tipo de site de que você precisa. Cada serviço vem com um preço inicial, um prazo estimado e exemplos que você pode testar.',
+    lead: 'Escolha o tipo de site de que você precisa. Cada serviço vem com um preço inicial, um prazo estimado e demos que você pode testar.',
     listAria: 'Lista de serviços',
     from: 'A partir de',
     priceOnRequest: 'Preço conforme o tema e os recursos — pergunte pelo WhatsApp',
@@ -50,9 +52,9 @@ const pages: Pages = {
     colTime: 'Prazo',
     priceOnRequest: 'O preço depende do tema e dos recursos que você escolher. Envie as suas necessidades pelo WhatsApp e você recebe um orçamento por escrito antes de qualquer trabalho começar.',
     process: 'Como funciona',
-    demos: 'Exemplos para testar',
-    demosLead: 'Todos estão no ar. Abra, teste e, ao entrar em contato, mencione o de que mais gostou.',
-    portal: (n: number, label: string) => `Abrir a galeria de ${label} (${n} exemplos)`,
+    demos: 'Demos para testar',
+    demosLead: 'Todas estão no ar. Abra, teste e, ao entrar em contato, mencione a de que mais gostou.',
+    portal: (n: number, label: string) => `Abrir a galeria de ${label} (${n} demos)`,
     faq: 'Perguntas sobre este serviço',
     readArticles: 'Leitura complementar',
     other: 'Outros serviços',
@@ -60,6 +62,7 @@ const pages: Pages = {
     ctaLead: 'Consulta gratuita. Ajudamos você a definir as páginas, os recursos e o orçamento.',
     ctaWa: (name: string) => `Olá PintuWeb, tenho interesse no serviço de ${name}. Podemos conversar?`,
     seePricing: 'Ver todos os pacotes',
+    guarantee: `Garantia de ${GUARANTEE_DAYS} dias`,
   },
   glossary: {
     title: 'Glossário de sites para iniciantes',
@@ -112,6 +115,9 @@ const pages: Pages = {
     ctaConsult: 'Em dúvida? Peça uma consulta gratuita',
     readFaq: 'Ler todas as perguntas frequentes',
     updated: 'Preços válidos em',
+    needsTitle: 'Comece pelo que você precisa',
+    needsLead: 'Escolha o que mais se parece com o seu plano; o link leva direto ao pacote certo.',
+    groupsLead: 'Ou veja por categoria:',
   },
   demo: {
     title: (n: number) => `Galeria de demos — ${n} sites para testar`,
@@ -159,30 +165,30 @@ const pages: Pages = {
     ogDescription: (n: number) => `Fundada em ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} projetos de clientes e ${n} demos no ar para você testar.`,
     eyebrow: 'Sobre nós',
     h1: ['Um pequeno estúdio web em Trenggalek, ', `desde ${FOUNDED_YEAR}`, '.'] as Hl,
-    lead: 'A PintuWeb ajuda pequenas empresas, startups e marcas pessoais a ter sites profissionais, rápidos e fáceis de encontrar.',
+    lead: 'A PintuWeb projeta e constrói sites para pequenas empresas, startups e marcas pessoais, da primeira conversa no WhatsApp até o dia em que o site entra no ar.',
     stats: { projects: 'Projetos de clientes concluídos', demos: 'Demos no ar', since: 'Fundada em', categories: 'Categorias de sites' },
     storyTitle: 'Nossa história',
     story: (n: number) => [
-      'A PintuWeb nasceu pensando em pequenos negócios com produtos ótimos, mas invisíveis na internet, simplesmente por não terem um site decente.',
-      `Começamos em ${LOC} em ${FOUNDED_YEAR} e construímos sites de qualidade a preços justos. Cada site é um investimento no futuro digital dos nossos clientes.`,
-      `Até hoje concluímos ${CLIENT_PROJECTS} projetos de clientes e publicamos ${n} demos no ar que você pode testar por conta própria antes de decidir.`,
+      'A PintuWeb nasceu com pequenos negócios que tinham bons produtos, mas eram difíceis de encontrar na internet por não terem um site decente.',
+      `Começamos em ${LOC} em ${FOUNDED_YEAR} e mantemos as mesmas regras para todo cliente: preços escritos de antemão, sinal de 50% para começar e o restante quando você aprova o site.`,
+      `Até hoje concluímos ${CLIENT_PROJECTS} projetos de clientes, e ${n} sites de demonstração continuam no ar para você testar por conta própria antes de decidir.`,
     ],
     now: 'Hoje',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Nasce a PintuWeb', body: `Começamos em ${LOC}, ajudando pequenos negócios locais que ainda não tinham site.` },
-      { year: 'Hoje', title: `${CLIENT_PROJECTS} projetos de clientes`, body: `Mantemos ${n} demos no ar em ${CATEGORY_COUNT} categorias como prova do nosso trabalho.` },
+      { year: 'Hoje', title: `${CLIENT_PROJECTS} projetos de clientes`, body: `${n} sites de demonstração em ${CATEGORY_COUNT} categorias continuam no ar para você testar.` },
     ],
     founderTitle: 'Por trás da PintuWeb',
     beliefTitle: ['O que ', 'defendemos'] as Hl,
-    beliefs: [
-      { title: 'Visão', body: 'Ser um parceiro digital que fortalece pequenas empresas e startups com uma presença online profissional.' },
-      { title: 'Missão', body: 'Construir sites de qualidade a preços acessíveis, com suporte depois que o site entra no ar.' },
-      { title: 'Foco', body: 'Velocidade de carregamento, segurança, SEO e uma experiência de uso que impulsiona o crescimento do negócio.' },
+    beliefs: (n: number) => [
+      { title: 'Visão', body: 'Que todo dono de negócio possa ver o preço, testar uma demo e tirar dúvidas antes de pagar qualquer coisa.' },
+      { title: 'Missão', body: `Publicar de antemão o preço dos ${PACKAGES.length} pacotes, manter ${n} sites de demonstração no ar e explicar preços, serviços e perguntas frequentes em ${LANGS.length} idiomas.` },
+      { title: 'Foco', body: `Celular primeiro: páginas pensadas para telas pequenas, com meta de PageSpeed ${PERF_TARGET} e SEO básico desde o início.` },
     ],
     values: [
-      { title: 'Colaborativos', body: 'Ouvimos o que você precisa e recebemos bem o seu retorno em cada etapa.' },
-      { title: 'Com personalidade', body: 'Comece por um dos nossos designs de demonstração, adaptado à sua identidade, ou peça um design sob medida do zero.' },
-      { title: 'Honestos', body: 'Preços transparentes, promessas realistas e prazos que cumprimos.' },
+      { title: 'Primeiro a conversa, de graça', body: 'Uma consulta pelo WhatsApp não obriga você a nada. O orçamento por escrito chega antes de o trabalho começar.' },
+      { title: 'Teste antes de encomendar', body: 'Abra as demos, escolha a mais próxima do seu negócio e nós a adaptamos. Ou comece com um design novo.' },
+      { title: 'Os mesmos números em todas as páginas', body: 'Os preços e prazos da página de preços, das páginas de serviços e das perguntas frequentes vêm da mesma lista.' },
     ],
     whyTitle: 'Por que escolher a PintuWeb?',
     why: (landing: string, business: string, response: string) => [
@@ -255,8 +261,8 @@ const pages: Pages = {
     skillsTitle: 'Principais habilidades',
     skillGroups: ['Front-end', 'Hospedagem e dados', 'Qualidade e experiência'],
     skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', 'SEO técnico', 'Auditorias de desempenho', 'UI/UX'],
-    quote: 'Um site não é só design. É a sua imagem, a sua credibilidade e a sua estratégia de negócio.',
-    quoteBy: 'Sanzy, fundador da PintuWeb',
+    principlesTitle: 'Princípios de trabalho',
+    principles: ['O preço fica por escrito antes de o trabalho começar.', 'Primeiro o design é aprovado, depois construído.', `Erros são corrigidos de graça por ${GUARANTEE_DAYS} dias depois que o site entra no ar.`],
     writing: 'Artigos de Sanzy',
     ctaTitle: 'Tem interesse em trabalharmos juntos?',
     ctaLead: 'Estou aberto a novos projetos, consultas e parcerias de longo prazo.',

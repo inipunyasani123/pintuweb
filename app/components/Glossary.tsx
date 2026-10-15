@@ -119,7 +119,7 @@ export default function Glossary({ items, topics, t }: { items: GlossaryItem[]; 
     <div>
       {/* Pencarian + topik */}
       <div className="relative">
-        <Search size={18} className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[color:var(--text-muted)]" aria-hidden="true" />
+        <Search size={18} className="pointer-events-none absolute start-5 top-1/2 -translate-y-1/2 text-[color:var(--text-muted)]" aria-hidden="true" />
         <label htmlFor="glossary-search" className="sr-only">
           {t.search}
         </label>
@@ -133,7 +133,7 @@ export default function Glossary({ items, topics, t }: { items: GlossaryItem[]; 
             if (e.target.value.trim()) setTopic('all')
           }}
           placeholder={t.searchPh}
-          className="h-[3.25rem] w-full rounded-full border-0 bg-white pl-[3.25rem] pr-5 text-base text-[color:var(--text-primary)] outline-none ring-1 ring-[color:var(--border-light)] transition-shadow placeholder:text-[color:var(--text-muted)] focus:ring-2 focus:ring-[color:var(--primary-700)]"
+          className="h-[3.25rem] w-full rounded-full border-0 bg-white pe-5 ps-[3.25rem] text-base text-[color:var(--text-primary)] outline-none ring-1 ring-[color:var(--border-light)] transition-shadow placeholder:text-[color:var(--text-muted)] focus:ring-2 focus:ring-[color:var(--primary-700)]"
         />
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label={t.topicLabel}>
@@ -193,7 +193,7 @@ export default function Glossary({ items, topics, t }: { items: GlossaryItem[]; 
                     <dfn className="not-italic">{mark(it.term, q)}</dfn>
                   </dt>
                   <dd className="order-1 flex items-center gap-2">
-                    {first && <span id={`huruf-${it.letter}`} className="pointer-events-none absolute left-0 top-0 scroll-mt-4" aria-hidden="true" />}
+                    {first && <span id={`huruf-${it.letter}`} className="pointer-events-none absolute start-0 top-0 scroll-mt-4" aria-hidden="true" />}
                     <span className="inline-flex min-w-0 flex-1 items-center gap-2 text-[0.8125rem] font-semibold text-[color:var(--k)]">
                       <span className="h-2 w-2 shrink-0 rounded-full [background-image:linear-gradient(135deg,var(--k),var(--k2))]" aria-hidden="true" />
                       <span className="truncate">{c.label}</span>
@@ -203,12 +203,14 @@ export default function Glossary({ items, topics, t }: { items: GlossaryItem[]; 
                         {it.letter}
                       </span>
                     )}
+                    {/* "#" hanya penanda visual; nama tautannya teks sr-only (bukan aria-label yang menimpa "#"),
+                        jadi tidak ada label terlihat yang berbeda dari nama aksesibelnya (WCAG 2.5.3) */}
                     <a
                       href={`#${it.id}`}
-                      aria-label={t.linkTo.replace('{term}', it.term)}
-                      className="-mr-1.5 grid h-8 w-8 shrink-0 place-items-center rounded-full text-[0.9375rem] font-semibold text-[color:var(--text-muted)] transition-colors hover:bg-[color:var(--surface-soft)] hover:text-[color:var(--k)]"
+                      className="-me-1.5 grid h-8 w-8 shrink-0 place-items-center rounded-full text-[0.9375rem] font-semibold text-[color:var(--text-muted)] transition-colors hover:bg-[color:var(--surface-soft)] hover:text-[color:var(--k)]"
                     >
-                      #
+                      <span aria-hidden="true">#</span>
+                      <span className="sr-only">{t.linkTo.replace('{term}', it.term)}</span>
                     </a>
                   </dd>
                   <dd className="order-3 mt-2 flex flex-1 flex-col text-[0.9375rem] leading-relaxed text-[color:var(--text-secondary)] sm:text-base">

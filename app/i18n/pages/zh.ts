@@ -2,6 +2,8 @@
 // 服务页面和术语表已有中文版（内容见 i18n/x/more/zh.ts）。尚未提供中文版的页面（法律文件、文章）沿用英文：
 // 这些页面不会为本语言生成，指向它们的链接会转到英文版。
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { PACKAGES } from '../../lib/packages'
+import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
@@ -17,7 +19,7 @@ const pages: Pages = {
     ogDescription: '从落地页到网店和定制网站，附起价和可试用的演示。',
     eyebrow: '服务',
     h1: ['七项服务，从', '落地页', '到 Web 应用。'] as Hl,
-    lead: '选择您需要的网站类型。每项服务都附有起价、预计工期和可试用的示例。',
+    lead: '选择您需要的网站类型。每项服务都附有起价、预计工期和可试用的演示。',
     listAria: '服务列表',
     from: '起价',
     priceOnRequest: '按主题和功能定价——欢迎在 WhatsApp 上咨询',
@@ -67,6 +69,9 @@ const pages: Pages = {
     ctaConsult: '拿不定主意？申请免费咨询',
     readFaq: '阅读全部常见问题',
     updated: '价格更新于',
+    needsTitle: '从您的需求出发',
+    needsLead: '选择最接近您计划的一项，链接会直接带您到合适的套餐。',
+    groupsLead: '或按类别浏览：',
   },
   demo: {
     title: (n: number) => `演示集 — ${n} 个可试用的网站`,
@@ -114,30 +119,30 @@ const pages: Pages = {
     ogDescription: (n: number) => `成立于 ${FOUNDED_YEAR} 年，${CLIENT_PROJECTS} 个客户项目，${n} 个可亲自体验的在线演示。`,
     eyebrow: '关于我们',
     h1: ['特伦加勒的一间小型网站工作室，', `始于 ${FOUNDED_YEAR} 年`, '。'] as Hl,
-    lead: 'PintuWeb 帮助小微企业、初创公司和个人品牌拥有专业、快速、容易被找到的网站。',
+    lead: 'PintuWeb 为小微企业、初创公司和个人品牌设计并搭建网站，从第一次 WhatsApp 沟通到网站上线。',
     stats: { projects: '已完成的客户项目', demos: '在线演示', since: '成立年份', categories: '网站类别' },
     storyTitle: '我们的故事',
     story: (n: number) => [
-      'PintuWeb 的起点，是那些产品很好却在网上无人知晓的小生意，原因只是没有一个像样的网站。',
-      `我们于 ${FOUNDED_YEAR} 年在${LOC}起步，以合理的价格制作高质量的网站。每一个网站，都是对客户数字未来的一份投资。`,
-      `到今天，我们已完成 ${CLIENT_PROJECTS} 个客户项目，并发布了 ${n} 个在线演示，您可以在做决定前亲自体验。`,
+      'PintuWeb 的起点，是那些产品很好、却因为没有像样的网站而在网上很难被找到的小生意。',
+      `我们于 ${FOUNDED_YEAR} 年在${LOC}起步，对每位客户都遵守同样的规则：价格事先写明，开工先付 50% 定金，网站经您确认后再付余款。`,
+      `到今天，我们已完成 ${CLIENT_PROJECTS} 个客户项目，另有 ${n} 个演示网站保持在线，方便您在做决定前亲自试用。`,
     ],
     now: '今天',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'PintuWeb 诞生', body: `我们在${LOC}起步，帮助当地还没有网站的小生意。` },
-      { year: '今天', title: `${CLIENT_PROJECTS} 个客户项目`, body: `维护着 ${CATEGORY_COUNT} 个类别中的 ${n} 个在线演示，作为我们工作的证明。` },
+      { year: '今天', title: `${CLIENT_PROJECTS} 个客户项目`, body: `${CATEGORY_COUNT} 个类别中的 ${n} 个演示网站保持在线，随时可以试用。` },
     ],
     founderTitle: 'PintuWeb 背后的人',
     beliefTitle: ['我们', '坚持的事'] as Hl,
-    beliefs: [
-      { title: '愿景', body: '成为数字伙伴，帮助小微企业和初创公司通过专业的线上形象成长。' },
-      { title: '使命', body: '以实惠的价格制作高质量的网站，并在上线后持续提供支持。' },
-      { title: '重点', body: '加载速度、安全、SEO，以及能推动业务增长的用户体验。' },
+    beliefs: (n: number) => [
+      { title: '愿景', body: '每位经营者都能先看到价格、试用演示、提出问题，再决定是否付款。' },
+      { title: '使命', body: `事先公开全部 ${PACKAGES.length} 个套餐的价格，让 ${n} 个演示网站保持在线，并用 ${LANGS.length} 种语言说明价格、服务和常见问题。` },
+      { title: '重点', body: `手机优先：页面为小屏幕设计，以 PageSpeed ${PERF_TARGET} 分为目标，并从一开始就做好基础 SEO。` },
     ],
     values: [
-      { title: '乐于协作', body: '我们倾听您的需求，并欢迎您在每个阶段提出意见。' },
-      { title: '各有个性', body: '可以从我们的演示设计出发，按您的品牌形象调整，也可以从零定制设计。' },
-      { title: '诚实', body: '价格透明，承诺务实，工期说到做到。' },
+      { title: '先聊，免费', body: '通过 WhatsApp 咨询不附带任何义务。开工前会先发书面报价。' },
+      { title: '先试用，再下单', body: '打开演示，挑选最接近您业务的一个，我们来调整。也可以从全新的设计开始。' },
+      { title: '每个页面的数字都一致', body: '价格页、服务页和常见问题里的价格与工期都来自同一份清单。' },
     ],
     whyTitle: '为什么选择 PintuWeb？',
     why: (landing: string, business: string, response: string) => [
@@ -210,8 +215,8 @@ const pages: Pages = {
     skillsTitle: '核心技能',
     skillGroups: ['前端', '主机与数据', '质量与体验'],
     skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', '技术 SEO', '性能审计', 'UI/UX'],
-    quote: '网站不只是设计。它是您的形象、您的信誉，也是您的经营策略。',
-    quoteBy: 'Sanzy，PintuWeb 创始人',
+    principlesTitle: '工作原则',
+    principles: ['开工前先把价格写清楚。', '先确认设计，再动手搭建。', `网站上线后 ${GUARANTEE_DAYS} 天内免费修复错误。`],
     writing: 'Sanzy 的文章',
     ctaTitle: '有兴趣一起合作吗？',
     ctaLead: '欢迎新项目、咨询和长期合作。',
@@ -261,9 +266,9 @@ const pages: Pages = {
     colTime: '工期',
     priceOnRequest: '价格取决于您选择的主题和功能。通过 WhatsApp 发送您的需求，开工前您会收到一份书面报价。',
     process: '合作流程',
-    demos: '可以试用的示例',
-    demosLead: '这些示例都已上线。打开、试用，联系我们时提一下您喜欢的那一个。',
-    portal: (n: number, label: string) => `打开“${label}”演示集（${n} 个示例）`,
+    demos: '可以试用的演示',
+    demosLead: '这些演示都已上线。打开、试用，联系我们时提一下您喜欢的那一个。',
+    portal: (n: number, label: string) => `打开“${label}”演示集（${n} 个演示）`,
     faq: '关于这项服务的问题',
     readArticles: '延伸阅读',
     other: '其他服务',
@@ -271,6 +276,7 @@ const pages: Pages = {
     ctaLead: '免费咨询。我们帮您规划页面、功能和预算。',
     ctaWa: (name: string) => `您好 PintuWeb，我对你们的“${name}”服务感兴趣，可以聊聊吗？`,
     seePricing: '查看全部套餐',
+    guarantee: `${GUARANTEE_DAYS} 天质保`,
   },
   // 文章相关的键中，中文只用到这三个（复制链接、作者）；其余保持英文。
   articles: {

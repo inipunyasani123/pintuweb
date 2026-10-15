@@ -1,6 +1,7 @@
 // Dicionário da interface — Português. Tradução de dict/en.ts; os números vêm de lib/site.ts e lib/packages.ts.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
+import { demoUnits } from '../plural'
 import type { Dict, Hl } from './id'
 
 const pt: Dict = {
@@ -46,6 +47,8 @@ const pt: Dict = {
     waText: 'Olá PintuWeb, gostaria de conversar sobre a criação de um site.',
     language: 'Idioma',
     notAvailable: 'ainda não disponível',
+    allServices: 'Todos os serviços',
+    allServicesLead: 'Compare todos os serviços, com preço e prazo de entrega.',
   },
   footer: {
     aria: 'Contato e informações da PintuWeb',
@@ -97,30 +100,32 @@ const pt: Dict = {
     meta: (n: number) => `Desde ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} projetos de clientes · ${n} demos no ar`,
     title: ['Todo negócio merece uma boa ', 'porta de entrada', '.'] as Hl,
     lead: (n: number) =>
-      `Projetamos e construímos sites para pequenas empresas, lojas e marcas pessoais: rápidos de abrir no celular, prontos para aparecer no Google e totalmente seus. ${CLIENT_PROJECTS} projetos de clientes entregues e ${n} exemplos do nosso trabalho que você pode abrir hoje.`,
+      `Projetamos e construímos sites para pequenas empresas, lojas e marcas pessoais: rápidos de abrir no celular, prontos para aparecer no Google e totalmente seus. ${CLIENT_PROJECTS} projetos de clientes entregues e ${n} sites de demonstração que você pode abrir hoje.`,
     offer: (price: string, duration: string) => `Landing pages a partir de ${price}, prontas em ${duration}. Você paga 50% no início e o restante ao final.`,
     ctaConsult: 'Consulta gratuita',
-    ctaDemos: (n: number) => `Ver ${n} exemplos`,
+    ctaDemos: (n: number) => `Ver ${n} demos`,
     facade: 'Nove tipos de site que construímos',
     facadeHint: 'Passe o cursor para ver uma prévia; clique para abrir a galeria',
     openGallery: (t: string) => `Abrir ${t}`,
+    kindDetail: 'Detalhes e preços',
+    kindDetailFor: (t: string) => `Detalhes e preços: ${t}`,
   },
   portfolio: {
-    eyebrow: 'Trabalhos selecionados',
-    title: ['Exemplos que você pode abrir e testar por conta própria, ', 'não imagens de mockup', '.'] as Hl,
+    eyebrow: 'Demos selecionadas',
+    title: ['Demos que você pode abrir e testar por conta própria, ', 'não imagens de mockup', '.'] as Hl,
     lead: (n: number) => `Cinco dos ${n} sites de demonstração que construímos e mantemos no ar. Os negócios são fictícios; o visual e o conteúdo se adaptam ao seu.`,
     galleries: {
       landing: { title: 'Landing pages', tagline: 'Páginas que vendem: webinars, vendas, promoções' },
       toko: { title: 'Loja online', tagline: 'Catálogo, carrinho, checkout e painel de pedidos' },
       linkinbio: { title: 'Link in Bio', tagline: 'Um link para todos os seus canais' },
-      kontes: { title: 'Concurso de design', tagline: 'Vários conceitos para um mesmo briefing' },
+      kontes: { title: 'Conceitos de design', tagline: 'Vários conceitos para um mesmo briefing de concurso de design' },
       undangan: { title: 'Convites digitais', tagline: 'Convites online para momentos especiais' },
       portfolio: { title: 'Portfólios pessoais', tagline: 'Marca pessoal que fica na memória' },
       reservasi: { title: 'Reservas', tagline: 'Sistemas de reserva online para vários setores' },
       properti: { title: 'Imóveis', tagline: 'Marketplaces e catálogos imobiliários' },
       todo: { title: 'Tarefas e produtividade', tagline: 'Aplicativos web para gerenciar tarefas' },
     },
-    unit: { landing: 'demos', toko: 'demo', linkinbio: 'demos', kontes: 'propostas', undangan: 'temas', portfolio: 'variantes', reservasi: 'sistemas', properti: 'variantes', todo: 'apps' },
+    unit: demoUnits((n) => (n === 1 ? 'demo' : 'demos')),
     previewAlt: (t: string) => `Prévia da galeria ${t}`,
     shotAlt: (name: string) => `Captura de tela da demo ${name}`,
     open: 'Abrir demo',
@@ -140,23 +145,13 @@ const pt: Dict = {
   },
   audience: {
     eyebrow: 'Para quem é',
-    title: ['De barracas de comida a clínicas, ', 'já existe um exemplo', '.'] as Hl,
-    lead: 'Todos os exemplos abaixo estão no ar e podem ser abertos. Os negócios são fictícios; o visual e o conteúdo se adaptam ao seu.',
-    items: [
-      { label: 'Pequenos comércios', desc: 'Uma página link in bio para lanches caseiros, com pedidos pelo WhatsApp.' },
-      { label: 'Restaurantes', desc: 'Reserva de mesa direto da planta do salão.' },
-      { label: 'Marcenarias', desc: 'Móveis de madeira maciça medidos na casa do cliente.' },
-      { label: 'Startups', desc: 'Uma landing page para um provedor de servidores, com página de status.' },
-      { label: 'Criativos', desc: 'Um portfólio editorial para uma designer de marcas.' },
-      { label: 'Casamentos', desc: 'Um convite digital com confirmação de presença e galeria de fotos.' },
-      { label: 'Clínicas', desc: 'Agendamento de consultas médicas online.' },
-      { label: 'Corretores de imóveis', desc: 'Um catálogo de casas de luxo com visitas privadas.' },
-    ],
-    open: 'Abrir',
-    otherTitle: 'O seu negócio não está na lista?',
+    title: 'Para que você precisa de um site?',
+    lead: 'Escolha a linha mais parecida com o seu plano. Cada uma leva a um pacote, com o preço inicial e o prazo.',
+    all: 'Ver todas as necessidades e pacotes',
+    otherTitle: 'Não encontrou o que precisa?',
     otherBody: 'Conte-nos pelo WhatsApp e sugerimos o tipo de site mais adequado. A consulta é gratuita.',
     otherCta: 'Perguntar pelo WhatsApp',
-    otherWa: 'Olá PintuWeb, meu tipo de negócio não está entre os seus exemplos. Gostaria de perguntar antes.',
+    otherWa: 'Olá PintuWeb, o que eu preciso não está na sua lista. Gostaria de perguntar antes.',
   },
   process: {
     eyebrow: 'Como trabalhamos',
@@ -206,6 +201,7 @@ const pt: Dict = {
     colPrice: 'Faixa de preço',
     colPackage: 'Pacote',
     openNote: 'Uma cauda pontilhada significa que o preço pode ser maior, dependendo dos recursos.',
+    rangeNote: 'A posição do preço dentro da faixa depende do número de páginas, dos recursos e do material que precisamos preparar; o valor exato vem no orçamento por escrito antes de começar.',
     seeAll: (n: number) => `Detalhes dos ${n} pacotes`,
     depositTitle: 'Pagamento',
     depositBody: 'Um sinal de 50% para começar; o restante quando o site estiver pronto e aprovado por você.',
@@ -220,6 +216,8 @@ const pt: Dict = {
     suits: 'Ideal para:',
     choose: (title: string) => (title.length > 22 ? 'Escolher este pacote' : `Escolher ${title}`),
     free: 'Consulta gratuita pelo WhatsApp',
+    more: (n: number) => `Ver todos os recursos (${n})`,
+    less: 'Ocultar recursos adicionais',
   },
   faqUi: {
     eyebrow: 'Perguntas frequentes',

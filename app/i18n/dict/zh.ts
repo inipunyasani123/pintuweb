@@ -1,6 +1,7 @@
 // 界面词典 — 简体中文。译自 dict/en.ts；数字来自 lib/site.ts 和 lib/packages.ts。
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
+import { demoUnits } from '../plural'
 import type { Dict, Hl } from './id'
 
 const zh: Dict = {
@@ -46,6 +47,8 @@ const zh: Dict = {
     waText: '您好 PintuWeb，我想咨询网站制作。',
     language: '语言',
     notAvailable: '暂未提供',
+    allServices: '全部服务',
+    allServicesLead: '比较所有服务的价格和制作周期。',
   },
   footer: {
     aria: 'PintuWeb 联系方式与信息',
@@ -97,30 +100,32 @@ const zh: Dict = {
     meta: (n: number) => `始于 ${FOUNDED_YEAR} 年 · ${CLIENT_PROJECTS} 个客户项目 · ${n} 个在线演示`,
     title: ['每一门生意，都值得一扇像样的', '大门', '。'] as Hl,
     lead: (n: number) =>
-      `我们为小微企业、店铺和个人品牌设计并搭建网站：在手机上打开很快，为出现在 Google 上做好准备，并且完全归您所有。已交付 ${CLIENT_PROJECTS} 个客户项目，另有 ${n} 个作品示例今天就能打开。`,
+      `我们为小微企业、店铺和个人品牌设计并搭建网站：在手机上打开很快，为出现在 Google 上做好准备，并且完全归您所有。已交付 ${CLIENT_PROJECTS} 个客户项目，另有 ${n} 个演示网站今天就能打开。`,
     offer: (price: string, duration: string) => `落地页 ${price} 起，${duration}完成。先付 50%，完工后再付余款。`,
     ctaConsult: '免费咨询',
-    ctaDemos: (n: number) => `查看 ${n} 个示例`,
+    ctaDemos: (n: number) => `查看 ${n} 个演示`,
     facade: '我们制作的九类网站',
     facadeHint: '悬停可预览，点击打开演示集',
     openGallery: (t: string) => `打开${t}`,
+    kindDetail: '详情与价格',
+    kindDetailFor: (t: string) => `详情与价格：${t}`,
   },
   portfolio: {
-    eyebrow: '精选作品',
-    title: ['可以亲手打开试用的示例，', '而不是效果图', '。'] as Hl,
+    eyebrow: '精选演示',
+    title: ['可以亲手打开试用的演示，', '而不是效果图', '。'] as Hl,
     lead: (n: number) => `这是我们搭建并保持在线的 ${n} 个演示网站中的五个。其中的商家均为虚构；外观和内容会按您的业务调整。`,
     galleries: {
       landing: { title: '落地页', tagline: '能卖货的页面：研讨会、销售、促销' },
       toko: { title: '网店', tagline: '商品目录、购物车、结账和订单后台' },
       linkinbio: { title: 'Link in Bio', tagline: '一个链接，通往您的所有渠道' },
-      kontes: { title: '设计竞赛', tagline: '同一份需求的多个方案' },
+      kontes: { title: '设计方案', tagline: '同一份设计竞赛需求的多个方案' },
       undangan: { title: '电子请柬', tagline: '为特别时刻准备的在线请柬' },
       portfolio: { title: '个人作品集', tagline: '让人记住的个人品牌' },
       reservasi: { title: '预订', tagline: '适用于多个行业的在线预订系统' },
       properti: { title: '房产', tagline: '房产交易平台和房源目录' },
       todo: { title: '任务与效率', tagline: '管理任务的 Web 应用' },
     },
-    unit: { landing: '个演示', toko: '个演示', linkinbio: '个演示', kontes: '个方案', undangan: '款主题', portfolio: '个版本', reservasi: '套系统', properti: '个版本', todo: '个应用' },
+    unit: demoUnits(() => '个演示'),
     previewAlt: (t: string) => `${t}演示集预览`,
     shotAlt: (name: string) => `${name} 演示截图`,
     open: '打开演示',
@@ -140,23 +145,13 @@ const zh: Dict = {
   },
   audience: {
     eyebrow: '适合谁',
-    title: ['从小吃摊到诊所，', '都已有示例', '。'] as Hl,
-    lead: '下面的示例全部在线，可以直接打开。其中的商家均为虚构；外观和内容会按您的业务调整。',
-    items: [
-      { label: '小微商家', desc: '家常小吃的 Link in Bio 页面，通过 WhatsApp 下单。' },
-      { label: '餐厅', desc: '在餐厅平面图上直接订位。' },
-      { label: '家具工坊', desc: '上门量尺的实木家具。' },
-      { label: '初创公司', desc: '服务器供应商的落地页，附状态页。' },
-      { label: '创意工作者', desc: '品牌设计师的杂志风作品集。' },
-      { label: '婚礼', desc: '带出席回复和照片集的电子请柬。' },
-      { label: '诊所', desc: '在线门诊预约。' },
-      { label: '房产经纪人', desc: '豪宅目录，提供私人看房。' },
-    ],
-    open: '打开',
-    otherTitle: '没有找到您的行业？',
+    title: '您需要网站来做什么？',
+    lead: '选出最接近您计划的一项。每一行对应一个套餐，并附起价和制作周期。',
+    all: '查看全部需求和套餐',
+    otherTitle: '列表里没有您的需求？',
     otherBody: '在 WhatsApp 上告诉我们，我们会建议最适合的网站类型。咨询免费。',
     otherCta: '在 WhatsApp 上咨询',
-    otherWa: '您好 PintuWeb，你们的示例里没有我的行业，我想先咨询一下。',
+    otherWa: '您好 PintuWeb，你们的列表里没有我的需求，我想先咨询一下。',
   },
   process: {
     eyebrow: '我们如何工作',
@@ -206,6 +201,7 @@ const zh: Dict = {
     colPrice: '价格区间',
     colPackage: '套餐',
     openNote: '虚线尾部表示价格可能更高，视功能而定。',
+    rangeNote: '价格落在区间中的哪个位置，取决于页面数量、功能以及需要我们准备的内容；确切金额会在开工前写进书面报价。',
     seeAll: (n: number) => `查看全部 ${n} 个套餐的详情`,
     depositTitle: '付款',
     depositBody: '开工先付 50% 定金；余款在网站完成并经您确认后支付。',
@@ -220,6 +216,8 @@ const zh: Dict = {
     suits: '适合：',
     choose: (title: string) => (title.length > 9 ? '选择此套餐' : `选择${title}`),
     free: '通过 WhatsApp 免费咨询',
+    more: (n: number) => `查看全部功能（${n}）`,
+    less: '收起其余功能',
   },
   faqUi: {
     eyebrow: '常见问题',

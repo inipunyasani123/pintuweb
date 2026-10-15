@@ -1,5 +1,7 @@
 // Teks halaman — Bahasa Melayu.
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { PACKAGES } from '../../lib/packages'
+import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 
@@ -13,7 +15,7 @@ const pages: Pages = {
     ogDescription: 'Dari landing page hingga kedai dalam talian dan laman web tersuai, lengkap dengan harga permulaan dan demo yang boleh dicuba.',
     eyebrow: 'Perkhidmatan',
     h1: ['Tujuh perkhidmatan, dari ', 'landing page', ' hingga aplikasi web.'] as Hl,
-    lead: 'Pilih jenis laman web yang anda perlukan. Setiap perkhidmatan disertakan harga permulaan, anggaran masa dan contoh yang boleh dicuba.',
+    lead: 'Pilih jenis laman web yang anda perlukan. Setiap perkhidmatan disertakan harga permulaan, anggaran masa dan demo yang boleh dicuba.',
     listAria: 'Senarai perkhidmatan',
     from: 'Dari',
     priceOnRequest: 'Harga ikut tema & ciri — tanya melalui WhatsApp',
@@ -63,6 +65,9 @@ const pages: Pages = {
     ctaConsult: 'Keliru memilih? Konsultasi percuma',
     readFaq: 'Baca soalan lazim penuh',
     updated: 'Harga sah setakat',
+    needsTitle: 'Mulakan dengan keperluan anda',
+    needsLead: 'Pilih yang paling hampir dengan rancangan anda; pautannya membawa anda terus ke pakej yang sesuai.',
+    groupsLead: 'Atau lihat mengikut kategori:',
   },
   demo: {
     title: (n: number) => `Galeri Demo — ${n} Laman yang Boleh Dicuba`,
@@ -110,30 +115,30 @@ const pages: Pages = {
     ogDescription: (n: number) => `Ditubuhkan pada ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} projek pelanggan dan ${n} demo langsung yang boleh anda cuba.`,
     eyebrow: 'Tentang Kami',
     h1: ['Studio web kecil dari Trenggalek, ', `sejak ${FOUNDED_YEAR}`, '.'] as Hl,
-    lead: 'PintuWeb membantu PKS, syarikat pemula dan penjenamaan peribadi memiliki laman web yang profesional, pantas dan mudah ditemui.',
+    lead: 'PintuWeb mereka bentuk dan membina laman web untuk PKS, syarikat pemula dan jenama peribadi, daripada perbualan pertama di WhatsApp hingga laman webnya dilancarkan.',
     stats: { projects: 'Projek pelanggan siap', demos: 'Demo langsung', since: 'Ditubuhkan', categories: 'Kategori laman web' },
     storyTitle: 'Kisah kami',
     story: (n: number) => [
-      'PintuWeb bermula daripada kepedulian terhadap PKS yang produknya bagus tetapi tidak kelihatan di internet, hanya kerana belum ada laman web yang sewajarnya.',
-      `Bermula di ${LOC} pada ${FOUNDED_YEAR}, kami membina laman web berkualiti dengan harga yang munasabah. Setiap laman web adalah pelaburan untuk masa depan digital pelanggan kami.`,
-      `Hingga kini kami telah menyiapkan ${CLIENT_PROJECTS} projek pelanggan, dan membuka ${n} demo langsung yang boleh anda cuba sendiri sebelum membuat keputusan.`,
+      'PintuWeb bermula daripada PKS yang produknya bagus tetapi sukar ditemui di internet, kerana belum mempunyai laman web yang sewajarnya.',
+      `Bermula di ${LOC} pada ${FOUNDED_YEAR}, kami berpegang pada peraturan yang sama untuk setiap pelanggan: harga ditulis di awal, deposit 50% untuk bermula, dan baki selepas anda meluluskan laman webnya.`,
+      `Hingga kini ${CLIENT_PROJECTS} projek pelanggan telah siap, dan ${n} laman demo kekal dalam talian supaya anda boleh mencubanya sendiri sebelum membuat keputusan.`,
     ],
     now: 'Kini',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'PintuWeb ditubuhkan', body: `Bermula di ${LOC}, membantu PKS setempat yang belum mempunyai laman web.` },
-      { year: 'Kini', title: `${CLIENT_PROJECTS} projek pelanggan`, body: `Menjaga ${n} demo langsung dalam ${CATEGORY_COUNT} kategori sebagai bukti karya.` },
+      { year: 'Kini', title: `${CLIENT_PROJECTS} projek pelanggan`, body: `${n} laman demo dalam ${CATEGORY_COUNT} kategori kekal dalam talian dan boleh anda cuba.` },
     ],
     founderTitle: 'Di sebalik PintuWeb',
     beliefTitle: ['Prinsip yang kami ', 'pegang'] as Hl,
-    beliefs: [
-      { title: 'Visi', body: 'Menjadi rakan digital yang memperkasakan PKS dan syarikat pemula melalui kehadiran dalam talian yang profesional.' },
-      { title: 'Misi', body: 'Membina laman web berkualiti dengan harga berpatutan, disertai sokongan selepas laman web dilancarkan.' },
-      { title: 'Fokus', body: 'Kelajuan pemuatan, keselamatan, SEO dan pengalaman pengguna yang mendorong pertumbuhan perniagaan.' },
+    beliefs: (n: number) => [
+      { title: 'Visi', body: 'Setiap pemilik perniagaan boleh melihat harga, mencuba demo dan bertanya dahulu sebelum membayar apa-apa.' },
+      { title: 'Misi', body: `Menulis harga ${PACKAGES.length} pakej di awal, mengekalkan ${n} laman demo dalam talian, dan menerangkan harga, perkhidmatan serta soalan lazim dalam ${LANGS.length} bahasa.` },
+      { title: 'Fokus', body: `Telefon dahulu: halaman direka untuk skrin kecil, dengan sasaran PageSpeed ${PERF_TARGET} dan SEO asas sejak awal.` },
     ],
     values: [
-      { title: 'Kolaboratif', body: 'Kami mendengar keperluan anda dan terbuka kepada maklum balas pada setiap peringkat.' },
-      { title: 'Berperibadi', body: 'Bermula daripada reka bentuk demo kami yang disesuaikan dengan identiti anda, atau reka bentuk khas dari awal.' },
-      { title: 'Jujur', body: 'Harga telus, janji yang realistik dan tarikh akhir yang kami tepati.' },
+      { title: 'Berbual dahulu, percuma', body: 'Konsultasi melalui WhatsApp tidak mewajibkan apa-apa. Sebut harga bertulis diberikan sebelum kerja bermula.' },
+      { title: 'Cuba sebelum menempah', body: 'Buka demonya, pilih yang paling hampir dengan perniagaan anda, kemudian kami sesuaikan. Atau mulakan dengan reka bentuk baharu.' },
+      { title: 'Angka yang sama di setiap halaman', body: 'Harga dan tempoh siap di halaman harga, halaman perkhidmatan dan soalan lazim diambil daripada senarai yang sama.' },
     ],
     whyTitle: 'Mengapa memilih PintuWeb?',
     why: (landing: string, business: string, response: string) => [
@@ -206,8 +211,8 @@ const pages: Pages = {
     skillsTitle: 'Kepakaran utama',
     skillGroups: ['Frontend', 'Hosting & data', 'Kualiti & pengalaman'],
     skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', 'SEO teknikal', 'Audit prestasi', 'UI/UX'],
-    quote: 'Laman web bukan sekadar soal reka bentuk. Ia adalah imej, kepercayaan dan strategi perniagaan.',
-    quoteBy: 'Sanzy, Pengasas PintuWeb',
+    principlesTitle: 'Prinsip kerja',
+    principles: ['Harga ditulis sebelum kerja bermula.', 'Reka bentuk diluluskan dahulu, kemudian dibina.', `Pepijat dibaiki percuma selama ${GUARANTEE_DAYS} hari selepas laman web dilancarkan.`],
     writing: 'Tulisan Sanzy',
     ctaTitle: 'Berminat untuk bekerjasama?',
     ctaLead: 'Saya terbuka untuk projek baharu, konsultasi dan kerjasama jangka panjang.',
@@ -310,9 +315,9 @@ const pages: Pages = {
     colTime: 'Tempoh siap',
     priceOnRequest: 'Harga bergantung pada tema dan ciri yang anda pilih. Hantar keperluan anda melalui WhatsApp untuk mendapatkan sebut harga bertulis sebelum kerja bermula.',
     process: 'Cara ia berfungsi',
-    demos: 'Contoh yang boleh dicuba',
-    demosLead: 'Semua contoh ini dalam talian. Buka, cuba, kemudian sebutkan nama yang anda suka semasa menghubungi kami.',
-    portal: (n: number, label: string) => `Buka galeri ${label} (${n} contoh)`,
+    demos: 'Demo yang boleh dicuba',
+    demosLead: 'Semua demo ini dalam talian. Buka, cuba, kemudian sebutkan nama yang anda suka semasa menghubungi kami.',
+    portal: (n: number, label: string) => `Buka galeri ${label} (${n} demo)`,
     faq: 'Soalan tentang perkhidmatan ini',
     readArticles: 'Bacaan berkaitan',
     other: 'Perkhidmatan lain',
@@ -320,6 +325,7 @@ const pages: Pages = {
     ctaLead: 'Konsultasi percuma. Kami bantu memetakan halaman, ciri dan bajetnya.',
     ctaWa: (name: string) => `Hai PintuWeb, saya berminat dengan perkhidmatan ${name}. Boleh berbincang?`,
     seePricing: 'Lihat semua pakej',
+    guarantee: `Jaminan ${GUARANTEE_DAYS} hari`,
   },
 }
 

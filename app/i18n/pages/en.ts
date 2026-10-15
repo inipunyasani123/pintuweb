@@ -1,5 +1,7 @@
 // Page copy — English.
 import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { PACKAGES } from '../../lib/packages'
+import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 
@@ -13,7 +15,7 @@ const pages: Pages = {
     ogDescription: 'From landing pages to online stores and custom websites, with starting prices and demos you can try.',
     eyebrow: 'Services',
     h1: ['Seven services, from ', 'landing pages', ' to web apps.'] as Hl,
-    lead: 'Choose the kind of website you need. Every service comes with a starting price, an estimated turnaround and examples you can try.',
+    lead: 'Choose the kind of website you need. Every service comes with a starting price, an estimated turnaround and demos you can try.',
     listAria: 'List of services',
     from: 'From',
     priceOnRequest: 'Priced by theme & features — ask us on WhatsApp',
@@ -63,6 +65,9 @@ const pages: Pages = {
     ctaConsult: 'Not sure? Get a free consultation',
     readFaq: 'Read the full FAQ',
     updated: 'Prices valid as of',
+    needsTitle: 'Start from what you need',
+    needsLead: 'Pick the one closest to your plan; the link takes you straight to the right package.',
+    groupsLead: 'Or browse by category:',
   },
   demo: {
     title: (n: number) => `Demo Gallery — ${n} Sites You Can Try`,
@@ -110,30 +115,30 @@ const pages: Pages = {
     ogDescription: (n: number) => `Founded in ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} client projects and ${n} live demos you can try.`,
     eyebrow: 'About us',
     h1: ['A small web studio in Trenggalek, ', `since ${FOUNDED_YEAR}`, '.'] as Hl,
-    lead: 'PintuWeb helps small businesses, start-ups and personal brands get websites that are professional, fast and easy to find.',
+    lead: 'PintuWeb designs and builds websites for small businesses, start-ups and personal brands, from the first WhatsApp chat to the day the site goes live.',
     stats: { projects: 'Client projects completed', demos: 'Live demos', since: 'Founded', categories: 'Website categories' },
     storyTitle: 'Our story',
     story: (n: number) => [
-      'PintuWeb began with small businesses whose products were great but invisible online, simply because they did not have a decent website.',
-      `Starting out in ${LOC} in ${FOUNDED_YEAR}, we build quality websites at sensible prices. Every website is an investment in our clients' digital future.`,
-      `To date we have completed ${CLIENT_PROJECTS} client projects and published ${n} live demos you can try for yourself before deciding.`,
+      'PintuWeb began with small businesses whose products were good but hard to find online, because they had no decent website.',
+      `Starting out in ${LOC} in ${FOUNDED_YEAR}, we keep the same rules for every client: prices written up front, a 50% deposit to start, and the balance once you approve the website.`,
+      `To date we have completed ${CLIENT_PROJECTS} client projects, and ${n} demo sites stay online so you can try them yourself before deciding.`,
     ],
     now: 'Today',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'PintuWeb is founded', body: `Starting out in ${LOC}, helping local small businesses that did not yet have a website.` },
-      { year: 'Today', title: `${CLIENT_PROJECTS} client projects`, body: `Maintaining ${n} live demos across ${CATEGORY_COUNT} categories as proof of our work.` },
+      { year: 'Today', title: `${CLIENT_PROJECTS} client projects`, body: `${n} demo sites across ${CATEGORY_COUNT} categories stay online for you to try.` },
     ],
     founderTitle: 'Behind PintuWeb',
     beliefTitle: ['What we ', 'stand for'] as Hl,
-    beliefs: [
-      { title: 'Vision', body: 'To be a digital partner that empowers small businesses and start-ups through a professional online presence.' },
-      { title: 'Mission', body: 'To build quality websites at affordable prices, with support after the website goes live.' },
-      { title: 'Focus', body: 'Loading speed, security, SEO and a user experience that drives business growth.' },
+    beliefs: (n: number) => [
+      { title: 'Vision', body: 'Every business owner can see the price, try a demo and ask questions before paying anything.' },
+      { title: 'Mission', body: `To write the prices of all ${PACKAGES.length} packages up front, keep ${n} demo sites online, and explain pricing, services and the FAQ in ${LANGS.length} languages.` },
+      { title: 'Focus', body: `Phones first: pages designed for small screens, with a PageSpeed target of ${PERF_TARGET} and basic SEO from the start.` },
     ],
     values: [
-      { title: 'Collaborative', body: 'We listen to what you need and welcome feedback at every stage.' },
-      { title: 'Distinctive', body: 'Start from one of our demo designs, tailored to your identity, or get a bespoke design from scratch.' },
-      { title: 'Honest', body: 'Transparent prices, realistic promises and deadlines we keep.' },
+      { title: 'Talk first, for free', body: 'A WhatsApp consultation commits you to nothing. A written quote arrives before any work starts.' },
+      { title: 'Try before you order', body: 'Open the demos, pick the one closest to your business and we tailor it. Or start from a new design.' },
+      { title: 'The same numbers on every page', body: 'Prices and turnaround times on the pricing page, service pages, FAQ and articles come from the same list.' },
     ],
     whyTitle: 'Why choose PintuWeb?',
     why: (landing: string, business: string, response: string) => [
@@ -206,8 +211,8 @@ const pages: Pages = {
     skillsTitle: 'Core skills',
     skillGroups: ['Front end', 'Hosting & data', 'Quality & experience'],
     skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', 'Technical SEO', 'Performance audits', 'UI/UX'],
-    quote: 'A website is not just about design. It is your image, your credibility and your business strategy.',
-    quoteBy: 'Sanzy, Founder of PintuWeb',
+    principlesTitle: 'Working principles',
+    principles: ['Prices are in writing before work starts.', 'The design is approved first, then built.', `Bugs are fixed free for ${GUARANTEE_DAYS} days after the website goes live.`],
     writing: 'Articles by Sanzy',
     ctaTitle: 'Interested in working together?',
     ctaLead: 'I am open to new projects, consultations and long-term collaboration.',
@@ -310,9 +315,9 @@ const pages: Pages = {
     colTime: 'Turnaround',
     priceOnRequest: 'The price depends on the theme and features you choose. Send your requirements over WhatsApp and you will get a written quote before any work starts.',
     process: 'How it works',
-    demos: 'Examples you can try',
+    demos: 'Demos you can try',
     demosLead: 'All of these are online. Open them, try them, then mention the one you like when you contact us.',
-    portal: (n: number, label: string) => `Open the ${label} gallery (${n} examples)`,
+    portal: (n: number, label: string) => `Open the ${label} gallery (${n} demos)`,
     faq: 'Questions about this service',
     readArticles: 'Further reading',
     other: 'Other services',
@@ -320,6 +325,7 @@ const pages: Pages = {
     ctaLead: 'Free consultation. We will help you map out the pages, features and budget.',
     ctaWa: (name: string) => `Hello PintuWeb, I am interested in your ${name} service. Can we talk?`,
     seePricing: 'See all packages',
+    guarantee: `${GUARANTEE_DAYS}-day guarantee`,
   },
 }
 

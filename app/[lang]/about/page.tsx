@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CalendarClock, Check, Gauge, Github, LifeBuoy, ReceiptText, type LucideIcon } from 'lucide-react'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { ClientCases } from '../../components/ClientProjects'
-import { DEMOS } from '../../lib/demos'
+import { DEMOS, demoSrcSet } from '../../lib/demos'
 import { FOUNDED_YEAR, GITHUB } from '../../lib/site'
 import { facts, packagesFor } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
@@ -54,7 +53,7 @@ export default async function AboutPage({ params }: Params) {
   // Angka-angka (proyek klien, jumlah demo, tahun berdiri, jumlah kategori) cukup di judul, cerita, dan linimasa;
   // deretan kartu angka di bawah pembuka sudah dihapus karena hanya mengulangnya.
   const timeline = p.timeline(n)
-  const [vision, ...beliefs] = p.beliefs
+  const [vision, ...beliefs] = p.beliefs(n)
 
   return (
     <main id="main-content">
@@ -88,7 +87,20 @@ export default async function AboutPage({ params }: Params) {
               <div key={col[0]} className={`wall-col flex flex-col gap-2.5 sm:gap-3 ${ci === 1 ? 'wall-col-rev' : ''} ${ci === 2 ? 'hidden sm:flex' : ''}`}>
                 {col.map((slug) => (
                   <span key={slug} className="relative block aspect-[720/378] shrink-0 overflow-hidden rounded-xl bg-[color:var(--surface-soft)] ring-1 ring-[color:var(--border-light)] sm:rounded-2xl">
-                    <Image src={`/demos/${slug}.webp`} alt="" fill sizes="(min-width: 1024px) 200px, (min-width: 640px) 31vw, 46vw" className="object-cover" />
+                    {/* Thumbnail demo yang sudah diperkecil (360/480/720w, lib/demos.ts), seperti galeri demo: tanpa optimizer
+                        Next, srcset 3 kandidat (bukan 8, yang di atas 720w hanya menghasilkan berkas yang sama). */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/demos/${slug}.webp`}
+                      srcSet={demoSrcSet(slug)}
+                      sizes="(min-width: 1024px) 200px, (min-width: 640px) 31vw, 46vw"
+                      alt=""
+                      width={720}
+                      height={378}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
                   </span>
                 ))}
               </div>
@@ -98,7 +110,7 @@ export default async function AboutPage({ params }: Params) {
       </section>
 
       {/* Cerita + linimasa */}
-      <section aria-labelledby="story-title" className="mt-14 bg-[color:var(--surface-soft)] py-16 sm:mt-20 sm:py-24">
+      <section aria-labelledby="story-title" className="mt-14 bg-[color:var(--surface-soft)] section-y sm:mt-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-x-12 gap-y-10 px-4 sm:px-6 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <h2 id="story-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
@@ -134,7 +146,7 @@ export default async function AboutPage({ params }: Params) {
       <ClientCases lang={lang} />
 
       {/* Orang di baliknya */}
-      <section aria-labelledby="founder-title" className="py-16 sm:py-24">
+      <section aria-labelledby="founder-title" className="section-y">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid grid-cols-1 items-center gap-x-12 gap-y-8 rounded-[2rem] bg-[color:var(--surface-soft)] p-6 sm:p-10 lg:grid-cols-12 lg:p-12">
             <div className="lg:col-span-3">
@@ -150,13 +162,20 @@ export default async function AboutPage({ params }: Params) {
               <h2 id="founder-title" className="kicker text-[color:var(--primary-700)]">
                 {p.founderTitle}
               </h2>
-              <figure className="mt-4">
-                <blockquote className="display text-[1.5rem] font-semibold leading-snug tracking-tight text-[color:var(--text-primary)] sm:text-[2rem]">“{pf.quote}”</blockquote>
-                <figcaption className="mt-4 text-[1.0625rem] text-[color:var(--text-secondary)]">
-                  <span className="font-semibold text-[color:var(--text-primary)]">{pf.quoteBy}</span>
-                  <span className="mt-1 block text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{pages.articles.authorRole(FOUNDED_YEAR)}</span>
-                </figcaption>
-              </figure>
+              {/* Nama + peran, lalu prinsip kerja (teks yang sama dengan halaman Founder). Sengaja BUKAN kutipan:
+                  kalimat yang ditampilkan atas nama orang sungguhan tidak boleh dikarang. */}
+              <h3 className="display mt-4 text-[1.75rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">Sanzy</h3>
+              <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)] sm:text-[1.0625rem]">{pages.articles.authorRole(FOUNDED_YEAR)}</p>
+              <h4 id="about-principles" className="kicker mt-7 text-[color:var(--text-secondary)]">
+                {pf.principlesTitle}
+              </h4>
+              <ul aria-labelledby="about-principles" className="mt-2 max-w-2xl divide-y divide-[color:var(--border-light)] border-y border-[color:var(--border-light)]">
+                {pf.principles.map((x) => (
+                  <li key={x} className="py-3 text-[1.0625rem] font-medium leading-snug text-[color:var(--text-primary)]">
+                    {x}
+                  </li>
+                ))}
+              </ul>
               <ul className="mt-6 flex flex-wrap gap-2" aria-label={pf.skillsTitle}>
                 {pf.skills.map((s) => (
                   <li key={s} className="rounded-full bg-white px-3 py-1 text-[0.8125rem] font-medium text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)]">
@@ -180,7 +199,7 @@ export default async function AboutPage({ params }: Params) {
       </section>
 
       {/* Visi, misi, fokus + nilai */}
-      <section aria-labelledby="belief-title" className="bg-[color:var(--surface-soft)] py-16 sm:py-24">
+      <section aria-labelledby="belief-title" className="bg-[color:var(--surface-soft)] section-y">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 id="belief-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
             <HlText parts={p.beliefTitle} />
@@ -219,7 +238,7 @@ export default async function AboutPage({ params }: Params) {
       </section>
 
       {/* Mengapa */}
-      <section aria-labelledby="why-title" className="py-16 sm:py-24">
+      <section aria-labelledby="why-title" className="section-y">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 id="why-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
             {p.whyTitle}

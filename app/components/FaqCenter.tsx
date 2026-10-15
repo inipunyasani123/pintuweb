@@ -136,12 +136,13 @@ export default function FaqCenter({ items, categories, t, waHref }: Props) {
 
   const contact = (
     <div className="rounded-[1.25rem] bg-white p-5 ring-1 ring-[color:var(--border-light)] sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-6 lg:block lg:p-5">
-      <div className="min-w-0">
-        <p className="display text-[1.0625rem] font-semibold leading-snug text-[color:var(--text-primary)]">{t.unanswered}</p>
-        <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">
+      {/* sapaan + ajakan satu paragraf: baris tebalnya bukan judul bagian (axe p-as-heading) */}
+      <p className="min-w-0">
+        <span className="display block text-[1.0625rem] font-semibold leading-snug text-[color:var(--text-primary)]">{t.unanswered}</span>
+        <span className="mt-1.5 block text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">
           {t.askLead} {t.note}
-        </p>
-      </div>
+        </span>
+      </p>
       <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-solid btn-sm mt-4 w-full sm:mt-0 sm:w-auto sm:shrink-0 lg:mt-4 lg:w-full">
         {t.askWa} <ArrowUpRight size={15} className="arw arw-ne" aria-hidden="true" />
         <span className="sr-only">{t.newTab}</span>
