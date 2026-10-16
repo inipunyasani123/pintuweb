@@ -18,7 +18,7 @@ import { hasPage, path, pathOf, urlOf } from '../../../i18n/routes'
 import { ORG_ID, pageGraph, pageMeta } from '../../../i18n/seo'
 import { PACKAGES } from '../../../lib/packages'
 import { portalOf } from '../../../lib/portals'
-import { DEMOS, demoSrcSet } from '../../../lib/demos'
+import { DEMOS, demoSrcSet, demoThumb } from '../../../lib/demos'
 import { wa } from '../../../lib/site'
 
 type Params = { params: Promise<{ lang: string; slug: string }> }
@@ -293,7 +293,7 @@ export default async function ServicePage({ params }: Params) {
                     {/* sizes = lebar kartu: 2 kolom (ponsel & tablet), 3 kolom (lg) */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`/demos/${dm.slug}.webp`}
+                      src={demoThumb(dm.slug)}
                       srcSet={demoSrcSet(dm.slug)}
                       sizes="(min-width: 1152px) 352px, (min-width: 1024px) calc(33vw - 32px), (min-width: 640px) calc(50vw - 36px), calc(50vw - 22px)"
                       alt=""

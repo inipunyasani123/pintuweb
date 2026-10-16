@@ -26,7 +26,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ lang: s
       <guid isPermaLink="true">${link}</guid>
       <description>${esc(a.description)}</description>
       <pubDate>${new Date(a.date).toUTCString()}</pubDate>
-      <author>${EMAIL} (Sanzy)</author>
+      <author>${EMAIL} (Arya)</author>
 ${a.tags.map((t) => `      <category>${esc(t)}</category>`).join('\n')}
     </item>`
     })

@@ -6,7 +6,7 @@ import { path, urlOf } from '../../i18n/routes'
 import { pageGraph, pageMeta } from '../../i18n/seo'
 import { packagesFor } from '../../i18n/facts'
 import { PACKAGE_FOR_CATEGORY, portalOf } from '../../lib/portals'
-import { demoSrcSet, type DemoCategory } from '../../lib/demos'
+import { demoSrcSet, demoThumb, type DemoCategory } from '../../lib/demos'
 
 type Params = { params: Promise<{ lang: string }> }
 
@@ -100,6 +100,7 @@ export default async function DemoPage({ params }: Params) {
         contactHref={path(lang, 'contact')}
         pricingHref={path(lang, 'pricing')}
         thumbSrcSet={demoSrcSet('{slug}')}
+        thumbSrc={demoThumb('{slug}')}
       />
     </>
   )

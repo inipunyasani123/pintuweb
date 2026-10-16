@@ -101,7 +101,12 @@ export const DEMOS: Demo[] = [
   { slug: "crave-noir", name: "Positive Crave", tagline: "Konsep Noir", category: 'kontes', url: "https://crave-noir.pintuweb.id" },
 ]
 
-export const demoImage = (d: Demo) => `/demos/${d.slug}.webp`
+/** Versi thumbnail public/demos: naikkan setiap kali thumbnail ditangkap ulang. Nama berkasnya tetap (<slug>.webp)
+ *  sedangkan CDN & peramban menyimpannya 7 hari, jadi versi ini yang membuat tampilan baru langsung terlihat. */
+export const THUMB_V = '20261016'
+export const demoThumb = (slug: string) => `/demos/${slug}.webp?v=${THUMB_V}`
+export const demoImage = (d: Demo) => demoThumb(d.slug)
 
 /** srcset thumbnail demo: varian 360w & 480w + berkas aslinya (720w). */
-export const demoSrcSet = (slug: string) => `/demos/${slug}-360.webp 360w, /demos/${slug}-480.webp 480w, /demos/${slug}.webp 720w`
+export const demoSrcSet = (slug: string) =>
+  `/demos/${slug}-360.webp?v=${THUMB_V} 360w, /demos/${slug}-480.webp?v=${THUMB_V} 480w, /demos/${slug}.webp?v=${THUMB_V} 720w`

@@ -194,14 +194,14 @@ const pages = {
   },
   founder: {
     title: 'Profil Founder',
-    description: `Kenalan dengan Sanzy, founder dan developer di balik PintuWeb sejak ${FOUNDED_YEAR}, yang sudah menyelesaikan ${CLIENT_PROJECTS} proyek website untuk UMKM dan startup.`,
+    description: `Kenalan dengan Arya, founder dan developer di balik PintuWeb sejak ${FOUNDED_YEAR}, yang sudah menyelesaikan ${CLIENT_PROJECTS} proyek website untuk UMKM dan startup.`,
     ogTitle: 'Profil Founder — PintuWeb',
-    ogDescription: 'Sanzy, founder & developer PintuWeb: website cepat, rapi, dan SEO-ready untuk bisnis lokal.',
+    ogDescription: 'Arya, founder & developer PintuWeb: website cepat, rapi, dan SEO-ready untuk bisnis lokal.',
     badge: 'Founder',
-    h1: ['Halo, saya ', 'Sanzy.'] as Hl,
+    h1: ['Halo, saya ', 'Arya.'] as Hl,
     lead: `Founder & developer di balik PintuWeb. Sejak ${FOUNDED_YEAR} saya membangun website yang cepat, rapi, dan mudah ditemukan untuk UMKM dan startup di Indonesia.`,
     github: 'Lihat karya saya di GitHub',
-    monogram: 'Monogram Sanzy, founder PintuWeb',
+    monogram: 'Monogram Arya, founder PintuWeb',
     jobTitle: 'Founder & Developer',
     journeyTitle: 'Perjalanan',
     timeline: (n: number) => [
@@ -213,13 +213,13 @@ const pages = {
     skillGroups: ['Frontend', 'Hosting & data', 'Mutu & pengalaman'],
     skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', 'SEO teknis', 'Audit performa', 'UI/UX'],
     // Prinsip kerja (halaman Founder & kartu "Di balik PintuWeb" di Tentang): pernyataan cara kerja dari fakta situs,
-    // BUKAN kutipan; jangan ditulis sebagai ucapan Sanzy.
+    // BUKAN kutipan; jangan ditulis sebagai ucapan Arya.
     principlesTitle: 'Prinsip kerja',
     principles: ['Harga tertulis sebelum pekerjaan dimulai.', 'Desain disetujui dulu, baru dibangun.', `Bug diperbaiki gratis ${GUARANTEE_DAYS} hari setelah website online.`],
-    writing: 'Tulisan Sanzy',
+    writing: 'Tulisan Arya',
     ctaTitle: 'Tertarik bekerja sama?',
     ctaLead: 'Saya terbuka untuk proyek baru, konsultasi, maupun kerja sama jangka panjang.',
-    ctaWa: 'Halo Sanzy, saya ingin berdiskusi soal proyek website.',
+    ctaWa: 'Halo Arya, saya ingin berdiskusi soal proyek website.',
     ctaDemos: (n: number) => `Lihat ${n} demo`,
   },
   notFound: {

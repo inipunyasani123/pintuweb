@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: { default: t.meta.homeTitle, template: '%s | PintuWeb' },
     description: t.meta.homeDescription(DEMOS.length),
     applicationName: 'PintuWeb',
-    authors: [{ name: 'Sanzy', url: `${SITE}/owner` }],
+    authors: [{ name: 'Arya', url: `${SITE}/owner` }],
     creator: 'PintuWeb',
     publisher: 'PintuWeb',
     keywords: t.meta.keywords,

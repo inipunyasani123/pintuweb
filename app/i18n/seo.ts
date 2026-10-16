@@ -1,7 +1,7 @@
 // Metadata & JSON-LD per halaman: canonical + hreflang lengkap, Open Graph per bahasa,
 // dan graf schema.org yang konsisten (Organization, WebSite, WebPage, BreadcrumbList).
 import type { Metadata } from 'next'
-import { CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER } from '../lib/site'
+import { CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER, FOUNDER_NAME } from '../lib/site'
 import { PACKAGES } from '../lib/packages'
 import { LANG_INFO, LANGS, plain, type Lang } from './config'
 import { alternatesOf, langsOf, path, urlOf, type DocRef } from './routes'
@@ -12,7 +12,7 @@ export const ORG_ID = `${SITE}/#organization`
 export const WEBSITE_ID = `${SITE}/#website`
 export const FOUNDER_ID = `${SITE}/owner#person`
 /** Founder sebagai node Person ringkas: dipakai utuh sebagai `author` BlogPosting (perayap tidak selalu menelusuri @id). */
-export const FOUNDER_PERSON = { '@type': 'Person', '@id': FOUNDER_ID, name: 'Sanzy', url: `${SITE}/owner` } as const
+export const FOUNDER_PERSON = { '@type': 'Person', '@id': FOUNDER_ID, name: FOUNDER_NAME, url: `${SITE}/owner` } as const
 
 type MetaInput = {
   lang: Lang

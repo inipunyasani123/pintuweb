@@ -125,7 +125,7 @@ export default async function ArticlePage({ params }: Params) {
                 <p className="text-[0.9375rem] text-[color:var(--text-primary)]">
                   {p.by}{' '}
                   <Link href={path(lang, 'founder')} rel="author" className="py-1 font-semibold underline decoration-[color:var(--primary-300)] underline-offset-4 hover:decoration-[color:var(--primary-700)]">
-                    Sanzy
+                    Arya
                   </Link>
                 </p>
                 <p className="mt-0.5 text-[0.8125rem] text-[color:var(--text-tertiary)]">
@@ -211,7 +211,7 @@ export default async function ArticlePage({ params }: Params) {
               <div className="min-w-0">
                 {/* nama + peran satu paragraf (bukan <p> bergaya judul yang disusul <p> lain) */}
                 <p>
-                  <span className="display block text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">Sanzy</span>
+                  <span className="display block text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">Arya</span>
                   <span className="mt-0.5 block text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{p.authorRole(FOUNDED_YEAR)}</span>
                 </p>
                 {/* py-1 + margin negatif: bidang sentuh tautan teks kecil >= 24px (WCAG 2.5.8) tanpa menggeser tata letak */}

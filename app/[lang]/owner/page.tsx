@@ -6,7 +6,7 @@ import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { Logo } from '../../components/Logo'
 import { articlesIn } from '../../content/articles'
 import { DEMOS } from '../../lib/demos'
-import { EMAIL, FOUNDED_YEAR, GITHUB, WA_DISPLAY, wa } from '../../lib/site'
+import { EMAIL, FOUNDED_YEAR, GITHUB, WA_DISPLAY, wa, FOUNDER_NAME } from '../../lib/site'
 import { facts } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
@@ -14,7 +14,7 @@ import { FOUNDER_ID, ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
 
 type Params = { params: Promise<{ lang: string }> }
 
-const NAME = 'Sanzy'
+const NAME = FOUNDER_NAME
 
 // Tiga kelompok keahlian: potongan dari founder.skills (urutannya sama di ketiga bahasa) + ikonnya.
 // Judul kelompok ada di founder.skillGroups.
@@ -187,7 +187,7 @@ export default async function OwnerPage({ params }: Params) {
             </ul>
           </div>
           {/* Prinsip kerja: pernyataan cara kerja dari fakta situs (harga, persetujuan desain, garansi), BUKAN kutipan
-              Sanzy. Teksnya sama dengan kartu "Di balik PintuWeb" di halaman Tentang. */}
+              Arya. Teksnya sama dengan kartu "Di balik PintuWeb" di halaman Tentang. */}
           <section aria-labelledby="principles-title" className="flex flex-col gap-7 rounded-[1.75rem] p-7 text-white [background-image:linear-gradient(150deg,var(--primary-700),var(--primary-900))] sm:p-9 lg:col-span-5">
             <h2 id="principles-title" className="kicker text-[color:var(--accent-200)]">
               {p.principlesTitle}

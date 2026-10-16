@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, CalendarClock, Check, Gauge, Github, LifeBuoy, ReceiptText, type LucideIcon } from 'lucide-react'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { ClientCases } from '../../components/ClientProjects'
-import { DEMOS, demoSrcSet } from '../../lib/demos'
+import { DEMOS, demoSrcSet, demoThumb } from '../../lib/demos'
 import { FOUNDED_YEAR, GITHUB } from '../../lib/site'
 import { facts, packagesFor } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
@@ -91,7 +91,7 @@ export default async function AboutPage({ params }: Params) {
                         Next, srcset 3 kandidat (bukan 8, yang di atas 720w hanya menghasilkan berkas yang sama). */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`/demos/${slug}.webp`}
+                      src={demoThumb(slug)}
                       srcSet={demoSrcSet(slug)}
                       sizes="(min-width: 1024px) 200px, (min-width: 640px) 31vw, 46vw"
                       alt=""
@@ -164,7 +164,7 @@ export default async function AboutPage({ params }: Params) {
               </h2>
               {/* Nama + peran, lalu prinsip kerja (teks yang sama dengan halaman Founder). Sengaja BUKAN kutipan:
                   kalimat yang ditampilkan atas nama orang sungguhan tidak boleh dikarang. */}
-              <h3 className="display mt-4 text-[1.75rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">Sanzy</h3>
+              <h3 className="display mt-4 text-[1.75rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">Arya</h3>
               <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)] sm:text-[1.0625rem]">{pages.articles.authorRole(FOUNDED_YEAR)}</p>
               <h4 id="about-principles" className="kicker mt-7 text-[color:var(--text-secondary)]">
                 {pf.principlesTitle}

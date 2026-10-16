@@ -13,6 +13,8 @@ export const LOCATION = 'Trenggalek, Jawa Timur'
 export const WA_NUMBER = '6285190931399'
 export const WA_DISPLAY = '+62 851 9093 1399'
 export const EMAIL = 'cs@pintuweb.id'
+/** Nama founder/pemilik PintuWeb (halaman founder, Tentang, penulis artikel, RSS, JSON-LD Person). */
+export const FOUNDER_NAME = 'Arya'
 /**
  * Profil GitHub pemilik tanpa https://, mis. 'github.com/namaakun'. Dipakai tombol di halaman Tentang, kartu founder,
  * dan sameAs di data terstruktur. Kosong = semua tautan GitHub disembunyikan (akun GitHub lama ditutup Okt 2026;
@@ -38,7 +40,7 @@ export const GUARANTEE_DAYS = 30
  * Tanggal terakhir fakta di file ini (kontak, jam kerja, angka) berubah. NAIKKAN setiap kali mengubahnya:
  * tanggal berlaku dokumen legal dan lastmod sitemap mengikuti tanggal ini.
  */
-export const FACTS_UPDATED = '2026-10-15'
+export const FACTS_UPDATED = '2026-10-16'
 
 /** Tanggal ISO (YYYY-MM-DD) yang paling baru. */
 export const latest = (...dates: string[]) => dates.reduce((a, b) => (b > a ? b : a))

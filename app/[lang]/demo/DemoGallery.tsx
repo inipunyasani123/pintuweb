@@ -56,8 +56,9 @@ const vars = (c: DemoCategory) => ({ '--k': CATEGORY_COLOR[c].color, '--k2': CAT
 
 // Galeri semua demo: pencarian, saringan kategori berwarna, spanduk kategori (harga + galeri khususnya),
 // dan kisi kartu. Kategori tercermin di hash URL (/demo#undangan) supaya halaman lain bisa menautkannya.
-// thumbSrcSet = pola srcset dengan {slug} (demoSrcSet di lib/demos.ts), supaya data demo tidak ikut ke bundel klien.
-export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, thumbSrcSet }: { demos: (Demo & { from?: string })[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string; thumbSrcSet: string }) {
+// thumbSrcSet / thumbSrc = pola srcset & src dengan {slug} (demoSrcSet / demoThumb di lib/demos.ts, sudah berversi), supaya
+// data demo tidak ikut ke bundel klien.
+export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, thumbSrcSet, thumbSrc }: { demos: (Demo & { from?: string })[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string; thumbSrcSet: string; thumbSrc: string }) {
   const catOf = useMemo(() => Object.fromEntries(cats.map((c) => [c.id, c])) as Record<DemoCategory, DemoCat>, [cats])
   const [filter, setFilterState] = useState<Filter>('semua')
   const [query, setQuery] = useState('')
@@ -246,7 +247,7 @@ export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, 
                       // sizes = lebar gambar di kisi: 2 kolom (ponsel), 3 kolom (md/lg), 4 kolom (xl).
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={`/demos/${d.slug}.webp`}
+                        src={fill(thumbSrc, { slug: d.slug })}
                         srcSet={fill(thumbSrcSet, { slug: d.slug })}
                         sizes="(min-width: 1280px) 245px, (min-width: 1024px) calc(33vw - 45px), (min-width: 768px) calc(33vw - 40px), calc(50vw - 36px)"
                         alt={fill(t.imgAlt, { name: shared ? `${d.name} (${d.tagline})` : d.name })}
