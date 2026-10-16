@@ -22,20 +22,28 @@ const notId = ["_next", "_vercel", "api", ...LANGS].map((p) => `${p}(?:/|$)`).jo
 // Gambar di public/demos & public/images berganti NAMA bila isinya berubah (favicon memakai ?v=), jadi aman
 // disimpan browser/CDN selama seminggu.
 const assetCache = [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }];
+// Varian gambar statis (public/_img) memuat hash isi di namanya: aman disimpan selamanya.
+const immutable = [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }];
 
 const nextConfig: NextConfig = {
   // Font TTF & logo untuk gambar OG dibaca lewat fs saat runtime: pastikan ikut terbundel.
   outputFileTracingIncludes: { "/api/og": ["./app/api/og/fonts/**", "./app/api/og/logo.png"] },
-  // Hasil optimasi next/image disimpan 30 hari (sumbernya hanya gambar lokal yang namanya berganti bila diubah).
-  // deviceSizes tanpa 2048 & 3840 (bawaan Next): sumber gambar terlebar di situs ini 1600px (sampul artikel) dan
-  // optimizer tidak pernah memperbesar, jadi dua ukuran itu hanya menghasilkan berkas yang sama dengan 1920 sambil
-  // menambah dua entri di setiap srcset (±7 KB HTML di beranda). Tambahkan lagi bila kelak ada sumber > 1920px.
-  images: { minimumCacheTTL: 2592000, deviceSizes: [640, 750, 828, 1080, 1200, 1920] },
+  // next/image TIDAK memakai Image Optimization Vercel (kuota paket Hobby habis → varian baru dibalas 402):
+  // loader khusus menunjuk varian WebP statis di public/_img buatan scripts/static-images.mjs. Lebar di bawah harus
+  // sama dengan WIDTHS di skrip itu. Setiap menambah/mengganti gambar di public/images, jalankan:
+  //   node scripts/static-images.mjs . --dirs public/images
+  images: {
+    loader: "custom",
+    loaderFile: "./image-loader.js",
+    deviceSizes: [640, 828, 1080, 1280, 1920],
+    imageSizes: [64, 128, 256, 384],
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
       { source: "/demos/:path*", headers: assetCache },
       { source: "/images/:path*", headers: assetCache },
+      { source: "/_img/:path*", headers: immutable },
     ];
   },
   async redirects() {
