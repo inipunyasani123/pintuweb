@@ -102,6 +102,7 @@ const en: Dict = {
     lead: (n: number) =>
       `We design and build websites for small businesses, shops and personal brands: quick to open on a phone, ready to be found on Google, and entirely yours. ${CLIENT_PROJECTS} client projects delivered, and ${n} demo sites you can open today.`,
     offer: (price: string, duration: string) => `Landing pages from ${price}, ready in ${duration}. Pay 50% up front and the rest once it is finished.`,
+    pay: 'Pay 50% up front and the rest once it is finished.',
     ctaConsult: 'Free consultation',
     ctaDemos: (n: number) => `See ${n} demos`,
     facade: 'Nine kinds of website we build',

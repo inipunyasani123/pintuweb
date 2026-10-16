@@ -281,19 +281,6 @@
     }
   }
 
-  /* Janji: kartu berbentuk kupon. Dua takik setengah lingkaran di batas potongan (--stub = lebar potongan kiri)
-     dipotong dengan mask, jadi latar bagian terlihat di baliknya; bayangannya (drop-shadow di pembungkus)
-     ikut bentuk takik. Tanpa dukungan mask: kartu persegi biasa. */
-  .tix {
-    --notch: 9px;
-    -webkit-mask:
-      radial-gradient(circle var(--notch) at calc(var(--stub) - 1px) 0, #0000 calc(100% - .5px), #000) top / 100% 51% no-repeat,
-      radial-gradient(circle var(--notch) at calc(var(--stub) - 1px) 100%, #0000 calc(100% - .5px), #000) bottom / 100% 51% no-repeat;
-    mask:
-      radial-gradient(circle var(--notch) at calc(var(--stub) - 1px) 0, #0000 calc(100% - .5px), #000) top / 100% 51% no-repeat,
-      radial-gradient(circle var(--notch) at calc(var(--stub) - 1px) 100%, #0000 calc(100% - .5px), #000) bottom / 100% 51% no-repeat;
-  }
-
   /* FAQ: jawaban muncul seperti balasan obrolan */
   @keyframes faq-in { from { opacity: 0; transform: translateY(6px); } }
   .faq-item[open] .faq-answer { animation: faq-in .3s cubic-bezier(.2,.7,.2,1); }
@@ -434,6 +421,31 @@
 @utility section-y { padding-block: var(--section-y); }
 @utility section-t { padding-top: var(--section-y); }
 @utility section-b { padding-bottom: var(--section-y); }
+
+/* Janji (WhyUs): kartu berbentuk kupon. Dua takik setengah lingkaran di garis sobek dipotong dengan mask, jadi latar
+   bagian terlihat di baliknya; bayangannya (drop-shadow di pembungkus) ikut bentuk takik. --stub = lebar potongan
+   (tix-v, garis sobek tegak) atau tingginya (tix-h, garis sobek mendatar). Di bahasa kanan-ke-kiri potongan tix-v ada
+   di sisi kanan, jadi takiknya ikut pindah. Tanpa dukungan mask: kartu persegi biasa. */
+@utility tix-v {
+  --notch: 9px;
+  --tix-x: calc(var(--stub) - 1px);
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at var(--tix-x) 0, #0000 calc(100% - .5px), #000) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at var(--tix-x) 100%, #0000 calc(100% - .5px), #000) bottom / 100% 51% no-repeat;
+  mask:
+    radial-gradient(circle var(--notch) at var(--tix-x) 0, #0000 calc(100% - .5px), #000) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at var(--tix-x) 100%, #0000 calc(100% - .5px), #000) bottom / 100% 51% no-repeat;
+  &:dir(rtl) { --tix-x: calc(100% - var(--stub) + 1px); }
+}
+@utility tix-h {
+  --notch: 9px;
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 calc(var(--stub) - 1px), #0000 calc(100% - .5px), #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% calc(var(--stub) - 1px), #0000 calc(100% - .5px), #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle var(--notch) at 0 calc(var(--stub) - 1px), #0000 calc(100% - .5px), #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% calc(var(--stub) - 1px), #0000 calc(100% - .5px), #000) right / 51% 100% no-repeat;
+}
 
 /* Aksara non-Latin (di luar @layer supaya menang atas utilitas Tailwind).
    Pemadatan huruf (letter-spacing negatif) memutus sambungan huruf Arab dan menggeser tanda vokal Devanagari/Bengali,

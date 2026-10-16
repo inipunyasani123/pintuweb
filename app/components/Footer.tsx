@@ -211,6 +211,20 @@ export default function Footer({ lang }: { lang: Lang }) {
           </p>
           <p>{t.footer.basedIn}</p>
         </div>
+
+        {/* Wordmark raksasa di dasar halaman: tenang (putih sangat samar di atas biru tua), dekoratif. SVG textLength
+            membuatnya pas selebar kolom isi apa pun fontnya, tanpa pernah melebar keluar layar. */}
+        <svg viewBox="0 0 1000 178" className="pointer-events-none block w-full select-none" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="footer-wordmark" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#fff" stopOpacity="0.13" />
+              <stop offset="1" stopColor="#fff" stopOpacity="0.025" />
+            </linearGradient>
+          </defs>
+          <text x="0" y="172" direction="ltr" textLength="1000" lengthAdjust="spacingAndGlyphs" fontSize="232" fontWeight="600" letterSpacing="-6" fill="url(#footer-wordmark)" style={{ fontFamily: 'var(--font-display)' }}>
+            PintuWeb
+          </text>
+        </svg>
       </div>
     </footer>
   )

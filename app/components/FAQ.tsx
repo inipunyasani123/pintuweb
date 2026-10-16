@@ -146,9 +146,13 @@ export default function FAQ({ items, categories, t, waHref, faqHref }: Props) {
 
           {/* Daftar: semua item selalu dirender */}
           <div className="mt-5 flex flex-col gap-2.5 sm:mt-6">
-            {items.map((item, i) => (
-              <FaqCard key={item.key} item={item} q={q} as="h3" hidden={!state[i].show} open={state[i].reveal} moreLabel={t.more} />
-            ))}
+            {(() => {
+              // nomor urut dihitung di antara kartu yang sedang tampil (kategori/pencarian), jadi selalu 01, 02, …
+              let n = 0
+              return items.map((item, i) => (
+                <FaqCard key={item.key} item={item} q={q} as="h3" hidden={!state[i].show} open={state[i].reveal} moreLabel={t.more} num={state[i].show ? ++n : undefined} />
+              ))
+            })()}
           </div>
 
           {count === 0 && (

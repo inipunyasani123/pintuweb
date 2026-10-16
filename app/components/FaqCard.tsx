@@ -80,13 +80,15 @@ type Props = {
   moreLabel: string
   /** tindakan tambahan di bawah jawaban (halaman FAQ: tanya lanjut, salin tautan) */
   actions?: ReactNode
+  /** nomor urut di antara kartu yang sedang tampil (01, 02, …); petak nomornya menyala biru saat kartu dibuka */
+  num?: number
 }
 
 /**
  * Kartu pertanyaan (<details>). Jawabannya tampil seperti balasan obrolan dari PintuWeb: logo + gelembung.
  * Dipakai bagian FAQ di beranda dan halaman FAQ.
  */
-export default function FaqCard({ item, q, as: Q, hidden, open, onToggle, id, focused, moreLabel, actions }: Props) {
+export default function FaqCard({ item, q, as: Q, hidden, open, onToggle, id, focused, moreLabel, actions, num }: Props) {
   return (
     <details
       id={id}
@@ -97,17 +99,29 @@ export default function FaqCard({ item, q, as: Q, hidden, open, onToggle, id, fo
         focused ? 'ring-2 ring-[color:var(--primary-700)]' : 'ring-1 ring-[color:var(--border-light)] open:ring-[color:var(--primary-300)]'
       }`}
     >
-      <summary className="flex cursor-pointer list-none items-center gap-4 rounded-[1.25rem] px-5 py-4 text-start sm:px-6 sm:py-[1.125rem] [&::-webkit-details-marker]:hidden">
+      <summary className={`flex cursor-pointer list-none items-center rounded-[1.25rem] py-4 text-start sm:py-[1.125rem] [&::-webkit-details-marker]:hidden ${num ? 'gap-3 ps-4 pe-5 sm:gap-4 sm:ps-5 sm:pe-6' : 'gap-4 px-5 sm:px-6'}`}>
+        {num !== undefined && (
+          // nomor hanya penanda urutan (dekoratif); sejajar dengan logo di gelembung jawaban di bawahnya
+          <span
+            aria-hidden="true"
+            className="grid h-8 w-8 shrink-0 place-items-center rounded-[0.625rem] bg-[color:var(--surface-soft)] text-[0.75rem] font-semibold tabular-nums text-[color:var(--text-tertiary)] ring-1 ring-[color:var(--border-light)] transition-colors duration-300 group-open:bg-[color:var(--primary-700)] group-open:text-white group-open:ring-[color:var(--primary-700)] sm:h-9 sm:w-9 sm:rounded-xl sm:text-[0.8125rem]"
+          >
+            {String(num).padStart(2, '0')}
+          </span>
+        )}
         <Q className="flex-1 text-[1.0625rem] leading-snug text-[color:var(--text-primary)] transition-colors group-open:text-[color:var(--primary-700)] sm:text-[1.125rem]">{mark(item.question, q)}</Q>
+        {/* kartu bernomor: yang menyala biru saat dibuka cukup petak nomornya, tombol +/× tetap tenang */}
         <span
           aria-hidden="true"
-          className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color:var(--surface-soft)] text-[color:var(--text-secondary)] transition-[transform,background-color,color] duration-300 group-open:rotate-45 group-open:bg-[color:var(--primary-700)] group-open:text-white"
+          className={`relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color:var(--surface-soft)] text-[color:var(--text-secondary)] transition-[transform,background-color,color] duration-300 group-open:rotate-45 ${
+            num ? 'group-open:bg-[color:var(--primary-50)] group-open:text-[color:var(--primary-700)]' : 'group-open:bg-[color:var(--primary-700)] group-open:text-white'
+          }`}
         >
           <span className="absolute h-[1.5px] w-3 rounded-full bg-current" />
           <span className="absolute h-3 w-[1.5px] rounded-full bg-current" />
         </span>
       </summary>
-      <div className="faq-answer px-5 pb-5 sm:px-6 sm:pb-6">
+      <div className={`faq-answer pb-5 sm:pb-6 ${num ? 'ps-4 pe-5 sm:ps-5 sm:pe-6' : 'px-5 sm:px-6'}`}>
         <div className="flex items-start gap-3">
           <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white ring-1 ring-[color:var(--border-light)]" aria-hidden="true">
             <LogoMark className="h-[1.125rem] w-auto" />

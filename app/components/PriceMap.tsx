@@ -14,11 +14,11 @@ import { LANG_INFO, type Lang } from '../i18n/config'
 // Batasnya ditulis di sumbu, dan pita terakhir berakhir di harga tertinggi yang ada.
 const STOPS = [0, 500_000, 1_500_000, 5_000_000]
 const TOP = Math.max(...PACKAGES.map((p) => p.maxPrice), STOPS[STOPS.length - 1] + 1)
-const BOUNDS = [...STOPS, TOP]
-const BANDS = BOUNDS.length - 1
+export const BOUNDS = [...STOPS, TOP]
+export const BANDS = BOUNDS.length - 1
 
-/** posisi (0-100) suatu harga pada skala berpita */
-function pos(v: number) {
+/** posisi (0-100) suatu harga pada skala berpita (juga dipakai peta mini di petak janji, WhyUs) */
+export function pricePos(v: number) {
   for (let i = 0; i < BANDS; i++) {
     if (v <= BOUNDS[i + 1]) return ((i + (v - BOUNDS[i]) / (BOUNDS[i + 1] - BOUNDS[i])) / BANDS) * 100
   }
@@ -73,8 +73,8 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
 
       <ul>
         {items.map((p) => {
-          const a = pos(p.minPrice)
-          const w = pos(p.maxPrice) - a
+          const a = pricePos(p.minPrice)
+          const w = pricePos(p.maxPrice) - a
           const price = moneyShort(lang, p)
           // irisan gradasi bersama yang ditampilkan batang ini (0–100)
           const slice = w >= 100 ? 0 : (a / (100 - w)) * 100

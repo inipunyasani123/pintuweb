@@ -102,6 +102,7 @@ const ms: Dict = {
     lead: (n: number) =>
       `Kami mereka bentuk dan membina laman web untuk PKS, kedai dan jenama peribadi: pantas dibuka di telefon, sedia ditemui di Google, dan milik anda sepenuhnya. ${CLIENT_PROJECTS} projek pelanggan telah siap, dan ${n} laman demo boleh anda buka hari ini.`,
     offer: (price: string, duration: string) => `Landing page bermula ${price}, siap dalam ${duration}. Bayar 50% dahulu, bakinya selepas kerja selesai.`,
+    pay: 'Bayar 50% dahulu, bakinya selepas kerja selesai.',
     ctaConsult: 'Konsultasi percuma',
     ctaDemos: (n: number) => `Lihat ${n} demo`,
     facade: 'Sembilan jenis laman web yang kami bina',

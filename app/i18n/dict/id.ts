@@ -107,6 +107,8 @@ const id = {
       `Kami merancang dan membangun website untuk UMKM, toko, dan personal brand: cepat dibuka di ponsel, siap ditemukan di Google, dan sepenuhnya milikmu. ${CLIENT_PROJECTS} proyek klien sudah selesai, dan ${n} situs demo bisa kamu buka sendiri hari ini.`,
     // Satu baris penawaran di bawah paragraf pembuka; harga & durasi paket Landing Page dari lib/packages.ts.
     offer: (price: string, duration: string) => `Landing page mulai ${price}, selesai dalam ${duration}. Bayar 50% di awal, sisanya setelah website jadi.`,
+    // layar ≥768px: harga & lama pengerjaan pindah ke label gantungan pintu di gambar hero, kalimatnya tinggal bagian bayar
+    pay: 'Bayar 50% di awal, sisanya setelah website jadi.',
     ctaConsult: 'Konsultasi gratis',
     ctaDemos: (n: number) => `Lihat ${n} demo`,
     facade: 'Sembilan jenis website yang kami buat',

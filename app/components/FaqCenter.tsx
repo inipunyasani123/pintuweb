@@ -257,37 +257,42 @@ export default function FaqCenter({ items, categories, t, waHref }: Props) {
                     </span>
                   </div>
                   <div className="mt-4 flex flex-col gap-2.5 sm:mt-5">
-                    {items.map((item, i) =>
-                      item.category !== c.id ? null : (
-                        <FaqCard
-                          key={item.key}
-                          id={item.key}
-                          item={item}
-                          q={q}
-                          as="h3"
-                          hidden={!state[i].show}
-                          open={open.has(item.key) || state[i].reveal}
-                          // kartu yang terbuka hanya karena pencarian tidak dicatat, supaya tertutup lagi saat pencarian dihapus
-                          onToggle={(isOpen) => (isOpen && state[i].reveal ? undefined : toggle(item.key, isOpen))}
-                          focused={focus === item.key}
-                          moreLabel={t.more}
-                          actions={
-                            <>
-                              <a
-                                href={wa(fill(t.followText, { q: item.question }))}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex min-h-8 items-center gap-1.5 text-[color:var(--text-secondary)] underline-offset-4 hover:text-[color:var(--primary-700)] hover:underline"
-                              >
-                                {t.follow} <ArrowUpRight size={14} className="arw arw-ne shrink-0" aria-hidden="true" />
-                                <span className="sr-only">{t.newTab}</span>
-                              </a>
-                              <CopyLink label={t.copy} done={t.copied} hash={item.key} plain />
-                            </>
-                          }
-                        />
-                      ),
-                    )}
+                    {/* nomor urut per kategori, di antara kartu yang sedang tampil */}
+                    {(() => {
+                      let n = 0
+                      return items.map((item, i) =>
+                        item.category !== c.id ? null : (
+                          <FaqCard
+                            key={item.key}
+                            id={item.key}
+                            item={item}
+                            q={q}
+                            as="h3"
+                            hidden={!state[i].show}
+                            open={open.has(item.key) || state[i].reveal}
+                            // kartu yang terbuka hanya karena pencarian tidak dicatat, supaya tertutup lagi saat pencarian dihapus
+                            onToggle={(isOpen) => (isOpen && state[i].reveal ? undefined : toggle(item.key, isOpen))}
+                            focused={focus === item.key}
+                            moreLabel={t.more}
+                            num={state[i].show ? ++n : undefined}
+                            actions={
+                              <>
+                                <a
+                                  href={wa(fill(t.followText, { q: item.question }))}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex min-h-8 items-center gap-1.5 text-[color:var(--text-secondary)] underline-offset-4 hover:text-[color:var(--primary-700)] hover:underline"
+                                >
+                                  {t.follow} <ArrowUpRight size={14} className="arw arw-ne shrink-0" aria-hidden="true" />
+                                  <span className="sr-only">{t.newTab}</span>
+                                </a>
+                                <CopyLink label={t.copy} done={t.copied} hash={item.key} plain />
+                              </>
+                            }
+                          />
+                        ),
+                      )
+                    })()}
                   </div>
                 </section>
               )

@@ -102,6 +102,7 @@ const pt: Dict = {
     lead: (n: number) =>
       `Projetamos e construímos sites para pequenas empresas, lojas e marcas pessoais: rápidos de abrir no celular, prontos para aparecer no Google e totalmente seus. ${CLIENT_PROJECTS} projetos de clientes entregues e ${n} sites de demonstração que você pode abrir hoje.`,
     offer: (price: string, duration: string) => `Landing pages a partir de ${price}, prontas em ${duration}. Você paga 50% no início e o restante ao final.`,
+    pay: 'Você paga 50% no início e o restante ao final.',
     ctaConsult: 'Consulta gratuita',
     ctaDemos: (n: number) => `Ver ${n} demos`,
     facade: 'Nove tipos de site que construímos',
