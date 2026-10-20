@@ -1,14 +1,16 @@
-// Dibuat dari 65 situs demo yang live di Vercel.
-// Judul diambil dari <title> tiap situs; gambar = og.jpg milik situs itu sendiri, diperkecil
-// jadi public/demos/<slug>.webp (720x378) supaya galeri ringan dan tidak bergantung pada 65 domain lain.
+// Daftar situs demo yang live di <repo>.pintuweb.id (satu entri per demo; jumlahnya = DEMOS.length).
+// Judul diambil dari <title> tiap situs; gambar = tangkapan 1200x630 bagian atas halamannya, diperkecil
+// jadi public/demos/<slug>.webp (720x378) supaya galeri ringan dan tidak bergantung pada domain demo.
 // Untuk srcset ada juga <slug>-360.webp dan <slug>-480.webp (diperkecil dari berkas 720w dengan sharp, WebP q74);
 // demo baru perlu ketiganya.
 
-export type DemoCategory = 'landing' | 'toko' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
+export type DemoCategory = 'landing' | 'toko' | 'menu' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
 
 export const DEMO_CATEGORIES: { id: DemoCategory; label: string }[] = [
   { id: 'landing', label: 'Landing Page' },
   { id: 'toko', label: 'Toko Online' },
+  // Menu digital QR untuk kafe & warung: dijual sebagai paket Landing Page (PACKAGE_FOR_CATEGORY di lib/portals.ts).
+  { id: 'menu', label: 'Menu Digital' },
   { id: 'undangan', label: 'Undangan Digital' },
   { id: 'linkinbio', label: 'Link in Bio' },
   { id: 'portfolio', label: 'Portofolio' },
@@ -51,6 +53,10 @@ export const DEMOS: Demo[] = [
   { slug: "woodora", name: "Woodora", tagline: "Furnitur Kayu Solid Sesuai Ukuran", category: 'landing', url: "https://landing-woodora.pintuweb.id" },
   { slug: "zychrome", name: "Zychrome", tagline: "Webinar yang Bisa Membalas Anda", category: 'landing', url: "https://landing-zychrome.pintuweb.id" },
   { slug: "tanur", name: "Tanur", tagline: "Keramik Buatan Tangan untuk Meja Sehari-hari", category: 'toko', url: "https://toko-tanur.pintuweb.id", pkg: 'toko-online-full' },
+  { slug: "kopi", name: "Sepertiga Kopi", tagline: "Kedai Kopi dengan Menu Bergaya Kartu Cupping", category: 'menu', url: "https://menu-kopi.pintuweb.id", pkg: 'landing-page' },
+  { slug: "bakso", name: "Bakso Dalu", tagline: "Warung Tenda Malam dengan Level Pedas 0–5", category: 'menu', url: "https://menu-bakso.pintuweb.id", pkg: 'landing-page' },
+  { slug: "jepang", name: "Akagane Shokudō", tagline: "Warung Jepang Rumahan dengan Ikon Alergen", category: 'menu', url: "https://menu-jepang.pintuweb.id", pkg: 'landing-page' },
+  { slug: "dessert", name: "Lintang Manis", tagline: "Dessert Bar dengan Bowl Rakitan Sendiri", category: 'menu', url: "https://menu-dessert.pintuweb.id", pkg: 'landing-page' },
   { slug: "corporate", name: "Situs Acara Korporat Digital", tagline: "Temu Rekayasa Nusa 2027", category: 'undangan', url: "https://undangan-corporate.pintuweb.id", pkg: 'situs-acara' },
   { slug: "aqiqah", name: "Undangan Aqiqah Digital", tagline: "Aisyah Khairunnisa", category: 'undangan', url: "https://undangan-aqiqah.pintuweb.id" },
   { slug: "khitanan", name: "Undangan Khitanan Digital", tagline: "Kapten Fauzan", category: 'undangan', url: "https://undangan-khitanan.pintuweb.id" },
@@ -103,7 +109,7 @@ export const DEMOS: Demo[] = [
 
 /** Versi thumbnail public/demos: naikkan setiap kali thumbnail ditangkap ulang. Nama berkasnya tetap (<slug>.webp)
  *  sedangkan CDN & peramban menyimpannya 7 hari, jadi versi ini yang membuat tampilan baru langsung terlihat. */
-export const THUMB_V = '20261016'
+export const THUMB_V = '20261018'
 export const demoThumb = (slug: string) => `/demos/${slug}.webp?v=${THUMB_V}`
 export const demoImage = (d: Demo) => demoThumb(d.slug)
 

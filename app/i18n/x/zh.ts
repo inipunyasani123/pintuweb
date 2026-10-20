@@ -238,6 +238,7 @@ const zh: Pack = {
 
   demoCategories: {
     toko: '网店',
+    menu: '数字菜单',
     landing: '落地页',
     undangan: '电子请柬',
     linkinbio: 'Link in Bio',
@@ -249,6 +250,10 @@ const zh: Pack = {
   },
   demos: {
     tanur: { tagline: '日常餐桌的手工陶瓷' },
+    kopi: { tagline: '杯测卡风格菜单的咖啡馆' },
+    bakso: { tagline: '夜间帐篷小摊，辣度 0–5 级' },
+    jepang: { tagline: '带过敏原图标的家常日式食堂' },
+    dessert: { tagline: '可自选搭配碗的甜品吧' },
     bribu: { tagline: '设计需求平台，三份草稿都有报酬' },
     cissycoffee: { tagline: '把菜单写在黑板上的咖啡馆' },
     citarasa: { tagline: '老字号家庭餐厅，现在可以用手机点餐' },

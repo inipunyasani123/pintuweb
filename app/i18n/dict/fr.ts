@@ -1,7 +1,7 @@
 // Dictionnaire de l'interface — Français. Traduction de dict/en.ts ; les chiffres viennent de lib/site.ts et lib/packages.ts.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits } from '../plural'
+import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
 
 const fr: Dict = {
@@ -105,7 +105,7 @@ const fr: Dict = {
     pay: '50 % à la commande, le solde une fois le travail terminé.',
     ctaConsult: 'Consultation gratuite',
     ctaDemos: (n: number) => `Voir ${n} démos`,
-    facade: 'Neuf types de sites que nous réalisons',
+    facade: (n: number) => `${capFirst(numberWord('fr', n))} types de sites que nous réalisons`,
     facadeHint: 'Survolez pour un aperçu, cliquez pour ouvrir la galerie',
     openGallery: (t: string) => `Ouvrir ${t}`,
     kindDetail: 'Détails et tarifs',
@@ -118,6 +118,7 @@ const fr: Dict = {
     galleries: {
       landing: { title: 'Landing pages', tagline: 'Des pages qui vendent : webinaires, ventes, promotions' },
       toko: { title: 'Boutique en ligne', tagline: 'Catalogue, panier, paiement et tableau des commandes' },
+      menu: { title: 'Menus numériques', tagline: 'Des menus QR pour cafés et restaurants, commandes via WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Un seul lien pour tous vos canaux' },
       kontes: { title: 'Concepts de design', tagline: 'Plusieurs concepts pour un même brief de concours de design' },
       undangan: { title: 'Invitations numériques', tagline: 'Des invitations en ligne pour les grands moments' },

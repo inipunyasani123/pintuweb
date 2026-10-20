@@ -6,6 +6,7 @@ import type { DemoCategory } from './demos'
 export const PACKAGE_FOR_CATEGORY: Record<DemoCategory, string> = {
   landing: 'landing-page',
   toko: 'toko-online-simple',
+  menu: 'landing-page',
   linkinbio: 'link-in-bio',
   kontes: 'konsep-desain',
   undangan: 'undangan-digital',
@@ -23,6 +24,8 @@ export const PACKAGE_FOR_CATEGORY: Record<DemoCategory, string> = {
 export const CATEGORY_COLOR: Record<DemoCategory, { color: string; to: string; tint: string }> = {
   landing: { color: '#c2410c', to: '#e11d48', tint: '#fff1e6' }, // jingga -> mawar
   toko: { color: '#be185d', to: '#7c3aed', tint: '#fdeef5' }, // merah muda -> ungu
+  // hijau pindai; ujung gradasinya #138548 (bukan #17a35b yang lebih terang: putih di atasnya hanya 3,3:1)
+  menu: { color: '#0f6b3b', to: '#138548', tint: '#dff5e8' }, // hijau tua -> hijau pindai
   linkinbio: { color: '#6d28d9', to: '#2563eb', tint: '#f1ebff' }, // ungu -> biru
   kontes: { color: '#047857', to: '#4d7c0f', tint: '#e3f6ee' }, // zamrud -> hijau limau
   undangan: { color: '#be123c', to: '#a21caf', tint: '#ffecef' }, // mawar -> magenta
@@ -41,9 +44,28 @@ export const PORTALS: { path: string; origin: string; category: DemoCategory; im
   { path: 'website-reservasi', origin: 'https://portal-reservasi.pintuweb.id', category: 'reservasi', image: '/images/galeri/reservasi.jpg' },
   { path: 'website-properti', origin: 'https://portal-properti.pintuweb.id', category: 'properti', image: '/images/galeri/properti.jpg' },
   { path: 'aplikasi-to-do', origin: 'https://portal-todo.pintuweb.id', category: 'todo', image: '/images/galeri/todo.jpg' },
+  { path: 'menu-digital', origin: 'https://portal-menu.pintuweb.id', category: 'menu', image: '/images/galeri/menu.jpg' },
 ]
 
 export const portalOf = (c: DemoCategory) => PORTALS.find((p) => p.category === c)
+
+/**
+ * Urutan jenis website di beranda (komponen Kinds lewat Hero.tsx); wajib memuat semua kategori. Jenis yang punya
+ * portal menaut ke portalnya; yang belum (mis. toko online) menaut ke galeri demo yang tersaring (/demo#<kategori>)
+ * dengan gambar /images/galeri/<kategori>.jpg. Portal baru cukup ditambahkan ke PORTALS di atas.
+ */
+export const KIND_ORDER: Record<DemoCategory, number> = {
+  landing: 1,
+  toko: 2,
+  menu: 3,
+  linkinbio: 4,
+  kontes: 5,
+  undangan: 6,
+  portfolio: 7,
+  reservasi: 8,
+  properti: 9,
+  todo: 10,
+}
 
 /** #rrggbb -> rgb(r g b / a): lapisan tembus pandang dari warna jenis */
 export const alpha = (hex: string, a: number) => `rgb(${[1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16)).join(' ')} / ${a})`

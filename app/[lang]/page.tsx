@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   })
 }
 
-// Urutan: pernyataan + sembilan jenis website (harga mulai & "Detail & harga" per jenis), demo pilihan, proyek klien
+// Urutan: pernyataan + jenis-jenis website (harga mulai & "Detail & harga" per jenis), demo pilihan, proyek klien
 // (ringkas), untuk siapa (kebutuhan → paket), cara kerja, janji, harga (peta harga mulai 640px), FAQ.
 // Bukti dulu (demo, klien), lalu pilihan paket, cara kerja & janji, baru rincian harga. Ajakan penutup ada di footer.
 // Jarak antarbagian memakai kelas section-y (globals.css): 56px di ponsel, ±120px di layar lebar.

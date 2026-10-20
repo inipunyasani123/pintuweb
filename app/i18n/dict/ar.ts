@@ -2,7 +2,7 @@
 // المقاطع اللاتينية المنتهية بعلامة (مثل "20+") تُعزل بـ ltr() حتى لا تنفصل العلامة عنها داخل النص العربي.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits, plural } from '../plural'
+import { demoUnits, numberWord, plural } from '../plural'
 import type { Dict, Hl } from './id'
 
 const ltr = (s: string) => `\u2066${s}\u2069`
@@ -116,7 +116,7 @@ const ar: Dict = {
     pay: 'ادفع 50% مقدمًا والباقي بعد إنجاز العمل.',
     ctaConsult: 'استشارة مجانية',
     ctaDemos: (n: number) => `شاهد ${n} ${w.demo(n)}`,
-    facade: 'تسعة أنواع من المواقع نبنيها',
+    facade: (n: number) => `${numberWord('ar', n)} ${plural('ar', n, { one: 'نوع', two: 'نوعان', few: 'أنواع', many: 'نوعًا', other: 'نوع' })} من المواقع نبنيها`,
     facadeHint: 'مرّر المؤشر للمعاينة؛ وانقر لفتح المعرض',
     openGallery: (t: string) => `افتح ${t}`,
     kindDetail: 'التفاصيل والأسعار',
@@ -129,6 +129,7 @@ const ar: Dict = {
     galleries: {
       landing: { title: 'صفحات الهبوط', tagline: 'صفحات تبيع: ندوات إلكترونية، مبيعات، عروض ترويجية' },
       toko: { title: 'متجر إلكتروني', tagline: 'كتالوج وسلة ودفع ولوحة للطلبات' },
+      menu: { title: 'القوائم الرقمية', tagline: 'قوائم طعام برمز QR للمقاهي والمطاعم، والطلب عبر واتساب' },
       linkinbio: { title: 'Link in Bio', tagline: 'رابط واحد لجميع قنواتك' },
       kontes: { title: 'تصورات التصميم', tagline: 'عدة تصورات لموجز واحد من مسابقة تصميم' },
       undangan: { title: 'الدعوات الرقمية', tagline: 'دعوات إلكترونية للمناسبات الخاصة' },

@@ -1,7 +1,7 @@
 // 界面词典 — 简体中文。译自 dict/en.ts；数字来自 lib/site.ts 和 lib/packages.ts。
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits } from '../plural'
+import { demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
 
 const zh: Dict = {
@@ -105,7 +105,7 @@ const zh: Dict = {
     pay: '先付 50%，完工后再付余款。',
     ctaConsult: '免费咨询',
     ctaDemos: (n: number) => `查看 ${n} 个演示`,
-    facade: '我们制作的九类网站',
+    facade: (n: number) => `我们制作的${numberWord('zh', n)}类网站`,
     facadeHint: '悬停可预览，点击打开演示集',
     openGallery: (t: string) => `打开${t}`,
     kindDetail: '详情与价格',
@@ -118,6 +118,7 @@ const zh: Dict = {
     galleries: {
       landing: { title: '落地页', tagline: '能卖货的页面：研讨会、销售、促销' },
       toko: { title: '网店', tagline: '商品目录、购物车、结账和订单后台' },
+      menu: { title: '数字菜单', tagline: '咖啡馆和小餐馆的二维码菜单，通过 WhatsApp 下单' },
       linkinbio: { title: 'Link in Bio', tagline: '一个链接，通往您的所有渠道' },
       kontes: { title: '设计方案', tagline: '同一份设计竞赛需求的多个方案' },
       undangan: { title: '电子请柬', tagline: '为特别时刻准备的在线请柬' },

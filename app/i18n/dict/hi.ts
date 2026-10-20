@@ -1,7 +1,7 @@
 // इंटरफ़ेस शब्दकोश — हिन्दी। dict/en.ts का अनुवाद; संख्याएँ lib/site.ts और lib/packages.ts से आती हैं।
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits } from '../plural'
+import { demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
 
 const hi: Dict = {
@@ -105,7 +105,7 @@ const hi: Dict = {
     pay: '50% पहले, बाकी काम पूरा होने पर।',
     ctaConsult: 'मुफ़्त परामर्श',
     ctaDemos: (n: number) => `${n} डेमो देखें`,
-    facade: 'नौ तरह की वेबसाइटें जो हम बनाते हैं',
+    facade: (n: number) => `${numberWord('hi', n)} तरह की वेबसाइटें जो हम बनाते हैं`,
     facadeHint: 'प्रीव्यू के लिए कर्सर ले जाएँ; गैलरी खोलने के लिए क्लिक करें',
     openGallery: (t: string) => `${t} खोलें`,
     kindDetail: 'विवरण और कीमतें',
@@ -118,6 +118,7 @@ const hi: Dict = {
     galleries: {
       landing: { title: 'लैंडिंग पेज', tagline: 'बेचने वाले पेज: वेबिनार, सेल्स, प्रोमो' },
       toko: { title: 'ऑनलाइन स्टोर', tagline: 'कैटलॉग, कार्ट, चेकआउट और ऑर्डर डैशबोर्ड' },
+      menu: { title: 'डिजिटल मेन्यू', tagline: 'कैफ़े और ढाबों के लिए QR मेन्यू, WhatsApp से ऑर्डर' },
       linkinbio: { title: 'Link in Bio', tagline: 'आपके सभी चैनलों के लिए एक लिंक' },
       kontes: { title: 'डिज़ाइन कॉन्सेप्ट', tagline: 'डिज़ाइन प्रतियोगिता के एक ही ब्रीफ़ के लिए कई कॉन्सेप्ट' },
       undangan: { title: 'डिजिटल निमंत्रण', tagline: 'ख़ास मौक़ों के लिए ऑनलाइन निमंत्रण' },

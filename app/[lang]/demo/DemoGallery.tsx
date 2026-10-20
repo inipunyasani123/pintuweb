@@ -165,7 +165,7 @@ export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, 
               className="h-[3.25rem] w-full rounded-full border-0 bg-white ps-[3.25rem] pe-5 text-base text-[color:var(--text-primary)] outline-none ring-1 ring-[color:var(--border-light)] transition-shadow placeholder:text-[color:var(--text-muted)] focus:ring-2 focus:ring-[color:var(--primary-700)]"
             />
           </div>
-          {/* Ponsel: sembilan pil memakan banyak baris, jadi kategori dipilih lewat satu menu. Layar lebih lebar: pil. */}
+          {/* Ponsel: pil semua kategori memakan banyak baris, jadi kategori dipilih lewat satu menu. Layar lebih lebar: pil. */}
           <div className="relative mt-3 sm:hidden">
             <label htmlFor="demo-cat" className="sr-only">
               {t.filterAria}

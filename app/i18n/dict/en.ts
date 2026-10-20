@@ -1,7 +1,7 @@
 // Interface dictionary — English.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits } from '../plural'
+import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
 
 const en: Dict = {
@@ -105,7 +105,7 @@ const en: Dict = {
     pay: 'Pay 50% up front and the rest once it is finished.',
     ctaConsult: 'Free consultation',
     ctaDemos: (n: number) => `See ${n} demos`,
-    facade: 'Nine kinds of website we build',
+    facade: (n: number) => `${capFirst(numberWord('en', n))} kinds of website we build`,
     facadeHint: 'Hover for a preview, click to open the gallery',
     openGallery: (t: string) => `Open ${t}`,
     kindDetail: 'Details & pricing',
@@ -118,6 +118,7 @@ const en: Dict = {
     galleries: {
       landing: { title: 'Landing Pages', tagline: 'Pages that sell: webinars, sales, promotions' },
       toko: { title: 'Online Store', tagline: 'Catalogue, cart, checkout and an order dashboard' },
+      menu: { title: 'Digital Menus', tagline: 'QR menus for cafés & eateries, orders via WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'One link for all your channels' },
       kontes: { title: 'Design Concepts', tagline: 'Several concepts for one design-contest brief' },
       undangan: { title: 'Digital Invitations', tagline: 'Online invitations for special moments' },

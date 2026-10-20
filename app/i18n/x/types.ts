@@ -1,6 +1,6 @@
 // Bentuk "paket bahasa" untuk bahasa tambahan (lihat i18n/config.ts). Satu paket = isi situs di luar kamus
 // antarmuka (dict/<kode>.ts) dan teks halaman (pages/<kode>.ts): fakta bisnis, satuan waktu, teks 14 paket,
-// kelompok & biaya tambahan, label + tagline 65 demo, dan 29 tanya-jawab FAQ.
+// kelompok & biaya tambahan, label + tagline semua demo, dan 29 tanya-jawab FAQ.
 // Angka (harga, hari garansi, jam kerja, jumlah demo) TIDAK ditulis di paket: semuanya datang lewat konteks
 // dari lib/site.ts dan lib/packages.ts, sama seperti bahasa dasar.
 import type { Paket, PaketGroup } from '../../lib/packages'

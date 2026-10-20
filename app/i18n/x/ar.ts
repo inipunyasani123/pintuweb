@@ -246,6 +246,7 @@ const ar: Pack = {
 
   demoCategories: {
     toko: 'متجر إلكتروني',
+    menu: 'قائمة رقمية',
     landing: 'صفحة هبوط',
     undangan: 'دعوة رقمية',
     linkinbio: 'Link in Bio',
@@ -257,6 +258,10 @@ const ar: Pack = {
   },
   demos: {
     tanur: { tagline: 'خزف مصنوع يدويًا لمائدة كل يوم' },
+    kopi: { tagline: 'مقهى بقائمة على طراز بطاقة التذوق' },
+    bakso: { tagline: 'كشك ليلي تحت خيمة بمستويات حرارة من 0 إلى 5' },
+    jepang: { tagline: 'مطعم ياباني منزلي برموز لمسببات الحساسية' },
+    dessert: { tagline: 'بار حلويات بأوعية تركّبها بنفسك' },
     bribu: { tagline: 'منصة لموجزات التصميم تُدفع فيها أتعاب ثلاث مسودات' },
     cissycoffee: { tagline: 'مقهى قائمته مكتوبة على السبورة' },
     citarasa: { tagline: 'مطعم عائلي عريق، والطلب الآن من الجوال' },

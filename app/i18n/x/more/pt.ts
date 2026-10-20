@@ -13,7 +13,7 @@ const more: More = {
         'Diferente de um site completo, uma landing page não tem um menu que leva a várias páginas. Tudo — o problema que você resolve, as provas, o preço e a chamada para ação — é organizado em sequência para que o visitante não se disperse antes de agir.',
         'Construímos landing pages com Next.js, por isso elas são leves e abrem rápido no celular. A velocidade importa: anúncios que levam a uma página lenta desperdiçam orçamento.',
       ],
-      forWho: ['Lançamentos de produto e promoções sazonais', 'Inscrições em webinars, cursos e eventos', 'Destino para anúncios no Meta, no TikTok ou no Google Ads', 'Startups testando uma ideia e captando contatos de potenciais clientes', 'Pequenas empresas que precisam de uma página de vendas antes de ter um site completo'],
+      forWho: ['Lançamentos de produto e promoções sazonais', 'Inscrições em webinars, cursos e eventos', 'Destino para anúncios no Meta, no TikTok ou no Google Ads', 'Startups testando uma ideia e captando contatos de potenciais clientes', 'Cardápios digitais com QR code para cafés, lanchonetes e restaurantes', 'Pequenas empresas que precisam de uma página de vendas antes de ter um site completo'],
       short: 'Uma página focada em conversão para lançamentos de produto, eventos ou campanhas de anúncios.',
       suits: 'Promoções, eventos, anúncios',
       faq: [

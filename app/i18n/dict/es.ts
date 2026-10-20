@@ -1,7 +1,7 @@
 // Diccionario de la interfaz — Español. Traducción de dict/en.ts; las cifras vienen de lib/site.ts y lib/packages.ts.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits } from '../plural'
+import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
 
 const es: Dict = {
@@ -105,7 +105,7 @@ const es: Dict = {
     pay: 'Pagas el 50% al empezar y el resto al terminar.',
     ctaConsult: 'Consulta gratuita',
     ctaDemos: (n: number) => `Ver ${n} demos`,
-    facade: 'Nueve tipos de sitio web que construimos',
+    facade: (n: number) => `${capFirst(numberWord('es', n))} tipos de sitio web que construimos`,
     facadeHint: 'Pasa el cursor para ver una vista previa; haz clic para abrir la galería',
     openGallery: (t: string) => `Abrir ${t}`,
     kindDetail: 'Detalles y precios',
@@ -118,6 +118,7 @@ const es: Dict = {
     galleries: {
       landing: { title: 'Landing pages', tagline: 'Páginas que venden: webinars, ventas, promociones' },
       toko: { title: 'Tienda en línea', tagline: 'Catálogo, carrito, pago y panel de pedidos' },
+      menu: { title: 'Menús digitales', tagline: 'Menús QR para cafeterías y restaurantes, pedidos por WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Un enlace para todos tus canales' },
       kontes: { title: 'Conceptos de diseño', tagline: 'Varios conceptos para un mismo brief de concurso de diseño' },
       undangan: { title: 'Invitaciones digitales', tagline: 'Invitaciones en línea para momentos especiales' },

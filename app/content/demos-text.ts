@@ -1,4 +1,4 @@
-// Label kategori, nama (bila perlu), dan tagline 65 demo dalam bahasa Inggris & Melayu.
+// Label kategori, nama (bila perlu), dan tagline semua demo (lib/demos.ts) dalam bahasa Inggris & Melayu.
 // Situs demonya sendiri berbahasa Indonesia; teks di sini hanya untuk galeri.
 import type { DemoCategory } from '../lib/demos'
 
@@ -13,6 +13,7 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
     reservasi: 'Online Booking',
     properti: 'Property Website',
     toko: 'Online Store',
+    menu: 'Digital Menu',
     todo: 'Productivity App',
     kontes: 'Design Concepts',
   },
@@ -24,6 +25,7 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
     reservasi: 'Tempahan Dalam Talian',
     properti: 'Laman Web Hartanah',
     toko: 'Kedai Dalam Talian',
+    menu: 'Menu Digital',
     todo: 'Aplikasi Produktiviti',
     kontes: 'Konsep Reka Bentuk',
   },
@@ -32,6 +34,10 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
 export const DEMO_TEXT: Record<'en' | 'ms', Record<string, DemoText>> = {
   en: {
     tanur: { tagline: 'Handmade ceramics for the everyday table' },
+    kopi: { tagline: 'A coffee shop with a cupping-card style menu' },
+    bakso: { tagline: 'A night-time tent stall with spice levels 0–5' },
+    jepang: { tagline: 'A homestyle Japanese eatery with allergen icons' },
+    dessert: { tagline: 'A dessert bar with build-your-own bowls' },
     bribu: { tagline: 'A design-brief board where three sketches get paid' },
     cissycoffee: { tagline: 'A coffee shop with a chalkboard menu' },
     citarasa: { tagline: 'An old family restaurant, now taking orders by phone' },
@@ -100,6 +106,10 @@ export const DEMO_TEXT: Record<'en' | 'ms', Record<string, DemoText>> = {
   },
   ms: {
     tanur: { tagline: 'Seramik buatan tangan untuk meja harian' },
+    kopi: { tagline: 'Kedai kopi dengan menu gaya kad cupping' },
+    bakso: { tagline: 'Gerai khemah waktu malam dengan tahap pedas 0–5' },
+    jepang: { tagline: 'Kedai makan Jepun ala rumah dengan ikon alergen' },
+    dessert: { tagline: 'Bar pencuci mulut dengan mangkuk rakitan sendiri' },
     bribu: { tagline: 'Papan taklimat reka bentuk, tiga lakaran dibayar' },
     cissycoffee: { tagline: 'Kedai kopi dengan menu papan kapur' },
     citarasa: { tagline: 'Restoran lama, kini terima pesanan dari telefon' },

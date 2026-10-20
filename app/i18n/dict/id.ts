@@ -2,7 +2,7 @@
 // Pola judul [biasa, sorotan, sisa?]: bagian kedua diberi warna aksen.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits } from '../plural'
+import { capFirst, demoUnits, numberWord } from '../plural'
 
 export type Hl = [string, string, string?]
 
@@ -111,7 +111,7 @@ const id = {
     pay: 'Bayar 50% di awal, sisanya setelah website jadi.',
     ctaConsult: 'Konsultasi gratis',
     ctaDemos: (n: number) => `Lihat ${n} demo`,
-    facade: 'Sembilan jenis website yang kami buat',
+    facade: (n: number) => `${capFirst(numberWord('id', n))} jenis website yang kami buat`,
     facadeHint: 'Arahkan kursor untuk pratinjau, klik untuk membuka galerinya',
     openGallery: (t: string) => `Buka galeri ${t}`,
     // Tautan kedua tiap jenis: halaman layanan / kartu paketnya. kindDetailFor = nama aksesibel (unik per baris).
@@ -125,6 +125,7 @@ const id = {
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, sales, promo' },
       toko: { title: 'Toko Online', tagline: 'Katalog, keranjang, checkout, dan dasbor pesanan' },
+      menu: { title: 'Menu Digital', tagline: 'Menu QR untuk kafe & warung, pesanan lewat WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu tautan untuk semua kanalmu' },
       kontes: { title: 'Konsep Desain', tagline: 'Beberapa konsep untuk satu brief kontes desain' },
       undangan: { title: 'Undangan Digital', tagline: 'Undangan online untuk momen spesial' },

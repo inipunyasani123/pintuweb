@@ -238,6 +238,7 @@ const pt: Pack = {
 
   demoCategories: {
     toko: 'Loja online',
+    menu: 'Cardápio digital',
     landing: 'Landing Page',
     undangan: 'Convite digital',
     linkinbio: 'Link in Bio',
@@ -249,6 +250,10 @@ const pt: Pack = {
   },
   demos: {
     tanur: { tagline: 'Cerâmica feita à mão para a mesa do dia a dia' },
+    kopi: { tagline: 'Uma cafeteria com cardápio em estilo ficha de prova' },
+    bakso: { tagline: 'Uma barraca noturna com nível de pimenta de 0 a 5' },
+    jepang: { tagline: 'Um restaurante japonês caseiro com ícones de alérgenos' },
+    dessert: { tagline: 'Um bar de sobremesas com bowls montados por você' },
     bribu: { tagline: 'Um mural de briefings de design em que três esboços são pagos' },
     cissycoffee: { tagline: 'Uma cafeteria com cardápio em quadro-negro' },
     citarasa: { tagline: 'Um restaurante de família tradicional, agora com pedidos pelo celular' },

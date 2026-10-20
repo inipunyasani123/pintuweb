@@ -37,7 +37,10 @@ export const SERVICES: Service[] = [
   {
     key: 'landing-page',
     packages: ['landing-page'],
-    demoCategories: ['landing'],
+    // menu digital QR dijual sebagai paket Landing Page: demonya ikut tampil di sini (cissycoffee & citarasa sudah
+    // tampil di Company Profile)
+    demoCategories: ['landing', 'menu'],
+    demoSlugs: ['bribu', 'eduplay', 'elevinar', 'lumicast', 'kopi', 'bakso'],
     articles: ['landing-vs-compro', 'biaya', 'seo-checklist'],
     text: {
       id: {
@@ -50,7 +53,7 @@ export const SERVICES: Service[] = [
           'Berbeda dengan website lengkap, landing page tidak punya menu ke banyak halaman. Semua isinya — masalah yang diselesaikan, bukti, harga, dan tombol ajakan — disusun berurutan supaya pengunjung tidak tersesat sebelum bertindak.',
           'Kami membangun landing page dengan Next.js sehingga ringan dan cepat dibuka di ponsel. Kecepatan penting: iklan yang mengarah ke halaman lambat membuang anggaran.',
         ],
-        forWho: ['Peluncuran produk atau promo musiman', 'Pendaftaran webinar, kelas, dan event', 'Tujuan iklan Meta, TikTok, atau Google Ads', 'Startup yang ingin menguji ide dan mengumpulkan calon pelanggan', 'UMKM yang butuh satu halaman jualan sebelum punya website lengkap'],
+        forWho: ['Peluncuran produk atau promo musiman', 'Pendaftaran webinar, kelas, dan event', 'Tujuan iklan Meta, TikTok, atau Google Ads', 'Startup yang ingin menguji ide dan mengumpulkan calon pelanggan', 'Menu digital QR untuk kafe, warung, dan restoran', 'UMKM yang butuh satu halaman jualan sebelum punya website lengkap'],
         short: 'Satu halaman yang fokus konversi untuk promosi produk, event, atau kampanye iklan.',
         suits: 'Promosi, event, iklan',
         faq: [
@@ -70,7 +73,7 @@ export const SERVICES: Service[] = [
           'Unlike a full website, a landing page has no menu leading to many pages. Everything — the problem you solve, the proof, the price and the call to action — is laid out in order so visitors do not wander off before acting.',
           'We build landing pages with Next.js, so they are light and quick to open on a phone. Speed matters: ads that lead to a slow page waste budget.',
         ],
-        forWho: ['Product launches and seasonal promotions', 'Webinar, class and event registrations', 'Destinations for Meta, TikTok or Google Ads', 'Start-ups testing an idea and collecting leads', 'Small businesses that need one sales page before a full website'],
+        forWho: ['Product launches and seasonal promotions', 'Webinar, class and event registrations', 'Destinations for Meta, TikTok or Google Ads', 'Start-ups testing an idea and collecting leads', 'QR digital menus for cafés, food stalls and restaurants', 'Small businesses that need one sales page before a full website'],
         short: 'One page focused on conversion for product launches, events or ad campaigns.',
         suits: 'Promotions, events, ads',
         faq: [
@@ -90,7 +93,7 @@ export const SERVICES: Service[] = [
           'Berbeza dengan laman web lengkap, landing page tidak mempunyai menu ke banyak halaman. Semua kandungan — masalah yang diselesaikan, bukti, harga dan butang tindakan — disusun berturutan supaya pelawat tidak tersesat sebelum bertindak.',
           'Kami membina landing page dengan Next.js supaya ringan dan cepat dibuka di telefon. Kelajuan penting: iklan yang membawa ke halaman yang perlahan membazirkan bajet.',
         ],
-        forWho: ['Pelancaran produk atau promosi bermusim', 'Pendaftaran webinar, kelas dan acara', 'Destinasi iklan Meta, TikTok atau Google Ads', 'Syarikat pemula yang ingin menguji idea dan mengumpul prospek', 'PKS yang memerlukan satu halaman jualan sebelum ada laman web lengkap'],
+        forWho: ['Pelancaran produk atau promosi bermusim', 'Pendaftaran webinar, kelas dan acara', 'Destinasi iklan Meta, TikTok atau Google Ads', 'Syarikat pemula yang ingin menguji idea dan mengumpul prospek', 'Menu digital QR untuk kafe, gerai makan dan restoran', 'PKS yang memerlukan satu halaman jualan sebelum ada laman web lengkap'],
         short: 'Satu halaman yang fokus pada penukaran untuk promosi produk, acara atau kempen iklan.',
         suits: 'Promosi, acara, iklan',
         faq: [

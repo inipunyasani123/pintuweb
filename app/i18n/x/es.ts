@@ -238,6 +238,7 @@ const es: Pack = {
 
   demoCategories: {
     toko: 'Tienda en línea',
+    menu: 'Menú digital',
     landing: 'Landing Page',
     undangan: 'Invitación digital',
     linkinbio: 'Link in Bio',
@@ -249,6 +250,10 @@ const es: Pack = {
   },
   demos: {
     tanur: { tagline: 'Cerámica hecha a mano para la mesa de cada día' },
+    kopi: { tagline: 'Una cafetería con una carta al estilo de ficha de cata' },
+    bakso: { tagline: 'Un puesto nocturno bajo carpa con picante del 0 al 5' },
+    jepang: { tagline: 'Una casa de comidas japonesa con iconos de alérgenos' },
+    dessert: { tagline: 'Un bar de postres con bowls para armar a tu gusto' },
     bribu: { tagline: 'Un tablón de briefs de diseño donde se pagan tres bocetos' },
     cissycoffee: { tagline: 'Una cafetería con el menú en pizarra' },
     citarasa: { tagline: 'Un restaurante familiar de siempre, ahora con pedidos desde el móvil' },

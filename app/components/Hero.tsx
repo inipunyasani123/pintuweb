@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { DEMOS, type DemoCategory } from '../lib/demos'
-import { CATEGORY_COLOR, PACKAGE_FOR_CATEGORY, PORTALS } from '../lib/portals'
-import { wa } from '../lib/site'
+import { DEMOS, DEMO_CATEGORIES, type DemoCategory } from '../lib/demos'
+import { CATEGORY_COLOR, KIND_ORDER, PACKAGE_FOR_CATEGORY, portalOf } from '../lib/portals'
+import { CATEGORY_COUNT, wa } from '../lib/site'
 import { getDict } from '../i18n'
 import { currencyCode, packagesFor } from '../i18n/facts'
 import { path, pathOf } from '../i18n/routes'
@@ -21,12 +21,14 @@ const count = (c: DemoCategory) => DEMOS.filter((d) => d.category === c).length
 const SERVICE_FOR: Partial<Record<DemoCategory, ServiceKey>> = {
   landing: 'landing-page',
   toko: 'toko-online',
+  // menu digital dijual sebagai paket Landing Page, dan demonya tampil di halaman layanan itu
+  menu: 'landing-page',
   linkinbio: 'link-in-bio',
   undangan: 'undangan-digital',
   portfolio: 'portofolio',
 }
 
-// Server component. Pembuka beranda: kalimat besar di kiri dan gambar utama di kanan, lalu sembilan jenis
+// Server component. Pembuka beranda: kalimat besar di kiri dan gambar utama di kanan, lalu semua jenis
 // website (daftar + pratinjau besar, komponen klien Kinds) di atas panel biru muda.
 export default function Hero({ lang }: { lang: Lang }) {
   const d = getDict(lang)
@@ -56,9 +58,16 @@ export default function Hero({ lang }: { lang: Lang }) {
       ...CATEGORY_COLOR[c],
     }
   }
-  // Delapan galeri portal + toko online (belum punya portal katalog sendiri: menaut ke galeri demo yang tersaring).
-  const kinds: Kind[] = PORTALS.map((p) => kindOf(p.category, `/${p.path}`, p.image))
-  kinds.splice(1, 0, kindOf('toko', `${path(lang, 'demo')}#toko`, '/images/galeri/toko.jpg'))
+  // Semua jenis menurut KIND_ORDER: yang punya portal katalog menaut ke portalnya, yang belum (mis. toko online)
+  // menaut ke galeri demo yang tersaring.
+  const kinds: Kind[] = DEMO_CATEGORIES.map((c) => c.id)
+    .sort((a, b) => KIND_ORDER[a] - KIND_ORDER[b])
+    .map((c) => {
+      const p = portalOf(c)
+      return p ? kindOf(c, `/${p.path}`, p.image) : kindOf(c, `${path(lang, 'demo')}#${c}`, `/images/galeri/${c}.jpg`)
+    })
+  // judul daftar menyebut CATEGORY_COUNT (lib/site.ts) sebagai kata: jangan sampai berbeda dengan isi daftarnya
+  if (kinds.length !== CATEGORY_COUNT) throw new Error(`CATEGORY_COUNT (${CATEGORY_COUNT}) tidak sama dengan jumlah jenis website (${kinds.length})`)
 
   return (
     <section id="hero" className="sm:pb-8" aria-label={t.aria}>
@@ -126,7 +135,7 @@ export default function Hero({ lang }: { lang: Lang }) {
         <span className="hero-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
       </div>
 
-      <Kinds items={kinds} heading={t.facade} hint={t.facadeHint} detail={t.kindDetail} note={g.galleryLang || undefined} />
+      <Kinds items={kinds} heading={t.facade(CATEGORY_COUNT)} hint={t.facadeHint} detail={t.kindDetail} note={g.galleryLang || undefined} />
     </section>
   )
 }

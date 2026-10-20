@@ -1,7 +1,7 @@
 // Словарь интерфейса — Русский. Перевод dict/en.ts; цифры берутся из lib/site.ts и lib/packages.ts.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { plural } from '../plural'
+import { capFirst, numberWord, plural } from '../plural'
 import type { Dict, Hl } from './id'
 
 // слова, которые меняются вместе с числом
@@ -116,7 +116,7 @@ const ru: Dict = {
     pay: 'Предоплата 50%, остальное — после завершения работы.',
     ctaConsult: 'Бесплатная консультация',
     ctaDemos: (n: number) => `Смотреть ${n} демо`,
-    facade: 'Девять типов сайтов, которые мы делаем',
+    facade: (n: number) => `${capFirst(numberWord('ru', n))} ${plural('ru', n, { one: 'тип', few: 'типа', many: 'типов', other: 'типа' })} сайтов, которые мы делаем`,
     facadeHint: 'Наведите курсор, чтобы увидеть превью; нажмите, чтобы открыть галерею',
     openGallery: (t: string) => `Открыть: ${t}`,
     kindDetail: 'Подробнее и цены',
@@ -129,6 +129,7 @@ const ru: Dict = {
     galleries: {
       landing: { title: 'Лендинги', tagline: 'Страницы, которые продают: вебинары, продажи, акции' },
       toko: { title: 'Интернет-магазин', tagline: 'Каталог, корзина, оформление заказа и панель заказов' },
+      menu: { title: 'Цифровые меню', tagline: 'QR-меню для кафе и закусочных, заказ через WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Одна ссылка на все ваши каналы' },
       kontes: { title: 'Концепции дизайна', tagline: 'Несколько концепций по одному брифу дизайн-конкурса' },
       undangan: { title: 'Онлайн-приглашения', tagline: 'Приглашения в сети для особых событий' },
@@ -138,7 +139,7 @@ const ru: Dict = {
       todo: { title: 'Задачи и продуктивность', tagline: 'Веб-приложения для управления задачами' },
     },
     // «демо» не склоняется, поэтому подходит к любому числу в каждой галерее
-    unit: { landing: 'демо', toko: 'демо', linkinbio: 'демо', kontes: 'демо', undangan: 'демо', portfolio: 'демо', reservasi: 'демо', properti: 'демо', todo: 'демо' },
+    unit: { landing: 'демо', toko: 'демо', menu: 'демо', linkinbio: 'демо', kontes: 'демо', undangan: 'демо', portfolio: 'демо', reservasi: 'демо', properti: 'демо', todo: 'демо' },
     previewAlt: (t: string) => `Превью галереи «${t}»`,
     shotAlt: (name: string) => `Скриншот демо ${name}`,
     open: 'Открыть демо',

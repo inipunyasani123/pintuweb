@@ -21,7 +21,7 @@ export function llmsDoc(full: boolean) {
   push(
     '# PintuWeb',
     '',
-    `> PintuWeb is a website design and development studio based in Trenggalek, East Java, Indonesia, founded in ${FOUNDED_YEAR}. It builds fast, SEO-ready websites (landing pages, company profiles, online stores, portfolios, digital invitations, link-in-bio pages and custom web apps) for small businesses, start-ups and personal brands. ${CLIENT_PROJECTS} client projects completed; ${DEMOS.length} live demos. Prices are in Indonesian Rupiah (IDR).`,
+    `> PintuWeb is a website design and development studio based in Trenggalek, East Java, Indonesia, founded in ${FOUNDED_YEAR}. It builds fast, SEO-ready websites (landing pages, company profiles, online stores, QR digital menus, portfolios, digital invitations, link-in-bio pages and custom web apps) for small businesses, start-ups and personal brands. ${CLIENT_PROJECTS} client projects completed; ${DEMOS.length} live demos. Prices are in Indonesian Rupiah (IDR).`,
     '',
     'Key facts (kept identical across every page of the site):',
     '',

@@ -1,7 +1,7 @@
 // Kamus antara muka — Bahasa Melayu.
 import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
-import { demoUnits } from '../plural'
+import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
 
 const ms: Dict = {
@@ -105,7 +105,7 @@ const ms: Dict = {
     pay: 'Bayar 50% dahulu, bakinya selepas kerja selesai.',
     ctaConsult: 'Konsultasi percuma',
     ctaDemos: (n: number) => `Lihat ${n} demo`,
-    facade: 'Sembilan jenis laman web yang kami bina',
+    facade: (n: number) => `${capFirst(numberWord('ms', n))} jenis laman web yang kami bina`,
     facadeHint: 'Tuding untuk pratonton, klik untuk membuka galeri',
     openGallery: (t: string) => `Buka galeri ${t}`,
     kindDetail: 'Butiran & harga',
@@ -118,6 +118,7 @@ const ms: Dict = {
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, jualan, promosi' },
       toko: { title: 'Kedai Dalam Talian', tagline: 'Katalog, troli, pembayaran dan papan pemuka pesanan' },
+      menu: { title: 'Menu Digital', tagline: 'Menu QR untuk kafe & kedai makan, pesanan melalui WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu pautan untuk semua saluran anda' },
       kontes: { title: 'Konsep Reka Bentuk', tagline: 'Beberapa konsep untuk satu taklimat peraduan reka bentuk' },
       undangan: { title: 'Kad Jemputan Digital', tagline: 'Jemputan dalam talian untuk detik istimewa' },

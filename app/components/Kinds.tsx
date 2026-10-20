@@ -28,7 +28,7 @@ export type Kind = {
 /** "IDR 1 250 000": kode mata uang tidak boleh terpisah dari angkanya saat baris turun (spasi tak-terputus). */
 const keepPrice = (s: string) => s.replace(/IDR /g, 'IDR ')
 
-// Sembilan jenis website sebagai daftar rapi + satu pratinjau besar, masing-masing dengan gradasi warna khasnya.
+// Semua jenis website sebagai daftar rapi + satu pratinjau besar, masing-masing dengan gradasi warna khasnya.
 // Tiap baris punya dua tautan: nama jenisnya membuka galeri (lapisan ::after-nya menutupi seluruh baris, jadi baris
 // tetap bisa diklik di mana saja), dan "Detail & harga" di atas lapisan itu menuju halaman layanan/paketnya.
 // Menyorot atau memfokus baris mengganti pratinjau dan warna panggungnya (desktop). Di ponsel tiap baris punya

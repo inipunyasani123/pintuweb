@@ -106,7 +106,7 @@ export function siteGraph(lang: Lang) {
         address: { '@type': 'PostalAddress', addressLocality: 'Trenggalek', addressRegion: 'Jawa Timur', addressCountry: 'ID' },
         areaServed: { '@type': 'Country', name: 'Indonesia' },
         knowsLanguage: LANGS.map((l) => LANG_INFO[l].htmlLang),
-        knowsAbout: ['Web design', 'Web development', 'Next.js', 'Search engine optimization', 'Landing pages', 'E-commerce websites', 'Digital invitations'],
+        knowsAbout: ['Web design', 'Web development', 'Next.js', 'Search engine optimization', 'Landing pages', 'E-commerce websites', 'Digital menus', 'Digital invitations'],
         ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
         contactPoint: {
           '@type': 'ContactPoint',
