@@ -1,8 +1,8 @@
 // Daftar situs demo yang live di <repo>.pintuweb.id (satu entri per demo; jumlahnya = DEMOS.length).
-// Judul diambil dari <title> tiap situs; gambar = tangkapan 1200x630 bagian atas halamannya, diperkecil
-// jadi public/demos/<slug>.webp (720x378) supaya galeri ringan dan tidak bergantung pada domain demo.
-// Untuk srcset ada juga <slug>-360.webp dan <slug>-480.webp (diperkecil dari berkas 720w dengan sharp, WebP q74);
-// demo baru perlu ketiganya.
+// Judul diambil dari <title> tiap situs. Gambar = mockup 3 perangkat (laptop 1280×800, tablet 820×1180, ponsel 390×844)
+// dari tangkapan situs live, disusun oleh scripts/demo-mockups.mjs menjadi public/demos/<slug>.webp (720×378, rasio
+// kartu 1200:630) + <slug>-360/-480/-1080.webp untuk srcset, supaya galeri ringan dan tidak bergantung pada domain demo.
+// Demo baru: `node scripts/demo-mockups.mjs all <slug>` lalu naikkan THUMB_V.
 
 export type DemoCategory = 'landing' | 'toko' | 'menu' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
 
@@ -112,10 +112,10 @@ export const DEMOS: Demo[] = [
 
 /** Versi thumbnail public/demos: naikkan setiap kali thumbnail ditangkap ulang. Nama berkasnya tetap (<slug>.webp)
  *  sedangkan CDN & peramban menyimpannya 7 hari, jadi versi ini yang membuat tampilan baru langsung terlihat. */
-export const THUMB_V = '20261022c'
+export const THUMB_V = '20261022m'
 export const demoThumb = (slug: string) => `/demos/${slug}.webp?v=${THUMB_V}`
 export const demoImage = (d: Demo) => demoThumb(d.slug)
 
-/** srcset thumbnail demo: varian 360w & 480w + berkas aslinya (720w). */
+/** srcset thumbnail demo: 360w, 480w, berkas utamanya (720w), dan 1080w untuk kartu lebar di layar retina. */
 export const demoSrcSet = (slug: string) =>
-  `/demos/${slug}-360.webp?v=${THUMB_V} 360w, /demos/${slug}-480.webp?v=${THUMB_V} 480w, /demos/${slug}.webp?v=${THUMB_V} 720w`
+  `/demos/${slug}-360.webp?v=${THUMB_V} 360w, /demos/${slug}-480.webp?v=${THUMB_V} 480w, /demos/${slug}.webp?v=${THUMB_V} 720w, /demos/${slug}-1080.webp?v=${THUMB_V} 1080w`
