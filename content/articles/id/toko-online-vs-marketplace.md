@@ -23,7 +23,7 @@ sources:
 
 ## Apa bedanya toko online sendiri dan marketplace?
 
-| | Marketplace | Toko online sendiri |
+| Aspek | Marketplace | Toko online sendiri |
 |---|---|---|
 | Pengunjung | Sudah ada; pembeli mencari langsung di aplikasi | Kamu yang mendatangkan: Google, media sosial, pelanggan lama |
 | Biaya jualan | Biaya admin atau layanan per transaksi, ditetapkan platform | Tanpa komisi platform; ada biaya payment gateway bila memakai pembayaran otomatis |

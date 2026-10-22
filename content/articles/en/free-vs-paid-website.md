@@ -30,7 +30,7 @@ All of these are legitimate. The point is to understand their limits before the 
 
 ## What are the limits nobody mentions?
 
-| | Free website | Paid website on your own domain |
+| Aspect | Free website | Paid website on your own domain |
 |---|---|---|
 | Address | A subdomain carrying the platform's name | yourbusiness.com or a local domain |
 | Look | Often shows the platform's branding or ads | Entirely your brand |

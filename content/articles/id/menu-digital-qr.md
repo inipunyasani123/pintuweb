@@ -55,7 +55,7 @@ Keduanya bisa dipakai berdampingan: tamu membaca menu lewat QR menu, lalu membay
 
 ## Menu web atau PDF: mana yang lebih baik?
 
-| | Menu web | PDF atau foto menu |
+| Aspek | Menu web | PDF atau foto menu |
 |---|---|---|
 | Dibaca di ponsel | Teks menyesuaikan lebar layar | Harus diperbesar dan digeser |
 | Ukuran berkas | Ringan, terbuka cepat di sinyal lemah | Foto beresolusi tinggi bisa berat |

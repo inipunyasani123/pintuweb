@@ -25,7 +25,7 @@ This comparison is written from Indonesia, where Shopee, Tokopedia and TikTok Sh
 
 ## How do the two compare?
 
-| | Marketplace | Your own store |
+| Aspect | Marketplace | Your own store |
 |---|---|---|
 | Visitors | Already there, searching inside the app | You bring them: search, social media, past customers |
 | Selling costs | Platform fees per order, set by the platform | No platform commission; payment-gateway fees if you take card or e-wallet payments |

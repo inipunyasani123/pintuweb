@@ -47,7 +47,7 @@ You can try {{demos:menu}} working examples in our [digital menu gallery](/menu-
 
 ## Is a web menu better than a PDF?
 
-| | Web menu | PDF or photo |
+| Aspect | Web menu | PDF or photo |
 |---|---|---|
 | Reading on a phone | Text reflows to the screen | Pinch, zoom and scroll sideways |
 | File size | Light, loads on a weak signal | High-resolution photos can be heavy |
