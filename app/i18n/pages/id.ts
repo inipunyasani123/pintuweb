@@ -62,9 +62,31 @@ const pages = {
     ctaConsult: 'Bingung pilih? Konsultasi gratis',
     readFaq: 'Baca FAQ lengkap',
     updated: 'Harga berlaku per',
-    needsTitle: 'Mulai dari kebutuhanmu',
-    needsLead: 'Pilih yang paling mirip dengan rencanamu. Tautannya membawamu langsung ke paket yang pas.',
-    groupsLead: 'Atau lihat per kategori:',
+    // Pemandu 3 pertanyaan (content/guide.ts). Kunci opsi = GUIDE_PURPOSE / GUIDE_SIZE / GUIDE_EXTRA.
+    guide: {
+      kicker: 'Pemandu paket',
+      title: 'Cari paket yang cocok dalam 3 pertanyaan',
+      lead: 'Ketuk jawabanmu, sarannya langsung muncul.',
+      questions: { purpose: 'Websitenya untuk apa?', size: 'Seberapa banyak isinya?', extra: 'Perlu bayar online atau booking?' },
+      purpose: { usaha: 'Usaha atau jasa', jual: 'Jualan produk', diri: 'Diri sendiri / karya', acara: 'Acara atau undangan', properti: 'Properti', tim: 'Kerja tim / data internal' },
+      size: { satu: '1 halaman cukup', beberapa: 'Beberapa halaman', banyak: 'Banyak halaman / fitur khusus' },
+      extra: { tidak: 'Tidak, cukup WhatsApp', bayar: 'Ya, bayar online', booking: 'Ya, booking / pendaftaran' },
+      best: 'Paling cocok',
+      alt: 'Alternatif',
+      see: 'Lihat isi paket',
+      ask: 'Tanya paket ini',
+      live: 'Paling cocok: {best}. Alternatif: {alt}.',
+    },
+    allTitle: 'Semua paket per kelompok',
+    payKicker: 'Cara bayar',
+    payTitle: 'Tiga langkah, tanpa kejutan',
+    paySteps: [
+      { title: 'Bayar DP 50%', body: 'Pengerjaan dimulai setelah DP masuk.' },
+      { title: 'Website jadi', body: 'Kamu periksa dan setujui hasilnya dulu.' },
+      { title: 'Lunasi 50%', body: `Website online, garansi bug ${GUARANTEE_DAYS} hari berjalan.` },
+    ],
+    payExample: (pkg: string, price: string, dp: string, rest: string) => `Contoh: ${pkg} mulai ${price} → DP ${dp}, pelunasan ${rest}.`,
+    payMethods: 'Bayar lewat transfer bank, e-wallet (OVO, GoPay, DANA), atau QRIS. Invoice dikirim sebelum pembayaran.',
   },
   demo: {
     title: (n: number) => `Galeri Demo — ${n} Situs yang Bisa Dicoba`,
@@ -331,6 +353,9 @@ const pages = {
     ctaWa: (name: string) => `Halo PintuWeb, saya tertarik dengan layanan ${name}. Boleh konsultasi?`,
     seePricing: 'Lihat semua paket',
     guarantee: `Garansi ${GUARANTEE_DAYS} hari`,
+    // Ringkasan bergambar di pembuka halaman layanan
+    summary: { pay: 'Pembayaran', guarantee: 'Garansi', guaranteeValue: `${GUARANTEE_DAYS} hari` },
+    readIntro: (name: string) => `Selengkapnya tentang ${name}`,
   },
 }
 

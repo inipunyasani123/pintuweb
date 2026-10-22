@@ -255,6 +255,9 @@ const more: More = {
     freshfold: {
       field: 'Lavandería',
       project: 'Sistema web para registrar pedidos y el estado del lavado',
+      kind: 'Panel de pedidos',
+      before: 'Pedidos anotados a mano y estado del lavado difícil de seguir',
+      after: 'Panel de pedidos, estado del lavado y recibos digitales',
       problem: 'Los pedidos se anotaban a mano, lo que dificultaba seguir el estado del lavado y el historial de transacciones de los clientes.',
       solution: 'Un panel para gestionar pedidos, actualizar el estado del lavado, guardar los datos de los clientes e imprimir recibos digitales.',
       docs: ['Panel de pedidos', 'Estado del lavado', 'Recibo digital'],
@@ -262,6 +265,9 @@ const more: More = {
     'sumber-rejeki': {
       field: 'Comercio de materiales de construcción',
       project: 'Aplicación web de inventario',
+      kind: 'App de inventario',
+      before: 'Existencias, entradas y salidas anotadas a mano',
+      after: 'Existencias, entradas, salidas e informes en una sola app',
       problem: 'El control de existencias y el registro de entradas y salidas de mercancía todavía se hacían a mano.',
       solution: 'Una aplicación de inventario con gestión de existencias, registro de entradas y salidas de mercancía e informes de inventario.',
       docs: ['Panel de inventario', 'Informe de existencias', 'Historial de movimientos de mercancía'],
@@ -269,6 +275,9 @@ const more: More = {
     'arif-motor': {
       field: 'Taller de motos',
       project: 'Sistema de administración de servicios de vehículos',
+      kind: 'Sistema de taller',
+      before: 'Historial de servicio en una libreta, difícil de consultar',
+      after: 'Datos de clientes, historial de servicio y facturas digitales',
       problem: 'El historial de servicios de los clientes se guardaba en un cuaderno, por lo que era difícil volver a encontrarlo.',
       solution: 'Registro de los datos de clientes y del historial de servicios de los vehículos, lista de trabajos de los mecánicos y emisión de facturas.',
       docs: ['Datos de clientes', 'Historial de servicios', 'Factura digital'],
@@ -276,6 +285,9 @@ const more: More = {
     'cerdas-akademi': {
       field: 'Centro de apoyo escolar',
       project: 'Sitio web de inscripción de alumnos y gestión de horarios de clase',
+      kind: 'Inscripción en línea',
+      before: 'Inscripciones y horarios gestionados a mano',
+      after: 'Formulario en línea, datos de alumnos y horarios de clase',
       problem: 'La inscripción de alumnos y la organización de horarios todavía se hacían a mano.',
       solution: 'Un sitio web con formulario de inscripción en línea, panel de administración, gestión de datos de alumnos e información de horarios de clase.',
       docs: ['Formulario de inscripción', 'Panel de administración', 'Página de horarios'],
@@ -283,6 +295,9 @@ const more: More = {
     'lereng-coffee': {
       field: 'Producción y venta de café local',
       project: 'Sitio web de catálogo de productos y pedidos en línea',
+      kind: 'Catálogo + pedidos',
+      before: 'La información y los pedidos dependían de las redes sociales',
+      after: 'Catálogo con precios, formulario de pedido y WhatsApp',
       problem: 'La información de los productos y los pedidos dependían de las redes sociales y de la comunicación manual.',
       solution: 'Un catálogo de productos con precios y descripciones, un formulario de pedido e integración con WhatsApp.',
       docs: ['Página de catálogo', 'Diseño adaptable', 'Formulario de pedido'],
@@ -290,6 +305,9 @@ const more: More = {
     'prima-distribusi': {
       field: 'Distribución de mercancía',
       project: 'Panel de gestión de pedidos y envíos',
+      kind: 'Panel interno',
+      before: 'Estados de pedidos y envíos sin centralizar',
+      after: 'Pedidos, estado de envíos e informes por periodo en un panel',
       problem: 'El estado de los pedidos y envíos no estaba centralizado, lo que dificultaba la administración operativa.',
       solution: 'Un panel interno para registrar pedidos, actualizar el estado de los envíos, buscar datos y generar informes por periodo.',
       docs: ['Panel de pedidos', 'Filtro por fecha', 'Informe de envíos'],

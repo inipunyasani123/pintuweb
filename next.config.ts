@@ -51,6 +51,9 @@ const nextConfig: NextConfig = {
       // Versi Indonesia tidak berawalan: /id/... adalah URL internal.
       { source: "/id", destination: "/", permanent: true },
       { source: "/id/:path*", destination: "/:path*", permanent: true },
+      // Orang mengetik /harga (kata Indonesia untuk halaman ini), padahal URL-nya /paket. /ms/harga (halaman harga
+      // berbahasa Melayu) tidak terkena: aturan ini hanya untuk /harga tanpa awalan bahasa.
+      { source: "/harga", destination: "/paket", permanent: true },
       ...langRedirects,
     ];
   },

@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Clock, ShieldCheck, Tag, Wallet } from 'lucide-react'
 import PageHero from '../../../components/PageHero'
 import { Breadcrumbs, HlText, JsonLd } from '../../../components/Bits'
 import { SERVICES, serviceOf, serviceText } from '../../../content/services'
 import { keepRange, serviceFrom } from '../../../content/service-utils'
 import { fillFacts } from '../../../i18n/facts'
 import { cardsFor } from '../../../components/cards'
-import PackageCard, { PackageGrid } from '../../../components/PackageCard'
+import PackageCard, { BriefGrid } from '../../../components/PackageCard'
 import { ServiceClients } from '../../../components/ClientProjects'
 import { articlesIn } from '../../../content/articles'
 import { faqJsonLd } from '../../../content/faq'
@@ -47,20 +47,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMeta({ lang: r.lang, ref: { key: 'services', service: r.service.key }, title: t.title, description: t.description })
 }
 
-/**
- * Pemisah titik tengah antarfakta (hiasan, disembunyikan dari pembaca layar). Spasi tak terputus di depan titik dan
- * spasi biasa di belakangnya: bila barisnya patah, titiknya tetap di ujung baris, bukan di awal baris berikutnya.
- */
-const Dot = () => (
-  <>
-    {' '}
-    <span className="mx-1 text-[color:var(--neutral-400)]" aria-hidden="true">
-      ·
-    </span>{' '}
-  </>
-)
-
-// Urutan: pembuka (ajakan + fakta ringkas), pengantar & untuk siapa, harga & paket, cara kerja, demo, proyek klien,
+// Urutan: pembuka (ringkasan bergambar: harga, waktu, bayar, garansi + ajakan), untuk siapa (penjelasan panjang
+// dilipat; keputusan pemilik 22 Okt 2026: halaman layanan terlalu banyak teks di ponsel), harga & paket, cara kerja, demo, proyek klien,
 // FAQ (dengan ajakan WhatsApp khusus layanan), bacaan terkait & layanan lain. Ajakan penutup umum ada di footer, jadi
 // halaman ini tidak memasang pita ajakan sendiri di ujungnya.
 export default async function ServicePage({ params }: Params) {
@@ -127,52 +115,56 @@ export default async function ServicePage({ params }: Params) {
         items={[{ name: d.common.home, href: path(lang, 'home') }, { name: p.breadcrumbServices, href: path(lang, 'services') }, { name: t.name }]}
       />
       <PageHero tight eyebrow={t.name} title={<HlText parts={t.h1} mode="italic" tone="primary" />} lead={t.lead}>
-        {/* Ajakan + fakta ringkas di sebelahnya (ponsel: di bawahnya). Angka dari lib/packages.ts & lib/site.ts. */}
-        <div className="mt-1 flex flex-col items-start gap-x-8 gap-y-4 sm:flex-row sm:flex-wrap sm:items-center">
-          <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
-            {d.common.consultFree} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
-            <span className="sr-only">{d.common.newTabShort}</span>
-          </a>
-          {from && (
-            <p className="text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">
-              <span className="whitespace-nowrap">
-                {getPages(lang).services.from} <span className="font-semibold text-[color:var(--text-primary)]">{from.price}</span>
-              </span>
-              <Dot />
-              {/* label menempel pada rentangnya; "…, tergantung fitur" boleh pindah baris di layar sempit */}
-              <span>
-                {p.colTime}
-                {' '}
-                <span className="font-semibold text-[color:var(--text-primary)]">{keepRange(from.duration)}</span>
-              </span>
-              <Dot />
-              <span className="whitespace-nowrap">{p.colDeposit}</span>
-              <Dot />
-              <span className="whitespace-nowrap">{p.guarantee}</span>
-            </p>
-          )}
-        </div>
+        {/* Ringkasan sekilas: empat ubin (ponsel 2×2), lalu ajakan. Angka dari lib/packages.ts & lib/site.ts. */}
+        {from && (
+          <dl className="grid max-w-4xl grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
+            {[
+              { icon: Tag, label: getPages(lang).services.from, value: from.price },
+              { icon: Clock, label: p.colTime, value: keepRange(from.duration) },
+              { icon: Wallet, label: p.summary.pay, value: d.pkg.deposit },
+              { icon: ShieldCheck, label: p.summary.guarantee, value: p.summary.guaranteeValue },
+            ].map(({ icon: Icon, label, value }) => (
+              <div key={label} className="rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 ring-1 ring-[color:var(--border-light)] sm:px-4">
+                <dt className="flex items-center gap-1.5 text-[0.8125rem] text-[color:var(--text-tertiary)]">
+                  <Icon size={14} className="shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
+                  {label}
+                </dt>
+                <dd className="mt-1 text-[1rem] font-semibold leading-snug text-[color:var(--text-primary)] sm:text-[1.0625rem]">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-solid mt-5 sm:mt-6">
+          {d.common.consultFree} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
+          <span className="sr-only">{d.common.newTabShort}</span>
+        </a>
       </PageHero>
 
-      {/* Pengantar + untuk siapa */}
+      {/* Untuk siapa (daftar centang yang mudah dipindai) + penjelasan panjang yang dilipat (tetap di HTML) */}
       <section className="section-b pt-10 sm:pt-14">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-8 px-4 sm:px-6 lg:grid-cols-12">
-          <div className="space-y-4 text-[1.0625rem] leading-relaxed text-[color:var(--text-secondary)] sm:space-y-5 sm:text-[1.125rem] lg:col-span-7">
-            {t.intro.map((para, i) => (
-              <p key={para} className={i === 0 ? 'text-[1.1875rem] font-medium leading-snug text-[color:var(--text-primary)] sm:text-[1.25rem]' : undefined}>{para}</p>
-            ))}
-          </div>
-          <div className="border-t border-[color:var(--rule)] pt-5 lg:col-span-4 lg:col-start-9">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-6 px-4 sm:px-6 lg:grid-cols-12">
+          <div className="lg:col-span-7">
             <h2 className="kicker text-[color:var(--primary-700)]">{p.forWho}</h2>
-            <ul className="mt-2">
+            <ul className="mt-3 grid grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
               {t.forWho.map((w) => (
-                <li key={w} className="flex items-start gap-3 border-b border-[color:var(--border-light)] py-2.5 text-[0.9375rem] text-[color:var(--text-secondary)] last:border-b-0 sm:py-3">
-                  <span className="mt-[0.55em] h-[5px] w-[5px] shrink-0 bg-[color:var(--primary-700)]" aria-hidden="true" />
+                <li key={w} className="flex items-start gap-2.5 text-[0.9375rem] leading-snug text-[color:var(--text-secondary)]">
+                  <Check size={16} strokeWidth={2.4} className="mt-[0.15em] shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
                   <span>{w}</span>
                 </li>
               ))}
             </ul>
           </div>
+          <details className="group/intro self-start rounded-[1.25rem] bg-[color:var(--surface-soft)] px-5 ring-1 ring-[color:var(--border-light)] lg:col-span-5">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 py-3 text-[0.9375rem] font-semibold text-[color:var(--primary-700)] hover:text-[color:var(--primary-800)] [&::-webkit-details-marker]:hidden">
+              {p.readIntro(t.name)}
+              <ChevronDown size={16} strokeWidth={2.4} className="shrink-0 transition-transform duration-200 group-open/intro:rotate-180" aria-hidden="true" />
+            </summary>
+            <div className="space-y-3 pb-5 text-[0.9375rem] leading-relaxed text-[color:var(--text-secondary)] sm:text-[1rem]">
+              {t.intro.map((para) => (
+                <p key={para}>{para}</p>
+              ))}
+            </div>
+          </details>
         </div>
       </section>
 
@@ -218,7 +210,7 @@ export default async function ServicePage({ params }: Params) {
                       </tbody>
                     </table>
                   </div>
-                  <PackageGrid cards={ordered} labels={labels} className="mt-6 md:mt-10" />
+                  <BriefGrid cards={ordered} labels={labels} wide={ordered.length > 2} className="mt-6 md:mt-10" />
                 </>
               )}
               <div className="mt-6 flex flex-col gap-x-10 gap-y-3 text-[0.875rem] leading-relaxed text-[color:var(--text-tertiary)] lg:flex-row lg:items-start lg:justify-between">

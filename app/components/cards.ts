@@ -33,6 +33,10 @@ export type CardLabels = {
   more: (n: number) => string
   less: string
   newTab: string
+  /** kartu ringkas: "Lihat isi paket" / "Tutup isi paket" / tombol "Pilih" */
+  open: string
+  close: string
+  pick: string
 }
 
 export function cardsFor(lang: Lang, filter?: (slug: string, featured?: boolean) => boolean): { cards: CardData[]; labels: CardLabels } {
@@ -58,7 +62,7 @@ export function cardsFor(lang: Lang, filter?: (slug: string, featured?: boolean)
     }))
   return {
     cards,
-    labels: { from: t.from, range: t.range, deposit: t.deposit, duration: t.duration, suits: t.suits, free: t.free, more: t.more, less: t.less, newTab: d.common.newTabShort },
+    labels: { from: t.from, range: t.range, deposit: t.deposit, duration: t.duration, suits: t.suits, free: t.free, more: t.more, less: t.less, newTab: d.common.newTabShort, open: t.open, close: t.close, pick: t.pick },
   }
 }
 

@@ -3,13 +3,15 @@ import { Fragment } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import PageHero from '../../components/PageHero'
-import { PackageGrid } from '../../components/PackageCard'
+import { BriefGrid } from '../../components/PackageCard'
 import PriceMap from '../../components/PriceMap'
-import { NeedsList } from '../../components/AudienceSection'
+import PackageGuide, { type GuideCard } from '../../components/PackageGuide'
+import PaySteps from '../../components/PaySteps'
+import Tabs from '../../components/Tabs'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { cardsFor } from '../../components/cards'
-import { needsFor } from '../../content/needs'
-import { addonsFor, facts, groupText, minPrice, money } from '../../i18n/facts'
+import { GUIDE_EXTRA, GUIDE_PURPOSE, GUIDE_RESULTS, GUIDE_SIZE } from '../../content/guide'
+import { addonsFor, facts, groupText, minPrice, money, packagesFor } from '../../i18n/facts'
 import { LANG_INFO, getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
 import { ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
@@ -26,13 +28,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMeta({ lang, ref: { key: 'pricing' }, title: p.title, description: p.description(min, PACKAGES.length), ogTitle: p.ogTitle, ogDescription: p.ogDescription(min) })
 }
 
-// Urutan: pembuka, "mulai dari kebutuhanmu" (kebutuhan → paket, plus lompatan ke kategori), peta harga, kartu paket
-// per kategori, lalu hal yang perlu diketahui + biaya tambahan. Tanpa pita ajakan sendiri: ajakan penutup footer yang
-// langsung menyusul membawa pesan & tombol yang sama; ajakan konsultasi paket ada di bagian kebutuhan.
+// Urutan (keputusan pemilik 22 Okt 2026: halaman harga harus simpel untuk orang awam di ponsel): pembuka, PEMANDU
+// 3 pertanyaan (paket paling cocok + alternatif), semua paket per kelompok dalam TAB dengan kartu ringkas (isi lengkap
+// dilipat), peta harga (tetap: pemilik menyukainya), cara bayar 3 langkah bergambar, lalu setelah tahun pertama,
+// garansi, biaya tambahan, dan tautan FAQ. Ajakan penutup ada di footer.
 export default async function PaketPage({ params }: Params) {
   const lang = (await params).lang as Lang
   const d = getDict(lang)
   const p = getPages(lang).pricing
+  const g8 = p.guide
   const f = facts(lang)
   const min = money(lang, minPrice())
   const { cards, labels } = cardsFor(lang)
@@ -46,8 +50,23 @@ export default async function PaketPage({ params }: Params) {
   const addons = addonsFor(lang)
   const reviewed = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : LANG_INFO[lang].intl, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(PRICES_UPDATED))
 
+  // Pemandu: tabel hasil + data kartu hasil (string saja, aman untuk komponen klien)
+  const guideCards: Record<string, GuideCard> = Object.fromEntries(
+    cards.map((c) => [c.slug, { title: c.title, subtitle: c.subtitle, priceFrom: c.priceFrom, duration: c.duration, waHref: c.waHref }]),
+  )
+  const questions = [
+    { id: 'tujuan', legend: g8.questions.purpose, options: GUIDE_PURPOSE.map((o) => ({ id: o, label: g8.purpose[o] })) },
+    { id: 'ukuran', legend: g8.questions.size, options: GUIDE_SIZE.map((o) => ({ id: o, label: g8.size[o] })) },
+    { id: 'fitur', legend: g8.questions.extra, options: GUIDE_EXTRA.map((o) => ({ id: o, label: g8.extra[o] })) },
+  ]
+  // tautan #slug (peta harga, pemandu, halaman lain) membuka tab kelompok kartunya
+  const anchors = Object.fromEntries(groups.flatMap((g, i) => g.cards.map((c) => [c.slug, i])))
+
+  // Contoh angka cara bayar: paket yang direkomendasikan (lib/packages.ts)
+  const sample = packagesFor(lang).find((x) => x.recommended) ?? packagesFor(lang)[0]
+  const rest = money(lang, sample.minPrice - Math.round(sample.minPrice / 2))
+
   const info = [
-    { title: p.payment, body: f.payment },
     { title: p.afterYear, body: f.renewal },
     { title: p.guarantee, body: f.guarantee },
   ]
@@ -91,80 +110,88 @@ export default async function PaketPage({ params }: Params) {
         }
       />
 
-      {/* Mulai dari kebutuhan: tiap baris melompat ke kartu paketnya di bawah (content/needs.ts) */}
-      <section id="kebutuhan" aria-labelledby="needs-title" className="pb-12 pt-8 sm:pb-16 sm:pt-12">
+      {/* Pemandu 3 pertanyaan → paket paling cocok + alternatif (content/guide.ts) */}
+      <section id="pemandu" aria-labelledby="guide-title" className="pb-12 pt-8 sm:pb-16 sm:pt-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 id="needs-title" className="text-[1.5rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.875rem]">
-            {p.needsTitle}
+          <p className="kicker text-[color:var(--primary-700)]">{g8.kicker}</p>
+          <h2 id="guide-title" className="mt-2 text-[1.625rem] leading-tight text-[color:var(--text-primary)] sm:mt-3 sm:text-[2.25rem]">
+            {g8.title}
           </h2>
-          <p className="mt-2 max-w-2xl leading-relaxed text-[color:var(--text-tertiary)]">{p.needsLead}</p>
-          <NeedsList lang={lang} items={needsFor(lang)} base="#" className="mt-6 sm:mt-8" />
-
-          <div className="mt-6 flex flex-col gap-x-10 gap-y-4 lg:flex-row lg:items-start lg:justify-between">
-            {/* Lompat ke kategori: tautan teks sebaris yang membungkus ke baris berikut (tanpa gulir menyamping) */}
-            <nav aria-label={p.groupsNav}>
-              <p className="text-[0.9375rem] leading-[1.9] text-[color:var(--text-tertiary)]">
-                <span className="me-3">{p.groupsLead}</span>
-                {groups.map((g) => (
-                  <Fragment key={g.id}>
-                    <a href={`#${g.id}`} className="me-4 inline-block whitespace-nowrap py-0.5 font-semibold text-[color:var(--primary-700)] underline-offset-4 hover:underline">
-                      {g.title} <span className="text-[0.8125rem] font-medium text-[color:var(--text-muted)]">{g.cards.length}</span>
-                    </a>{' '}
-                  </Fragment>
-                ))}
-              </p>
-            </nav>
-            <p className="shrink-0 text-[0.9375rem] text-[color:var(--text-tertiary)]">
-              {p.ctaTitle}{' '}
-              <a href={wa(p.ctaWa)} target="_blank" rel="noopener noreferrer" className="link inline-flex items-center gap-1 font-semibold">
-                {d.common.consultFree} <ArrowUpRight size={15} className="arw-ne" aria-hidden="true" />
-                <span className="sr-only">{d.common.newTabShort}</span>
-              </a>
-            </p>
+          <p className="mt-2 max-w-2xl leading-relaxed text-[color:var(--text-tertiary)] sm:mt-3">{g8.lead}</p>
+          <div className="mt-6 sm:mt-8">
+            <PackageGuide
+              questions={questions}
+              results={GUIDE_RESULTS}
+              cards={guideCards}
+              labels={{ best: g8.best, alt: g8.alt, see: g8.see, ask: g8.ask, from: labels.from, duration: labels.duration, newTab: d.common.newTabShort, live: g8.live }}
+            />
           </div>
+          <p className="mt-5 text-[0.9375rem] text-[color:var(--text-tertiary)] lg:mt-6">
+            {p.ctaTitle}{' '}
+            <a href={wa(p.ctaWa)} target="_blank" rel="noopener noreferrer" className="link inline-flex items-center gap-1 font-semibold">
+              {d.common.consultFree} <ArrowUpRight size={15} className="arw-ne" aria-hidden="true" />
+              <span className="sr-only">{d.common.newTabShort}</span>
+            </a>
+          </p>
         </div>
       </section>
 
-      {/* Semua paket sekilas: peta harga yang sama dengan di beranda; barisnya melompat ke kartu paket di bawah */}
-      <section aria-labelledby="map-title" className="section-y bg-[color:var(--surface-soft)]">
+      {/* Semua paket per kelompok: tab + kartu ringkas. Semua panel tetap ada di HTML; kartu berjangkar #slug. */}
+      <section id="paket" aria-labelledby="all-title" className="section-y bg-[color:var(--surface-soft)]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <p className="kicker text-[color:var(--primary-700)]">{p.count(PACKAGES.length)}</p>
+          <h2 id="all-title" className="mt-2 text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:mt-3 sm:text-[2.25rem]">
+            {p.allTitle}
+          </h2>
+          <Tabs
+            idBase="kelompok"
+            label={p.groupsNav}
+            mode="hide"
+            anchors={anchors}
+            tabs={groups.map((g) => ({
+              id: g.id,
+              label: (
+                <Fragment key={g.id}>
+                  <span>{g.title}</span>{' '}
+                  <span className="tnum text-[0.8125rem] font-medium opacity-80">{g.cards.length}</span>
+                </Fragment>
+              ),
+            }))}
+            panels={groups.map((g) => (
+              <Fragment key={g.id}>
+                <p className="mb-4 max-w-3xl text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">
+                  {g.lead} <span className="whitespace-nowrap font-semibold text-[color:var(--text-secondary)]">{labels.from} {g.from}</span>
+                </p>
+                <BriefGrid cards={g.cards} labels={labels} wide />
+              </Fragment>
+            ))}
+            listClass="mt-5 flex flex-wrap gap-2 sm:mt-6"
+            tabClass="inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-[0.9375rem] font-semibold leading-tight transition-colors"
+            onClass="bg-[color:var(--primary-700)] text-white"
+            offClass="bg-white text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)] hover:text-[color:var(--primary-700)] hover:ring-[color:var(--primary-300)]"
+            panelsClass="mt-5 sm:mt-6"
+          />
+        </div>
+      </section>
+
+      {/* Semua paket sekilas: peta harga yang sama dengan di beranda; barisnya membuka kartu paketnya di atas */}
+      <section aria-labelledby="map-title" className="section-y">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="kicker text-[color:var(--primary-700)]">{p.mapKicker}</p>
           <h2 id="map-title" className="mt-2 text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:mt-3 sm:text-[2.25rem]">
             {p.mapTitle}
           </h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-[color:var(--text-tertiary)]">{p.mapLead}</p>
-          <PriceMap lang={lang} base="#" tone="white" className="mt-6 sm:mt-8" />
+          <PriceMap lang={lang} base="#" className="mt-6 sm:mt-8" />
         </div>
       </section>
 
-      {groups.map((g) => (
-        <section key={g.id} id={g.id} aria-labelledby={`grup-${g.id}`} className="border-b border-[color:var(--rule)] py-8 sm:py-14">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-5 px-4 sm:px-6 lg:grid-cols-12 lg:gap-y-8">
-            <div className="lg:col-span-3">
-              <div className="lg:sticky lg:top-28">
-                <p className="kicker text-[color:var(--primary-700)]">
-                  {p.count(g.cards.length)} · {labels.from} {g.from}
-                </p>
-                <h2 id={`grup-${g.id}`} className="mt-2 text-[1.625rem] leading-tight text-[color:var(--text-primary)] sm:mt-3 sm:text-[2.1rem]">
-                  {g.title}
-                </h2>
-                {/* ponsel: pengantar kelompok disembunyikan; subjudul tiap kartu sudah menjelaskan isinya */}
-                <p className="mt-3 hidden text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)] sm:block">{g.lead}</p>
-              </div>
-            </div>
-            {/* kartu berjangkar #slug: tujuan daftar kebutuhan, peta harga, dan tautan dari halaman lain */}
-            <PackageGrid cards={g.cards} labels={labels} note={false} className="lg:col-span-9" />
-          </div>
-        </section>
-      ))}
-
-      {/* Yang perlu diketahui sebelum memesan + biaya tambahan */}
-      <section aria-labelledby="info-title" className="section-y bg-[color:var(--surface-soft)]">
+      {/* Cara bayar 3 langkah, lalu setelah tahun pertama + garansi, biaya tambahan, FAQ */}
+      <section aria-labelledby="pay-title" className="section-y bg-[color:var(--surface-soft)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 id="info-title" className="max-w-3xl text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">
-            <HlText parts={p.infoTitle} />
-          </h2>
-          <ul className="mt-6 grid grid-cols-1 gap-x-10 gap-y-6 sm:mt-8 md:grid-cols-3">
+          <PaySteps kicker={p.payKicker} title={p.payTitle} steps={p.paySteps} example={p.payExample(sample.title, sample.priceFrom, sample.deposit, rest)} methods={p.payMethods} />
+
+          <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-6 sm:mt-14 md:grid-cols-2">
             {info.map((i) => (
               <li key={i.title} className="border-t border-[color:var(--rule)] pt-4">
                 <h3 className="text-[1.125rem] leading-snug text-[color:var(--text-primary)]">{i.title}</h3>

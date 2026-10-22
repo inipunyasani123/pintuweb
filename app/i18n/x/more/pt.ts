@@ -178,6 +178,9 @@ const more: More = {
     freshfold: {
       field: 'Lavanderia',
       project: 'Sistema web para registrar pedidos e o status da lavagem',
+      kind: 'Painel de pedidos',
+      before: 'Pedidos anotados à mão, status da lavagem difícil de acompanhar',
+      after: 'Painel de pedidos, status da lavagem e recibos digitais',
       problem: 'Os pedidos eram anotados à mão, o que dificultava acompanhar o status da lavagem e o histórico de transações dos clientes.',
       solution: 'Um painel para gerenciar pedidos, atualizar o status da lavagem, armazenar os dados dos clientes e imprimir recibos digitais.',
       docs: ['Painel de pedidos', 'Status da lavagem', 'Recibo digital'],
@@ -185,6 +188,9 @@ const more: More = {
     'sumber-rejeki': {
       field: 'Comércio de materiais de construção',
       project: 'Aplicativo web de inventário',
+      kind: 'App de estoque',
+      before: 'Estoque, entradas e saídas anotados à mão',
+      after: 'Estoque, entradas, saídas e relatórios em um só app',
       problem: 'O controle do estoque e o registro de entradas e saídas de mercadorias ainda eram feitos à mão.',
       solution: 'Um aplicativo de inventário com gestão de estoque, registro de entradas e saídas de mercadorias e relatórios de estoque.',
       docs: ['Painel de estoque', 'Relatório de estoque', 'Histórico de movimentação de mercadorias'],
@@ -192,6 +198,9 @@ const more: More = {
     'arif-motor': {
       field: 'Oficina de motos',
       project: 'Sistema de administração de serviços de veículos',
+      kind: 'Sistema de oficina',
+      before: 'Histórico de serviços num caderno, difícil de achar',
+      after: 'Dados de clientes, histórico de serviços e faturas digitais',
       problem: 'O histórico de serviços dos clientes ficava em um caderno, o que dificultava encontrá-lo de novo.',
       solution: 'Registro dos dados dos clientes e do histórico de serviços dos veículos, lista de trabalhos dos mecânicos e emissão de faturas.',
       docs: ['Dados dos clientes', 'Histórico de serviços', 'Fatura digital'],
@@ -199,6 +208,9 @@ const more: More = {
     'cerdas-akademi': {
       field: 'Reforço escolar',
       project: 'Site de matrícula de alunos e gestão de horários das aulas',
+      kind: 'Matrícula online',
+      before: 'Matrículas e horários feitos à mão',
+      after: 'Formulário online, dados dos alunos e horários das aulas',
       problem: 'A matrícula de alunos e a organização dos horários ainda eram feitas à mão.',
       solution: 'Um site com formulário de matrícula online, painel administrativo, gestão dos dados dos alunos e informações sobre os horários das aulas.',
       docs: ['Formulário de matrícula', 'Painel administrativo', 'Página de horários'],
@@ -206,6 +218,9 @@ const more: More = {
     'lereng-coffee': {
       field: 'Produção e venda de café local',
       project: 'Site de catálogo de produtos e pedidos online',
+      kind: 'Catálogo + pedidos',
+      before: 'Informações e pedidos dependiam das redes sociais',
+      after: 'Catálogo com preços, formulário de pedido e WhatsApp',
       problem: 'As informações sobre os produtos e os pedidos dependiam das redes sociais e de comunicação manual.',
       solution: 'Um catálogo de produtos com preços e descrições, um formulário de pedido e integração com o WhatsApp.',
       docs: ['Página de catálogo', 'Layout responsivo', 'Formulário de pedido'],
@@ -213,6 +228,9 @@ const more: More = {
     'prima-distribusi': {
       field: 'Distribuição de mercadorias',
       project: 'Painel de gestão de pedidos e entregas',
+      kind: 'Painel interno',
+      before: 'Status de pedidos e entregas não centralizados',
+      after: 'Pedidos, status de entrega e relatórios por período em um painel',
       problem: 'O status dos pedidos e das entregas não era centralizado, o que dificultava a administração operacional.',
       solution: 'Um painel interno para registrar pedidos, atualizar o status das entregas, pesquisar dados e gerar relatórios por período.',
       docs: ['Painel de pedidos', 'Filtro por data', 'Relatório de entregas'],
