@@ -1,7 +1,7 @@
 // Metadata & JSON-LD per halaman: canonical + hreflang lengkap, Open Graph per bahasa,
 // dan graf schema.org yang konsisten (Organization, WebSite, WebPage, BreadcrumbList).
 import type { Metadata } from 'next'
-import { CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER, FOUNDER_NAME } from '../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER, FOUNDER_NAME } from '../lib/site'
 import { PACKAGES } from '../lib/packages'
 import { LANG_INFO, LANGS, plain, type Lang } from './config'
 import { alternatesOf, langsOf, path, urlOf, type DocRef } from './routes'
@@ -103,7 +103,7 @@ export function siteGraph(lang: Lang) {
         telephone: `+${WA_NUMBER}`,
         priceRange: `IDR ${Math.min(...prices)}–${Math.max(...PACKAGES.map((p) => p.maxPrice))}`,
         currenciesAccepted: 'IDR',
-        address: { '@type': 'PostalAddress', addressLocality: 'Trenggalek', addressRegion: 'Jawa Timur', addressCountry: 'ID' },
+        address: { '@type': 'PostalAddress', addressLocality: CITY, addressRegion: 'Jawa Timur', addressCountry: 'ID' },
         areaServed: { '@type': 'Country', name: 'Indonesia' },
         knowsLanguage: LANGS.map((l) => LANG_INFO[l].htmlLang),
         knowsAbout: ['Web design', 'Web development', 'Next.js', 'Search engine optimization', 'Landing pages', 'E-commerce websites', 'Digital menus', 'Digital invitations'],

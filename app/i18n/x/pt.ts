@@ -7,7 +7,7 @@ const pt: Pack = {
     hoursDays: 'Segunda – sábado',
     hoursTime: `${opens} – ${closes} WIB (UTC+7)`,
     response: 'Respondemos em dias úteis, em até 24 horas',
-    location: 'Trenggalek, Java Oriental, Indonésia',
+    location: 'Tulungagung, Java Oriental, Indonésia',
     serves: 'Atendemos clientes a distância',
     payment:
       'Todos os pacotes: um sinal de 50% para começar e os 50% restantes quando o site estiver pronto e aprovado por você. ' +
@@ -334,7 +334,7 @@ const pt: Pack = {
   faq: (c) => [
     // Geral
     ['Nunca tive um site. Vocês podem me ajudar do zero?', 'Claro. Orientamos você passo a passo, do conceito, design e conteúdo até o site entrar no ar. Não é preciso nenhum conhecimento técnico; basta nos contar sobre o seu negócio e o que você precisa.'],
-    ['Há quanto tempo a PintuWeb existe?', `A PintuWeb foi fundada em ${c.year} em Trenggalek, Java Oriental, Indonésia, e concluiu ${c.projects} projetos de clientes. Há também ${c.demos} demos no ar que você pode testar por conta própria na página de Demos.`],
+    ['Há quanto tempo a PintuWeb existe?', `A PintuWeb foi fundada em ${c.year} em Tulungagung, Java Oriental, Indonésia, e concluiu ${c.projects} projetos de clientes. Há também ${c.demos} demos no ar que você pode testar por conta própria na página de Demos.`],
     ['O meu site vai aparecer no Google?', 'Sim. Todo site é otimizado para buscas desde o primeiro dia: meta tags, dados estruturados, sitemap e uma estrutura de títulos limpa. Um site novo costuma começar a ser indexado pelo Google em 1 a 2 semanas, e o posicionamento cresce com conteúdo de qualidade.'],
     ['O que diferencia a PintuWeb?', `Você pode começar por um dos nossos designs de demonstração, adaptado à identidade do seu negócio, ou pedir um design sob medida do zero. Buscamos uma pontuação PageSpeed de ${c.perf}, design mobile-first e SEO desde o início, além de uma garantia de ${c.days} dias e manutenção conforme o seu pacote.`],
     ['Como é o processo do início ao fim?', c.listed('O processo funciona assim:', c.steps(['Uma consulta sobre as suas necessidades', 'Orçamento e acordo', 'Um design inicial para a sua aprovação', 'Desenvolvimento', 'Testes e revisões', 'Lançamento e entrega']), 'Mantemos você informado pelo WhatsApp em cada etapa.', true)],

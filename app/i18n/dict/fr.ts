@@ -1,5 +1,5 @@
 // Dictionnaire de l'interface — Français. Traduction de dict/en.ts ; les chiffres viennent de lib/site.ts et lib/packages.ts.
-import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
@@ -10,7 +10,7 @@ const fr: Dict = {
     homeDescription: (n: number) =>
       `Création de sites web rapides et optimisés SEO pour petites entreprises, start-up et marques personnelles, depuis l’Indonésie. Tarifs clairs, ${n} démos.`,
     ogHomeDescription: (n: number) =>
-      `Un studio web à Trenggalek, en Indonésie, depuis ${FOUNDED_YEAR}. Des sites rapides et prêts pour le SEO pour les petites entreprises, les boutiques et les marques personnelles. Découvrez ${n} démos en ligne.`,
+      `Un studio web à ${CITY}, en Indonésie, depuis ${FOUNDED_YEAR}. Des sites rapides et prêts pour le SEO pour les petites entreprises, les boutiques et les marques personnelles. Découvrez ${n} démos en ligne.`,
     ogAlt: 'PintuWeb — Création de sites web professionnels',
     keywords: ['création de site web Indonésie', 'développeur web Indonésie', 'site web pas cher', 'site web pour petite entreprise', 'création de landing page', 'site vitrine', 'invitation numérique', 'page link in bio', 'développeur Next.js', 'PintuWeb'],
     orgDescription: 'Création de sites web professionnels, rapides et optimisés pour le SEO depuis l’Indonésie.',
@@ -77,7 +77,7 @@ const fr: Dict = {
     colCompany: 'PintuWeb',
     linksAria: 'Liens du pied de page',
     copyright: (year: number) => `© ${year} PintuWeb. Tous droits réservés.`,
-    basedIn: 'Basé à Trenggalek, Java oriental.',
+    basedIn: `Basé à ${CITY}, Java oriental.`,
     otherLangs: 'Autres langues',
   },
   links: {
@@ -96,7 +96,7 @@ const fr: Dict = {
   hero: {
     aria: 'Présentation de PintuWeb',
     artAlt: 'Illustration : un développeur web en train de créer un site à son bureau',
-    kicker: 'Studio web · Trenggalek, Java oriental',
+    kicker: `Studio web · ${CITY}, Java oriental`,
     meta: (n: number) => `Depuis ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} projets clients · ${n} démos en ligne`,
     title: ['Chaque entreprise mérite une vraie ', 'porte d’entrée', '.'] as Hl,
     lead: (n: number) =>

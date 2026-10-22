@@ -42,7 +42,7 @@ At this stage, a tidy [link-in-bio page](/en/services/link-in-bio) often helps: 
 ## Signs your business needs a website
 
 1. **Customers keep asking the same things** — price, location, how to order, opening hours. A website answers once for everyone.
-2. **You want to appear when people search Google**, for example “catering in Trenggalek” or “air-con servicing”.
+2. **You want to appear when people search Google**, for example “catering in Tulungagung” or “air-con servicing”.
 3. **Prospective clients need convincing**: proposals, tenders and B2B partnerships almost always start with checking your website.
 4. **Sales depend too heavily on one platform.** A single algorithm or fee change can hit revenue immediately.
 5. **You run ads** and need a fast destination page whose results you can measure.

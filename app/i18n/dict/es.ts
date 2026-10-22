@@ -1,5 +1,5 @@
 // Diccionario de la interfaz — Español. Traducción de dict/en.ts; las cifras vienen de lib/site.ts y lib/packages.ts.
-import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
@@ -10,7 +10,7 @@ const es: Dict = {
     homeDescription: (n: number) =>
       `Sitios web profesionales, rápidos y listos para SEO, para pequeñas empresas, startups y marcas personales, desde Indonesia. Precios claros y ${n} demos.`,
     ogHomeDescription: (n: number) =>
-      `Un estudio web en Trenggalek, Indonesia, desde ${FOUNDED_YEAR}. Sitios rápidos y listos para SEO para pequeñas empresas, tiendas y marcas personales. Mira ${n} demos en línea.`,
+      `Un estudio web en ${CITY}, Indonesia, desde ${FOUNDED_YEAR}. Sitios rápidos y listos para SEO para pequeñas empresas, tiendas y marcas personales. Mira ${n} demos en línea.`,
     ogAlt: 'PintuWeb — Diseño y desarrollo de sitios web profesionales',
     keywords: ['diseño web Indonesia', 'desarrollador web Indonesia', 'sitio web económico', 'sitio web para pequeñas empresas', 'diseño de landing page', 'sitio web corporativo', 'invitación digital', 'página link in bio', 'desarrollador Next.js', 'PintuWeb'],
     orgDescription: 'Diseño y desarrollo de sitios web profesionales, rápidos y optimizados para SEO desde Indonesia.',
@@ -77,7 +77,7 @@ const es: Dict = {
     colCompany: 'PintuWeb',
     linksAria: 'Enlaces del pie de página',
     copyright: (year: number) => `© ${year} PintuWeb. Todos los derechos reservados.`,
-    basedIn: 'Con sede en Trenggalek, Java Oriental.',
+    basedIn: `Con sede en ${CITY}, Java Oriental.`,
     otherLangs: 'Otros idiomas',
   },
   links: {
@@ -96,7 +96,7 @@ const es: Dict = {
   hero: {
     aria: 'Presentación de PintuWeb',
     artAlt: 'Ilustración: un desarrollador web construyendo un sitio en su escritorio',
-    kicker: 'Estudio web · Trenggalek, Java Oriental',
+    kicker: `Estudio web · ${CITY}, Java Oriental`,
     meta: (n: number) => `Desde ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} proyectos de clientes · ${n} demos en línea`,
     title: ['Todo negocio merece una buena ', 'puerta de entrada', '.'] as Hl,
     lead: (n: number) =>

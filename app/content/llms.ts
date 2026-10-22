@@ -1,5 +1,5 @@
 // Isi /llms.txt & /llms-full.txt, dirakit dari sumber data yang sama dengan halaman situs.
-import { CLIENT_PROJECTS, EMAIL, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET, SITE, WA_DISPLAY } from '../lib/site'
+import { CITY, CLIENT_PROJECTS, EMAIL, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET, SITE, WA_DISPLAY } from '../lib/site'
 import { DEMOS } from '../lib/demos'
 import { PORTALS } from '../lib/portals'
 import { addonsFor, facts, packagesFor } from '../i18n/facts'
@@ -21,11 +21,11 @@ export function llmsDoc(full: boolean) {
   push(
     '# PintuWeb',
     '',
-    `> PintuWeb is a website design and development studio based in Trenggalek, East Java, Indonesia, founded in ${FOUNDED_YEAR}. It builds fast, SEO-ready websites (landing pages, company profiles, online stores, QR digital menus, portfolios, digital invitations, link-in-bio pages and custom web apps) for small businesses, start-ups and personal brands. ${CLIENT_PROJECTS} client projects completed; ${DEMOS.length} live demos. Prices are in Indonesian Rupiah (IDR).`,
+    `> PintuWeb is a website design and development studio based in ${CITY}, East Java, Indonesia, founded in ${FOUNDED_YEAR}. It builds fast, SEO-ready websites (landing pages, company profiles, online stores, QR digital menus, portfolios, digital invitations, link-in-bio pages and custom web apps) for small businesses, start-ups and personal brands. ${CLIENT_PROJECTS} client projects completed; ${DEMOS.length} live demos. Prices are in Indonesian Rupiah (IDR).`,
     '',
     'Key facts (kept identical across every page of the site):',
     '',
-    `- Founded: ${FOUNDED_YEAR}, Trenggalek, East Java, Indonesia`,
+    `- Founded: ${FOUNDED_YEAR}, ${CITY}, East Java, Indonesia`,
     `- Client projects: ${CLIENT_PROJECTS}; live demos: ${DEMOS.length}`,
     `- Contact: WhatsApp ${WA_DISPLAY}, email ${EMAIL}`,
     `- Hours: ${en.hours}`,

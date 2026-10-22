@@ -42,7 +42,7 @@ Pada tahap ini, halaman [link in bio](/services/link-in-bio) yang rapi sering su
 ## Tanda usaha Anda butuh website
 
 1. **Pelanggan sering bertanya hal yang sama** — harga, lokasi, cara pesan, jam buka. Website menjawabnya sekali untuk semua orang.
-2. **Anda ingin muncul saat orang mencari di Google**, misalnya “katering di Trenggalek” atau “jasa servis AC”.
+2. **Anda ingin muncul saat orang mencari di Google**, misalnya “katering di Tulungagung” atau “jasa servis AC”.
 3. **Calon klien perlu diyakinkan**: proposal, tender, atau kerja sama B2B hampir selalu dimulai dengan mengecek website.
 4. **Penjualan terlalu bergantung pada satu platform.** Satu perubahan algoritma atau biaya bisa langsung memukul omzet.
 5. **Anda memasang iklan** dan butuh halaman tujuan yang cepat dan bisa diukur.

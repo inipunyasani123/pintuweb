@@ -1,5 +1,5 @@
 // Kamus antara muka — Bahasa Melayu.
-import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
@@ -10,7 +10,7 @@ const ms: Dict = {
     homeDescription: (n: number) =>
       `Laman web profesional, pantas dan mesra SEO untuk PKS, syarikat pemula dan jenama peribadi, dibina di Indonesia sejak ${FOUNDED_YEAR}. Harga telus, ${n} demo langsung.`,
     ogHomeDescription: (n: number) =>
-      `Studio web di Trenggalek sejak ${FOUNDED_YEAR}. Laman web pantas dan sedia SEO untuk PKS, kedai dan jenama peribadi. Lihat ${n} demo langsung.`,
+      `Studio web di ${CITY} sejak ${FOUNDED_YEAR}. Laman web pantas dan sedia SEO untuk PKS, kedai dan jenama peribadi. Lihat ${n} demo langsung.`,
     ogAlt: 'PintuWeb — Perkhidmatan membina laman web profesional',
     keywords: ['buat laman web', 'reka bentuk laman web', 'laman web PKS', 'laman web murah', 'landing page', 'laman web syarikat', 'kad jemputan digital', 'link in bio', 'pembangun web Indonesia', 'PintuWeb'],
     orgDescription: 'Perkhidmatan membina laman web profesional, pantas dan mesra SEO dari Indonesia.',
@@ -77,7 +77,7 @@ const ms: Dict = {
     colCompany: 'PintuWeb',
     linksAria: 'Pautan kaki halaman',
     copyright: (year: number) => `© ${year} PintuWeb. Hak cipta terpelihara.`,
-    basedIn: 'Berpangkalan di Trenggalek, Jawa Timur.',
+    basedIn: `Berpangkalan di ${CITY}, Jawa Timur.`,
     otherLangs: 'Bahasa lain',
   },
   links: {
@@ -96,7 +96,7 @@ const ms: Dict = {
   hero: {
     aria: 'Pengenalan PintuWeb',
     artAlt: 'Ilustrasi: pembangun web sedang membina laman web di meja kerjanya',
-    kicker: 'Studio web · Trenggalek, Jawa Timur',
+    kicker: `Studio web · ${CITY}, Jawa Timur`,
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} projek pelanggan · ${n} demo dalam talian`,
     title: ['Setiap perniagaan layak ada ', 'pintu depan', ' yang sewajarnya.'] as Hl,
     lead: (n: number) =>

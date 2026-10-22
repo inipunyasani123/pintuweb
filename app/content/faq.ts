@@ -1,6 +1,6 @@
 // Satu-satunya sumber FAQ (3 bahasa): bagian FAQ di beranda, halaman FAQ, dan JSON-LD FAQPage.
 // Semua angka dirakit dari lib/packages.ts & lib/site.ts lewat i18n/facts.ts supaya tidak pernah bertentangan.
-import { CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../lib/site'
+import { CITY, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../lib/site'
 import { DEMOS } from '../lib/demos'
 import { facts, packagesFor } from '../i18n/facts'
 import { byPrice } from '../lib/packages'
@@ -116,7 +116,7 @@ function items(lang: Lang): RawItem[] {
   if (lang === 'en') {
     return [
       { category: 'general', question: 'I have never had a website. Can you help me from scratch?', answer: 'Of course. We guide you step by step, from concept, design and content to the website going live. You do not need any technical knowledge; just tell us about your business and what you need.' },
-      { category: 'general', question: 'How long has PintuWeb been around?', answer: `PintuWeb was founded in ${FOUNDED_YEAR} in Trenggalek, East Java, Indonesia, and has completed ${CLIENT_PROJECTS} client projects. There are also ${n} live demos you can try for yourself on the Demos page.` },
+      { category: 'general', question: 'How long has PintuWeb been around?', answer: `PintuWeb was founded in ${FOUNDED_YEAR} in ${CITY}, East Java, Indonesia, and has completed ${CLIENT_PROJECTS} client projects. There are also ${n} live demos you can try for yourself on the Demos page.` },
       { category: 'general', question: 'Will my website show up on Google?', answer: 'Yes. Every website is optimised for search from day one: meta tags, structured data, a sitemap and a clean heading structure. A new website usually starts being indexed by Google within 1–2 weeks, and its rankings grow with good-quality content.' },
       { category: 'general', question: 'What makes PintuWeb different?', answer: `You can start from one of our demo designs, tailored to your business identity, or ask for a bespoke design from scratch. We aim for a PageSpeed score of ${PERF_TARGET}, mobile-first design and SEO from the start, plus a ${GUARANTEE_DAYS}-day guarantee and maintenance according to your package.` },
       { category: 'general', question: 'What does the process look like from start to finish?', ...listed('Here is how it works:', steps(['A consultation about your needs', 'A quote and agreement', 'An initial design for your approval', 'Development', 'Testing and revisions', 'Launch and handover']), 'We keep you updated over WhatsApp at every stage.', true) },
@@ -150,7 +150,7 @@ function items(lang: Lang): RawItem[] {
   if (lang === 'ms') {
     return [
       { category: 'general', question: 'Saya tidak pernah ada laman web. Bolehkah dibantu dari awal?', answer: 'Tentu sekali. Kami bimbing anda langkah demi langkah, daripada konsep, reka bentuk dan kandungan sehingga laman web dilancarkan. Anda tidak perlu tahu hal teknikal; cukup ceritakan tentang perniagaan dan keperluan anda.' },
-      { category: 'general', question: 'Sudah berapa lama PintuWeb beroperasi?', answer: `PintuWeb ditubuhkan pada ${FOUNDED_YEAR} di Trenggalek, Jawa Timur, Indonesia, dan telah menyiapkan ${CLIENT_PROJECTS} projek pelanggan. Terdapat juga ${n} demo langsung yang boleh anda cuba sendiri di halaman Demo.` },
+      { category: 'general', question: 'Sudah berapa lama PintuWeb beroperasi?', answer: `PintuWeb ditubuhkan pada ${FOUNDED_YEAR} di ${CITY}, Jawa Timur, Indonesia, dan telah menyiapkan ${CLIENT_PROJECTS} projek pelanggan. Terdapat juga ${n} demo langsung yang boleh anda cuba sendiri di halaman Demo.` },
       { category: 'general', question: 'Adakah laman web saya akan muncul di Google?', answer: 'Ya. Setiap laman web dioptimumkan untuk carian sejak awal: tag meta, data berstruktur, peta laman dan struktur tajuk yang kemas. Laman web baharu biasanya mula diindeks Google dalam 1–2 minggu, dan kedudukannya meningkat seiring kandungan yang berkualiti.' },
       { category: 'general', question: 'Apakah yang membezakan PintuWeb?', answer: `Anda boleh bermula daripada salah satu reka bentuk demo kami yang disesuaikan dengan identiti perniagaan anda, atau meminta reka bentuk khas dari awal. Kami menyasarkan skor PageSpeed ${PERF_TARGET}, reka bentuk mudah alih dahulu dan SEO sejak awal, berserta jaminan ${GUARANTEE_DAYS} hari dan penyelenggaraan mengikut pakej.` },
       { category: 'general', question: 'Bagaimanakah proses kerja dari awal hingga akhir?', ...listed('Alirannya seperti ini:', steps(['Konsultasi keperluan', 'Sebut harga dan persetujuan', 'Reka bentuk awal untuk kelulusan anda', 'Pembangunan', 'Pengujian dan semakan', 'Pelancaran dan serahan']), 'Kami maklumkan setiap peringkat melalui WhatsApp.', true) },
@@ -183,7 +183,7 @@ function items(lang: Lang): RawItem[] {
 
   return [
     { category: 'general', question: 'Saya belum pernah punya website, apakah bisa dibantu dari awal?', answer: 'Tentu. Kami memandumu langkah demi langkah, mulai dari konsep, desain, dan konten sampai website online. Kamu tidak perlu paham teknis; cukup ceritakan usaha dan kebutuhanmu.' },
-    { category: 'general', question: 'Sudah berapa lama PintuWeb berdiri?', answer: `PintuWeb berdiri sejak ${FOUNDED_YEAR} di Trenggalek, Jawa Timur, dan sudah menyelesaikan ${CLIENT_PROJECTS} proyek klien. Selain itu ada ${n} demo live yang bisa kamu coba langsung di halaman Demo.` },
+    { category: 'general', question: 'Sudah berapa lama PintuWeb berdiri?', answer: `PintuWeb berdiri sejak ${FOUNDED_YEAR} di ${CITY}, Jawa Timur, dan sudah menyelesaikan ${CLIENT_PROJECTS} proyek klien. Selain itu ada ${n} demo live yang bisa kamu coba langsung di halaman Demo.` },
     { category: 'general', question: 'Apakah website yang dibuat bisa muncul di Google?', answer: 'Ya. Setiap website dioptimasi SEO sejak awal: meta tag, structured data, sitemap, dan struktur heading yang rapi. Biasanya website mulai terindeks Google dalam 1–2 minggu, lalu peringkatnya tumbuh seiring konten yang berkualitas.' },
     { category: 'general', question: 'Apa yang membedakan PintuWeb dengan jasa lain?', answer: `Kamu bisa memulai dari salah satu desain demo kami yang disesuaikan dengan identitas usahamu, atau meminta desain khusus dari nol. Kami menargetkan skor PageSpeed ${PERF_TARGET}, desain mobile-first, SEO sejak awal, serta garansi ${GUARANTEE_DAYS} hari dan maintenance sesuai paket.` },
     { category: 'general', question: 'Bagaimana proses kerja dari awal sampai akhir?', ...listed('Alurnya seperti ini:', steps(['Konsultasi kebutuhan', 'Penawaran dan kesepakatan', 'Desain awal untuk kamu setujui', 'Pengembangan', 'Pengujian dan revisi', 'Website online dan serah terima']), 'Setiap tahap kami kabarkan lewat WhatsApp.', true) },

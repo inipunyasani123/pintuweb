@@ -1,5 +1,5 @@
 // Interface dictionary — English.
-import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
@@ -10,7 +10,7 @@ const en: Dict = {
     homeDescription: (n: number) =>
       `Professional, fast, SEO-friendly websites for small businesses and personal brands, built in Indonesia since ${FOUNDED_YEAR}. Transparent pricing, ${n} live demos.`,
     ogHomeDescription: (n: number) =>
-      `A web studio in Trenggalek, Indonesia, since ${FOUNDED_YEAR}. Fast, SEO-ready websites for small businesses, shops and personal brands. See ${n} live demos.`,
+      `A web studio in ${CITY}, Indonesia, since ${FOUNDED_YEAR}. Fast, SEO-ready websites for small businesses, shops and personal brands. See ${n} live demos.`,
     ogAlt: 'PintuWeb — Professional website design and development',
     keywords: ['website design Indonesia', 'web developer Indonesia', 'affordable website Indonesia', 'small business website', 'landing page design', 'company profile website', 'digital invitation', 'link in bio page', 'Next.js developer Indonesia', 'PintuWeb'],
     orgDescription: 'Professional, fast and SEO-friendly website design and development from Indonesia.',
@@ -77,7 +77,7 @@ const en: Dict = {
     colCompany: 'PintuWeb',
     linksAria: 'Footer links',
     copyright: (year: number) => `© ${year} PintuWeb. All rights reserved.`,
-    basedIn: 'Based in Trenggalek, East Java.',
+    basedIn: `Based in ${CITY}, East Java.`,
     otherLangs: 'Other languages',
   },
   links: {
@@ -96,7 +96,7 @@ const en: Dict = {
   hero: {
     aria: 'Introducing PintuWeb',
     artAlt: 'Illustration: a web developer building a website at their desk',
-    kicker: 'Web studio · Trenggalek, East Java',
+    kicker: `Web studio · ${CITY}, East Java`,
     meta: (n: number) => `Since ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} client projects · ${n} live demos`,
     title: ['Every business deserves a proper ', 'front door', '.'] as Hl,
     lead: (n: number) =>

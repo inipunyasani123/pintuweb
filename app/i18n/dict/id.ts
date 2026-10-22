@@ -1,6 +1,6 @@
 // Kamus antarmuka — Bahasa Indonesia (bahasa utama). Teks diambil apa adanya dari situs sebelum i18n.
 // Pola judul [biasa, sorotan, sisa?]: bagian kedua diberi warna aksen.
-import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { capFirst, demoUnits, numberWord } from '../plural'
 
@@ -12,9 +12,9 @@ const id = {
     homeDescription: (n: number) =>
       `Jasa pembuatan website profesional, cepat, dan SEO-friendly untuk UMKM, startup, dan personal brand sejak ${FOUNDED_YEAR}. Harga transparan, lihat ${n} demo langsung.`,
     ogHomeDescription: (n: number) =>
-      `Studio web di Trenggalek sejak ${FOUNDED_YEAR}. Website cepat dan siap SEO untuk UMKM, toko, dan personal brand. Lihat ${n} demo langsung.`,
+      `Studio web di ${CITY} sejak ${FOUNDED_YEAR}. Website cepat dan siap SEO untuk UMKM, toko, dan personal brand. Lihat ${n} demo langsung.`,
     ogAlt: 'PintuWeb — Jasa Pembuatan Website Profesional',
-    keywords: ['jasa pembuatan website', 'jasa website profesional', 'bikin website murah', 'website UMKM', 'landing page', 'company profile', 'undangan digital', 'link in bio', 'web developer Trenggalek', 'PintuWeb'],
+    keywords: ['jasa pembuatan website', 'jasa website profesional', 'bikin website murah', 'website UMKM', 'landing page', 'company profile', 'undangan digital', 'link in bio', `web developer ${CITY}`, 'PintuWeb'],
     orgDescription: 'Jasa pembuatan website profesional, cepat, dan SEO-friendly.',
   },
   common: {
@@ -81,7 +81,7 @@ const id = {
     colCompany: 'PintuWeb',
     linksAria: 'Tautan footer',
     copyright: (year: number) => `© ${year} PintuWeb. Semua hak dilindungi.`,
-    basedIn: 'Berlokasi di Trenggalek, Jawa Timur.',
+    basedIn: `Berlokasi di ${CITY}, Jawa Timur.`,
     otherLangs: 'Bahasa lain',
   },
   links: {
@@ -100,7 +100,7 @@ const id = {
   hero: {
     aria: 'Perkenalan PintuWeb',
     artAlt: 'Ilustrasi: pengembang web sedang membangun website di meja kerjanya',
-    kicker: 'Studio web · Trenggalek, Jawa Timur',
+    kicker: `Studio web · ${CITY}, Jawa Timur`,
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} proyek klien · ${n} demo online`,
     title: ['Setiap usaha butuh ', 'pintu depan', ' yang layak.'] as Hl,
     lead: (n: number) =>

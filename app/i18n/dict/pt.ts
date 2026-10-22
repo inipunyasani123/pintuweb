@@ -1,5 +1,5 @@
 // Dicionário da interface — Português. Tradução de dict/en.ts; os números vêm de lib/site.ts e lib/packages.ts.
-import { CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { capFirst, demoUnits, numberWord } from '../plural'
 import type { Dict, Hl } from './id'
@@ -10,7 +10,7 @@ const pt: Dict = {
     homeDescription: (n: number) =>
       `Sites profissionais, rápidos e otimizados para SEO, para pequenas empresas, startups e marcas pessoais, criados na Indonésia. Preços claros e ${n} demos.`,
     ogHomeDescription: (n: number) =>
-      `Um estúdio web em Trenggalek, Indonésia, desde ${FOUNDED_YEAR}. Sites rápidos e prontos para SEO para pequenas empresas, lojas e marcas pessoais. Veja ${n} demos no ar.`,
+      `Um estúdio web em ${CITY}, Indonésia, desde ${FOUNDED_YEAR}. Sites rápidos e prontos para SEO para pequenas empresas, lojas e marcas pessoais. Veja ${n} demos no ar.`,
     ogAlt: 'PintuWeb — Criação e desenvolvimento de sites profissionais',
     keywords: ['criação de sites Indonésia', 'desenvolvedor web Indonésia', 'site barato', 'site para pequenas empresas', 'criação de landing page', 'site institucional', 'convite digital', 'página link in bio', 'desenvolvedor Next.js', 'PintuWeb'],
     orgDescription: 'Criação e desenvolvimento de sites profissionais, rápidos e otimizados para SEO a partir da Indonésia.',
@@ -77,7 +77,7 @@ const pt: Dict = {
     colCompany: 'PintuWeb',
     linksAria: 'Links do rodapé',
     copyright: (year: number) => `© ${year} PintuWeb. Todos os direitos reservados.`,
-    basedIn: 'Com sede em Trenggalek, Java Oriental.',
+    basedIn: `Com sede em ${CITY}, Java Oriental.`,
     otherLangs: 'Outros idiomas',
   },
   links: {
@@ -96,7 +96,7 @@ const pt: Dict = {
   hero: {
     aria: 'Apresentação da PintuWeb',
     artAlt: 'Ilustração: um desenvolvedor web construindo um site em sua mesa',
-    kicker: 'Estúdio web · Trenggalek, Java Oriental',
+    kicker: `Estúdio web · ${CITY}, Java Oriental`,
     meta: (n: number) => `Desde ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} projetos de clientes · ${n} demos no ar`,
     title: ['Todo negócio merece uma boa ', 'porta de entrada', '.'] as Hl,
     lead: (n: number) =>

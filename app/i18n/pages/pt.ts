@@ -1,14 +1,14 @@
 // Textos das páginas — Português. Tradução de pages/en.ts.
 // As seções das páginas que ainda não existem em português (documentos legais, artigos) herdam o inglês:
 // essas páginas não são geradas para este idioma e seus links levam à versão em inglês.
-import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { CATEGORY_COUNT, CITY, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
 
-const LOC = 'Trenggalek, Java Oriental'
+const LOC = `${CITY}, Java Oriental`
 
 const pages: Pages = {
   ...en,
@@ -164,7 +164,7 @@ const pages: Pages = {
     ogTitle: 'Sobre a PintuWeb',
     ogDescription: (n: number) => `Fundada em ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} projetos de clientes e ${n} demos no ar para você testar.`,
     eyebrow: 'Sobre nós',
-    h1: ['Um pequeno estúdio web em Trenggalek, ', `desde ${FOUNDED_YEAR}`, '.'] as Hl,
+    h1: [`Um pequeno estúdio web em ${CITY}, `, `desde ${FOUNDED_YEAR}`, '.'] as Hl,
     lead: 'A PintuWeb projeta e constrói sites para pequenas empresas, startups e marcas pessoais, da primeira conversa no WhatsApp até o dia em que o site entra no ar.',
     stats: { projects: 'Projetos de clientes concluídos', demos: 'Demos no ar', since: 'Fundada em', categories: 'Categorias de sites' },
     storyTitle: 'Nossa história',

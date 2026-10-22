@@ -10,8 +10,8 @@ import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
 
-// «в Тренгалеке» — предложный падеж
-const IN_LOC = 'Тренгалеке (Восточная Ява)'
+// «в Тулунгагунге» — предложный падеж
+const IN_LOC = 'Тулунгагунге (Восточная Ява)'
 const dayWord = (n: number) => plural('ru', n, { one: 'день', few: 'дня', many: 'дней', other: 'дня' })
 const pkgWord = (n: number) => plural('ru', n, { one: 'пакет', few: 'пакета', many: 'пакетов', other: 'пакета' })
 const siteWord = (n: number) => plural('ru', n, { one: 'работающий сайт', few: 'работающих сайта', many: 'работающих сайтов', other: 'работающего сайта' })
@@ -125,11 +125,11 @@ const pages: Pages = {
   },
   about: {
     title: 'О нас',
-    description: `Студия веб-дизайна из Тренгалека (Восточная Ява, Индонезия), основанная в ${FOUNDED_YEAR} году: ${CLIENT_PROJECTS} проектов для малого бизнеса, стартапов и личных брендов.`,
+    description: `Студия веб-дизайна из Тулунгагунга (Восточная Ява, Индонезия), основанная в ${FOUNDED_YEAR} году: ${CLIENT_PROJECTS} проектов для малого бизнеса, стартапов и личных брендов.`,
     ogTitle: 'О PintuWeb',
     ogDescription: (n: number) => `Основана в ${FOUNDED_YEAR} году, ${CLIENT_PROJECTS} клиентских проектов и ${n} демо онлайн, которые можно опробовать.`,
     eyebrow: 'О нас',
-    h1: ['Небольшая веб-студия в Тренгалеке, ', `с ${FOUNDED_YEAR} года`, '.'] as Hl,
+    h1: ['Небольшая веб-студия в Тулунгагунге, ', `с ${FOUNDED_YEAR} года`, '.'] as Hl,
     lead: 'PintuWeb проектирует и создаёт сайты для малого бизнеса, стартапов и личных брендов: от первого сообщения в WhatsApp до запуска сайта.',
     stats: { projects: 'Завершённых клиентских проектов', demos: 'Демо онлайн', since: 'Год основания', categories: 'Категорий сайтов' },
     storyTitle: 'Наша история',

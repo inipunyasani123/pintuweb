@@ -10,7 +10,7 @@ const zh: Dict = {
     homeDescription: (n: number) =>
       `为小微企业、初创公司和个人品牌打造专业、快速、利于 SEO 的网站，自 ${FOUNDED_YEAR} 年起在印度尼西亚制作。价格透明，另有 ${n} 个在线演示可立即打开。`,
     ogHomeDescription: (n: number) =>
-      `位于印度尼西亚特伦加勒的网站工作室，成立于 ${FOUNDED_YEAR} 年。为小微企业、店铺和个人品牌打造快速、SEO 就绪的网站。查看 ${n} 个在线演示。`,
+      `位于印度尼西亚图隆阿贡的网站工作室，成立于 ${FOUNDED_YEAR} 年。为小微企业、店铺和个人品牌打造快速、SEO 就绪的网站。查看 ${n} 个在线演示。`,
     ogAlt: 'PintuWeb — 专业网站设计与开发',
     keywords: ['印度尼西亚网站设计', '印度尼西亚网站开发', '平价网站建设', '小微企业网站', '落地页设计', '企业官网', '电子请柬', 'link in bio 页面', 'Next.js 开发', 'PintuWeb'],
     orgDescription: '来自印度尼西亚的专业、快速、利于 SEO 的网站设计与开发。',
@@ -77,7 +77,7 @@ const zh: Dict = {
     colCompany: 'PintuWeb',
     linksAria: '页脚链接',
     copyright: (year: number) => `© ${year} PintuWeb。保留所有权利。`,
-    basedIn: '位于东爪哇省特伦加勒。',
+    basedIn: '位于东爪哇省图隆阿贡。',
     otherLangs: '其他语言',
   },
   links: {
@@ -96,7 +96,7 @@ const zh: Dict = {
   hero: {
     aria: 'PintuWeb 简介',
     artAlt: '插图：一位网站开发者在书桌前搭建网站',
-    kicker: '网站工作室 · 东爪哇特伦加勒',
+    kicker: '网站工作室 · 东爪哇图隆阿贡',
     meta: (n: number) => `始于 ${FOUNDED_YEAR} 年 · ${CLIENT_PROJECTS} 个客户项目 · ${n} 个在线演示`,
     title: ['每一门生意，都值得一扇像样的', '大门', '。'] as Hl,
     lead: (n: number) =>

@@ -1,5 +1,5 @@
 // Teks per halaman — Bahasa Indonesia. Kalimat lama dipertahankan apa adanya.
-import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, LOCATION, PERF_TARGET } from '../../lib/site'
+import { CATEGORY_COUNT, CITY, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, LOCATION, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
@@ -112,7 +112,7 @@ const pages = {
     ogTitle: 'Tentang PintuWeb',
     ogDescription: (n: number) => `Berdiri sejak ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} proyek klien, dan ${n} demo live yang bisa kamu coba.`,
     eyebrow: 'Tentang Kami',
-    h1: ['Studio web kecil dari Trenggalek, ', `sejak ${FOUNDED_YEAR}`, '.'] as Hl,
+    h1: [`Studio web kecil dari ${CITY}, `, `sejak ${FOUNDED_YEAR}`, '.'] as Hl,
     lead: 'PintuWeb merancang dan membangun website untuk UMKM, startup, dan personal brand, dari obrolan pertama di WhatsApp sampai websitenya online.',
     stats: { projects: 'Proyek klien selesai', demos: 'Demo live', since: 'Berdiri sejak', categories: 'Kategori website' },
     storyTitle: 'Cerita kami',

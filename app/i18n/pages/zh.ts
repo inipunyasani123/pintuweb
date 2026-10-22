@@ -8,7 +8,7 @@ import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
 
-const LOC = '东爪哇省特伦加勒'
+const LOC = '东爪哇省图隆阿贡'
 
 const pages: Pages = {
   ...en,
@@ -118,7 +118,7 @@ const pages: Pages = {
     ogTitle: '关于 PintuWeb',
     ogDescription: (n: number) => `成立于 ${FOUNDED_YEAR} 年，${CLIENT_PROJECTS} 个客户项目，${n} 个可亲自体验的在线演示。`,
     eyebrow: '关于我们',
-    h1: ['特伦加勒的一间小型网站工作室，', `始于 ${FOUNDED_YEAR} 年`, '。'] as Hl,
+    h1: ['图隆阿贡的一间小型网站工作室，', `始于 ${FOUNDED_YEAR} 年`, '。'] as Hl,
     lead: 'PintuWeb 为小微企业、初创公司和个人品牌设计并搭建网站，从第一次 WhatsApp 沟通到网站上线。',
     stats: { projects: '已完成的客户项目', demos: '在线演示', since: '成立年份', categories: '网站类别' },
     storyTitle: '我们的故事',

@@ -7,7 +7,7 @@ const es: Pack = {
     hoursDays: 'Lunes – sábado',
     hoursTime: `${opens} – ${closes} WIB (UTC+7)`,
     response: 'Respondemos en días laborables, en un máximo de 24 horas',
-    location: 'Trenggalek, Java Oriental, Indonesia',
+    location: 'Tulungagung, Java Oriental, Indonesia',
     serves: 'Trabajamos con clientes a distancia',
     payment:
       'Todos los paquetes: un anticipo del 50% para empezar y el 50% restante cuando el sitio esté terminado y lo hayas aprobado. ' +
@@ -334,7 +334,7 @@ const es: Pack = {
   faq: (c) => [
     // General
     ['Nunca he tenido un sitio web. ¿Pueden ayudarme desde cero?', 'Por supuesto. Te guiamos paso a paso, desde el concepto, el diseño y el contenido hasta la publicación del sitio. No necesitas conocimientos técnicos; basta con que nos cuentes sobre tu negocio y lo que necesitas.'],
-    ['¿Cuánto tiempo lleva PintuWeb en activo?', `PintuWeb se fundó en ${c.year} en Trenggalek, Java Oriental, Indonesia, y ha completado ${c.projects} proyectos de clientes. Además hay ${c.demos} demos en línea que puedes probar tú mismo en la página de Demos.`],
+    ['¿Cuánto tiempo lleva PintuWeb en activo?', `PintuWeb se fundó en ${c.year} en Tulungagung, Java Oriental, Indonesia, y ha completado ${c.projects} proyectos de clientes. Además hay ${c.demos} demos en línea que puedes probar tú mismo en la página de Demos.`],
     ['¿Aparecerá mi sitio web en Google?', 'Sí. Cada sitio se optimiza para buscadores desde el primer día: metaetiquetas, datos estructurados, un sitemap y una estructura de encabezados limpia. Un sitio nuevo suele empezar a indexarse en Google en 1–2 semanas, y su posicionamiento crece con contenido de calidad.'],
     ['¿Qué hace diferente a PintuWeb?', `Puedes partir de uno de nuestros diseños de demostración, adaptado a la identidad de tu negocio, o pedir un diseño a medida desde cero. Apuntamos a una puntuación PageSpeed de ${c.perf}, diseño pensado primero para móviles y SEO desde el inicio, además de una garantía de ${c.days} días y mantenimiento según tu paquete.`],
     ['¿Cómo es el proceso de principio a fin?', c.listed('Así es el proceso:', c.steps(['Una consulta sobre tus necesidades', 'Un presupuesto y el acuerdo', 'Un diseño inicial para tu aprobación', 'Desarrollo', 'Pruebas y revisiones', 'Lanzamiento y entrega']), 'Te mantenemos informado por WhatsApp en cada etapa.', true)],

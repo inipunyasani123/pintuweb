@@ -1,6 +1,6 @@
 # PintuWeb
 
-Situs studio web PintuWeb (berlokasi di Trenggalek, Jawa Timur): layanan pembuatan website, 14 paket harga, galeri 65 demo live, FAQ, artikel, kamus istilah, dan formulir kontak (WhatsApp/email, tanpa backend).
+Situs studio web PintuWeb (berlokasi di Tulungagung, Jawa Timur): layanan pembuatan website, 14 paket harga, galeri 65 demo live, FAQ, artikel, kamus istilah, dan formulir kontak (WhatsApp/email, tanpa backend).
 
 Live: https://www.pintuweb.id
 

@@ -1,11 +1,11 @@
 // Page copy — English.
-import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { CATEGORY_COUNT, CITY, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 
-const LOC = 'Trenggalek, East Java'
+const LOC = `${CITY}, East Java`
 
 const pages: Pages = {
   services: {
@@ -114,7 +114,7 @@ const pages: Pages = {
     ogTitle: 'About PintuWeb',
     ogDescription: (n: number) => `Founded in ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} client projects and ${n} live demos you can try.`,
     eyebrow: 'About us',
-    h1: ['A small web studio in Trenggalek, ', `since ${FOUNDED_YEAR}`, '.'] as Hl,
+    h1: [`A small web studio in ${CITY}, `, `since ${FOUNDED_YEAR}`, '.'] as Hl,
     lead: 'PintuWeb designs and builds websites for small businesses, start-ups and personal brands, from the first WhatsApp chat to the day the site goes live.',
     stats: { projects: 'Client projects completed', demos: 'Live demos', since: 'Founded', categories: 'Website categories' },
     storyTitle: 'Our story',

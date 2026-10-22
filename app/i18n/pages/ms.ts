@@ -1,11 +1,11 @@
 // Teks halaman — Bahasa Melayu.
-import { CATEGORY_COUNT, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
+import { CATEGORY_COUNT, CITY, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { LANGS } from '../config'
 import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 
-const LOC = 'Trenggalek, Jawa Timur'
+const LOC = `${CITY}, Jawa Timur`
 
 const pages: Pages = {
   services: {
@@ -114,7 +114,7 @@ const pages: Pages = {
     ogTitle: 'Tentang PintuWeb',
     ogDescription: (n: number) => `Ditubuhkan pada ${FOUNDED_YEAR}, ${CLIENT_PROJECTS} projek pelanggan dan ${n} demo langsung yang boleh anda cuba.`,
     eyebrow: 'Tentang Kami',
-    h1: ['Studio web kecil dari Trenggalek, ', `sejak ${FOUNDED_YEAR}`, '.'] as Hl,
+    h1: [`Studio web kecil dari ${CITY}, `, `sejak ${FOUNDED_YEAR}`, '.'] as Hl,
     lead: 'PintuWeb mereka bentuk dan membina laman web untuk PKS, syarikat pemula dan jenama peribadi, daripada perbualan pertama di WhatsApp hingga laman webnya dilancarkan.',
     stats: { projects: 'Projek pelanggan siap', demos: 'Demo langsung', since: 'Ditubuhkan', categories: 'Kategori laman web' },
     storyTitle: 'Kisah kami',

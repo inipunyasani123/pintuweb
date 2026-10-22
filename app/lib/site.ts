@@ -9,7 +9,9 @@ export const FOUNDED_YEAR = 2018
 export const CLIENT_PROJECTS = '20+'
 /** Jumlah jenis website/kategori demo (= DEMO_CATEGORIES di lib/demos.ts; beranda menggagalkan build bila berbeda). */
 export const CATEGORY_COUNT = 10
-export const LOCATION = 'Trenggalek, Jawa Timur'
+/** Kota tempat PintuWeb berlokasi; kalimat lokasi berhuruf Latin (id/en/ms/es/fr/pt), JSON-LD, FAQ & llms.txt dirakit dari sini. */
+export const CITY = 'Tulungagung'
+export const LOCATION = `${CITY}, Jawa Timur`
 
 export const WA_NUMBER = '6285190931399'
 export const WA_DISPLAY = '+62 851 9093 1399'
@@ -41,7 +43,7 @@ export const GUARANTEE_DAYS = 30
  * Tanggal terakhir fakta di file ini (kontak, jam kerja, angka) berubah. NAIKKAN setiap kali mengubahnya:
  * tanggal berlaku dokumen legal dan lastmod sitemap mengikuti tanggal ini.
  */
-export const FACTS_UPDATED = '2026-10-21'
+export const FACTS_UPDATED = '2026-10-22'
 
 /** Tanggal ISO (YYYY-MM-DD) yang paling baru. */
 export const latest = (...dates: string[]) => dates.reduce((a, b) => (b > a ? b : a))

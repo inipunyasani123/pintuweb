@@ -9,7 +9,7 @@ import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
 
-const LOC = 'त्रेंगालेक, पूर्वी जावा'
+const LOC = 'तुलुंगागुंग, पूर्वी जावा'
 
 const pages: Pages = {
   ...en,
@@ -165,7 +165,7 @@ const pages: Pages = {
     ogTitle: 'PintuWeb के बारे में',
     ogDescription: (n: number) => `${FOUNDED_YEAR} में स्थापित, ${CLIENT_PROJECTS} क्लाइंट प्रोजेक्ट और ${n} ऑनलाइन डेमो, जिन्हें आप आज़मा सकते हैं।`,
     eyebrow: 'हमारे बारे में',
-    h1: ['त्रेंगालेक का एक छोटा वेब स्टूडियो, ', `${FOUNDED_YEAR} से`, '।'] as Hl,
+    h1: ['तुलुंगागुंग का एक छोटा वेब स्टूडियो, ', `${FOUNDED_YEAR} से`, '।'] as Hl,
     lead: 'PintuWeb छोटे व्यवसायों, स्टार्टअप और पर्सनल ब्रांड के लिए वेबसाइटें डिज़ाइन करता और बनाता है, WhatsApp पर पहली बातचीत से लेकर साइट के लाइव होने तक।',
     stats: { projects: 'पूरे किए गए क्लाइंट प्रोजेक्ट', demos: 'ऑनलाइन डेमो', since: 'स्थापना वर्ष', categories: 'वेबसाइट श्रेणियाँ' },
     storyTitle: 'हमारी कहानी',

@@ -10,7 +10,7 @@ import type { Hl } from '../dict/id'
 import type { Pages } from './id'
 import en from './en'
 
-const LOC = 'ترينغاليك، جاوة الشرقية'
+const LOC = 'تولونغاغونغ، جاوة الشرقية'
 const ltr = (s: string) => `\u2066${s}\u2069`
 // المعدود في العربية: 3–10 جمع، 11–99 مفرد منصوب
 const dayWord = (n: number) => plural('ar', n, { one: 'يوم', two: 'يومان', few: 'أيام', many: 'يومًا', other: 'يوم' })
@@ -175,7 +175,7 @@ const pages: Pages = {
     ogTitle: 'عن PintuWeb',
     ogDescription: (n: number) => `تأسس عام ${FOUNDED_YEAR}، ${CLIENT_PROJECTS} مشروعًا للعملاء، و${n} ${demoWord(n)} يمكنك تجربتها.`,
     eyebrow: 'من نحن',
-    h1: ['استوديو ويب صغير في ترينغاليك، ', `منذ ${FOUNDED_YEAR}`, '.'] as Hl,
+    h1: ['استوديو ويب صغير في تولونغاغونغ، ', `منذ ${FOUNDED_YEAR}`, '.'] as Hl,
     lead: 'تصمّم PintuWeb وتبني مواقع إلكترونية للمشاريع الصغيرة والشركات الناشئة والعلامات الشخصية، من أول محادثة على واتساب حتى إطلاق الموقع.',
     stats: { projects: 'مشاريع عملاء مكتملة', demos: 'عروض تجريبية على الإنترنت', since: 'سنة التأسيس', categories: 'فئات المواقع' },
     storyTitle: 'قصتنا',

@@ -7,7 +7,7 @@ const fr: Pack = {
     hoursDays: 'Lundi – samedi',
     hoursTime: `${opens} – ${closes} WIB (UTC+7)`,
     response: 'Nous répondons les jours ouvrés, sous 24 heures',
-    location: 'Trenggalek, Java oriental, Indonésie',
+    location: 'Tulungagung, Java oriental, Indonésie',
     serves: 'Nous travaillons avec nos clients à distance',
     payment:
       'Toutes les formules : un acompte de 50 % pour démarrer, et les 50 % restants une fois le site terminé et validé par vous. ' +
@@ -334,7 +334,7 @@ const fr: Pack = {
   faq: (c) => [
     // Général
     ['Je n’ai jamais eu de site web. Pouvez-vous m’aider depuis le début ?', 'Bien sûr. Nous vous guidons pas à pas, du concept, du design et du contenu jusqu’à la mise en ligne du site. Aucune connaissance technique n’est nécessaire ; parlez-nous simplement de votre activité et de vos besoins.'],
-    ['Depuis combien de temps PintuWeb existe-t-il ?', `PintuWeb a été fondé en ${c.year} à Trenggalek, Java oriental, en Indonésie, et a mené à bien ${c.projects} projets clients. Il y a aussi ${c.demos} démos en ligne que vous pouvez essayer vous-même sur la page Démos.`],
+    ['Depuis combien de temps PintuWeb existe-t-il ?', `PintuWeb a été fondé en ${c.year} à Tulungagung, Java oriental, en Indonésie, et a mené à bien ${c.projects} projets clients. Il y a aussi ${c.demos} démos en ligne que vous pouvez essayer vous-même sur la page Démos.`],
     ['Mon site apparaîtra-t-il sur Google ?', 'Oui. Chaque site est optimisé pour la recherche dès le premier jour : balises meta, données structurées, sitemap et structure de titres propre. Un nouveau site commence généralement à être indexé par Google sous 1 à 2 semaines, et son classement progresse avec un contenu de qualité.'],
     ['Qu’est-ce qui distingue PintuWeb ?', `Vous pouvez partir de l’un de nos designs de démonstration, adapté à l’identité de votre entreprise, ou demander un design sur mesure créé de zéro. Nous visons un score PageSpeed de ${c.perf}, une conception mobile-first et le SEO dès le départ, ainsi qu’une garantie de ${c.days} jours et une maintenance selon votre formule.`],
     ['Comment se déroule le projet du début à la fin ?', c.listed('Voici comment cela se déroule :', c.steps(['Une consultation sur vos besoins', 'Un devis et l’accord', 'Une première maquette pour validation', 'Le développement', 'Les tests et les révisions', 'La mise en ligne et la remise']), 'Nous vous tenons informé sur WhatsApp à chaque étape.', true)],

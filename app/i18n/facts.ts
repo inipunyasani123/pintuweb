@@ -1,6 +1,6 @@
 // Kalimat fakta bisnis per bahasa. Angka & kontak tetap dari lib/site.ts dan lib/packages.ts
 // (satu-satunya sumber); di sini hanya cara menuliskannya.
-import { CLOSES, GUARANTEE_DAYS, HOURS, LOCATION, OPENS, PERF_TARGET, RESPONSE, dotTime } from '../lib/site'
+import { CITY, CLOSES, GUARANTEE_DAYS, HOURS, LOCATION, OPENS, PERF_TARGET, RESPONSE, dotTime } from '../lib/site'
 import { DEMOS } from '../lib/demos'
 import { ADDONS, PACKAGES, PAYMENT_SUMMARY, RENEWAL_BIO_PER_YEAR, RENEWAL_PER_YEAR, RENEWAL_SUMMARY, type Paket, type Waktu } from '../lib/packages'
 import { LANG_INFO, isBase, type BaseLang, type Lang } from './config'
@@ -26,7 +26,7 @@ const FACTS: Record<BaseLang, Facts> = {
     hoursDays: 'Monday – Saturday',
     hoursTime: `${OPENS} – ${CLOSES} WIB (UTC+7)`,
     response: 'We reply on working days, within 24 hours',
-    location: 'Trenggalek, East Java, Indonesia',
+    location: `${CITY}, East Java, Indonesia`,
     serves: 'Working with clients remotely',
     payment:
       'Every package: a 50% deposit to start, and the remaining 50% once the website is finished and you have approved it. ' +
@@ -44,7 +44,7 @@ const FACTS: Record<BaseLang, Facts> = {
     hoursDays: 'Isnin – Sabtu',
     hoursTime: `${dotTime(OPENS)} – ${dotTime(CLOSES)} WIB (UTC+7)`,
     response: 'Kami membalas pada hari bekerja, dalam masa 24 jam',
-    location: 'Trenggalek, Jawa Timur, Indonesia',
+    location: `${CITY}, Jawa Timur, Indonesia`,
     serves: 'Bekerja dengan pelanggan secara jarak jauh',
     payment:
       'Semua pakej: deposit 50% untuk bermula, baki 50% selepas laman web siap dan anda luluskan. ' +
