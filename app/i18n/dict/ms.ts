@@ -99,8 +99,7 @@ const ms: Dict = {
     kicker: `Studio web · ${CITY}, Jawa Timur`,
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} projek pelanggan · ${n} demo dalam talian`,
     title: ['Setiap perniagaan layak ada ', 'pintu depan', ' yang sewajarnya.'] as Hl,
-    lead: (n: number) =>
-      `Kami mereka bentuk dan membina laman web untuk PKS, kedai dan jenama peribadi: pantas dibuka di telefon, sedia ditemui di Google, dan milik anda sepenuhnya. ${CLIENT_PROJECTS} projek pelanggan telah siap, dan ${n} laman demo boleh anda buka hari ini.`,
+    lead: 'Laman web, kedai dalam talian, hingga aplikasi web untuk mengurus perniagaan. Pantas dibuka di telefon, mudah ditemui, dan milik anda sepenuhnya.',
     offer: (price: string, duration: string) => `Landing page bermula ${price}, siap dalam ${duration}. Bayar 50% dahulu, bakinya selepas kerja selesai.`,
     pay: 'Bayar 50% dahulu, bakinya selepas kerja selesai.',
     ctaConsult: 'Konsultasi percuma',

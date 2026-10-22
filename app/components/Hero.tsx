@@ -90,7 +90,7 @@ export default function Hero({ lang }: { lang: Lang }) {
               {t.title[2] ?? ''}
             </h1>
 
-            <p className="mt-5 max-w-2xl text-[1.0625rem] leading-[1.6] text-[color:var(--text-tertiary)] sm:mt-7 sm:text-[1.1875rem] sm:leading-relaxed md:text-[1.0625rem] lg:text-[1.1875rem]">{t.lead(DEMOS.length)}</p>
+            <p className="mt-5 max-w-2xl text-[1.0625rem] leading-[1.6] text-[color:var(--text-tertiary)] sm:mt-7 sm:text-[1.1875rem] sm:leading-relaxed md:text-[1.0625rem] lg:text-[1.1875rem]">{t.lead}</p>
             {/* mulai 1024px harga & lama pengerjaan pindah ke label gantungan pintu, kalimatnya tinggal bagian bayar */}
             <p className="mt-3 max-w-2xl text-[0.9375rem] leading-[1.6] text-[color:var(--text-secondary)] sm:mt-4 sm:text-base sm:leading-relaxed">
               <span className="lg:hidden">{offer}</span>

@@ -99,8 +99,7 @@ const zh: Dict = {
     kicker: '网站工作室 · 东爪哇图隆阿贡',
     meta: (n: number) => `始于 ${FOUNDED_YEAR} 年 · ${CLIENT_PROJECTS} 个客户项目 · ${n} 个在线演示`,
     title: ['每一门生意，都值得一扇像样的', '大门', '。'] as Hl,
-    lead: (n: number) =>
-      `我们为小微企业、店铺和个人品牌设计并搭建网站：在手机上打开很快，为出现在 Google 上做好准备，并且完全归您所有。已交付 ${CLIENT_PROJECTS} 个客户项目，另有 ${n} 个演示网站今天就能打开。`,
+    lead: '网站、网店，以及用于管理业务的网页应用。手机上打开很快，容易被找到，并且完全归您所有。',
     offer: (price: string, duration: string) => `落地页 ${price} 起，${duration}完成。先付 50%，完工后再付余款。`,
     pay: '先付 50%，完工后再付余款。',
     ctaConsult: '免费咨询',

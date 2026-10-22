@@ -99,8 +99,7 @@ const en: Dict = {
     kicker: `Web studio · ${CITY}, East Java`,
     meta: (n: number) => `Since ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} client projects · ${n} live demos`,
     title: ['Every business deserves a proper ', 'front door', '.'] as Hl,
-    lead: (n: number) =>
-      `We design and build websites for small businesses, shops and personal brands: quick to open on a phone, ready to be found on Google, and entirely yours. ${CLIENT_PROJECTS} client projects delivered, and ${n} demo sites you can open today.`,
+    lead: 'Websites, online stores and web apps to run your business. Quick to open on a phone, easy to find, and entirely yours.',
     offer: (price: string, duration: string) => `Landing pages from ${price}, ready in ${duration}. Pay 50% up front and the rest once it is finished.`,
     pay: 'Pay 50% up front and the rest once it is finished.',
     ctaConsult: 'Free consultation',

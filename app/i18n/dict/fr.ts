@@ -99,8 +99,7 @@ const fr: Dict = {
     kicker: `Studio web · ${CITY}, Java oriental`,
     meta: (n: number) => `Depuis ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} projets clients · ${n} démos en ligne`,
     title: ['Chaque entreprise mérite une vraie ', 'porte d’entrée', '.'] as Hl,
-    lead: (n: number) =>
-      `Nous concevons et réalisons des sites web pour les petites entreprises, les boutiques et les marques personnelles : rapides à ouvrir sur mobile, prêts à être trouvés sur Google, et entièrement à vous. ${CLIENT_PROJECTS} projets clients livrés, et ${n} sites de démonstration à ouvrir dès aujourd’hui.`,
+    lead: 'Sites web, boutiques en ligne et applications web pour gérer votre activité. Rapides à ouvrir sur mobile, faciles à trouver, et entièrement à vous.',
     offer: (price: string, duration: string) => `Landing pages à partir de ${price}, livrées en ${duration}. 50 % à la commande, le solde une fois le travail terminé.`,
     pay: '50 % à la commande, le solde une fois le travail terminé.',
     ctaConsult: 'Consultation gratuite',

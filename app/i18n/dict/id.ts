@@ -103,8 +103,7 @@ const id = {
     kicker: `Studio web · ${CITY}, Jawa Timur`,
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} proyek klien · ${n} demo online`,
     title: ['Setiap usaha butuh ', 'pintu depan', ' yang layak.'] as Hl,
-    lead: (n: number) =>
-      `Kami merancang dan membangun website untuk UMKM, toko, dan personal brand: cepat dibuka di ponsel, siap ditemukan di Google, dan sepenuhnya milikmu. ${CLIENT_PROJECTS} proyek klien sudah selesai, dan ${n} situs demo bisa kamu buka sendiri hari ini.`,
+    lead: 'Website, toko online, sampai aplikasi web untuk mengelola usaha. Cepat dibuka di ponsel, mudah ditemukan, dan sepenuhnya milikmu.',
     // Satu baris penawaran di bawah paragraf pembuka; harga & durasi paket Landing Page dari lib/packages.ts.
     offer: (price: string, duration: string) => `Landing page mulai ${price}, selesai dalam ${duration}. Bayar 50% di awal, sisanya setelah website jadi.`,
     // layar ≥768px: harga & lama pengerjaan pindah ke label gantungan pintu di gambar hero, kalimatnya tinggal bagian bayar
