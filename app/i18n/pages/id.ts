@@ -2,6 +2,7 @@
 import { CATEGORY_COUNT, CITY, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, LOCATION, PERF_TARGET } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
 import { LANGS } from '../config'
+import type { DemoCategory } from '../../lib/demos'
 import type { Hl } from '../dict/id'
 
 const pages = {
@@ -216,25 +217,36 @@ const pages = {
   },
   founder: {
     title: 'Profil Founder',
-    description: `Kenalan dengan Arya, founder & full-stack developer PintuWeb sejak ${FOUNDED_YEAR}. Sudah ${CLIENT_PROJECTS} proyek UMKM dan startup digarap, dari tampilan sampai database.`,
+    description: `Kenalan dengan Arya, founder & full-stack developer PintuWeb sejak ${FOUNDED_YEAR}. Sudah ${CLIENT_PROJECTS} proyek klien selesai untuk UMKM, startup, dan personal brand.`,
     ogTitle: 'Profil Founder — PintuWeb',
-    ogDescription: 'Arya, founder & full-stack developer PintuWeb: website cepat dan rapi, dari tampilan sampai sistem di baliknya.',
+    ogDescription: 'Arya, founder & full-stack developer PintuWeb: website cepat dan rapi untuk UMKM, startup, dan personal brand.',
     badge: 'Founder',
     h1: ['Halo, saya ', 'Arya.'] as Hl,
-    lead: `Founder & full-stack developer di balik PintuWeb. Sejak ${FOUNDED_YEAR} saya menggarap website untuk UMKM dan startup di Indonesia, dari tampilan yang dilihat pengunjung sampai sistem di baliknya: backend, database, dan hosting.`,
+    lead: `Founder & full-stack developer di balik PintuWeb. Sejak ${FOUNDED_YEAR} saya membangun website untuk UMKM, startup, dan personal brand di Indonesia, dari obrolan pertama sampai websitenya online.`,
     github: 'Lihat karya saya di GitHub',
     monogram: 'Monogram Arya, founder PintuWeb',
     jobTitle: 'Founder & Full-Stack Developer',
     journeyTitle: 'Perjalanan',
     timeline: (n: number) => [
-      { year: `${FOUNDED_YEAR}`, title: 'Mendirikan PintuWeb', body: 'Belajar frontend & backend secara otodidak dan mulai mengerjakan website untuk UMKM.' },
+      { year: `${FOUNDED_YEAR}`, title: 'Mendirikan PintuWeb', body: 'Belajar membuat website secara otodidak dan mulai mengerjakan website untuk UMKM.' },
       { year: 'Kini', title: `${CLIENT_PROJECTS} proyek klien`, body: `Melayani UMKM, startup, dan personal brand, serta merawat ${n} demo live.` },
     ],
-    skillsTitle: 'Keahlian utama',
-    // Judul tiga kelompok keahlian; pembagiannya (4, 3, 3 butir dari `skills`) ada di halaman founder.
-    skillGroups: ['Pengembangan full-stack', 'Desain & pengalaman', 'Online & performa'],
-    skills: ['Frontend (tampilan web)', 'Backend & API', 'Database', 'Aplikasi & dashboard web', 'UI/UX', 'Desain responsif', 'Copywriting web', 'SEO teknis', 'Kecepatan & performa', 'Hosting, domain & deploy'],
-    techTitle: 'Teknologi yang biasa dipakai',
+    // "Yang saya kerjakan": jenis website yang dikerjakan PintuWeb (urutan & jumlah demo dari lib/), satu kalimat
+    // "untuk siapa" per jenis. Menggantikan daftar keahlian & teknologi (keputusan pemilik 22 Okt 2026).
+    kindsTitle: 'Yang saya kerjakan',
+    kindsLead: 'Jenis website yang saya bangun, lengkap dengan demo yang bisa kamu buka dan coba.',
+    kinds: {
+      landing: 'Untuk promosi produk, event, dan iklan',
+      toko: 'Untuk toko yang menjual banyak produk',
+      menu: 'Untuk kafe, warung, dan restoran',
+      linkinbio: 'Untuk kreator, musisi, dan usaha kecil',
+      kontes: 'Untuk rebranding, pitching, dan kontes desain',
+      undangan: 'Untuk pernikahan, aqiqah, dan wisuda',
+      portfolio: 'Untuk freelancer, kreator, dan profesional',
+      reservasi: 'Untuk klinik, hotel, resto, dan lapangan',
+      properti: 'Untuk agen properti dan developer perumahan',
+      todo: 'Untuk tim kecil dan operasional internal',
+    } as Record<DemoCategory, string>,
     // Prinsip kerja (halaman Founder & kartu "Di balik PintuWeb" di Tentang): pernyataan cara kerja dari fakta situs,
     // BUKAN kutipan; jangan ditulis sebagai ucapan Arya.
     principlesTitle: 'Prinsip kerja',
@@ -306,7 +318,7 @@ const pages = {
     shareWa: 'Bagikan lewat WhatsApp',
     copy: 'Salin tautan',
     copied: 'Tautan tersalin',
-    authorRole: (year: number) => `Founder & full-stack developer PintuWeb. Membangun website untuk UMKM sejak ${year}, dari tampilan sampai backend dan database.`,
+    authorRole: (year: number) => `Founder & full-stack developer PintuWeb, membangun website untuk UMKM sejak ${year}.`,
     authorLink: 'Profil penulis',
   },
   glossary: {

@@ -178,13 +178,6 @@ export default async function AboutPage({ params }: Params) {
                   </li>
                 ))}
               </ul>
-              <ul className="mt-6 flex flex-wrap gap-2" aria-label={pf.skillsTitle}>
-                {pf.skills.map((s) => (
-                  <li key={s} className="rounded-full bg-white px-3 py-1 text-[0.8125rem] font-medium text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)]">
-                    {s}
-                  </li>
-                ))}
-              </ul>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link href={path(lang, 'founder')} className="btn btn-solid btn-sm">
                   {d.links.founder} <ArrowRight size={15} className="arw" aria-hidden="true" />

@@ -1,11 +1,31 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, CodeXml, Github, Mail, MapPin, MessageCircle, Palette, Rocket, type LucideIcon } from 'lucide-react'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CalendarCheck,
+  Github,
+  House,
+  Images,
+  Link2,
+  ListChecks,
+  Mail,
+  MailOpen,
+  MapPin,
+  Megaphone,
+  MessageCircle,
+  PenTool,
+  QrCode,
+  ShoppingCart,
+  type LucideIcon,
+} from 'lucide-react'
 import ArticleCard from '../../components/ArticleCard'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { Logo } from '../../components/Logo'
 import { articlesIn } from '../../content/articles'
-import { DEMOS } from '../../lib/demos'
+import { DEMOS, DEMO_CATEGORIES, type DemoCategory } from '../../lib/demos'
+import { CATEGORY_COLOR, KIND_ORDER, portalOf } from '../../lib/portals'
 import { EMAIL, FOUNDED_YEAR, GITHUB, WA_DISPLAY, wa, FOUNDER_NAME } from '../../lib/site'
 import { facts } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
@@ -16,16 +36,24 @@ type Params = { params: Promise<{ lang: string }> }
 
 const NAME = FOUNDER_NAME
 
-// Tiga kelompok keahlian umum: potongan dari founder.skills (urutannya sama di 11 bahasa) + ikonnya.
-// Judul kelompok ada di founder.skillGroups. Setiap butir harus didukung isi paket di lib/packages.ts.
-const SKILL_GROUPS: { icon: LucideIcon; from: number; to: number }[] = [
-  { icon: CodeXml, from: 0, to: 4 }, // pengembangan full-stack
-  { icon: Palette, from: 4, to: 7 }, // desain & pengalaman
-  { icon: Rocket, from: 7, to: 10 }, // online & performa
-]
+// "Yang saya kerjakan" = jenis website yang dikerjakan PintuWeb (keputusan pemilik 22 Okt 2026: daftar keahlian &
+// teknologi pribadi tidak dipublikasikan lagi). Ikon tiap jenis; enam yang pertama sama dengan ikon pemilih kebutuhan
+// di beranda (AudienceSection). Kalimat "untuk siapa" ada di founder.kinds, nama jenisnya di portfolio.galleries.
+const KIND_ICON: Record<DemoCategory, LucideIcon> = {
+  landing: Megaphone,
+  toko: ShoppingCart,
+  linkinbio: Link2,
+  undangan: MailOpen,
+  portfolio: Images,
+  reservasi: CalendarCheck,
+  menu: QrCode,
+  kontes: PenTool,
+  properti: House,
+  todo: ListChecks,
+}
 
-// Tumpukan teknologi yang biasa dipakai: nama produk, sama di semua bahasa (judulnya founder.techTitle).
-const TECH = ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS']
+/** Petak lebar di bento (mulai 640px): sekian jenis dengan demo terbanyak. Dua = kisi 3 kolom terisi penuh. */
+const WIDE = 2
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { lang } = await params
@@ -43,6 +71,25 @@ export default async function OwnerPage({ params }: Params) {
   const n = DEMOS.length
   const writing = articlesIn(lang)
   const timeline = p.timeline(n)
+  const g = d.portfolio
+
+  // Urutan sama dengan daftar jenis di beranda (KIND_ORDER). Yang punya portal katalog menaut ke portalnya (zona
+  // terpisah, isinya berbahasa Indonesia); yang belum menaut ke galeri demo yang tersaring.
+  const kinds = DEMO_CATEGORIES.map((c) => c.id)
+    .sort((a, b) => KIND_ORDER[a] - KIND_ORDER[b])
+    .map((c) => {
+      const portal = portalOf(c)
+      return {
+        id: c,
+        title: g.galleries[c].title,
+        count: DEMOS.filter((x) => x.category === c).length,
+        href: portal ? `/${portal.path}` : `${path(lang, 'demo')}#${c}`,
+        portal: !!portal,
+        image: portal ? portal.image : `/images/galeri/${c}.jpg`,
+        Icon: KIND_ICON[c],
+      }
+    })
+  const wide = new Set([...kinds].sort((a, b) => b.count - a.count).slice(0, WIDE).map((k) => k.id))
 
   // Tahun berdiri ada di lencana kartu nama; jumlah proyek & demo di linimasa dan tombol demo. Deretan angka di
   // bawah pembuka sudah dihapus karena hanya mengulangnya.
@@ -163,48 +210,74 @@ export default async function OwnerPage({ params }: Params) {
         </div>
       </section>
 
-      {/* Keahlian + prinsip */}
-      <section aria-labelledby="skills-title" className="section-y">
+      {/* Yang saya kerjakan (bento jenis website) + prinsip kerja */}
+      <section aria-labelledby="kinds-title" className="section-y">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-10 px-4 sm:px-6 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <h2 id="skills-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
-              {p.skillsTitle}
+            <h2 id="kinds-title" className="text-[2rem] leading-[1.12] text-[color:var(--text-primary)] sm:text-[2.5rem]">
+              {p.kindsTitle}
             </h2>
-            <ul className="mt-8 space-y-3">
-              {SKILL_GROUPS.map((g, i) => (
-                <li key={p.skillGroups[i]} className="flex gap-3.5 rounded-[1.25rem] bg-[color:var(--surface-soft)] p-5 sm:p-6">
-                  {/* ikon polos (tanpa ubin), sejajar baris judul kelompok */}
-                  <g.icon size={21} strokeWidth={1.75} className="mt-px shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-[1.0625rem] font-semibold leading-snug text-[color:var(--text-primary)]">{p.skillGroups[i]}</h3>
-                    <ul className="mt-2.5 flex flex-wrap gap-2">
-                      {p.skills.slice(g.from, g.to).map((s) => (
-                        <li key={s} className="rounded-full bg-white px-3 py-1 text-[0.875rem] font-medium text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)]">
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            {/* Teknologi: sengaja lebih senyap dari kelompok keahlian, untuk klien yang ingin tahu tumpukannya */}
-            <div className="mt-6 px-1">
-              <h3 id="tech-title" className="text-[0.875rem] font-semibold text-[color:var(--text-tertiary)]">
-                {p.techTitle}
-              </h3>
-              <ul aria-labelledby="tech-title" className="mt-2.5 flex flex-wrap gap-1.5">
-                {TECH.map((t) => (
-                  <li key={t} className="rounded-lg px-2.5 py-0.5 text-[0.8125rem] leading-5 text-[color:var(--text-muted)] ring-1 ring-[color:var(--border-light)]">
-                    {t}
+            <p className="mt-3 max-w-xl leading-relaxed text-[color:var(--text-tertiary)]">{p.kindsLead}</p>
+            {/* Ponsel: 2 kolom seragam. Mulai 640px: 3 kolom, dan jenis dengan demo terbanyak mendapat petak lebar
+                bergambar pratinjau portalnya. grid-flow-row-dense menjaga kisi tetap penuh bila jumlah demo berubah. */}
+            <ul className="mt-7 grid grid-cols-2 gap-2.5 sm:grid-flow-row-dense sm:grid-cols-3 sm:gap-3">
+              {kinds.map((k) => {
+                const isWide = wide.has(k.id)
+                const c = CATEGORY_COLOR[k.id]
+                const cls =
+                  'group flex h-full gap-4 rounded-[1.25rem] bg-[color:var(--surface-soft)] p-4 ring-1 ring-transparent transition-[background-color,box-shadow] duration-200 hover:bg-white hover:shadow-[0_16px_32px_-24px_rgb(15_29_58/0.45)] hover:ring-[color:var(--primary-200)] sm:p-5'
+                const body = (
+                  <>
+                    {/* Urutan DOM = urutan baca (nama, untuk siapa, jumlah demo); kisi area memindahkan jumlah demo ke
+                        pojok atas secara visual, sejajar ikon berwarna khas jenisnya (CATEGORY_COLOR, sama dengan beranda). */}
+                    <span className="grid min-w-0 flex-1 grid-cols-[auto_minmax(0,1fr)] content-start gap-x-2 [grid-template-areas:'icon_count''title_title''for_for']">
+                      <span className="grid h-9 w-9 place-items-center rounded-xl [grid-area:icon]" style={{ backgroundColor: c.tint, color: c.color }} aria-hidden="true">
+                        <k.Icon size={18} strokeWidth={1.75} />
+                      </span>{' '}
+                      <span className="mt-3.5 text-[0.9375rem] font-semibold leading-snug text-[color:var(--text-primary)] [grid-area:title] break-words hyphens-auto sm:mt-4 sm:text-[1rem]">
+                        {k.title}
+                      </span>{' '}
+                      <span className="mt-1 text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] [grid-area:for]">{p.kinds[k.id]}</span>{' '}
+                      <span className="justify-self-end text-end leading-none [grid-area:count]">
+                        <bdi className="display block text-[1.625rem] font-semibold leading-none tracking-tight text-[color:var(--text-primary)]">{k.count}</bdi>{' '}
+                        {/* panah "buka" ikut satuan jumlah demo, bukan di belakang nama jenis: di 360px nama panjang
+                            (mis. "Бронирование", "ব্যক্তিগত পোর্টফোলিও") membuat panah itu turun baris sendirian */}
+                        <span className="mt-1 flex items-center justify-end gap-0.5 text-[0.75rem] leading-tight text-[color:var(--text-tertiary)]">
+                          {g.unit[k.id]}
+                          <ArrowUpRight size={13} className="arw-ne shrink-0 text-[color:var(--text-muted)] transition-[color,transform] duration-200 group-hover:text-[color:var(--primary-700)]" aria-hidden="true" />
+                        </span>
+                      </span>
+                    </span>
+                    {/* petak lebar: pratinjau portal (hiasan) di sisi akhir */}
+                    {isWide && (
+                      <span className="relative hidden w-[44%] shrink-0 overflow-hidden rounded-xl bg-white ring-1 ring-[color:var(--border-light)] sm:block" aria-hidden="true">
+                        <Image src={k.image} alt="" fill sizes="200px" className="object-cover object-top" />
+                        <span className="absolute inset-x-0 bottom-0 h-1" style={{ backgroundImage: `linear-gradient(90deg, ${c.color}, ${c.to})` }} />
+                      </span>
+                    )}
+                  </>
+                )
+                return (
+                  <li key={k.id} className={isWide ? 'sm:col-span-2' : ''}>
+                    {k.portal ? (
+                      <a href={k.href} hrefLang="id" className={cls}>
+                        {body}
+                      </a>
+                    ) : (
+                      <Link href={k.href} className={cls}>
+                        {body}
+                      </Link>
+                    )}
                   </li>
-                ))}
-              </ul>
-            </div>
+                )
+              })}
+            </ul>
+            {g.galleryLang && <p className="mt-4 text-sm text-[color:var(--text-tertiary)]">{g.galleryLang}</p>}
           </div>
           {/* Prinsip kerja: pernyataan cara kerja dari fakta situs (harga, persetujuan desain, garansi), BUKAN kutipan
-              Arya. Teksnya sama dengan kartu "Di balik PintuWeb" di halaman Tentang. */}
-          <section aria-labelledby="principles-title" className="flex flex-col gap-7 rounded-[1.75rem] p-7 text-white [background-image:linear-gradient(150deg,var(--primary-700),var(--primary-900))] sm:p-9 lg:col-span-5">
+              Arya. Teksnya sama dengan kartu "Di balik PintuWeb" di halaman Tentang. Mulai 1024px kartunya menempel
+              (sticky) di samping bento yang lebih tinggi, bukan direntang menjadi balok biru yang setengahnya kosong. */}
+          <section aria-labelledby="principles-title" className="flex flex-col gap-7 rounded-[1.75rem] p-7 text-white [background-image:linear-gradient(150deg,var(--primary-700),var(--primary-900))] sm:p-9 lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
             <h2 id="principles-title" className="kicker text-[color:var(--accent-200)]">
               {p.principlesTitle}
             </h2>
@@ -281,7 +354,8 @@ export default async function OwnerPage({ params }: Params) {
               name: NAME,
               jobTitle: p.jobTitle,
               worksFor: { '@id': ORG_ID },
-              knowsAbout: [...p.skills, ...TECH],
+              // jenis website yang dikerjakan (bagian "Yang saya kerjakan"), bukan daftar keahlian pribadi
+              knowsAbout: kinds.map((k) => k.title),
               ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
             },
           ],
