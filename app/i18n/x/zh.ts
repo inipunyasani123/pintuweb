@@ -250,6 +250,9 @@ const zh: Pack = {
   },
   demos: {
     tanur: { tagline: '日常餐桌的手工陶瓷' },
+    takar: { tagline: '成分浓度清楚、用量说明实在的护肤品' },
+    lungsin: { tagline: '在克拉滕缝制的鲁里克手织布日常服装' },
+    daunjendela: { tagline: '按你家窗户光线挑选的观赏植物' },
     kopi: { tagline: '杯测卡风格菜单的咖啡馆' },
     bakso: { tagline: '夜间帐篷小摊，辣度 0–5 级' },
     jepang: { tagline: '带过敏原图标的家常日式食堂' },

@@ -250,6 +250,9 @@ const fr: Pack = {
   },
   demos: {
     tanur: { tagline: 'Céramique artisanale pour la table de tous les jours' },
+    takar: { tagline: 'Des soins aux concentrations claires et aux doses honnêtes' },
+    lungsin: { tagline: 'Des vêtements du quotidien en lurik tissé, cousus à Klaten' },
+    daunjendela: { tagline: 'Des plantes d’intérieur choisies selon la lumière de votre fenêtre' },
     kopi: { tagline: 'Un café avec une carte façon fiche de dégustation' },
     bakso: { tagline: 'Une échoppe de nuit sous tente, piquant de 0 à 5' },
     jepang: { tagline: 'Une cantine japonaise familiale avec icônes d’allergènes' },

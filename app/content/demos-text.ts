@@ -34,6 +34,9 @@ export const DEMO_CATEGORY_TEXT: Record<'en' | 'ms', Record<DemoCategory, string
 export const DEMO_TEXT: Record<'en' | 'ms', Record<string, DemoText>> = {
   en: {
     tanur: { tagline: 'Handmade ceramics for the everyday table' },
+    takar: { tagline: 'Skincare with clear concentrations and honest dosing' },
+    lungsin: { tagline: 'Everyday clothes in woven lurik cloth, sewn in Klaten' },
+    daunjendela: { tagline: 'Houseplants chosen for the light from your window' },
     kopi: { tagline: 'A coffee shop with a cupping-card style menu' },
     bakso: { tagline: 'A night-time tent stall with spice levels 0–5' },
     jepang: { tagline: 'A homestyle Japanese eatery with allergen icons' },
@@ -106,6 +109,9 @@ export const DEMO_TEXT: Record<'en' | 'ms', Record<string, DemoText>> = {
   },
   ms: {
     tanur: { tagline: 'Seramik buatan tangan untuk meja harian' },
+    takar: { tagline: 'Penjagaan kulit berkadar jelas, sukatan pakai yang jujur' },
+    lungsin: { tagline: 'Pakaian harian daripada kain lurik tenun, dijahit di Klaten' },
+    daunjendela: { tagline: 'Tanaman hiasan yang dipilih ikut cahaya tingkap anda' },
     kopi: { tagline: 'Kedai kopi dengan menu gaya kad cupping' },
     bakso: { tagline: 'Gerai khemah waktu malam dengan tahap pedas 0–5' },
     jepang: { tagline: 'Kedai makan Jepun ala rumah dengan ikon alergen' },

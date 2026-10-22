@@ -53,6 +53,9 @@ export const DEMOS: Demo[] = [
   { slug: "woodora", name: "Woodora", tagline: "Furnitur Kayu Solid Sesuai Ukuran", category: 'landing', url: "https://landing-woodora.pintuweb.id" },
   { slug: "zychrome", name: "Zychrome", tagline: "Webinar yang Bisa Membalas Anda", category: 'landing', url: "https://landing-zychrome.pintuweb.id" },
   { slug: "tanur", name: "Tanur", tagline: "Keramik Buatan Tangan untuk Meja Sehari-hari", category: 'toko', url: "https://toko-tanur.pintuweb.id", pkg: 'toko-online-full' },
+  { slug: "takar", name: "Takar", tagline: "Perawatan Kulit Berkadar Jelas, Takaran Pakainya Jujur", category: 'toko', url: "https://toko-takar.pintuweb.id", pkg: 'toko-online-full' },
+  { slug: "lungsin", name: "Lungsin", tagline: "Pakaian Harian dari Kain Lurik Tenun, Dijahit di Klaten", category: 'toko', url: "https://toko-lungsin.pintuweb.id", pkg: 'toko-online-full' },
+  { slug: "daunjendela", name: "Daun Jendela", tagline: "Tanaman Hias yang Dipilih dari Cahaya Jendelamu", category: 'toko', url: "https://toko-daunjendela.pintuweb.id", pkg: 'toko-online-full' },
   { slug: "kopi", name: "Sepertiga Kopi", tagline: "Kedai Kopi dengan Menu Bergaya Kartu Cupping", category: 'menu', url: "https://menu-kopi.pintuweb.id", pkg: 'landing-page' },
   { slug: "bakso", name: "Bakso Dalu", tagline: "Warung Tenda Malam dengan Level Pedas 0–5", category: 'menu', url: "https://menu-bakso.pintuweb.id", pkg: 'landing-page' },
   { slug: "jepang", name: "Akagane Shokudō", tagline: "Warung Jepang Rumahan dengan Ikon Alergen", category: 'menu', url: "https://menu-jepang.pintuweb.id", pkg: 'landing-page' },
@@ -109,7 +112,7 @@ export const DEMOS: Demo[] = [
 
 /** Versi thumbnail public/demos: naikkan setiap kali thumbnail ditangkap ulang. Nama berkasnya tetap (<slug>.webp)
  *  sedangkan CDN & peramban menyimpannya 7 hari, jadi versi ini yang membuat tampilan baru langsung terlihat. */
-export const THUMB_V = '20261018'
+export const THUMB_V = '20261022'
 export const demoThumb = (slug: string) => `/demos/${slug}.webp?v=${THUMB_V}`
 export const demoImage = (d: Demo) => demoThumb(d.slug)
 

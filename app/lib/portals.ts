@@ -45,14 +45,15 @@ export const PORTALS: { path: string; origin: string; category: DemoCategory; im
   { path: 'website-properti', origin: 'https://portal-properti.pintuweb.id', category: 'properti', image: '/images/galeri/properti.jpg' },
   { path: 'aplikasi-to-do', origin: 'https://portal-todo.pintuweb.id', category: 'todo', image: '/images/galeri/todo.jpg' },
   { path: 'menu-digital', origin: 'https://portal-menu.pintuweb.id', category: 'menu', image: '/images/galeri/menu.jpg' },
+  { path: 'toko-online', origin: 'https://portal-toko.pintuweb.id', category: 'toko', image: '/images/galeri/toko.jpg' },
 ]
 
 export const portalOf = (c: DemoCategory) => PORTALS.find((p) => p.category === c)
 
 /**
  * Urutan jenis website di beranda (komponen Kinds lewat Hero.tsx); wajib memuat semua kategori. Jenis yang punya
- * portal menaut ke portalnya; yang belum (mis. toko online) menaut ke galeri demo yang tersaring (/demo#<kategori>)
- * dengan gambar /images/galeri/<kategori>.jpg. Portal baru cukup ditambahkan ke PORTALS di atas.
+ * portal menaut ke portalnya; kategori baru yang belum punya portal menaut ke galeri demo yang tersaring
+ * (/demo#<kategori>) dengan gambar /images/galeri/<kategori>.jpg. Portal baru cukup ditambahkan ke PORTALS di atas.
  */
 export const KIND_ORDER: Record<DemoCategory, number> = {
   landing: 1,

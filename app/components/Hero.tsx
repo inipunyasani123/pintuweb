@@ -58,7 +58,7 @@ export default function Hero({ lang }: { lang: Lang }) {
       ...CATEGORY_COLOR[c],
     }
   }
-  // Semua jenis menurut KIND_ORDER: yang punya portal katalog menaut ke portalnya, yang belum (mis. toko online)
+  // Semua jenis menurut KIND_ORDER: yang punya portal katalog menaut ke portalnya, yang belum (kategori baru)
   // menaut ke galeri demo yang tersaring.
   const kinds: Kind[] = DEMO_CATEGORIES.map((c) => c.id)
     .sort((a, b) => KIND_ORDER[a] - KIND_ORDER[b])

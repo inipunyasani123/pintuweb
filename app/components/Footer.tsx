@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { EMAIL, WA_DISPLAY, WA_NUMBER, wa } from '../lib/site'
 import { DEMOS } from '../lib/demos'
-import { PORTALS } from '../lib/portals'
+import { KIND_ORDER, PORTALS } from '../lib/portals'
 import { getDict } from '../i18n'
 import { facts } from '../i18n/facts'
 import { LANGS, LANG_INFO, type Lang } from '../i18n/config'
@@ -34,7 +34,8 @@ export default function Footer({ lang }: { lang: Lang }) {
     },
     {
       title: t.footer.colGalleries,
-      links: PORTALS.map((p) => ({ label: t.portfolio.galleries[p.category].title, href: `/${p.path}`, zone: true })),
+      // urutannya sama dengan daftar jenis website di beranda (KIND_ORDER)
+      links: [...PORTALS].sort((a, b) => KIND_ORDER[a.category] - KIND_ORDER[b.category]).map((p) => ({ label: t.portfolio.galleries[p.category].title, href: `/${p.path}`, zone: true })),
     },
     {
       title: t.footer.colResources,

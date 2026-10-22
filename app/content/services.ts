@@ -177,8 +177,9 @@ export const SERVICES: Service[] = [
   {
     key: 'toko-online',
     packages: ['toko-online-simple', 'toko-online-full'],
-    demoCategories: ['toko', 'linkinbio', 'landing'],
-    demoSlugs: ['tanur', 'jajan', 'vendra', 'luxeelectro', 'modewear'],
+    // empat demo toko (galeri /toko-online) + dua link in bio yang menerima pesanan lewat WhatsApp (gaya Toko Online Simple)
+    demoCategories: ['toko', 'linkinbio'],
+    demoSlugs: ['tanur', 'takar', 'lungsin', 'daunjendela', 'jajan', 'vendra'],
     articles: ['website-vs-sosmed', 'biaya', 'website-umkm'],
     text: {
       id: {
