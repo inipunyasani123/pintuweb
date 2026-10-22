@@ -113,7 +113,7 @@ const fr: Dict = {
   },
   portfolio: {
     eyebrow: 'Démos choisies',
-    title: ['Des démos à ouvrir et à essayer vous-même, ', 'pas des maquettes', '.'] as Hl,
+    title: ['De vraies démos à ouvrir et à essayer vous-même, ', 'sur mobile, tablette ou ordinateur portable', '.'] as Hl,
     lead: (n: number) => `Cinq des ${n} sites de démonstration que nous avons créés et que nous gardons en ligne. Les entreprises sont fictives ; l’apparence et le contenu s’adaptent à la vôtre.`,
     galleries: {
       landing: { title: 'Landing pages', tagline: 'Des pages qui vendent : webinaires, ventes, promotions' },
@@ -129,11 +129,10 @@ const fr: Dict = {
     },
     unit: demoUnits((n) => (n === 1 ? 'démo' : 'démos')),
     previewAlt: (t: string) => `Aperçu de la galerie ${t}`,
-    shotAlt: (name: string) => `Capture d’écran de la démo ${name}`,
     open: 'Ouvrir la démo',
     galleryLang: 'Les galeries et les démos sont en indonésien',
     allDemos: (n: number) => `Voir les ${n} démos`,
-    hoverHint: 'Survolez une carte pour voir la page défiler ; cliquez pour ouvrir la démo en ligne.',
+    hoverHint: 'Survolez une carte pour voir la page défiler sur les trois écrans ; cliquez pour ouvrir la démo en ligne.',
   },
   clients: {
     title: 'Projets clients',

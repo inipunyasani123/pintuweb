@@ -6,6 +6,12 @@
 //   node scripts/demo-mockups.mjs compose [slug...]   susun mockup → public/demos/<slug>.webp (720) + -360/-480/-1080
 //   node scripts/demo-mockups.mjs all [slug...]       keduanya
 //   node scripts/demo-mockups.mjs sheet <out.jpg> [slug...] [--cols 6] [--w 480]   lembar kontak thumbnail 720 (cek mata)
+//   node scripts/demo-mockups.mjs screens <slug...>   layar panjang per perangkat untuk beranda "Demo pilihan" (bagian 4)
+//     → public/images/karya/<slug>-desktop|tablet|phone.webp + app/content/karya.json, lalu:
+//       node scripts/static-images.mjs . --dirs public/images
+//     Ganti demo pilihan: ubah PICKS di app/components/Portfolio.tsx, jalankan screens untuk slug barunya, hapus berkas
+//     karya lama (dan barisnya di karya.json), lalu static-images (varian _img lama ikut perlu dihapus manual).
+//     Menu digital: tangkap saat kedainya buka (lencana buka/tutup menurut jam WIB, mis. Bakso Dalu 16.00–01.00).
 // Tanpa slug = semua demo di DEMOS. Pilihan:
 //   --cache <dir>   folder tangkapan (bawaan: <tmp>/pintuweb-demo-mockups; boleh dihapus, bisa ditangkap ulang)
 //   --port 9710     port Chrome remote debugging      --jobs 3   jumlah halaman yang ditangkap bersamaan
@@ -137,24 +143,31 @@ const INFO = `(() => {
   return { title: document.title, h1: (document.querySelector('h1')?.textContent || '').trim().slice(0, 60), text: document.body.innerText.trim().length, barHidden, css }
 })()`
 
+// Emulasi perangkat + buka halaman demo, tunggu load (maks. 30 dtk). Dipakai capture dan screens.
+async function openAs(tab, demo, dev) {
+  const D = DEVICES[dev]
+  await tab.send('Page.enable')
+  await tab.send('Emulation.setDeviceMetricsOverride', { width: D.w, height: D.h, deviceScaleFactor: D.dpr, mobile: D.mobile, screenWidth: D.w, screenHeight: D.h })
+  if (D.touch) await tab.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 })
+  if (UA[dev]) await tab.send('Emulation.setUserAgentOverride', { userAgent: UA[dev], platform: dev === 'phone' ? 'iPhone' : 'iPad' })
+  await tab.send('Emulation.setTimezoneOverride', { timezoneId: 'Asia/Jakarta' })
+  await tab.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: 'light' }] })
+  let fired = false
+  const onEv = (e) => { if (e.method === 'Page.loadEventFired') fired = true }
+  tab.on(onEv)
+  const nav = await tab.send('Page.navigate', { url: demo.url })
+  if (nav.result?.errorText) throw new Error(nav.result.errorText)
+  const t0 = Date.now()
+  while (!fired && Date.now() - t0 < 30000) await sleep(100)
+  tab.off(onEv)
+  return fired
+}
+
 async function captureOne(demo, dev) {
   const D = DEVICES[dev]
   const tab = await openTab()
   try {
-    await tab.send('Page.enable')
-    await tab.send('Emulation.setDeviceMetricsOverride', { width: D.w, height: D.h, deviceScaleFactor: D.dpr, mobile: D.mobile, screenWidth: D.w, screenHeight: D.h })
-    if (D.touch) await tab.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 })
-    if (UA[dev]) await tab.send('Emulation.setUserAgentOverride', { userAgent: UA[dev], platform: dev === 'phone' ? 'iPhone' : 'iPad' })
-    await tab.send('Emulation.setTimezoneOverride', { timezoneId: 'Asia/Jakarta' })
-    await tab.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: 'light' }] })
-    let fired = false
-    const onEv = (e) => { if (e.method === 'Page.loadEventFired') fired = true }
-    tab.on(onEv)
-    const nav = await tab.send('Page.navigate', { url: demo.url })
-    if (nav.result?.errorText) throw new Error(nav.result.errorText)
-    const t0 = Date.now()
-    while (!fired && Date.now() - t0 < 30000) await sleep(100)
-    tab.off(onEv)
+    const fired = await openAs(tab, demo, dev)
     await tab.evaluate(SETTLE)
     await sleep(2200) // animasi masuk (fade/slide) berjalan
     await tab.evaluate(CALM)
@@ -234,7 +247,9 @@ async function screen(file, w, h, r) {
 // Warna rata-rata baris teratas tangkapan ponsel: dipakai untuk bilah status, seperti Safari mewarnainya.
 async function topColor(file) {
   const m = await sharp(file).metadata()
-  const st = await sharp(file).extract({ left: 0, top: 0, width: m.width, height: 6 }).stats()
+  // stats() membaca gambar masukan dan mengabaikan extract(): potong dulu ke buffer, baru dihitung
+  const strip = await sharp(file).extract({ left: 0, top: 0, width: m.width, height: 6 }).png().toBuffer()
+  const st = await sharp(strip).stats()
   const [r, g, b] = st.channels.slice(0, 3).map((c) => round(c.mean))
   const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
   return { fill: `rgb(${r},${g},${b})`, fg: lum > 0.6 ? '#111827' : '#ffffff' }
@@ -353,7 +368,104 @@ async function sheet(file, list) {
   console.log(`${file} (${list.length} thumbnail, ${W}×${H})`)
 }
 
+/* ───────────────────────────── 4. Layar panjang untuk beranda ───────────────────────────── */
+
+// Bagian beranda "Demo pilihan" (app/components/Portfolio.tsx + DeviceTrio.tsx) merangkai trio perangkat dari HTML/CSS; isi tiap layar
+// = tangkapan PANJANG halaman demo di ukuran perangkatnya, yang bergulir di dalam layarnya saat kartu disorot.
+// Halaman ditangkap per layar (gulir, tunggu animasi masuk, potret) lalu dijahit, supaya hero 100vh tetap setinggi
+// layar dan konten "muncul saat terlihat" sudah tampil. Elemen fixed (header, tombol melayang) hanya ikut di layar
+// pertama; elemen sticky dijadikan relative tanpa top/bottom (ruangnya tetap) supaya tidak terulang di tiap potongan.
+// Keluaran: public/images/karya/<slug>-<desktop|tablet|phone>.webp + app/content/karya.json (ukuran berkas & warna
+// bilah status ponsel). Sesudahnya jalankan `node scripts/static-images.mjs . --dirs public/images`.
+const LONG = { desktop: 1400, tablet: 1500, phone: 1200 } // tinggi tangkapan maksimal (px CSS): ±1,75 / 1,3 / 1,4 layar
+const SCREEN_W = { desktop: 960, tablet: 480, phone: 320 } // lebar berkas sumber; varian terbesar yang dipakai (WIDTHS di DeviceTrio.tsx): 828 / 384 / 256
+const KARYA = path.join(ROOT, 'public', 'images', 'karya')
+const KARYA_DATA = path.join(ROOT, 'app', 'content', 'karya.json')
+const longPath = (slug, dev) => path.join(CACHE, `${slug}-${dev}-long.png`)
+
+async function captureLong(demo, dev) {
+  const D = DEVICES[dev]
+  const tab = await openTab()
+  try {
+    const fired = await openAs(tab, demo, dev)
+    await tab.evaluate(SETTLE)
+    await sleep(1500)
+    // bilah demo PintuWeb di akhir <body> disembunyikan; sticky -> relative
+    const total = await tab.evaluate(`(() => {
+      const bar = document.querySelector('aside[aria-label="Tentang situs demo ini"]'); if (bar) bar.style.display = 'none'
+      for (const el of document.querySelectorAll('body *')) if (getComputedStyle(el).position === 'sticky') for (const [k, v] of [['position', 'relative'], ['top', 'auto'], ['bottom', 'auto']]) el.style.setProperty(k, v, 'important')
+      return Math.min(${LONG[dev]}, document.documentElement.scrollHeight)
+    })()`)
+    const frames = []
+    for (let y = 0; y < total; y += D.h) {
+      await tab.evaluate(`scrollTo({ top: ${y}, behavior: 'instant' })`)
+      await sleep(y ? 700 : 200)
+      await tab.evaluate(SETTLE)
+      await tab.evaluate(CALM)
+      // elemen fixed hanya di potongan pertama (transition dimatikan: visibility ikut ber-transisi pada transition-all)
+      if (y) await tab.evaluate(`(() => { for (const el of document.querySelectorAll('body *')) if (getComputedStyle(el).position === 'fixed') { el.style.setProperty('transition', 'none', 'important'); el.style.setProperty('visibility', 'hidden', 'important') } })()`)
+      const at = await tab.evaluate('scrollY') // di ujung halaman scrollY bisa lebih kecil dari y
+      await sleep(150)
+      const s = await tab.send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: at, width: D.w, height: D.h, scale: 1 } })
+      if (!s.result?.data) throw new Error('screenshot kosong')
+      frames.push({ buf: Buffer.from(s.result.data, 'base64'), y, at })
+    }
+    await tab.evaluate(`scrollTo({ top: 0, behavior: 'instant' })`)
+    const info = await tab.evaluate(INFO)
+    // jahit: tiap potongan mengisi [y, y + D.h) dari halaman
+    const W = D.w * D.dpr, H = total * D.dpr
+    const parts = []
+    for (const f of frames) {
+      const skip = (f.y - f.at) * D.dpr // potongan terakhir yang tertahan di ujung halaman
+      const h = Math.min(D.h * D.dpr - skip, H - f.y * D.dpr)
+      if (h <= 0) continue
+      parts.push({ input: await sharp(f.buf).extract({ left: 0, top: skip, width: W, height: h }).png().toBuffer(), left: 0, top: f.y * D.dpr })
+    }
+    await sharp({ create: { width: W, height: H, channels: 3, background: '#ffffff' } }).composite(parts).png().toFile(longPath(demo.slug, dev))
+    return { ...info, loaded: fired, total }
+  } finally {
+    await tab.close()
+  }
+}
+
+async function screens(list) {
+  mkdirSync(CACHE, { recursive: true })
+  mkdirSync(KARYA, { recursive: true })
+  const chrome = await startChrome()
+  try { const w = await openTab(); await w.send('Page.navigate', { url: 'https://www.pintuweb.id/robots.txt' }); await sleep(2500); await w.close() } catch {}
+  const data = existsSync(KARYA_DATA) ? JSON.parse(readFileSync(KARYA_DATA, 'utf8')) : {}
+  for (const d of list) {
+    const rec = {}
+    for (const dev of Object.keys(DEVICES)) {
+      let res, err
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          res = await Promise.race([captureLong(d, dev), sleep(120000).then(() => { throw new Error('waktu habis') })])
+          err = null
+          if (res.text > 0 && res.css) break
+        } catch (e) { err = e }
+        await sleep(1500 * attempt)
+      }
+      if (err) { console.log(`GAGAL ${d.slug} ${dev}: ${err.message}`); continue }
+      const out = path.join(KARYA, `${d.slug}-${dev}.webp`)
+      await sharp(longPath(d.slug, dev)).resize({ width: SCREEN_W[dev], kernel: 'lanczos3' }).webp({ quality: 88, effort: 6 }).toFile(out)
+      const m = await sharp(out).metadata()
+      rec[dev] = [m.width, m.height]
+      if (dev === 'phone') { const c = await topColor(longPath(d.slug, dev)); rec.top = c.fill.replace(/rgb\((\d+),(\d+),(\d+)\)/, (_, r, g, b) => '#' + [r, g, b].map((n) => (+n).toString(16).padStart(2, '0')).join('')); rec.fg = c.fg }
+      console.log(`ok    ${d.slug.padEnd(14)} ${dev.padEnd(7)} ${m.width}×${m.height}  ${(statSync(out).size / 1024).toFixed(0)}K  ${res.title.slice(0, 40)}${res.css ? '' : '  CSS GAGAL'}`)
+    }
+    data[d.slug] = { ...data[d.slug], ...rec }
+  }
+  await chrome.stop()
+  writeFileSync(KARYA_DATA, JSON.stringify(data, null, 1) + '\n')
+  console.log(`\n${path.relative(ROOT, KARYA_DATA)} diperbarui. Lanjut: node scripts/static-images.mjs . --dirs public/images`)
+}
+
 if (cmd === 'capture' || cmd === 'all') await capture(pick())
 if (cmd === 'compose' || cmd === 'all') await composeAll(pick())
 if (cmd === 'sheet') await sheet(path.resolve(named[0] || 'demo-mockups-sheet.jpg'), named.length > 1 ? ALL.filter((d) => named.slice(1).includes(d.slug)) : ALL)
-if (!['capture', 'compose', 'all', 'sheet'].includes(cmd)) console.log('pakai: node scripts/demo-mockups.mjs capture|compose|all [slug...]  atau  sheet <out.jpg> [slug...]')
+if (cmd === 'screens') {
+  if (!named.length) { console.error('sebutkan slug demo pilihan beranda (lihat PICKS di app/components/Portfolio.tsx)'); process.exit(1) }
+  await screens(pick())
+}
+if (!['capture', 'compose', 'all', 'sheet', 'screens'].includes(cmd)) console.log('pakai: node scripts/demo-mockups.mjs capture|compose|all [slug...]  ·  sheet <out.jpg> [slug...]  ·  screens <slug...>')

@@ -120,7 +120,7 @@ const id = {
   },
   portfolio: {
     eyebrow: 'Demo pilihan',
-    title: ['Demo yang bisa kamu buka dan coba sendiri, ', 'bukan gambar mockup', '.'] as Hl,
+    title: ['Demo sungguhan yang bisa kamu buka dan coba sendiri, ', 'di HP, tablet, maupun laptop', '.'] as Hl,
     lead: (n: number) => `Lima dari ${n} situs demo yang kami bangun dan biarkan tetap online. Nama usahanya rekaan; tampilan dan isinya bisa disesuaikan untuk usahamu.`,
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, sales, promo' },
@@ -137,11 +137,10 @@ const id = {
     // satuan di belakang jumlah demo tiap galeri: selalu "demo" (bukan tema/varian/entri) — satu istilah untuk satu hal
     unit: demoUnits(() => 'demo'),
     previewAlt: (t: string) => `Pratinjau galeri ${t}`,
-    shotAlt: (name: string) => `Tangkapan layar demo ${name}`,
     open: 'Buka demo',
     galleryLang: '',
     allDemos: (n: number) => `Lihat semua ${n} demo`,
-    hoverHint: 'Arahkan kursor ke salah satu kartu untuk melihat halamannya bergulir, klik untuk membuka situs demonya.',
+    hoverHint: 'Arahkan kursor ke salah satu kartu untuk melihat halamannya bergulir di ketiga layar, klik untuk membuka situs demonya.',
   },
   // Proyek klien: beranda (sesudah Demo pilihan), Tentang (#proyek-klien), dan halaman layanan terkait.
   // Isi tiap proyek (bidang, masalah, solusi, yang diserahkan) ada di content/clients.ts.

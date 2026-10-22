@@ -113,7 +113,7 @@ const ms: Dict = {
   },
   portfolio: {
     eyebrow: 'Demo pilihan',
-    title: ['Demo yang boleh anda buka dan cuba sendiri, ', 'bukan gambar mockup', '.'] as Hl,
+    title: ['Demo sebenar yang boleh anda buka dan cuba sendiri, ', 'di telefon, tablet atau komputer riba', '.'] as Hl,
     lead: (n: number) => `Lima daripada ${n} laman demo yang kami bina dan kekalkan dalam talian. Nama perniagaannya rekaan; rupa dan isinya boleh disesuaikan untuk perniagaan anda.`,
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, jualan, promosi' },
@@ -129,11 +129,10 @@ const ms: Dict = {
     },
     unit: demoUnits(() => 'demo'),
     previewAlt: (t: string) => `Pratonton galeri ${t}`,
-    shotAlt: (name: string) => `Tangkapan skrin demo ${name}`,
     open: 'Buka demo',
     galleryLang: 'Galeri dan demo dalam bahasa Indonesia',
     allDemos: (n: number) => `Lihat semua ${n} demo`,
-    hoverHint: 'Tuding salah satu kad untuk melihat halamannya bergulir, klik untuk membuka laman demonya.',
+    hoverHint: 'Tuding salah satu kad untuk melihat halamannya bergulir pada ketiga-tiga skrin, klik untuk membuka laman demonya.',
   },
   clients: {
     title: 'Projek pelanggan',

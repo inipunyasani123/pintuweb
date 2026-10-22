@@ -113,7 +113,7 @@ const zh: Dict = {
   },
   portfolio: {
     eyebrow: '精选演示',
-    title: ['可以亲手打开试用的演示，', '而不是效果图', '。'] as Hl,
+    title: ['真实的演示网站，', '用手机、平板或笔记本电脑', '都能亲手打开试用。'] as Hl,
     lead: (n: number) => `这是我们搭建并保持在线的 ${n} 个演示网站中的五个。其中的商家均为虚构；外观和内容会按您的业务调整。`,
     galleries: {
       landing: { title: '落地页', tagline: '能卖货的页面：研讨会、销售、促销' },
@@ -129,11 +129,10 @@ const zh: Dict = {
     },
     unit: demoUnits(() => '个演示'),
     previewAlt: (t: string) => `${t}演示集预览`,
-    shotAlt: (name: string) => `${name} 演示截图`,
     open: '打开演示',
     galleryLang: '演示集和演示网站为印尼语',
     allDemos: (n: number) => `查看全部 ${n} 个演示`,
-    hoverHint: '悬停在卡片上可看到页面滚动效果；点击即可打开在线演示。',
+    hoverHint: '悬停在卡片上，可看到页面在三块屏幕上滚动；点击即可打开在线演示。',
   },
   clients: {
     title: '客户项目',

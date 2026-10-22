@@ -113,7 +113,7 @@ const es: Dict = {
   },
   portfolio: {
     eyebrow: 'Demos seleccionadas',
-    title: ['Demos que puedes abrir y probar tú mismo, ', 'no imágenes de maqueta', '.'] as Hl,
+    title: ['Demos reales que puedes abrir y probar tú mismo, ', 'en el móvil, la tableta o el portátil', '.'] as Hl,
     lead: (n: number) => `Cinco de los ${n} sitios de demostración que construimos y mantenemos en línea. Los negocios son ficticios; el aspecto y el contenido se adaptan al tuyo.`,
     galleries: {
       landing: { title: 'Landing pages', tagline: 'Páginas que venden: webinars, ventas, promociones' },
@@ -129,11 +129,10 @@ const es: Dict = {
     },
     unit: demoUnits((n) => (n === 1 ? 'demo' : 'demos')),
     previewAlt: (t: string) => `Vista previa de la galería ${t}`,
-    shotAlt: (name: string) => `Captura de pantalla de la demo ${name}`,
     open: 'Abrir demo',
     galleryLang: 'Las galerías y las demos están en indonesio',
     allDemos: (n: number) => `Ver las ${n} demos`,
-    hoverHint: 'Pasa el cursor sobre una tarjeta para ver cómo se desplaza la página; haz clic para abrir la demo en línea.',
+    hoverHint: 'Pasa el cursor sobre una tarjeta para ver cómo se desplaza la página en las tres pantallas; haz clic para abrir la demo en línea.',
   },
   clients: {
     title: 'Proyectos de clientes',
