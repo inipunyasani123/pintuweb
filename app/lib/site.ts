@@ -6,7 +6,7 @@
 export const SITE = 'https://www.pintuweb.id'
 
 export const FOUNDED_YEAR = 2018
-export const CLIENT_PROJECTS = '20+'
+export const CLIENT_PROJECTS = '30+'
 /** Jumlah jenis website/kategori demo (= DEMO_CATEGORIES di lib/demos.ts; beranda menggagalkan build bila berbeda). */
 export const CATEGORY_COUNT = 10
 /** Kota tempat PintuWeb berlokasi; kalimat lokasi berhuruf Latin (id/en/ms/es/fr/pt), JSON-LD, FAQ & llms.txt dirakit dari sini. */
