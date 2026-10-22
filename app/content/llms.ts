@@ -9,7 +9,8 @@ import { SERVICES } from './services'
 import { articlesIn } from './articles'
 import { faqFor } from './faq'
 import { clientsFor, clientsHref } from './clients'
-import { LANG_INFO, X_LANGS } from '../i18n/config'
+import { LANG_INFO, LANGS, X_LANGS, plain } from '../i18n/config'
+import { localText } from './local'
 
 export function llmsDoc(full: boolean) {
   const en = facts('en')
@@ -36,7 +37,7 @@ export function llmsDoc(full: boolean) {
     '- Ownership: for website packages, after full payment the client owns the source code, domain, hosting and admin access; ' +
       'digital invitation themes stay active for 12 months on a personal link, and the Website Design Concepts package grants the right to use the design, not the code',
     '- Languages: Indonesian (default), English (/en) and Malay (/ms) for the whole site; ' +
-      `${X_LANGS.map((l) => `${LANG_INFO[l].name} (/${l})`).join(', ')} for the main pages (home, services, pricing, demos, FAQ, about, contact, founder, glossary)`,
+      `${X_LANGS.map((l) => `${LANG_INFO[l].name} (/${l})`).join(', ')} for the main pages (home, services, pricing, demos, FAQ, about, contact, founder, glossary, local page)`,
     '',
     '## Packages (IDR)',
     '',
@@ -52,6 +53,14 @@ export function llmsDoc(full: boolean) {
       `- [${s.text.en.name}](${urlOf('en', { key: 'services', service: s.key })}): ${s.text.en.lead}`,
       `  - Indonesian: [${s.text.id.name}](${urlOf('id', { key: 'services', service: s.key })})`,
     ]),
+    '',
+    `## Local page: ${CITY}`,
+    '',
+    `PintuWeb is a service-area business: only the city is published (no street address); all work is done remotely over WhatsApp and email.`,
+    '',
+    `- [${localText('en').ogTitle}](${urlOf('en', { key: 'local' })}): ${plain(`${localText('en').answerLead} ${localText('en').answer}`)}`,
+    `  - Indonesian: [${localText('id').ogTitle}](${urlOf('id', { key: 'local' })})`,
+    `  - Other languages: ${LANGS.filter((l) => l !== 'en' && l !== 'id').map((l) => `${urlOf(l, { key: 'local' })} (${l.toUpperCase()})`).join(' · ')}`,
     '',
     '## Main pages',
     '',

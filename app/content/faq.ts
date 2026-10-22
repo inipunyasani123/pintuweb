@@ -33,7 +33,7 @@ export type FaqItem = RawItem & { key: FaqKey }
 export const FAQ_CATEGORY_SLUG: Record<FaqCategoryId, string> = { general: 'umum', pricing: 'harga', process: 'proses', technical: 'teknis', support: 'dukungan' }
 
 /** Halaman yang membahas suatu jawaban lebih rinci (tautan "Selengkapnya" di bawah jawaban). */
-type MorePage = Exclude<PageKey, 'home' | 'services' | 'articles'>
+type MorePage = Exclude<PageKey, 'home' | 'services' | 'articles' | 'local'>
 /** `at` = pasal Syarat & Ketentuan yang dituju (jangkar), bila halamannya 'terms'. */
 export type FaqMore = { page: MorePage; at?: TermsId } | { service: ServiceKey } | { article: ArticleKey; fallback: MorePage }
 export const FAQ_MORE: Partial<Record<FaqKey, FaqMore>> = {

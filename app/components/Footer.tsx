@@ -8,6 +8,7 @@ import { facts } from '../i18n/facts'
 import { LANGS, LANG_INFO, type Lang } from '../i18n/config'
 import { hasPage, path, pathOf } from '../i18n/routes'
 import { SERVICES, serviceText } from '../content/services'
+import { localText } from '../content/local'
 import { HlText } from './Bits'
 import FooterAction from './FooterAction'
 import { Logo, LogoMark } from './Logo'
@@ -45,6 +46,8 @@ export default function Footer({ lang }: { lang: Lang }) {
         { label: t.links.demo, href: path(lang, 'demo') },
         { label: t.links.pricing, href: path(lang, 'pricing') },
         { label: t.links.faq, href: path(lang, 'faq') },
+        // halaman lokal (kota di lib/site.ts)
+        { label: localText(lang).footerLink, href: path(lang, 'local') },
       ],
     },
     {

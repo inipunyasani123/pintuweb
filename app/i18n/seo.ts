@@ -81,6 +81,20 @@ export function pageMeta(m: MetaInput): Metadata {
   }
 }
 
+/**
+ * Wilayah layanan untuk data terstruktur: kota tempat PintuWeb berlokasi (lib/site.ts), provinsinya, dan seluruh Indonesia.
+ * Usaha area layanan: tidak ada alamat jalan, hanya kota (keputusan pemilik, 22 Okt 2026). Klien luar negeri dilayani
+ * online, tetapi wilayah yang dinyatakan tetap Indonesia.
+ */
+export function localAreaServed() {
+  const province = { '@type': 'AdministrativeArea', name: 'Jawa Timur', alternateName: 'East Java' }
+  return [
+    { '@type': 'City', name: CITY, containedInPlace: province },
+    province,
+    { '@type': 'Country', name: 'Indonesia', identifier: 'ID' },
+  ]
+}
+
 /** Organization + WebSite + layanan inti; dipasang di setiap halaman lewat layout. */
 export function siteGraph(lang: Lang) {
   const t = getDict(lang)
@@ -104,7 +118,7 @@ export function siteGraph(lang: Lang) {
         priceRange: `IDR ${Math.min(...prices)}–${Math.max(...PACKAGES.map((p) => p.maxPrice))}`,
         currenciesAccepted: 'IDR',
         address: { '@type': 'PostalAddress', addressLocality: CITY, addressRegion: 'Jawa Timur', addressCountry: 'ID' },
-        areaServed: { '@type': 'Country', name: 'Indonesia' },
+        areaServed: localAreaServed(),
         knowsLanguage: LANGS.map((l) => LANG_INFO[l].htmlLang),
         knowsAbout: ['Web design', 'Web development', 'Next.js', 'Search engine optimization', 'Landing pages', 'E-commerce websites', 'Digital menus', 'Digital invitations'],
         ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
@@ -157,6 +171,10 @@ export function pageGraph(opts: {
   crumbs: { name: string; url: string }[]
   extra?: Record<string, unknown>[]
   dates?: { published?: string; modified?: string }
+  /** @id node yang dibahas halaman ini (mis. ORG_ID) */
+  about?: string
+  /** @id entitas utama halaman ini (mis. node Service di `extra`) */
+  mainEntity?: string
 }) {
   const url = urlOf(opts.lang, opts.ref)
   const graph: Record<string, unknown>[] = [
@@ -171,6 +189,8 @@ export function pageGraph(opts: {
       publisher: { '@id': ORG_ID },
       ...(opts.dates?.published ? { datePublished: opts.dates.published } : {}),
       ...(opts.dates?.modified ? { dateModified: opts.dates.modified } : {}),
+      ...(opts.about ? { about: { '@id': opts.about } } : {}),
+      ...(opts.mainEntity ? { mainEntity: { '@id': opts.mainEntity } } : {}),
       ...(opts.crumbs.length > 1 ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
     },
   ]

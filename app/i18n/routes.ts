@@ -6,7 +6,7 @@ import { SITE } from '../lib/site'
 
 export type PageKey =
   | 'home' | 'services' | 'pricing' | 'demo' | 'faq' | 'about' | 'contact'
-  | 'founder' | 'privacy' | 'terms' | 'articles' | 'glossary'
+  | 'founder' | 'privacy' | 'terms' | 'articles' | 'glossary' | 'local'
 
 /** Segmen URL bahasa dasar. null = halaman itu tidak ada dalam bahasa tersebut. */
 const BASE_SEGMENTS: Record<PageKey, Record<BaseLang, string | null>> = {
@@ -22,13 +22,15 @@ const BASE_SEGMENTS: Record<PageKey, Record<BaseLang, string | null>> = {
   terms: { id: 'syarat-ketentuan', en: 'terms', ms: 'terma-syarat' },
   articles: { id: 'artikel', en: 'articles', ms: null },
   glossary: { id: 'kamus-website', en: 'glossary', ms: 'glosari' },
+  // Halaman lokal (kota di lib/site.ts). Segmen berisi kata kunci yang dicari orang; folder internal = segmen id.
+  local: { id: 'jasa-pembuatan-website-tulungagung', en: 'web-design-tulungagung', ms: 'laman-web-tulungagung' },
 }
 
 /**
  * Halaman yang SUDAH diterjemahkan untuk tiap bahasa tambahan. Halaman di luar daftar ini tidak dibuat untuk
  * bahasa itu, dan tautan ke sana otomatis menuju versi Inggris (lihat path()). Artikel tidak pernah ada di sini.
  */
-const X_CORE: PageKey[] = ['home', 'services', 'pricing', 'demo', 'faq', 'about', 'contact', 'founder', 'glossary']
+const X_CORE: PageKey[] = ['home', 'services', 'pricing', 'demo', 'faq', 'about', 'contact', 'founder', 'glossary', 'local']
 const X_READY: Record<string, PageKey[]> = Object.fromEntries((X_LANGS as readonly XLang[]).map((l) => [l, X_CORE]))
 
 /** Segmen URL per halaman per bahasa; bahasa tambahan memakai segmen Inggris. null = halaman tidak ada. */

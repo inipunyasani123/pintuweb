@@ -30,6 +30,17 @@ export const ARTICLE_SLUGS = {
   'seo-checklist': { id: 'checklist-seo-website-baru', en: 'new-website-seo-checklist' },
   'pilih-jasa': { id: 'cara-memilih-jasa-pembuatan-website', en: 'how-to-choose-a-web-developer' },
   undangan: { id: 'panduan-undangan-digital', en: 'digital-invitation-guide' },
+  // 22 Okt 2026: gelombang SEO lokal (Tulungagung) + pertanyaan calon klien
+  'umkm-tulungagung': { id: 'website-umkm-tulungagung', en: 'tulungagung-business-websites' },
+  'google-maps': { id: 'cara-muncul-di-google-maps', en: 'google-business-profile-guide' },
+  'katalog-ekspor': { id: 'website-katalog-marmer-onyx', en: 'marble-onyx-catalog-website' },
+  wisata: { id: 'website-wisata-dan-penginapan', en: 'tourism-and-homestay-website' },
+  'toko-vs-marketplace': { id: 'toko-online-vs-marketplace', en: 'online-store-vs-marketplace' },
+  'menu-qr': { id: 'menu-digital-qr', en: 'qr-code-menu-guide' },
+  booking: { id: 'sistem-booking-online', en: 'online-booking-system-guide' },
+  'lama-pembuatan': { id: 'berapa-lama-membuat-website', en: 'how-long-to-build-a-website' },
+  'jarak-jauh': { id: 'jasa-pembuatan-website-online', en: 'hire-web-developer-indonesia' },
+  'website-gratis': { id: 'website-gratis-vs-berbayar', en: 'free-vs-paid-website' },
 } satisfies Record<string, Partial<Record<Lang, string>>>
 
 export type ArticleKey = keyof typeof ARTICLE_SLUGS

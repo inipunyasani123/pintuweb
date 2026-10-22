@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     home: [1.0, 'weekly'],
     pricing: [0.9, 'monthly'],
     services: [0.9, 'monthly'],
+    local: [0.9, 'monthly'],
     demo: [0.8, 'weekly'],
     articles: [0.7, 'weekly'],
     faq: [0.7, 'monthly'],

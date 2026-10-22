@@ -21,6 +21,16 @@ export const ARTICLE_COVER: Record<ArticleKey, { mark: string; tone: DemoCategor
   'landing-vs-compro': { mark: 'vs', tone: 'landing' },
   undangan: { mark: 'RSVP', tone: 'undangan' },
   'website-vs-sosmed': { mark: '@', tone: 'todo' },
+  'umkm-tulungagung': { mark: 'UMKM', tone: 'landing' },
+  'google-maps': { mark: 'Maps', tone: 'properti' },
+  'katalog-ekspor': { mark: 'Onyx', tone: 'kontes' },
+  wisata: { mark: 'Stay', tone: 'portfolio' },
+  'toko-vs-marketplace': { mark: '%', tone: 'toko' },
+  'menu-qr': { mark: 'QR', tone: 'menu' },
+  booking: { mark: '09.00', tone: 'reservasi' },
+  'lama-pembuatan': { mark: 'ETA', tone: 'todo' },
+  'jarak-jauh': { mark: 'UTC+7', tone: 'linkinbio' },
+  'website-gratis': { mark: 'Rp0', tone: 'undangan' },
 }
 
 const DIR = path.join(process.cwd(), 'public', 'images', 'artikel')

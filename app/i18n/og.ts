@@ -8,6 +8,7 @@ import { ARTICLE_KEYS, SERVICE_KEYS, type ArticleKey, type ServiceKey } from './
 import { serviceOf, serviceText } from '../content/services'
 import { getArticle } from '../content/articles'
 import { DEMOS } from '../lib/demos'
+import { localText } from '../content/local'
 
 /** Kunci dokumen dari parameter URL; null bila tidak dikenal. */
 export function refFromQuery(p: string | null, s: string | null): DocRef | null {
@@ -58,6 +59,8 @@ export function ogTitleOf(lang: Lang, ref: DocRef): string | null {
         return p.legal.privacyTitle
       case 'terms':
         return p.legal.termsTitle
+      case 'local':
+        return localText(lang).ogTitle
     }
   })()
   return plain(title)
