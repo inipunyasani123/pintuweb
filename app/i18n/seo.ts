@@ -153,7 +153,7 @@ export function siteGraph(lang: Lang) {
       },
       {
         ...FOUNDER_PERSON,
-        jobTitle: 'Founder & Developer',
+        jobTitle: 'Founder & Full-Stack Developer',
         worksFor: { '@id': ORG_ID },
         ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
       },

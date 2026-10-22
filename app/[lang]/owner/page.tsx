@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, CodeXml, Database, Gauge, Github, Mail, MapPin, MessageCircle, type LucideIcon } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, CodeXml, Github, Mail, MapPin, MessageCircle, Palette, Rocket, type LucideIcon } from 'lucide-react'
 import ArticleCard from '../../components/ArticleCard'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { Logo } from '../../components/Logo'
@@ -16,13 +16,16 @@ type Params = { params: Promise<{ lang: string }> }
 
 const NAME = FOUNDER_NAME
 
-// Tiga kelompok keahlian: potongan dari founder.skills (urutannya sama di ketiga bahasa) + ikonnya.
-// Judul kelompok ada di founder.skillGroups.
+// Tiga kelompok keahlian umum: potongan dari founder.skills (urutannya sama di 11 bahasa) + ikonnya.
+// Judul kelompok ada di founder.skillGroups. Setiap butir harus didukung isi paket di lib/packages.ts.
 const SKILL_GROUPS: { icon: LucideIcon; from: number; to: number }[] = [
-  { icon: CodeXml, from: 0, to: 4 },
-  { icon: Database, from: 4, to: 7 },
-  { icon: Gauge, from: 7, to: 10 },
+  { icon: CodeXml, from: 0, to: 4 }, // pengembangan full-stack
+  { icon: Palette, from: 4, to: 7 }, // desain & pengalaman
+  { icon: Rocket, from: 7, to: 10 }, // online & performa
 ]
+
+// Tumpukan teknologi yang biasa dipakai: nama produk, sama di semua bahasa (judulnya founder.techTitle).
+const TECH = ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS']
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { lang } = await params
@@ -185,6 +188,19 @@ export default async function OwnerPage({ params }: Params) {
                 </li>
               ))}
             </ul>
+            {/* Teknologi: sengaja lebih senyap dari kelompok keahlian, untuk klien yang ingin tahu tumpukannya */}
+            <div className="mt-6 px-1">
+              <h3 id="tech-title" className="text-[0.875rem] font-semibold text-[color:var(--text-tertiary)]">
+                {p.techTitle}
+              </h3>
+              <ul aria-labelledby="tech-title" className="mt-2.5 flex flex-wrap gap-1.5">
+                {TECH.map((t) => (
+                  <li key={t} className="rounded-lg px-2.5 py-0.5 text-[0.8125rem] leading-5 text-[color:var(--text-muted)] ring-1 ring-[color:var(--border-light)]">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           {/* Prinsip kerja: pernyataan cara kerja dari fakta situs (harga, persetujuan desain, garansi), BUKAN kutipan
               Arya. Teksnya sama dengan kartu "Di balik PintuWeb" di halaman Tentang. */}
@@ -265,7 +281,7 @@ export default async function OwnerPage({ params }: Params) {
               name: NAME,
               jobTitle: p.jobTitle,
               worksFor: { '@id': ORG_ID },
-              knowsAbout: p.skills,
+              knowsAbout: [...p.skills, ...TECH],
               ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
             },
           ],

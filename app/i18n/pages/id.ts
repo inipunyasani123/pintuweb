@@ -216,15 +216,15 @@ const pages = {
   },
   founder: {
     title: 'Profil Founder',
-    description: `Kenalan dengan Arya, founder dan developer di balik PintuWeb sejak ${FOUNDED_YEAR}, yang sudah menyelesaikan ${CLIENT_PROJECTS} proyek website untuk UMKM dan startup.`,
+    description: `Kenalan dengan Arya, founder & full-stack developer PintuWeb sejak ${FOUNDED_YEAR}. Sudah ${CLIENT_PROJECTS} proyek UMKM dan startup digarap, dari tampilan sampai database.`,
     ogTitle: 'Profil Founder — PintuWeb',
-    ogDescription: 'Arya, founder & developer PintuWeb: website cepat, rapi, dan SEO-ready untuk bisnis lokal.',
+    ogDescription: 'Arya, founder & full-stack developer PintuWeb: website cepat dan rapi, dari tampilan sampai sistem di baliknya.',
     badge: 'Founder',
     h1: ['Halo, saya ', 'Arya.'] as Hl,
-    lead: `Founder & developer di balik PintuWeb. Sejak ${FOUNDED_YEAR} saya membangun website yang cepat, rapi, dan mudah ditemukan untuk UMKM dan startup di Indonesia.`,
+    lead: `Founder & full-stack developer di balik PintuWeb. Sejak ${FOUNDED_YEAR} saya menggarap website untuk UMKM dan startup di Indonesia, dari tampilan yang dilihat pengunjung sampai sistem di baliknya: backend, database, dan hosting.`,
     github: 'Lihat karya saya di GitHub',
     monogram: 'Monogram Arya, founder PintuWeb',
-    jobTitle: 'Founder & Developer',
+    jobTitle: 'Founder & Full-Stack Developer',
     journeyTitle: 'Perjalanan',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'Mendirikan PintuWeb', body: 'Belajar frontend & backend secara otodidak dan mulai mengerjakan website untuk UMKM.' },
@@ -232,8 +232,9 @@ const pages = {
     ],
     skillsTitle: 'Keahlian utama',
     // Judul tiga kelompok keahlian; pembagiannya (4, 3, 3 butir dari `skills`) ada di halaman founder.
-    skillGroups: ['Frontend', 'Hosting & data', 'Mutu & pengalaman'],
-    skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Supabase', 'Headless CMS', 'SEO teknis', 'Audit performa', 'UI/UX'],
+    skillGroups: ['Pengembangan full-stack', 'Desain & pengalaman', 'Online & performa'],
+    skills: ['Frontend (tampilan web)', 'Backend & API', 'Database', 'Aplikasi & dashboard web', 'UI/UX', 'Desain responsif', 'Copywriting web', 'SEO teknis', 'Kecepatan & performa', 'Hosting, domain & deploy'],
+    techTitle: 'Teknologi yang biasa dipakai',
     // Prinsip kerja (halaman Founder & kartu "Di balik PintuWeb" di Tentang): pernyataan cara kerja dari fakta situs,
     // BUKAN kutipan; jangan ditulis sebagai ucapan Arya.
     principlesTitle: 'Prinsip kerja',
@@ -305,7 +306,7 @@ const pages = {
     shareWa: 'Bagikan lewat WhatsApp',
     copy: 'Salin tautan',
     copied: 'Tautan tersalin',
-    authorRole: (year: number) => `Founder & developer PintuWeb. Membangun website untuk UMKM sejak ${year}.`,
+    authorRole: (year: number) => `Founder & full-stack developer PintuWeb. Membangun website untuk UMKM sejak ${year}, dari tampilan sampai backend dan database.`,
     authorLink: 'Profil penulis',
   },
   glossary: {
