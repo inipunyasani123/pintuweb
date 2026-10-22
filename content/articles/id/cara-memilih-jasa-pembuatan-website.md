@@ -7,7 +7,7 @@ date: 2026-10-03
 updated: 2026-10-15
 tags: jasa pembuatan website, tips, UMKM
 takeaways:
-- Pastikan domain, hosting, dan source code menjadi milik Anda setelah pelunasan — ini pertanyaan terpenting.
+- Pastikan domain, hosting, dan source code menjadi milikmu setelah pelunasan — ini pertanyaan terpenting.
 - Minta rincian biaya tahun kedua, isi garansi, jumlah revisi, dan jadwal secara tertulis sebelum membayar DP.
 - Buka contoh website yang sudah online dan ukur kecepatannya sendiri dengan PageSpeed Insights.
 - Waspadai harga yang tidak menyebut biaya perpanjangan, tidak ada contoh live, atau permintaan pembayaran penuh di awal.
@@ -16,17 +16,17 @@ sources:
 - Google Search Central — SEO Starter Guide | https://developers.google.com/search/docs/fundamentals/seo-starter-guide
 ---
 
-**Jasa pembuatan website yang baik bisa dikenali dari jawaban atas pertanyaan sederhana: siapa pemilik website setelah jadi, berapa biaya tahun-tahun berikutnya, dan apa yang terjadi bila ada masalah setelah online.** Dua belas pertanyaan berikut membantu Anda membandingkan penawaran dengan adil sebelum membayar DP.
+**Jasa pembuatan website yang baik bisa dikenali dari jawaban atas pertanyaan sederhana: siapa pemilik website setelah jadi, berapa biaya tahun-tahun berikutnya, dan apa yang terjadi bila ada masalah setelah online.** Dua belas pertanyaan berikut membantumu membandingkan penawaran dengan adil sebelum membayar DP.
 
-Kami menyertakan jawaban PintuWeb untuk setiap pertanyaan, supaya Anda punya pembanding yang konkret.
+Kami menyertakan jawaban PintuWeb untuk setiap pertanyaan, supaya kamu punya pembanding yang konkret.
 
 ## Kepemilikan
 
 **1. Atas nama siapa domain didaftarkan?**
-Domain sebaiknya atas nama Anda atau usaha Anda. *PintuWeb: setelah pelunasan, domain sepenuhnya menjadi milik Anda beserta aksesnya.*
+Domain sebaiknya atas namamu atau usahamu. *PintuWeb: setelah pelunasan, domain sepenuhnya menjadi milikmu beserta aksesnya.*
 
 **2. Apakah source code dan akses hosting diserahkan?**
-Tanpa source code, Anda tidak bisa pindah ke penyedia lain. *PintuWeb: setelah pelunasan, source code, akses admin, hosting, dan domain diserahkan seluruhnya.*
+Tanpa source code, kamu tidak bisa pindah ke penyedia lain. *PintuWeb: setelah pelunasan, source code, akses admin, hosting, dan domain diserahkan seluruhnya.*
 
 ## Biaya
 
@@ -37,7 +37,7 @@ Minta rincian: desain, jumlah halaman, fitur, domain, hosting, SSL, SEO dasar. *
 Ini yang paling sering mengejutkan pemilik usaha. *PintuWeb: perpanjangan domain & hosting sekitar {{renewal}} per tahun, disebut sejak awal.*
 
 **5. Bagaimana skema pembayarannya?**
-Pembayaran bertahap melindungi kedua pihak. *PintuWeb: DP 50%, pelunasan setelah website selesai dan Anda setujui.*
+Pembayaran bertahap melindungi kedua pihak. *PintuWeb: DP 50%, pelunasan setelah website selesai dan kamu setujui.*
 
 ## Proses
 
@@ -73,7 +73,7 @@ Minta tertulis: berapa hari, apa yang ditanggung, dan bagaimana cara melapor. *P
 | Tidak menyebut biaya tahun kedua | Harga murah di awal bisa diikuti perpanjangan yang mahal |
 | Domain didaftarkan atas nama penyedia | Sulit pindah atau mengambil alih website |
 | Tidak ada contoh yang bisa dibuka | Hasil akhir sulit dibayangkan dan dinilai |
-| Minta pembayaran penuh di awal | Anda kehilangan posisi tawar bila hasil tidak sesuai |
+| Minta pembayaran penuh di awal | Kamu kehilangan posisi tawar bila hasil tidak sesuai |
 | Janji “pasti halaman 1 Google” | Tidak ada yang bisa menjamin peringkat organik |
 
 ## Pertanyaan yang sering diajukan

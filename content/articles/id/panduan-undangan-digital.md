@@ -35,7 +35,7 @@ Delapan tema di [galeri undangan digital](/undangan-digital) kami memperlihatkan
 Undangan sering memuat nama lengkap, foto keluarga, dan alamat rumah. Beberapa langkah sederhana:
 
 - **Cantumkan seperlunya.** Alamat lokasi acara sudah cukup; tidak perlu alamat rumah bila acara di gedung.
-- **Minta halaman tidak diindeks mesin pencari** (noindex), sehingga undangan hanya bisa dibuka lewat tautan yang Anda bagikan.
+- **Minta halaman tidak diindeks mesin pencari** (noindex), sehingga undangan hanya bisa dibuka lewat tautan yang kamu bagikan.
 - **Hati-hati dengan foto anak.** Pertimbangkan foto yang tidak terlalu jelas menampilkan wajah atau lingkungan rumah.
 - **Hapus atau nonaktifkan setelah acara** bila tidak ingin undangan terus bisa diakses.
 
@@ -70,4 +70,4 @@ Tidak. Undangan dibuka di browser ponsel seperti halaman web biasa.
 
 ### Kapan sebaiknya undangan digital dikirim?
 
-Banyak orang mengirim beberapa minggu sebelum acara agar tamu sempat mengatur jadwal, lalu mengirim pengingat menjelang hari-H. Sesuaikan dengan kebiasaan keluarga dan jenis acara Anda.
+Banyak orang mengirim beberapa minggu sebelum acara agar tamu sempat mengatur jadwal, lalu mengirim pengingat menjelang hari-H. Sesuaikan dengan kebiasaan keluarga dan jenis acaramu.

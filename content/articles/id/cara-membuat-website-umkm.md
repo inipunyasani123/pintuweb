@@ -9,7 +9,7 @@ tags: website UMKM, panduan, pemula
 takeaways:
 - Mulailah dari tujuan yang jelas (misalnya menerima pesanan lewat WhatsApp), lalu pilih jenis website yang paling sederhana untuk mencapainya.
 - Siapkan konten inti lebih dulu — deskripsi usaha, daftar produk/layanan, foto, dan kontak — karena konten paling sering membuat proyek tertunda.
-- Pastikan domain terdaftar atas nama usaha Anda dan website dioptimasi SEO sejak awal.
+- Pastikan domain terdaftar atas nama usahamu dan website dioptimasi SEO sejak awal.
 - Setelah online, daftarkan ke Google Search Console dan Google Business Profile, lalu perbarui isinya secara rutin.
 sources:
 - Survei APJII 2025: Pengguna Internet Indonesia 229 Juta Jiwa (detikInet) | https://inet.detik.com/telecommunication/d-8047759/survei-apjii-pengguna-internet-indonesia-2025-tembus-229-juta-jiwa
@@ -18,13 +18,13 @@ sources:
 - web.dev — Web Vitals | https://web.dev/articles/vitals
 ---
 
-**Membuat website UMKM terdiri dari tujuh langkah: menentukan tujuan, memilih jenis website, menyiapkan domain, menyiapkan konten, mendesain dan membangun, mengoptimasi untuk Google, lalu merawatnya setelah online.** Anda tidak perlu paham kode untuk menjalankan langkah-langkah ini; yang paling menentukan justru kejelasan tujuan dan kesiapan konten.
+**Membuat website UMKM terdiri dari tujuh langkah: menentukan tujuan, memilih jenis website, menyiapkan domain, menyiapkan konten, mendesain dan membangun, mengoptimasi untuk Google, lalu merawatnya setelah online.** Kamu tidak perlu paham kode untuk menjalankan langkah-langkah ini; yang paling menentukan justru kejelasan tujuan dan kesiapan konten.
 
 ## Kenapa UMKM perlu website sekarang
 
 Menurut survei Asosiasi Penyelenggara Jasa Internet Indonesia (APJII) 2025, pengguna internet di Indonesia mencapai 229.428.417 orang atau 80,66% penduduk. Di sisi lain, Kementerian UMKM mencatat sekitar 65,5 juta UMKM yang menyumbang 61,9% PDB. Artinya, calon pelanggan sudah online — dan persaingan untuk menarik perhatian mereka juga besar.
 
-Media sosial membantu menjangkau orang, tetapi website memberi alamat resmi yang bisa ditemukan lewat Google dan sepenuhnya Anda kendalikan. Perbandingannya kami bahas di artikel [website vs media sosial](/artikel/website-vs-media-sosial).
+Media sosial membantu menjangkau orang, tetapi website memberi alamat resmi yang bisa ditemukan lewat Google dan sepenuhnya kamu kendalikan. Perbandingannya kami bahas di artikel [website vs media sosial](/artikel/website-vs-media-sosial).
 
 ## Langkah 1 — Tentukan satu tujuan utama
 
@@ -51,13 +51,13 @@ Bila ragu, pilih yang lebih sederhana. Website bisa dikembangkan kemudian.
 
 Domain adalah alamat website, misalnya namausaha.com. Pilih nama yang pendek, mudah dieja, dan sama dengan nama usaha. Untuk domain Indonesia, PANDI mengalokasikan .co.id bagi badan usaha (syaratnya NIB dan KTP) dan .biz.id bagi UMKM. Penjelasan lengkap ada di [panduan domain dan hosting](/artikel/domain-dan-hosting-untuk-pemula).
 
-Yang terpenting: **pastikan domain terdaftar atas nama Anda**, bukan atas nama pembuat website.
+Yang terpenting: **pastikan domain terdaftar atas namamu**, bukan atas nama pembuat website.
 
 ## Langkah 4 — Siapkan konten inti
 
 Konten adalah penyebab keterlambatan paling umum. Siapkan:
 
-- Deskripsi usaha dalam 3–5 kalimat: siapa Anda, apa yang dijual, untuk siapa.
+- Deskripsi usaha dalam 3–5 kalimat: siapa kamu, apa yang dijual, untuk siapa.
 - Daftar produk atau layanan beserta harga (bila ingin ditampilkan).
 - Foto asli: produk, tempat usaha, tim. Foto ponsel yang terang sudah cukup baik.
 - Kontak: nomor WhatsApp, email, alamat, jam buka.
@@ -73,7 +73,7 @@ Desain yang baik untuk UMKM bukan yang paling ramai, melainkan yang membuat peng
 - Satu tombol utama yang jelas, misalnya “Pesan via WhatsApp”.
 - Halaman cepat dibuka; Google menyarankan konten utama tampil dalam 2,5 detik.
 
-Di PintuWeb, Anda menyetujui desain lebih dulu sebelum website dibangun, dan pratinjaunya bisa Anda buka sendiri selama pengerjaan.
+Di PintuWeb, kamu menyetujui desain lebih dulu sebelum website dibangun, dan pratinjaunya bisa kamu buka sendiri selama pengerjaan.
 
 ## Langkah 6 — Optimasi untuk Google
 
@@ -89,7 +89,7 @@ Website yang tidak diperbarui lama-lama tertinggal. Jadwalkan pembaruan sederhan
 
 ### Apakah UMKM bisa membuat website sendiri tanpa jasa?
 
-Bisa, dengan pembuat website instan. Konsekuensinya, Anda mengerjakan desain, penulisan, dan pengaturan SEO sendiri, dan pilihan tampilan serta fitur terbatas. Jasa pembuatan website menghemat waktu dan biasanya menghasilkan website yang lebih cepat dan rapi.
+Bisa, dengan pembuat website instan. Konsekuensinya, kamu mengerjakan desain, penulisan, dan pengaturan SEO sendiri, dan pilihan tampilan serta fitur terbatas. Jasa pembuatan website menghemat waktu dan biasanya menghasilkan website yang lebih cepat dan rapi.
 
 ### Berapa lama sampai website muncul di Google?
 
@@ -97,4 +97,4 @@ Biasanya website baru mulai terindeks dalam 1–2 minggu setelah didaftarkan ke 
 
 ### Apa yang perlu saya siapkan sebelum menghubungi jasa pembuatan website?
 
-Tujuan website, nama usaha, deskripsi singkat, daftar produk atau layanan, foto, dan kontak. Contoh website yang Anda sukai juga sangat membantu.
+Tujuan website, nama usaha, deskripsi singkat, daftar produk atau layanan, foto, dan kontak. Contoh website yang kamu sukai juga sangat membantu.

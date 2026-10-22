@@ -41,7 +41,7 @@ sources:
 7. **Structured data (JSON-LD)** untuk informasi penting seperti organisasi, layanan, FAQ, atau artikel. Ini membantu mesin memahami isi halaman, meski bukan syarat untuk muncul.
 8. **Versi bahasa ditandai hreflang** bila website punya lebih dari satu bahasa.
 
-## Konten: yang membuat orang (dan mesin) memilih halaman Anda
+## Konten: yang membuat orang (dan mesin) memilih halamanmu
 
 9. **Satu topik utama per halaman**, dengan judul (title) yang memuat kata yang benar-benar dicari orang.
 10. **Meta description** yang merangkum isi halaman dalam satu-dua kalimat.
@@ -66,7 +66,7 @@ sources:
 
 Google menyatakan bahwa tidak ada persyaratan tambahan atau optimasi khusus untuk tampil di AI Overviews dan AI Mode. Praktik SEO dasar, kepatuhan teknis, dan konten yang bermanfaat untuk manusia tetap menjadi kuncinya. Google juga menyebut file seperti llms.txt tidak dipakai oleh Google Search, dan tidak ada markup schema.org khusus untuk fitur AI.
 
-Yang membantu untuk semua mesin jawaban pada praktiknya sama dengan SEO yang baik: jawaban yang jelas di awal, struktur judul yang rapi, tabel untuk perbandingan, fakta yang konsisten dan bersumber, serta halaman yang bisa dirayapi. Pastikan juga robots.txt tidak memblokir perayap mesin pencari dan asisten AI yang ingin Anda layani.
+Yang membantu untuk semua mesin jawaban pada praktiknya sama dengan SEO yang baik: jawaban yang jelas di awal, struktur judul yang rapi, tabel untuk perbandingan, fakta yang konsisten dan bersumber, serta halaman yang bisa dirayapi. Pastikan juga robots.txt tidak memblokir perayap mesin pencari dan asisten AI yang ingin kamu layani.
 
 ## Pertanyaan yang sering diajukan
 
@@ -80,4 +80,4 @@ Tidak untuk hasil pencarian biasa (organik). Iklan Google Ads berbayar dan tampi
 
 ### Apakah website buatan PintuWeb sudah memenuhi checklist ini?
 
-Bagian teknis dan on-page — HTTPS, ramah ponsel, sitemap, meta tag, structured data, dan target skor PageSpeed {{perf}} — sudah termasuk di setiap paket website. Bila Anda butuh bantuan mendaftarkan Search Console atau Google Business Profile, tanyakan saat konsultasi.
+Bagian teknis dan on-page — HTTPS, ramah ponsel, sitemap, meta tag, structured data, dan target skor PageSpeed {{perf}} — sudah termasuk di setiap paket website. Bila kamu butuh bantuan mendaftarkan Search Console atau Google Business Profile, tanyakan saat konsultasi.

@@ -8,7 +8,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { JsonLd } from '../components/Bits'
 import { DEMOS } from '../lib/demos'
-import { SITE, WA_DISPLAY, wa } from '../lib/site'
+import { FOUNDER_NAME, SITE, WA_DISPLAY, wa } from '../lib/site'
 import { LANGS, LANG_INFO, getDict, isLang, type Lang } from '../i18n'
 import { hasPage, path } from '../i18n/routes'
 import { rssTypes, siteGraph } from '../i18n/seo'
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: { default: t.meta.homeTitle, template: '%s | PintuWeb' },
     description: t.meta.homeDescription(DEMOS.length),
     applicationName: 'PintuWeb',
-    authors: [{ name: 'Arya', url: `${SITE}/owner` }],
+    authors: [{ name: FOUNDER_NAME, url: `${SITE}/owner` }],
     creator: 'PintuWeb',
     publisher: 'PintuWeb',
     keywords: t.meta.keywords,

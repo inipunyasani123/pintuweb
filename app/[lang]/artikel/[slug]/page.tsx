@@ -14,7 +14,7 @@ import { ARTICLE_SLUGS, articleKeyBySlug } from '../../../i18n/slugs'
 import { getDict, getPages, isLang, LANG_INFO, type Lang } from '../../../i18n'
 import { langsOf, path, pathOf, urlOf } from '../../../i18n/routes'
 import { FOUNDER_PERSON, ORG_ID, ogImage, pageGraph, pageMeta } from '../../../i18n/seo'
-import { FOUNDED_YEAR, SITE, wa } from '../../../lib/site'
+import { FOUNDED_YEAR, FOUNDER_NAME, SITE, wa } from '../../../lib/site'
 
 type Params = { params: Promise<{ lang: string; slug: string }> }
 
@@ -35,6 +35,9 @@ function resolve(lang: string, slug: string) {
   const key = articleKeyBySlug(lang, slug)
   return key ? getArticle(lang, key) : null
 }
+
+/** Monogram penulis (avatar): huruf pertama nama founder di lib/site.ts. */
+const FOUNDER_INITIAL = [...FOUNDER_NAME][0]?.toUpperCase() ?? ''
 
 const fmtDate = (lang: Lang, iso: string) =>
   new Intl.DateTimeFormat(LANG_INFO[lang].intl, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso))
@@ -119,13 +122,13 @@ export default async function ArticlePage({ params }: Params) {
           <div className="mt-8 flex flex-col gap-4 rounded-[1.25rem] bg-[color:var(--surface-soft)] p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[color:var(--navy)] text-base font-semibold text-white" aria-hidden="true">
-                S
+                {FOUNDER_INITIAL}
               </span>
               <div className="min-w-0 leading-snug">
                 <p className="text-[0.9375rem] text-[color:var(--text-primary)]">
                   {p.by}{' '}
                   <Link href={path(lang, 'founder')} rel="author" className="py-1 font-semibold underline decoration-[color:var(--primary-300)] underline-offset-4 hover:decoration-[color:var(--primary-700)]">
-                    Arya
+                    {FOUNDER_NAME}
                   </Link>
                 </p>
                 <p className="mt-0.5 text-[0.8125rem] text-[color:var(--text-tertiary)]">
@@ -206,12 +209,12 @@ export default async function ArticlePage({ params }: Params) {
             {/* Penulis */}
             <div className="mt-6 flex items-center gap-4 rounded-[1.5rem] bg-white p-5 ring-1 ring-[color:var(--border-light)] sm:p-6">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[color:var(--navy)] text-xl font-semibold text-white" aria-hidden="true">
-                S
+                {FOUNDER_INITIAL}
               </span>
               <div className="min-w-0">
                 {/* nama + peran satu paragraf (bukan <p> bergaya judul yang disusul <p> lain) */}
                 <p>
-                  <span className="display block text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">Arya</span>
+                  <span className="display block text-[1.125rem] font-semibold leading-snug text-[color:var(--text-primary)]">{FOUNDER_NAME}</span>
                   <span className="mt-0.5 block text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">{p.authorRole(FOUNDED_YEAR)}</span>
                 </p>
                 {/* py-1 + margin negatif: bidang sentuh tautan teks kecil >= 24px (WCAG 2.5.8) tanpa menggeser tata letak */}

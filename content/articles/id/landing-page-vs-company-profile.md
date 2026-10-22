@@ -29,29 +29,29 @@ takeaways:
 
 ## Kapan memilih landing page
 
-Landing page tepat bila Anda sudah tahu dari mana pengunjung datang dan apa yang ingin mereka lakukan. Contohnya:
+Landing page tepat bila kamu sudah tahu dari mana pengunjung datang dan apa yang ingin mereka lakukan. Contohnya:
 
 - Menjalankan iklan Meta, TikTok, atau Google untuk satu produk.
 - Membuka pendaftaran webinar, kelas, atau event.
 - Meluncurkan produk baru atau promo musiman.
 - Menguji ide bisnis sebelum membangun website lengkap.
 
-Karena hanya satu halaman, semua isi disusun berurutan: masalah, solusi, bukti, harga, dan tombol ajakan. Tidak ada menu yang mengalihkan perhatian. Anda bisa membuka {{demos:landing}} demonya di [galeri landing page](/landing-page).
+Karena hanya satu halaman, semua isi disusun berurutan: masalah, solusi, bukti, harga, dan tombol ajakan. Tidak ada menu yang mengalihkan perhatian. Kamu bisa membuka {{demos:landing}} demonya di [galeri landing page](/landing-page).
 
 ## Kapan memilih company profile
 
-Company profile tepat bila tujuan Anda adalah dipercaya dan ditemukan dalam jangka panjang:
+Company profile tepat bila tujuanmu adalah dipercaya dan ditemukan dalam jangka panjang:
 
-- Calon klien sering mengecek usaha Anda sebelum menghubungi.
-- Anda menjual beberapa layanan yang masing-masing perlu penjelasan.
-- Anda ingin muncul saat orang mencari layanan Anda di kota Anda.
-- Anda butuh alamat resmi untuk proposal, tender, atau kartu nama.
+- Calon klien sering mengecek usahamu sebelum menghubungi.
+- Kamu menjual beberapa layanan yang masing-masing perlu penjelasan.
+- Kamu ingin muncul saat orang mencari layananmu di kotamu.
+- Kamu butuh alamat resmi untuk proposal, tender, atau kartu nama.
 
 Halaman-halaman terpisah memberi ruang untuk menjelaskan tiap layanan, dan artikel blog membantu website ditemukan lewat lebih banyak kata kunci.
 
 ## Bisakah memakai keduanya?
 
-Bisa, dan sering kali itu kombinasi terbaik. Company profile menjadi “rumah” yang menjelaskan siapa Anda, sementara landing page dibuat untuk tiap kampanye iklan dan menautkan balik ke rumah tersebut. Keduanya bisa memakai domain yang sama.
+Bisa, dan sering kali itu kombinasi terbaik. Company profile menjadi “rumah” yang menjelaskan siapa kamu, sementara landing page dibuat untuk tiap kampanye iklan dan menautkan balik ke rumah tersebut. Keduanya bisa memakai domain yang sama.
 
 Bila anggaran terbatas, mulai dari kebutuhan yang paling mendesak. Landing page yang kami buat bisa dikembangkan menjadi website lengkap tanpa mulai dari nol.
 
@@ -59,7 +59,7 @@ Bila anggaran terbatas, mulai dari kebutuhan yang paling mendesak. Landing page 
 
 Jawab dua pertanyaan ini:
 
-1. **Apakah Anda akan memasang iklan dalam waktu dekat?** Jika ya, mulai dari [landing page](/services/landing-page).
+1. **Apakah kamu akan memasang iklan dalam waktu dekat?** Jika ya, mulai dari [landing page](/services/landing-page).
 2. **Apakah calon pelanggan perlu tahu banyak hal sebelum membeli?** Jika ya, pilih [company profile](/services/company-profile).
 
 Jika jawabannya ya untuk keduanya, buat company profile lebih dulu lalu tambahkan landing page saat kampanye dimulai.

@@ -3,7 +3,7 @@ import { articlesIn } from '../../../content/articles'
 import { ARTICLE_LANGS, isLang, LANG_INFO } from '../../../i18n/config'
 import { getPages } from '../../../i18n'
 import { urlOf } from '../../../i18n/routes'
-import { EMAIL } from '../../../lib/site'
+import { EMAIL, FOUNDER_NAME } from '../../../lib/site'
 
 export const dynamic = 'force-static'
 export const dynamicParams = false
@@ -26,7 +26,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ lang: s
       <guid isPermaLink="true">${link}</guid>
       <description>${esc(a.description)}</description>
       <pubDate>${new Date(a.date).toUTCString()}</pubDate>
-      <author>${EMAIL} (Arya)</author>
+      <author>${EMAIL} (${FOUNDER_NAME})</author>
 ${a.tags.map((t) => `      <category>${esc(t)}</category>`).join('\n')}
     </item>`
     })

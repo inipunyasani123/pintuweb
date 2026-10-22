@@ -9,7 +9,7 @@ tags: domain, hosting, pemula
 takeaways:
 - Domain adalah alamat website (namausaha.com); hosting adalah server yang menyimpan dan menayangkan isinya. Keduanya dibutuhkan dan disewa per tahun.
 - Menurut kebijakan PANDI, .co.id diperuntukkan bagi badan usaha dengan syarat NIB dan KTP, sedangkan .biz.id diperuntukkan bagi UMKM.
-- Domain harus terdaftar atas nama Anda atau usaha Anda, bukan atas nama pembuat website.
+- Domain harus terdaftar atas namamu atau usahamu, bukan atas nama pembuat website.
 - Di PintuWeb, domain dan hosting tahun pertama sudah termasuk di paket website; perpanjangan mulai tahun kedua sekitar {{renewal}} per tahun.
 sources:
 - PANDI — Kebijakan Pendaftaran Nama Domain versi 9.0 | https://pandi.id/public/files/2024/10/kebijakan-pendaftaran-nama-domain-versi-9-0-bilingual-new-1729151599.pdf
@@ -37,18 +37,18 @@ Untuk .biz.id, .my.id, dan .web.id, kebijakan PANDI tidak mencantumkan dokumen k
 
 - **Sama dengan nama usaha.** Pelanggan menebak alamat dari nama yang mereka ingat.
 - **Pendek dan mudah dieja.** Hindari angka dan tanda hubung yang membingungkan saat diucapkan.
-- **Cek merek dan media sosial.** Usahakan nama domain sama dengan akun Instagram atau TikTok Anda.
+- **Cek merek dan media sosial.** Usahakan nama domain sama dengan akun Instagram atau TikTok-mu.
 - **Amankan lebih awal.** Nama yang bagus cepat diambil orang lain.
 
 ## Jenis hosting secara singkat
 
 - **Shared hosting:** satu server dipakai bersama banyak website. Murah, tapi kecepatan bisa terpengaruh website lain.
-- **VPS / cloud server:** sumber daya server khusus untuk Anda. Lebih stabil, butuh pengelolaan teknis.
+- **VPS / cloud server:** sumber daya server khusus untukmu. Lebih stabil, butuh pengelolaan teknis.
 - **Hosting dengan CDN (jaringan server di banyak lokasi):** halaman dikirim dari server terdekat dengan pengunjung sehingga lebih cepat. Website buatan PintuWeb memakai hosting cloud ber-CDN.
 
 ## Yang sering membuat pemilik usaha rugi
 
-1. **Domain atas nama pembuat website.** Bila hubungan kerja berakhir, memindahkan domain bisa sulit. Minta domain didaftarkan atas nama Anda dan simpan akses akunnya.
+1. **Domain atas nama pembuat website.** Bila hubungan kerja berakhir, memindahkan domain bisa sulit. Minta domain didaftarkan atas namamu dan simpan akses akunnya.
 2. **Lupa tanggal perpanjangan.** Domain yang tidak diperpanjang bisa berhenti berfungsi dan, setelah masa tenggang, didaftarkan orang lain.
 3. **Tidak tahu biaya tahun kedua.** Tanyakan sejak awal berapa biaya perpanjangan, bukan hanya harga tahun pertama.
 
@@ -60,12 +60,12 @@ Di PintuWeb, domain dan hosting untuk tahun pertama sudah termasuk dalam setiap 
 
 ### Apakah saya bisa memindahkan domain ke penyedia lain?
 
-Bisa. Domain dapat ditransfer antar-registrar selama Anda memegang akses akun dan kode otorisasinya. Itu sebabnya domain harus atas nama Anda.
+Bisa. Domain dapat ditransfer antar-registrar selama kamu memegang akses akun dan kode otorisasinya. Itu sebabnya domain harus atas namamu.
 
 ### Apakah email bisnis (nama@namausaha.com) termasuk domain?
 
-Domain memungkinkan Anda memakai email dengan nama usaha, tetapi layanan kotak suratnya biasanya disediakan terpisah. Tanyakan saat konsultasi bila Anda membutuhkannya.
+Domain memungkinkanmu memakai email dengan nama usaha, tetapi layanan kotak suratnya biasanya disediakan terpisah. Tanyakan saat konsultasi bila kamu membutuhkannya.
 
 ### Domain mana yang lebih baik untuk SEO, .com atau .co.id?
 
-Keduanya bisa bersaing di Google. Domain berakhiran .id membantu memberi sinyal bahwa usaha Anda menyasar Indonesia, sedangkan .com lebih mudah diingat secara umum. Pilih yang paling cocok dengan nama dan pasar usaha Anda.
+Keduanya bisa bersaing di Google. Domain berakhiran .id membantu memberi sinyal bahwa usahamu menyasar Indonesia, sedangkan .com lebih mudah diingat secara umum. Pilih yang paling cocok dengan nama dan pasar usahamu.

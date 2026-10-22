@@ -5,7 +5,7 @@ import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { ClientCases } from '../../components/ClientProjects'
 import OpenOnHash from '../../components/OpenOnHash'
 import { DEMOS, demoSrcSet, demoThumb } from '../../lib/demos'
-import { FOUNDED_YEAR, GITHUB } from '../../lib/site'
+import { FOUNDED_YEAR, FOUNDER_NAME, GITHUB } from '../../lib/site'
 import { facts, packagesFor } from '../../i18n/facts'
 import { getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
@@ -157,7 +157,7 @@ export default async function AboutPage({ params }: Params) {
                 aria-label={pf.monogram}
                 className="grid aspect-square w-20 place-items-center rounded-[1.25rem] text-white [background-image:linear-gradient(145deg,var(--primary-600),var(--primary-900))] sm:w-32 sm:rounded-[1.75rem] lg:w-full lg:rounded-[2.25rem]"
               >
-                <span className="display select-none text-[2.75rem] font-semibold leading-none sm:text-[4.5rem] lg:text-[7.5rem]">S</span>
+                <span className="display select-none text-[2.75rem] font-semibold leading-none sm:text-[4.5rem] lg:text-[7.5rem]">{[...FOUNDER_NAME][0]}</span>
               </div>
             </div>
             <div className="lg:col-span-9">
@@ -166,7 +166,7 @@ export default async function AboutPage({ params }: Params) {
               </h2>
               {/* Nama + peran, lalu prinsip kerja (teks yang sama dengan halaman Founder). Sengaja BUKAN kutipan:
                   kalimat yang ditampilkan atas nama orang sungguhan tidak boleh dikarang. */}
-              <h3 className="display mt-4 text-[1.75rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">Arya</h3>
+              <h3 className="display mt-4 text-[1.75rem] font-semibold leading-tight tracking-tight text-[color:var(--text-primary)] sm:text-[2.25rem]">{FOUNDER_NAME}</h3>
               <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)] sm:text-[1.0625rem]">{pages.articles.authorRole(FOUNDED_YEAR)}</p>
               <h4 id="about-principles" className="kicker mt-7 text-[color:var(--text-secondary)]">
                 {pf.principlesTitle}

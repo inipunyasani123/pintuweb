@@ -11,7 +11,7 @@ takeaways:
 - Proyek kecil seperti undangan digital ({{from:undangan-digital}}) dan link in bio ({{from:link-in-bio}}) juga punya harga tetap, bukan "tanya dulu".
 - Biaya berkala dari kami hanya perpanjangan domain dan hosting, sekitar {{renewal}} per tahun mulai tahun kedua.
 - Harga terutama ditentukan oleh jumlah halaman, fitur (misalnya pembayaran online), dan seberapa custom desainnya.
-- Sebelum membandingkan harga, pastikan domain dan kode menjadi milik Anda serta ada garansi tertulis.
+- Sebelum membandingkan harga, pastikan domain dan kode menjadi milikmu serta ada garansi tertulis.
 ---
 
 **Biaya membuat website di 2026 berkisar dari ratusan ribu rupiah untuk satu halaman sederhana sampai puluhan juta rupiah untuk marketplace dengan banyak pengguna.** Di PintuWeb, website bisnis dimulai {{from:landing-page}} untuk landing page, toko online lengkap {{price:toko-online-full}}, dan marketplace properti mulai {{from:marketplace-properti}}. Angka itu sudah mencakup desain, pengembangan, domain dan hosting tahun pertama, serta SEO dasar.
@@ -24,7 +24,7 @@ Tabel berikut diambil langsung dari daftar paket kami, jadi angkanya selalu sama
 
 {{pricetable}}
 
-Semua paket dibayar dengan DP 50% di awal dan pelunasan 50% setelah website selesai dan Anda setujui.
+Semua paket dibayar dengan DP 50% di awal dan pelunasan 50% setelah website selesai dan kamu setujui.
 
 ## Enam faktor yang menentukan biaya
 
@@ -49,11 +49,11 @@ Semua paket dibayar dengan DP 50% di awal dan pelunasan 50% setelah website sele
 
 Harga yang lebih rendah belum tentu lebih hemat. Sebelum membayar DP, tanyakan lima hal ini:
 
-- **Atas nama siapa domainnya?** Domain sebaiknya terdaftar atas nama Anda atau usaha Anda.
-- **Apakah source code dan akses hosting diserahkan?** Tanpa itu, Anda bergantung pada satu penyedia selamanya.
+- **Atas nama siapa domainnya?** Domain sebaiknya terdaftar atas namamu atau usahamu.
+- **Apakah source code dan akses hosting diserahkan?** Tanpa itu, kamu bergantung pada satu penyedia selamanya.
 - **Berapa biaya tahun kedua?** Harga murah di tahun pertama kadang diikuti perpanjangan yang mahal.
 - **Apa isi garansinya?** Minta tertulis: berapa hari, dan apa saja yang ditanggung.
-- **Bisakah Anda membuka contoh yang sudah online?** Contoh live lebih bisa dipercaya daripada gambar mockup. Kami membuka {{demos}} demo di [galeri demo](/demo).
+- **Bisakah kamu membuka contoh yang sudah online?** Contoh live lebih bisa dipercaya daripada gambar mockup. Kami membuka {{demos}} demo di [galeri demo](/demo).
 
 Daftar pertanyaan yang lebih lengkap ada di artikel [cara memilih jasa pembuatan website](/artikel/cara-memilih-jasa-pembuatan-website).
 
