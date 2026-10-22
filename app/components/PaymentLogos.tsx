@@ -14,7 +14,7 @@ const LOGO: Record<Brand, { src: string; w: number; h: number; alt: string; k: n
   qris: { src: '/images/bayar/qris.svg', w: 45.938, h: 17.413, alt: 'QRIS', k: 1.05 },
   dana: { src: '/images/bayar/dana.svg', w: 382, h: 109.22, alt: 'DANA', k: 0.9 },
   seabank: { src: '/images/bayar/seabank.svg', w: 252, h: 81, alt: 'SeaBank', k: 1.1 },
-  usdt: { src: '/images/bayar/tether.svg', w: 467, h: 149, alt: 'Tether', k: 1 },
+  usdt: { src: '/images/bayar/tether.svg', w: 467, h: 149, alt: 'Tether (USDT)', k: 1 },
 }
 
 /** Ikon umum transfer bank (gedung berpilar), garis 1,75 seperti ikon situs lainnya. */
@@ -30,8 +30,8 @@ export function BankMark({ className = '', style }: { className?: string; style?
 }
 
 /**
- * Satu logo dengan tinggi dasar `size` px (dikali `k` per logo). `bankLabel` = teks di samping ikon transfer bank;
- * USDT diberi label "USDT" di samping logo Tether supaya nama metodenya terbaca.
+ * Satu logo dengan tinggi dasar `size` px (dikali `k` per logo). `bankLabel` = teks di samping ikon transfer bank.
+ * Logo Tether tampil tanpa teks "USDT" di sampingnya (permintaan pemilik); nama metodenya tetap ada di alt.
  */
 export function PayLogo({ m, size, bankLabel }: { m: PaymentMethod; size: number; bankLabel: string }) {
   if (m === 'bank') {
@@ -45,18 +45,9 @@ export function PayLogo({ m, size, bankLabel }: { m: PaymentMethod; size: number
   const l = LOGO[m]
   const h = Math.round(size * l.k)
   const w = Math.round((h * l.w) / l.h)
-  const img = (
+  return (
     // eslint-disable-next-line @next/next/no-img-element -- SVG statis kecil; next/image tidak menambah apa pun di sini
     <img src={l.src} alt={l.alt} width={w} height={h} loading="lazy" decoding="async" className="block shrink-0" style={{ height: h, width: w }} />
-  )
-  if (m !== 'usdt') return img
-  return (
-    <span className="inline-flex items-center gap-1.5">
-      {img}
-      <span className="font-semibold leading-none text-[color:var(--text-secondary)]" style={{ fontSize: `${Math.round(size * 0.62)}px` }}>
-        USDT
-      </span>
-    </span>
   )
 }
 
