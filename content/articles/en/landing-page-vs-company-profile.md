@@ -17,7 +17,7 @@ takeaways:
 
 ## The difference in one table
 
-| | Landing page | Company profile |
+| Aspect | Landing page | Company profile |
 |---|---|---|
 | Number of pages | 1 | Usually 3–5 or more |
 | Goal | One action: buy, sign up, chat | Introduce the whole business |

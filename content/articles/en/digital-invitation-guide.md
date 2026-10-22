@@ -48,7 +48,7 @@ Invitations often include full names, family photos and home addresses. A few si
 
 ## Digital or printed?
 
-| | Digital invitation | Printed invitation |
+| Aspect | Digital invitation | Printed invitation |
 |---|---|---|
 | Cost per guest | Almost nothing once made | Rises with every copy |
 | Delivery speed | Instant | Has to be delivered or posted |

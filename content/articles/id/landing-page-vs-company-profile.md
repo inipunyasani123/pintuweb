@@ -17,7 +17,7 @@ takeaways:
 
 ## Perbedaan dalam satu tabel
 
-| | Landing page | Company profile |
+| Aspek | Landing page | Company profile |
 |---|---|---|
 | Jumlah halaman | 1 | Umumnya 3–5 atau lebih |
 | Tujuan | Satu tindakan: beli, daftar, chat | Memperkenalkan usaha secara menyeluruh |

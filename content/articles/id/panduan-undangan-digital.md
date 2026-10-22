@@ -48,7 +48,7 @@ Undangan sering memuat nama lengkap, foto keluarga, dan alamat rumah. Beberapa l
 
 ## Digital atau cetak?
 
-| | Undangan digital | Undangan cetak |
+| Aspek | Undangan digital | Undangan cetak |
 |---|---|---|
 | Biaya per tamu | Hampir nol setelah dibuat | Bertambah tiap lembar |
 | Kecepatan sampai | Seketika | Perlu diantar atau dikirim |

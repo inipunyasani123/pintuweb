@@ -22,7 +22,7 @@ Dengan 229 juta pengguna internet di Indonesia menurut survei APJII 2025, hampir
 
 ## Perbandingan singkat
 
-| | Media sosial | Marketplace | Website sendiri |
+| Aspek | Media sosial | Marketplace | Website sendiri |
 |---|---|---|---|
 | Biaya awal | Gratis | Gratis untuk membuka toko | Sekali bayar, mulai {{from:landing-page}} di PintuWeb |
 | Biaya berjalan | Iklan bila ingin menjangkau lebih luas | Potongan/biaya sesuai aturan platform | Perpanjangan domain & hosting per tahun |

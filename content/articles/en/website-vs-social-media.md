@@ -22,7 +22,7 @@ With 229 million internet users in Indonesia according to the 2025 APJII survey,
 
 ## A quick comparison
 
-| | Social media | Marketplace | Your own website |
+| Aspect | Social media | Marketplace | Your own website |
 |---|---|---|---|
 | Upfront cost | Free | Free to open a shop | One-off, from {{from:landing-page}} at PintuWeb |
 | Running cost | Ads if you want more reach | Fees under the platform's rules | Yearly domain & hosting renewal |
