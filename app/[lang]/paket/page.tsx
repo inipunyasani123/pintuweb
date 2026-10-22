@@ -11,11 +11,12 @@ import Tabs from '../../components/Tabs'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { cardsFor } from '../../components/cards'
 import { GUIDE_EXTRA, GUIDE_PURPOSE, GUIDE_RESULTS, GUIDE_SIZE } from '../../content/guide'
-import { addonsFor, facts, groupText, minPrice, money, packagesFor } from '../../i18n/facts'
+import { paymentText } from '../../content/payment'
+import { addonsFor, facts, groupText, minPrice, money, paySample } from '../../i18n/facts'
 import { LANG_INFO, getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
-import { ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
-import { PACKAGES, PACKAGE_GROUPS, PRICES_UPDATED } from '../../lib/packages'
+import { ORG_ID, offerPrice, pageGraph, pageMeta } from '../../i18n/seo'
+import { PACKAGES, PACKAGE_GROUPS, PRICES_UPDATED, pricedOnly } from '../../lib/packages'
 import { wa } from '../../lib/site'
 
 type Params = { params: Promise<{ lang: string }> }
@@ -44,15 +45,16 @@ export default async function PaketPage({ params }: Params) {
     id: g,
     ...groupText(lang)[g],
     cards: cards.filter((c) => c.group === g),
-    // harga mulai kelompok ini
-    from: money(lang, Math.min(...PACKAGES.filter((x) => x.group === g).map((x) => x.minPrice))),
+    // harga mulai kelompok ini (paket "sesuai kebutuhan" tidak dihitung)
+    from: money(lang, Math.min(...pricedOnly(PACKAGES.filter((x) => x.group === g)).map((x) => x.minPrice))),
   })).filter((g) => g.cards.length)
   const addons = addonsFor(lang)
   const reviewed = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : LANG_INFO[lang].intl, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(PRICES_UPDATED))
 
   // Pemandu: tabel hasil + data kartu hasil (string saja, aman untuk komponen klien)
   const guideCards: Record<string, GuideCard> = Object.fromEntries(
-    cards.map((c) => [c.slug, { title: c.title, subtitle: c.subtitle, priceFrom: c.priceFrom, duration: c.duration, waHref: c.waHref }]),
+    // paket tanpa perkiraan harga: kalimat lengkapnya ("Harga sesuai kebutuhan · konsultasi gratis"), bukan "mulai …"
+    cards.map((c) => [c.slug, { title: c.title, subtitle: c.subtitle, priceFrom: c.quote ? c.priceRange : c.priceFrom, quote: c.quote, duration: c.duration, waHref: c.waHref }]),
   )
   const questions = [
     { id: 'tujuan', legend: g8.questions.purpose, options: GUIDE_PURPOSE.map((o) => ({ id: o, label: g8.purpose[o] })) },
@@ -62,9 +64,8 @@ export default async function PaketPage({ params }: Params) {
   // tautan #slug (peta harga, pemandu, halaman lain) membuka tab kelompok kartunya
   const anchors = Object.fromEntries(groups.flatMap((g, i) => g.cards.map((c) => [c.slug, i])))
 
-  // Contoh angka cara bayar: paket yang direkomendasikan (lib/packages.ts)
-  const sample = packagesFor(lang).find((x) => x.recommended) ?? packagesFor(lang)[0]
-  const rest = money(lang, sample.minPrice - Math.round(sample.minPrice / 2))
+  // Contoh angka cara bayar: paket berharga yang direkomendasikan (lib/packages.ts)
+  const sample = paySample(lang)
 
   const info = [
     { title: p.afterYear, body: f.renewal },
@@ -86,9 +87,7 @@ export default async function PaketPage({ params }: Params) {
           description: c.subtitle,
           url: `${urlOf(lang, { key: 'pricing' })}#${c.slug}`,
           seller: { '@id': ORG_ID },
-          priceCurrency: 'IDR',
-          price: raw.minPrice,
-          priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'IDR', minPrice: raw.minPrice, ...(raw.openEnded ? {} : { maxPrice: raw.maxPrice }) },
+          ...offerPrice(raw),
         }
       }),
     })),
@@ -189,7 +188,7 @@ export default async function PaketPage({ params }: Params) {
       {/* Cara bayar 3 langkah, lalu setelah tahun pertama + garansi, biaya tambahan, FAQ */}
       <section aria-labelledby="pay-title" className="section-y bg-[color:var(--surface-soft)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <PaySteps kicker={p.payKicker} title={p.payTitle} steps={p.paySteps} example={p.payExample(sample.title, sample.priceFrom, sample.deposit, rest)} methods={p.payMethods} />
+          <PaySteps kicker={p.payKicker} title={p.payTitle} steps={p.paySteps} example={p.payExample(sample.title, sample.price, sample.deposit, sample.rest)} methods={p.payMethods} more={{ href: path(lang, 'payment'), label: paymentText(lang).stripMore }} />
 
           <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-6 sm:mt-14 md:grid-cols-2">
             {info.map((i) => (

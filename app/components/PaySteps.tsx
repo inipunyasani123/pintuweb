@@ -3,7 +3,11 @@
 // direkomendasikan di lib/packages.ts, jadi ikut berubah bila harga berubah. Gambar = garis buatan sendiri dengan
 // gaya yang sama seperti ilustrasi proyek klien (ClientArt): kanvas 64, garis 2px, satu bidang isi tembus pandang.
 
-const ART = [
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+
+/** Gambar tiga langkah (juga dipakai halaman Cara Bayar). */
+export const PAY_ART = [
   // separuh lingkaran terisi: bayar separuh dulu
   <>
     <circle cx="32" cy="32" r="21" />
@@ -34,9 +38,11 @@ type Props = {
   steps: { title: string; body: string }[]
   example: string
   methods: string
+  /** tautan ke halaman Cara Bayar & Metode Pembayaran */
+  more?: { href: string; label: string }
 }
 
-export default function PaySteps({ kicker, title, steps, example, methods }: Props) {
+export default function PaySteps({ kicker, title, steps, example, methods, more }: Props) {
   return (
     <div>
       <p className="kicker text-[color:var(--primary-700)]">{kicker}</p>
@@ -47,7 +53,7 @@ export default function PaySteps({ kicker, title, steps, example, methods }: Pro
         {steps.map((s, i) => (
           <li key={s.title} className="relative flex items-center gap-4 rounded-[1.25rem] bg-white p-4 ring-1 ring-[color:var(--border-light)] md:flex-col md:items-start md:gap-0 md:p-6">
             <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-14 w-14 shrink-0 text-[color:var(--primary-700)] md:h-16 md:w-16" aria-hidden="true" focusable="false">
-              {ART[i]}
+              {PAY_ART[i]}
             </svg>
             <div className="min-w-0 md:mt-4">
               <h3 className="flex items-baseline gap-2 text-[1.125rem] leading-snug text-[color:var(--text-primary)] sm:text-[1.1875rem]">
@@ -63,7 +69,17 @@ export default function PaySteps({ kicker, title, steps, example, methods }: Pro
       </ol>
       <div className="mt-4 space-y-1 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)] sm:mt-5">
         <p className="font-medium text-[color:var(--text-secondary)]">{example}</p>
-        <p>{methods}</p>
+        <p>
+          {methods}
+          {more && (
+            <>
+              {' '}
+              <Link href={more.href} className="link inline-flex items-center gap-1 whitespace-nowrap font-semibold">
+                {more.label} <ArrowRight size={14} className="arw" aria-hidden="true" />
+              </Link>
+            </>
+          )}
+        </p>
       </div>
     </div>
   )

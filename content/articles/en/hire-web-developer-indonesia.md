@@ -10,7 +10,7 @@ takeaways:
 - Indonesian studios price in Indonesian Rupiah; at PintuWeb a landing page starts at {{from:landing-page}} and a small business website at {{from:standar-umkm}}.
 - Java, including Tulungagung, runs on Western Indonesia Time (WIB, UTC+7) with no daylight saving time; that overlaps well with Asia-Pacific and allows a daily handover with Europe.
 - Under Indonesia's Copyright Law, unless agreed otherwise, the creator of commissioned work is the party that made it, so put the transfer of code and design ownership in writing.
-- Confirm the payment method before you start: many small studios, PintuWeb included, accept Indonesian bank transfer, e-wallets and QRIS rather than cards.
+- Confirm the payment method before you start: many small studios take local methods rather than cards; PintuWeb accepts QRIS, bank transfer, DANA, SeaBank and USDT.
 - Pay in stages (deposit, preview, final payment) and ask for live examples, a written quote and the second-year cost.
 sources:
 - Undang-Undang Nomor 28 Tahun 2014 tentang Hak Cipta (Law No. 28 of 2014 on Copyright, JDIH BPK) | https://peraturan.bpk.go.id/Details/38690/uu-no-28-tahun-2014
@@ -59,7 +59,7 @@ At PintuWeb, after the final payment you receive the source code, admin access, 
 
 ## How do you pay an Indonesian developer?
 
-Ask before you start. Methods differ: freelancers on international marketplaces are paid through the platform, while many small studios invoice in IDR and take local methods only. PintuWeb accepts Indonesian bank transfer, e-wallets (OVO, GoPay, DANA) and QRIS, so make sure one of those works for you before we start. Whatever the method:
+Ask before you start. Methods differ: freelancers on international marketplaces are paid through the platform, while many small studios invoice in IDR and take local methods only. PintuWeb accepts QRIS, bank transfer, DANA, SeaBank and USDT (for USDT, the network and wallet address are on the invoice), so make sure one of those works for you before we start. Whatever the method:
 
 1. **Pay a deposit, not the full amount, up front.** We take 50% to start and 50% once the website is finished and you approve it.
 2. **Pay only against an invoice** that names the business and the account.

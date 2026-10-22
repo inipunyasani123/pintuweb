@@ -11,7 +11,7 @@ const fr: Pack = {
     serves: 'Nous travaillons avec nos clients à distance',
     payment:
       'Toutes les formules : un acompte de 50 % pour démarrer, et les 50 % restants une fois le site terminé et validé par vous. ' +
-      'Nous acceptons le virement bancaire indonésien, les portefeuilles électroniques (OVO, GoPay, DANA) et QRIS. La facture est envoyée avant le paiement.',
+      'Nous acceptons QRIS, le virement bancaire, DANA, SeaBank et l’USDT ; le numéro de compte ou l’adresse du portefeuille figure sur la facture. La facture est envoyée avant le paiement.',
     renewal:
       `Le domaine et l’hébergement inclus dans une formule couvrent la première année. À partir de la deuxième année, le renouvellement coûte environ ${renewal} par an pour les sites web et ` +
       `${renewalBio} pour les pages link in bio ; pour les systèmes et applications web avec base de données, le coût est indiqué dans le devis. ` +

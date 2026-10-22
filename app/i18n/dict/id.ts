@@ -209,7 +209,7 @@ const id = {
     title: ['Enam hal yang ', 'bisa kamu tagih', ' dari kami.'] as Hl,
     lead: 'Semuanya juga tertulis di halaman harga, FAQ, serta syarat & ketentuan.',
     promises: [
-      { fig: `${PACKAGES.length}`, unit: 'paket', proof: 'Tertulis di halaman harga', title: 'Harga ditulis di depan', body: 'Kisaran harga tiap paket ada di situs ini. Angka pastinya tertulis di penawaran sebelum kami mulai.' },
+      { fig: `${PACKAGES.length}`, unit: 'paket', proof: 'Tertulis di halaman harga', title: 'Harga ditulis di depan', body: 'Kisaran harga paket ada di situs ini, kecuali Website Custom yang dihitung sesuai kebutuhan. Angka pastinya tertulis di penawaran sebelum kami mulai.' },
       { fig: '50%', unit: 'DP', proof: 'Tertulis di FAQ', title: 'Bayar separuh dulu', body: 'DP 50% untuk memulai. Sisanya dibayar setelah website selesai dan kamu setujui.' },
       { fig: '100%', unit: 'milikmu', proof: 'Tertulis di syarat & ketentuan', title: 'Milikmu sepenuhnya', body: 'Untuk paket website: setelah lunas, kode sumber, domain, hosting, dan akses admin diserahkan kepadamu.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Tertulis di FAQ', title: 'Cepat dibuka di ponsel', body: `Setiap website kami optimalkan dengan target skor PageSpeed ${PERF_TARGET}. Itu target kerja, bukan klaim rata-rata.` },

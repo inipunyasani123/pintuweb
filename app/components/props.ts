@@ -6,6 +6,7 @@ import { ARTICLE_SLUGS } from '../i18n/slugs'
 import { FAQ_CATEGORY_SLUG, FAQ_MORE, faqFor, type FaqKey } from '../content/faq'
 import { getArticle } from '../content/articles'
 import { serviceOf, serviceText } from '../content/services'
+import { paymentText } from '../content/payment'
 import { facts } from '../i18n/facts'
 import { wa } from '../lib/site'
 import { fullStop, type Lang } from '../i18n/config'
@@ -24,7 +25,9 @@ function moreOf(lang: Lang, key: FaqKey): FaqEntry['more'] {
     const has = Boolean((ARTICLE_SLUGS[m.article] as Partial<Record<Lang, string>>)[lang])
     return has ? { label: getArticle(lang, m.article).title, href: pathOf(lang, { key: 'articles', article: m.article }) } : { label: links[m.fallback], href: path(lang, m.fallback) }
   }
-  return { label: links[m.page], href: `${path(lang, m.page)}${m.at ? `#${m.at}` : ''}` }
+  // halaman Cara Bayar (22 Okt 2026) tidak punya label di kamus `links`: namanya dari content/payment.ts
+  const label = m.page === 'payment' ? paymentText(lang).footerLink : links[m.page]
+  return { label, href: `${path(lang, m.page)}${m.at ? `#${m.at}` : ''}` }
 }
 
 /** Daftar tanya-jawab yang dipakai tampilan DAN JSON-LD (sumbernya sama, jadi selalu cocok). */

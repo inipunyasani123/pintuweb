@@ -198,7 +198,7 @@ const es: Dict = {
     title: ['Seis cosas que puedes ', 'exigirnos', '.'] as Hl,
     lead: 'Cada una está escrita también en la página de precios, en las preguntas frecuentes y en los términos y condiciones.',
     promises: [
-      { fig: `${PACKAGES.length}`, unit: 'paquetes', proof: 'Escrito en la página de precios', title: 'Precios indicados de antemano', body: 'El rango de precios de cada paquete está en este sitio. La cifra exacta figura en un presupuesto escrito antes de empezar.' },
+      { fig: `${PACKAGES.length}`, unit: 'paquetes', proof: 'Escrito en la página de precios', title: 'Precios indicados de antemano', body: 'Los rangos de precios de los paquetes están en este sitio, salvo el sitio web a medida, que se presupuesta según tus necesidades. La cifra exacta figura en un presupuesto escrito antes de empezar.' },
       { fig: '50%', unit: 'anticipo', proof: 'Escrito en las preguntas frecuentes', title: 'Paga la mitad primero', body: 'Un anticipo del 50% para empezar. El resto se paga cuando el sitio está terminado y lo has aprobado.' },
       { fig: '100%', unit: 'tuyo', proof: 'Escrito en los términos', title: 'Totalmente tuyo', body: 'En los paquetes de sitio web: una vez pagado por completo, se te entregan el código fuente, el dominio, el hosting y el acceso de administrador.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Escrito en las preguntas frecuentes', title: 'Rápido en móviles', body: `Optimizamos cada sitio con el objetivo de una puntuación PageSpeed de ${PERF_TARGET}. Es una meta de trabajo, no una media declarada.` },

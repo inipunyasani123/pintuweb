@@ -11,7 +11,7 @@ const es: Pack = {
     serves: 'Trabajamos con clientes a distancia',
     payment:
       'Todos los paquetes: un anticipo del 50% para empezar y el 50% restante cuando el sitio esté terminado y lo hayas aprobado. ' +
-      'Aceptamos transferencia bancaria en Indonesia, monederos electrónicos (OVO, GoPay, DANA) y QRIS. La factura se envía antes del pago.',
+      'Aceptamos QRIS, transferencia bancaria, DANA, SeaBank y USDT; el número de cuenta o la dirección de la billetera figura en la factura. La factura se envía antes del pago.',
     renewal:
       `El dominio y el hosting incluidos en un paquete cubren el primer año. A partir del segundo año, la renovación cuesta aproximadamente ${renewal} al año para sitios web y ` +
       `${renewalBio} para páginas link in bio; para sistemas y aplicaciones web con base de datos, el coste se indica en el presupuesto. ` +

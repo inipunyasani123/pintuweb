@@ -1,19 +1,21 @@
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { PACKAGES, byPrice } from '../lib/packages'
+import { PACKAGES, byPrice, isPriced, pricedOnly } from '../lib/packages'
 import { getDict } from '../i18n'
-import { currencyCode, groupText, moneyCompact, moneyShort, packagesFor } from '../i18n/facts'
+import { currencyCode, groupText, moneyCompact, moneyShort, packagesFor, quoteText } from '../i18n/facts'
 import { LANG_INFO, type Lang } from '../i18n/config'
 
 // "Peta harga": semua paket diurutkan dari yang termurah, masing-masing dengan batang kisaran harganya pada
 // satu skala bersama, sehingga terlihat sekilas paket mana yang masuk anggaran. Server component (tanpa
 // JavaScript); setiap baris menaut ke kartu paketnya. Dipakai di beranda dan di halaman harga.
-// Angka selalu dari lib/packages.ts.
+// Angka selalu dari lib/packages.ts. Paket "sesuai kebutuhan" (quote, tanpa angka) tidak ikut skala: ia tampil sebagai
+// baris terakhir TANPA batang, dipisah garis putus-putus, dengan kalimat quoteText().line di tempat harganya.
 
-// Skala berpita: tiap pita sama lebar supaya paket murah tidak tergencet oleh yang puluhan juta.
-// Batasnya ditulis di sumbu, dan pita terakhir berakhir di harga tertinggi yang ada.
-const STOPS = [0, 500_000, 1_500_000, 5_000_000]
-const TOP = Math.max(...PACKAGES.map((p) => p.maxPrice), STOPS[STOPS.length - 1] + 1)
+// Skala berpita: tiap pita sama lebar supaya paket murah tidak tergencet oleh yang jutaan.
+// Batasnya ditulis di sumbu, dan pita terakhir berakhir di harga tertinggi yang ada (22 Okt 2026: 500 rb · 1 jt · 3 jt ·
+// 10 jt, mengikuti batas harga paket yang baru: banyak paket mulai/berakhir tepat di 1 jt, 3 jt, dan 10 jt).
+const STOPS = [0, 500_000, 1_000_000, 3_000_000]
+const TOP = Math.max(...pricedOnly(PACKAGES).map((p) => p.maxPrice), STOPS[STOPS.length - 1] + 1)
 export const BOUNDS = [...STOPS, TOP]
 export const BANDS = BOUNDS.length - 1
 
@@ -42,6 +44,7 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
   const groupTitle = groupText(lang)
   const items = byPrice(packagesFor(lang))
   const hasOpen = items.some((p) => p.openEnded)
+  const quote = quoteText(lang)
   const panel = tone === 'white' ? 'bg-white ring-1 ring-[color:var(--border-light)]' : 'bg-[color:var(--surface-soft)]'
   const bg = tone === 'white' ? 'bg-white' : 'bg-[color:var(--surface-soft)]'
   const rowHover = tone === 'white' ? 'hover:bg-[color:var(--surface-soft)]' : 'hover:bg-white'
@@ -73,6 +76,23 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
 
       <ul>
         {items.map((p) => {
+          if (!isPriced(p)) {
+            // tanpa angka: tidak ada batang; nama di kiri, kalimat "harga sesuai kebutuhan" rata kanan selebar kolom
+            // batang + harga (ponsel: di bawah nama)
+            return (
+              <li key={p.slug} className="mt-1.5 border-t border-dashed border-[color:var(--primary-200)] pt-1.5">
+                <Row href={base + p.slug} className={`group block items-center rounded-2xl px-3 py-2.5 transition-colors md:grid md:px-4 md:py-0 ${rowHover} ${COLS}`}>
+                  <span className="block min-w-0 md:py-3">
+                    <span className="block font-semibold leading-snug text-[color:var(--text-primary)] transition-colors group-hover:text-[color:var(--primary-700)]">{p.title}</span>
+                    <span className="mt-0.5 hidden text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:block">
+                      {groupTitle[p.group].title} · {p.duration}
+                    </span>
+                  </span>
+                  <span className="mt-0.5 block text-[0.875rem] font-semibold leading-snug text-[color:var(--text-primary)] md:col-span-2 md:mt-0 md:text-end md:text-[0.9375rem]">{quote.line}</span>
+                </Row>
+              </li>
+            )
+          }
           const a = pricePos(p.minPrice)
           const w = pricePos(p.maxPrice) - a
           const price = moneyShort(lang, p)

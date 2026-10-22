@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowUp, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUp, ArrowUpRight } from 'lucide-react'
 import { EMAIL, WA_DISPLAY, WA_NUMBER, wa } from '../lib/site'
 import { DEMOS } from '../lib/demos'
 import { KIND_ORDER, PORTALS } from '../lib/portals'
@@ -9,6 +9,8 @@ import { LANGS, LANG_INFO, type Lang } from '../i18n/config'
 import { hasPage, path, pathOf } from '../i18n/routes'
 import { SERVICES, serviceText } from '../content/services'
 import { localText } from '../content/local'
+import { paymentText } from '../content/payment'
+import { PayLogoRow } from './PaymentLogos'
 import { HlText } from './Bits'
 import FooterAction from './FooterAction'
 import { Logo, LogoMark } from './Logo'
@@ -19,6 +21,7 @@ import { Logo, LogoMark } from './Logo'
 export default function Footer({ lang }: { lang: Lang }) {
   const t = getDict(lang)
   const f = facts(lang)
+  const pay = paymentText(lang)
   const year = new Date().getFullYear()
 
   const CONTACTS: { label: string; value: string; sub?: string; link?: string }[] = [
@@ -45,6 +48,7 @@ export default function Footer({ lang }: { lang: Lang }) {
         { label: t.links.glossary, href: path(lang, 'glossary') },
         { label: t.links.demo, href: path(lang, 'demo') },
         { label: t.links.pricing, href: path(lang, 'pricing') },
+        { label: pay.footerLink, href: path(lang, 'payment') },
         { label: t.links.faq, href: path(lang, 'faq') },
         // halaman lokal (kota di lib/site.ts)
         { label: localText(lang).footerLink, href: path(lang, 'local') },
@@ -154,6 +158,16 @@ export default function Footer({ lang }: { lang: Lang }) {
             </div>
           ))}
         </dl>
+
+        {/* Metode pembayaran: logo resmi di atas bidang putih (warna asli merek butuh latar terang), menaut ke halaman
+            Cara Bayar. data-light: cincin fokus tetap biru di atas bidang terang. */}
+        <div data-light className="mt-10 flex flex-col gap-3 rounded-[1.25rem] bg-white px-4 py-4 text-[color:var(--text-primary)] sm:mt-12 sm:px-6 lg:flex-row lg:items-center lg:gap-8 lg:py-3.5">
+          <p className="shrink-0 text-[0.8125rem] font-semibold text-[color:var(--text-tertiary)]">{pay.stripLabel}</p>
+          <PayLogoRow size={22} bankLabel={pay.methods.bank.name} label={pay.stripLabel} className="lg:flex-1" />
+          <Link href={path(lang, 'payment')} prefetch={false} className="link inline-flex shrink-0 items-center gap-1 self-start text-[0.875rem] font-semibold lg:self-center">
+            {pay.stripMore} <ArrowRight size={15} className="arw" aria-hidden="true" />
+          </Link>
+        </div>
 
         {/* Ponsel: tiap kelompok tautan bisa dilipat (semua tautan tetap ada di HTML); mulai 640px: empat kolom terbuka. */}
         <nav aria-label={t.footer.linksAria} className="mt-10 sm:hidden">

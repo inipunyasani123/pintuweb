@@ -92,7 +92,7 @@ const pages: Pages = {
       { title: 'Réglez les 50 % restants', body: `Le site est mis en ligne et la garantie de ${GUARANTEE_DAYS} jours commence.` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `Exemple : ${pkg} à partir de ${price} → acompte de ${dp}, solde de ${rest}.`,
-    payMethods: 'Paiement par virement bancaire indonésien, portefeuille électronique (OVO, GoPay, DANA) ou QRIS. La facture est envoyée avant le paiement.',
+    payMethods: 'Paiement par QRIS, virement bancaire, DANA, SeaBank ou USDT. La facture est envoyée avant le paiement.',
   },
   demo: {
     title: (n: number) => `Galerie de démos — ${n} sites à essayer`,

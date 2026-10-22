@@ -6,7 +6,7 @@ import type { Lang } from '../i18n/config'
 import type { FaqKey } from '../content/faq'
 import type { TermsId } from '../content/legal'
 import { GUARANTEE_DAYS, PERF_TARGET } from '../lib/site'
-import { PACKAGES, byPrice } from '../lib/packages'
+import { PACKAGES, byPrice, isPriced } from '../lib/packages'
 import { currencyCode, moneyCompact } from '../i18n/facts'
 import { BANDS, BOUNDS, pricePos } from './PriceMap'
 import SectionHead from './SectionHead'
@@ -65,13 +65,15 @@ function Dial({ d, dark }: { d: DialSpec; dark: boolean }) {
 
 /**
  * Peta harga mini untuk petak "harga ditulis di depan" (desktop): satu batang per paket, diurutkan dari yang termurah,
- * pada skala berpita yang sama dengan peta harga di bawahnya (PriceMap). Dekoratif; angkanya ada di peta harga.
+ * pada skala berpita yang sama dengan peta harga di bawahnya (PriceMap). Dekoratif; angkanya ada di peta harga. Paket
+ * "sesuai kebutuhan" (tanpa angka) hanya relnya, tanpa batang, sama seperti barisnya di peta harga.
  */
 function MiniMap({ lang }: { lang: Lang }) {
   return (
     <div className="mt-auto hidden pt-8 lg:block" aria-hidden="true">
       <div className="space-y-[7px]">
         {byPrice(PACKAGES).map((p) => {
+          if (!isPriced(p)) return <span key={p.slug} className="relative block h-1.5 rounded-full border border-dashed border-white/25" />
           const a = pricePos(p.minPrice)
           const w = Math.max(pricePos(p.maxPrice) - a, 2)
           return (

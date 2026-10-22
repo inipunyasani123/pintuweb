@@ -35,7 +35,7 @@ export const FAQ_CATEGORY_SLUG: Record<FaqCategoryId, string> = { general: 'umum
 /** Halaman yang membahas suatu jawaban lebih rinci (tautan "Selengkapnya" di bawah jawaban). */
 type MorePage = Exclude<PageKey, 'home' | 'services' | 'articles' | 'local'>
 /** `at` = pasal Syarat & Ketentuan yang dituju (jangkar), bila halamannya 'terms'. */
-export type FaqMore = { page: MorePage; at?: TermsId } | { service: ServiceKey } | { article: ArticleKey; fallback: MorePage }
+export type FaqMore = { page: MorePage; at?: TermsId } | { service: ServiceKey } | { article: ArticleKey; fallback: Exclude<MorePage, 'payment'> }
 export const FAQ_MORE: Partial<Record<FaqKey, FaqMore>> = {
   'usia-pintuweb': { page: 'demo' },
   'muncul-di-google': { article: 'seo-checklist', fallback: 'glossary' },
@@ -44,7 +44,8 @@ export const FAQ_MORE: Partial<Record<FaqKey, FaqMore>> = {
   'fitur-custom': { service: 'website-custom' },
   biaya: { page: 'pricing' },
   'biaya-tersembunyi': { page: 'pricing' },
-  pembayaran: { page: 'terms', at: 'pembayaran' },
+  // halaman Cara Bayar (11 bahasa): metode, langkah, dan aturan; pasal S&K-nya ditaut dari sana
+  pembayaran: { page: 'payment' },
   'tidak-cocok': { page: 'terms', at: 'revisi' },
   'lama-pengerjaan': { page: 'pricing' },
   revisi: { page: 'terms', at: 'revisi' },
@@ -102,7 +103,8 @@ function items(lang: Lang): RawItem[] {
   const f = facts(lang)
   const pk = packagesFor(lang)
   const durations = pk.map((p) => ({ label: p.title, value: p.duration }))
-  const prices = byPrice(pk).map((p) => ({ label: p.title, value: p.priceFrom }))
+  // termurah dulu; paket tanpa perkiraan harga di akhir dengan kalimatnya ("Harga sesuai kebutuhan · konsultasi gratis")
+  const prices = byPrice(pk).map((p) => ({ label: p.title, value: p.quote ? p.priceRange : p.priceFrom }))
   const steps = (list: string[]) => list.map((label) => ({ label }))
   const n = DEMOS.length
 

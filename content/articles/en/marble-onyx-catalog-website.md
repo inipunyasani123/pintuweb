@@ -11,7 +11,7 @@ takeaways:
 - Tulungagung is known as the City of Marble (Kota Marmer); Statistics Indonesia (BPS) records marble and onyx tiles, mosaics and basins from the regency exported to the Americas, Europe and Asia.
 - For wholesale and export, use a quote request form that asks for quantity, sizes, destination country and timing, rather than a buy button.
 - An English version and product structured data make the pages readable for buyers and search engines alike.
-- At PintuWeb a catalogue with WhatsApp ordering starts at {{from:toko-online-simple}}; a bilingual catalogue with custom forms is a Custom Website from {{from:website-custom}}.
+- At PintuWeb a catalogue with WhatsApp ordering starts at {{from:toko-online-simple}}; a bilingual catalogue with custom forms is a Custom Website, priced to your needs after a free consultation.
 sources:
 - BPS Kabupaten Tulungagung — Kabupaten Tulungagung Dalam Angka 2026 (Tulungagung Regency in Figures 2026) | https://tulungagungkab.bps.go.id/id/publication/2026/02/27/f584576d427a85d6aef19730/kabupaten-tulungagung-dalam-angka-2026.html
 - detikJatim — Tentang Desa Besole yang Bikin Tulungagung Dijuluki Kota Marmer | https://www.detik.com/jatim/budaya/d-7036125/tentang-desa-besole-yang-bikin-tulungagung-dijuluki-kota-marmer

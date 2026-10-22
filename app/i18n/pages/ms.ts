@@ -88,7 +88,7 @@ const pages: Pages = {
       { title: 'Jelaskan baki 50%', body: `Laman web dilancarkan, jaminan pepijat ${GUARANTEE_DAYS} hari bermula.` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `Contoh: ${pkg} bermula ${price} → deposit ${dp}, baki ${rest}.`,
-    payMethods: 'Bayar melalui pindahan bank Indonesia, e-dompet (OVO, GoPay, DANA) atau QRIS. Invois dihantar sebelum pembayaran.',
+    payMethods: 'Bayar melalui QRIS, pindahan bank, DANA, SeaBank atau USDT. Invois dihantar sebelum pembayaran.',
   },
   demo: {
     title: (n: number) => `Galeri Demo — ${n} Laman yang Boleh Dicuba`,

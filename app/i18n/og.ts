@@ -9,6 +9,7 @@ import { serviceOf, serviceText } from '../content/services'
 import { getArticle } from '../content/articles'
 import { DEMOS } from '../lib/demos'
 import { localText } from '../content/local'
+import { paymentText } from '../content/payment'
 
 /** Kunci dokumen dari parameter URL; null bila tidak dikenal. */
 export function refFromQuery(p: string | null, s: string | null): DocRef | null {
@@ -61,6 +62,8 @@ export function ogTitleOf(lang: Lang, ref: DocRef): string | null {
         return p.legal.termsTitle
       case 'local':
         return localText(lang).ogTitle
+      case 'payment':
+        return paymentText(lang).ogTitle
     }
   })()
   return plain(title)

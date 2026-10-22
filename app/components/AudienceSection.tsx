@@ -8,6 +8,7 @@ import { path, pathOf } from '../i18n/routes'
 import { needsFor, type NeedKey } from '../content/needs'
 import { serviceOf, serviceText } from '../content/services'
 import { keepRange } from '../content/service-utils'
+import { quoteText } from '../i18n/facts'
 import SectionHead from './SectionHead'
 import { LogoMark } from './Logo'
 import Tabs from './Tabs'
@@ -59,7 +60,7 @@ export default function AudienceSection({ lang }: { lang: Lang }) {
 
         <dl className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3">
           <div className="rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 sm:px-4">
-            <dt className="text-[0.8125rem] text-[color:var(--text-tertiary)]">{d.pkg.from}</dt>
+            <dt className="text-[0.8125rem] text-[color:var(--text-tertiary)]">{n.pkg.quote ? quoteText(lang).label : d.pkg.from}</dt>
             <dd className="display mt-0.5 text-[1.125rem] font-semibold leading-tight text-[color:var(--text-primary)] sm:text-[1.5rem]">{n.pkg.priceFrom}</dd>
           </div>
           <div className="rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 sm:px-4">

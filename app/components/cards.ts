@@ -13,6 +13,8 @@ export type CardData = {
   subtitle: string
   badge?: string
   recommended?: boolean
+  /** true = paket tanpa perkiraan harga: priceFrom berisi kalimat (mis. "Sesuai kebutuhan"), tulis tanpa kata "mulai" */
+  quote?: boolean
   priceFrom: string
   priceRange: string
   deposit: string
@@ -51,6 +53,7 @@ export function cardsFor(lang: Lang, filter?: (slug: string, featured?: boolean)
       subtitle: p.subtitle,
       badge: p.badge,
       recommended: p.recommended,
+      quote: p.quote,
       priceFrom: p.priceFrom,
       priceRange: p.priceRange,
       deposit: p.deposit,

@@ -2,7 +2,7 @@
 // dan graf schema.org yang konsisten (Organization, WebSite, WebPage, BreadcrumbList).
 import type { Metadata } from 'next'
 import { CITY, CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER, FOUNDER_NAME } from '../lib/site'
-import { PACKAGES } from '../lib/packages'
+import { PACKAGES, isPriced, pricedOnly, type Paket } from '../lib/packages'
 import { LANG_INFO, LANGS, plain, type Lang } from './config'
 import { alternatesOf, langsOf, path, urlOf, type DocRef } from './routes'
 import { queryOf } from './og'
@@ -95,10 +95,23 @@ export function localAreaServed() {
   ]
 }
 
+/**
+ * Bagian harga sebuah Offer (JSON-LD): harga mulai + kisaran (tanpa batas atas bila openEnded). Paket "sesuai
+ * kebutuhan" (quote) tidak punya angka, jadi Offer-nya tanpa harga sama sekali, bukan harga 0.
+ */
+export function offerPrice(p: Paket) {
+  if (!isPriced(p)) return {}
+  return {
+    priceCurrency: 'IDR',
+    price: p.minPrice,
+    priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'IDR', minPrice: p.minPrice, ...(p.openEnded ? {} : { maxPrice: p.maxPrice }) },
+  }
+}
+
 /** Organization + WebSite + layanan inti; dipasang di setiap halaman lewat layout. */
 export function siteGraph(lang: Lang) {
   const t = getDict(lang)
-  const prices = PACKAGES.map((p) => p.minPrice)
+  const priced = pricedOnly(PACKAGES)
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -115,8 +128,11 @@ export function siteGraph(lang: Lang) {
         founder: { '@id': FOUNDER_ID },
         email: EMAIL,
         telephone: `+${WA_NUMBER}`,
-        priceRange: `IDR ${Math.min(...prices)}–${Math.max(...PACKAGES.map((p) => p.maxPrice))}`,
-        currenciesAccepted: 'IDR',
+        // paket berharga saja; paket "sesuai kebutuhan" tidak punya angka
+        priceRange: `IDR ${Math.min(...priced.map((p) => p.minPrice))}–${Math.max(...priced.map((p) => p.maxPrice))}`,
+        // metode pembayaran (lib/packages.ts PAYMENT_METHODS); USDT memakai kode tiker, sesuai anjuran schema.org untuk kripto
+        currenciesAccepted: 'IDR, USDT',
+        paymentAccepted: 'QRIS, Bank transfer, DANA, SeaBank, USDT',
         address: { '@type': 'PostalAddress', addressLocality: CITY, addressRegion: 'Jawa Timur', addressCountry: 'ID' },
         areaServed: localAreaServed(),
         knowsLanguage: LANGS.map((l) => LANG_INFO[l].htmlLang),

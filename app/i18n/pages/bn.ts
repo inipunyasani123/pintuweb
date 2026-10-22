@@ -140,7 +140,7 @@ const pages: Pages = {
       { title: 'বাকি 50% দিন', body: `ওয়েবসাইট লাইভ হয়, ${GUARANTEE_DAYS} দিনের বাগ গ্যারান্টি শুরু হয়।` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `উদাহরণ: ${pkg} শুরু ${price} থেকে → অগ্রিম ${dp}, বাকি ${rest}।`,
-    payMethods: 'ইন্দোনেশিয়ার ব্যাংক ট্রান্সফার, ই-ওয়ালেট (OVO, GoPay, DANA) বা QRIS-এ পেমেন্ট করুন। পেমেন্টের আগে ইনভয়েস পাঠানো হয়।',
+    payMethods: 'QRIS, ব্যাংক ট্রান্সফার, DANA, SeaBank বা USDT-তে পেমেন্ট করুন। পেমেন্টের আগে ইনভয়েস পাঠানো হয়।',
   },
   demo: {
     title: (n: number) => `ডেমো গ্যালারি — চালিয়ে দেখার মতো ${n}টি ওয়েবসাইট`,

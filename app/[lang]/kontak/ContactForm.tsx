@@ -46,7 +46,8 @@ export type ContactText = {
   faqTitle: string
 }
 
-export type ContactPackage = { slug: string; title: string; from: string; duration: string; href: string }
+/** `quote` = paket tanpa perkiraan harga: `from` berupa kalimat lengkap, ditulis tanpa kata "mulai". */
+export type ContactPackage = { slug: string; title: string; from: string; quote?: boolean; duration: string; href: string }
 
 type Props = {
   t: ContactText
@@ -199,7 +200,7 @@ export default function ContactForm({ t, packages, demos, demoBySlug, waNumber, 
               {/* paket terpilih: harga mulai + lama pengerjaan dari lib/packages.ts; rinciannya dibuka di tab baru supaya isian tidak hilang */}
               {picked && (
                 <p id="paket-info" className="mt-1.5 text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)]">
-                  {fromLabel} {picked.from} · {picked.duration} ·{' '}
+                  {picked.quote ? picked.from : `${fromLabel} ${picked.from}`} · {picked.duration} ·{' '}
                   <a href={picked.href} target="_blank" rel="noopener" className="font-semibold text-[color:var(--primary-700)] underline-offset-4 hover:underline">
                     {seePackage}
                     <span className="sr-only"> {newTab}</span>

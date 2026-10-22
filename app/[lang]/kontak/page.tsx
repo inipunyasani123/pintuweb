@@ -30,7 +30,7 @@ export default async function KontakPage({ params }: Params) {
   const f = facts(lang)
   // Semua isi p.contact berupa string, jadi aman dikirim ke komponen klien.
   const t: ContactText = p
-  const packages: ContactPackage[] = packagesFor(lang).map((x) => ({ slug: x.slug, title: x.title, from: x.priceFrom, duration: x.duration, href: `${path(lang, 'pricing')}#${x.slug}` }))
+  const packages: ContactPackage[] = packagesFor(lang).map((x) => ({ slug: x.slug, title: x.title, from: x.quote ? x.priceRange : x.priceFrom, quote: x.quote, duration: x.duration, href: `${path(lang, 'pricing')}#${x.slug}` }))
   // beberapa demo memakai nama yang sama (konsep kontes untuk satu merek): cukup satu saran per nama
   const all = demosFor(lang)
   const demos = Array.from(new Set(all.map((x) => x.name)))

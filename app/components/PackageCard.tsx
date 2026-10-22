@@ -64,11 +64,12 @@ export default function PackageCard({ p, labels, as: Heading = 'h3', fold = 4, n
           <Heading className="mt-2 text-[1.375rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.5rem]">{p.title}</Heading>
           <p className="mt-1 text-[0.9375rem] leading-snug text-[color:var(--text-tertiary)]">{p.subtitle}</p>
 
-          {/* Harga: "mulai" + angka besar, lalu kisaran dan DP sebagai baris kecil */}
+          {/* Harga: "mulai" + angka besar, lalu kisaran dan DP sebagai baris kecil. Paket tanpa perkiraan harga: kalimat
+              "Sesuai kebutuhan" tanpa kata "mulai" (kisarannya berisi "Harga sesuai kebutuhan · konsultasi gratis") */}
           <div className="mt-3.5">
             <p className="flex flex-wrap items-baseline gap-x-2">
-              <span className="text-[0.875rem] font-semibold text-[color:var(--text-tertiary)]">{labels.from}</span>
-              <span className="display text-[1.875rem] font-semibold leading-none tracking-tight text-[color:var(--text-primary)]">{p.priceFrom}</span>
+              {!p.quote && <span className="text-[0.875rem] font-semibold text-[color:var(--text-tertiary)]">{labels.from}</span>}
+              <span className={`display font-semibold leading-none tracking-tight text-[color:var(--text-primary)] ${p.quote ? 'text-[1.5rem]' : 'text-[1.875rem]'}`}>{p.priceFrom}</span>
             </p>
             <dl className="mt-2 space-y-0.5 text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)]">
               <div className="flex flex-wrap gap-x-1.5">
@@ -142,8 +143,8 @@ export function PackageBrief({ p, labels, as: Heading = 'h3' }: { p: CardData; l
 
       <div className="mt-auto flex flex-wrap items-end justify-between gap-x-3 gap-y-2 pt-3">
         <p className="flex flex-wrap items-baseline gap-x-1.5">
-          <span className="text-[0.8125rem] font-semibold text-[color:var(--text-tertiary)]">{labels.from}</span>
-          <span className="display text-[1.5rem] font-semibold leading-none tracking-tight text-[color:var(--text-primary)]">{p.priceFrom}</span>
+          {!p.quote && <span className="text-[0.8125rem] font-semibold text-[color:var(--text-tertiary)]">{labels.from}</span>}
+          <span className={`display font-semibold leading-none tracking-tight text-[color:var(--text-primary)] ${p.quote ? 'text-[1.25rem]' : 'text-[1.5rem]'}`}>{p.priceFrom}</span>
         </p>
         <a href={p.waHref} target="_blank" rel="noopener noreferrer" className={`btn btn-sm ${rec ? 'btn-solid' : 'btn-line'}`}>
           {labels.pick}

@@ -92,7 +92,7 @@ const pages: Pages = {
       { title: '支付其余 50%', body: `网站上线，${GUARANTEE_DAYS} 天漏洞修复质保开始。` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `例如：${pkg} 起价 ${price} → 定金 ${dp}，尾款 ${rest}。`,
-    payMethods: '可通过印尼银行转账、电子钱包（OVO、GoPay、DANA）或 QRIS 付款。付款前我们会先发送发票。',
+    payMethods: '可通过 QRIS、银行转账、DANA、SeaBank 或 USDT 付款。付款前我们会先发送发票。',
   },
   demo: {
     title: (n: number) => `演示集 — ${n} 个可试用的网站`,

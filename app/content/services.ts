@@ -330,7 +330,7 @@ export const SERVICES: Service[] = [
         short: 'Sistem reservasi, katalog properti, aplikasi web, atau fitur khusus lain sesuai kebutuhan bisnis.',
         suits: 'Startup, instansi, sistem khusus',
         faq: [
-          { q: 'Bagaimana harga website custom ditentukan?', a: 'Dari ruang lingkup: jumlah halaman, fitur, integrasi, dan peran pengguna. Sistem reservasi mulai {{from:sistem-reservasi}}, website properti mulai {{from:website-properti}}, aplikasi web mulai {{from:aplikasi-web}}, dan website custom mulai {{from:website-custom}}; angka pastinya ada di penawaran tertulis yang kamu setujui sebelum pengerjaan.' },
+          { q: 'Bagaimana harga website custom ditentukan?', a: 'Dari ruang lingkup: jumlah halaman, fitur, integrasi, dan peran pengguna. Sistem reservasi mulai {{from:sistem-reservasi}}, website properti mulai {{from:website-properti}}, dan aplikasi web mulai {{from:aplikasi-web}}. Website custom tidak punya harga patokan: harganya dihitung sesuai kebutuhan setelah konsultasi gratis, dan angka pastinya ada di penawaran tertulis yang kamu setujui sebelum pengerjaan.' },
           { q: 'Apakah bisa terhubung dengan sistem yang sudah saya pakai?', a: 'Bisa, selama sistem tersebut menyediakan API atau cara pertukaran data. Kami cek dokumentasinya dulu sebelum menjanjikan integrasi.' },
           { q: 'Siapa pemilik kodenya?', a: 'Kamu. Setelah pelunasan, source code, akses hosting, domain, dan database diserahkan sepenuhnya.' },
           { q: 'Apakah ada dukungan setelah website online?', a: `Ya, ada garansi perbaikan bug dan maintenance & support teknis 3 bulan di paket Website Custom, yang bisa diperpanjang.` },
@@ -350,7 +350,7 @@ export const SERVICES: Service[] = [
         short: 'Booking systems, property catalogues, web apps or other bespoke features for your business.',
         suits: 'Start-ups, institutions, bespoke systems',
         faq: [
-          { q: 'How is the price of a custom website decided?', a: 'By scope: the number of pages, features, integrations and user roles. Booking systems start at {{from:sistem-reservasi}}, property websites at {{from:website-properti}}, web apps at {{from:aplikasi-web}} and custom websites at {{from:website-custom}}; the exact figure is in the written quote you approve before work starts.' },
+          { q: 'How is the price of a custom website decided?', a: 'By scope: the number of pages, features, integrations and user roles. Booking systems start at {{from:sistem-reservasi}}, property websites at {{from:website-properti}} and web apps at {{from:aplikasi-web}}. A custom website has no list price: it is priced to your needs after a free consultation, and the exact figure is in the written quote you approve before work starts.' },
           { q: 'Can it connect to a system I already use?', a: 'Yes, as long as that system offers an API or another way to exchange data. We check its documentation before promising an integration.' },
           { q: 'Who owns the code?', a: 'You do. Once the final payment is made, the source code, hosting, domain and database access are handed over in full.' },
           { q: 'Is there support after launch?', a: 'Yes, there is a bug-fix guarantee and 3 months of maintenance and technical support in the Custom Website package, which can be extended.' },
@@ -370,7 +370,7 @@ export const SERVICES: Service[] = [
         short: 'Sistem tempahan, katalog hartanah, aplikasi web atau ciri khas lain mengikut keperluan perniagaan.',
         suits: 'Syarikat pemula, institusi, sistem khas',
         faq: [
-          { q: 'Bagaimanakah harga laman web tersuai ditentukan?', a: 'Berdasarkan skop: bilangan halaman, ciri, integrasi dan peranan pengguna. Sistem tempahan bermula {{from:sistem-reservasi}}, laman web hartanah {{from:website-properti}}, aplikasi web {{from:aplikasi-web}} dan laman web tersuai {{from:website-custom}}; angka tepatnya dalam sebut harga bertulis yang anda luluskan sebelum kerja bermula.' },
+          { q: 'Bagaimanakah harga laman web tersuai ditentukan?', a: 'Berdasarkan skop: bilangan halaman, ciri, integrasi dan peranan pengguna. Sistem tempahan bermula {{from:sistem-reservasi}}, laman web hartanah {{from:website-properti}} dan aplikasi web {{from:aplikasi-web}}. Laman web tersuai tiada harga tetap: harganya dikira ikut keperluan selepas konsultasi percuma, dan angka tepatnya dalam sebut harga bertulis yang anda luluskan sebelum kerja bermula.' },
           { q: 'Bolehkah ia disambungkan dengan sistem yang saya gunakan?', a: 'Boleh, selagi sistem itu menyediakan API atau cara pertukaran data. Kami semak dokumentasinya dahulu sebelum menjanjikan integrasi.' },
           { q: 'Siapakah pemilik kodnya?', a: 'Anda. Selepas bayaran penuh, kod sumber, akses hosting, domain dan pangkalan data diserahkan sepenuhnya.' },
           { q: 'Adakah sokongan selepas pelancaran?', a: 'Ya, terdapat jaminan pembaikan pepijat serta penyelenggaraan & sokongan teknikal 3 bulan dalam pakej Laman Web Tersuai, yang boleh dilanjutkan.' },

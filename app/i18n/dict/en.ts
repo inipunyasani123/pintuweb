@@ -198,7 +198,7 @@ const en: Dict = {
     title: ['Six things you can ', 'hold us to', '.'] as Hl,
     lead: 'Each of them is also written on the pricing page, in the FAQ and in the terms & conditions.',
     promises: [
-      { fig: `${PACKAGES.length}`, unit: 'packages', proof: 'Written on the pricing page', title: 'Prices stated up front', body: 'Every package’s price range is on this site. The exact figure is in a written quote before we start.' },
+      { fig: `${PACKAGES.length}`, unit: 'packages', proof: 'Written on the pricing page', title: 'Prices stated up front', body: 'Package price ranges are on this site, except the Custom Website, which is priced to your needs. The exact figure is in a written quote before we start.' },
       { fig: '50%', unit: 'deposit', proof: 'Written in the FAQ', title: 'Pay half first', body: 'A 50% deposit to start. The rest is paid once the website is finished and you have approved it.' },
       { fig: '100%', unit: 'yours', proof: 'Written in the terms', title: 'Entirely yours', body: 'For website packages: once paid in full, the source code, domain, hosting and admin access are handed over to you.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Written in the FAQ', title: 'Fast on phones', body: `We optimise every website towards a PageSpeed score of ${PERF_TARGET}. It is a working target, not an average claim.` },

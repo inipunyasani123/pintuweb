@@ -198,7 +198,7 @@ const fr: Dict = {
     title: ['Six choses que vous pouvez ', 'exiger de nous', '.'] as Hl,
     lead: 'Chacune figure aussi sur la page des tarifs, dans la FAQ et dans les conditions générales.',
     promises: [
-      { fig: `${PACKAGES.length}`, unit: 'formules', proof: 'Écrit sur la page des tarifs', title: 'Des prix annoncés d’emblée', body: 'La fourchette de prix de chaque formule figure sur ce site. Le montant exact est indiqué dans un devis écrit avant le démarrage.' },
+      { fig: `${PACKAGES.length}`, unit: 'formules', proof: 'Écrit sur la page des tarifs', title: 'Des prix annoncés d’emblée', body: 'Les fourchettes de prix des formules figurent sur ce site, sauf le site sur mesure, chiffré selon vos besoins. Le montant exact est indiqué dans un devis écrit avant le démarrage.' },
       { fig: '50 %', unit: 'acompte', proof: 'Écrit dans la FAQ', title: 'La moitié d’abord', body: 'Un acompte de 50 % pour démarrer. Le reste est réglé une fois le site terminé et validé par vous.' },
       { fig: '100 %', unit: 'à vous', proof: 'Écrit dans les conditions', title: 'Entièrement à vous', body: 'Pour les formules de site web : une fois le paiement soldé, le code source, le domaine, l’hébergement et l’accès administrateur vous sont remis.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Écrit dans la FAQ', title: 'Rapide sur mobile', body: `Nous optimisons chaque site en visant un score PageSpeed de ${PERF_TARGET}. C’est un objectif de travail, pas une moyenne revendiquée.` },

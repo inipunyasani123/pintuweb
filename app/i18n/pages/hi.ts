@@ -141,7 +141,7 @@ const pages: Pages = {
       { title: 'बाक़ी 50% चुकाएँ', body: `वेबसाइट लाइव होती है और ${GUARANTEE_DAYS} दिन की बग गारंटी शुरू होती है।` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `उदाहरण: ${pkg} ${price} से → एडवांस ${dp}, बाक़ी ${rest}।`,
-    payMethods: 'इंडोनेशियाई बैंक ट्रांसफ़र, ई-वॉलेट (OVO, GoPay, DANA) या QRIS से भुगतान करें। भुगतान से पहले इनवॉइस भेजा जाता है।',
+    payMethods: 'QRIS, बैंक ट्रांसफ़र, DANA, SeaBank या USDT से भुगतान करें। भुगतान से पहले इनवॉइस भेजा जाता है।',
   },
   demo: {
     title: (n: number) => `डेमो गैलरी — आज़माने के लिए ${n} वेबसाइटें`,

@@ -11,7 +11,7 @@ const pt: Pack = {
     serves: 'Atendemos clientes a distância',
     payment:
       'Todos os pacotes: um sinal de 50% para começar e os 50% restantes quando o site estiver pronto e aprovado por você. ' +
-      'Aceitamos transferência bancária na Indonésia, carteiras digitais (OVO, GoPay, DANA) e QRIS. A fatura é enviada antes do pagamento.',
+      'Aceitamos QRIS, transferência bancária, DANA, SeaBank e USDT; o número da conta ou o endereço da carteira consta na fatura. A fatura é enviada antes do pagamento.',
     renewal:
       `O domínio e a hospedagem incluídos em um pacote cobrem o primeiro ano. A partir do segundo ano, a renovação custa aproximadamente ${renewal} por ano para sites e ` +
       `${renewalBio} para páginas link in bio; para sistemas e aplicativos web com banco de dados, o custo consta no orçamento. ` +

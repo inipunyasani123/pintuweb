@@ -1,6 +1,6 @@
-import { durationText, packagesFor } from '../i18n/facts'
+import { durationText, packagesFor, quoteText } from '../i18n/facts'
 import type { Lang } from '../i18n/config'
-import type { Waktu } from '../lib/packages'
+import { isPriced, type Waktu } from '../lib/packages'
 import type { Service } from './services'
 
 /** Satu minggu = 5 hari kerja (sama dengan konvensi di lib/packages.ts). */
@@ -9,14 +9,16 @@ const DAYS_PER_WEEK = 5
 /**
  * Harga mulai (paket termurah) & rentang lama pengerjaan seluruh paket layanan (packages.ts); null bila layanan tanpa
  * paket. Rentangnya dari pengerjaan tercepat sampai terlama di antara paket layanan itu, mis. Toko Online "3–8 hari
- * kerja"; bila satuannya bercampur (hari & minggu), semuanya ditulis dalam minggu.
+ * kerja"; bila satuannya bercampur (hari & minggu), semuanya ditulis dalam minggu. Paket "sesuai kebutuhan" tidak ikut
+ * menentukan harga mulai; bila SEMUA paket layanan tanpa angka, `price` = teks quoteText() dan `quote` = true.
  */
 export function serviceFrom(lang: Lang, s: Service) {
   const pk = packagesFor(lang)
   const list = s.packages.map((slug) => pk.find((p) => p.slug === slug)!).filter(Boolean)
   if (!list.length) return null
-  const cheapest = list.reduce((a, b) => (a.minPrice <= b.minPrice ? a : b))
-  return { price: cheapest.priceFrom, duration: durationText(lang, span(list.map((p) => p.time))), list }
+  const priced = list.filter(isPriced)
+  const cheapest = priced.length ? priced.reduce((a, b) => (a.minPrice <= b.minPrice ? a : b)) : null
+  return { price: cheapest ? cheapest.priceFrom : quoteText(lang).from, quote: !cheapest, duration: durationText(lang, span(list.map((p) => p.time))), list }
 }
 
 /** Gabungan beberapa perkiraan waktu menjadi satu rentang. */

@@ -86,7 +86,7 @@ const pages = {
       { title: 'Lunasi 50%', body: `Website online, garansi bug ${GUARANTEE_DAYS} hari berjalan.` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `Contoh: ${pkg} mulai ${price} → DP ${dp}, pelunasan ${rest}.`,
-    payMethods: 'Bayar lewat transfer bank, e-wallet (OVO, GoPay, DANA), atau QRIS. Invoice dikirim sebelum pembayaran.',
+    payMethods: 'Bayar lewat QRIS, transfer bank, DANA, SeaBank, atau USDT. Invoice dikirim sebelum pembayaran.',
   },
   demo: {
     title: (n: number) => `Galeri Demo — ${n} Situs yang Bisa Dicoba`,

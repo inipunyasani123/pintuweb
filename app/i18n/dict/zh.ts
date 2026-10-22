@@ -198,7 +198,7 @@ const zh: Dict = {
     title: ['六件您可以', '要求我们做到的事', '。'] as Hl,
     lead: '每一条也都写在价格页面、常见问题和条款与条件中。',
     promises: [
-      { fig: `${PACKAGES.length}`, unit: '个套餐', proof: '写在价格页面', title: '价格事先公开', body: '每个套餐的价格区间都写在本站。确切金额会在开工前写入书面报价。' },
+      { fig: `${PACKAGES.length}`, unit: '个套餐', proof: '写在价格页面', title: '价格事先公开', body: '套餐的价格区间都写在本站，定制网站除外，按需报价。确切金额会在开工前写入书面报价。' },
       { fig: '50%', unit: '定金', proof: '写在常见问题中', title: '先付一半', body: '开工先付 50% 定金。余款在网站完成并经您确认后支付。' },
       { fig: '100%', unit: '归您', proof: '写在条款中', title: '完全归您所有', body: '网站类套餐付清全款后，源代码、域名、主机和管理员权限都会交给您。' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: '写在常见问题中', title: '手机上很快', body: `我们优化每个网站，以 PageSpeed ${PERF_TARGET} 分为目标。这是工作目标，而非宣称的平均值。` },

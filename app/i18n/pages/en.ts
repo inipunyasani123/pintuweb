@@ -88,7 +88,7 @@ const pages: Pages = {
       { title: 'Pay the other 50%', body: `The site goes live and the ${GUARANTEE_DAYS}-day bug-fix guarantee begins.` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `Example: ${pkg} from ${price} → ${dp} deposit, ${rest} on completion.`,
-    payMethods: 'Pay by Indonesian bank transfer, e-wallet (OVO, GoPay, DANA) or QRIS. The invoice is sent before you pay.',
+    payMethods: 'Pay by QRIS, bank transfer, DANA, SeaBank or USDT. The invoice is sent before you pay.',
   },
   demo: {
     title: (n: number) => `Demo Gallery — ${n} Sites You Can Try`,

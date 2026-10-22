@@ -151,7 +151,7 @@ const pages: Pages = {
       { title: 'ادفع الـ 50% المتبقية', body: `يُطلق الموقع ويبدأ ضمان إصلاح الأخطاء لمدة ${days}.` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `مثال: ${pkg} يبدأ من ${price}، الدفعة المقدمة ${dp} والباقي ${rest}.`,
-    payMethods: 'ادفع بالتحويل المصرفي الإندونيسي أو المحافظ الإلكترونية (OVO وGoPay وDANA) أو QRIS. نرسل الفاتورة قبل الدفع.',
+    payMethods: 'ادفع عبر QRIS أو التحويل البنكي أو DANA أو SeaBank أو USDT. نرسل الفاتورة قبل الدفع.',
   },
   demo: {
     title: (n: number) => `معرض العروض التجريبية — ${n} ${siteWord(n)}`,

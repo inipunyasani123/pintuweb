@@ -11,6 +11,8 @@ import { faqFor } from './faq'
 import { clientsFor, clientsHref } from './clients'
 import { LANG_INFO, LANGS, X_LANGS, plain } from '../i18n/config'
 import { localText } from './local'
+import { paymentText } from './payment'
+import { PAYMENT_METHODS } from '../lib/packages'
 
 export function llmsDoc(full: boolean) {
   const en = facts('en')
@@ -30,7 +32,7 @@ export function llmsDoc(full: boolean) {
     `- Client projects: ${CLIENT_PROJECTS}; live demos: ${DEMOS.length}`,
     `- Contact: WhatsApp ${WA_DISPLAY}, email ${EMAIL}`,
     `- Hours: ${en.hours}`,
-    `- Payment: ${en.payment}`,
+    `- Payment: ${en.payment} Details: ${urlOf('en', { key: 'payment' })}`,
     `- Renewal: ${en.renewal}`,
     `- Guarantee: ${GUARANTEE_DAYS}-day bug-fix guarantee after launch; maintenance as included in each package (not every package includes it; ongoing maintenance is available as a monthly add-on)`,
     `- Performance target: PageSpeed ${PERF_TARGET} (a target, not an average claim)`,
@@ -46,6 +48,13 @@ export function llmsDoc(full: boolean) {
     'Optional extras (IDR):',
     '',
     ...addonsFor('en').map((a) => `- ${a.title}: ${a.range} ${a.unit}`),
+    '',
+    '## Payment',
+    '',
+    `[${paymentText('en').title}](${urlOf('en', { key: 'payment' })}) (Indonesian: ${urlOf('id', { key: 'payment' })}; also in ${LANGS.filter((l) => l !== 'en' && l !== 'id').map((l) => l.toUpperCase()).join(', ')})`,
+    '',
+    ...PAYMENT_METHODS.map((m) => `- ${paymentText('en').methods[m].name}: ${paymentText('en').methods[m].body}`),
+    '- Bank account numbers, the DANA destination and the USDT network and wallet address are published only on the invoice, never on the website.',
     '',
     '## Services',
     '',
@@ -64,7 +73,7 @@ export function llmsDoc(full: boolean) {
     '',
     '## Main pages',
     '',
-    ...(['home', 'pricing', 'services', 'demo', 'faq', 'about', 'founder', 'contact', 'glossary'] as PageKey[]).map(
+    ...(['home', 'pricing', 'payment', 'services', 'demo', 'faq', 'about', 'founder', 'contact', 'glossary'] as PageKey[]).map(
       (key) => `- ${key}: ${urlOf('id', { key } as never)} (ID) · ${urlOf('en', { key } as never)} (EN) · ${urlOf('ms', { key } as never)} (MS)`,
     ),
     '',

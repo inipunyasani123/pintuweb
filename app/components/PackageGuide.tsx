@@ -8,7 +8,8 @@ import { ArrowDown, ArrowUpRight, Clock } from 'lucide-react'
 // server dari lib/packages.ts (content/guide.ts); komponen ini hanya membacanya. Tautan "Lihat isi paket" (#slug)
 // ditangani Tabs: tab kelompoknya dibuka, kartu digulir ke layar, dan isinya dibuka.
 
-export type GuideCard = { title: string; subtitle: string; priceFrom: string; duration: string; waHref: string }
+/** `quote` = paket tanpa perkiraan harga: `priceFrom` sudah berupa kalimat lengkap, ditulis tanpa kata "mulai". */
+export type GuideCard = { title: string; subtitle: string; priceFrom: string; quote?: boolean; duration: string; waHref: string }
 type Option = { id: string; label: string }
 
 type Props = {
@@ -67,8 +68,8 @@ export default function PackageGuide({ questions, results, cards, labels }: Prop
           <p className="display mt-1 text-[1.625rem] leading-tight text-white sm:text-[1.875rem]">{best.title}</p>
           <p className="mt-1.5 text-[0.9375rem] leading-snug text-white/80">{best.subtitle}</p>
           <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-            <span className="text-[0.875rem] text-white/80">{labels.from}</span>
-            <span className="display text-[1.5rem] font-semibold leading-none">{best.priceFrom}</span>
+            {!best.quote && <span className="text-[0.875rem] text-white/80">{labels.from}</span>}
+            <span className={`display font-semibold leading-none ${best.quote ? 'text-[1.25rem]' : 'text-[1.5rem]'}`}>{best.priceFrom}</span>
             <span className="inline-flex items-center gap-1.5 text-[0.875rem] text-white/85">
               <Clock size={14} aria-hidden="true" />
               <span className="sr-only">{labels.duration}: </span>
@@ -90,9 +91,7 @@ export default function PackageGuide({ questions, results, cards, labels }: Prop
               <a href={`#${altSlug}`} className="font-semibold text-white underline decoration-white/50 underline-offset-4 hover:decoration-white">
                 {alt.title}
               </a>
-              <span className="whitespace-nowrap text-white/85">
-                {labels.from} {alt.priceFrom}
-              </span>
+              <span className="text-white/85">{alt.quote ? alt.priceFrom : <span className="whitespace-nowrap">{labels.from} {alt.priceFrom}</span>}</span>
             </p>
           </div>
         </div>

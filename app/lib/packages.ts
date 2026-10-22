@@ -2,6 +2,10 @@
 // Dipakai halaman Paket, bagian harga di beranda, halaman layanan, artikel, FAQ, llms.txt,
 // dan JSON-LD — ubah harga di sini saja supaya semuanya tidak pernah berselisih.
 //
+// 22 Okt 2026: harga 14 paket ditetapkan ulang oleh pemilik (angka di DATA di bawah). Website Custom tidak lagi punya
+// perkiraan harga: `quote: true` = "harga sesuai kebutuhan", angkanya hanya ada di penawaran setelah konsultasi.
+// Waktu pengerjaan, DP 50%, biaya tambahan (ADDONS), dan biaya perpanjangan TIDAK berubah.
+//
 // 13 Okt 2026: atas permintaan pemilik, harga DAN waktu pengerjaan semua paket diturunkan 50% dari angka 3 Okt di
 // bawah ini (waktu: pecahan hari dibulatkan ke atas, 1 minggu = 5 hari kerja).
 // Biaya tambahan (ADDONS) dan biaya perpanjangan TIDAK ikut diturunkan.
@@ -22,14 +26,10 @@ export type PaketGroup = 'bisnis' | 'toko' | 'personal' | 'sistem' | 'desain'
 export type Waktu = { min: number; max: number; unit: 'hari' | 'minggu'; flex?: boolean }
 const waktuId = (w: Waktu) => `${w.min === w.max ? w.min : `${w.min}–${w.max}`} ${w.unit === 'hari' ? 'hari kerja' : 'minggu'}${w.flex ? ', tergantung fitur' : ''}`
 
-export type Paket = {
+type PaketBase = {
   slug: string
   group: PaketGroup
   title: string
-  minPrice: number
-  maxPrice: number
-  /** true bila batas atas bisa lebih (ditampilkan dengan "+") */
-  openEnded?: boolean
   badge?: string
   badgeColor?: 'green' | 'blue' | 'red' | 'purple'
   /** tampil di ringkasan beranda */
@@ -44,22 +44,45 @@ export type Paket = {
   features: string[]
 }
 
+/** Paket berkisaran harga (Rupiah). */
+type Berharga = {
+  quote?: undefined
+  minPrice: number
+  maxPrice: number
+  /** true bila batas atas bisa lebih (ditampilkan dengan "+") */
+  openEnded?: boolean
+}
+/**
+ * Paket TANPA perkiraan harga ("harga sesuai kebutuhan · konsultasi gratis"): tidak punya angka sama sekali, jadi tidak
+ * ikut skala peta harga, harga "mulai", JSON-LD harga, atau penanda {{from:…}}/{{max:…}} (fillFacts menolaknya).
+ */
+type SesuaiKebutuhan = { quote: true; minPrice?: undefined; maxPrice?: undefined; openEnded?: undefined }
+
+export type Paket = PaketBase & (Berharga | SesuaiKebutuhan)
+export type PaketBerharga = PaketBase & Berharga
+
+/** true bila paket punya kisaran harga; paket "sesuai kebutuhan" (quote) menghasilkan false. */
+export const isPriced = <T extends { quote?: boolean }>(p: T): p is Extract<T, { quote?: undefined }> => !p.quote
+
+/** Omit yang tetap membedakan dua bentuk paket di atas. */
+type DistOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never
+
 export const PACKAGE_GROUPS: PaketGroup[] = ['bisnis', 'toko', 'personal', 'sistem', 'desain']
 
 /**
  * Tanggal harga & waktu pengerjaan terakhir ditetapkan. NAIKKAN bila angka paket berubah: tampil sebagai
  * "Harga berlaku per …" dan menjadi tanggal pembaruan artikel serta dokumen legal yang memuat angka paket.
  */
-export const PRICES_UPDATED = '2026-10-13'
+export const PRICES_UPDATED = '2026-10-22'
 
-const DATA: Omit<Paket, 'duration'>[] = [
+const DATA: DistOmit<Paket, 'duration'>[] = [
   // ---- Website bisnis ----
   {
     slug: 'landing-page',
     group: 'bisnis',
     title: 'Landing Page',
-    minPrice: 300000,
-    maxPrice: 600000,
+    minPrice: 100000,
+    maxPrice: 500000,
     badge: 'Starter',
     badgeColor: 'green',
     featured: true,
@@ -80,8 +103,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'standar-umkm',
     group: 'bisnis',
     title: 'Standar UMKM',
-    minPrice: 750000,
-    maxPrice: 1250000,
+    minPrice: 500000,
+    maxPrice: 1500000,
     badge: 'Bisnis',
     badgeColor: 'blue',
     featured: true,
@@ -104,8 +127,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'toko-online-simple',
     group: 'toko',
     title: 'Toko Online Simple',
-    minPrice: 1250000,
-    maxPrice: 1750000,
+    minPrice: 300000,
+    maxPrice: 2000000,
     featured: true,
     subtitle: 'Mulai jualan online tanpa ribet',
     time: { min: 3, max: 5, unit: 'hari' },
@@ -124,8 +147,9 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'toko-online-full',
     group: 'toko',
     title: 'Toko Online Full',
-    minPrice: 2500000,
-    maxPrice: 4500000,
+    minPrice: 3000000,
+    maxPrice: 10000000,
+    openEnded: true,
     badge: 'Premium',
     badgeColor: 'red',
     subtitle: 'Toko online lengkap dengan dashboard admin',
@@ -146,8 +170,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'link-in-bio',
     group: 'personal',
     title: 'Link in Bio',
-    minPrice: 125000,
-    maxPrice: 375000,
+    minPrice: 100000,
+    maxPrice: 300000,
     subtitle: 'Satu tautan bio dengan desain & fitur milik sendiri',
     time: { min: 1, max: 2, unit: 'hari' },
     highlights: ['Kreator', 'Kafe & warung', 'Musisi'],
@@ -164,8 +188,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'undangan-digital',
     group: 'personal',
     title: 'Undangan Digital',
-    minPrice: 75000,
-    maxPrice: 225000,
+    minPrice: 50000,
+    maxPrice: 200000,
     subtitle: 'Undangan website dari tema galeri, diisi data acaramu',
     time: { min: 1, max: 1, unit: 'hari' },
     highlights: ['Pernikahan', 'Khitanan & aqiqah', 'Ulang tahun & wisuda'],
@@ -182,8 +206,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'situs-acara',
     group: 'personal',
     title: 'Situs Acara & Undangan Custom',
-    minPrice: 500000,
-    maxPrice: 1250000,
+    minPrice: 300000,
+    maxPrice: 1000000,
     subtitle: 'Desain khusus untuk acara besar atau acara kantor',
     time: { min: 2, max: 4, unit: 'hari' },
     highlights: ['Acara kantor', 'Seminar & konferensi', 'Pernikahan premium'],
@@ -200,8 +224,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'portofolio',
     group: 'personal',
     title: 'Portofolio / Personal Branding',
-    minPrice: 750000,
-    maxPrice: 1250000,
+    minPrice: 150000,
+    maxPrice: 1200000,
     subtitle: 'Etalase karya untuk freelancer & kreator',
     time: { min: 2, max: 3, unit: 'hari' },
     highlights: ['Freelancer', 'Kreator', 'Profesional'],
@@ -219,8 +243,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'sistem-reservasi',
     group: 'sistem',
     title: 'Sistem Reservasi Online',
-    minPrice: 2500000,
-    maxPrice: 6000000,
+    minPrice: 1500000,
+    maxPrice: 5000000,
     subtitle: 'Booking meja, kamar, jadwal dokter, atau lapangan',
     time: { min: 1, max: 2, unit: 'minggu' },
     highlights: ['Restoran & kafe', 'Klinik', 'Hotel & lapangan'],
@@ -238,8 +262,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'website-properti',
     group: 'sistem',
     title: 'Website Properti',
-    minPrice: 2000000,
-    maxPrice: 4500000,
+    minPrice: 1000000,
+    maxPrice: 10000000,
     subtitle: 'Katalog listing untuk agen atau developer',
     time: { min: 5, max: 8, unit: 'hari' },
     highlights: ['Agen properti', 'Developer perumahan', 'Kos & kontrakan'],
@@ -257,8 +281,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'marketplace-properti',
     group: 'sistem',
     title: 'Marketplace Properti',
-    minPrice: 7500000,
-    maxPrice: 15000000,
+    minPrice: 3000000,
+    maxPrice: 10000000,
     openEnded: true,
     subtitle: 'Portal multi-agen: banyak pemasang, satu tempat cari',
     time: { min: 2, max: 4, unit: 'minggu' },
@@ -278,7 +302,7 @@ const DATA: Omit<Paket, 'duration'>[] = [
     group: 'sistem',
     title: 'Aplikasi Web',
     minPrice: 2000000,
-    maxPrice: 5000000,
+    maxPrice: 10000000,
     openEnded: true,
     subtitle: 'Aplikasi kerja: tugas, kanban, kalender, atau data internal',
     time: { min: 1, max: 2, unit: 'minggu' },
@@ -297,9 +321,7 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'website-custom',
     group: 'sistem',
     title: 'Website Custom',
-    minPrice: 2500000,
-    maxPrice: 7500000,
-    openEnded: true,
+    quote: true,
     badge: 'Custom',
     badgeColor: 'purple',
     subtitle: 'Desain & fitur sepenuhnya sesuai kebutuhan',
@@ -320,8 +342,8 @@ const DATA: Omit<Paket, 'duration'>[] = [
     slug: 'konsep-desain',
     group: 'desain',
     title: 'Konsep Desain Website',
-    minPrice: 1250000,
-    maxPrice: 2500000,
+    minPrice: 1000000,
+    maxPrice: 3000000,
     subtitle: 'Beberapa konsep live untuk satu brief, pilih yang terbaik',
     time: { min: 3, max: 5, unit: 'hari' },
     highlights: ['Rebranding', 'Pitching', 'Kontes desain'],
@@ -351,21 +373,29 @@ export const formatRupiah = (n: number) =>
     .format(n)
     .replace(/\s/g, '')
 
-/** "Rp600.000 – Rp1.200.000", atau "... – Rp6.000.000+" bila openEnded */
-export const priceRange = (p: Pick<Paket, 'minPrice' | 'maxPrice' | 'openEnded'>) =>
-  `${formatRupiah(p.minPrice)} – ${formatRupiah(p.maxPrice)}${p.openEnded ? '+' : ''}`
+/** "Rp600.000 – Rp1.200.000", atau "... – Rp6.000.000+" bila openEnded; paket quote: "Harga sesuai kebutuhan" */
+export const priceRange = (p: Paket) =>
+  isPriced(p) ? `${formatRupiah(p.minPrice)} – ${formatRupiah(p.maxPrice)}${p.openEnded ? '+' : ''}` : 'Harga sesuai kebutuhan'
 
 export const waLink = (paket: string) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
     `Halo PintuWeb, saya tertarik dengan paket "${paket}". Boleh minta info lebih lanjut?`
   )}`
 
-/** Paket urut dari yang termurah — untuk kalimat ringkasan harga. */
-export const byPrice = <T extends Pick<Paket, 'minPrice'>>(list: T[]) => [...list].sort((a, b) => a.minPrice - b.minPrice)
+/** Paket urut dari yang termurah (seri: batas atas lebih rendah dulu); paket "sesuai kebutuhan" di paling akhir. */
+export const byPrice = <T extends Paket>(list: T[]): T[] =>
+  [...list].sort((a, b) => {
+    if (!isPriced(a) || !isPriced(b)) return Number(!isPriced(a)) - Number(!isPriced(b))
+    return a.minPrice - b.minPrice || a.maxPrice - b.maxPrice
+  })
+
+/** Paket yang punya kisaran harga saja (untuk skala, harga mulai, dan JSON-LD). */
+export const pricedOnly = <T extends Paket>(list: T[]) => list.filter(isPriced)
 
 /** Kalimat ringkas harga untuk FAQ — selalu mengikuti PACKAGES. */
 export const PRICE_SUMMARY =
-  `Harga mulai ${byPrice(PACKAGES).map((p) => `${formatRupiah(p.minPrice)} untuk ${p.title}`).join(', ')}. ` +
+  `Harga mulai ${byPrice(pricedOnly(PACKAGES)).map((p) => `${formatRupiah(p.minPrice)} untuk ${p.title}`).join(', ')}` +
+  `${PACKAGES.some((p) => p.quote) ? `; ${PACKAGES.filter((p) => p.quote).map((p) => p.title).join(', ')} harganya sesuai kebutuhan (konsultasi gratis)` : ''}. ` +
   'Rincian fitur tiap paket ada di halaman Paket. Semua harga sudah termasuk desain dan pengerjaan; paket website juga mencakup SEO dasar.'
 
 /** Kisaran biaya perpanjangan domain + hosting per tahun mulai tahun kedua (Rupiah). */
@@ -381,6 +411,15 @@ export const RENEWAL_SUMMARY =
   'untuk sistem & aplikasi web dengan database, biayanya dicantumkan di penawaran. Undangan digital aktif 12 bulan ' +
   'tanpa biaya perpanjangan. Kami kabari sebelum jatuh tempo.'
 
+/**
+ * Metode pembayaran yang diterima (keputusan pemilik, 22 Okt 2026): QRIS, transfer bank, DANA, SeaBank, dan USDT
+ * (USDT untuk semua klien). Nomor rekening, tujuan pembayaran, dan untuk USDT jaringan + alamat dompet hanya ditulis
+ * di invoice, tidak di situs. Urutan ini dipakai strip logo di footer dan halaman Cara Bayar.
+ */
+export const PAYMENT_METHODS = ['qris', 'bank', 'dana', 'seabank', 'usdt'] as const
+export type PaymentMethod = (typeof PAYMENT_METHODS)[number]
+
 export const PAYMENT_SUMMARY =
   'Semua paket: DP 50% untuk memulai, pelunasan 50% setelah website selesai dan disetujui. ' +
-  'Kami terima transfer bank, e-wallet (OVO, GoPay, DANA), atau QRIS. Invoice dikirim sebelum pembayaran.'
+  'Kami terima QRIS, transfer bank, DANA, SeaBank, dan USDT; nomor rekening atau alamat dompet tertulis di invoice. ' +
+  'Invoice dikirim sebelum pembayaran.'

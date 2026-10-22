@@ -198,7 +198,7 @@ const ms: Dict = {
     title: ['Enam perkara yang ', 'boleh anda tuntut', ' daripada kami.'] as Hl,
     lead: 'Semuanya turut tertulis di halaman harga, soalan lazim serta terma & syarat.',
     promises: [
-      { fig: `${PACKAGES.length}`, unit: 'pakej', proof: 'Tertulis di halaman harga', title: 'Harga dinyatakan di awal', body: 'Julat harga setiap pakej ada di laman ini. Angka tepatnya tertulis dalam sebut harga sebelum kami bermula.' },
+      { fig: `${PACKAGES.length}`, unit: 'pakej', proof: 'Tertulis di halaman harga', title: 'Harga dinyatakan di awal', body: 'Julat harga pakej ada di laman ini, kecuali Laman Web Tersuai yang dikira ikut keperluan. Angka tepatnya tertulis dalam sebut harga sebelum kami bermula.' },
       { fig: '50%', unit: 'deposit', proof: 'Tertulis dalam soalan lazim', title: 'Bayar separuh dahulu', body: 'Deposit 50% untuk bermula. Bakinya dibayar selepas laman web siap dan anda luluskan.' },
       { fig: '100%', unit: 'milik anda', proof: 'Tertulis dalam terma & syarat', title: 'Milik anda sepenuhnya', body: 'Untuk pakej laman web: selepas bayaran penuh, kod sumber, domain, hosting dan akses pentadbir diserahkan kepada anda.' },
       { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Tertulis dalam soalan lazim', title: 'Pantas di telefon', body: `Setiap laman web kami optimumkan ke arah skor PageSpeed ${PERF_TARGET}. Itu sasaran kerja, bukan dakwaan purata.` },

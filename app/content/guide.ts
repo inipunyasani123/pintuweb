@@ -4,7 +4,7 @@
 // diberi skor. Seri dipecah oleh kecocokan tujuan utama, lalu harga termurah. Semua 6 × 3 × 3 kombinasi dihitung
 // di server (GUIDE_RESULTS), jadi komponen kliennya hanya membaca tabel. Paket tanpa ciri di FIT (Konsep Desain)
 // sengaja tidak pernah disarankan pemandu; ia tetap ada di daftar paket.
-import { PACKAGES } from '../lib/packages'
+import { PACKAGES, isPriced } from '../lib/packages'
 
 export const GUIDE_PURPOSE = ['usaha', 'jual', 'diri', 'acara', 'properti', 'tim'] as const
 export const GUIDE_SIZE = ['satu', 'beberapa', 'banyak'] as const
@@ -76,7 +76,8 @@ function score(slug: string, purpose: GuidePurpose, size: GuideSize, extra: Guid
 
 function rank(purpose: GuidePurpose, size: GuideSize, extra: GuideExtra) {
   return PACKAGES.filter((p) => FIT[p.slug])
-    .map((p) => ({ slug: p.slug, price: p.minPrice, ...score(p.slug, purpose, size, extra) }))
+    // paket "sesuai kebutuhan" tanpa angka kalah pada seri harga
+    .map((p) => ({ slug: p.slug, price: isPriced(p) ? p.minPrice : Infinity, ...score(p.slug, purpose, size, extra) }))
     .sort((a, b) => b.s - a.s || Number(b.main) - Number(a.main) || a.price - b.price)
 }
 

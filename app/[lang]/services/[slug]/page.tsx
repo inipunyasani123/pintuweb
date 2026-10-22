@@ -15,7 +15,7 @@ import { faqJsonLd } from '../../../content/faq'
 import { categoriesFor, demosFor, getDict, getPages, isLang, LANG_INFO, type Lang } from '../../../i18n'
 import { SERVICE_SLUGS, serviceKeyBySlug } from '../../../i18n/slugs'
 import { hasPage, path, pathOf, urlOf } from '../../../i18n/routes'
-import { ORG_ID, pageGraph, pageMeta } from '../../../i18n/seo'
+import { ORG_ID, offerPrice, pageGraph, pageMeta } from '../../../i18n/seo'
 import { PACKAGES } from '../../../lib/packages'
 import { portalOf } from '../../../lib/portals'
 import { DEMOS, demoSrcSet, demoThumb } from '../../../lib/demos'
@@ -99,9 +99,7 @@ export default async function ServicePage({ params }: Params) {
               '@type': 'Offer',
               name: pk.title,
               url: urlOf(lang, { key: 'pricing' }),
-              priceCurrency: 'IDR',
-              price: raw.minPrice,
-              priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'IDR', minPrice: raw.minPrice, ...(raw.openEnded ? {} : { maxPrice: raw.maxPrice }) },
+              ...offerPrice(raw),
             }
           }),
         }

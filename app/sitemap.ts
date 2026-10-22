@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     contact: [0.6, 'yearly'],
     glossary: [0.6, 'monthly'],
     founder: [0.5, 'yearly'],
+    payment: [0.6, 'monthly'],
     privacy: [0.2, 'yearly'],
     terms: [0.2, 'yearly'],
   }

@@ -28,7 +28,7 @@ import { facts, packagesFor } from '../../i18n/facts'
 import { demosFor, getDict, isLang, LANG_INFO, type Lang } from '../../i18n'
 import { hasPage, path, pathOf, urlOf } from '../../i18n/routes'
 import { ORG_ID, localAreaServed, pageGraph, pageMeta } from '../../i18n/seo'
-import { PACKAGES } from '../../lib/packages'
+import { PACKAGES, pricedOnly } from '../../lib/packages'
 import { CATEGORY_COLOR } from '../../lib/portals'
 import { demoSrcSet, demoThumb } from '../../lib/demos'
 import { wa } from '../../lib/site'
@@ -77,7 +77,8 @@ export default async function LocalPage({ params }: Params) {
   const related = articlesIn(lang).filter((a) => t.articles.includes(a.key))
   const faq = t.faq.map((x) => ({ question: x.q, answer: x.a }))
 
-  const lows = LOCAL_PACKAGES.map((s) => PACKAGES.find((p) => p.slug === s)!)
+  // paket berharga saja (paket "sesuai kebutuhan" tidak punya angka untuk lowPrice/highPrice)
+  const lows = pricedOnly(LOCAL_PACKAGES.map((s) => PACKAGES.find((p) => p.slug === s)!))
   const serviceLd = {
     '@type': 'Service',
     '@id': `${url}#service`,

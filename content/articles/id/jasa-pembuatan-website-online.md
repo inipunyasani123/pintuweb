@@ -82,7 +82,7 @@ Minta pratinjau yang bisa kamu buka sendiri. Di PintuWeb, kamu menerima pratinja
 
 ### Saya tinggal di luar negeri, bisakah memesan website untuk usaha keluarga di Indonesia?
 
-Bisa. Komunikasi berjalan lewat WhatsApp dan email dalam bahasa Indonesia, Inggris, atau Melayu. Pembayaran di PintuWeb memakai transfer bank Indonesia, e-wallet, atau QRIS, jadi pastikan salah satunya bisa kamu pakai.
+Bisa. Komunikasi berjalan lewat WhatsApp dan email dalam bahasa Indonesia, Inggris, atau Melayu. Pembayaran di PintuWeb bisa lewat QRIS, transfer bank, DANA, SeaBank, atau USDT, jadi pastikan salah satunya bisa kamu pakai.
 
 ### Apa yang perlu disiapkan sebelum konsultasi online?
 

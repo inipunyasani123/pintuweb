@@ -11,7 +11,7 @@ takeaways:
 - Tulungagung dikenal sebagai Kota Marmer; BPS mencatat ubin, mozaik, dan wastafel marmer serta onyx dari Tulungagung diekspor ke Amerika, Eropa, dan Asia.
 - Untuk pesanan grosir dan ekspor, pakai formulir permintaan penawaran yang menanyakan jumlah, ukuran, negara tujuan, dan jadwal, bukan sekadar tombol beli.
 - Tambahkan versi bahasa Inggris dan data terstruktur produk supaya halaman mudah dibaca pembeli dan mesin pencari.
-- Di PintuWeb, katalog dengan pesan lewat WhatsApp mulai {{from:toko-online-simple}}; katalog dua bahasa dengan formulir khusus dikerjakan sebagai Website Custom mulai {{from:website-custom}}.
+- Di PintuWeb, katalog dengan pesan lewat WhatsApp mulai {{from:toko-online-simple}}; katalog dua bahasa dengan formulir khusus dikerjakan sebagai Website Custom, yang harganya dihitung sesuai kebutuhan setelah konsultasi gratis.
 sources:
 - BPS Kabupaten Tulungagung — Kabupaten Tulungagung Dalam Angka 2026 | https://tulungagungkab.bps.go.id/id/publication/2026/02/27/f584576d427a85d6aef19730/kabupaten-tulungagung-dalam-angka-2026.html
 - detikJatim — Tentang Desa Besole yang Bikin Tulungagung Dijuluki Kota Marmer | https://www.detik.com/jatim/budaya/d-7036125/tentang-desa-besole-yang-bikin-tulungagung-dijuluki-kota-marmer

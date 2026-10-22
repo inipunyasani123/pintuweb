@@ -103,7 +103,7 @@ const pages: Pages = {
       { title: 'Оплата остальных 50%', body: `Сайт запускается, и начинается гарантия на ${days}.` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `Пример: ${pkg} от ${price} → предоплата ${dp}, остаток ${rest}.`,
-    payMethods: 'Оплата банковским переводом в Индонезии, электронным кошельком (OVO, GoPay, DANA) или через QRIS. Счёт приходит до оплаты.',
+    payMethods: 'Оплата через QRIS, банковским переводом, через DANA, SeaBank или в USDT. Счёт приходит до оплаты.',
   },
   demo: {
     title: (n: number) => `Галерея демо — ${n} ${siteWord(n)}`,

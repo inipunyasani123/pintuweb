@@ -92,7 +92,7 @@ const pages: Pages = {
       { title: 'Paga el 50% restante', body: `El sitio se publica y empieza la garantía de ${GUARANTEE_DAYS} días.` },
     ],
     payExample: (pkg: string, price: string, dp: string, rest: string) => `Ejemplo: ${pkg} desde ${price} → anticipo de ${dp} y ${rest} al final.`,
-    payMethods: 'Paga por transferencia bancaria indonesia, monedero electrónico (OVO, GoPay, DANA) o QRIS. La factura se envía antes del pago.',
+    payMethods: 'Paga con QRIS, transferencia bancaria, DANA, SeaBank o USDT. La factura se envía antes del pago.',
   },
   demo: {
     title: (n: number) => `Galería de demos — ${n} sitios para probar`,

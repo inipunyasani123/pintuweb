@@ -21,7 +21,8 @@ export default function Header(props: HeaderProps) {
       name: text.name,
       short: text.short,
       // "IDR 300,000": kode mata uang tidak boleh terpisah baris dari angkanya
-      from: from ? `${d.common.from} ${from.price.replace('IDR ', 'IDR ')}` : undefined,
+      // semua paket layanan tanpa angka: kalimatnya saja ("Sesuai kebutuhan"), tanpa kata "mulai"
+      from: from ? (from.quote ? from.price : `${d.common.from} ${from.price.replace('IDR ', 'IDR ')}`) : undefined,
       href: pathOf(lang, { key: 'services', service: s.key }),
     }
   })

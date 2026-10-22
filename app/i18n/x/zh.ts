@@ -11,7 +11,7 @@ const zh: Pack = {
     serves: '为各地客户提供远程服务',
     payment:
       '所有套餐：先付 50% 定金开工，网站完成并经您确认后再付剩余 50%。' +
-      '支持印度尼西亚银行转账、电子钱包（OVO、GoPay、DANA）和 QRIS。付款前会先发送账单。',
+      '支持 QRIS、银行转账、DANA、SeaBank 和 USDT；收款账号或钱包地址写在账单上。付款前会先发送账单。',
     renewal:
       `套餐包含的域名和主机涵盖第一年。从第二年起，网站的续费约为每年 ${renewal}，Link in Bio 页面约为每年 ` +
       `${renewalBio}；带数据库的系统和 Web 应用的费用会在报价单中注明。` +

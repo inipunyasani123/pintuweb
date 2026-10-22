@@ -72,7 +72,7 @@ export default async function ServicesPage({ params }: Params) {
                     <span className="col-span-2 text-[0.9375rem] leading-snug text-[color:var(--text-tertiary)] md:col-span-3 md:text-end">
                       {from ? (
                         <>
-                          {p.from} <span className="whitespace-nowrap font-semibold text-[color:var(--text-primary)]">{from.price}</span>
+                          {from.quote ? '' : `${p.from} `}<span className="whitespace-nowrap font-semibold text-[color:var(--text-primary)]">{from.price}</span>
                           <span aria-hidden="true" className="md:hidden">
                             {' · '}
                           </span>

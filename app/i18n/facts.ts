@@ -2,7 +2,7 @@
 // (satu-satunya sumber); di sini hanya cara menuliskannya.
 import { CITY, CLOSES, GUARANTEE_DAYS, HOURS, LOCATION, OPENS, PERF_TARGET, RESPONSE, dotTime } from '../lib/site'
 import { DEMOS } from '../lib/demos'
-import { ADDONS, PACKAGES, PAYMENT_SUMMARY, RENEWAL_BIO_PER_YEAR, RENEWAL_PER_YEAR, RENEWAL_SUMMARY, type Paket, type Waktu } from '../lib/packages'
+import { ADDONS, PACKAGES, PAYMENT_SUMMARY, RENEWAL_BIO_PER_YEAR, RENEWAL_PER_YEAR, RENEWAL_SUMMARY, isPriced, pricedOnly, type Paket, type PaketBerharga, type Waktu } from '../lib/packages'
 import { LANG_INFO, isBase, type BaseLang, type Lang } from './config'
 import { ADDON_TEXT, PACKAGE_GROUP_TEXT, PACKAGE_TEXT } from '../content/packages-text'
 import { pack } from './x'
@@ -30,7 +30,8 @@ const FACTS: Record<BaseLang, Facts> = {
     serves: 'Working with clients remotely',
     payment:
       'Every package: a 50% deposit to start, and the remaining 50% once the website is finished and you have approved it. ' +
-      'We accept Indonesian bank transfer, e-wallets (OVO, GoPay, DANA) and QRIS. The invoice is sent before you pay.',
+      'We accept QRIS, bank transfer, DANA, SeaBank and USDT; the account number or wallet address is on the invoice. ' +
+      'The invoice is sent before you pay.',
     renewal:
       'The domain and hosting included in a package cover the first year. From the second year, renewal costs roughly ' +
       `${money('en', RENEWAL_PER_YEAR.min)}–${money('en', RENEWAL_PER_YEAR.max).replace('IDR ', '')} per year for websites and ` +
@@ -48,7 +49,8 @@ const FACTS: Record<BaseLang, Facts> = {
     serves: 'Bekerja dengan pelanggan secara jarak jauh',
     payment:
       'Semua pakej: deposit 50% untuk bermula, baki 50% selepas laman web siap dan anda luluskan. ' +
-      'Kami menerima pindahan bank Indonesia, e-dompet (OVO, GoPay, DANA) dan QRIS. Invois dihantar sebelum pembayaran.',
+      'Kami menerima QRIS, pindahan bank, DANA, SeaBank dan USDT; nombor akaun atau alamat dompet tertera pada invois. ' +
+      'Invois dihantar sebelum pembayaran.',
     renewal:
       'Domain dan hosting dalam pakej sah untuk tahun pertama. Mulai tahun kedua, kos pembaharuan sekitar ' +
       `${money('ms', RENEWAL_PER_YEAR.min)}–${money('ms', RENEWAL_PER_YEAR.max).replace('IDR ', '')} setahun untuk laman web dan ` +
@@ -92,8 +94,30 @@ function rawMoney(lang: Lang, n: number) {
   return `IDR ${new Intl.NumberFormat(LANG_INFO[lang].intl, { maximumFractionDigits: 0 }).format(n)}`
 }
 
-export const moneyRange = (lang: Lang, p: Paket) =>
+export const moneyRange = (lang: Lang, p: PaketBerharga) =>
   iso(lang, `${rawMoney(lang, p.minPrice)} – ${rawMoney(lang, p.maxPrice)}${p.openEnded ? '+' : ''}`)
+
+/**
+ * Teks untuk paket TANPA perkiraan harga (`quote` di lib/packages.ts), per bahasa:
+ * - `from`: pengganti angka "mulai Rp…" (ditampilkan tanpa kata "mulai");
+ * - `line`: kalimat lengkap pengganti kisaran harga;
+ * - `deposit`: sambungan label DP ("DP 50%" + "dari penawaran");
+ * - `label`: judul isian harga bila label "mulai" tidak cocok.
+ */
+const QUOTE_TEXT: Record<Lang, { from: string; line: string; deposit: string; label: string }> = {
+  id: { from: 'Sesuai kebutuhan', line: 'Harga sesuai kebutuhan · konsultasi gratis', deposit: 'dari nilai penawaran', label: 'Harga' },
+  en: { from: 'Priced to your needs', line: 'Priced to your needs · free consultation', deposit: 'of the quoted price', label: 'Price' },
+  ms: { from: 'Ikut keperluan', line: 'Harga ikut keperluan · konsultasi percuma', deposit: 'daripada nilai sebut harga', label: 'Harga' },
+  es: { from: 'Según tus necesidades', line: 'Precio según tus necesidades · consulta gratuita', deposit: 'del presupuesto', label: 'Precio' },
+  fr: { from: 'Selon vos besoins', line: 'Prix selon vos besoins · consultation gratuite', deposit: 'du devis', label: 'Prix' },
+  pt: { from: 'Conforme a necessidade', line: 'Preço conforme a sua necessidade · consulta gratuita', deposit: 'do orçamento', label: 'Preço' },
+  ru: { from: 'По вашей задаче', line: 'Цена по вашей задаче · бесплатная консультация', deposit: 'от суммы сметы', label: 'Цена' },
+  zh: { from: '按需报价', line: '按需报价 · 免费咨询', deposit: '按报价金额计算', label: '价格' },
+  hi: { from: 'ज़रूरत के अनुसार', line: 'क़ीमत ज़रूरत के अनुसार · मुफ़्त परामर्श', deposit: 'कोटेशन की राशि का', label: 'क़ीमत' },
+  bn: { from: 'প্রয়োজন অনুযায়ী', line: 'দাম প্রয়োজন অনুযায়ী · বিনামূল্যে পরামর্শ', deposit: 'কোটেশনের অঙ্কের', label: 'দাম' },
+  ar: { from: 'حسب احتياجك', line: 'السعر حسب احتياجك · استشارة مجانية', deposit: 'من قيمة عرض السعر', label: 'السعر' },
+}
+export const quoteText = (lang: Lang) => QUOTE_TEXT[lang]
 
 /** Angka ringkas untuk papan harga: "300 rb" / "1,25 jt" (id), "300k" / "1.25M" (en), "300 ribu" / "1.25 juta" (ms). */
 function compact(lang: Lang, n: number) {
@@ -118,10 +142,14 @@ export const moneyCompact = compact
 export const currencyCode = (lang: Lang) => (lang === 'id' ? 'Rp' : 'IDR')
 
 /** "Rp600 rb – 1,2 jt" (id) / "IDR 600k – 1.2M" (en) — mata uang sekali saja di depan. */
-export const moneyShort = (lang: Lang, p: Pick<Paket, 'minPrice' | 'maxPrice' | 'openEnded'>) =>
+export const moneyShort = (lang: Lang, p: Pick<PaketBerharga, 'minPrice' | 'maxPrice' | 'openEnded'>) =>
   `${lang === 'id' ? 'Rp' : 'IDR '}${compact(lang, p.minPrice)} – ${compact(lang, p.maxPrice)}${p.openEnded ? '+' : ''}`
 
-/** Paket dengan teks sesuai bahasa; angka selalu dari PACKAGES. */
+/**
+ * Paket dengan teks sesuai bahasa; angka selalu dari PACKAGES. Paket "sesuai kebutuhan" (quote) tidak punya angka:
+ * priceFrom/priceRange/deposit-nya berisi kalimat dari quoteText(), jadi tampilan yang menulis "mulai {priceFrom}"
+ * wajib memeriksa `quote` dulu.
+ */
 export type LocalPaket = Paket & { priceFrom: string; priceRange: string; deposit: string }
 
 /** Perkiraan waktu pengerjaan dalam bahasa pengunjung, mis. "1–2 working days" / "1–3 minggu, bergantung pada ciri". */
@@ -143,17 +171,26 @@ export function packagesFor(lang: Lang): LocalPaket[] {
   return PACKAGES.map((p) => {
     const t = lang === 'id' ? null : isBase(lang) ? PACKAGE_TEXT[lang][p.slug] : pack(lang).packages[p.slug]
     const base: Paket = t ? { ...p, ...t } : p
-    return {
-      ...base,
-      duration: durationText(lang, p.time),
-      priceFrom: money(lang, p.minPrice),
-      priceRange: moneyRange(lang, p),
-      deposit: money(lang, Math.round(p.minPrice / 2)),
-    }
+    const q = quoteText(lang)
+    const price = isPriced(p)
+      ? { priceFrom: money(lang, p.minPrice), priceRange: moneyRange(lang, p), deposit: money(lang, Math.round(p.minPrice / 2)) }
+      : { priceFrom: q.from, priceRange: q.line, deposit: q.deposit }
+    return { ...base, duration: durationText(lang, p.time), ...price }
   })
 }
 
-export const minPrice = () => Math.min(...PACKAGES.map((p) => p.minPrice))
+/**
+ * Contoh angka cara bayar (halaman harga & halaman Cara Bayar): paket berharga yang direkomendasikan di lib/packages.ts,
+ * harga mulainya, DP 50%, dan pelunasannya. Ikut berubah bila harga berubah.
+ */
+export function paySample(lang: Lang) {
+  const priced = packagesFor(lang).filter(isPriced)
+  const p = priced.find((x) => x.recommended) ?? priced[0]
+  return { slug: p.slug, title: p.title, price: p.priceFrom, deposit: p.deposit, rest: money(lang, p.minPrice - Math.round(p.minPrice / 2)) }
+}
+
+/** Harga mulai paling rendah di antara paket berharga (paket "sesuai kebutuhan" tidak dihitung). */
+export const minPrice = () => Math.min(...pricedOnly(PACKAGES).map((p) => p.minPrice))
 
 /** Paket dengan perkiraan pengerjaan tercepat dan terlama (dari `time` di packages.ts; satu minggu = 5 hari kerja). */
 export function durationSpan(lang: Lang) {
@@ -206,6 +243,12 @@ export function fillFacts(lang: Lang, s: string): string {
     if (!p) throw new Error(`Paket tidak dikenal: ${slug}`)
     return p
   }
+  // "mulai {{from:…}}" dan "hingga {{max:…}}" tidak punya arti untuk paket tanpa perkiraan harga: tulis ulang kalimatnya
+  const numbered = (slug: string, marker: string) => {
+    const p = bySlug(slug)
+    if (!isPriced(p)) throw new Error(`{{${marker}:${slug}}}: paket ini harganya sesuai kebutuhan, tanpa angka`)
+    return p
+  }
   const renewal =
     lang === 'id'
       ? `${money('id', RENEWAL_PER_YEAR.min)}–${money('id', RENEWAL_PER_YEAR.max)}`
@@ -218,9 +261,9 @@ export function fillFacts(lang: Lang, s: string): string {
   ].join('\n')
   const out = s
     .replace(/\{\{pricetable\}\}/g, table)
-    .replace(/\{\{from:([a-z-]+)\}\}/g, (_, slug) => bySlug(slug).priceFrom)
+    .replace(/\{\{from:([a-z-]+)\}\}/g, (_, slug) => numbered(slug, 'from').priceFrom)
     .replace(/\{\{price:([a-z-]+)\}\}/g, (_, slug) => bySlug(slug).priceRange)
-    .replace(/\{\{max:([a-z-]+)\}\}/g, (_, slug) => money(lang, bySlug(slug).maxPrice))
+    .replace(/\{\{max:([a-z-]+)\}\}/g, (_, slug) => money(lang, numbered(slug, 'max').maxPrice))
     .replace(/\{\{duration:([a-z-]+)\}\}/g, (_, slug) => bySlug(slug).duration)
     .replace(/\{\{renewal\}\}/g, renewal)
     .replace(/\{\{guarantee\}\}/g, String(GUARANTEE_DAYS))
