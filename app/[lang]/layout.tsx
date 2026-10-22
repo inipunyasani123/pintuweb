@@ -2,7 +2,6 @@
 import '../globals.css'
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -14,13 +13,18 @@ import { hasPage, path } from '../i18n/routes'
 import { rssTypes, siteGraph } from '../i18n/seo'
 
 // Huruf bergaya Apple. Perangkat Apple memakai SF Pro bawaan sistem (-apple-system di globals.css;
-// SF Pro sendiri tidak boleh di-embed di web). Perangkat lain memakai Inter, padanan terbuka yang paling
-// dekat; sumbu optical size membuat judul besar memakai potongan "display" seperti SF Pro Display.
-// `subsets` hanya menentukan berkas yang di-preload di SETIAP halaman, jadi cukup 'latin'. @font-face untuk subset
-// lain (termasuk Kiril untuk versi Rusia) tetap ada di CSS dengan unicode-range-nya, dan berkasnya baru diunduh bila
-// halaman memang memuat huruf itu. Aksara lain (Mandarin, Hindi, Bengali, Arab) memakai huruf bawaan perangkat lewat
-// daftar cadangan di globals.css.
-const inter = Inter({ subsets: ['latin'], axes: ['opsz'], variable: '--font-inter', display: 'swap' })
+// SF Pro sendiri tidak boleh di-embed di web). Perangkat lain memakai Inter (wght + opsz), padanan terbuka yang paling
+// dekat; @font-face-nya di globals.css, berkasnya di public/fonts. Subset latin perlu dipramuat supaya teks tidak
+// menunggu, tetapi pramuat biasa ikut mengunduh ±72 KB di iPhone/Mac yang tidak memakainya. Jadi pramuatnya dipasang
+// skrip kecil ini: ukur lebar teks di kanvas dengan tiap huruf sistem Apple dari tumpukan huruf; bila semuanya sama
+// dengan monospace (hurufnya tidak ada), pasang <link rel="preload"> Inter latin. Subset lain (mis. Kiril untuk versi
+// Rusia) tetap diunduh hanya bila halaman memuat hurufnya. Ganti berkas Inter = ganti juga alamat di sini.
+const INTER_LATIN = '/fonts/inter-latin.32b04a22.woff2'
+// Kode skripnya sengaja tanpa kutip, & dan < (hanya backtick), supaya atribut src data: tidak membengkak oleh escape.
+const preloadInter =
+  'try{var c=document.createElement(`canvas`).getContext(`2d`),w=function(f){c.font=`40px ${f},monospace`;return c.measureText(`mmmmmmmmmmiiiiil`).width},m=w(`monospace`);' +
+  '[`-apple-system`,`BlinkMacSystemFont`,`SF Pro Text`].some(function(f){return w(f)!=m})||document.head.appendChild(Object.assign(document.createElement(`link`),' +
+  `{rel:\`preload\`,as:\`font\`,type:\`font/woff2\`,crossOrigin:\`\`,href:\`${INTER_LATIN}\`}))}catch(e){}`
 
 /** Naikkan bila favicon/ikon berubah: browser menyimpan favicon lama sangat lama, parameter ini memaksanya mengambil ulang. */
 const ICON_REV = 3
@@ -90,7 +94,11 @@ export default async function LangLayout({ children, params }: { children: React
   ]
 
   return (
-    <html lang={LANG_INFO[lang].htmlLang} dir={LANG_INFO[lang].dir} className={inter.variable} suppressHydrationWarning>
+    <html lang={LANG_INFO[lang].htmlLang} dir={LANG_INFO[lang].dir} suppressHydrationWarning>
+      <head>
+        {/* async + data: supaya tidak menunggu CSS selesai dimuat (skrip inline di <head> menunggu stylesheet di depannya) */}
+        <script async src={`data:text/javascript,${preloadInter}`} />
+      </head>
       <body className="antialiased">
         <a href="#main-content" className="skip-link">{t.common.skip}</a>
         <Header

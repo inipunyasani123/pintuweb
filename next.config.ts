@@ -22,7 +22,7 @@ const notId = ["_next", "_vercel", "api", ...LANGS].map((p) => `${p}(?:/|$)`).jo
 // Gambar di public/demos & public/images berganti NAMA bila isinya berubah (favicon memakai ?v=), jadi aman
 // disimpan browser/CDN selama seminggu.
 const assetCache = [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }];
-// Varian gambar statis (public/_img) memuat hash isi di namanya: aman disimpan selamanya.
+// Varian gambar statis (public/_img) dan berkas huruf (public/fonts) memuat hash isi di namanya: aman disimpan selamanya.
 const immutable = [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }];
 
 const nextConfig: NextConfig = {
@@ -44,6 +44,7 @@ const nextConfig: NextConfig = {
       { source: "/demos/:path*", headers: assetCache },
       { source: "/images/:path*", headers: assetCache },
       { source: "/_img/:path*", headers: immutable },
+      { source: "/fonts/:path*", headers: immutable },
     ];
   },
   async redirects() {
