@@ -158,7 +158,7 @@ const more: More = {
       suits: "Caja, fidelización, reservas, escuelas",
       faq: [
         { q: "¿La app funciona en Android y en iPhone?", a: "Sí. Las apps se crean con React Native y Expo, así que un solo código genera las apps Android e iOS, además de una versión web que se abre en el navegador." },
-        { q: "¿PintuWeb publica la app en Play Store y App Store?", a: "No. Entregamos los archivos de la app y su código fuente; tú publicas en Google Play y App Store con cuentas de desarrollador a tu nombre (Google Play Console y Apple Developer Program, ambas de pago). Así la app queda registrada a nombre de tu negocio." },
+        { q: "¿PintuWeb publica la app en Play Store y App Store?", a: "No. Entregamos los archivos de la app y su código fuente; tú publicas en Google Play y App Store con cuentas de desarrollador a tu nombre (Google Play Console y Apple Developer Program, ambas de pago). Así la app queda registrada a nombre de tu negocio. La garantía de corrección de errores de {{guarantee}} días rige desde la entrega de la app." },
         { q: "¿Cuánto cuesta una app y cuánto se tarda?", a: "El rango es {{price:aplikasi-mobile}}, con un plazo de {{duration:aplikasi-mobile}} una vez que el contenido y los flujos de la app están completos. La cifra exacta depende del número de pantallas y funciones, y figura en un presupuesto escrito antes de empezar. Un anticipo del 50 % pone en marcha el trabajo." },
         { q: "¿Puedo probar las apps de demostración sin instalar nada?", a: "Sí. Las demos de nuestra galería son la versión web de las mismas apps, así que se abren directamente en el navegador del móvil o del portátil. Los negocios y los datos son ficticios." },
       ],

@@ -1,4 +1,5 @@
 // Paquete de idioma — Español (traducción de la versión inglesa). Las cifras llegan por contexto; aquí solo hay texto.
+import { GUARANTEE_DAYS } from '../../lib/site'
 import type { Pack } from './types'
 
 const es: Pack = {
@@ -220,6 +221,7 @@ const es: Pack = {
         "Notificaciones y panel de administración según se necesite",
         "Entrega de los archivos de la app + código fuente",
         "La publicación en Play Store/App Store la gestiona el cliente con sus propias cuentas de desarrollador",
+        `Garantía de ${GUARANTEE_DAYS} días contra errores desde la entrega`,
       ],
     },
     'konsep-desain': {
@@ -387,7 +389,7 @@ const es: Pack = {
     ['¿Hay un panel de administración o CMS?', 'Los paquetes de tienda en línea, sistema de reservas, inmobiliario y aplicación web incluyen un panel de administración. En los demás paquetes, los cambios de contenido pueden hacerse a través de nosotros durante el periodo de mantenimiento, o puede añadirse un CMS como función.'],
     ['¿Cómo se mantiene seguro el sitio web?', 'Todos los sitios usan SSL (HTTPS), cabeceras de seguridad y validación de entradas. El código se guarda en un repositorio Git para poder restaurar versiones anteriores, y durante el mantenimiento actualizamos las dependencias con regularidad.'],
     ['¿Puede conectarse el sitio con redes sociales u otros servicios?', 'Sí: botones de WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, email marketing e incluso pasarelas de pago en los paquetes de tienda en línea.'],
-    ["¿Publican la app en Play Store y App Store?", "La publicación la hace el cliente. Entregamos los archivos de la app y su código fuente, y tú los publicas en Google Play y App Store con cuentas de desarrollador a tu nombre (Google Play Console y Apple Developer Program, ambas de pago). Así la app queda registrada a nombre de tu negocio."],
+    ["¿Publican la app en Play Store y App Store?", "La publicación la hace el cliente. Entregamos los archivos de la app y su código fuente, y tú los publicas en Google Play y App Store con cuentas de desarrollador a tu nombre (Google Play Console y Apple Developer Program, ambas de pago). Así la app queda registrada a nombre de tu negocio. " + `La garantía de corrección de errores de ${c.days} días rige desde la entrega de la app.`],
     // Soporte
     ['¿Hay garantía?', `Sí. Durante ${c.days} días tras el lanzamiento, los errores y problemas técnicos se corrigen gratis. Después, el mantenimiento sigue lo que incluye tu paquete y puede ampliarse mensualmente o bajo petición.`],
     ['¿Cómo actualizo el contenido una vez terminado el sitio?', 'Con los paquetes de tienda en línea puedes gestionar los productos tú mismo. En los demás paquetes, basta con enviar los cambios por WhatsApp; durante el periodo de mantenimiento, las actualizaciones pequeñas, como textos, imágenes o datos de contacto, son gratuitas. También te damos una guía breve para gestionar el sitio.'],

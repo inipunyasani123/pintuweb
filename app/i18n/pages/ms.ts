@@ -282,6 +282,7 @@ const pages: Pages = {
       { text: 'Deposit 50% untuk bermula, baki 50% selepas laman web siap dan anda luluskan.', to: 'pembayaran' },
       { text: `Pepijat dan masalah teknikal dibaiki secara percuma selama ${days} hari selepas laman web dilancarkan.`, to: 'garansi' },
       { text: 'Selepas bayaran penuh, laman web menjadi milik anda sepenuhnya (kecuali tema jemputan dan Konsep Reka Bentuk).', to: 'kepemilikan' },
+      { text: 'Aplikasi mudah alih: fail aplikasi dan kod sumber diserahkan selepas bayaran penuh; anda menerbitkannya ke Google Play dan App Store dengan akaun pembangun sendiri.', to: 'kepemilikan' },
     ],
   },
   articles: {

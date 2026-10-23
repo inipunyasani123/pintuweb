@@ -1,4 +1,5 @@
 // Paquet de langue — Français (traduction de la version anglaise). Les chiffres arrivent par le contexte ; ici, uniquement du texte.
+import { GUARANTEE_DAYS } from '../../lib/site'
 import type { Pack } from './types'
 
 const fr: Pack = {
@@ -220,6 +221,7 @@ const fr: Pack = {
         "Notifications et tableau de bord d’administration selon les besoins",
         "Remise des fichiers de l’appli + code source",
         "Publication sur le Play Store/l’App Store gérée par le client, avec ses propres comptes développeur",
+        `Garantie de ${GUARANTEE_DAYS} jours sur les bugs dès la remise`,
       ],
     },
     'konsep-desain': {
@@ -387,7 +389,7 @@ const fr: Pack = {
     ['Y a-t-il une interface d’administration ou un CMS ?', 'Les formules boutique en ligne, système de réservation, immobilier et application web comprennent une interface d’administration. Pour les autres formules, les modifications de contenu peuvent passer par nous pendant la période de maintenance, ou un CMS peut être ajouté en option.'],
     ['Comment la sécurité du site est-elle assurée ?', 'Chaque site utilise SSL (HTTPS), des en-têtes de sécurité et la validation des saisies. Le code est conservé dans un dépôt Git afin de pouvoir restaurer des versions antérieures, et pendant la maintenance nous mettons régulièrement à jour les dépendances.'],
     ['Le site peut-il se connecter aux réseaux sociaux ou à d’autres services ?', 'Oui : boutons WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, e-mail marketing et même passerelles de paiement pour les formules boutique en ligne.'],
-    ["Publiez-vous l’appli sur le Play Store et l’App Store ?", "La publication est faite par le client. Nous remettons les fichiers de l’appli et leur code source, et vous les publiez sur Google Play et l’App Store avec des comptes développeur à votre nom (Google Play Console et Apple Developer Program, tous deux payants). Ainsi, l’appli est enregistrée au nom de votre entreprise."],
+    ["Publiez-vous l’appli sur le Play Store et l’App Store ?", "La publication est faite par le client. Nous remettons les fichiers de l’appli et leur code source, et vous les publiez sur Google Play et l’App Store avec des comptes développeur à votre nom (Google Play Console et Apple Developer Program, tous deux payants). Ainsi, l’appli est enregistrée au nom de votre entreprise. " + `La garantie de correction des bugs de ${c.days} jours court à partir de la remise de l’appli.`],
     // Assistance
     ['Y a-t-il une garantie ?', `Oui. Pendant ${c.days} jours après la mise en ligne, les bugs et problèmes techniques sont corrigés gratuitement. Ensuite, la maintenance suit ce que prévoit votre formule et peut être prolongée au mois ou à la demande.`],
     ['Comment mettre à jour le contenu une fois le site terminé ?', 'Avec les formules boutique en ligne, vous gérez vous-même les produits. Pour les autres formules, envoyez simplement les modifications sur WhatsApp ; pendant la période de maintenance, les petites mises à jour, comme les textes, les images ou les coordonnées, sont gratuites. Nous vous remettons aussi un court guide de gestion du site.'],

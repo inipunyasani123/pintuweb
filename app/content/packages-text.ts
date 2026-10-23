@@ -1,6 +1,7 @@
 // Teks paket dalam bahasa Inggris & Melayu. Harga dan slug TIDAK ada di sini —
 // keduanya selalu dari lib/packages.ts.
 import type { Paket, PaketGroup } from '../lib/packages'
+import { GUARANTEE_DAYS } from '../lib/site'
 
 // Waktu pengerjaan tidak ditulis di sini: teksnya dirakit dari data paket oleh durationText() di i18n/facts.ts.
 type PaketText = Pick<Paket, 'title' | 'subtitle' | 'highlights' | 'features'> & { badge?: string }
@@ -201,6 +202,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
         'Notifications and an admin dashboard as needed',
         'Handover of the app files + source code',
         'Play Store/App Store release handled by the client, with their own developer accounts',
+        `${GUARANTEE_DAYS}-day bug-fix guarantee from the day the app is handed over`,
       ],
     },
     'konsep-desain': {
@@ -412,6 +414,7 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
         "Pemberitahuan dan papan pemuka admin mengikut keperluan",
         "Serahan fail aplikasi + kod sumber",
         "Penerbitan ke Play Store/App Store diuruskan pelanggan dengan akaun pembangun sendiri",
+        `Jaminan pembaikan pepijat ${GUARANTEE_DAYS} hari sejak aplikasi diserahkan`,
       ],
     },
     'konsep-desain': {

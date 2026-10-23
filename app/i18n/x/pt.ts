@@ -1,4 +1,5 @@
 // Pacote de idioma — Português (tradução da versão em inglês). Os números chegam pelo contexto; aqui há apenas texto.
+import { GUARANTEE_DAYS } from '../../lib/site'
 import type { Pack } from './types'
 
 const pt: Pack = {
@@ -220,6 +221,7 @@ const pt: Pack = {
         "Notificações e painel administrativo conforme a necessidade",
         "Entrega dos arquivos do app + código-fonte",
         "Publicação na Play Store/App Store feita pelo cliente, com as próprias contas de desenvolvedor",
+        `Garantia de ${GUARANTEE_DAYS} dias contra bugs a partir da entrega`,
       ],
     },
     'konsep-desain': {
@@ -387,7 +389,7 @@ const pt: Pack = {
     ['Existe um painel administrativo ou CMS?', 'Os pacotes de loja online, sistema de reservas, imobiliário e aplicativo web incluem um painel administrativo. Nos demais pacotes, as alterações de conteúdo podem ser feitas por nós durante o período de manutenção, ou um CMS pode ser adicionado como recurso.'],
     ['Como o site é mantido seguro?', 'Todo site usa SSL (HTTPS), cabeçalhos de segurança e validação de entradas. O código fica em um repositório Git, para que versões anteriores possam ser restauradas, e durante a manutenção atualizamos as dependências regularmente.'],
     ['O site pode se conectar a redes sociais ou outros serviços?', 'Sim: botões do WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, e-mail marketing e até gateways de pagamento nos pacotes de loja online.'],
-    ["Vocês publicam o app na Play Store e na App Store?", "A publicação é feita pelo cliente. Entregamos os arquivos do app e o código-fonte, e você os publica no Google Play e na App Store com contas de desenvolvedor no seu nome (Google Play Console e Apple Developer Program, ambas pagas). Assim o app fica registrado em nome do seu negócio."],
+    ["Vocês publicam o app na Play Store e na App Store?", "A publicação é feita pelo cliente. Entregamos os arquivos do app e o código-fonte, e você os publica no Google Play e na App Store com contas de desenvolvedor no seu nome (Google Play Console e Apple Developer Program, ambas pagas). Assim o app fica registrado em nome do seu negócio. " + `A garantia de correção de bugs de ${c.days} dias vale a partir da entrega do app.`],
     // Suporte
     ['Existe garantia?', `Sim. Por ${c.days} dias após o lançamento, erros e problemas técnicos são corrigidos gratuitamente. Depois disso, a manutenção segue o que o seu pacote inclui e pode ser estendida mensalmente ou sob demanda.`],
     ['Como atualizo o conteúdo depois que o site estiver pronto?', 'Nos pacotes de loja online, você mesmo gerencia os produtos. Nos demais pacotes, basta enviar as alterações pelo WhatsApp; durante o período de manutenção, pequenas atualizações, como textos, imagens ou dados de contato, são gratuitas. Também entregamos um guia curto de gestão do site.'],

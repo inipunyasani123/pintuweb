@@ -282,6 +282,7 @@ const pages: Pages = {
       { text: 'A 50% deposit to start, and the remaining 50% once the website is finished and you have approved it.', to: 'pembayaran' },
       { text: `Bugs and technical issues are fixed free of charge for ${days} days after launch.`, to: 'garansi' },
       { text: 'Once paid in full, the website becomes entirely yours (exceptions apply to invitation themes and Website Design Concepts).', to: 'kepemilikan' },
+      { text: 'Mobile apps: the app files and source code are handed over after payment in full; you publish to Google Play and the App Store with your own developer account.', to: 'kepemilikan' },
     ],
   },
   articles: {

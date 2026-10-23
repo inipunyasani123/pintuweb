@@ -4,6 +4,7 @@
 //
 // 23 Okt 2026: paket baru "Aplikasi Mobile (Android & iOS)" dari pemilik: Rp500.000 – Rp10.000.000+, 3–7 hari kerja, DP 50%.
 // PintuWeb menyerahkan file aplikasi + kode sumber; rilis ke Play Store/App Store diurus klien dengan akun developer miliknya.
+// Garansi bug GUARANTEE_DAYS hari berlaku juga untuk aplikasi, sejak aplikasi diserahkan (keputusan pemilik 23 Okt 2026).
 //
 // 22 Okt 2026: harga 14 paket ditetapkan ulang oleh pemilik (angka di DATA di bawah). Website Custom tidak lagi punya
 // perkiraan harga: `quote: true` = "harga sesuai kebutuhan", angkanya hanya ada di penawaran setelah konsultasi.
@@ -19,7 +20,7 @@
 // website properti ±Rp2–15 jt (marketplace multi-agen ±Rp15–45 jt), aplikasi web ±Rp2–12 jt,
 // desain UI ±Rp250 rb–1 jt per layar. PintuWeb sengaja berada di sisi terjangkau–menengah.
 
-import { WA_NUMBER } from './site'
+import { GUARANTEE_DAYS, WA_NUMBER } from './site'
 
 export { WA_NUMBER }
 
@@ -359,6 +360,7 @@ const DATA: DistOmit<Paket, 'duration'>[] = [
       'Data lokal & mode offline bila diperlukan',
       'Notifikasi dan dashboard admin sesuai kebutuhan',
       'Serah terima file aplikasi + kode sumber',
+      `Garansi perbaikan bug ${GUARANTEE_DAYS} hari sejak aplikasi diserahkan`,
       'Rilis ke Play Store/App Store diurus klien dengan akun developer sendiri',
     ],
   },

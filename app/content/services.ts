@@ -385,8 +385,8 @@ export const SERVICES: Service[] = [
   {
     // Aplikasi Android & iOS (23 Okt 2026): React Native + Expo, satu kode untuk Android, iOS, dan web. PintuWeb menyerahkan
     // file aplikasi + kode sumber; rilis ke Play Store/App Store diurus klien (akun developer milik klien). Tahap kerja
-    // (`steps`) dan ubin "Diserahkan" (`handover`) menggantikan versi website yang umum: "siap SEO", "website online", dan
-    // garansi website tidak dijanjikan untuk aplikasi.
+    // (`steps`) dan ubin "Diserahkan" (`handover`) menggantikan versi website yang umum ("siap SEO", "website online"). Garansi bug {{guarantee}} hari
+    // berlaku sejak aplikasi diserahkan (keputusan pemilik 23 Okt 2026), jadi ubin garansi tetap tampil di samping ubin serah terima.
     key: 'aplikasi-mobile',
     packages: ['aplikasi-mobile'],
     demoCategories: ['mobile'],
@@ -408,7 +408,7 @@ export const SERVICES: Service[] = [
         suits: 'Kasir, member, booking, sekolah',
         faq: [
           { q: 'Apakah aplikasinya bisa dipakai di Android dan iPhone?', a: 'Bisa. Aplikasi dibangun dengan React Native dan Expo, jadi satu kode menghasilkan aplikasi Android dan iOS, ditambah versi web yang bisa dibuka di browser.' },
-          { q: 'Apakah PintuWeb yang merilis aplikasi ke Play Store dan App Store?', a: 'Tidak. Kami menyerahkan file aplikasi beserta kode sumbernya; rilis ke Google Play dan App Store kamu urus sendiri dengan akun developer atas namamu (Google Play Console dan Apple Developer Program, keduanya berbayar). Dengan begitu aplikasinya terdaftar atas nama usahamu.' },
+          { q: 'Apakah PintuWeb yang merilis aplikasi ke Play Store dan App Store?', a: 'Tidak. Kami menyerahkan file aplikasi beserta kode sumbernya; rilis ke Google Play dan App Store kamu urus sendiri dengan akun developer atas namamu (Google Play Console dan Apple Developer Program, keduanya berbayar). Dengan begitu aplikasinya terdaftar atas nama usahamu. Garansi perbaikan bug {{guarantee}} hari berlaku sejak aplikasi diserahkan.' },
           { q: 'Berapa biaya dan lama pembuatan aplikasi?', a: 'Kisarannya {{price:aplikasi-mobile}}, dengan pengerjaan {{duration:aplikasi-mobile}} setelah isi dan alur aplikasinya lengkap. Angka pastinya tergantung jumlah layar dan fitur, dan tertulis di penawaran sebelum mulai. DP 50% untuk memulai.' },
           { q: 'Apakah demo aplikasinya bisa dicoba tanpa memasang apa pun?', a: 'Bisa. Demo di galeri adalah versi web dari aplikasi yang sama, jadi bisa dibuka langsung di browser HP atau laptop. Usaha dan data di demo itu fiktif.' },
         ],
@@ -435,7 +435,7 @@ export const SERVICES: Service[] = [
         suits: 'Point of sale, loyalty, booking, schools',
         faq: [
           { q: 'Will the app work on both Android and iPhone?', a: 'Yes. Apps are built with React Native and Expo, so one codebase produces the Android and iOS apps, plus a web version that opens in a browser.' },
-          { q: 'Does PintuWeb publish the app to the Play Store and App Store?', a: 'No. We hand over the app files and their source code; you publish to Google Play and the App Store yourself with developer accounts in your name (Google Play Console and the Apple Developer Program, both paid). That way the app is registered to your business.' },
+          { q: 'Does PintuWeb publish the app to the Play Store and App Store?', a: 'No. We hand over the app files and their source code; you publish to Google Play and the App Store yourself with developer accounts in your name (Google Play Console and the Apple Developer Program, both paid). That way the app is registered to your business. The {{guarantee}}-day bug-fix guarantee runs from the day the app is handed over.' },
           { q: 'How much does an app cost and how long does it take?', a: 'The range is {{price:aplikasi-mobile}}, with {{duration:aplikasi-mobile}} of work once the app’s content and flows are complete. The exact figure depends on the number of screens and features, and is in a written quote before we start. A 50% deposit starts the work.' },
           { q: 'Can I try the demo apps without installing anything?', a: 'Yes. The demos in our gallery are the web version of the same apps, so they open straight in a phone or laptop browser. The businesses and data in them are fictional.' },
         ],
@@ -462,7 +462,7 @@ export const SERVICES: Service[] = [
         suits: 'Juruwang, ahli, tempahan, sekolah',
         faq: [
           { q: 'Bolehkah aplikasi digunakan di Android dan iPhone?', a: 'Boleh. Aplikasi dibina dengan React Native dan Expo, jadi satu kod menghasilkan aplikasi Android dan iOS, serta versi web yang boleh dibuka dalam pelayar.' },
-          { q: 'Adakah PintuWeb yang menerbitkan aplikasi ke Play Store dan App Store?', a: 'Tidak. Kami menyerahkan fail aplikasi berserta kod sumbernya; penerbitan ke Google Play dan App Store diuruskan sendiri oleh anda dengan akaun pembangun atas nama anda (Google Play Console dan Apple Developer Program, kedua-duanya berbayar). Dengan itu aplikasi didaftarkan atas nama perniagaan anda.' },
+          { q: 'Adakah PintuWeb yang menerbitkan aplikasi ke Play Store dan App Store?', a: 'Tidak. Kami menyerahkan fail aplikasi berserta kod sumbernya; penerbitan ke Google Play dan App Store diuruskan sendiri oleh anda dengan akaun pembangun atas nama anda (Google Play Console dan Apple Developer Program, kedua-duanya berbayar). Dengan itu aplikasi didaftarkan atas nama perniagaan anda. Jaminan pembaikan pepijat {{guarantee}} hari bermula sejak aplikasi diserahkan.' },
           { q: 'Berapakah kos dan tempoh membina aplikasi?', a: 'Julatnya {{price:aplikasi-mobile}}, dengan tempoh kerja {{duration:aplikasi-mobile}} selepas kandungan dan aliran aplikasi lengkap. Angka tepatnya bergantung pada bilangan skrin dan ciri, dan dinyatakan dalam sebut harga sebelum bermula. Deposit 50% untuk bermula.' },
           { q: 'Bolehkah demo aplikasi dicuba tanpa memasang apa-apa?', a: 'Boleh. Demo dalam galeri ialah versi web daripada aplikasi yang sama, jadi boleh dibuka terus dalam pelayar telefon atau komputer riba. Perniagaan dan data dalam demo itu rekaan.' },
         ],

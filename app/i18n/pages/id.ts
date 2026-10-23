@@ -290,6 +290,7 @@ const pages = {
       { text: 'DP 50% untuk memulai, pelunasan 50% setelah website selesai dan Anda setujui.', to: 'pembayaran' },
       { text: `Bug dan masalah teknis diperbaiki gratis selama ${days} hari setelah website online.`, to: 'garansi' },
       { text: 'Setelah pelunasan, website sepenuhnya menjadi milik Anda (pengecualian untuk tema undangan dan Konsep Desain).', to: 'kepemilikan' },
+      { text: 'Aplikasi mobile: file aplikasi dan kode sumber diserahkan setelah pelunasan; rilis ke Google Play dan App Store Anda lakukan dengan akun developer sendiri.', to: 'kepemilikan' },
     ],
   },
   articles: {

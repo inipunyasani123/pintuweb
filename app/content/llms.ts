@@ -38,7 +38,7 @@ export function llmsDoc(full: boolean) {
     `- Performance target: PageSpeed ${PERF_TARGET} (a target, not an average claim)`,
     '- Ownership: for website packages, after full payment the client owns the source code, domain, hosting and admin access; ' +
       'digital invitation themes stay active for 12 months on a personal link, and the Website Design Concepts package grants the right to use the design, not the code',
-    '- Mobile apps: PintuWeb hands over the app files and the full source code; publishing to Google Play and the App Store is done by the client with developer accounts in the client’s own name (PintuWeb does not publish apps to the stores)',
+    `- Mobile apps: PintuWeb hands over the app files and the full source code; publishing to Google Play and the App Store is done by the client with developer accounts in the client’s own name (PintuWeb does not publish apps to the stores); the ${GUARANTEE_DAYS}-day bug-fix guarantee also applies, from the day the app is handed over`,
     '- Languages: Indonesian (default), English (/en) and Malay (/ms) for the whole site; ' +
       `${X_LANGS.map((l) => `${LANG_INFO[l].name} (/${l})`).join(', ')} for the main pages (home, services, pricing, demos, FAQ, about, contact, founder, glossary, local page)`,
     '',

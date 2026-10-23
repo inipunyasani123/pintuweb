@@ -115,15 +115,22 @@ export default async function ServicePage({ params }: Params) {
       <PageHero tight eyebrow={t.name} title={<HlText parts={t.h1} mode="italic" tone="primary" />} lead={t.lead}>
         {/* Ringkasan sekilas: empat ubin (ponsel 2×2), lalu ajakan. Angka dari lib/packages.ts & lib/site.ts. */}
         {from && (
-          <dl className="grid max-w-4xl grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
+          <dl className={`grid max-w-4xl grid-cols-2 gap-2.5 sm:gap-3 ${t.handover ? 'sm:grid-cols-6' : 'sm:grid-cols-4'}`}>
             {[
               { icon: Tag, label: getPages(lang).services.from, value: from.price },
               { icon: Clock, label: p.colTime, value: keepRange(from.duration) },
               { icon: Wallet, label: p.summary.pay, value: d.pkg.deposit },
-              // layanan yang menyerahkan file (aplikasi mobile) menampilkan yang diserahkan, bukan garansi website
-              t.handover ? { icon: PackageCheck, label: t.handover.label, value: t.handover.value } : { icon: ShieldCheck, label: p.summary.guarantee, value: p.summary.guaranteeValue },
-            ].map(({ icon: Icon, label, value }) => (
-              <div key={label} className="rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 ring-1 ring-[color:var(--border-light)] sm:px-4">
+              // layanan yang menyerahkan file (aplikasi mobile) menambah ubin "yang diserahkan" di samping ubin garansi
+              ...(t.handover ? [{ icon: PackageCheck, label: t.handover.label, value: t.handover.value }] : []),
+              { icon: ShieldCheck, label: p.summary.guarantee, value: p.summary.guaranteeValue },
+            ].map(({ icon: Icon, label, value }, i, all) => (
+              <div
+                key={label}
+                // 5 ubin: baris pertama 3 ubin, baris kedua 2 ubin selebar penuh (ponsel: ubin terakhir selebar baris)
+                className={`rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 ring-1 ring-[color:var(--border-light)] sm:px-4 ${
+                  all.length === 5 ? (i < 3 ? 'sm:col-span-2' : 'sm:col-span-3') + (i === 4 ? ' col-span-2' : '') : ''
+                }`}
+              >
                 <dt className="flex items-center gap-1.5 text-[0.8125rem] text-[color:var(--text-tertiary)]">
                   <Icon size={14} className="shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
                   {label}

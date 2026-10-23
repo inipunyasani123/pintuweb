@@ -158,7 +158,7 @@ const more: More = {
       suits: "Caixa, fidelidade, agendamento, escolas",
       faq: [
         { q: "O app funciona no Android e no iPhone?", a: "Sim. Os apps são feitos com React Native e Expo, então um só código gera os apps Android e iOS, além de uma versão web que abre no navegador." },
-        { q: "A PintuWeb publica o app na Play Store e na App Store?", a: "Não. Entregamos os arquivos do app e o código-fonte; você publica no Google Play e na App Store com contas de desenvolvedor no seu nome (Google Play Console e Apple Developer Program, ambas pagas). Assim o app fica registrado em nome do seu negócio." },
+        { q: "A PintuWeb publica o app na Play Store e na App Store?", a: "Não. Entregamos os arquivos do app e o código-fonte; você publica no Google Play e na App Store com contas de desenvolvedor no seu nome (Google Play Console e Apple Developer Program, ambas pagas). Assim o app fica registrado em nome do seu negócio. A garantia de correção de bugs de {{guarantee}} dias vale a partir da entrega do app." },
         { q: "Quanto custa um app e quanto tempo leva?", a: "A faixa é de {{price:aplikasi-mobile}}, com prazo de {{duration:aplikasi-mobile}} depois que o conteúdo e os fluxos do app estão completos. O valor exato depende do número de telas e recursos, e vem em um orçamento por escrito antes de começar. Um sinal de 50% inicia o trabalho." },
         { q: "Posso testar os apps de demonstração sem instalar nada?", a: "Sim. As demos da nossa galeria são a versão web dos mesmos apps, então abrem direto no navegador do celular ou do notebook. Os negócios e os dados são fictícios." },
       ],
