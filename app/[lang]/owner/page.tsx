@@ -18,6 +18,7 @@ import {
   PenTool,
   QrCode,
   ShoppingCart,
+  Smartphone,
   type LucideIcon,
 } from 'lucide-react'
 import ArticleCard from '../../components/ArticleCard'
@@ -50,10 +51,16 @@ const KIND_ICON: Record<DemoCategory, LucideIcon> = {
   kontes: PenTool,
   properti: House,
   todo: ListChecks,
+  mobile: Smartphone,
 }
 
-/** Petak lebar di bento (mulai 640px): sekian jenis dengan demo terbanyak. Dua = kisi 3 kolom terisi penuh. */
-const WIDE = 2
+/**
+ * Petak lebar di bento: sekian jenis dengan demo terbanyak, cukup untuk mengisi penuh kisi 3 kolom (mulai 640px).
+ * 10 jenis → 2 petak lebar, 11 jenis (sejak aplikasi mobile, 23 Okt 2026) → 1. Bila jumlah jenis ganjil, petak lebar juga
+ * dibentang di kisi 2 kolom ponsel supaya baris terakhir tidak bolong.
+ */
+const WIDE = (3 - (DEMO_CATEGORIES.length % 3)) % 3
+const WIDE_PHONE = DEMO_CATEGORIES.length % 2 === 1
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { lang } = await params
@@ -220,7 +227,7 @@ export default async function OwnerPage({ params }: Params) {
             <p className="mt-3 max-w-xl leading-relaxed text-[color:var(--text-tertiary)]">{p.kindsLead}</p>
             {/* Ponsel: 2 kolom seragam. Mulai 640px: 3 kolom, dan jenis dengan demo terbanyak mendapat petak lebar
                 bergambar pratinjau portalnya. grid-flow-row-dense menjaga kisi tetap penuh bila jumlah demo berubah. */}
-            <ul className="mt-7 grid grid-cols-2 gap-2.5 sm:grid-flow-row-dense sm:grid-cols-3 sm:gap-3">
+            <ul className="mt-7 grid grid-flow-row-dense grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3">
               {kinds.map((k) => {
                 const isWide = wide.has(k.id)
                 const c = CATEGORY_COLOR[k.id]
@@ -258,7 +265,7 @@ export default async function OwnerPage({ params }: Params) {
                   </>
                 )
                 return (
-                  <li key={k.id} className={isWide ? 'sm:col-span-2' : ''}>
+                  <li key={k.id} className={isWide ? (WIDE_PHONE ? 'col-span-2' : 'sm:col-span-2') : ''}>
                     {k.portal ? (
                       <a href={k.href} hrefLang="id" className={cls}>
                         {body}

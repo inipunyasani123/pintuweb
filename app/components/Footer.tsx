@@ -184,9 +184,9 @@ export default function Footer({ lang }: { lang: Lang }) {
                 {c.links.map((l) => (
                   <li key={l.href}>
                     {l.zone ? (
-                      <a href={l.href} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</a>
+                      <a href={l.href} className="ft-link">{l.label}</a>
                     ) : (
-                      <Link href={l.href} prefetch={false} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</Link>
+                      <Link href={l.href} prefetch={false} className="ft-link">{l.label}</Link>
                     )}
                   </li>
                 ))}
@@ -205,9 +205,9 @@ export default function Footer({ lang }: { lang: Lang }) {
                   <li key={l.href}>
                     {l.zone ? (
                       // Portal = zona Next terpisah: tautan biasa, bukan navigasi klien.
-                      <a href={l.href} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</a>
+                      <a href={l.href} className="ft-link">{l.label}</a>
                     ) : (
-                      <Link href={l.href} prefetch={false} className="block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white">{l.label}</Link>
+                      <Link href={l.href} prefetch={false} className="ft-link">{l.label}</Link>
                     )}
                   </li>
                 ))}

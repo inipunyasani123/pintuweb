@@ -188,6 +188,7 @@ const TEXT: Record<Lang, LocalText> = {
         q: 'Berapa lama website selesai dibuat?',
         a: 'Landing page {{duration:landing-page}}, website company profile {{duration:standar-umkm}}, toko online {{duration:toko-online-simple}}, dan sistem reservasi {{duration:sistem-reservasi}}, dihitung setelah konten lengkap.',
       },
+      { q: 'Bisakah usaha di Tulungagung dibuatkan aplikasi Android dan iOS?', a: 'Bisa. Aplikasi Android dan iOS kami bangun dari satu kode (React Native + Expo), mulai {{from:aplikasi-mobile}} dengan pengerjaan {{duration:aplikasi-mobile}}. Kami menyerahkan file aplikasi dan kode sumbernya; rilis ke Play Store dan App Store memakai akun developer milikmu.' },
       {
         q: 'Apakah harus bertemu langsung?',
         a: 'Tidak perlu. Semua tahap berjalan online lewat WhatsApp dan email: konsultasi, penawaran, pratinjau, revisi, sampai website online. Jam kerja kami {{hours}}.',
@@ -292,6 +293,7 @@ const TEXT: Record<Lang, LocalText> = {
         q: 'How long does it take?',
         a: 'Landing pages take {{duration:landing-page}}, company websites {{duration:standar-umkm}}, online stores {{duration:toko-online-simple}} and booking systems {{duration:sistem-reservasi}}, counted from when your content is complete.',
       },
+      { q: 'Can you build an Android and iOS app for a business in Tulungagung?', a: 'Yes. We build Android and iOS apps from one codebase (React Native + Expo), from {{from:aplikasi-mobile}} with a turnaround of {{duration:aplikasi-mobile}}. We hand over the app files and source code; publishing to the Play Store and App Store uses your own developer accounts.' },
       {
         q: 'Do we need to meet in person?',
         a: 'No. Every step runs online over WhatsApp and email: consultation, quote, preview, revisions and launch. Our working hours are {{hours}}.',
@@ -383,6 +385,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: 'Berapakah kos laman web?', a: 'Landing page dari {{from:landing-page}}, laman web syarikat dari {{from:standar-umkm}}, kedai dalam talian dari {{from:toko-online-simple}} dan sistem tempahan dari {{from:sistem-reservasi}}, termasuk domain dan hosting tahun pertama.' },
       { q: 'Berapa lama masa diperlukan?', a: 'Landing page {{duration:landing-page}}, laman web syarikat {{duration:standar-umkm}} dan kedai dalam talian {{duration:toko-online-simple}}, dikira selepas kandungan lengkap.' },
+      { q: 'Bolehkah perniagaan di Tulungagung dibina aplikasi Android dan iOS?', a: 'Boleh. Aplikasi Android dan iOS kami bina daripada satu kod (React Native + Expo), dari {{from:aplikasi-mobile}} dengan tempoh {{duration:aplikasi-mobile}}. Kami serahkan fail aplikasi dan kod sumbernya; penerbitan ke Play Store dan App Store menggunakan akaun pembangun anda sendiri.' },
       { q: 'Perlukah kita berjumpa?', a: 'Tidak. Semua langkah berjalan melalui WhatsApp dan e-mel. Waktu bekerja kami {{hours}}.' },
       { q: 'Bagaimanakah cara pembayaran?', a: '{{payment}}' },
     ],
@@ -463,6 +466,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: '¿Cuánto cuesta un sitio web?', a: 'Landing pages desde {{from:landing-page}}, sitios corporativos desde {{from:standar-umkm}}, tiendas online desde {{from:toko-online-simple}} y sistemas de reservas desde {{from:sistem-reservasi}}, con el primer año de dominio y hosting incluido.' },
       { q: '¿Cuánto tarda?', a: 'Landing page {{duration:landing-page}}, sitio corporativo {{duration:standar-umkm}} y tienda online {{duration:toko-online-simple}}, desde que el contenido está completo.' },
+      { q: '¿Pueden crear una app Android e iOS para un negocio de Tulungagung?', a: 'Sí. Creamos apps Android e iOS desde un solo código (React Native + Expo), desde {{from:aplikasi-mobile}} y con un plazo de {{duration:aplikasi-mobile}}. Entregamos los archivos de la app y el código fuente; la publicación en Play Store y App Store se hace con tus propias cuentas de desarrollador.' },
       { q: '¿Hace falta reunirse en persona?', a: 'No. Todo se hace por WhatsApp y correo. Nuestro horario: {{hours}}.' },
       { q: '¿Cómo se paga?', a: '{{payment}}' },
     ],
@@ -543,6 +547,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: 'Combien coûte un site web ?', a: 'Landing page dès {{from:landing-page}}, site d’entreprise dès {{from:standar-umkm}}, boutique en ligne dès {{from:toko-online-simple}} et système de réservation dès {{from:sistem-reservasi}}, avec la première année de domaine et d’hébergement.' },
       { q: 'Quel est le délai ?', a: 'Landing page {{duration:landing-page}}, site d’entreprise {{duration:standar-umkm}}, boutique en ligne {{duration:toko-online-simple}}, à partir du contenu complet.' },
+      { q: 'Pouvez-vous créer une appli Android et iOS pour une entreprise de Tulungagung ?', a: 'Oui. Nous créons des applis Android et iOS à partir d’un seul code (React Native + Expo), dès {{from:aplikasi-mobile}}, avec un délai de {{duration:aplikasi-mobile}}. Nous remettons les fichiers de l’appli et le code source ; la publication sur le Play Store et l’App Store se fait avec vos propres comptes développeur.' },
       { q: 'Faut-il se rencontrer ?', a: 'Non. Tout se fait par WhatsApp et e-mail. Nos horaires : {{hours}}.' },
       { q: 'Comment payer ?', a: '{{payment}}' },
     ],
@@ -623,6 +628,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: 'Quanto custa um site?', a: 'Landing page a partir de {{from:landing-page}}, site institucional a partir de {{from:standar-umkm}}, loja virtual a partir de {{from:toko-online-simple}} e sistema de reservas a partir de {{from:sistem-reservasi}}, com o primeiro ano de domínio e hospedagem.' },
       { q: 'Quanto tempo leva?', a: 'Landing page {{duration:landing-page}}, site institucional {{duration:standar-umkm}} e loja virtual {{duration:toko-online-simple}}, a partir do conteúdo completo.' },
+      { q: 'Vocês fazem app Android e iOS para negócios de Tulungagung?', a: 'Sim. Criamos apps Android e iOS a partir de um só código (React Native + Expo), a partir de {{from:aplikasi-mobile}} e com prazo de {{duration:aplikasi-mobile}}. Entregamos os arquivos do app e o código-fonte; a publicação na Play Store e na App Store é feita com as suas próprias contas de desenvolvedor.' },
       { q: 'Precisamos nos encontrar pessoalmente?', a: 'Não. Tudo é feito por WhatsApp e e-mail. Nosso horário: {{hours}}.' },
       { q: 'Como funciona o pagamento?', a: '{{payment}}' },
     ],
@@ -703,6 +709,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: 'Сколько стоит сайт?', a: 'Лендинг — от {{from:landing-page}}, сайт компании — от {{from:standar-umkm}}, интернет-магазин — от {{from:toko-online-simple}}, система бронирования — от {{from:sistem-reservasi}}; первый год домена и хостинга включён.' },
       { q: 'Сколько времени это занимает?', a: 'Лендинг — {{duration:landing-page}}, сайт компании — {{duration:standar-umkm}}, интернет-магазин — {{duration:toko-online-simple}} с момента готовности материалов.' },
+      { q: 'Можно заказать приложение для Android и iOS для бизнеса в Тулунгагунге?', a: 'Да. Мы делаем приложения для Android и iOS из одного кода (React Native + Expo) — от {{from:aplikasi-mobile}}, срок {{duration:aplikasi-mobile}}. Мы передаём файлы приложения и исходный код; публикация в Play Store и App Store идёт через ваши собственные аккаунты разработчика.' },
       { q: 'Нужно ли встречаться лично?', a: 'Нет. Всё происходит через WhatsApp и электронную почту. Часы работы: {{hours}}.' },
       { q: 'Как проходит оплата?', a: '{{payment}}' },
     ],
@@ -782,6 +789,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: '做一个网站要多少钱？', a: '落地页 {{from:landing-page}} 起，企业官网 {{from:standar-umkm}} 起，网店 {{from:toko-online-simple}} 起，预订系统 {{from:sistem-reservasi}} 起，均含首年域名与主机。' },
       { q: '需要多长时间？', a: '落地页 {{duration:landing-page}}，企业官网 {{duration:standar-umkm}}，网店 {{duration:toko-online-simple}}，自内容齐全时起算。' },
+      { q: '能为图隆阿贡的商家开发 Android 和 iOS 应用吗？', a: '可以。我们用一套代码（React Native + Expo）开发 Android 和 iOS 应用，{{from:aplikasi-mobile}} 起，工期 {{duration:aplikasi-mobile}}。我们交付应用文件和源代码；上架 Play Store 和 App Store 使用您自己的开发者账号。' },
       { q: '需要见面吗？', a: '不需要。全部通过 WhatsApp 和电子邮件完成。工作时间：{{hours}}。' },
       { q: '如何付款？', a: '{{payment}}' },
     ],
@@ -862,6 +870,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: 'वेबसाइट की क़ीमत कितनी है?', a: 'लैंडिंग पेज {{from:landing-page}} से, कंपनी वेबसाइट {{from:standar-umkm}} से, ऑनलाइन स्टोर {{from:toko-online-simple}} से और बुकिंग सिस्टम {{from:sistem-reservasi}} से, पहले साल के डोमेन और होस्टिंग सहित।' },
       { q: 'कितना समय लगता है?', a: 'लैंडिंग पेज {{duration:landing-page}}, कंपनी वेबसाइट {{duration:standar-umkm}}, ऑनलाइन स्टोर {{duration:toko-online-simple}}, सामग्री पूरी होने के बाद से।' },
+      { q: 'क्या तुलुंगागुंग के व्यवसाय के लिए Android और iOS ऐप बन सकता है?', a: 'हाँ। हम एक ही कोड (React Native + Expo) से Android और iOS ऐप बनाते हैं, {{from:aplikasi-mobile}} से, {{duration:aplikasi-mobile}} में। हम ऐप की फ़ाइलें और सोर्स कोड सौंपते हैं; Play Store और App Store पर प्रकाशन आपके अपने डेवलपर खातों से होता है।' },
       { q: 'क्या आमने-सामने मिलना ज़रूरी है?', a: 'नहीं। सब कुछ WhatsApp और ईमेल पर होता है। काम के घंटे: {{hours}}।' },
       { q: 'भुगतान कैसे होता है?', a: '{{payment}}' },
     ],
@@ -942,6 +951,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: 'একটি ওয়েবসাইটের দাম কত?', a: 'ল্যান্ডিং পেজ {{from:landing-page}} থেকে, কোম্পানি ওয়েবসাইট {{from:standar-umkm}} থেকে, অনলাইন স্টোর {{from:toko-online-simple}} থেকে এবং বুকিং সিস্টেম {{from:sistem-reservasi}} থেকে, প্রথম বছরের ডোমেইন ও হোস্টিংসহ।' },
       { q: 'কত সময় লাগে?', a: 'ল্যান্ডিং পেজ {{duration:landing-page}}, কোম্পানি ওয়েবসাইট {{duration:standar-umkm}}, অনলাইন স্টোর {{duration:toko-online-simple}}, কনটেন্ট সম্পূর্ণ হওয়ার পর থেকে।' },
+      { q: 'তুলুংগাগুংয়ের ব্যবসার জন্য কি Android ও iOS অ্যাপ বানানো যায়?', a: 'হ্যাঁ। আমরা একটি কোড (React Native + Expo) থেকে Android ও iOS অ্যাপ বানাই, {{from:aplikasi-mobile}} থেকে, সময় {{duration:aplikasi-mobile}}। আমরা অ্যাপের ফাইল ও সোর্স কোড হস্তান্তর করি; Play Store ও App Store-এ প্রকাশ হয় আপনার নিজের ডেভেলপার অ্যাকাউন্ট দিয়ে।' },
       { q: 'সরাসরি দেখা করা কি জরুরি?', a: 'না। সব কিছু WhatsApp ও ইমেইলে হয়। কাজের সময়: {{hours}}।' },
       { q: 'পেমেন্ট কীভাবে হয়?', a: '{{payment}}' },
     ],
@@ -1022,6 +1032,7 @@ const TEXT: Record<Lang, LocalText> = {
     faq: [
       { q: 'كم تكلفة الموقع؟', a: 'صفحة الهبوط من {{from:landing-page}}، وموقع الشركة من {{from:standar-umkm}}، والمتجر الإلكتروني من {{from:toko-online-simple}}، ونظام الحجز من {{from:sistem-reservasi}}، مع السنة الأولى من النطاق والاستضافة.' },
       { q: 'كم يستغرق العمل؟', a: 'صفحة الهبوط {{duration:landing-page}}، وموقع الشركة {{duration:standar-umkm}}، والمتجر الإلكتروني {{duration:toko-online-simple}}، بعد اكتمال المحتوى.' },
+      { q: 'هل يمكنكم بناء تطبيق Android وiOS لنشاط تجاري في تولونغاغونغ؟', a: 'نعم. نبني تطبيقات Android وiOS من شيفرة واحدة (React Native + Expo)، ابتداءً من {{from:aplikasi-mobile}} وبمدة تنفيذ {{duration:aplikasi-mobile}}. نسلّمك ملفات التطبيق والشيفرة المصدرية، ويتم النشر على Play Store وApp Store بحسابات المطوّر الخاصة بك.' },
       { q: 'هل يلزم اللقاء وجهًا لوجه؟', a: 'لا. يتم كل شيء عبر واتساب والبريد الإلكتروني. ساعات العمل: {{hours}}.' },
       { q: 'كيف يتم الدفع؟', a: '{{payment}}' },
     ],

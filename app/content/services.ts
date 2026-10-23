@@ -1,4 +1,4 @@
-// Halaman layanan khusus (7 layanan × 3 bahasa dasar; 8 bahasa tambahan di i18n/x/more/). Harga & durasi TIDAK ditulis di sini:
+// Halaman layanan khusus (8 layanan × 3 bahasa dasar; 8 bahasa tambahan di i18n/x/more/). Harga & durasi TIDAK ditulis di sini:
 // tabel harga dirakit dari lib/packages.ts lewat `packages`. Layanan tanpa paket (undangan, link in bio)
 // sengaja tanpa angka — harganya dikonfirmasi lewat WhatsApp. Jumlah demo juga tidak ditulis: pakai penanda
 // {{demos:kategori}} (diisi fillFacts dari lib/demos.ts), sama di 11 bahasa.
@@ -22,6 +22,10 @@ export type ServiceText = {
   short: string
   suits: string
   faq: { q: string; a: string }[]
+  /** Tahap kerja khusus layanan ini (bawaan: 4 tahap website umum di kamus `process.steps`). */
+  steps?: { title: string; desc: string }[]
+  /** Ubin ringkasan "yang diserahkan", pengganti ubin garansi website di pembuka halaman layanan. */
+  handover?: { label: string; value: string }
 }
 
 export type Service = {
@@ -379,6 +383,100 @@ export const SERVICES: Service[] = [
     },
   },
   {
+    // Aplikasi Android & iOS (23 Okt 2026): React Native + Expo, satu kode untuk Android, iOS, dan web. PintuWeb menyerahkan
+    // file aplikasi + kode sumber; rilis ke Play Store/App Store diurus klien (akun developer milik klien). Tahap kerja
+    // (`steps`) dan ubin "Diserahkan" (`handover`) menggantikan versi website yang umum: "siap SEO", "website online", dan
+    // garansi website tidak dijanjikan untuk aplikasi.
+    key: 'aplikasi-mobile',
+    packages: ['aplikasi-mobile'],
+    demoCategories: ['mobile'],
+    demoSlugs: ['kasir', 'booking', 'member', 'sekolah', 'absensi', 'antar'],
+    articles: ['jarak-jauh', 'pilih-jasa'],
+    text: {
+      id: {
+        name: 'Aplikasi Android & iOS',
+        title: 'Jasa Pembuatan Aplikasi Android & iOS',
+        description: 'Jasa pembuatan aplikasi Android & iOS untuk usaha: kasir, booking, member, sekolah, absensi. Satu kode React Native, mulai {{from:aplikasi-mobile}}. Coba {{demos:mobile}} demonya.',
+        h1: ['', 'Aplikasi Android & iOS', ' untuk usahamu, dibangun dari satu kode.'],
+        lead: 'Aplikasi mobile adalah aplikasi yang dipasang di HP pelanggan atau timmu, misalnya untuk kasir, booking, kartu member, absensi, atau info sekolah. Kami membangunnya dengan React Native dan Expo: satu kode menghasilkan aplikasi Android, aplikasi iOS, sekaligus versi web.',
+        intro: [
+          'Kapan aplikasi lebih tepat daripada website? Saat penggunanya datang berkali-kali: kasir yang dibuka setiap hari, pelanggan yang mengumpulkan poin, orang tua yang mengecek nilai, atau karyawan yang absen tiap pagi. Aplikasi bisa menyimpan data di HP, tetap berjalan saat sinyal hilang bila diperlukan, dan mengirim notifikasi.',
+          'Yang kami serahkan adalah file aplikasi beserta kode sumbernya. Rilis ke Google Play dan App Store kamu urus sendiri dengan akun developer atas namamu, jadi aplikasinya terdaftar atas nama usahamu sejak awal. Di galeri kami ada {{demos:mobile}} demo aplikasi yang bisa langsung dicoba di browser.',
+        ],
+        forWho: ['UMKM yang butuh kasir dan catatan stok di HP', 'Kafe, salon, dan barbershop dengan member atau booking', 'Sekolah, masjid, dan komunitas yang rutin berbagi info', 'Usaha dengan karyawan shift: absensi, jadwal, dan cuti', 'Laundry, kos, dan usaha jasa dengan pelanggan tetap', 'Penyelenggara acara yang menjual tiket'],
+        short: 'Aplikasi HP untuk Android dan iOS dari satu kode, lengkap dengan versi webnya.',
+        suits: 'Kasir, member, booking, sekolah',
+        faq: [
+          { q: 'Apakah aplikasinya bisa dipakai di Android dan iPhone?', a: 'Bisa. Aplikasi dibangun dengan React Native dan Expo, jadi satu kode menghasilkan aplikasi Android dan iOS, ditambah versi web yang bisa dibuka di browser.' },
+          { q: 'Apakah PintuWeb yang merilis aplikasi ke Play Store dan App Store?', a: 'Tidak. Kami menyerahkan file aplikasi beserta kode sumbernya; rilis ke Google Play dan App Store kamu urus sendiri dengan akun developer atas namamu (Google Play Console dan Apple Developer Program, keduanya berbayar). Dengan begitu aplikasinya terdaftar atas nama usahamu.' },
+          { q: 'Berapa biaya dan lama pembuatan aplikasi?', a: 'Kisarannya {{price:aplikasi-mobile}}, dengan pengerjaan {{duration:aplikasi-mobile}} setelah isi dan alur aplikasinya lengkap. Angka pastinya tergantung jumlah layar dan fitur, dan tertulis di penawaran sebelum mulai. DP 50% untuk memulai.' },
+          { q: 'Apakah demo aplikasinya bisa dicoba tanpa memasang apa pun?', a: 'Bisa. Demo di galeri adalah versi web dari aplikasi yang sama, jadi bisa dibuka langsung di browser HP atau laptop. Usaha dan data di demo itu fiktif.' },
+        ],
+        steps: [
+          { title: 'Ngobrol dulu', desc: 'Ceritakan siapa pengguna aplikasinya dan apa yang perlu mereka lakukan. Kami usulkan fitur dan mengirim penawaran tertulis.' },
+          { title: 'Rancang layar', desc: 'Kami susun alur dan desain tiap layar. Kamu setujui tampilannya sebelum kami mulai membangun.' },
+          { title: 'Bangun & coba', desc: 'Aplikasi dibangun dari satu kode untuk Android, iOS, dan web. Progresnya bisa kamu coba lewat pratinjau versi web.' },
+          { title: 'Serah terima', desc: 'File aplikasi dan kode sumbernya kami serahkan. Rilis ke Play Store dan App Store kamu lakukan dengan akun developer milikmu.' },
+        ],
+        handover: { label: 'Diserahkan', value: 'File aplikasi + kode sumber' },
+      },
+      en: {
+        name: 'Android & iOS Apps',
+        title: 'Android & iOS App Development',
+        description: 'Android & iOS apps for businesses: point of sale, booking, loyalty, schools, attendance. One React Native codebase, from {{from:aplikasi-mobile}}. Try {{demos:mobile}} demos.',
+        h1: ['', 'Android & iOS apps', ' for your business, built from one codebase.'],
+        lead: 'A mobile app is installed on your customers’ or your team’s phones, for things like a point of sale, bookings, a loyalty card, attendance or school updates. We build with React Native and Expo: one codebase produces the Android app, the iOS app and a web version.',
+        intro: [
+          'When is an app a better fit than a website? When people come back again and again: a till opened every day, customers collecting points, parents checking grades or staff clocking in each morning. An app can keep data on the phone, keep working without a signal where needed, and send notifications.',
+          'What we hand over is the app files and their source code. You publish to Google Play and the App Store yourself, with developer accounts in your name, so the app is registered to your business from the start. Our gallery has {{demos:mobile}} demo apps you can try in the browser right now.',
+        ],
+        forWho: ['Small businesses that need a till and stock records on a phone', 'Cafés, salons and barbershops with loyalty or bookings', 'Schools, mosques and communities that share regular updates', 'Businesses with shift staff: attendance, rosters and leave', 'Laundries, boarding houses and services with regular customers', 'Event organisers selling tickets'],
+        short: 'Phone apps for Android and iOS from one codebase, with a web version too.',
+        suits: 'Point of sale, loyalty, booking, schools',
+        faq: [
+          { q: 'Will the app work on both Android and iPhone?', a: 'Yes. Apps are built with React Native and Expo, so one codebase produces the Android and iOS apps, plus a web version that opens in a browser.' },
+          { q: 'Does PintuWeb publish the app to the Play Store and App Store?', a: 'No. We hand over the app files and their source code; you publish to Google Play and the App Store yourself with developer accounts in your name (Google Play Console and the Apple Developer Program, both paid). That way the app is registered to your business.' },
+          { q: 'How much does an app cost and how long does it take?', a: 'The range is {{price:aplikasi-mobile}}, with {{duration:aplikasi-mobile}} of work once the app’s content and flows are complete. The exact figure depends on the number of screens and features, and is in a written quote before we start. A 50% deposit starts the work.' },
+          { q: 'Can I try the demo apps without installing anything?', a: 'Yes. The demos in our gallery are the web version of the same apps, so they open straight in a phone or laptop browser. The businesses and data in them are fictional.' },
+        ],
+        steps: [
+          { title: 'Talk first', desc: 'Tell us who will use the app and what they need to do. We suggest the features and send a written quote.' },
+          { title: 'Design the screens', desc: 'We lay out the flow and design of each screen. You approve the look before we start building.' },
+          { title: 'Build & try', desc: 'The app is built from one codebase for Android, iOS and the web. You can follow progress through a web preview.' },
+          { title: 'Handover', desc: 'We hand over the app files and source code. You publish to the Play Store and App Store with your own developer accounts.' },
+        ],
+        handover: { label: 'Handed over', value: 'App files + source code' },
+      },
+      ms: {
+        name: 'Aplikasi Android & iOS',
+        title: 'Membina Aplikasi Android & iOS',
+        description: 'Aplikasi Android & iOS untuk perniagaan: juruwang, tempahan, ahli, sekolah, kehadiran. Satu kod React Native, dari {{from:aplikasi-mobile}}. Cuba {{demos:mobile}} demo.',
+        h1: ['', 'Aplikasi Android & iOS', ' untuk perniagaan anda, dibina daripada satu kod.'],
+        lead: 'Aplikasi mudah alih ialah aplikasi yang dipasang di telefon pelanggan atau pasukan anda, contohnya untuk juruwang, tempahan, kad ahli, kehadiran atau maklumat sekolah. Kami membinanya dengan React Native dan Expo: satu kod menghasilkan aplikasi Android, aplikasi iOS dan juga versi web.',
+        intro: [
+          'Bilakah aplikasi lebih sesuai daripada laman web? Apabila penggunanya kembali berulang kali: juruwang yang dibuka setiap hari, pelanggan yang mengumpul mata ganjaran, ibu bapa yang menyemak markah atau pekerja yang merekod kehadiran setiap pagi. Aplikasi boleh menyimpan data di telefon, terus berfungsi tanpa isyarat jika perlu, dan menghantar pemberitahuan.',
+          'Yang kami serahkan ialah fail aplikasi berserta kod sumbernya. Penerbitan ke Google Play dan App Store diuruskan sendiri oleh anda dengan akaun pembangun atas nama anda, jadi aplikasi itu didaftarkan atas nama perniagaan anda sejak awal. Galeri kami mempunyai {{demos:mobile}} demo aplikasi yang boleh dicuba terus dalam pelayar.',
+        ],
+        forWho: ['PKS yang memerlukan juruwang dan rekod stok di telefon', 'Kafe, salun dan kedai gunting rambut dengan keahlian atau tempahan', 'Sekolah, masjid dan komuniti yang kerap berkongsi maklumat', 'Perniagaan dengan pekerja syif: kehadiran, jadual dan cuti', 'Dobi, rumah sewa dan perkhidmatan dengan pelanggan tetap', 'Penganjur acara yang menjual tiket'],
+        short: 'Aplikasi telefon untuk Android dan iOS daripada satu kod, lengkap dengan versi web.',
+        suits: 'Juruwang, ahli, tempahan, sekolah',
+        faq: [
+          { q: 'Bolehkah aplikasi digunakan di Android dan iPhone?', a: 'Boleh. Aplikasi dibina dengan React Native dan Expo, jadi satu kod menghasilkan aplikasi Android dan iOS, serta versi web yang boleh dibuka dalam pelayar.' },
+          { q: 'Adakah PintuWeb yang menerbitkan aplikasi ke Play Store dan App Store?', a: 'Tidak. Kami menyerahkan fail aplikasi berserta kod sumbernya; penerbitan ke Google Play dan App Store diuruskan sendiri oleh anda dengan akaun pembangun atas nama anda (Google Play Console dan Apple Developer Program, kedua-duanya berbayar). Dengan itu aplikasi didaftarkan atas nama perniagaan anda.' },
+          { q: 'Berapakah kos dan tempoh membina aplikasi?', a: 'Julatnya {{price:aplikasi-mobile}}, dengan tempoh kerja {{duration:aplikasi-mobile}} selepas kandungan dan aliran aplikasi lengkap. Angka tepatnya bergantung pada bilangan skrin dan ciri, dan dinyatakan dalam sebut harga sebelum bermula. Deposit 50% untuk bermula.' },
+          { q: 'Bolehkah demo aplikasi dicuba tanpa memasang apa-apa?', a: 'Boleh. Demo dalam galeri ialah versi web daripada aplikasi yang sama, jadi boleh dibuka terus dalam pelayar telefon atau komputer riba. Perniagaan dan data dalam demo itu rekaan.' },
+        ],
+        steps: [
+          { title: 'Berbincang dahulu', desc: 'Ceritakan siapa pengguna aplikasi dan apa yang perlu mereka lakukan. Kami cadangkan ciri dan menghantar sebut harga bertulis.' },
+          { title: 'Reka skrin', desc: 'Kami susun aliran dan reka bentuk setiap skrin. Anda luluskan paparannya sebelum kami mula membina.' },
+          { title: 'Bina & cuba', desc: 'Aplikasi dibina daripada satu kod untuk Android, iOS dan web. Kemajuannya boleh anda cuba melalui pratonton versi web.' },
+          { title: 'Serahan', desc: 'Fail aplikasi dan kod sumbernya kami serahkan. Penerbitan ke Play Store dan App Store anda lakukan dengan akaun pembangun sendiri.' },
+        ],
+        handover: { label: 'Diserahkan', value: 'Fail aplikasi + kod sumber' },
+      },
+    },
+  },
+  {
     key: 'undangan-digital',
     packages: ['undangan-digital', 'situs-acara'],
     demoCategories: ['undangan'],
@@ -546,6 +644,8 @@ export const serviceText = (s: Service, lang: Lang): ServiceText => {
     short: f(raw.short),
     suits: f(raw.suits),
     faq: raw.faq.map((x) => ({ q: f(x.q), a: f(x.a) })),
+    ...(raw.steps ? { steps: raw.steps.map((x) => ({ title: f(x.title), desc: f(x.desc) })) } : {}),
+    ...(raw.handover ? { handover: { label: f(raw.handover.label), value: f(raw.handover.value) } } : {}),
   }
   textCache.set(cacheKey, t)
   return t

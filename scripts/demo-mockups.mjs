@@ -18,6 +18,7 @@
 //   --proxy <url>   proxy untuk Chrome (mis. http://127.0.0.1:8899 bila IPv6 rumah bermasalah)
 //   --out <dir>     folder keluaran compose/sheet (bawaan public/demos; pakai folder lain untuk mencoba)
 //   --q 360:74,...  kualitas WebP per lebar (bawaan di QUALITY)
+// Aplikasi mobile (kategori 'mobile') memakai tata letak G_PHONE: ponsel besar di depan, laptop & tablet lebih kecil.
 // Demo baru: tambahkan ke DEMOS, jalankan `node scripts/demo-mockups.mjs all <slug>`, lalu naikkan THUMB_V di
 // app/lib/demos.ts. Menu digital menampilkan lencana buka/tutup menurut jam WIB: tangkap saat kedainya buka
 // (Bakso Dalu 16.00–01.00), atau ulangi `capture <slug>` pada jamnya.
@@ -230,6 +231,13 @@ const G = {
   tablet: { x: 872, y: 142, w: 400, h: 562, r: 34, bezel: 15 },
   phone: { x: 1166, y: 206, w: 236, h: 498, r: 40, bezel: 9, status: 26 },
 }
+// Aplikasi mobile (kategori 'mobile'): ponsel dibesarkan jadi bintang utama di depan, laptop (tampilan desktop demo:
+// aplikasi dalam bingkai ponsel + panel samping) lebih kecil di kiri, tablet di belakang kanan. Lantai tetap y 704.
+const G_PHONE = {
+  laptop: { lid: { x: 58, y: 150, w: 760, h: 528, r: 24 }, bezel: { t: 14, s: 14, b: 28 }, bar: 36, deck: { x: 16, y: 678, w: 844, h: 26 } },
+  tablet: { x: 1092, y: 262, w: 306, h: 442, r: 30, bezel: 13 },
+  phone: { x: 810, y: 52, w: 308, h: 652, r: 52, bezel: 11, status: 34 },
+}
 
 const svg = (w, h, body) => Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${CW} ${CH}">${body}</svg>`)
 const round = (n) => Math.round(n)
@@ -258,7 +266,9 @@ async function topColor(file) {
 async function compose(demo, W) {
   const s = W / CW, H = round(CH * s)
   const sw = (n) => (Math.max(1, n * s) / s).toFixed(2) // tebal garis dalam satuan kanvas (min 1 px keluaran)
-  const L = G.laptop, T = G.tablet, P = G.phone
+  const GL = demo.category === 'mobile' ? G_PHONE : G
+  const L = GL.laptop, T = GL.tablet, P = GL.phone
+  const k = P.w / G.phone.w // skala detail ponsel (pulau kamera, jam, sinyal) terhadap ponsel bawaan
   const scr = {
     laptop: { x: L.lid.x + L.bezel.s, y: L.lid.y + L.bezel.t, w: L.lid.w - 2 * L.bezel.s, h: L.lid.h - L.bezel.t - L.bezel.b, r: 8 },
     tablet: { x: T.x + T.bezel, y: T.y + T.bezel, w: T.w - 2 * T.bezel, h: T.h - 2 * T.bezel, r: T.r - T.bezel + 4 },
@@ -318,12 +328,14 @@ async function compose(demo, W) {
   // sudut bawah isi mengikuti layar ponsel yang membulat
   const pm = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${pc.w}" height="${pc.h}"><path d="M0 0 H${pc.w} V${pc.h - psr.r * s} Q${pc.w} ${pc.h} ${pc.w - psr.r * s} ${pc.h} H${psr.r * s} Q0 ${pc.h} 0 ${pc.h - psr.r * s} Z"/></svg>`)
   layers.push({ input: await sharp(pshot).composite([{ input: pm, blend: 'dest-in' }]).png().toBuffer(), left: pc.x, top: pc.y })
-  const sy = psr.y + P.status / 2 + 2
+  const sy = psr.y + P.status / 2 + 2 * k
+  // detail bilah status digambar di ukuran ponsel bawaan lalu diskalakan k di sekitar sudut kiri atas layar
   layers.push(await layer(`${rect(psr, `fill="none" stroke="${INK2}" stroke-width="${sw(1.5)}"`)}
-      <rect x="${psr.x + psr.w / 2 - 30}" y="${psr.y + 5}" width="60" height="17" rx="8.5" fill="#111827"/>
-      <text x="${psr.x + 30}" y="${sy + 3.6}" text-anchor="middle" font-family="${FONT}" font-weight="600" font-size="10" fill="${top.fg}">9:41</text>
-      <g fill="${top.fg}"><rect x="${psr.x + psr.w - 44}" y="${sy - 3}" width="16" height="7.5" rx="2" fill="none" stroke="${top.fg}" stroke-width="1.1" opacity=".55"/><rect x="${psr.x + psr.w - 42.6}" y="${sy - 1.6}" width="11" height="4.7" rx="1"/>
-        ${[0, 1, 2, 3].map((i) => `<rect x="${psr.x + psr.w - 66 + i * 4}" y="${sy + 3.5 - (i + 1) * 1.9}" width="2.6" height="${(i + 1) * 1.9 + 1}" rx=".6"/>`).join('')}</g>`))
+      <g transform="translate(${psr.x} ${psr.y}) scale(${k}) translate(${-psr.x} ${-psr.y})">
+      <rect x="${psr.x + psr.w / k / 2 - 30}" y="${psr.y + 5}" width="60" height="17" rx="8.5" fill="#111827"/>
+      <text x="${psr.x + 30}" y="${psr.y + (sy - psr.y) / k + 3.6}" text-anchor="middle" font-family="${FONT}" font-weight="600" font-size="10" fill="${top.fg}">9:41</text>
+      <g fill="${top.fg}"><rect x="${psr.x + psr.w / k - 44}" y="${psr.y + (sy - psr.y) / k - 3}" width="16" height="7.5" rx="2" fill="none" stroke="${top.fg}" stroke-width="1.1" opacity=".55"/><rect x="${psr.x + psr.w / k - 42.6}" y="${psr.y + (sy - psr.y) / k - 1.6}" width="11" height="4.7" rx="1"/>
+        ${[0, 1, 2, 3].map((i) => `<rect x="${psr.x + psr.w / k - 66 + i * 4}" y="${psr.y + (sy - psr.y) / k + 3.5 - (i + 1) * 1.9}" width="2.6" height="${(i + 1) * 1.9 + 1}" rx=".6"/>`).join('')}</g></g>`))
 
   return sharp({ create: { width: W, height: H, channels: 4, background: '#ffffff' } }).composite(layers).flatten({ background: '#ffffff' })
 }

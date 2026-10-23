@@ -550,6 +550,87 @@
   .btn-white:focus-visible, .btn-ghost-dark:focus-visible { outline-color: #fff; }
 }
 
+/* Kelas komponen untuk blok yang berulang belasan-puluhan kali di beranda (kartu FAQ, baris peta harga, tautan footer,
+   kartu "Untuk siapa"). Isinya utilitas Tailwind yang sama persis dengan yang dulu ditulis di className (lewat @apply);
+   tujuannya hanya memperkecil HTML + payload RSC beranda (23 Okt 2026: HTML beranda di ambang simulasi Lighthouse, tiap
+   ±0,5 KB gzip menambah satu putaran jaringan pada FCP). Elemen yang memakai kelas ini tidak boleh dicampur utilitas yang
+   bertentangan: utilitas (lapisan utilities) selalu menang atas kelas di sini (lapisan components). */
+@layer components {
+  /* FaqCard (beranda & halaman FAQ); `group` tetap ditulis di <details> untuk varian group-open */
+  .faq-item { @apply scroll-mt-4 rounded-[1.25rem] bg-white ring-1 ring-[color:var(--border-light)] transition-shadow duration-300 open:shadow-[0_18px_34px_-26px_rgb(38_70_156/0.55)] open:ring-[color:var(--primary-300)]; }
+  .faq-item.faq-focus { @apply ring-2 ring-[color:var(--primary-700)]; }
+  .faq-sum { @apply flex cursor-pointer list-none items-center rounded-[1.25rem] py-4 text-start sm:py-[1.125rem] [&::-webkit-details-marker]:hidden; }
+  .faq-sum-n { @apply gap-3 ps-4 pe-5 sm:gap-4 sm:ps-5 sm:pe-6; }
+  .faq-sum-p { @apply gap-4 px-5 sm:px-6; }
+  .faq-num { @apply grid h-8 w-8 shrink-0 place-items-center rounded-[0.625rem] bg-[color:var(--surface-soft)] text-[0.75rem] font-semibold tabular-nums text-[color:var(--text-tertiary)] ring-1 ring-[color:var(--border-light)] transition-colors duration-300 group-open:bg-[color:var(--primary-700)] group-open:text-white group-open:ring-[color:var(--primary-700)] sm:h-9 sm:w-9 sm:rounded-xl sm:text-[0.8125rem]; }
+  .faq-q { @apply flex-1 text-[1.0625rem] leading-snug text-[color:var(--text-primary)] transition-colors group-open:text-[color:var(--primary-700)] sm:text-[1.125rem]; }
+  .faq-x { @apply relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color:var(--surface-soft)] text-[color:var(--text-secondary)] transition-[transform,background-color,color] duration-300 group-open:rotate-45; }
+  .faq-x::before, .faq-x::after { @apply absolute rounded-full bg-current; content: ''; }
+  .faq-x::before { @apply h-[1.5px] w-3; }
+  .faq-x::after { @apply h-3 w-[1.5px]; }
+  .faq-x-n { @apply group-open:bg-[color:var(--primary-50)] group-open:text-[color:var(--primary-700)]; }
+  .faq-x-p { @apply group-open:bg-[color:var(--primary-700)] group-open:text-white; }
+  .faq-answer { @apply pb-5 sm:pb-6; }
+  .faq-pad-n { @apply ps-4 pe-5 sm:ps-5 sm:pe-6; }
+  .faq-pad-p { @apply px-5 sm:px-6; }
+  .faq-logo { @apply mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white ring-1 ring-[color:var(--border-light)]; }
+  .faq-bubble { @apply min-w-0 max-w-2xl rounded-[1.125rem] rounded-ss-md bg-[color:var(--primary-50)] px-4 py-3 text-[0.9375rem] leading-relaxed text-[color:var(--text-secondary)] sm:text-base; }
+  .faq-li { @apply flex break-inside-avoid items-baseline gap-2.5; }
+  .faq-li-v { @apply justify-between border-b border-[color:var(--primary-200)] py-1.5; }
+  .faq-li-s { @apply py-1; }
+  .faq-val { @apply text-end font-semibold text-[color:var(--text-primary)]; }
+  .faq-more { @apply mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 ps-11 text-[0.8125rem] font-semibold; }
+  .faq-more-a { @apply inline-flex min-h-8 items-center gap-1.5 text-[color:var(--primary-700)] underline-offset-4 hover:underline; }
+
+  /* PriceMap: kolom bersama sumbu & baris, baris (+ warna sorot per panel), teks, batang. Garis skala = latar .pm-track
+     (dulu 5 span per baris): 0, 25, 50, 75, 100% untuk 4 pita (BANDS di PriceMap.tsx; ubah posisi di sini bila pita berubah). */
+  /* sumbu menempel; HARUS sebelum .pm-cols (grid-cols-1 di sini kalah oleh kolom md/lg .pm-cols yang ditulis sesudahnya) */
+  .pm-axis { @apply sticky top-0 z-10 grid grid-cols-1 px-3 pb-2 pt-3 text-[0.75rem] font-semibold text-[color:var(--text-tertiary)] md:px-4 md:text-[0.8125rem]; }
+  .pm-cols { @apply md:grid-cols-[13.5rem_minmax(0,1fr)_11.5rem] md:gap-x-5 lg:grid-cols-[17rem_minmax(0,1fr)_12rem] lg:gap-x-6; }
+  .pm-row { @apply block items-center rounded-2xl px-3 py-2.5 transition-colors md:grid md:px-4 md:py-0; }
+  .pm-row-s { @apply hover:bg-white; }
+  .pm-row-w { @apply hover:bg-[color:var(--surface-soft)]; }
+  .pm-name { @apply block font-semibold leading-snug text-[color:var(--text-primary)] transition-colors group-hover:text-[color:var(--primary-700)]; }
+  .pm-meta { @apply mt-0.5 hidden text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:block; }
+  .pm-top { @apply flex min-w-0 items-baseline justify-between gap-3 md:block md:py-3; }
+  .pm-pm { @apply shrink-0 whitespace-nowrap text-[0.875rem] font-semibold text-[color:var(--text-primary)] md:hidden; }
+  .pm-pd { @apply hidden whitespace-nowrap text-end text-[0.9375rem] font-semibold text-[color:var(--text-primary)] md:order-3 md:block; }
+  .pm-track {
+    @apply relative me-7 mt-2 block h-3.5 md:order-2 md:me-0 md:mt-0 md:h-full md:min-h-[3.75rem];
+    background-image: linear-gradient(var(--primary-200), var(--primary-200)), linear-gradient(var(--primary-200), var(--primary-200)),
+      linear-gradient(var(--primary-200), var(--primary-200)), linear-gradient(var(--primary-200), var(--primary-200)),
+      linear-gradient(var(--primary-200), var(--primary-200));
+    background-size: 1px 100%;
+    background-repeat: no-repeat;
+    /* garis 1px di x% lebar trek (bukan x% dari lebar dikurangi 1px), garis terakhir menempel di tepi kanan */
+    background-position: 0 0, calc(25% + 0.25px) 0, calc(50% + 0.5px) 0, calc(75% + 0.75px) 0, 100% 0;
+  }
+  /* kanan-ke-kiri: garis x% dihitung dari tepi kanan (seperti inset-inline-start dulu) */
+  [dir='rtl'] .pm-track { background-position: 0 0, calc(25% - 0.75px) 0, calc(50% - 0.5px) 0, calc(75% - 0.25px) 0, 100% 0; }
+  .pm-bar { @apply absolute top-1/2 h-2.5 -translate-y-1/2 rounded-full transition-[height] duration-200 group-hover:h-3.5; }
+  .pm-dot { @apply absolute top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[color:var(--primary-700)]; }
+
+  /* Kartu jawaban "Untuk siapa" di beranda (AudienceSection) */
+  .aud-card { @apply flex h-full flex-col rounded-[1.5rem] bg-white p-5 ring-1 ring-[color:var(--border-light)] sm:p-7 lg:p-8; }
+  .aud-need { @apply ms-auto max-w-[88%] rounded-[1.25rem] rounded-ee-[0.375rem] bg-[color:var(--primary-700)] px-4 py-2.5 text-[0.9375rem] leading-snug text-white; }
+  .aud-head { @apply mt-5 flex items-start gap-3 sm:mt-6; }
+  .aud-logo { @apply mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[color:var(--primary-50)] ring-1 ring-[color:var(--primary-100)]; }
+  .aud-title { @apply mt-0.5 text-[1.625rem] leading-tight text-[color:var(--text-primary)] sm:text-[2rem]; }
+  .aud-facts { @apply mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3; }
+  .aud-tile { @apply rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 sm:px-4; }
+  .aud-dt { @apply text-[0.8125rem] text-[color:var(--text-tertiary)]; }
+  .aud-price { @apply mt-0.5 text-[1.125rem] font-semibold leading-tight text-[color:var(--text-primary)] sm:text-[1.5rem]; }
+  .aud-dur { @apply mt-0.5 text-[1rem] font-semibold leading-snug text-[color:var(--text-primary)] sm:text-[1.125rem]; }
+  .aud-inc { @apply mt-5 text-[0.8125rem] font-semibold text-[color:var(--text-secondary)]; }
+  .aud-li { @apply flex items-start gap-2.5 text-[0.9375rem] leading-snug text-[color:var(--text-secondary)]; }
+  .aud-ck { @apply mt-[0.15em] shrink-0 text-[color:var(--primary-700)]; }
+  .aud-act { @apply mt-auto flex flex-col gap-x-6 gap-y-3 pt-6 sm:flex-row sm:flex-wrap sm:items-center; }
+  .aud-link { @apply inline-flex items-center gap-1.5 self-center text-[0.9375rem] font-semibold; }
+
+  /* Footer: tautan di kolom navigasi */
+  .ft-link { @apply block py-1.5 text-[0.9375rem] text-white/75 transition-colors hover:text-white; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .work:hover .shot, .work:focus-visible .shot { transform: none; }
   .work:hover .dv, .work:focus-visible .dv { translate: none; }

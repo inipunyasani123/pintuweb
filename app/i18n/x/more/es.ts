@@ -143,6 +143,33 @@ const more: More = {
         { q: '¿Puedo usarla en Instagram y TikTok a la vez?', a: 'Sí. El enlace es el mismo en todas las plataformas, así que solo tienes que añadirlo a la biografía de cada cuenta.' },
       ],
     },
+    'aplikasi-mobile': {
+      name: "Apps Android e iOS",
+      title: "Desarrollo de apps Android e iOS",
+      description: "Apps Android e iOS para negocios: caja, reservas, fidelización, escuelas, asistencia. Un solo código React Native, desde {{from:aplikasi-mobile}}. Prueba {{demos:mobile}} demos.",
+      h1: ["", "Apps Android e iOS", " para tu negocio, creadas con un solo código."],
+      lead: "Una app móvil se instala en el teléfono de tus clientes o de tu equipo, para cosas como una caja registradora, reservas, una tarjeta de socio, el control de asistencia o los avisos de una escuela. Trabajamos con React Native y Expo: un solo código genera la app Android, la app iOS y una versión web.",
+      intro: [
+        "¿Cuándo conviene más una app que un sitio web? Cuando la gente vuelve una y otra vez: una caja que se abre cada día, clientes que acumulan puntos, padres que consultan las notas o personal que ficha cada mañana. Una app puede guardar datos en el teléfono, seguir funcionando sin señal si hace falta y enviar notificaciones.",
+        "Lo que entregamos son los archivos de la app y su código fuente. Tú publicas en Google Play y App Store con cuentas de desarrollador a tu nombre, así la app queda registrada a nombre de tu negocio desde el principio. En nuestra galería hay {{demos:mobile}} apps de demostración que puedes probar ahora en el navegador.",
+      ],
+      forWho: ["Pequeños negocios que necesitan caja y control de stock en el móvil", "Cafeterías, salones y barberías con fidelización o reservas", "Escuelas, mezquitas y comunidades que comparten avisos", "Negocios con personal por turnos: asistencia, horarios y vacaciones", "Lavanderías, pensiones y servicios con clientes habituales", "Organizadores de eventos que venden entradas"],
+      short: "Apps para Android e iOS desde un solo código, con versión web incluida.",
+      suits: "Caja, fidelización, reservas, escuelas",
+      faq: [
+        { q: "¿La app funciona en Android y en iPhone?", a: "Sí. Las apps se crean con React Native y Expo, así que un solo código genera las apps Android e iOS, además de una versión web que se abre en el navegador." },
+        { q: "¿PintuWeb publica la app en Play Store y App Store?", a: "No. Entregamos los archivos de la app y su código fuente; tú publicas en Google Play y App Store con cuentas de desarrollador a tu nombre (Google Play Console y Apple Developer Program, ambas de pago). Así la app queda registrada a nombre de tu negocio." },
+        { q: "¿Cuánto cuesta una app y cuánto se tarda?", a: "El rango es {{price:aplikasi-mobile}}, con un plazo de {{duration:aplikasi-mobile}} una vez que el contenido y los flujos de la app están completos. La cifra exacta depende del número de pantallas y funciones, y figura en un presupuesto escrito antes de empezar. Un anticipo del 50 % pone en marcha el trabajo." },
+        { q: "¿Puedo probar las apps de demostración sin instalar nada?", a: "Sí. Las demos de nuestra galería son la versión web de las mismas apps, así que se abren directamente en el navegador del móvil o del portátil. Los negocios y los datos son ficticios." },
+      ],
+      steps: [
+        { title: "Primero, hablamos", desc: "Cuéntanos quién usará la app y qué necesita hacer. Proponemos las funciones y enviamos un presupuesto escrito." },
+        { title: "Diseño de pantallas", desc: "Definimos el flujo y el diseño de cada pantalla. Apruebas el aspecto antes de que empecemos a construir." },
+        { title: "Desarrollo y pruebas", desc: "La app se construye con un solo código para Android, iOS y la web. Puedes seguir el avance en una vista previa web." },
+        { title: "Entrega", desc: "Entregamos los archivos de la app y el código fuente. Tú publicas en Play Store y App Store con tus propias cuentas de desarrollador." },
+      ],
+      handover: { label: "Se entrega", value: "Archivos de la app + código fuente" },
+    },
   },
   terms: {
     domain: {

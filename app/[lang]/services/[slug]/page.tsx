@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Clock, ShieldCheck, Tag, Wallet } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Clock, PackageCheck, ShieldCheck, Tag, Wallet } from 'lucide-react'
 import PageHero from '../../../components/PageHero'
 import { Breadcrumbs, HlText, JsonLd } from '../../../components/Bits'
 import { SERVICES, serviceOf, serviceText } from '../../../content/services'
@@ -120,7 +120,8 @@ export default async function ServicePage({ params }: Params) {
               { icon: Tag, label: getPages(lang).services.from, value: from.price },
               { icon: Clock, label: p.colTime, value: keepRange(from.duration) },
               { icon: Wallet, label: p.summary.pay, value: d.pkg.deposit },
-              { icon: ShieldCheck, label: p.summary.guarantee, value: p.summary.guaranteeValue },
+              // layanan yang menyerahkan file (aplikasi mobile) menampilkan yang diserahkan, bukan garansi website
+              t.handover ? { icon: PackageCheck, label: t.handover.label, value: t.handover.value } : { icon: ShieldCheck, label: p.summary.guarantee, value: p.summary.guaranteeValue },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} className="rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 ring-1 ring-[color:var(--border-light)] sm:px-4">
                 <dt className="flex items-center gap-1.5 text-[0.8125rem] text-[color:var(--text-tertiary)]">
@@ -243,7 +244,7 @@ export default async function ServicePage({ params }: Params) {
         </div>
       </section>
 
-      {/* Cara kerja ringkas: daftar bernomor tanpa ikon */}
+      {/* Cara kerja ringkas: daftar bernomor tanpa ikon (tahap khusus layanan bila ada, mis. aplikasi mobile) */}
       <section aria-labelledby="how-title" className="section-y">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
@@ -251,7 +252,7 @@ export default async function ServicePage({ params }: Params) {
             <h2 id="how-title" className="mt-2 text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:mt-3 sm:text-[2.25rem]">{p.process}</h2>
           </div>
           <ol className="mt-6 grid grid-cols-1 gap-x-8 gap-y-5 sm:mt-10 sm:grid-cols-2 sm:gap-y-8 lg:grid-cols-4">
-            {d.process.steps.map((st, i) => (
+            {(t.steps ?? d.process.steps).map((st, i) => (
               <li key={st.title} className="border-t border-[color:var(--rule)] pt-4">
                 <h3 className="flex items-baseline gap-2.5 text-[1.1875rem] leading-snug text-[color:var(--text-primary)] sm:text-[1.3rem]">
                   <span className="tnum text-[0.9375rem] font-semibold text-[color:var(--primary-700)]" aria-hidden="true">

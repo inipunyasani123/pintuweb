@@ -2,6 +2,9 @@
 // Dipakai halaman Paket, bagian harga di beranda, halaman layanan, artikel, FAQ, llms.txt,
 // dan JSON-LD — ubah harga di sini saja supaya semuanya tidak pernah berselisih.
 //
+// 23 Okt 2026: paket baru "Aplikasi Mobile (Android & iOS)" dari pemilik: Rp500.000 – Rp10.000.000+, 3–7 hari kerja, DP 50%.
+// PintuWeb menyerahkan file aplikasi + kode sumber; rilis ke Play Store/App Store diurus klien dengan akun developer miliknya.
+//
 // 22 Okt 2026: harga 14 paket ditetapkan ulang oleh pemilik (angka di DATA di bawah). Website Custom tidak lagi punya
 // perkiraan harga: `quote: true` = "harga sesuai kebutuhan", angkanya hanya ada di penawaran setelah konsultasi.
 // Waktu pengerjaan, DP 50%, biaya tambahan (ADDONS), dan biaya perpanjangan TIDAK berubah.
@@ -20,7 +23,7 @@ import { WA_NUMBER } from './site'
 
 export { WA_NUMBER }
 
-export type PaketGroup = 'bisnis' | 'toko' | 'personal' | 'sistem' | 'desain'
+export type PaketGroup = 'bisnis' | 'toko' | 'personal' | 'sistem' | 'mobile' | 'desain'
 
 /** Perkiraan waktu pengerjaan: rentang dalam hari kerja atau minggu. `flex` = masih bergantung pada fitur. */
 export type Waktu = { min: number; max: number; unit: 'hari' | 'minggu'; flex?: boolean }
@@ -67,13 +70,13 @@ export const isPriced = <T extends { quote?: boolean }>(p: T): p is Extract<T, {
 /** Omit yang tetap membedakan dua bentuk paket di atas. */
 type DistOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never
 
-export const PACKAGE_GROUPS: PaketGroup[] = ['bisnis', 'toko', 'personal', 'sistem', 'desain']
+export const PACKAGE_GROUPS: PaketGroup[] = ['bisnis', 'toko', 'personal', 'sistem', 'mobile', 'desain']
 
 /**
  * Tanggal harga & waktu pengerjaan terakhir ditetapkan. NAIKKAN bila angka paket berubah: tampil sebagai
  * "Harga berlaku per …" dan menjadi tanggal pembaruan artikel serta dokumen legal yang memuat angka paket.
  */
-export const PRICES_UPDATED = '2026-10-22'
+export const PRICES_UPDATED = '2026-10-23'
 
 const DATA: DistOmit<Paket, 'duration'>[] = [
   // ---- Website bisnis ----
@@ -335,6 +338,28 @@ const DATA: DistOmit<Paket, 'duration'>[] = [
       'Konsultasi UX & optimasi performa',
       'Maintenance & support teknis 3 bulan',
       'Cocok untuk startup & instansi',
+    ],
+  },
+  // ---- Aplikasi mobile (23 Okt 2026) ----
+  {
+    slug: 'aplikasi-mobile',
+    group: 'mobile',
+    title: 'Aplikasi Mobile (Android & iOS)',
+    minPrice: 500000,
+    maxPrice: 10000000,
+    openEnded: true,
+    subtitle: 'Aplikasi HP untuk usaha: satu kode untuk Android, iOS, dan web',
+    time: { min: 3, max: 7, unit: 'hari' },
+    highlights: ['Kasir & member', 'Booking & pesan-antar', 'Sekolah, kantor & komunitas'],
+    // isi paket dari pemilik (23 Okt 2026), ditulis netral: fitur yang "bila diperlukan" masuk penawaran per proyek
+    features: [
+      'Aplikasi Android & iOS dari satu kode (React Native + Expo)',
+      'Versi web/PWA dari kode yang sama',
+      'Desain UI setiap layar sesuai merek',
+      'Data lokal & mode offline bila diperlukan',
+      'Notifikasi dan dashboard admin sesuai kebutuhan',
+      'Serah terima file aplikasi + kode sumber',
+      'Rilis ke Play Store/App Store diurus klien dengan akun developer sendiri',
     ],
   },
   // ---- Desain ----

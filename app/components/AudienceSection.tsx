@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, CalendarCheck, Check, Clock, Images, Link2, MailOpen, Megaphone, MessageCircle, ShoppingCart, Store, type LucideIcon } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, CalendarCheck, Check, Clock, Images, Link2, MailOpen, Megaphone, MessageCircle, ShoppingCart, Smartphone, Store, type LucideIcon } from 'lucide-react'
 import { wa } from '../lib/site'
 import { getDict } from '../i18n'
 import type { Lang } from '../i18n/config'
@@ -18,7 +18,8 @@ import Tabs from './Tabs'
 // kebutuhannya sebagai gelembung obrolan, lalu paket yang pas, harga mulai, lama pengerjaan, tiga isi utama paket,
 // tombol WhatsApp (pesannya sudah berisi kebutuhan itu), dan tautan ke halaman layanannya. Semua angka dari
 // lib/packages.ts lewat content/needs.ts. Ponsel: tombol dalam kisi 2 kolom (label panjang boleh dua baris, tanpa gulir
-// menyamping), kartu di bawahnya; tablet 4 kolom.
+// menyamping), kartu di bawahnya; tablet 4 kolom. Tombol terakhir yang sendirian di barisnya (9 pilihan sejak aplikasi
+// HP, 23 Okt 2026) dibentang selebar kisi.
 // Desktop: bento, tombol dua kolom di kiri, kartu besar di kanan. Kartu ditumpuk di satu sel grid (Tabs mode
 // 'stack'), jadi tingginya tetap saat pilihan berganti.
 
@@ -31,6 +32,7 @@ const ICON: Partial<Record<NeedKey, LucideIcon>> = {
   undangan: MailOpen,
   portofolio: Images,
   booking: CalendarCheck,
+  hp: Smartphone,
 }
 
 export default function AudienceSection({ lang }: { lang: Lang }) {
@@ -38,61 +40,62 @@ export default function AudienceSection({ lang }: { lang: Lang }) {
   const t = d.audience
   const items = needsFor(lang, 'home')
 
+  // kelas aud-* di globals.css: isi utilitasnya sama, dipindah supaya 9 kartu tidak mengulangnya di HTML & payload RSC
   const panels = items.map((n) => {
     const svc = n.service ? serviceOf(n.service) : null
     return (
-      <article key={n.key} className="flex h-full flex-col rounded-[1.5rem] bg-white p-5 ring-1 ring-[color:var(--border-light)] sm:p-7 lg:p-8">
+      <article key={n.key} className="aud-card">
         {/* kebutuhan pengunjung sebagai pesan masuk, jawaban kami di bawahnya */}
-        <p className="ms-auto max-w-[88%] rounded-[1.25rem] rounded-ee-[0.375rem] bg-[color:var(--primary-700)] px-4 py-2.5 text-[0.9375rem] leading-snug text-white">
+        <p className="aud-need">
           <span className="sr-only">{t.needLabel}: </span>
           {n.need}
         </p>
 
-        <div className="mt-5 flex items-start gap-3 sm:mt-6">
-          <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[color:var(--primary-50)] ring-1 ring-[color:var(--primary-100)]" aria-hidden="true">
+        <div className="aud-head">
+          <span className="aud-logo" aria-hidden="true">
             <LogoMark className="h-5 w-auto" />
           </span>
           <div className="min-w-0">
             <p className="kicker text-[color:var(--primary-700)]">{t.answer}</p>
-            <h3 className="mt-0.5 text-[1.625rem] leading-tight text-[color:var(--text-primary)] sm:text-[2rem]">{n.pkg.title}</h3>
+            <h3 className="aud-title">{n.pkg.title}</h3>
           </div>
         </div>
 
-        <dl className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3">
-          <div className="rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 sm:px-4">
-            <dt className="text-[0.8125rem] text-[color:var(--text-tertiary)]">{n.pkg.quote ? quoteText(lang).label : d.pkg.from}</dt>
-            <dd className="display mt-0.5 text-[1.125rem] font-semibold leading-tight text-[color:var(--text-primary)] sm:text-[1.5rem]">{n.pkg.priceFrom}</dd>
+        <dl className="aud-facts">
+          <div className="aud-tile">
+            <dt className="aud-dt">{n.pkg.quote ? quoteText(lang).label : d.pkg.from}</dt>
+            <dd className="display aud-price">{n.pkg.priceFrom}</dd>
           </div>
-          <div className="rounded-2xl bg-[color:var(--surface-soft)] px-3.5 py-3 sm:px-4">
-            <dt className="flex items-center gap-1.5 text-[0.8125rem] text-[color:var(--text-tertiary)]">
+          <div className="aud-tile">
+            <dt className="aud-dt flex items-center gap-1.5">
               <Clock size={13} aria-hidden="true" />
               {d.pkg.duration}
             </dt>
-            <dd className="mt-0.5 text-[1rem] font-semibold leading-snug text-[color:var(--text-primary)] sm:text-[1.125rem]">{keepRange(n.pkg.duration)}</dd>
+            <dd className="aud-dur">{keepRange(n.pkg.duration)}</dd>
           </div>
         </dl>
 
-        <p className="mt-5 text-[0.8125rem] font-semibold text-[color:var(--text-secondary)]">{t.includes}</p>
+        <p className="aud-inc">{t.includes}</p>
         <ul className="mt-2 space-y-1.5">
           {n.pkg.features.slice(0, 3).map((f) => (
-            <li key={f} className="flex items-start gap-2.5 text-[0.9375rem] leading-snug text-[color:var(--text-secondary)]">
-              <Check size={16} strokeWidth={2.4} className="mt-[0.15em] shrink-0 text-[color:var(--primary-700)]" aria-hidden="true" />
+            <li key={f} className="aud-li">
+              <Check size={16} strokeWidth={2.4} className="aud-ck" aria-hidden="true" />
               <span>{f}</span>
             </li>
           ))}
         </ul>
 
-        <div className="mt-auto flex flex-col gap-x-6 gap-y-3 pt-6 sm:flex-row sm:flex-wrap sm:items-center">
+        <div className="aud-act">
           <a href={wa(t.wa(n.need, n.pkg.title))} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
             {t.ask} <ArrowUpRight size={16} className="arw arw-ne" aria-hidden="true" />
             <span className="sr-only">{d.common.newTabShort}</span>
           </a>
           {svc ? (
-            <Link href={pathOf(lang, { key: 'services', service: svc.key })} className="link inline-flex items-center gap-1.5 self-center text-[0.9375rem] font-semibold">
+            <Link href={pathOf(lang, { key: 'services', service: svc.key })} className="link aud-link">
               {t.service(serviceText(svc, lang).name)} <ArrowRight size={15} className="arw" aria-hidden="true" />
             </Link>
           ) : (
-            <Link href={`${path(lang, 'pricing')}#${n.pkg.slug}`} className="link inline-flex items-center gap-1.5 self-center text-[0.9375rem] font-semibold">
+            <Link href={`${path(lang, 'pricing')}#${n.pkg.slug}`} className="link aud-link">
               {t.pricing} <ArrowRight size={15} className="arw" aria-hidden="true" />
             </Link>
           )}
@@ -127,7 +130,7 @@ export default function AudienceSection({ lang }: { lang: Lang }) {
           tabs={tabs}
           panels={panels}
           mode="stack"
-          listClass="mt-6 grid grid-cols-2 gap-2 [grid-area:tabs] sm:mt-8 sm:grid-cols-4 lg:grid-cols-2 lg:gap-2.5"
+          listClass="mt-6 grid grid-cols-2 gap-2 [grid-area:tabs] sm:mt-8 sm:grid-cols-4 lg:grid-cols-2 lg:gap-2.5 [&>:last-child:nth-child(odd)]:col-span-full"
           tabClass="flex min-h-11 items-center gap-2 rounded-2xl px-3.5 py-2 text-start text-[0.9375rem] font-semibold leading-tight transition-colors lg:px-4 lg:py-3"
           onClass="bg-[color:var(--primary-700)] text-white"
           offClass="bg-white text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)] hover:text-[color:var(--primary-700)] hover:ring-[color:var(--primary-300)]"

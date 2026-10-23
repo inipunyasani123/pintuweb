@@ -208,6 +208,20 @@ const es: Pack = {
         '3 meses de mantenimiento y soporte',
       ],
     },
+    'aplikasi-mobile': {
+      title: "App móvil (Android e iOS)",
+      subtitle: "Una app para tu negocio: un solo código para Android, iOS y la web",
+      highlights: ["Caja y fidelización", "Reservas y entregas", "Escuelas, oficinas y comunidades"],
+      features: [
+        "App Android e iOS desde un solo código (React Native + Expo)",
+        "Versión web/PWA con el mismo código",
+        "Diseño de interfaz de cada pantalla con tu marca",
+        "Datos locales y modo sin conexión si hace falta",
+        "Notificaciones y panel de administración según se necesite",
+        "Entrega de los archivos de la app + código fuente",
+        "La publicación en Play Store/App Store la gestiona el cliente con sus propias cuentas de desarrollador",
+      ],
+    },
     'konsep-desain': {
       title: 'Conceptos de diseño web',
       subtitle: 'Varios conceptos en vivo para un mismo brief: elige el mejor',
@@ -228,6 +242,7 @@ const es: Pack = {
     toko: { title: 'Tiendas en línea', lead: 'Desde un catálogo con pedidos por WhatsApp hasta una tienda completa con pagos automáticos.' },
     personal: { title: 'Personal y eventos', lead: 'Link in bio, invitaciones digitales, sitios de eventos y portafolios.' },
     sistem: { title: 'Sistemas y aplicaciones web', lead: 'Reservas, inmuebles, apps de trabajo y sitios con funciones a medida.' },
+    mobile: { title: "Apps móviles", lead: "Apps Android e iOS para negocios, creadas con un solo código que también funciona en la web." },
     desain: { title: 'Diseño', lead: 'Conceptos de diseño en vivo para un brief antes del desarrollo completo.' },
   },
   addons: {
@@ -238,6 +253,7 @@ const es: Pack = {
 
   demoCategories: {
     toko: 'Tienda en línea',
+    mobile: "App móvil",
     menu: 'Menú digital',
     landing: 'Landing Page',
     undangan: 'Invitación digital',
@@ -249,6 +265,16 @@ const es: Pack = {
     kontes: 'Conceptos de diseño',
   },
   demos: {
+    kasir: { tagline: "Una caja en el móvil para puestos de comida y pequeños comercios" },
+    booking: { tagline: "Reservas para barberías y salones" },
+    sekolah: { tagline: "Una app para las familias de una escuela primaria" },
+    member: { tagline: "Tarjeta de socio con puntos para una cafetería" },
+    antar: { tagline: "Pedidos a domicilio de warungs locales" },
+    laundry: { tagline: "Estado de la ropa en la lavandería, con recogida y entrega" },
+    absensi: { tagline: "Asistencia, turnos y vacaciones del personal" },
+    tiket: { tagline: "Entradas para eventos con e-ticket QR" },
+    masjid: { tagline: "Horarios de oración, charlas y cuentas de la mezquita" },
+    kos: { tagline: "Recibos de alquiler y avisos de averías en una pensión" },
     tanur: { tagline: 'Cerámica hecha a mano para la mesa de cada día' },
     takar: { tagline: 'Cuidado de la piel con concentraciones claras y dosis honestas' },
     lungsin: { tagline: 'Ropa de diario en tela lurik tejida, cosida en Klaten' },
@@ -340,6 +366,7 @@ const es: Pack = {
     ['¿Cómo es el proceso de principio a fin?', c.listed('Así es el proceso:', c.steps(['Una consulta sobre tus necesidades', 'Un presupuesto y el acuerdo', 'Un diseño inicial para tu aprobación', 'Desarrollo', 'Pruebas y revisiones', 'Lanzamiento y entrega']), 'Te mantenemos informado por WhatsApp en cada etapa.', true)],
     ['¿Seré el dueño total del sitio web?', 'Sí. Una vez realizado el pago final, recibes el código fuente, el acceso de administrador, el acceso al hosting y al dominio y todas las credenciales. El sitio es totalmente tuyo, sin dependencia de nosotros. Excepciones: los temas de invitación de nuestra galería permanecen activos 12 meses en un enlace personal, y el paquete Conceptos de diseño web da derecho a usar el diseño, no el código.'],
     ['¿Puedo pedir funciones a medida para mi negocio?', 'Sí. Sistemas de reservas, áreas de miembros, calculadoras, catálogos dinámicos o integraciones con sistemas que ya usas pueden construirse con el paquete Sitio web a medida. Cuéntanos qué necesitas y te daremos una estimación.'],
+    ["¿También crean apps Android e iOS?", `Sí. Creamos apps móviles con React Native y Expo: un solo código genera la app Android, la app iOS y una versión web. El paquete App móvil empieza en ${c.app.from} con un plazo de ${c.app.duration}, y puedes probar las apps de demostración en el navegador desde la página de Demos.`],
     // Precios
     ['¿Cuánto cuesta un sitio web?', c.listed('Precios iniciales por paquete, del más económico al más caro:', c.prices, 'Los detalles de cada paquete están en la página de Precios, y todos los precios están en rupias indonesias (IDR). Cada precio incluye diseño y desarrollo; los paquetes de sitio web incluyen además SEO básico.')],
     ['¿Hay costes ocultos?', `No. El precio del paquete cubre el diseño y el desarrollo (más SEO básico en los paquetes de sitio web). El único coste recurrente de nuestra parte es la renovación del dominio y el hosting: ${c.facts.renewal} En las tiendas en línea con pasarela de pago, las comisiones por transacción las descuenta directamente el proveedor de la pasarela (no nosotros), y la cuenta de comerciante se abre a tu nombre. Cualquier función importante fuera del paquete siempre se comenta y se acuerda antes.`],
@@ -360,6 +387,7 @@ const es: Pack = {
     ['¿Hay un panel de administración o CMS?', 'Los paquetes de tienda en línea, sistema de reservas, inmobiliario y aplicación web incluyen un panel de administración. En los demás paquetes, los cambios de contenido pueden hacerse a través de nosotros durante el periodo de mantenimiento, o puede añadirse un CMS como función.'],
     ['¿Cómo se mantiene seguro el sitio web?', 'Todos los sitios usan SSL (HTTPS), cabeceras de seguridad y validación de entradas. El código se guarda en un repositorio Git para poder restaurar versiones anteriores, y durante el mantenimiento actualizamos las dependencias con regularidad.'],
     ['¿Puede conectarse el sitio con redes sociales u otros servicios?', 'Sí: botones de WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, email marketing e incluso pasarelas de pago en los paquetes de tienda en línea.'],
+    ["¿Publican la app en Play Store y App Store?", "La publicación la hace el cliente. Entregamos los archivos de la app y su código fuente, y tú los publicas en Google Play y App Store con cuentas de desarrollador a tu nombre (Google Play Console y Apple Developer Program, ambas de pago). Así la app queda registrada a nombre de tu negocio."],
     // Soporte
     ['¿Hay garantía?', `Sí. Durante ${c.days} días tras el lanzamiento, los errores y problemas técnicos se corrigen gratis. Después, el mantenimiento sigue lo que incluye tu paquete y puede ampliarse mensualmente o bajo petición.`],
     ['¿Cómo actualizo el contenido una vez terminado el sitio?', 'Con los paquetes de tienda en línea puedes gestionar los productos tú mismo. En los demás paquetes, basta con enviar los cambios por WhatsApp; durante el periodo de mantenimiento, las actualizaciones pequeñas, como textos, imágenes o datos de contacto, son gratuitas. También te damos una guía breve para gestionar el sitio.'],

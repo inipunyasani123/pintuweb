@@ -8,12 +8,12 @@ import type { Hl } from '../dict/id'
 const pages = {
   services: {
     title: 'Layanan',
-    description: 'Jasa pembuatan landing page, company profile, toko online, portofolio, undangan digital, link in bio, dan website custom, lengkap dengan harga dan demo.',
+    description: "Jasa pembuatan landing page, company profile, toko online, undangan digital, link in bio, website custom, dan aplikasi Android & iOS, lengkap dengan harga.",
     ogTitle: 'Layanan — PintuWeb',
     ogDescription: 'Dari landing page sampai toko online dan website custom, lengkap dengan harga mulai dan demo yang bisa dicoba.',
     eyebrow: 'Layanan',
-    h1: ['Tujuh layanan, dari ', 'landing page', ' sampai aplikasi web.'] as Hl,
-    lead: 'Pilih jenis website yang kamu butuhkan. Setiap layanan dilengkapi harga mulai, perkiraan waktu, dan demo yang bisa dicoba.',
+    h1: ["Delapan layanan, dari ", "landing page", " sampai aplikasi Android & iOS."] as Hl,
+    lead: "Pilih layanan yang kamu butuhkan. Setiap layanan dilengkapi harga mulai, perkiraan waktu, dan demo yang bisa dicoba.",
     listAria: 'Daftar layanan',
     from: 'Mulai',
     priceOnRequest: 'Harga sesuai tema & fitur — tanyakan lewat WhatsApp',
@@ -68,8 +68,8 @@ const pages = {
       kicker: 'Pemandu paket',
       title: 'Cari paket yang cocok dalam 3 pertanyaan',
       lead: 'Ketuk jawabanmu, sarannya langsung muncul.',
-      questions: { purpose: 'Websitenya untuk apa?', size: 'Seberapa banyak isinya?', extra: 'Perlu bayar online atau booking?' },
-      purpose: { usaha: 'Usaha atau jasa', jual: 'Jualan produk', diri: 'Diri sendiri / karya', acara: 'Acara atau undangan', properti: 'Properti', tim: 'Kerja tim / data internal' },
+      questions: { purpose: "Kamu butuh untuk apa?", size: 'Seberapa banyak isinya?', extra: 'Perlu bayar online atau booking?' },
+      purpose: { usaha: 'Usaha atau jasa', jual: 'Jualan produk', diri: 'Diri sendiri / karya', acara: 'Acara atau undangan', properti: 'Properti', tim: 'Kerja tim / data internal', aplikasi: "Aplikasi HP (Android/iOS)" },
       size: { satu: '1 halaman cukup', beberapa: 'Beberapa halaman', banyak: 'Banyak halaman / fitur khusus' },
       extra: { tidak: 'Tidak, cukup WhatsApp', bayar: 'Ya, bayar online', booking: 'Ya, booking / pendaftaran' },
       best: 'Paling cocok',
@@ -234,7 +234,7 @@ const pages = {
     // "Yang saya kerjakan": jenis website yang dikerjakan PintuWeb (urutan & jumlah demo dari lib/), satu kalimat
     // "untuk siapa" per jenis. Menggantikan daftar keahlian & teknologi (keputusan pemilik 22 Okt 2026).
     kindsTitle: 'Yang saya kerjakan',
-    kindsLead: 'Jenis website yang saya bangun, lengkap dengan demo yang bisa kamu buka dan coba.',
+    kindsLead: "Jenis website dan aplikasi yang saya bangun, lengkap dengan demo yang bisa kamu buka dan coba.",
     kinds: {
       landing: 'Untuk promosi produk, event, dan iklan',
       toko: 'Untuk toko yang menjual banyak produk',
@@ -246,6 +246,7 @@ const pages = {
       reservasi: 'Untuk klinik, hotel, resto, dan lapangan',
       properti: 'Untuk agen properti dan developer perumahan',
       todo: 'Untuk tim kecil dan operasional internal',
+      mobile: "Untuk kasir, member, booking, dan sekolah",
     } as Record<DemoCategory, string>,
     // Prinsip kerja (halaman Founder & kartu "Di balik PintuWeb" di Tentang): pernyataan cara kerja dari fakta situs,
     // BUKAN kutipan; jangan ditulis sebagai ucapan Arya.

@@ -143,6 +143,33 @@ const more: More = {
         { q: 'Puis-je l’utiliser à la fois pour Instagram et TikTok ?', a: 'Oui. Le lien est le même sur toutes les plateformes : il suffit de l’ajouter à la bio de chaque compte.' },
       ],
     },
+    'aplikasi-mobile': {
+      name: "Applis Android et iOS",
+      title: "Création d’applis Android et iOS",
+      description: "Applis Android et iOS pour les entreprises : caisse, réservations, fidélité, écoles, pointage. Un seul code React Native, dès {{from:aplikasi-mobile}}. {{demos:mobile}} démos.",
+      h1: ["Des ", "applis Android et iOS", " pour votre activité, issues d’un seul code."],
+      lead: "Une appli mobile s’installe sur le téléphone de vos clients ou de votre équipe, pour une caisse, des réservations, une carte de fidélité, le pointage ou les informations d’une école. Nous travaillons avec React Native et Expo : un seul code produit l’appli Android, l’appli iOS et une version web.",
+      intro: [
+        "Quand une appli convient-elle mieux qu’un site web ? Quand les utilisateurs reviennent sans cesse : une caisse ouverte chaque jour, des clients qui cumulent des points, des parents qui consultent les notes ou un personnel qui pointe chaque matin. Une appli peut garder les données sur le téléphone, continuer à fonctionner sans réseau si nécessaire et envoyer des notifications.",
+        "Nous remettons les fichiers de l’appli et leur code source. Vous publiez vous-même sur Google Play et l’App Store, avec des comptes développeur à votre nom : l’appli est ainsi enregistrée au nom de votre entreprise dès le départ. Notre galerie compte {{demos:mobile}} applis de démonstration à essayer tout de suite dans le navigateur.",
+      ],
+      forWho: ["Petits commerces qui veulent une caisse et un suivi de stock sur téléphone", "Cafés, salons et barbiers avec fidélité ou réservations", "Écoles, mosquées et associations qui partagent des informations", "Entreprises avec du personnel en équipes : pointage, plannings et congés", "Blanchisseries, pensions et services avec une clientèle régulière", "Organisateurs d’événements qui vendent des billets"],
+      short: "Des applis pour Android et iOS issues d’un seul code, avec une version web.",
+      suits: "Caisse, fidélité, réservations, écoles",
+      faq: [
+        { q: "L’appli fonctionne-t-elle sur Android et sur iPhone ?", a: "Oui. Les applis sont créées avec React Native et Expo : un seul code produit les applis Android et iOS, ainsi qu’une version web qui s’ouvre dans un navigateur." },
+        { q: "PintuWeb publie-t-il l’appli sur le Play Store et l’App Store ?", a: "Non. Nous remettons les fichiers de l’appli et leur code source ; vous publiez vous-même sur Google Play et l’App Store avec des comptes développeur à votre nom (Google Play Console et Apple Developer Program, tous deux payants). Ainsi, l’appli est enregistrée au nom de votre entreprise." },
+        { q: "Combien coûte une appli et combien de temps faut-il ?", a: "La fourchette est de {{price:aplikasi-mobile}}, avec un délai de {{duration:aplikasi-mobile}} une fois le contenu et les parcours de l’appli complets. Le montant exact dépend du nombre d’écrans et de fonctionnalités, et figure dans un devis écrit avant de commencer. Un acompte de 50 % lance le travail." },
+        { q: "Puis-je essayer les applis de démonstration sans rien installer ?", a: "Oui. Les démos de notre galerie sont la version web des mêmes applis : elles s’ouvrent directement dans le navigateur d’un téléphone ou d’un ordinateur. Les entreprises et les données sont fictives." },
+      ],
+      steps: [
+        { title: "On en parle d’abord", desc: "Dites-nous qui utilisera l’appli et ce qu’il doit pouvoir faire. Nous proposons les fonctionnalités et envoyons un devis écrit." },
+        { title: "Conception des écrans", desc: "Nous définissons le parcours et le design de chaque écran. Vous validez l’apparence avant que nous commencions le développement." },
+        { title: "Développement et essais", desc: "L’appli est construite à partir d’un seul code pour Android, iOS et le web. Vous suivez l’avancement grâce à un aperçu web." },
+        { title: "Remise", desc: "Nous remettons les fichiers de l’appli et le code source. Vous publiez sur le Play Store et l’App Store avec vos propres comptes développeur." },
+      ],
+      handover: { label: "Remis", value: "Fichiers de l’appli + code source" },
+    },
   },
   terms: {
     domain: { term: 'Domaine', def: 'Un domaine est l’adresse d’un site web que l’on tape dans le navigateur, par exemple pintuweb.id. Les domaines se louent à l’année auprès d’un registraire et doivent être renouvelés pour ne pas être perdus.' },

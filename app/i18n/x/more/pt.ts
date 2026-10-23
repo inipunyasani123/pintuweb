@@ -143,6 +143,33 @@ const more: More = {
         { q: 'Posso usar no Instagram e no TikTok ao mesmo tempo?', a: 'Sim. O link é o mesmo em todas as plataformas, então basta adicioná-lo à bio de cada conta.' },
       ],
     },
+    'aplikasi-mobile': {
+      name: "Apps Android e iOS",
+      title: "Desenvolvimento de apps Android e iOS",
+      description: "Apps Android e iOS para negócios: caixa, agendamento, fidelidade, escolas, ponto. Um só código React Native, a partir de {{from:aplikasi-mobile}}. Teste {{demos:mobile}} demos.",
+      h1: ["", "Apps Android e iOS", " para o seu negócio, feitos com um só código."],
+      lead: "Um app para celular fica instalado no telefone dos seus clientes ou da sua equipe, para coisas como caixa, agendamentos, cartão fidelidade, controle de ponto ou avisos da escola. Trabalhamos com React Native e Expo: um só código gera o app Android, o app iOS e uma versão web.",
+      intro: [
+        "Quando um app é melhor que um site? Quando as pessoas voltam várias vezes: um caixa aberto todos os dias, clientes acumulando pontos, pais conferindo notas ou funcionários batendo ponto toda manhã. Um app pode guardar dados no celular, continuar funcionando sem sinal quando necessário e enviar notificações.",
+        "O que entregamos são os arquivos do app e o código-fonte. Você publica no Google Play e na App Store com contas de desenvolvedor no seu nome, então o app fica registrado em nome do seu negócio desde o início. Nossa galeria tem {{demos:mobile}} apps de demonstração para testar agora no navegador.",
+      ],
+      forWho: ["Pequenos negócios que precisam de caixa e controle de estoque no celular", "Cafeterias, salões e barbearias com fidelidade ou agendamento", "Escolas, mesquitas e comunidades que compartilham avisos", "Empresas com equipe em turnos: ponto, escalas e férias", "Lavanderias, pensões e serviços com clientes fiéis", "Organizadores de eventos que vendem ingressos"],
+      short: "Apps para Android e iOS a partir de um só código, com versão web também.",
+      suits: "Caixa, fidelidade, agendamento, escolas",
+      faq: [
+        { q: "O app funciona no Android e no iPhone?", a: "Sim. Os apps são feitos com React Native e Expo, então um só código gera os apps Android e iOS, além de uma versão web que abre no navegador." },
+        { q: "A PintuWeb publica o app na Play Store e na App Store?", a: "Não. Entregamos os arquivos do app e o código-fonte; você publica no Google Play e na App Store com contas de desenvolvedor no seu nome (Google Play Console e Apple Developer Program, ambas pagas). Assim o app fica registrado em nome do seu negócio." },
+        { q: "Quanto custa um app e quanto tempo leva?", a: "A faixa é de {{price:aplikasi-mobile}}, com prazo de {{duration:aplikasi-mobile}} depois que o conteúdo e os fluxos do app estão completos. O valor exato depende do número de telas e recursos, e vem em um orçamento por escrito antes de começar. Um sinal de 50% inicia o trabalho." },
+        { q: "Posso testar os apps de demonstração sem instalar nada?", a: "Sim. As demos da nossa galeria são a versão web dos mesmos apps, então abrem direto no navegador do celular ou do notebook. Os negócios e os dados são fictícios." },
+      ],
+      steps: [
+        { title: "Primeiro, conversamos", desc: "Conte quem vai usar o app e o que essas pessoas precisam fazer. Sugerimos os recursos e enviamos um orçamento por escrito." },
+        { title: "Desenho das telas", desc: "Montamos o fluxo e o design de cada tela. Você aprova o visual antes de começarmos a construir." },
+        { title: "Desenvolvimento e testes", desc: "O app é construído com um só código para Android, iOS e web. Você acompanha o progresso por uma prévia na web." },
+        { title: "Entrega", desc: "Entregamos os arquivos do app e o código-fonte. Você publica na Play Store e na App Store com as suas próprias contas de desenvolvedor." },
+      ],
+      handover: { label: "Entregamos", value: "Arquivos do app + código-fonte" },
+    },
   },
 
   terms: {

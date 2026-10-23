@@ -21,6 +21,7 @@ const count = (c: DemoCategory) => DEMOS.filter((d) => d.category === c).length
 const SERVICE_FOR: Partial<Record<DemoCategory, ServiceKey>> = {
   landing: 'landing-page',
   toko: 'toko-online',
+  mobile: 'aplikasi-mobile',
   // menu digital dijual sebagai paket Landing Page, dan demonya tampil di halaman layanan itu
   menu: 'landing-page',
   linkinbio: 'link-in-bio',

@@ -8,6 +8,8 @@ const BASE_SERVICE_SLUGS = {
   'toko-online': { id: 'toko-online', en: 'online-store', ms: 'kedai-dalam-talian' },
   portofolio: { id: 'website-portofolio', en: 'portfolio-website', ms: 'laman-web-portfolio' },
   'website-custom': { id: 'website-custom', en: 'custom-website', ms: 'laman-web-tersuai' },
+  // 23 Okt 2026: slug Indonesia memuat kata yang dicari orang ("aplikasi android"); bahasa tambahan memakai slug Inggris
+  'aplikasi-mobile': { id: 'aplikasi-android-ios', en: 'mobile-app-development', ms: 'aplikasi-mudah-alih' },
   'undangan-digital': { id: 'undangan-digital', en: 'digital-invitation', ms: 'kad-jemputan-digital' },
   'link-in-bio': { id: 'link-in-bio', en: 'link-in-bio', ms: 'link-in-bio' },
 } satisfies Record<string, Record<BaseLang, string>>

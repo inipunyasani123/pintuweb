@@ -20,10 +20,10 @@ type RawItem = { category: FaqCategoryId; question: string; answer: string; list
 // Kunci tiap pertanyaan, sejajar dengan urutan daftar di bawah (sama di ketiga bahasa). Dipakai sebagai
 // jangkar di halaman FAQ (/faq#garansi), jadi jangan diganti tanpa alasan: tautan lama akan putus.
 export const FAQ_KEYS = [
-  'mulai-dari-nol', 'usia-pintuweb', 'muncul-di-google', 'beda-pintuweb', 'alur-kerja', 'hak-milik', 'fitur-custom',
+  'mulai-dari-nol', 'usia-pintuweb', 'muncul-di-google', 'beda-pintuweb', 'alur-kerja', 'hak-milik', 'fitur-custom', 'aplikasi-mobile',
   'biaya', 'biaya-tersembunyi', 'pembayaran', 'tidak-cocok', 'diskon',
   'lama-pengerjaan', 'persiapan', 'tanpa-konten', 'revisi', 'progres', 'tambah-fitur',
-  'responsif', 'teknologi', 'kecepatan', 'panel-admin', 'keamanan', 'integrasi',
+  'responsif', 'teknologi', 'kecepatan', 'panel-admin', 'keamanan', 'integrasi', 'rilis-aplikasi',
   'garansi', 'update-konten', 'website-bermasalah', 'migrasi', 'bantuan-lanjutan',
 ] as const
 export type FaqKey = (typeof FAQ_KEYS)[number]
@@ -42,6 +42,9 @@ export const FAQ_MORE: Partial<Record<FaqKey, FaqMore>> = {
   'beda-pintuweb': { page: 'about' },
   'hak-milik': { page: 'terms', at: 'kepemilikan' },
   'fitur-custom': { service: 'website-custom' },
+  // aplikasi Android & iOS (23 Okt 2026): halaman layanannya memuat paket, demo, dan cara serah terima
+  'aplikasi-mobile': { service: 'aplikasi-mobile' },
+  'rilis-aplikasi': { service: 'aplikasi-mobile' },
   biaya: { page: 'pricing' },
   'biaya-tersembunyi': { page: 'pricing' },
   // halaman Cara Bayar (11 bahasa): metode, langkah, dan aturan; pasal S&K-nya ditaut dari sana
@@ -88,13 +91,13 @@ function listed(intro: string, rows: FaqList['rows'], outro: string, ordered = f
   return { answer: `${intro} ${flat}. ${outro}`, list: { intro, rows, outro, ordered } }
 }
 
-/** Kategori tiap pertanyaan menurut urutan FAQ_KEYS: 7 umum, 5 harga, 6 proses, 6 teknis, 5 dukungan. */
+/** Kategori tiap pertanyaan menurut urutan FAQ_KEYS: 8 umum, 5 harga, 6 proses, 7 teknis, 5 dukungan. */
 const CATEGORY_OF: FaqCategoryId[] = (
   [
-    ['general', 7],
+    ['general', 8],
     ['pricing', 5],
     ['process', 6],
-    ['technical', 6],
+    ['technical', 7],
     ['support', 5],
   ] as const
 ).flatMap(([c, n]) => Array<FaqCategoryId>(n).fill(c))
@@ -107,11 +110,14 @@ function items(lang: Lang): RawItem[] {
   const prices = byPrice(pk).map((p) => ({ label: p.title, value: p.quote ? p.priceRange : p.priceFrom }))
   const steps = (list: string[]) => list.map((label) => ({ label }))
   const n = DEMOS.length
+  // paket Aplikasi Mobile (lib/packages.ts) untuk jawaban "apakah membuat aplikasi Android & iOS?"
+  const appPkg = pk.find((p) => p.slug === 'aplikasi-mobile')!
+  const app = { from: appPkg.priceFrom, duration: appPkg.duration }
 
-  // Bahasa tambahan: 29 pasang [pertanyaan, jawaban] dari paketnya, berurutan seperti FAQ_KEYS.
+  // Bahasa tambahan: 31 pasang [pertanyaan, jawaban] dari paketnya, berurutan seperti FAQ_KEYS.
   if (!isBase(lang)) {
     return pack(lang)
-      .faq({ year: FOUNDED_YEAR, projects: CLIENT_PROJECTS, demos: n, perf: PERF_TARGET, days: GUARANTEE_DAYS, facts: f, prices, durations, listed, steps })
+      .faq({ year: FOUNDED_YEAR, projects: CLIENT_PROJECTS, demos: n, perf: PERF_TARGET, days: GUARANTEE_DAYS, facts: f, prices, durations, app, listed, steps })
       .map(([question, a], i) => ({ category: CATEGORY_OF[i], question, ...(typeof a === 'string' ? { answer: a } : a) }))
   }
 
@@ -124,6 +130,7 @@ function items(lang: Lang): RawItem[] {
       { category: 'general', question: 'What does the process look like from start to finish?', ...listed('Here is how it works:', steps(['A consultation about your needs', 'A quote and agreement', 'An initial design for your approval', 'Development', 'Testing and revisions', 'Launch and handover']), 'We keep you updated over WhatsApp at every stage.', true) },
       { category: 'general', question: 'Will I fully own the website?', answer: 'Yes. Once the final payment is made, you receive the source code, admin access, hosting and domain access and every credential. The website is entirely yours, with no dependence on us. Exceptions: invitation themes from our gallery stay active for 12 months on a personal link, and the Website Design Concepts package gives you the right to use the design, not the code.' },
       { category: 'general', question: 'Can I request custom features for my business?', answer: 'Yes. Booking systems, member areas, calculators, dynamic catalogues or integrations with systems you already use can be built through the Custom Website package. Tell us what you need and we will give you an estimate.' },
+      { category: 'general', question: 'Do you also build Android and iOS apps?', answer: `Yes. We build mobile apps with React Native and Expo: one codebase produces the Android app, the iOS app and a web version. The Mobile App package starts at ${app.from} with a turnaround of ${app.duration}, and you can try the demo apps in your browser on the Demos page.` },
       { category: 'pricing', question: 'How much does a website cost?', ...listed('Starting prices per package, cheapest first:', prices, 'Full details of each package are on the Pricing page, and all prices are in Indonesian Rupiah (IDR). Every price includes design and build; website packages also include basic SEO.') },
       { category: 'pricing', question: 'Are there any hidden costs?', answer: `No. The package price covers design and build (plus basic SEO for website packages). The only recurring cost from us is the domain and hosting renewal: ${f.renewal} For online stores with a payment gateway, transaction fees are deducted directly by the gateway provider (not by us), and the merchant account is opened in your name. Any major features outside the package are always discussed and agreed first.` },
       { category: 'pricing', question: 'How does payment work?', answer: f.payment },
@@ -141,6 +148,7 @@ function items(lang: Lang): RawItem[] {
       { category: 'technical', question: 'Is there an admin panel or CMS?', answer: 'The online store, booking system, property and web app packages include an admin panel. For other packages, content changes can be made through us during the maintenance period, or a CMS can be added as a feature.' },
       { category: 'technical', question: 'How is the website kept secure?', answer: 'Every website uses SSL (HTTPS), security headers and input validation. The code is stored in a Git repository so earlier versions can be restored, and during maintenance we update dependencies regularly.' },
       { category: 'technical', question: 'Can the website connect to social media or other services?', answer: 'Yes: WhatsApp buttons, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, email marketing and even payment gateways for the online store packages.' },
+      { category: 'technical', question: 'Do you publish the app to the Play Store and App Store?', answer: 'Publishing is done by the client. We hand over the app files and their source code, and you release them on Google Play and the App Store with developer accounts in your name (Google Play Console and the Apple Developer Program, both paid). That way the app is registered to your business.' },
       { category: 'support', question: 'Is there a guarantee?', answer: `Yes. For ${GUARANTEE_DAYS} days after launch, bugs and technical issues are fixed free of charge. After that, maintenance follows what your package includes and can be extended monthly or on request.` },
       { category: 'support', question: 'How do I update the content once the website is finished?', answer: 'With the online store packages, you can manage products yourself. For other packages, just send the changes over WhatsApp; during the maintenance period, small updates such as text, images or contact details are free. We also give you a short guide to managing the website.' },
       { category: 'support', question: 'What if my website has a problem or goes down?', answer: `Message us on WhatsApp. ${f.response}, during working hours (${f.hours}). Fixes are free during the ${GUARANTEE_DAYS}-day guarantee, and because the code is kept in Git, an earlier version can always be restored.` },
@@ -158,6 +166,7 @@ function items(lang: Lang): RawItem[] {
       { category: 'general', question: 'Bagaimanakah proses kerja dari awal hingga akhir?', ...listed('Alirannya seperti ini:', steps(['Konsultasi keperluan', 'Sebut harga dan persetujuan', 'Reka bentuk awal untuk kelulusan anda', 'Pembangunan', 'Pengujian dan semakan', 'Pelancaran dan serahan']), 'Kami maklumkan setiap peringkat melalui WhatsApp.', true) },
       { category: 'general', question: 'Adakah saya memiliki laman web itu sepenuhnya?', answer: 'Ya. Selepas bayaran penuh, anda menerima kod sumber, akses admin, akses hosting dan domain, serta semua kelayakan masuk. Laman web itu milik anda sepenuhnya, tanpa bergantung kepada kami. Pengecualian: tema jemputan daripada galeri kami aktif 12 bulan pada pautan peribadi, dan pakej Konsep Reka Bentuk Laman Web memberikan hak menggunakan reka bentuk, bukan kod.' },
       { category: 'general', question: 'Bolehkah saya meminta ciri khas untuk perniagaan saya?', answer: 'Boleh. Sistem tempahan, ruang ahli, kalkulator, katalog dinamik atau integrasi dengan sistem sedia ada boleh dibina melalui pakej Laman Web Tersuai. Bincangkan keperluan anda dan kami berikan anggaran.' },
+      { category: 'general', question: 'Adakah PintuWeb juga membina aplikasi Android dan iOS?', answer: `Ya. Kami membina aplikasi mudah alih dengan React Native dan Expo: satu kod menghasilkan aplikasi Android, aplikasi iOS dan versi web. Pakej Aplikasi Mudah Alih bermula ${app.from} dengan tempoh ${app.duration}, dan demo aplikasinya boleh dicuba terus dalam pelayar melalui halaman Demo.` },
       { category: 'pricing', question: 'Berapakah kos membina laman web?', ...listed('Harga permulaan setiap pakej, daripada yang paling murah:', prices, 'Butiran setiap pakej ada di halaman Harga, dan semua harga dalam Rupiah Indonesia (IDR). Setiap harga sudah termasuk reka bentuk dan pembinaan; pakej laman web juga merangkumi SEO asas.') },
       { category: 'pricing', question: 'Adakah kos tersembunyi?', answer: `Tiada. Harga pakej merangkumi reka bentuk dan pembinaan (serta SEO asas untuk pakej laman web). Satu-satunya kos berkala daripada kami ialah pembaharuan domain dan hosting: ${f.renewal} Untuk kedai dalam talian dengan gerbang pembayaran, yuran transaksi dipotong terus oleh penyedia gerbang (bukan oleh kami), dan akaun pedagang dibuka atas nama anda. Ciri besar di luar pakej sentiasa dibincang dan dipersetujui terlebih dahulu.` },
       { category: 'pricing', question: 'Bagaimanakah sistem pembayarannya?', answer: f.payment },
@@ -175,6 +184,7 @@ function items(lang: Lang): RawItem[] {
       { category: 'technical', question: 'Adakah panel admin atau CMS?', answer: 'Pakej kedai dalam talian, sistem tempahan, hartanah dan aplikasi web sudah dilengkapi panel admin. Untuk pakej lain, perubahan kandungan boleh dibuat melalui kami sepanjang tempoh penyelenggaraan, atau CMS ditambah sebagai ciri.' },
       { category: 'technical', question: 'Bagaimanakah keselamatan laman web dijamin?', answer: 'Semua laman web menggunakan SSL (HTTPS), pengepala keselamatan dan pengesahan input. Kod disimpan dalam repositori Git supaya versi terdahulu boleh dipulihkan, dan sepanjang penyelenggaraan kami mengemas kini kebergantungan secara berkala.' },
       { category: 'technical', question: 'Bolehkah laman web disambungkan ke media sosial atau perkhidmatan lain?', answer: 'Boleh: butang WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, pemasaran e-mel hingga gerbang pembayaran untuk pakej kedai dalam talian.' },
+      { category: 'technical', question: 'Adakah aplikasi dibantu diterbitkan ke Play Store dan App Store?', answer: 'Penerbitan diuruskan sendiri oleh pelanggan. Kami menyerahkan fail aplikasi berserta kod sumbernya, kemudian anda menerbitkannya di Google Play dan App Store dengan akaun pembangun atas nama anda (Google Play Console dan Apple Developer Program, kedua-duanya berbayar). Dengan itu aplikasi didaftarkan atas nama perniagaan anda.' },
       { category: 'support', question: 'Adakah jaminan?', answer: `Ya. Selama ${GUARANTEE_DAYS} hari selepas laman web dilancarkan, pepijat dan masalah teknikal dibaiki secara percuma. Selepas itu, penyelenggaraan mengikut isi pakej dan boleh dilanjutkan secara bulanan atau atas permintaan.` },
       { category: 'support', question: 'Bagaimana cara mengemas kini kandungan selepas laman web siap?', answer: 'Untuk pakej kedai dalam talian, produk boleh diurus sendiri. Untuk pakej lain, hantar sahaja perubahan melalui WhatsApp; sepanjang tempoh penyelenggaraan, kemas kini kecil seperti teks, imej atau maklumat hubungan dibuat secara percuma. Kami juga berikan panduan ringkas mengurus laman web.' },
       { category: 'support', question: 'Bagaimana jika laman web saya bermasalah atau tidak dapat diakses?', answer: `Maklumkan kepada kami melalui WhatsApp. ${f.response}, pada waktu bekerja (${f.hours}). Sepanjang jaminan ${GUARANTEE_DAYS} hari pembaikan adalah percuma, dan kerana kod disimpan dalam Git, versi terdahulu sentiasa boleh dipulihkan.` },
@@ -191,6 +201,7 @@ function items(lang: Lang): RawItem[] {
     { category: 'general', question: 'Bagaimana proses kerja dari awal sampai akhir?', ...listed('Alurnya seperti ini:', steps(['Konsultasi kebutuhan', 'Penawaran dan kesepakatan', 'Desain awal untuk kamu setujui', 'Pengembangan', 'Pengujian dan revisi', 'Website online dan serah terima']), 'Setiap tahap kami kabarkan lewat WhatsApp.', true) },
     { category: 'general', question: 'Apakah saya memiliki hak penuh atas website?', answer: 'Ya. Setelah pelunasan, kamu mendapat source code, akses admin, akses hosting dan domain, serta semua kredensial. Website sepenuhnya milikmu, tanpa ketergantungan pada kami. Pengecualian: tema undangan dari galeri kami aktif 12 bulan di tautan pribadi, dan paket Konsep Desain memberi hak pakai desain, bukan kode.' },
     { category: 'general', question: 'Apakah bisa request fitur custom sesuai kebutuhan bisnis?', answer: 'Bisa. Sistem booking, area member, kalkulator, katalog dinamis, atau integrasi dengan sistem yang sudah ada dapat kami buatkan lewat paket Website Custom. Diskusikan kebutuhanmu dan kami beri estimasi.' },
+    { category: 'general', question: 'Apakah PintuWeb juga membuat aplikasi Android dan iOS?', answer: `Ya. Kami membuat aplikasi mobile dengan React Native dan Expo: satu kode menghasilkan aplikasi Android, aplikasi iOS, sekaligus versi web. Paket Aplikasi Mobile mulai ${app.from} dengan pengerjaan ${app.duration}, dan demo aplikasinya bisa dicoba langsung di browser lewat halaman Demo.` },
     { category: 'pricing', question: 'Berapa biaya pembuatan website?', ...listed('Harga mulai tiap paket, dari yang termurah:', prices, 'Rincian fitur tiap paket ada di halaman Paket. Semua harga sudah termasuk desain dan pengerjaan; paket website juga mencakup SEO dasar.') },
     { category: 'pricing', question: 'Apakah ada biaya tersembunyi?', answer: `Tidak. Harga paket sudah mencakup desain dan pengerjaan (plus SEO dasar untuk paket website). Biaya berkala satu-satunya dari kami adalah perpanjangan domain dan hosting: ${f.renewal} Untuk toko online dengan payment gateway, biaya transaksi dipotong langsung oleh penyedia gateway (bukan oleh kami), dan akun merchant dibuat atas namamu. Fitur besar di luar paket selalu dibicarakan dan disepakati lebih dulu.` },
     { category: 'pricing', question: 'Bagaimana sistem pembayarannya?', answer: f.payment },
@@ -208,6 +219,7 @@ function items(lang: Lang): RawItem[] {
     { category: 'technical', question: 'Apakah ada admin panel atau CMS?', answer: 'Paket toko online, sistem reservasi, properti, dan aplikasi web sudah dilengkapi panel admin. Untuk paket lain, perubahan konten bisa lewat kami selama masa maintenance, atau CMS ditambahkan sebagai fitur.' },
     { category: 'technical', question: 'Bagaimana keamanan website dijamin?', answer: 'Semua website memakai SSL (HTTPS), security headers, dan validasi input. Kode tersimpan di repository Git sehingga versi sebelumnya bisa dipulihkan, dan selama masa maintenance kami memperbarui dependensi secara berkala.' },
     { category: 'technical', question: 'Apakah website bisa diintegrasikan dengan media sosial atau layanan lain?', answer: 'Bisa: tombol WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, email marketing, hingga payment gateway untuk paket toko online.' },
+    { category: 'technical', question: 'Apakah aplikasinya dibantu rilis ke Play Store dan App Store?', answer: 'Rilis diurus sendiri oleh klien. Kami menyerahkan file aplikasi beserta kode sumbernya, lalu kamu merilisnya ke Google Play dan App Store dengan akun developer atas namamu (Google Play Console dan Apple Developer Program, keduanya berbayar). Dengan begitu aplikasinya terdaftar atas nama usahamu.' },
     { category: 'support', question: 'Apakah ada garansi?', answer: `Ya. Selama ${GUARANTEE_DAYS} hari setelah website online, bug dan masalah teknis kami perbaiki gratis. Setelah itu, maintenance mengikuti isi paket dan bisa diperpanjang bulanan atau per permintaan.` },
     { category: 'support', question: 'Bagaimana cara update konten setelah website jadi?', answer: 'Untuk paket toko online, produk bisa kamu kelola sendiri. Untuk paket lain, kirim saja perubahan lewat WhatsApp; selama masa maintenance, update kecil seperti teks, gambar, atau info kontak kami kerjakan gratis. Kami juga memberi panduan singkat cara mengelola website.' },
     { category: 'support', question: 'Bagaimana jika website saya bermasalah atau down?', answer: `Kabari kami lewat WhatsApp. ${f.response}, pada jam kerja (${f.hours}). Selama garansi ${GUARANTEE_DAYS} hari perbaikannya gratis, dan karena kode tersimpan di Git, versi sebelumnya selalu bisa dipulihkan.` },

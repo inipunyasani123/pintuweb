@@ -15,7 +15,7 @@ const id = {
       `Studio web di ${CITY} sejak ${FOUNDED_YEAR}. Website cepat dan siap SEO untuk UMKM, toko, dan personal brand. Lihat ${n} demo langsung.`,
     ogAlt: 'PintuWeb — Jasa Pembuatan Website Profesional',
     keywords: ['jasa pembuatan website', 'jasa website profesional', 'bikin website murah', 'website UMKM', 'landing page', 'company profile', 'undangan digital', 'link in bio', `web developer ${CITY}`, 'PintuWeb'],
-    orgDescription: 'Jasa pembuatan website profesional, cepat, dan SEO-friendly.',
+    orgDescription: "Jasa pembuatan website profesional, cepat, dan SEO-friendly, serta aplikasi Android & iOS.",
   },
   common: {
     skip: 'Lewati ke konten',
@@ -103,14 +103,14 @@ const id = {
     kicker: `Studio web · ${CITY}, Jawa Timur`,
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} proyek klien · ${n} demo online`,
     title: ['Setiap usaha butuh ', 'pintu depan', ' yang layak.'] as Hl,
-    lead: 'Website, toko online, sampai aplikasi web untuk mengelola usaha. Cepat dibuka di ponsel, mudah ditemukan, dan sepenuhnya milikmu.',
+    lead: "Website, toko online, sampai aplikasi web dan Android/iOS untuk mengelola usaha. Cepat dibuka di ponsel, mudah ditemukan, dan sepenuhnya milikmu.",
     // Satu baris penawaran di bawah paragraf pembuka; harga & durasi paket Landing Page dari lib/packages.ts.
     offer: (price: string, duration: string) => `Landing page mulai ${price}, selesai dalam ${duration}. Bayar 50% di awal, sisanya setelah website jadi.`,
     // layar ≥768px: harga & lama pengerjaan pindah ke label gantungan pintu di gambar hero, kalimatnya tinggal bagian bayar
     pay: 'Bayar 50% di awal, sisanya setelah website jadi.',
     ctaConsult: 'Konsultasi gratis',
     ctaDemos: (n: number) => `Lihat ${n} demo`,
-    facade: (n: number) => `${capFirst(numberWord('id', n))} jenis website yang kami buat`,
+    facade: (n: number) => `${capFirst(numberWord('id', n))} jenis website & aplikasi yang kami buat`,
     facadeHint: 'Arahkan kursor untuk pratinjau, klik untuk membuka galerinya',
     openGallery: (t: string) => `Buka galeri ${t}`,
     // Tautan kedua tiap jenis: halaman layanan / kartu paketnya. kindDetailFor = nama aksesibel (unik per baris).
@@ -132,6 +132,7 @@ const id = {
       reservasi: { title: 'Reservasi & Booking', tagline: 'Sistem pemesanan online multi-industri' },
       properti: { title: 'Properti', tagline: 'Marketplace & katalog properti' },
       todo: { title: 'To-Do & Produktivitas', tagline: 'Aplikasi web untuk kelola tugas' },
+      mobile: { title: "Aplikasi Mobile", tagline: "Aplikasi Android & iOS dari satu kode" },
     },
     // satuan di belakang jumlah demo tiap galeri: selalu "demo" (bukan tema/varian/entri) — satu istilah untuk satu hal
     unit: demoUnits(() => 'demo'),
@@ -160,7 +161,7 @@ const id = {
   // Beranda, "Untuk siapa": pemilih kebutuhan → satu kartu paket (isi kebutuhannya di content/needs.ts).
   audience: {
     eyebrow: 'Untuk siapa',
-    title: 'Kamu butuh website untuk apa?',
+    title: 'Kamu butuh website atau aplikasi untuk apa?',
     lead: 'Pilih kebutuhanmu, paket yang pas langsung muncul.',
     tabs: 'Pilih kebutuhan',
     needLabel: 'Kebutuhan',

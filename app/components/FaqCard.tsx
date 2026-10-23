@@ -48,7 +48,7 @@ function Answer({ item, q }: { item: FaqEntry; q: string }) {
       {/* dua kolom yang dibaca dari atas ke bawah, supaya urutannya (termurah dulu, tahap 1-6) tetap terjaga */}
       <List className="my-2.5 gap-x-8 sm:columns-2">
         {l.rows.map((r, i) => (
-          <li key={r.label} className={`flex break-inside-avoid items-baseline gap-2.5 ${r.value ? 'justify-between border-b border-[color:var(--primary-200)] py-1.5' : 'py-1'}`}>
+          <li key={r.label} className={`faq-li ${r.value ? 'faq-li-v' : 'faq-li-s'}`}>
             {l.ordered && (
               <span className="grid h-5 w-5 shrink-0 translate-y-[-1px] place-items-center rounded-full bg-white text-[0.75rem] font-semibold leading-none text-[color:var(--primary-700)]" aria-hidden="true">
                 {i + 1}
@@ -56,7 +56,7 @@ function Answer({ item, q }: { item: FaqEntry; q: string }) {
             )}
             <span className="min-w-0">{mark(r.label, q)}</span>
             {/* nilai pendek (harga, "1-3 hari kerja") tidak boleh terpotong baris */}
-            {r.value && <span className={`text-end font-semibold text-[color:var(--text-primary)] ${r.value.length <= 16 ? 'whitespace-nowrap' : 'max-w-[55%]'}`}>{mark(r.value, q)}</span>}
+            {r.value && <span className={`faq-val ${r.value.length <= 16 ? 'whitespace-nowrap' : 'max-w-[55%]'}`}>{mark(r.value, q)}</span>}
           </li>
         ))}
       </List>
@@ -95,45 +95,34 @@ export default function FaqCard({ item, q, as: Q, hidden, open, onToggle, id, fo
       hidden={hidden}
       open={onToggle ? Boolean(open) : open || undefined}
       onToggle={onToggle ? (e) => onToggle(e.currentTarget.open) : undefined}
-      className={`faq-item group scroll-mt-4 rounded-[1.25rem] bg-white transition-shadow duration-300 open:shadow-[0_18px_34px_-26px_rgb(38_70_156/0.55)] ${
-        focused ? 'ring-2 ring-[color:var(--primary-700)]' : 'ring-1 ring-[color:var(--border-light)] open:ring-[color:var(--primary-300)]'
-      }`}
+      // kelas faq-* di globals.css (isi utilitasnya sama; dipindah supaya HTML beranda tidak mengulang 31 kali)
+      className={`faq-item group${focused ? ' faq-focus' : ''}`}
     >
-      <summary className={`flex cursor-pointer list-none items-center rounded-[1.25rem] py-4 text-start sm:py-[1.125rem] [&::-webkit-details-marker]:hidden ${num ? 'gap-3 ps-4 pe-5 sm:gap-4 sm:ps-5 sm:pe-6' : 'gap-4 px-5 sm:px-6'}`}>
+      <summary className={`faq-sum ${num ? 'faq-sum-n' : 'faq-sum-p'}`}>
         {num !== undefined && (
           // nomor hanya penanda urutan (dekoratif); sejajar dengan logo di gelembung jawaban di bawahnya
-          <span
-            aria-hidden="true"
-            className="grid h-8 w-8 shrink-0 place-items-center rounded-[0.625rem] bg-[color:var(--surface-soft)] text-[0.75rem] font-semibold tabular-nums text-[color:var(--text-tertiary)] ring-1 ring-[color:var(--border-light)] transition-colors duration-300 group-open:bg-[color:var(--primary-700)] group-open:text-white group-open:ring-[color:var(--primary-700)] sm:h-9 sm:w-9 sm:rounded-xl sm:text-[0.8125rem]"
-          >
+          <span aria-hidden="true" className="faq-num">
             {String(num).padStart(2, '0')}
           </span>
         )}
-        <Q className="flex-1 text-[1.0625rem] leading-snug text-[color:var(--text-primary)] transition-colors group-open:text-[color:var(--primary-700)] sm:text-[1.125rem]">{mark(item.question, q)}</Q>
-        {/* kartu bernomor: yang menyala biru saat dibuka cukup petak nomornya, tombol +/× tetap tenang */}
-        <span
-          aria-hidden="true"
-          className={`relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color:var(--surface-soft)] text-[color:var(--text-secondary)] transition-[transform,background-color,color] duration-300 group-open:rotate-45 ${
-            num ? 'group-open:bg-[color:var(--primary-50)] group-open:text-[color:var(--primary-700)]' : 'group-open:bg-[color:var(--primary-700)] group-open:text-white'
-          }`}
-        >
-          <span className="absolute h-[1.5px] w-3 rounded-full bg-current" />
-          <span className="absolute h-3 w-[1.5px] rounded-full bg-current" />
-        </span>
+        <Q className="faq-q">{mark(item.question, q)}</Q>
+        {/* kartu bernomor: yang menyala biru saat dibuka cukup petak nomornya, tombol +/× tetap tenang. Dua garis tanda
+            plus = ::before/::after kelas faq-x. */}
+        <span aria-hidden="true" className={`faq-x ${num ? 'faq-x-n' : 'faq-x-p'}`} />
       </summary>
-      <div className={`faq-answer pb-5 sm:pb-6 ${num ? 'ps-4 pe-5 sm:ps-5 sm:pe-6' : 'px-5 sm:px-6'}`}>
+      <div className={`faq-answer ${num ? 'faq-pad-n' : 'faq-pad-p'}`}>
         <div className="flex items-start gap-3">
-          <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white ring-1 ring-[color:var(--border-light)]" aria-hidden="true">
+          <span className="faq-logo" aria-hidden="true">
             <LogoMark className="h-[1.125rem] w-auto" />
           </span>
-          <div className="min-w-0 max-w-2xl rounded-[1.125rem] rounded-ss-md bg-[color:var(--primary-50)] px-4 py-3 text-[0.9375rem] leading-relaxed text-[color:var(--text-secondary)] sm:text-base">
+          <div className="faq-bubble">
             <Answer item={item} q={q} />
           </div>
         </div>
         {(item.more || actions) && (
-          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 ps-11 text-[0.8125rem] font-semibold">
+          <div className="faq-more">
             {item.more && (
-              <Link href={item.more.href} className="inline-flex min-h-8 items-center gap-1.5 text-[color:var(--primary-700)] underline-offset-4 hover:underline">
+              <Link href={item.more.href} className="faq-more-a">
                 <span>
                   {moreLabel}: {item.more.label}
                 </span>

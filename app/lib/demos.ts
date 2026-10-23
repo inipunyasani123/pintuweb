@@ -4,11 +4,13 @@
 // kartu 1200:630) + <slug>-360/-480/-1080.webp untuk srcset, supaya galeri ringan dan tidak bergantung pada domain demo.
 // Demo baru: `node scripts/demo-mockups.mjs all <slug>` lalu naikkan THUMB_V.
 
-export type DemoCategory = 'landing' | 'toko' | 'menu' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
+export type DemoCategory = 'landing' | 'toko' | 'mobile' | 'menu' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
 
 export const DEMO_CATEGORIES: { id: DemoCategory; label: string }[] = [
   { id: 'landing', label: 'Landing Page' },
   { id: 'toko', label: 'Toko Online' },
+  // Aplikasi Android & iOS (React Native + Expo, 23 Okt 2026); galeri memakai versi web hasil `expo export -p web`.
+  { id: 'mobile', label: 'Aplikasi Mobile' },
   // Menu digital QR untuk kafe & warung: dijual sebagai paket Landing Page (PACKAGE_FOR_CATEGORY di lib/portals.ts).
   { id: 'menu', label: 'Menu Digital' },
   { id: 'undangan', label: 'Undangan Digital' },
@@ -60,6 +62,17 @@ export const DEMOS: Demo[] = [
   { slug: "bakso", name: "Bakso Dalu", tagline: "Warung Tenda Malam dengan Level Pedas 0–5", category: 'menu', url: "https://menu-bakso.pintuweb.id", pkg: 'landing-page' },
   { slug: "jepang", name: "Akagane Shokudō", tagline: "Warung Jepang Rumahan dengan Ikon Alergen", category: 'menu', url: "https://menu-jepang.pintuweb.id", pkg: 'landing-page' },
   { slug: "dessert", name: "Lintang Manis", tagline: "Dessert Bar dengan Bowl Rakitan Sendiri", category: 'menu', url: "https://menu-dessert.pintuweb.id", pkg: 'landing-page' },
+  // Aplikasi mobile: paketnya Aplikasi Mobile lewat PACKAGE_FOR_CATEGORY (lib/portals.ts)
+  { slug: "kasir", name: "Ketip", tagline: "Kasir Warung & UMKM di HP", category: 'mobile', url: "https://app-kasir.pintuweb.id" },
+  { slug: "booking", name: "Kursi Putar", tagline: "Booking Pangkas Rambut & Salon", category: 'mobile', url: "https://app-booking.pintuweb.id" },
+  { slug: "sekolah", name: "Kapur", tagline: "Aplikasi Orang Tua Siswa SD", category: 'mobile', url: "https://app-sekolah.pintuweb.id" },
+  { slug: "member", name: "Kopi Blirik", tagline: "Kartu Member & Poin Kafe", category: 'mobile', url: "https://app-member.pintuweb.id" },
+  { slug: "antar", name: "Pincuk", tagline: "Pesan-Antar dari Warung Lokal", category: 'mobile', url: "https://app-antar.pintuweb.id" },
+  { slug: "laundry", name: "Busa Ungu", tagline: "Status Cucian & Jemput-Antar Laundry", category: 'mobile', url: "https://app-laundry.pintuweb.id" },
+  { slug: "absensi", name: "Gilir", tagline: "Absensi, Shift & Cuti Karyawan", category: 'mobile', url: "https://app-absensi.pintuweb.id" },
+  { slug: "tiket", name: "Karcis Wetan", tagline: "Tiket Acara dengan E-Tiket QR", category: 'mobile', url: "https://app-tiket.pintuweb.id" },
+  { slug: "masjid", name: "Nurul Ufuk", tagline: "Jadwal Salat, Kajian & Kas Masjid", category: 'mobile', url: "https://app-masjid.pintuweb.id" },
+  { slug: "kos", name: "Grendel Kos", tagline: "Tagihan Sewa & Lapor Kerusakan Kos", category: 'mobile', url: "https://app-kos.pintuweb.id" },
   { slug: "corporate", name: "Situs Acara Korporat Digital", tagline: "Temu Rekayasa Nusa 2027", category: 'undangan', url: "https://undangan-corporate.pintuweb.id", pkg: 'situs-acara' },
   { slug: "aqiqah", name: "Undangan Aqiqah Digital", tagline: "Aisyah Khairunnisa", category: 'undangan', url: "https://undangan-aqiqah.pintuweb.id" },
   { slug: "khitanan", name: "Undangan Khitanan Digital", tagline: "Kapten Fauzan", category: 'undangan', url: "https://undangan-khitanan.pintuweb.id" },
@@ -112,7 +125,7 @@ export const DEMOS: Demo[] = [
 
 /** Versi thumbnail public/demos: naikkan setiap kali thumbnail ditangkap ulang. Nama berkasnya tetap (<slug>.webp)
  *  sedangkan CDN & peramban menyimpannya 7 hari, jadi versi ini yang membuat tampilan baru langsung terlihat. */
-export const THUMB_V = '20261022n'
+export const THUMB_V = '20261023a'
 export const demoThumb = (slug: string) => `/demos/${slug}.webp?v=${THUMB_V}`
 export const demoImage = (d: Demo) => demoThumb(d.slug)
 

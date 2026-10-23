@@ -1,6 +1,6 @@
 // Bentuk "paket bahasa" untuk bahasa tambahan (lihat i18n/config.ts). Satu paket = isi situs di luar kamus
 // antarmuka (dict/<kode>.ts) dan teks halaman (pages/<kode>.ts): fakta bisnis, satuan waktu, teks 14 paket,
-// kelompok & biaya tambahan, label + tagline semua demo, dan 29 tanya-jawab FAQ.
+// kelompok & biaya tambahan, label + tagline semua demo, dan 31 tanya-jawab FAQ.
 // Angka (harga, hari garansi, jam kerja, jumlah demo) TIDAK ditulis di paket: semuanya datang lewat konteks
 // dari lib/site.ts dan lib/packages.ts, sama seperti bahasa dasar.
 import type { Paket, PaketGroup } from '../../lib/packages'
@@ -46,6 +46,8 @@ export type FaqCtx = {
   prices: Rows
   /** "paket: perkiraan waktu" */
   durations: Rows
+  /** paket Aplikasi Mobile: harga mulai & perkiraan waktu, untuk jawaban "apakah membuat aplikasi Android & iOS?" */
+  app: { from: string; duration: string }
   listed: (intro: string, rows: Rows, outro: string, ordered?: boolean) => Listed
   steps: (list: string[]) => Rows
 }
@@ -66,7 +68,7 @@ export type Pack = {
   /** tagline (dan nama, bila perlu diterjemahkan) tiap demo, kuncinya slug di lib/demos.ts */
   demos: Record<string, { name?: string; tagline: string }>
   faqCategories: Record<FaqCategoryKey, { name: string; lead: string }>
-  /** 29 pasang [pertanyaan, jawaban], URUTANNYA sama dengan FAQ_KEYS di content/faq.ts */
+  /** 31 pasang [pertanyaan, jawaban], URUTANNYA sama dengan FAQ_KEYS di content/faq.ts */
   faq: (c: FaqCtx) => [string, string | Listed][]
 }
 
@@ -78,7 +80,7 @@ export type TermText = { term: string; def: string; letter?: string }
  * supaya paket inti tetap ringkas. Penanda harga ({{from:slug}} dst.) dipertahankan apa adanya: angkanya diisi fillFacts().
  */
 export type More = {
-  /** 7 layanan, kuncinya ServiceKey (i18n/slugs.ts) */
+  /** 8 layanan, kuncinya ServiceKey (i18n/slugs.ts) */
   services: Record<ServiceKey, ServiceText>
   /** 26 istilah, kuncinya id di content/glossary.ts */
   terms: Record<string, TermText>

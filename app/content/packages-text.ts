@@ -189,6 +189,20 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
         "3 months of maintenance & support",
       ],
     },
+    'aplikasi-mobile': {
+      title: 'Mobile App (Android & iOS)',
+      subtitle: 'A phone app for your business: one codebase for Android, iOS and the web',
+      highlights: ['Point of sale & loyalty', 'Booking & delivery', 'Schools, offices & communities'],
+      features: [
+        'Android & iOS app from one codebase (React Native + Expo)',
+        'A web/PWA version from the same code',
+        'UI design for every screen, in your brand',
+        'Local data & offline mode where needed',
+        'Notifications and an admin dashboard as needed',
+        'Handover of the app files + source code',
+        'Play Store/App Store release handled by the client, with their own developer accounts',
+      ],
+    },
     'konsep-desain': {
       title: "Website Design Concepts",
       subtitle: "Several live concepts for one brief — pick the best",
@@ -386,6 +400,20 @@ export const PACKAGE_TEXT: Record<'en' | 'ms', Record<string, PaketText>> = {
         "Penyelenggaraan & sokongan 3 bulan",
       ],
     },
+    'aplikasi-mobile': {
+      title: "Aplikasi Mudah Alih (Android & iOS)",
+      subtitle: "Aplikasi telefon untuk perniagaan: satu kod untuk Android, iOS dan web",
+      highlights: ["Juruwang & keahlian","Tempahan & penghantaran","Sekolah, pejabat & komuniti"],
+      features: [
+        "Aplikasi Android & iOS daripada satu kod (React Native + Expo)",
+        "Versi web/PWA daripada kod yang sama",
+        "Reka bentuk UI setiap skrin mengikut jenama",
+        "Data setempat & mod luar talian jika perlu",
+        "Pemberitahuan dan papan pemuka admin mengikut keperluan",
+        "Serahan fail aplikasi + kod sumber",
+        "Penerbitan ke Play Store/App Store diuruskan pelanggan dengan akaun pembangun sendiri",
+      ],
+    },
     'konsep-desain': {
       title: "Konsep Reka Bentuk Laman Web",
       subtitle: "Beberapa konsep langsung untuk satu taklimat, pilih yang terbaik",
@@ -409,6 +437,7 @@ export const PACKAGE_GROUP_TEXT: Record<'id' | 'en' | 'ms', Record<PaketGroup, {
     toko: { title: 'Toko online', lead: 'Dari katalog dengan order WhatsApp sampai toko lengkap dengan pembayaran otomatis.' },
     personal: { title: 'Personal & acara', lead: 'Link in bio, undangan digital, situs acara, dan portofolio.' },
     sistem: { title: 'Sistem & aplikasi web', lead: 'Reservasi, properti, aplikasi kerja, dan website dengan fitur khusus.' },
+    mobile: { title: 'Aplikasi mobile', lead: 'Aplikasi Android & iOS untuk usaha, dibangun dari satu kode yang juga berjalan di web.' },
     desain: { title: 'Desain', lead: 'Konsep desain live untuk satu brief sebelum dibangun penuh.' },
   },
   en: {
@@ -416,6 +445,7 @@ export const PACKAGE_GROUP_TEXT: Record<'id' | 'en' | 'ms', Record<PaketGroup, {
     toko: { title: 'Online stores', lead: 'From a catalogue with WhatsApp orders to a full store with automatic payments.' },
     personal: { title: 'Personal & events', lead: 'Link in bio, digital invitations, event sites and portfolios.' },
     sistem: { title: 'Systems & web apps', lead: 'Booking, property, work apps and websites with bespoke features.' },
+    mobile: { title: 'Mobile apps', lead: 'Android & iOS apps for businesses, built from one codebase that also runs on the web.' },
     desain: { title: 'Design', lead: 'Live design concepts for one brief before the full build.' },
   },
   ms: {
@@ -423,6 +453,7 @@ export const PACKAGE_GROUP_TEXT: Record<'id' | 'en' | 'ms', Record<PaketGroup, {
     toko: { title: 'Kedai dalam talian', lead: 'Daripada katalog dengan pesanan WhatsApp hingga kedai lengkap dengan pembayaran automatik.' },
     personal: { title: 'Peribadi & acara', lead: 'Link in bio, kad jemputan digital, laman acara dan portfolio.' },
     sistem: { title: 'Sistem & aplikasi web', lead: 'Tempahan, hartanah, aplikasi kerja dan laman web dengan ciri khas.' },
+    mobile: { title: 'Aplikasi mudah alih', lead: 'Aplikasi Android & iOS untuk perniagaan, dibina daripada satu kod yang turut berjalan di web.' },
     desain: { title: 'Reka bentuk', lead: 'Konsep reka bentuk langsung untuk satu taklimat sebelum dibina sepenuhnya.' },
   },
 }

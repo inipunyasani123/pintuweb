@@ -27,8 +27,10 @@ export function pricePos(v: number) {
   return 100
 }
 
-const COLS = 'md:grid-cols-[13.5rem_minmax(0,1fr)_11.5rem] md:gap-x-5 lg:grid-cols-[17rem_minmax(0,1fr)_12rem] lg:gap-x-6'
-const GRID_LINES = Array.from({ length: BANDS + 1 }, (_, i) => (i / BANDS) * 100)
+// Kolom bersama sumbu & baris, dan kelas baris/teks/batang: kelas pm-* di globals.css (isinya utilitas yang sama; dipindah
+// supaya HTML beranda tidak mengulangnya 15 kali). Garis skala digambar latar .pm-track untuk 4 pita.
+const COLS = 'pm-cols'
+if (BANDS !== 4) throw new Error(`PriceMap: ${BANDS} pita, padahal garis skala .pm-track di globals.css dibuat untuk 4 pita`)
 
 type Props = {
   lang: Lang
@@ -47,7 +49,7 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
   const quote = quoteText(lang)
   const panel = tone === 'white' ? 'bg-white ring-1 ring-[color:var(--border-light)]' : 'bg-[color:var(--surface-soft)]'
   const bg = tone === 'white' ? 'bg-white' : 'bg-[color:var(--surface-soft)]'
-  const rowHover = tone === 'white' ? 'hover:bg-[color:var(--surface-soft)]' : 'hover:bg-white'
+  const rowHover = tone === 'white' ? 'pm-row-w' : 'pm-row-s'
   // Jangkar di halaman yang sama memakai <a> biasa: navigasi klien Next tidak memicu :target (sorotan kartu tujuan).
   const Row = base.startsWith('#') ? 'a' : Link
   // kanan-ke-kiri: posisi memakai inset-inline-start, gradasi batang dan irisannya dicerminkan
@@ -57,7 +59,7 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
     <div className={`rounded-[1.75rem] p-2 pb-4 sm:p-4 sm:pb-5 lg:p-5 ${panel} ${className}`}>
       {/* Sumbu: tetap terlihat selama daftar digulir. Sudutnya sengaja siku: warnanya sama dengan panel, jadi saat diam
           tidak terlihat bedanya, sedangkan sudut membulat membuat teks baris tembus di pojoknya saat sumbu menempel. */}
-      <div className={`sticky top-0 z-10 grid grid-cols-1 px-3 pb-2 pt-3 text-[0.75rem] font-semibold text-[color:var(--text-tertiary)] md:px-4 md:text-[0.8125rem] ${bg} ${COLS}`} aria-hidden="true">
+      <div className={`pm-axis ${bg} ${COLS}`} aria-hidden="true">
         <span className="hidden md:block">{t.colPackage}</span>
         <span className="relative me-7 block h-5 md:me-0">
           <span className="absolute start-0">{currencyCode(lang)}</span>
@@ -81,10 +83,10 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
             // batang + harga (ponsel: di bawah nama)
             return (
               <li key={p.slug} className="mt-1.5 border-t border-dashed border-[color:var(--primary-200)] pt-1.5">
-                <Row href={base + p.slug} className={`group block items-center rounded-2xl px-3 py-2.5 transition-colors md:grid md:px-4 md:py-0 ${rowHover} ${COLS}`}>
+                <Row href={base + p.slug} className={`group pm-row ${rowHover} ${COLS}`}>
                   <span className="block min-w-0 md:py-3">
-                    <span className="block font-semibold leading-snug text-[color:var(--text-primary)] transition-colors group-hover:text-[color:var(--primary-700)]">{p.title}</span>
-                    <span className="mt-0.5 hidden text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:block">
+                    <span className="pm-name">{p.title}</span>
+                    <span className="pm-meta">
                       {groupTitle[p.group].title} · {p.duration}
                     </span>
                   </span>
@@ -100,27 +102,24 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
           const slice = w >= 100 ? 0 : (a / (100 - w)) * 100
           return (
             <li key={p.slug}>
-              <Row href={base + p.slug} className={`group block items-center rounded-2xl px-3 py-2.5 transition-colors md:grid md:px-4 md:py-0 ${rowHover} ${COLS}`}>
+              <Row href={base + p.slug} className={`group pm-row ${rowHover} ${COLS}`}>
                 {/* ponsel: nama & kisaran harga sebaris, batang tepat di bawahnya (ringkas; lama pengerjaan ada di kartu
                     paket); desktop: kolom nama (+ kelompok & lama pengerjaan) · batang · harga */}
-                <span className="flex min-w-0 items-baseline justify-between gap-3 md:block md:py-3">
+                <span className="pm-top">
                   <span className="min-w-0">
-                    <span className="block font-semibold leading-snug text-[color:var(--text-primary)] transition-colors group-hover:text-[color:var(--primary-700)]">{p.title}</span>
-                    <span className="mt-0.5 hidden text-[0.8125rem] leading-snug text-[color:var(--text-tertiary)] md:block">
+                    <span className="pm-name">{p.title}</span>
+                    <span className="pm-meta">
                       {groupTitle[p.group].title} · {p.duration}
                     </span>
                   </span>
-                  <span className="shrink-0 whitespace-nowrap text-[0.875rem] font-semibold text-[color:var(--text-primary)] md:hidden">{price}</span>
+                  <span className="pm-pm">{price}</span>
                 </span>
-                <span className="hidden whitespace-nowrap text-end text-[0.9375rem] font-semibold text-[color:var(--text-primary)] md:order-3 md:block">{price}</span>
+                <span className="pm-pd">{price}</span>
 
                 {/* Batang kisaran harga pada skala bersama */}
-                <span className="relative me-7 mt-2 block h-3.5 md:order-2 md:me-0 md:mt-0 md:h-full md:min-h-[3.75rem]" aria-hidden="true">
-                  {GRID_LINES.map((x) => (
-                    <span key={x} className="absolute inset-y-0 w-px bg-[color:var(--primary-200)]" style={{ insetInlineStart: x === 100 ? 'calc(100% - 1px)' : `${x}%` }} />
-                  ))}
+                <span className="pm-track" aria-hidden="true">
                   <span
-                    className="absolute top-1/2 h-2.5 -translate-y-1/2 rounded-full transition-[height] duration-200 group-hover:h-3.5"
+                    className="pm-bar"
                     style={
                       {
                         insetInlineStart: `${a}%`,
@@ -135,7 +134,7 @@ export default function PriceMap({ lang, base, tone = 'soft', className = '' }: 
                   {p.openEnded &&
                     // bisa lebih dari batas atas: ekor titik-titik
                     [0, 1, 2].map((k) => (
-                      <span key={k} className="absolute top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[color:var(--primary-700)]" style={{ insetInlineStart: `calc(${a + w}% + ${5 + k * 7}px)`, opacity: 0.75 - k * 0.22 }} />
+                      <span key={k} className="pm-dot" style={{ insetInlineStart: `calc(${a + w}% + ${5 + k * 7}px)`, opacity: 0.75 - k * 0.22 }} />
                     ))}
                 </span>
               </Row>

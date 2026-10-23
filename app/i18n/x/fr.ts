@@ -208,6 +208,20 @@ const fr: Pack = {
         '3 mois de maintenance et d’assistance',
       ],
     },
+    'aplikasi-mobile': {
+      title: "Appli mobile (Android et iOS)",
+      subtitle: "Une appli pour votre activité : un seul code pour Android, iOS et le web",
+      highlights: ["Caisse et fidélité", "Réservations et livraison", "Écoles, bureaux et associations"],
+      features: [
+        "Appli Android et iOS à partir d’un seul code (React Native + Expo)",
+        "Version web/PWA issue du même code",
+        "Design de chaque écran aux couleurs de votre marque",
+        "Données locales et mode hors ligne si nécessaire",
+        "Notifications et tableau de bord d’administration selon les besoins",
+        "Remise des fichiers de l’appli + code source",
+        "Publication sur le Play Store/l’App Store gérée par le client, avec ses propres comptes développeur",
+      ],
+    },
     'konsep-desain': {
       title: 'Concepts de design web',
       subtitle: 'Plusieurs concepts en ligne pour un même brief : choisissez le meilleur',
@@ -228,6 +242,7 @@ const fr: Pack = {
     toko: { title: 'Boutiques en ligne', lead: 'Du catalogue avec commande sur WhatsApp à la boutique complète avec paiement automatique.' },
     personal: { title: 'Personnel et événements', lead: 'Link in bio, invitations numériques, sites d’événement et portfolios.' },
     sistem: { title: 'Systèmes et applications web', lead: 'Réservation, immobilier, applis de travail et sites aux fonctionnalités sur mesure.' },
+    mobile: { title: "Applis mobiles", lead: "Des applis Android et iOS pour les entreprises, construites à partir d’un seul code qui fonctionne aussi sur le web." },
     desain: { title: 'Design', lead: 'Des concepts de design en ligne pour un brief, avant la réalisation complète.' },
   },
   addons: {
@@ -238,6 +253,7 @@ const fr: Pack = {
 
   demoCategories: {
     toko: 'Boutique en ligne',
+    mobile: "Appli mobile",
     menu: 'Menu numérique',
     landing: 'Landing Page',
     undangan: 'Invitation numérique',
@@ -249,6 +265,16 @@ const fr: Pack = {
     kontes: 'Concepts de design',
   },
   demos: {
+    kasir: { tagline: "Une caisse sur téléphone pour petits commerces et stands de rue" },
+    booking: { tagline: "Réservations pour barbiers et salons de coiffure" },
+    sekolah: { tagline: "L’appli des parents d’une école primaire" },
+    member: { tagline: "Carte de fidélité à points pour un café" },
+    antar: { tagline: "Livraison de plats depuis des warungs du quartier" },
+    laundry: { tagline: "Suivi du linge en blanchisserie, avec collecte et livraison" },
+    absensi: { tagline: "Pointage, plannings et congés du personnel" },
+    tiket: { tagline: "Billetterie d’événements avec e-billets QR" },
+    masjid: { tagline: "Horaires de prière, cours et comptes de la mosquée" },
+    kos: { tagline: "Loyers et signalement de pannes pour une pension" },
     tanur: { tagline: 'Céramique artisanale pour la table de tous les jours' },
     takar: { tagline: 'Des soins aux concentrations claires et aux doses honnêtes' },
     lungsin: { tagline: 'Des vêtements du quotidien en lurik tissé, cousus à Klaten' },
@@ -340,6 +366,7 @@ const fr: Pack = {
     ['Comment se déroule le projet du début à la fin ?', c.listed('Voici comment cela se déroule :', c.steps(['Une consultation sur vos besoins', 'Un devis et l’accord', 'Une première maquette pour validation', 'Le développement', 'Les tests et les révisions', 'La mise en ligne et la remise']), 'Nous vous tenons informé sur WhatsApp à chaque étape.', true)],
     ['Serai-je pleinement propriétaire du site ?', 'Oui. Une fois le solde réglé, vous recevez le code source, l’accès administrateur, les accès à l’hébergement et au domaine ainsi que tous les identifiants. Le site vous appartient entièrement, sans dépendance vis-à-vis de nous. Exceptions : les thèmes d’invitation de notre galerie restent actifs 12 mois sur un lien personnel, et la formule Concepts de design web donne le droit d’utiliser le design, pas le code.'],
     ['Puis-je demander des fonctionnalités sur mesure pour mon activité ?', 'Oui. Systèmes de réservation, espaces membres, calculateurs, catalogues dynamiques ou intégrations avec des systèmes que vous utilisez déjà peuvent être réalisés avec la formule Site web sur mesure. Dites-nous ce qu’il vous faut et nous vous donnerons une estimation.'],
+    ["Créez-vous aussi des applis Android et iOS ?", `Oui. Nous créons des applis mobiles avec React Native et Expo : un seul code produit l’appli Android, l’appli iOS et une version web. La formule Appli mobile commence à ${c.app.from}, avec un délai de ${c.app.duration}, et vous pouvez essayer les applis de démonstration dans votre navigateur depuis la page Démos.`],
     // Tarifs
     ['Combien coûte un site web ?', c.listed('Prix de départ par formule, de la moins chère à la plus chère :', c.prices, 'Le détail de chaque formule se trouve sur la page Tarifs, et tous les prix sont en roupies indonésiennes (IDR). Chaque prix comprend le design et le développement ; les formules de site web incluent aussi le SEO de base.')],
     ['Y a-t-il des frais cachés ?', `Non. Le prix de la formule couvre le design et le développement (plus le SEO de base pour les formules de site web). Le seul coût récurrent de notre part est le renouvellement du domaine et de l’hébergement : ${c.facts.renewal} Pour les boutiques en ligne avec passerelle de paiement, les frais de transaction sont prélevés directement par le prestataire de la passerelle (et non par nous), et le compte marchand est ouvert à votre nom. Toute fonctionnalité importante hors formule est toujours discutée et convenue au préalable.`],
@@ -360,6 +387,7 @@ const fr: Pack = {
     ['Y a-t-il une interface d’administration ou un CMS ?', 'Les formules boutique en ligne, système de réservation, immobilier et application web comprennent une interface d’administration. Pour les autres formules, les modifications de contenu peuvent passer par nous pendant la période de maintenance, ou un CMS peut être ajouté en option.'],
     ['Comment la sécurité du site est-elle assurée ?', 'Chaque site utilise SSL (HTTPS), des en-têtes de sécurité et la validation des saisies. Le code est conservé dans un dépôt Git afin de pouvoir restaurer des versions antérieures, et pendant la maintenance nous mettons régulièrement à jour les dépendances.'],
     ['Le site peut-il se connecter aux réseaux sociaux ou à d’autres services ?', 'Oui : boutons WhatsApp, Instagram, TikTok, Google Analytics, Meta Pixel, Google Maps, e-mail marketing et même passerelles de paiement pour les formules boutique en ligne.'],
+    ["Publiez-vous l’appli sur le Play Store et l’App Store ?", "La publication est faite par le client. Nous remettons les fichiers de l’appli et leur code source, et vous les publiez sur Google Play et l’App Store avec des comptes développeur à votre nom (Google Play Console et Apple Developer Program, tous deux payants). Ainsi, l’appli est enregistrée au nom de votre entreprise."],
     // Assistance
     ['Y a-t-il une garantie ?', `Oui. Pendant ${c.days} jours après la mise en ligne, les bugs et problèmes techniques sont corrigés gratuitement. Ensuite, la maintenance suit ce que prévoit votre formule et peut être prolongée au mois ou à la demande.`],
     ['Comment mettre à jour le contenu une fois le site terminé ?', 'Avec les formules boutique en ligne, vous gérez vous-même les produits. Pour les autres formules, envoyez simplement les modifications sur WhatsApp ; pendant la période de maintenance, les petites mises à jour, comme les textes, les images ou les coordonnées, sont gratuites. Nous vous remettons aussi un court guide de gestion du site.'],

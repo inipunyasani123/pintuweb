@@ -1,12 +1,12 @@
 // Pemandu paket di halaman harga: tiga pertanyaan singkat → satu paket paling cocok + satu alternatif.
 // Logikanya deterministik dan hanya memakai data di lib/packages.ts: tiap paket diberi ciri yang diturunkan dari
 // subjudul, sorotan, dan fiturnya sendiri (untuk apa, seberapa besar, bisa bayar online/booking atau tidak), lalu
-// diberi skor. Seri dipecah oleh kecocokan tujuan utama, lalu harga termurah. Semua 6 × 3 × 3 kombinasi dihitung
+// diberi skor. Seri dipecah oleh kecocokan tujuan utama, lalu harga termurah. Semua 7 × 3 × 3 kombinasi dihitung
 // di server (GUIDE_RESULTS), jadi komponen kliennya hanya membaca tabel. Paket tanpa ciri di FIT (Konsep Desain)
 // sengaja tidak pernah disarankan pemandu; ia tetap ada di daftar paket.
 import { PACKAGES, isPriced } from '../lib/packages'
 
-export const GUIDE_PURPOSE = ['usaha', 'jual', 'diri', 'acara', 'properti', 'tim'] as const
+export const GUIDE_PURPOSE = ['usaha', 'jual', 'diri', 'acara', 'properti', 'tim', 'aplikasi'] as const
 export const GUIDE_SIZE = ['satu', 'beberapa', 'banyak'] as const
 export const GUIDE_EXTRA = ['tidak', 'bayar', 'booking'] as const
 export type GuidePurpose = (typeof GUIDE_PURPOSE)[number]
@@ -49,10 +49,13 @@ const FIT: Record<string, Fit> = {
   'website-properti': { for: ['properti'], size: ['beberapa'], booking: 'part' },
   // "Portal multi-agen"
   'marketplace-properti': { for: ['properti'], size: ['banyak'], booking: 'part' },
-  // "Aplikasi kerja: tugas, kanban, kalender, atau data internal"
-  'aplikasi-web': { for: ['tim'], size: ['beberapa', 'banyak'] },
+  // "Aplikasi kerja: tugas, kanban, kalender, atau data internal"; "Responsif di ponsel" → alternatif bagi yang mencari aplikasi HP
+  'aplikasi-web': { for: ['tim', 'aplikasi'], size: ['beberapa', 'banyak'] },
+  // "Aplikasi Android & iOS dari satu kode"; jumlah layar & fitur menentukan harga, jadi semua ukuran dilayani.
+  // Bayar online & booking tidak tertulis sebagai fitur paket (hanya "sesuai kebutuhan"), maka 'part'.
+  'aplikasi-mobile': { for: ['aplikasi'], size: ['satu', 'beberapa', 'banyak'], pay: 'part', booking: 'part' },
   // "Jumlah halaman & fitur fleksibel", "Integrasi API, booking, formulir kompleks"
-  'website-custom': { for: ['usaha', 'jual', 'diri', 'acara', 'properti', 'tim'], size: ['banyak'], pay: 'full', booking: 'full' },
+  'website-custom': { for: ['usaha', 'jual', 'diri', 'acara', 'properti', 'tim', 'aplikasi'], size: ['banyak'], pay: 'full', booking: 'full' },
 }
 
 const SIZE_AT: Record<GuideSize, number> = { satu: 0, beberapa: 1, banyak: 2 }
