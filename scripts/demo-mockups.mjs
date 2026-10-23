@@ -144,8 +144,32 @@ const INFO = `(() => {
   return { title: document.title, h1: (document.querySelector('h1')?.textContent || '').trim().slice(0, 60), text: document.body.innerText.trim().length, barHidden, css }
 })()`
 
+// Aplikasi mobile: pengantar/onboarding (dan lembar "Buka kasir" Ketip) muncul di kunjungan pertama. Thumbnail harus
+// memperlihatkan layar utama seperti pengguna yang kembali, jadi tiap app dikunjungi sekali dulu (supaya app menulis
+// data awalnya ke localStorage), ditambal di bawah ini, lalu dimuat ulang. Kunci = kunci AsyncStorage di kode app.
+const KENAL = `(function(){var P=function(k,f,b){var o=null;try{o=JSON.parse(localStorage.getItem(k))}catch(e){}o=o||b;if(!o)return;f(o);localStorage.setItem(k,JSON.stringify(o))};`
+const INIT = {
+  kasir: KENAL + `P('ketip:warung-pring-kuning',function(o){o.sudahPengantar=true;if(!o.shift.some(function(s){return !s.tutup}))o.shift.push({id:'shift-thumb',kasir:'Dimas',buka:Date.now()-2*36e5,modal:150000})})})()`,
+  booking: KENAL + `P('kursi-putar:v2',function(o){o.panduanTutup=true})})()`,
+  sekolah: KENAL + `P('kapur:v1',function(o){o.sambut=true},{})})()`,
+  member: KENAL + `P('kopi-blirik:akun',function(o){o.gabung=true})})()`,
+  antar: KENAL + `P('pincuk.demo.v1',function(o){o.kenalan=true})})()`,
+  laundry: KENAL + `P('busaungu:v1',function(o){o.pengantar=true})})()`,
+  absensi: KENAL + `P('gilir:demo:v1',function(o){o.kenal=true})})()`,
+  tiket: KENAL + `P('karcis-wetan:v1',function(o){o.pengantar=true})})()`,
+  masjid: `localStorage.setItem('nurulufuk:kenalan','true')`,
+}
+async function lewatiPengantar(tab, demo, dev) {
+  if (demo.category !== 'mobile' || !INIT[demo.slug]) return
+  await openAs(tab, demo, dev, false)
+  await sleep(2000)
+  await tab.evaluate(INIT[demo.slug])
+  await sleep(300)
+}
+
 // Emulasi perangkat + buka halaman demo, tunggu load (maks. 30 dtk). Dipakai capture dan screens.
-async function openAs(tab, demo, dev) {
+async function openAs(tab, demo, dev, kenal = true) {
+  if (kenal) await lewatiPengantar(tab, demo, dev)
   const D = DEVICES[dev]
   await tab.send('Page.enable')
   await tab.send('Emulation.setDeviceMetricsOverride', { width: D.w, height: D.h, deviceScaleFactor: D.dpr, mobile: D.mobile, screenWidth: D.w, screenHeight: D.h })
