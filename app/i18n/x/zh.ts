@@ -280,7 +280,7 @@ const zh: Pack = {
     tanur: { tagline: '日常餐桌的手工陶瓷' },
     takar: { tagline: '成分浓度清楚、用量说明实在的护肤品' },
     lungsin: { tagline: '在克拉滕缝制的鲁里克手织布日常服装' },
-    daunjendela: { tagline: '按你家窗户光线挑选的观赏植物' },
+    daunjendela: { tagline: '按您家窗户光线挑选的观赏植物' },
     kopi: { tagline: '杯测卡风格菜单的咖啡馆' },
     bakso: { tagline: '夜间帐篷小摊，辣度 0–5 级' },
     jepang: { tagline: '带过敏原图标的家常日式食堂' },
@@ -392,7 +392,7 @@ const zh: Pack = {
     ['有管理后台或 CMS 吗？', '网店、预订系统、房产和 Web 应用套餐都包含管理后台。其他套餐在维护期内可由我们代为修改内容，也可以将 CMS 作为附加功能添加。'],
     ['如何保障网站安全？', '所有网站都使用 SSL（HTTPS）、安全响应头和输入校验。代码保存在 Git 仓库中，可随时恢复旧版本；维护期内我们会定期更新依赖。'],
     ['网站可以连接社交媒体或其他服务吗？', '可以：WhatsApp、Instagram、TikTok 按钮，Google Analytics、Meta Pixel、Google 地图、邮件营销，网店套餐还可接入支付网关。'],
-    ["你们会帮忙把应用上架 Play Store 和 App Store 吗？", "上架由客户自行办理。我们交付应用文件及其源代码，您使用自己名下的开发者账号（Google Play Console 和 Apple Developer Program，均需付费）发布到 Google Play 和 App Store。这样应用就登记在您的企业名下。 " + `${c.days} 天的程序错误质保自应用交付之日起计算。`],
+    ["你们会帮忙把应用上架 Play Store 和 App Store 吗？", "上架由客户自行办理。我们交付应用文件及其源代码，您使用自己名下的开发者账号（Google Play Console 和 Apple Developer Program，均需付费）发布到 Google Play 和 App Store。这样应用就登记在您的企业名下。" + `${c.days} 天的程序错误质保自应用交付之日起计算。`],
     // 支持
     ['有质保吗？', `有。上线后 ${c.days} 天内，程序错误和技术问题免费修复。之后按套餐内容提供维护，可按月或按需续期。`],
     ['网站完成后如何更新内容？', '网店套餐可由您自行管理商品。其他套餐只需通过 WhatsApp 把修改内容发给我们；维护期内，文字、图片或联系方式等小更新免费。我们还会提供一份简短的网站管理指南。'],

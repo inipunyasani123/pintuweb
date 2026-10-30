@@ -158,7 +158,7 @@ const more: More = {
       suits: "收银、会员、预约、学校",
       faq: [
         { q: "应用能同时在 Android 和 iPhone 上使用吗？", a: "可以。应用使用 React Native 和 Expo 开发，一套代码即可生成 Android 和 iOS 应用，另有可在浏览器中打开的网页版。" },
-        { q: "PintuWeb 会把应用发布到 Play Store 和 App Store 吗？", a: "不会。我们交付应用文件及其源代码；由您用自己名下的开发者账号（Google Play Console 和 Apple Developer Program，均需付费）发布到 Google Play 和 App Store。这样应用就登记在您的企业名下。 {{guarantee}} 天的程序错误质保自应用交付之日起计算。" },
+        { q: "PintuWeb 会把应用发布到 Play Store 和 App Store 吗？", a: "不会。我们交付应用文件及其源代码；由您用自己名下的开发者账号（Google Play Console 和 Apple Developer Program，均需付费）发布到 Google Play 和 App Store。这样应用就登记在您的企业名下。{{guarantee}} 天的程序错误质保自应用交付之日起计算。" },
         { q: "开发一个应用要多少钱、多长时间？", a: "价格区间为 {{price:aplikasi-mobile}}，在应用内容和流程确定后工期为 {{duration:aplikasi-mobile}}。确切金额取决于界面和功能的数量，开工前写入书面报价。支付 50% 定金后开工。" },
         { q: "不安装任何东西也能试用演示应用吗？", a: "可以。展示库中的演示是同一应用的网页版，可直接在手机或电脑浏览器中打开。演示中的商家和数据均为虚构。" },
       ],
