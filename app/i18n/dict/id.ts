@@ -56,6 +56,17 @@ const id = {
     allServices: 'Semua layanan',
     allServicesLead: 'Bandingkan semua layanan beserta harga dan lama pengerjaannya.',
   },
+  // Bilah WhatsApp lengket (ponsel) dan komponen rating Google (tampil hanya bila GOOGLE_REVIEWS di lib/site.ts terisi)
+  conv: {
+    stickyAria: 'Aksi cepat',
+    seeDemos: 'Lihat demo',
+    seePricing: 'Lihat harga',
+    chat: 'Chat WhatsApp',
+    ratingLabel: 'Rating Google',
+    ratingStars: (r: string) => `${r} dari 5 bintang`,
+    reviews: (n: number) => `${n} ulasan`,
+    seeReviews: 'Lihat ulasan di Google',
+  },
   footer: {
     aria: 'Kontak dan info PintuWeb',
     kicker: 'Mulai dari obrolan',

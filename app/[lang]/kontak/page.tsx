@@ -9,6 +9,7 @@ import { facts, packagesFor } from '../../i18n/facts'
 import { demosFor, getDict, getPages, isLang, type Lang } from '../../i18n'
 import { path, urlOf } from '../../i18n/routes'
 import { ORG_ID, pageGraph, pageMeta } from '../../i18n/seo'
+import GoogleRating from '../../components/GoogleRating'
 import { EMAIL, WA_DISPLAY, WA_NUMBER } from '../../lib/site'
 
 type Params = { params: Promise<{ lang: string }> }
@@ -92,6 +93,7 @@ export default async function KontakPage({ params }: Params) {
         </ul>
       </PageHero>
 
+      <GoogleRating lang={lang} className="mb-6" />
       <ContactForm
         t={t}
         packages={packages}

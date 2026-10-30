@@ -61,6 +61,17 @@ const ar: Dict = {
     allServices: 'كل الخدمات',
     allServicesLead: 'قارن بين كل الخدمات وأسعارها ومدة تنفيذها.',
   },
+  // Bilah WhatsApp lengket (ponsel) dan komponen rating Google (tampil hanya bila GOOGLE_REVIEWS di lib/site.ts terisi)
+  conv: {
+    stickyAria: 'إجراءات سريعة',
+    seeDemos: 'عرض النماذج',
+    seePricing: 'عرض الأسعار',
+    chat: 'دردشة واتساب',
+    ratingLabel: 'تقييم Google',
+    ratingStars: (r: string) => `${r} من 5 نجوم`,
+    reviews: (n: number) => `التقييمات: ${n}`,
+    seeReviews: 'عرض التقييمات على Google',
+  },
   footer: {
     aria: 'بيانات التواصل ومعلومات PintuWeb',
     kicker: 'كل شيء يبدأ بحديث',

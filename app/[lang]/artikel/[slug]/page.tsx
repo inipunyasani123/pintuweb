@@ -234,7 +234,7 @@ export default async function ArticlePage({ params }: Params) {
             <h2 className="text-[1.75rem] leading-[1.12] sm:text-[2.25rem]">{p.ctaTitle}</h2>
             <p className="mt-3 leading-relaxed text-white/85">{p.ctaLead}</p>
           </div>
-          <a href={wa(p.ctaWa(a.title))} target="_blank" rel="noopener noreferrer" className="btn btn-white shrink-0">
+          <a href={wa(p.ctaWa(a.title))} target="_blank" rel="noopener noreferrer" data-wa-cta className="btn btn-white shrink-0">
             {d.common.consultFree} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
             <span className="sr-only">{d.common.newTabShort}</span>
           </a>

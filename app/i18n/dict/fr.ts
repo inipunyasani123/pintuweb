@@ -50,6 +50,17 @@ const fr: Dict = {
     allServices: 'Tous les services',
     allServicesLead: 'Comparez tous les services, leurs tarifs et leurs délais.',
   },
+  // Bilah WhatsApp lengket (ponsel) dan komponen rating Google (tampil hanya bila GOOGLE_REVIEWS di lib/site.ts terisi)
+  conv: {
+    stickyAria: 'Actions rapides',
+    seeDemos: 'Voir les démos',
+    seePricing: 'Voir les tarifs',
+    chat: 'Écrire sur WhatsApp',
+    ratingLabel: 'Note Google',
+    ratingStars: (r: string) => `${r} sur 5 étoiles`,
+    reviews: (n: number) => `${n} avis`,
+    seeReviews: 'Voir les avis sur Google',
+  },
   footer: {
     aria: 'Contact et informations PintuWeb',
     kicker: 'Tout commence par une discussion',

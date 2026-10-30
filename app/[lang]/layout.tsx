@@ -5,10 +5,13 @@ import { notFound } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import StickyBar from '../components/StickyBar'
+import WaSource from '../components/WaSource'
 import { JsonLd } from '../components/Bits'
 import { DEMOS } from '../lib/demos'
 import { FOUNDER_NAME, SITE, WA_DISPLAY, wa } from '../lib/site'
 import { LANGS, LANG_INFO, getDict, isLang, type Lang } from '../i18n'
+import { getPages } from '../i18n'
 import { hasPage, path } from '../i18n/routes'
 import { rssTypes, siteGraph } from '../i18n/seo'
 
@@ -82,6 +85,7 @@ export default async function LangLayout({ children, params }: { children: React
   if (!isLang(raw)) notFound()
   const lang: Lang = raw
   const t = getDict(lang)
+  const pages = getPages(lang)
 
   const nav = [
     { label: t.nav.services, href: path(lang, 'services') },
@@ -128,6 +132,21 @@ export default async function LangLayout({ children, params }: { children: React
         />
         {children}
         <Footer lang={lang} />
+        <StickyBar
+          aria={t.conv.stickyAria}
+          demo={{ href: path(lang, 'demo'), label: t.conv.seeDemos }}
+          pricing={{ href: path(lang, 'pricing'), label: t.conv.seePricing }}
+          chat={t.conv.chat}
+          newTab={t.common.newTabShort}
+          waDefault={wa(t.header.waText)}
+          waByPage={{
+            pricing: wa(pages.pricing.ctaWa),
+            services: wa(pages.services.ctaWa),
+            about: wa(pages.about.ctaWa),
+            founder: wa(pages.founder.ctaWa),
+          }}
+        />
+        <WaSource />
         <JsonLd data={siteGraph(lang)} />
         <Analytics />
       </body>

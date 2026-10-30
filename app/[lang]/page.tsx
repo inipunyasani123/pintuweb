@@ -5,6 +5,7 @@ import Process from '../components/Process'
 import Portfolio from '../components/Portfolio'
 import { ClientsHome } from '../components/ClientProjects'
 import WhyUs from '../components/WhyUs'
+import GoogleRating from '../components/GoogleRating'
 import Pricing from '../components/Pricing'
 import FAQ from '../components/FAQ'
 import { JsonLd } from '../components/Bits'
@@ -48,6 +49,7 @@ export default async function HomePage({ params }: Params) {
         <AudienceSection lang={lang} />
         <Process lang={lang} />
         <WhyUs lang={lang} />
+        <GoogleRating lang={lang} className="-mt-6 mb-10 sm:-mt-10" />
         <Pricing lang={lang} />
         <FAQ {...faq} />
       </main>

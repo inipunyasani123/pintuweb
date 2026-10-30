@@ -50,6 +50,17 @@ const zh: Dict = {
     allServices: '全部服务',
     allServicesLead: '比较所有服务的价格和制作周期。',
   },
+  // Bilah WhatsApp lengket (ponsel) dan komponen rating Google (tampil hanya bila GOOGLE_REVIEWS di lib/site.ts terisi)
+  conv: {
+    stickyAria: '快捷操作',
+    seeDemos: '查看演示',
+    seePricing: '查看价格',
+    chat: 'WhatsApp 咨询',
+    ratingLabel: 'Google 评分',
+    ratingStars: (r: string) => `${r} 分（满分 5 分）`,
+    reviews: (n: number) => `${n} 条评价`,
+    seeReviews: '在 Google 查看评价',
+  },
   footer: {
     aria: 'PintuWeb 联系方式与信息',
     kicker: '一切从聊一聊开始',

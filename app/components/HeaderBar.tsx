@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useId, useRef, useState } from 'react'
 import { ArrowRight, ArrowUpRight, Check, ChevronDown, Globe, MessageCircle } from 'lucide-react'
 import { LANGS, LANG_INFO, type Lang } from '../i18n/config'
-import { switchPath, toPublicPath } from '../i18n/routes'
+import { parsePath, switchPath, toPublicPath } from '../i18n/routes'
 import { Logo } from './Logo'
 
 export type HeaderProps = {
@@ -52,6 +52,8 @@ type BarProps = HeaderProps & {
  */
 function LangSwitch({ lang, label, notAvailable, onPick, big = false }: { lang: Lang; label: string; notAvailable: string; onPick?: () => void; big?: boolean }) {
   const pathname = toPublicPath(usePathname() ?? '/')
+  // Artikel hanya ada dalam id/en: di sana bahasa lain disembunyikan, bukan dicoret (delapan butir "belum tersedia" terkesan belum selesai)
+  const hideMissing = parsePath(pathname)?.ref.key === 'articles'
   const [open, setOpen] = useState(false)
   const box = useRef<HTMLDivElement>(null)
   const btn = useRef<HTMLButtonElement>(null)
@@ -154,6 +156,7 @@ function LangSwitch({ lang, label, notAvailable, onPick, big = false }: { lang: 
             )
           }
           if (!href) {
+            if (hideMissing) return null
             return (
               <li key={l}>
                 <span lang={info.htmlLang} aria-disabled="true" title={notAvailable} className={`${row} ${frame} cursor-not-allowed text-[color:var(--text-muted)]`}>

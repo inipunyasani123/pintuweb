@@ -50,6 +50,17 @@ const bn: Dict = {
     allServices: 'সব সেবা',
     allServicesLead: 'সব সেবার দাম ও কাজ শেষ হওয়ার সময় একসাথে তুলনা করুন।',
   },
+  // Bilah WhatsApp lengket (ponsel) dan komponen rating Google (tampil hanya bila GOOGLE_REVIEWS di lib/site.ts terisi)
+  conv: {
+    stickyAria: 'দ্রুত পদক্ষেপ',
+    seeDemos: 'ডেমো দেখুন',
+    seePricing: 'দাম দেখুন',
+    chat: 'WhatsApp-এ চ্যাট করুন',
+    ratingLabel: 'Google রেটিং',
+    ratingStars: (r: string) => `৫-এর মধ্যে ${r} তারা`,
+    reviews: (n: number) => `${n}টি রিভিউ`,
+    seeReviews: 'Google-এ রিভিউ দেখুন',
+  },
   footer: {
     aria: 'PintuWeb-এর যোগাযোগ ও তথ্য',
     kicker: 'সবকিছুর শুরু একটি আলাপ থেকে',

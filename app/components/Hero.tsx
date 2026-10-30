@@ -107,7 +107,7 @@ export default function Hero({ lang }: { lang: Lang }) {
             />
 
             <div className="mt-6 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap">
-              <a href={wa(d.header.waText)} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
+              <a href={wa(d.header.waText)} target="_blank" rel="noopener noreferrer" data-wa-cta className="btn btn-solid">
                 {t.ctaConsult} <ArrowUpRight size={17} className="arw arw-ne" aria-hidden="true" />
               </a>
               <Link href={path(lang, 'demo')} className="btn btn-line">

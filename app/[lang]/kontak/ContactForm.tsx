@@ -6,6 +6,7 @@ import { ArrowUpRight, Check, ChevronDown, Copy, Mail } from 'lucide-react'
 import { LogoMark } from '../../components/Logo'
 import { copyText } from '../../components/CopyLink'
 import type { Hl } from '../../i18n/dict/id'
+import { withSource } from '../../lib/wa-ref'
 
 type Form = { nama: string; usaha: string; paket: string; demo: string; pesan: string }
 const EMPTY: Form = { nama: '', usaha: '', paket: '', demo: '', pesan: '' }
@@ -126,7 +127,7 @@ export default function ContactForm({ t, packages, demos, demoBySlug, waNumber, 
   const sendWa = (ev: React.FormEvent) => {
     ev.preventDefault()
     if (!validate()) return
-    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(compose())}`, '_blank', 'noopener,noreferrer')
+    window.open(withSource(`https://wa.me/${waNumber}?text=${encodeURIComponent(compose())}`, window.location.pathname), '_blank', 'noopener,noreferrer')
   }
 
   const sendEmail = () => {
@@ -158,7 +159,7 @@ export default function ContactForm({ t, packages, demos, demoBySlug, waNumber, 
 
   return (
     <section aria-labelledby="form-title" className="mt-12 bg-[color:var(--surface-soft)] py-12 sm:mt-16 sm:py-16">
-      <form onSubmit={sendWa} noValidate className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-x-8 gap-y-6 px-4 sm:px-6 lg:grid-cols-12">
+      <form onSubmit={sendWa} noValidate data-wa-cta className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-x-8 gap-y-6 px-4 sm:px-6 lg:grid-cols-12">
         {/* Isian */}
         <div className="rounded-[1.5rem] bg-white p-6 ring-1 ring-[color:var(--border-light)] sm:p-8 lg:col-span-7">
           <h2 id="form-title" className="text-[1.5rem] leading-tight text-[color:var(--text-primary)] sm:text-[1.75rem]">

@@ -32,6 +32,15 @@ export const SOCIAL = {
   tiktok: 'https://www.tiktok.com/@pintuweb.id',
   instagram: 'https://www.instagram.com/pintuwebid',
 } as const
+/**
+ * Ringkasan ulasan Google Bisnis PintuWeb untuk komponen rating di beranda dan /kontak. null = komponen tidak tampil.
+ * Isi HANYA dengan angka asli yang terlihat di profil Maps (GOOGLE_MAPS), mis.
+ *   { rating: 5, count: 7, updated: '2026-11-15' }
+ * rating = skor rata-rata 1–5, count = jumlah ulasan, updated = tanggal angka itu dicek. Perbarui ketiganya bersama.
+ * Jangan tambahkan ke data terstruktur (AggregateRating/Review): Google tidak mengizinkan ulasan tentang diri sendiri.
+ */
+export const GOOGLE_REVIEWS: { rating: number; count: number; updated: string } | null = null
+
 /** Semua profil resmi PintuWeb di luar situs, untuk `sameAs` (Google memakai ini untuk menyatukan entitas). */
 export const SAME_AS = [GOOGLE_MAPS, SOCIAL.instagram, SOCIAL.tiktok, ...(GITHUB ? [`https://${GITHUB}`] : [])]
 
@@ -58,4 +67,8 @@ export const FACTS_UPDATED = '2026-10-30'
 /** Tanggal ISO (YYYY-MM-DD) yang paling baru. */
 export const latest = (...dates: string[]) => dates.reduce((a, b) => (b > a ? b : a))
 
+/**
+ * Tautan WhatsApp dengan pesan terisi. Kode sumber "(ref: …)" tidak ditulis di sini: ditambahkan WaSource saat tautan
+ * diklik (lihat lib/wa-ref.ts), jadi cukup memakai wa() di semua tempat.
+ */
 export const wa = (text: string) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`

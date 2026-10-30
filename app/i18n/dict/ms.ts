@@ -50,6 +50,17 @@ const ms: Dict = {
     allServices: 'Semua perkhidmatan',
     allServicesLead: 'Bandingkan semua perkhidmatan beserta harga dan tempoh siapnya.',
   },
+  // Bilah WhatsApp lengket (ponsel) dan komponen rating Google (tampil hanya bila GOOGLE_REVIEWS di lib/site.ts terisi)
+  conv: {
+    stickyAria: 'Tindakan pantas',
+    seeDemos: 'Lihat demo',
+    seePricing: 'Lihat harga',
+    chat: 'Sembang WhatsApp',
+    ratingLabel: 'Penilaian Google',
+    ratingStars: (r: string) => `${r} daripada 5 bintang`,
+    reviews: (n: number) => `${n} ulasan`,
+    seeReviews: 'Lihat ulasan di Google',
+  },
   footer: {
     aria: 'Maklumat dan hubungan PintuWeb',
     kicker: 'Bermula dengan perbualan',
