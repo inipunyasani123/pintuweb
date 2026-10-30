@@ -375,6 +375,8 @@ const fr: Pack = {
     ['Comment se passe le paiement ?', c.facts.payment],
     ['Et si le résultat ne me convient pas ?', 'Vous validez le design avant le début du développement, avec le nombre de révisions prévu par votre formule. Les 50 % restants ne sont réglés qu’une fois le site terminé et validé, vous ne payez donc jamais la totalité pour un travail qui ne convient pas encore.'],
     ['Proposez-vous des remises pour les start-up ou les petites entreprises ?', 'Nos prix sont déjà pensés pour rester abordables pour les petites entreprises. Pour un projet important ou plusieurs sites à la fois, nous pouvons établir un devis spécifique. Contactez-nous pour en parler.'],
+    [`Le prix inclut-il la TVA ? Puis-je demander une facture fiscale ?`, `Nous envoyons toujours la facture avant que vous payiez, vous pouvez donc vérifier le détail du montant. Si vous avez besoin d’une facture fiscale ou d’autres documents pour une entreprise ou une institution, dites-le-nous lors de la consultation afin d’en parler avant d’accepter le devis.`],
+    [`Une adresse e-mail professionnelle à mon domaine (nom@monentreprise.com) est-elle incluse ?`, `Les forfaits ne mentionnent pas d’e-mail avec votre propre domaine. Ils incluent le domaine et l’hébergement du site pour la première année. Si vous souhaitez une adresse comme nom@monentreprise.com, dites-le-nous lors de la consultation et nous en discuterons ensemble.`],
     // Déroulement
     ['Combien de temps faut-il pour créer un site web ?', c.listed('Délai estimé par formule une fois votre contenu complet :', c.durations, 'Cela peut être plus rapide ou plus long selon l’état d’avancement de votre contenu et la complexité des fonctionnalités.')],
     ['Que dois-je préparer ?', 'Indispensable : le nom de votre entreprise, une description de votre activité et vos coordonnées. Utile : un logo, des photos de vos produits ou services et des exemples de sites qui vous plaisent. S’il manque quelque chose, nous vous aidons à le préparer.'],
@@ -382,6 +384,7 @@ const fr: Pack = {
     ['Puis-je demander des modifications du design ?', 'Oui. Le nombre de révisions dépend de votre formule (par exemple, 2 révisions du design pour les formules Standard PME et Boutique en ligne simple). Les petites modifications, comme les textes, les photos ou les coordonnées, sont gratuites pendant la période de maintenance.'],
     ['Puis-je suivre l’avancement ?', 'Oui. Nous vous envoyons un aperçu du site que vous pouvez ouvrir vous-même, et nous vous informons sur WhatsApp à chaque étape.'],
     ['Et si j’ai besoin de fonctionnalités supplémentaires en cours de route ?', 'Les petits ajouts peuvent généralement être intégrés tout de suite. Les fonctionnalités plus importantes, comme une boutique en ligne ou un système de réservation, font l’objet d’un devis séparé et sont réalisées après votre accord.'],
+    [`Puis-je voir le design avant de payer ?`, `Avant l’acompte, vous pouvez essayer nos démos et recevoir un devis écrit. Le design initial est réalisé après l’acompte de 50 % et vous devez l’approuver avant la construction du site. Les 50 % restants se paient une fois le site terminé et approuvé par vous.`],
     // Technique
     ['Le site est-il responsive (adapté au mobile) ?', 'Oui. Tous nos sites sont conçus d’abord pour le mobile et testés sur différentes tailles d’écran, du téléphone à l’ordinateur. C’est aussi important pour votre classement sur Google.'],
     ['Quelles technologies utilisez-vous ?', 'Next.js, React et Tailwind CSS, avec un hébergement cloud sur CDN. Pour les sites qui ont besoin de données, nous utilisons des bases comme PostgreSQL selon le projet.'],
@@ -396,6 +399,7 @@ const fr: Pack = {
     ['Et si mon site a un problème ou devient inaccessible ?', `Écrivez-nous sur WhatsApp. ${c.facts.response}, pendant les heures d’ouverture (${c.facts.hours}). Les corrections sont gratuites pendant la garantie de ${c.days} jours et, comme le code est conservé dans Git, une version antérieure peut toujours être restaurée.`],
     ['Pouvez-vous migrer mon ancien site ?', 'Oui. Nous transférons votre contenu, mettons en place des redirections depuis les anciennes adresses pour ne pas perdre votre référencement, et vous aidons à transférer votre domaine si nécessaire.'],
     ['Puis-je encore obtenir de l’aide une fois le site terminé ?', `Bien sûr. Vous pouvez toujours nous joindre sur WhatsApp pour un conseil, des corrections ou une maintenance continue. ${c.facts.response}.`],
+    [`Que se passe-t-il si je ne renouvelle pas le domaine ou l’hébergement ?`, `Le site vous appartient entièrement, mais le domaine et l’hébergement doivent être renouvelés pour qu’il reste en ligne. Sans renouvellement, le site cesse d’être accessible à la fin de la période active, et le nom de domaine peut être utilisé par quelqu’un d’autre une fois le délai de grâce dépassé. ${c.facts.renewal}`],
   ],
 }
 

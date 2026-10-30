@@ -4,12 +4,14 @@
 import { getPages } from './index'
 import { plain, type Lang } from './config'
 import { langsOf, SEGMENTS, type DocRef, type PageKey } from './routes'
-import { ARTICLE_KEYS, SERVICE_KEYS, type ArticleKey, type ServiceKey } from './slugs'
+import { ARTICLE_KEYS, BIZ_KEYS, SERVICE_KEYS, type ArticleKey, type BizKey, type ServiceKey } from './slugs'
 import { serviceOf, serviceText } from '../content/services'
 import { getArticle } from '../content/articles'
 import { DEMOS } from '../lib/demos'
 import { localText } from '../content/local'
 import { paymentText } from '../content/payment'
+import { BIZ, bizText, bizUi } from '../content/business'
+import { cityByPage, cityText } from '../content/cities'
 
 /** Kunci dokumen dari parameter URL; null bila tidak dikenal. */
 export function refFromQuery(p: string | null, s: string | null): DocRef | null {
@@ -23,12 +25,16 @@ export function refFromQuery(p: string | null, s: string | null): DocRef | null 
     if (!s) return { key }
     return (ARTICLE_KEYS as string[]).includes(s) ? { key, article: s as ArticleKey } : null
   }
+  if (key === 'business') {
+    if (!s) return { key }
+    return (BIZ_KEYS as string[]).includes(s) ? { key, biz: s as BizKey } : null
+  }
   return s ? null : ({ key } as DocRef)
 }
 
 /** Parameter URL untuk satu dokumen (kebalikan refFromQuery). */
 export function queryOf(ref: DocRef): string {
-  const sub = ref.key === 'services' ? ref.service : ref.key === 'articles' ? ref.article : undefined
+  const sub = ref.key === 'services' ? ref.service : ref.key === 'articles' ? ref.article : ref.key === 'business' ? ref.biz : undefined
   return `p=${ref.key}${sub ? `&s=${sub}` : ''}`
 }
 
@@ -64,6 +70,12 @@ export function ogTitleOf(lang: Lang, ref: DocRef): string | null {
         return localText(lang).ogTitle
       case 'payment':
         return paymentText(lang).ogTitle
+      case 'business':
+        return ref.biz ? bizText(BIZ.find((b) => b.key === ref.biz)!, lang).title : bizUi(lang).indexTitle
+      case 'cityKediri':
+      case 'cityBlitar':
+      case 'cityTrenggalek':
+        return cityText(cityByPage(ref.key), lang).ogTitle
     }
   })()
   return plain(title)

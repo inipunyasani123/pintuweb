@@ -11,6 +11,7 @@ import { cardsFor } from '../../../components/cards'
 import PackageCard, { BriefGrid } from '../../../components/PackageCard'
 import { ServiceClients } from '../../../components/ClientProjects'
 import { articlesIn } from '../../../content/articles'
+import { BIZ, bizText, bizUi } from '../../../content/business'
 import { faqJsonLd } from '../../../content/faq'
 import { categoriesFor, demosFor, getDict, getPages, isLang, LANG_INFO, type Lang } from '../../../i18n'
 import { SERVICE_SLUGS, serviceKeyBySlug } from '../../../i18n/slugs'
@@ -79,6 +80,7 @@ export default async function ServicePage({ params }: Params) {
   const portals = s.demoCategories.map((c) => ({ c, portal: portalOf(c), n: DEMOS.filter((dm) => dm.category === c).length })).filter((x) => x.portal)
 
   const related = articlesIn(lang).filter((a) => s.articles.includes(a.key))
+  const bizFor = BIZ.filter((b) => b.services.includes(s.key))
   const others = SERVICES.filter((o) => o.key !== s.key)
   const faq = t.faq.map((f) => ({ question: f.q, answer: f.a }))
 
@@ -396,6 +398,21 @@ export default async function ServicePage({ params }: Params) {
                 </li>
               ))}
             </ul>
+            {/* halaman "Website untuk <usaha>" yang memakai layanan ini (hanya id/en) */}
+            {hasPage(lang, 'business') && bizFor.length > 0 && (
+              <>
+                <h2 className="kicker mt-8 border-b border-[color:var(--rule)] pb-3 text-[color:var(--text-primary)]">{bizUi(lang).relatedServices}</h2>
+                <ul>
+                  {bizFor.map((b) => (
+                    <li key={b.key} className="border-b border-[color:var(--border-light)]">
+                      <Link href={pathOf(lang, { key: 'business', biz: b.key })} className="group flex items-center justify-between gap-3 py-3 text-[0.9375rem] text-[color:var(--text-secondary)] hover:text-[color:var(--primary-700)] sm:py-3.5">
+                        {bizText(b, lang).title} <ArrowRight size={15} aria-hidden="true" className="arw shrink-0" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         </div>
       </section>

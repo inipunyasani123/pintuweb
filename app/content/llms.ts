@@ -11,6 +11,8 @@ import { faqFor } from './faq'
 import { clientsFor, clientsHref } from './clients'
 import { LANG_INFO, LANGS, X_LANGS, plain } from '../i18n/config'
 import { localText } from './local'
+import { BIZ, bizText } from './business'
+import { CITIES, cityText } from './cities'
 import { paymentText } from './payment'
 import { PAYMENT_METHODS } from '../lib/packages'
 
@@ -72,6 +74,18 @@ export function llmsDoc(full: boolean) {
     `- [${localText('en').ogTitle}](${urlOf('en', { key: 'local' })}): ${plain(`${localText('en').answerLead} ${localText('en').answer}`)}`,
     `  - Indonesian: [${localText('id').ogTitle}](${urlOf('id', { key: 'local' })})`,
     `  - Other languages: ${LANGS.filter((l) => l !== 'en' && l !== 'id').map((l) => `${urlOf(l, { key: 'local' })} (${l.toUpperCase()})`).join(' · ')}`,
+    '',
+    '## Website by type of business',
+    '',
+    `Guide pages that help small-business owners choose a website: common problems, what can be built, matching demos, suggested packages and FAQ (Indonesian and English only). Index: ${urlOf('en', { key: 'business' })} (EN) · ${urlOf('id', { key: 'business' })} (ID)`,
+    '',
+    ...BIZ.map((b) => `- [${bizText(b, 'en').title}](${urlOf('en', { key: 'business', biz: b.key })}) · [${bizText(b, 'id').title}](${urlOf('id', { key: 'business', biz: b.key })}): ${bizText(b, 'en').blurb}`),
+    '',
+    '## Nearby cities served online',
+    '',
+    `PintuWeb is based in ${CITY} and serves these cities online through WhatsApp and email; there is no office or street address in them (Indonesian and English only).`,
+    '',
+    ...CITIES.map((c) => `- [${cityText(c, 'en').ogTitle}](${urlOf('en', { key: c.page })}) · [${cityText(c, 'id').ogTitle}](${urlOf('id', { key: c.page })})`),
     '',
     '## Main pages',
     '',

@@ -22,6 +22,7 @@ import {
 } from 'lucide-react'
 import { Breadcrumbs, HlText, JsonLd } from '../../components/Bits'
 import { articlesIn } from '../../content/articles'
+import { CITIES } from '../../content/cities'
 import { faqJsonLd } from '../../content/faq'
 import { LOCAL_DEMOS, LOCAL_PACKAGES, LOCAL_SECTORS, LOCAL_SOURCES, localText, type SectorKey } from '../../content/local'
 import { facts, packagesFor } from '../../i18n/facts'
@@ -254,6 +255,20 @@ export default async function LocalPage({ params }: Params) {
                 </li>
               ))}
             </ol>
+            {/* kota sekitar yang dilayani online (halaman hanya id/en) */}
+            {hasPage(lang, 'cityKediri') && (
+              <p className="mt-5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)]">
+                {lang === 'en' ? 'Also serving online: ' : 'Juga melayani online: '}
+                {CITIES.map((c, i) => (
+                  <span key={c.key}>
+                    {i > 0 && ' · '}
+                    <Link href={pathOf(lang, { key: c.page })} className="link font-semibold">
+                      {c.name}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            )}
           </div>
           <div className="lg:col-span-6" aria-hidden="true">
             <div className="relative mx-auto aspect-square w-full max-w-[24rem] sm:max-w-[28rem]">

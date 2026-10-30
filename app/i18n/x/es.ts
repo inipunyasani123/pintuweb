@@ -375,6 +375,8 @@ const es: Pack = {
     ['¿Cómo funciona el pago?', c.facts.payment],
     ['¿Y si no quedo satisfecho con el resultado?', 'Apruebas el diseño antes de que empiece el desarrollo, con el número de revisiones que fija tu paquete. El 50% restante solo se paga cuando el sitio está terminado y lo has aprobado, así que nunca pagas el total por un trabajo que todavía no está bien.'],
     ['¿Ofrecen descuentos para startups o pequeñas empresas?', 'Nuestros precios ya están pensados para ser asequibles para los pequeños negocios. Para proyectos grandes o varios sitios a la vez, podemos preparar un presupuesto especial. Contáctanos para hablarlo.'],
+    [`¿El precio incluye IVA? ¿Puedo pedir factura fiscal?`, `Siempre te enviamos la factura antes de que pagues, así que puedes revisar el detalle del cobro. Si necesitas una factura fiscal u otros documentos para una empresa o institución, dínoslo en la consulta para hablarlo antes de aceptar el presupuesto.`],
+    [`¿Incluye correo profesional con mi propio dominio (nombre@tunegocio.com)?`, `Los paquetes no incluyen correo con dominio propio. Lo que sí incluyen son el dominio y el hosting del sitio durante el primer año. Si quieres una dirección como nombre@tunegocio.com, dínoslo en la consulta y lo hablamos juntos.`],
     // Proceso
     ['¿Cuánto se tarda en construir un sitio web?', c.listed('Tiempo estimado por paquete una vez que tu contenido está completo:', c.durations, 'Puede ser más rápido o más largo según lo completo que esté tu contenido y la complejidad de las funciones.')],
     ['¿Qué necesito preparar?', 'Imprescindible: el nombre de tu negocio, una descripción de tu actividad y los datos de contacto. Útil: un logotipo, fotos de tus productos o servicios y ejemplos de sitios web que te gusten. Si falta algo, te ayudamos a prepararlo.'],
@@ -382,6 +384,7 @@ const es: Pack = {
     ['¿Puedo revisar el diseño?', 'Sí. El número de revisiones depende de tu paquete (por ejemplo, 2 revisiones de diseño en los paquetes Estándar Pymes y Tienda en línea sencilla). Los cambios pequeños, como textos, fotos o datos de contacto, son gratuitos durante el periodo de mantenimiento.'],
     ['¿Puedo ver el avance?', 'Sí. Te enviamos una vista previa del sitio que puedes abrir tú mismo, y te informamos por WhatsApp en cada etapa.'],
     ['¿Y si necesito funciones adicionales a mitad del proyecto?', 'Los añadidos pequeños normalmente pueden incluirse de inmediato. Las funciones grandes, como una tienda en línea o un sistema de reservas, reciben un presupuesto aparte y se construyen una vez que lo apruebas.'],
+    [`¿Puedo ver el diseño antes de pagar?`, `Antes del anticipo puedes probar nuestras demos y recibir un presupuesto por escrito. El diseño inicial se hace después del anticipo del 50% y debes aprobarlo antes de que se construya el sitio. El 50% restante se paga cuando el sitio está terminado y lo has aprobado.`],
     // Técnico
     ['¿El sitio es responsive (apto para móviles)?', 'Sí. Todos nuestros sitios se diseñan primero para móviles y se prueban en distintos tamaños de pantalla, de teléfonos a ordenadores de escritorio. Esto también influye en tu posicionamiento en Google.'],
     ['¿Qué tecnología utilizan?', 'Next.js, React y Tailwind CSS, con hosting en la nube sobre una CDN. Para los sitios que necesitan datos, usamos bases de datos como PostgreSQL según el proyecto.'],
@@ -396,6 +399,7 @@ const es: Pack = {
     ['¿Y si mi sitio tiene un problema o se cae?', `Escríbenos por WhatsApp. ${c.facts.response}, en horario laboral (${c.facts.hours}). Las correcciones son gratuitas durante la garantía de ${c.days} días y, como el código se guarda en Git, siempre se puede restaurar una versión anterior.`],
     ['¿Pueden migrar mi sitio web antiguo?', 'Sí. Trasladamos tu contenido, configuramos redirecciones desde las direcciones antiguas para no perder tu posicionamiento SEO y te ayudamos a transferir el dominio si hace falta.'],
     ['¿Puedo seguir recibiendo ayuda después de terminar el sitio?', `Por supuesto. Puedes seguir contactándonos por WhatsApp para recibir asesoría, correcciones o mantenimiento continuo. ${c.facts.response}.`],
+    [`¿Qué pasa si no renuevo el dominio o el hosting?`, `El sitio es totalmente tuyo, pero el dominio y el hosting deben renovarse para que siga en línea. Si no se renuevan, el sitio deja de estar disponible al terminar el periodo activo, y el nombre de dominio puede ser registrado por otra persona si pasa el periodo de gracia. ${c.facts.renewal}`],
   ],
 }
 

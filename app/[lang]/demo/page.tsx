@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import DemoGallery, { type DemoCat, type DemoGalleryText } from './DemoGallery'
 import { JsonLd } from '../../components/Bits'
 import { categoriesFor, demosFor, getDict, getPages, isLang, type Lang } from '../../i18n'
-import { path, urlOf } from '../../i18n/routes'
+import Link from 'next/link'
+import { bizUi } from '../../content/business'
+import { hasPage, path, urlOf } from '../../i18n/routes'
 import { pageGraph, pageMeta } from '../../i18n/seo'
 import { packagesFor } from '../../i18n/facts'
 import { PACKAGE_FOR_CATEGORY, portalOf } from '../../lib/portals'
@@ -102,6 +104,14 @@ export default async function DemoPage({ params }: Params) {
         thumbSrcSet={demoSrcSet('{slug}')}
         thumbSrc={demoThumb('{slug}')}
       />
+      {/* tautan ke halaman "Website untuk usahamu" (hanya id/en) */}
+      {hasPage(lang, 'business') && (
+        <p className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+          <Link href={path(lang, 'business')} className="link inline-flex items-center gap-1.5 py-2 text-[0.9375rem] font-semibold">
+            {bizUi(lang).demoPageLink}
+          </Link>
+        </p>
+      )}
     </>
   )
 }

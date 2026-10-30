@@ -21,10 +21,10 @@ type RawItem = { category: FaqCategoryId; question: string; answer: string; list
 // jangkar di halaman FAQ (/faq#garansi), jadi jangan diganti tanpa alasan: tautan lama akan putus.
 export const FAQ_KEYS = [
   'mulai-dari-nol', 'usia-pintuweb', 'muncul-di-google', 'beda-pintuweb', 'alur-kerja', 'hak-milik', 'fitur-custom', 'aplikasi-mobile',
-  'biaya', 'biaya-tersembunyi', 'pembayaran', 'tidak-cocok', 'diskon',
-  'lama-pengerjaan', 'persiapan', 'tanpa-konten', 'revisi', 'progres', 'tambah-fitur',
+  'biaya', 'biaya-tersembunyi', 'pembayaran', 'tidak-cocok', 'diskon', 'ppn-faktur', 'email-bisnis',
+  'lama-pengerjaan', 'persiapan', 'tanpa-konten', 'revisi', 'progres', 'tambah-fitur', 'lihat-desain',
   'responsif', 'teknologi', 'kecepatan', 'panel-admin', 'keamanan', 'integrasi', 'rilis-aplikasi',
-  'garansi', 'update-konten', 'website-bermasalah', 'migrasi', 'bantuan-lanjutan',
+  'garansi', 'update-konten', 'website-bermasalah', 'migrasi', 'bantuan-lanjutan', 'tidak-diperpanjang',
 ] as const
 export type FaqKey = (typeof FAQ_KEYS)[number]
 export type FaqItem = RawItem & { key: FaqKey }
@@ -33,7 +33,7 @@ export type FaqItem = RawItem & { key: FaqKey }
 export const FAQ_CATEGORY_SLUG: Record<FaqCategoryId, string> = { general: 'umum', pricing: 'harga', process: 'proses', technical: 'teknis', support: 'dukungan' }
 
 /** Halaman yang membahas suatu jawaban lebih rinci (tautan "Selengkapnya" di bawah jawaban). */
-type MorePage = Exclude<PageKey, 'home' | 'services' | 'articles' | 'local'>
+type MorePage = Exclude<PageKey, 'home' | 'services' | 'articles' | 'local' | 'business' | 'cityKediri' | 'cityBlitar' | 'cityTrenggalek'>
 /** `at` = pasal Syarat & Ketentuan yang dituju (jangkar), bila halamannya 'terms'. */
 export type FaqMore = { page: MorePage; at?: TermsId } | { service: ServiceKey } | { article: ArticleKey; fallback: Exclude<MorePage, 'payment'> }
 export const FAQ_MORE: Partial<Record<FaqKey, FaqMore>> = {
@@ -50,12 +50,15 @@ export const FAQ_MORE: Partial<Record<FaqKey, FaqMore>> = {
   // halaman Cara Bayar (11 bahasa): metode, langkah, dan aturan; pasal S&K-nya ditaut dari sana
   pembayaran: { page: 'payment' },
   'tidak-cocok': { page: 'terms', at: 'revisi' },
+  'ppn-faktur': { page: 'payment' },
+  'lihat-desain': { page: 'demo' },
   'lama-pengerjaan': { page: 'pricing' },
   revisi: { page: 'terms', at: 'revisi' },
   responsif: { page: 'demo' },
   teknologi: { page: 'glossary' },
   garansi: { page: 'terms', at: 'garansi' },
   'website-bermasalah': { page: 'contact' },
+  'tidak-diperpanjang': { page: 'terms', at: 'kepemilikan' },
 }
 
 const CATEGORIES: Record<BaseLang, { id: FaqCategoryId; name: string; lead: string }[]> = {
@@ -91,14 +94,14 @@ function listed(intro: string, rows: FaqList['rows'], outro: string, ordered = f
   return { answer: `${intro} ${flat}. ${outro}`, list: { intro, rows, outro, ordered } }
 }
 
-/** Kategori tiap pertanyaan menurut urutan FAQ_KEYS: 8 umum, 5 harga, 6 proses, 7 teknis, 5 dukungan. */
+/** Kategori tiap pertanyaan menurut urutan FAQ_KEYS: 8 umum, 7 harga, 7 proses, 7 teknis, 6 dukungan. */
 const CATEGORY_OF: FaqCategoryId[] = (
   [
     ['general', 8],
-    ['pricing', 5],
-    ['process', 6],
+    ['pricing', 7],
+    ['process', 7],
     ['technical', 7],
-    ['support', 5],
+    ['support', 6],
   ] as const
 ).flatMap(([c, n]) => Array<FaqCategoryId>(n).fill(c))
 
@@ -136,12 +139,15 @@ function items(lang: Lang): RawItem[] {
       { category: 'pricing', question: 'How does payment work?', answer: f.payment },
       { category: 'pricing', question: 'What if I am not happy with the result?', answer: 'You approve the design before development starts, with the number of revisions set by your package. The remaining 50% is only paid once the website is finished and you have approved it, so you never pay in full for work that is not right yet.' },
       { category: 'pricing', question: 'Do you offer discounts for start-ups or small businesses?', answer: 'Our package prices are already set to be affordable for small businesses. For large projects or several websites at once, we can put together a custom quote. Contact us to talk it through.' },
+      { category: 'pricing', question: 'Does the price include VAT? Can I get a tax invoice?', answer: `We always send the invoice before you pay, so you can check what the charge covers. If you need a tax invoice or other documents for a company or institution, tell us during the consultation so we can talk it through before you accept the quote.` },
+      { category: 'pricing', question: 'Is a business email on my own domain (name@yourbusiness.com) included?', answer: `The packages do not list an email address on your own domain. What is included is the website domain and hosting for the first year. If you would like an address like name@yourbusiness.com, tell us during the consultation and we will talk it over together.` },
       { category: 'process', question: 'How long does it take to build a website?', ...listed('Estimated time per package once your content is complete:', durations, 'It can be quicker or longer depending on how complete your content is and how complex the features are.') },
       { category: 'process', question: 'What do I need to prepare?', answer: 'Required: your business name, a description of your business and contact details. Helpful: a logo, photos of your products or services and examples of websites you like. If anything is missing, we will help you prepare it.' },
       { category: 'process', question: 'What if I do not have any content or photos?', answer: 'No problem. We can write the content from a short brief, use licensed stock photos, or recommend a photographer if you need your own product photos.' },
       { category: 'process', question: 'Can I revise the design?', answer: 'Yes. The number of revisions depends on your package (for example, 2 design revisions for the Small Business Standard and Simple Online Store packages). Small changes such as text, photos or contact details are free during the maintenance period.' },
       { category: 'process', question: 'Can I see the progress?', answer: 'Yes. We send you a preview of the website that you can open yourself, and update you over WhatsApp at every stage.' },
       { category: 'process', question: 'What if I need extra features halfway through?', answer: 'Small additions can usually be included straight away. Larger features such as an online store or a booking system get a separate quote and are built once you approve it.' },
+      { category: 'process', question: 'Can I see the design before I pay?', answer: `Before the deposit you can try our demos and receive a written quote. The first design is made after the 50% deposit, and you must approve it before the website is built. The remaining 50% is paid once the website is finished and you have approved it.` },
       { category: 'technical', question: 'Is the website responsive (mobile-friendly)?', answer: 'Yes. All our websites are mobile-first and tested across screen sizes, from phones to desktops. This also matters for your Google rankings.' },
       { category: 'technical', question: 'What technology do you use?', answer: 'Next.js, React and Tailwind CSS, with cloud hosting on a CDN. For websites that need data, we use databases such as PostgreSQL depending on the project.' },
       { category: 'technical', question: 'How fast will my website be?', answer: `We aim for a PageSpeed score of ${PERF_TARGET} through image optimisation, lazy loading, a CDN and caching. The final result also depends on the page content, such as the number of videos or large images.` },
@@ -154,6 +160,7 @@ function items(lang: Lang): RawItem[] {
       { category: 'support', question: 'What if my website has a problem or goes down?', answer: `Message us on WhatsApp. ${f.response}, during working hours (${f.hours}). Fixes are free during the ${GUARANTEE_DAYS}-day guarantee, and because the code is kept in Git, an earlier version can always be restored.` },
       { category: 'support', question: 'Can you migrate my old website?', answer: 'Yes. We move your content, set up redirects from the old addresses so your SEO rankings are not lost, and help transfer your domain if needed.' },
       { category: 'support', question: 'Can I still get help after the website is finished?', answer: `Of course. You can still reach us on WhatsApp for advice, fixes or ongoing maintenance. ${f.response}.` },
+      { category: 'support', question: 'What happens if the domain or hosting is not renewed?', answer: `The website is entirely yours, but the domain and hosting must be renewed for it to stay online. If they are not, the website stops being available once the active period ends, and the domain name can be registered by someone else after the grace period. ${f.renewal}` },
     ]
   }
 
@@ -172,12 +179,15 @@ function items(lang: Lang): RawItem[] {
       { category: 'pricing', question: 'Bagaimanakah sistem pembayarannya?', answer: f.payment },
       { category: 'pricing', question: 'Bagaimana jika saya tidak berpuas hati dengan hasilnya?', answer: 'Anda meluluskan reka bentuk sebelum pembangunan bermula, dengan bilangan semakan mengikut pakej. Baki 50% hanya dibayar selepas laman web siap dan anda luluskan, jadi anda tidak membayar penuh untuk hasil yang belum sesuai.' },
       { category: 'pricing', question: 'Adakah diskaun untuk syarikat pemula atau PKS?', answer: 'Harga pakej kami sudah disusun supaya mampu milik untuk PKS. Untuk projek besar atau beberapa laman web sekali gus, kami boleh menyediakan sebut harga khas. Hubungi kami untuk berbincang.' },
+      { category: 'pricing', question: 'Adakah harga termasuk cukai? Bolehkah saya meminta invois cukai?', answer: `Kami sentiasa menghantar invois sebelum anda membayar, jadi anda boleh menyemak butiran caj. Jika anda memerlukan invois cukai atau dokumen lain untuk syarikat atau institusi, nyatakan semasa konsultasi supaya dapat dibincangkan sebelum anda bersetuju dengan sebut harga.` },
+      { category: 'pricing', question: 'Adakah e-mel perniagaan dengan domain sendiri (nama@perniagaananda.com) termasuk?', answer: `Pakej tidak menyenaraikan e-mel dengan domain sendiri. Yang termasuk ialah domain dan hosting laman web untuk tahun pertama. Jika anda mahukan alamat seperti nama@perniagaananda.com, nyatakan semasa konsultasi dan kita bincangkan bersama.` },
       { category: 'process', question: 'Berapa lama masa untuk membina laman web?', ...listed('Anggaran setiap pakej selepas kandungan lengkap:', durations, 'Masa boleh lebih cepat atau lebih lama bergantung pada kelengkapan kandungan dan kerumitan ciri.') },
       { category: 'process', question: 'Apakah yang perlu saya sediakan?', answer: 'Wajib: nama perniagaan, penerangan perniagaan dan maklumat hubungan. Membantu: logo, foto produk atau perkhidmatan, dan contoh laman web yang anda suka. Jika belum lengkap, kami bantu menyediakannya.' },
       { category: 'process', question: 'Bagaimana jika saya tiada kandungan atau foto?', answer: 'Tiada masalah. Kami boleh menulis kandungan berdasarkan ringkasan pendek, menggunakan foto stok berlesen, atau mengesyorkan jurugambar jika anda memerlukan foto produk sendiri.' },
       { category: 'process', question: 'Bolehkah saya menyemak semula reka bentuk?', answer: 'Boleh. Bilangan semakan mengikut pakej (contohnya 2× semakan reka bentuk untuk pakej Standard PKS dan Kedai Online Ringkas). Perubahan kecil seperti teks, foto atau maklumat hubungan dibantu tanpa caj sepanjang tempoh penyelenggaraan.' },
       { category: 'process', question: 'Bolehkah saya melihat kemajuan kerja?', answer: 'Boleh. Kami hantar pratonton laman web yang boleh anda buka sendiri, dan maklumkan kemajuan melalui WhatsApp pada setiap peringkat.' },
       { category: 'process', question: 'Bagaimana jika saya perlukan ciri tambahan di tengah proses?', answer: 'Tambahan kecil biasanya boleh terus dimasukkan. Ciri besar seperti kedai dalam talian atau sistem tempahan diberikan sebut harga berasingan dan dibina selepas anda luluskan.' },
+      { category: 'process', question: 'Bolehkah saya melihat reka bentuk sebelum membayar?', answer: `Sebelum deposit, anda boleh mencuba demo kami dan menerima sebut harga bertulis. Reka bentuk awal dibuat selepas deposit 50%, dan anda mesti meluluskannya sebelum laman web dibina. Baki 50% dibayar selepas laman web siap dan anda luluskan.` },
       { category: 'technical', question: 'Adakah laman web itu responsif (mesra mudah alih)?', answer: 'Ya. Semua laman web kami direka untuk mudah alih dahulu dan diuji pada pelbagai saiz skrin, dari telefon hingga desktop. Ini juga penting untuk kedudukan di Google.' },
       { category: 'technical', question: 'Teknologi apakah yang digunakan?', answer: 'Next.js, React dan Tailwind CSS, dengan hosting awan ber-CDN. Untuk laman web yang memerlukan data, kami menggunakan pangkalan data seperti PostgreSQL mengikut keperluan projek.' },
       { category: 'technical', question: 'Sepantas manakah laman web yang dibina?', answer: `Kami menyasarkan skor PageSpeed ${PERF_TARGET} melalui pengoptimuman imej, lazy loading, CDN dan caching. Hasil akhir juga dipengaruhi kandungan halaman, contohnya bilangan video atau imej besar.` },
@@ -190,6 +200,7 @@ function items(lang: Lang): RawItem[] {
       { category: 'support', question: 'Bagaimana jika laman web saya bermasalah atau tidak dapat diakses?', answer: `Maklumkan kepada kami melalui WhatsApp. ${f.response}, pada waktu bekerja (${f.hours}). Sepanjang jaminan ${GUARANTEE_DAYS} hari pembaikan adalah percuma, dan kerana kod disimpan dalam Git, versi terdahulu sentiasa boleh dipulihkan.` },
       { category: 'support', question: 'Bolehkah laman web lama dipindahkan?', answer: 'Boleh. Kami pindahkan kandungan, memasang pengalihan dari alamat lama supaya kedudukan SEO tidak hilang, dan membantu pemindahan domain jika perlu.' },
       { category: 'support', question: 'Selepas laman web siap, bolehkah saya masih meminta bantuan?', answer: `Tentu. Anda masih boleh menghubungi kami melalui WhatsApp untuk konsultasi, pembaikan atau penyelenggaraan lanjutan. ${f.response}.` },
+      { category: 'support', question: 'Apa yang berlaku jika domain atau hosting tidak diperbaharui?', answer: `Laman web ini sepenuhnya milik anda, tetapi domain dan hosting mesti diperbaharui supaya ia kekal dalam talian. Jika tidak, laman web berhenti boleh diakses selepas tempoh aktif tamat, dan nama domain boleh didaftarkan oleh orang lain selepas tempoh bertenang. ${f.renewal}` },
     ]
   }
 
@@ -207,12 +218,15 @@ function items(lang: Lang): RawItem[] {
     { category: 'pricing', question: 'Bagaimana sistem pembayarannya?', answer: f.payment },
     { category: 'pricing', question: 'Bagaimana kalau saya tidak cocok dengan hasilnya?', answer: 'Desain kamu setujui dulu sebelum pengembangan dimulai, dengan jatah revisi sesuai paket. Pelunasan 50% baru dibayar setelah website selesai dan kamu setujui, jadi kamu tidak membayar penuh untuk hasil yang belum sesuai.' },
     { category: 'pricing', question: 'Apakah ada diskon untuk startup atau UMKM?', answer: 'Harga paket sudah kami susun agar terjangkau untuk UMKM. Untuk proyek besar atau beberapa website sekaligus, kami bisa menyusun penawaran khusus. Hubungi kami untuk membicarakannya.' },
+    { category: 'pricing', question: 'Apakah harga sudah termasuk PPN? Bisa minta faktur pajak?', answer: `Invoice selalu kami kirim sebelum kamu membayar, jadi rincian tagihannya bisa kamu cek dulu. Kalau kamu butuh faktur pajak atau dokumen lain untuk perusahaan atau instansi, sampaikan saat konsultasi supaya bisa dibicarakan sebelum penawaran disepakati.` },
+    { category: 'pricing', question: 'Apakah paket termasuk email bisnis berdomain sendiri (nama@usahamu.com)?', answer: `Paket tidak mencantumkan email berdomain sendiri. Yang termasuk adalah domain dan hosting website untuk tahun pertama. Kalau kamu ingin alamat email seperti nama@usahamu.com, sampaikan saat konsultasi supaya kita bicarakan bersama.` },
     { category: 'process', question: 'Berapa lama proses pembuatan website?', ...listed('Perkiraan per paket setelah konten lengkap:', durations, 'Waktu bisa lebih cepat atau lebih lama tergantung kelengkapan konten dan kompleksitas fitur.') },
     { category: 'process', question: 'Apa saja yang perlu saya siapkan?', answer: 'Yang wajib: nama bisnis, deskripsi usaha, dan kontak. Yang membantu: logo, foto produk atau layanan, dan contoh website yang kamu suka. Kalau belum lengkap, kami bantu menyiapkannya.' },
     { category: 'process', question: 'Bagaimana jika saya tidak punya konten atau foto?', answer: 'Tidak masalah. Kami bisa menulis konten berdasarkan brief singkat, memakai foto stok berlisensi, atau merekomendasikan fotografer bila kamu butuh foto produk sendiri.' },
     { category: 'process', question: 'Apakah saya bisa merevisi desain?', answer: 'Bisa. Jatah revisi mengikuti paket (misalnya 2× revisi desain untuk paket Standar UMKM dan Toko Online Simple). Perubahan kecil seperti teks, foto, atau info kontak kami bantu tanpa biaya selama masa maintenance.' },
     { category: 'process', question: 'Apakah saya bisa melihat progres pengerjaan?', answer: 'Bisa. Kami kirim pratinjau website yang bisa kamu buka sendiri, dan mengabarkan progres lewat WhatsApp di setiap tahap.' },
     { category: 'process', question: 'Bagaimana jika saya butuh tambahan fitur di tengah proses?', answer: 'Tambahan kecil biasanya bisa langsung kami masukkan. Fitur besar seperti toko online atau sistem booking dibuatkan penawaran terpisah dan dikerjakan setelah kamu setujui.' },
+    { category: 'process', question: 'Bisa lihat desain dulu sebelum bayar?', answer: `Sebelum DP, kamu bisa mencoba demo kami dan menerima penawaran tertulis. Desain awal dikerjakan setelah DP 50%, dan harus kamu setujui sebelum website dibangun. Sisa 50% dibayar setelah website selesai dan kamu setujui.` },
     { category: 'technical', question: 'Apakah website-nya responsif (mobile-friendly)?', answer: 'Ya. Semua website kami mobile-first dan diuji di berbagai ukuran layar, dari ponsel sampai desktop. Ini juga penting untuk peringkat di Google.' },
     { category: 'technical', question: 'Teknologi apa yang digunakan?', answer: 'Next.js, React, dan Tailwind CSS, dengan hosting cloud ber-CDN. Untuk website yang butuh data, kami memakai database seperti PostgreSQL sesuai kebutuhan proyek.' },
     { category: 'technical', question: 'Seberapa cepat website yang dibuat?', answer: `Kami menargetkan skor PageSpeed ${PERF_TARGET} lewat optimasi gambar, lazy loading, CDN, dan caching. Hasil akhirnya juga dipengaruhi isi halaman, misalnya jumlah video atau gambar besar.` },
@@ -225,6 +239,7 @@ function items(lang: Lang): RawItem[] {
     { category: 'support', question: 'Bagaimana jika website saya bermasalah atau down?', answer: `Kabari kami lewat WhatsApp. ${f.response}, pada jam kerja (${f.hours}). Selama garansi ${GUARANTEE_DAYS} hari perbaikannya gratis, dan karena kode tersimpan di Git, versi sebelumnya selalu bisa dipulihkan.` },
     { category: 'support', question: 'Apakah bisa migrasi dari website lama?', answer: 'Bisa. Kami pindahkan konten, memasang redirect dari alamat lama agar peringkat SEO tidak hilang, dan membantu transfer domain bila diperlukan.' },
     { category: 'support', question: 'Setelah website selesai, apakah masih bisa minta bantuan?', answer: `Tentu. Kami tetap bisa dihubungi lewat WhatsApp untuk konsultasi, perbaikan, atau maintenance lanjutan. ${f.response}.` },
+    { category: 'support', question: 'Apa yang terjadi kalau domain atau hosting tidak diperpanjang?', answer: `Website sepenuhnya milikmu, tetapi domain dan hosting perlu diperpanjang supaya website tetap tayang. Kalau tidak, website berhenti tayang setelah masa aktifnya habis, dan nama domain bisa dipakai orang lain bila sudah lewat masa tenggang. ${f.renewal}` },
   ]
 }
 
