@@ -43,6 +43,12 @@ export const ARTICLE_SLUGS = {
   'lama-pembuatan': { id: 'berapa-lama-membuat-website', en: 'how-long-to-build-a-website' },
   'jarak-jauh': { id: 'jasa-pembuatan-website-online', en: 'hire-web-developer-indonesia' },
   'website-gratis': { id: 'website-gratis-vs-berbayar', en: 'free-vs-paid-website' },
+  // 30 Okt 2026: gelombang kata kunci harga (sekolah, desa, aplikasi, toko online, website murah)
+  'website-sekolah': { id: 'harga-pembuatan-website-sekolah', en: 'school-website-cost-indonesia' },
+  'website-desa': { id: 'biaya-pembuatan-website-desa', en: 'village-website-cost-indonesia' },
+  'biaya-aplikasi': { id: 'harga-pembuatan-aplikasi', en: 'app-development-cost-indonesia' },
+  'biaya-toko-online': { id: 'harga-website-toko-online', en: 'online-store-website-cost-indonesia' },
+  'website-murah': { id: 'jasa-pembuatan-website-murah', en: 'affordable-website-indonesia' },
 } satisfies Record<string, Partial<Record<Lang, string>>>
 
 export type ArticleKey = keyof typeof ARTICLE_SLUGS

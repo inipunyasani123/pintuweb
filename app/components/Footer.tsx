@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, ArrowUp, ArrowUpRight } from 'lucide-react'
-import { EMAIL, WA_DISPLAY, WA_NUMBER, wa } from '../lib/site'
+import { EMAIL, GOOGLE_MAPS, SOCIAL, WA_DISPLAY, WA_NUMBER, wa } from '../lib/site'
 import { DEMOS } from '../lib/demos'
 import { KIND_ORDER, PORTALS } from '../lib/portals'
 import { getDict } from '../i18n'
@@ -27,7 +27,8 @@ export default function Footer({ lang }: { lang: Lang }) {
   const CONTACTS: { label: string; value: string; sub?: string; link?: string }[] = [
     { label: t.footer.phone, value: WA_DISPLAY, link: `https://wa.me/${WA_NUMBER}` },
     { label: t.footer.email, value: EMAIL, link: `mailto:${EMAIL}` },
-    { label: t.footer.location, value: f.location, sub: f.serves },
+    // lokasi menaut ke profil Google Bisnis (Maps): sinyal entitas lokal yang sama dengan sameAs/hasMap di JSON-LD
+    { label: t.footer.location, value: f.location, sub: f.serves, link: GOOGLE_MAPS },
     { label: t.footer.hours, value: f.hoursDays, sub: f.hoursTime },
   ]
 
@@ -219,6 +220,19 @@ export default function Footer({ lang }: { lang: Lang }) {
         <div className="flex flex-col gap-4 border-t border-white/10 py-8 text-sm text-white/65 sm:mt-16 lg:flex-row lg:items-center lg:justify-between">
           <Logo tone="light" />
           <p>{t.footer.copyright(year)}</p>
+          {/* akun resmi (nama merek, tidak diterjemahkan); rel="me" menandai profil milik situs ini */}
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            {[
+              { label: 'Instagram', href: SOCIAL.instagram },
+              { label: 'TikTok', href: SOCIAL.tiktok },
+              { label: 'Google Maps', href: GOOGLE_MAPS },
+            ].map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="me noopener noreferrer" className="-my-0.5 py-0.5 text-white/85 underline decoration-white/30 underline-offset-4 hover:text-white">
+                {s.label}
+                <span className="sr-only"> {t.common.newTabShort}</span>
+              </a>
+            ))}
+          </p>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span>{t.footer.otherLangs}:</span>
             {LANGS.filter((l) => l !== lang).map((l) => (

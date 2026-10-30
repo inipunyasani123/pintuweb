@@ -107,7 +107,7 @@ const ARTICLES: ArticleKey[] = ['umkm-tulungagung', 'google-maps', 'katalog-eksp
 
 const TEXT: Record<Lang, LocalText> = {
   id: {
-    title: 'Jasa Pembuatan Website Tulungagung | PintuWeb',
+    title: 'Jasa Pembuatan Website Tulungagung mulai {{from:landing-page}}',
     description:
       'Jasa pembuatan website di Tulungagung: landing page mulai {{from:landing-page}}, toko online, menu QR & booking. Dikerjakan online, melayani seluruh Indonesia.',
     ogTitle: 'Jasa Pembuatan Website Tulungagung',

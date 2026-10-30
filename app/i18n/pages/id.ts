@@ -1,6 +1,9 @@
 // Teks per halaman — Bahasa Indonesia. Kalimat lama dipertahankan apa adanya.
 import { CATEGORY_COUNT, CITY, CLIENT_PROJECTS, FOUNDED_YEAR, GUARANTEE_DAYS, LOCATION, PERF_TARGET } from '../../lib/site'
-import { PACKAGES } from '../../lib/packages'
+import { PACKAGES, PRICES_UPDATED, pricedOnly } from '../../lib/packages'
+
+/** Harga termurah semua paket ("Rp50.000") dan tahun daftar harga, untuk judul halaman Paket (angka tetap dari packages.ts). */
+const HARGA_TERMURAH = `Rp${Math.min(...pricedOnly(PACKAGES).map((p) => p.minPrice)).toLocaleString('id-ID')}`
 import { LANGS } from '../config'
 import type { DemoCategory } from '../../lib/demos'
 import type { Hl } from '../dict/id'
@@ -35,7 +38,8 @@ const pages = {
     ctaWa: 'Halo PintuWeb, saya ingin konsultasi layanan website yang cocok untuk usaha saya.',
   },
   pricing: {
-    title: 'Paket & Harga Jasa Pembuatan Website',
+    // kata kunci "harga pembuatan website" + tahun daftar harga + harga termurah (gaya judul pesaing di halaman 1)
+    title: `Harga Pembuatan Website ${PRICES_UPDATED.slice(0, 4)}: mulai ${HARGA_TERMURAH}`,
     description: (min: string, n: number) => `Harga ${n} paket pembuatan website mulai ${min}: undangan digital, landing page, website UMKM, toko online, dan website custom. DP 50%, garansi ${GUARANTEE_DAYS} hari.`,
     ogTitle: 'Paket & Harga — PintuWeb',
     ogDescription: (min: string) => `Pilih paket website mulai ${min}. Harga transparan, DP 50%, pelunasan setelah kamu menyetujui websitenya.`,

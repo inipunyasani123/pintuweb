@@ -2,15 +2,18 @@
 // Pola judul [biasa, sorotan, sisa?]: bagian kedua diberi warna aksen.
 import { CITY, CLIENT_PROJECTS, CLOSES, FOUNDED_YEAR, GUARANTEE_DAYS, OPENS, PERF_TARGET, dotTime } from '../../lib/site'
 import { PACKAGES } from '../../lib/packages'
+
+/** "Rp100.000": harga mulai satu paket, untuk judul halaman (angka tetap dari packages.ts). */
+const rpMulai = (slug: string) => `Rp${PACKAGES.find((p) => p.slug === slug)!.minPrice!.toLocaleString('id-ID')}`
 import { capFirst, demoUnits, numberWord } from '../plural'
 
 export type Hl = [string, string, string?]
 
 const id = {
   meta: {
-    homeTitle: 'PintuWeb — Jasa Pembuatan Website Profesional & Cepat',
+    homeTitle: `Jasa Pembuatan Website Murah mulai ${rpMulai('landing-page')} | PintuWeb`,
     homeDescription: (n: number) =>
-      `Jasa pembuatan website profesional, cepat, dan SEO-friendly untuk UMKM, startup, dan personal brand sejak ${FOUNDED_YEAR}. Harga transparan, lihat ${n} demo langsung.`,
+      `Jasa pembuatan website murah & profesional sejak ${FOUNDED_YEAR}: landing page, company profile, toko online, undangan digital, aplikasi. Lihat ${n} demo langsung.`,
     ogHomeDescription: (n: number) =>
       `Studio web di ${CITY} sejak ${FOUNDED_YEAR}. Website cepat dan siap SEO untuk UMKM, toko, dan personal brand. Lihat ${n} demo langsung.`,
     ogAlt: 'PintuWeb — Jasa Pembuatan Website Profesional',

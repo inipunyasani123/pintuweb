@@ -25,6 +25,16 @@ export const FOUNDER_NAME = 'Arya'
  */
 export const GITHUB = ''
 
+/** Profil Google Bisnis PintuWeb (Maps, lewat CID agar tetap walau nama tempat berubah). Dipakai hasMap/sameAs dan tautan footer. */
+export const GOOGLE_MAPS = 'https://www.google.com/maps?cid=4624734628104466098'
+/** Akun media sosial resmi PintuWeb (tautan footer + sameAs data terstruktur). */
+export const SOCIAL = {
+  tiktok: 'https://www.tiktok.com/@pintuweb.id',
+  instagram: 'https://www.instagram.com/pintuwebid',
+} as const
+/** Semua profil resmi PintuWeb di luar situs, untuk `sameAs` (Google memakai ini untuk menyatukan entitas). */
+export const SAME_AS = [GOOGLE_MAPS, SOCIAL.instagram, SOCIAL.tiktok, ...(GITHUB ? [`https://${GITHUB}`] : [])]
+
 /** Jam buka dan tutup (WIB), format 24 jam. Semua tulisan jam kerja (tiga bahasa) dan JSON-LD dirakit dari sini. */
 export const OPENS = '08:00'
 export const CLOSES = '19:00'
@@ -43,7 +53,7 @@ export const GUARANTEE_DAYS = 30
  * Tanggal terakhir fakta di file ini (kontak, jam kerja, angka) berubah. NAIKKAN setiap kali mengubahnya:
  * tanggal berlaku dokumen legal dan lastmod sitemap mengikuti tanggal ini.
  */
-export const FACTS_UPDATED = '2026-10-23'
+export const FACTS_UPDATED = '2026-10-30'
 
 /** Tanggal ISO (YYYY-MM-DD) yang paling baru. */
 export const latest = (...dates: string[]) => dates.reduce((a, b) => (b > a ? b : a))

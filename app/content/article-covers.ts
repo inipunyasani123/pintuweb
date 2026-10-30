@@ -31,6 +31,11 @@ export const ARTICLE_COVER: Record<ArticleKey, { mark: string; tone: DemoCategor
   'lama-pembuatan': { mark: 'ETA', tone: 'todo' },
   'jarak-jauh': { mark: 'UTC+7', tone: 'linkinbio' },
   'website-gratis': { mark: 'Rp0', tone: 'undangan' },
+  'website-sekolah': { mark: 'Sch', tone: 'todo' },
+  'website-desa': { mark: 'Desa', tone: 'properti' },
+  'biaya-aplikasi': { mark: 'App', tone: 'mobile' },
+  'biaya-toko-online': { mark: 'Cart', tone: 'toko' },
+  'website-murah': { mark: 'Rp', tone: 'landing' },
 }
 
 const DIR = path.join(process.cwd(), 'public', 'images', 'artikel')

@@ -1,7 +1,7 @@
 // Metadata & JSON-LD per halaman: canonical + hreflang lengkap, Open Graph per bahasa,
 // dan graf schema.org yang konsisten (Organization, WebSite, WebPage, BreadcrumbList).
 import type { Metadata } from 'next'
-import { CITY, CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, OPENS, SITE, WA_NUMBER, FOUNDER_NAME } from '../lib/site'
+import { CITY, CLIENT_PROJECTS, CLOSES, EMAIL, FOUNDED_YEAR, GITHUB, GOOGLE_MAPS, OPENS, SAME_AS, SITE, WA_NUMBER, FOUNDER_NAME } from '../lib/site'
 import { PACKAGES, isPriced, pricedOnly, type Paket } from '../lib/packages'
 import { LANG_INFO, LANGS, plain, type Lang } from './config'
 import { alternatesOf, langsOf, path, urlOf, type DocRef } from './routes'
@@ -137,7 +137,9 @@ export function siteGraph(lang: Lang) {
         areaServed: localAreaServed(),
         knowsLanguage: LANGS.map((l) => LANG_INFO[l].htmlLang),
         knowsAbout: ['Web design', 'Web development', 'Next.js', 'Search engine optimization', 'Landing pages', 'E-commerce websites', 'Digital menus', 'Digital invitations', 'Mobile app development', 'Android apps', 'iOS apps', 'React Native'],
-        ...(GITHUB ? { sameAs: [`https://${GITHUB}`] } : {}),
+        // profil resmi di luar situs (Google Bisnis/Maps, Instagram, TikTok) supaya mesin pencari menyatukan entitasnya
+        sameAs: SAME_AS,
+        hasMap: GOOGLE_MAPS,
         contactPoint: {
           '@type': 'ContactPoint',
           telephone: `+${WA_NUMBER}`,

@@ -6,7 +6,7 @@ import type { Dict, Hl } from './id'
 
 const en: Dict = {
   meta: {
-    homeTitle: 'PintuWeb — Website Design & Development in Indonesia',
+    homeTitle: `Web Design in Indonesia from IDR ${PACKAGES.find((p) => p.slug === 'landing-page')!.minPrice!.toLocaleString('en-US')} | PintuWeb`,
     homeDescription: (n: number) =>
       `Professional, fast, SEO-friendly websites for small businesses and personal brands, built in Indonesia since ${FOUNDED_YEAR}. Transparent pricing, ${n} live demos.`,
     ogHomeDescription: (n: number) =>

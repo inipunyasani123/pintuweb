@@ -1,5 +1,5 @@
 // Isi /llms.txt & /llms-full.txt, dirakit dari sumber data yang sama dengan halaman situs.
-import { CITY, CLIENT_PROJECTS, EMAIL, FOUNDED_YEAR, GUARANTEE_DAYS, PERF_TARGET, SITE, WA_DISPLAY } from '../lib/site'
+import { CITY, CLIENT_PROJECTS, EMAIL, FOUNDED_YEAR, GOOGLE_MAPS, GUARANTEE_DAYS, PERF_TARGET, SITE, SOCIAL, WA_DISPLAY } from '../lib/site'
 import { DEMOS } from '../lib/demos'
 import { PORTALS } from '../lib/portals'
 import { addonsFor, facts, packagesFor } from '../i18n/facts'
@@ -31,6 +31,7 @@ export function llmsDoc(full: boolean) {
     `- Founded: ${FOUNDED_YEAR}, ${CITY}, East Java, Indonesia`,
     `- Client projects: ${CLIENT_PROJECTS}; live demos: ${DEMOS.length}`,
     `- Contact: WhatsApp ${WA_DISPLAY}, email ${EMAIL}`,
+    `- Official profiles: Google Business Profile (Maps) ${GOOGLE_MAPS} · Instagram ${SOCIAL.instagram} · TikTok ${SOCIAL.tiktok}`,
     `- Hours: ${en.hours}`,
     `- Payment: ${en.payment} Details: ${urlOf('en', { key: 'payment' })}`,
     `- Renewal: ${en.renewal}`,
@@ -66,7 +67,7 @@ export function llmsDoc(full: boolean) {
     '',
     `## Local page: ${CITY}`,
     '',
-    `PintuWeb is a service-area business: only the city is published (no street address); all work is done remotely over WhatsApp and email.`,
+    `PintuWeb works as a service-area business: this website publishes only the city, and all work is done remotely over WhatsApp and email for clients anywhere in Indonesia and abroad.`,
     '',
     `- [${localText('en').ogTitle}](${urlOf('en', { key: 'local' })}): ${plain(`${localText('en').answerLead} ${localText('en').answer}`)}`,
     `  - Indonesian: [${localText('id').ogTitle}](${urlOf('id', { key: 'local' })})`,
