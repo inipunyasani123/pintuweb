@@ -83,3 +83,9 @@ Project Vercel `pintuweb` terhubung ke repo ini (Vercel Git Integration): setiap
 
 - `node scripts/indexnow.mjs`: mengirim semua URL di sitemap live ke IndexNow (Bing dan mesin lain). Jalankan setelah deploy. Kuncinya di `app/lib/indexnow.ts` dan berkas `public/<kunci>.txt`.
 - `node scripts/ikon-dari-logo.mjs`: membuat logo rapat untuk header/footer, favicon, ikon aplikasi, dan logo OG dari `public/images/logo.png` (berkas sumber tidak diubah). Jalankan setelah logo diganti.
+
+## Harga untuk portal galeri
+
+Alur: `app/lib/packages.ts` (dan `site.ts`) → `/harga.json` (`app/harga.json/route.ts`, statis) → tiap portal membacanya saat build (`scripts/ambil-harga.mjs` di `prebuild`, menulis `harga.json`; bila PintuWeb tidak terjangkau, berkas cadangan yang ada di repo portal dipakai dan build tetap jalan) → `pintuweb.js` portal memformat angkanya.
+
+Setelah mengubah harga: push dan tunggu PintuWeb live, cek https://www.pintuweb.id/harga.json, lalu `node scripts/bangun-ulang-portal.mjs` (tambah `--coba` untuk melihat rencana saja; hati-hati batas 100 deploy per hari). Portal juga ikut terbarui pada deploy berikutnya.
