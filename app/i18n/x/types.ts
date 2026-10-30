@@ -68,7 +68,7 @@ export type Pack = {
   /** tagline (dan nama, bila perlu diterjemahkan) tiap demo, kuncinya slug di lib/demos.ts */
   demos: Record<string, { name?: string; tagline: string }>
   faqCategories: Record<FaqCategoryKey, { name: string; lead: string }>
-  /** 31 pasang [pertanyaan, jawaban], URUTANNYA sama dengan FAQ_KEYS di content/faq.ts */
+  /** 35 pasang [pertanyaan, jawaban], URUTANNYA sama dengan FAQ_KEYS di content/faq.ts */
   faq: (c: FaqCtx) => [string, string | Listed][]
 }
 

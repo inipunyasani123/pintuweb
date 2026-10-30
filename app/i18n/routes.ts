@@ -1,12 +1,13 @@
 // Peta URL publik per bahasa. Folder internal di app/[lang]/ memakai segmen versi Indonesia;
 // next.config.ts membangun rewrite (publik -> internal) dan redirect (internal -> publik) dari tabel ini.
 import { BASE_LANGS, DEFAULT_LANG, LANGS, LANG_INFO, X_LANGS, isLang, type BaseLang, type Lang, type XLang } from './config'
-import { ARTICLE_SLUGS, SERVICE_SLUGS, articleKeyBySlug, serviceKeyBySlug, type ArticleKey, type ServiceKey } from './slugs'
+import { ARTICLE_SLUGS, BIZ_SLUGS, SERVICE_SLUGS, articleKeyBySlug, bizKeyBySlug, serviceKeyBySlug, type ArticleKey, type BizKey, type ServiceKey } from './slugs'
 import { SITE } from '../lib/site'
 
 export type PageKey =
   | 'home' | 'services' | 'pricing' | 'demo' | 'faq' | 'about' | 'contact'
   | 'founder' | 'privacy' | 'terms' | 'articles' | 'glossary' | 'local' | 'payment'
+  | 'business' | 'cityKediri' | 'cityBlitar' | 'cityTrenggalek'
 
 /** Segmen URL bahasa dasar. null = halaman itu tidak ada dalam bahasa tersebut. */
 const BASE_SEGMENTS: Record<PageKey, Record<BaseLang, string | null>> = {
@@ -26,6 +27,12 @@ const BASE_SEGMENTS: Record<PageKey, Record<BaseLang, string | null>> = {
   local: { id: 'jasa-pembuatan-website-tulungagung', en: 'web-design-tulungagung', ms: 'laman-web-tulungagung' },
   // Cara bayar & metode pembayaran (22 Okt 2026); folder internal = segmen id
   payment: { id: 'pembayaran', en: 'payment', ms: 'pembayaran' },
+  // 30 Okt 2026: "Website untuk <jenis usaha>" (indeks + 8 halaman) hanya id/en, seperti artikel
+  business: { id: 'website-untuk', en: 'website-for', ms: null },
+  // Halaman kota sekitar (area layanan; PintuWeb tetap berlokasi di CITY). Hanya id/en.
+  cityKediri: { id: 'jasa-pembuatan-website-kediri', en: 'web-design-kediri', ms: null },
+  cityBlitar: { id: 'jasa-pembuatan-website-blitar', en: 'web-design-blitar', ms: null },
+  cityTrenggalek: { id: 'jasa-pembuatan-website-trenggalek', en: 'web-design-trenggalek', ms: null },
 }
 
 /**
@@ -75,15 +82,17 @@ export const url = (lang: Lang, key: PageKey, slug?: string) => {
 
 /** Bahasa + slug untuk satu "dokumen". Halaman tanpa slug cukup { key }. */
 export type DocRef =
-  | { key: Exclude<PageKey, 'services' | 'articles'> }
+  | { key: Exclude<PageKey, 'services' | 'articles' | 'business'> }
   | { key: 'services'; service?: ServiceKey }
   | { key: 'articles'; article?: ArticleKey }
+  | { key: 'business'; biz?: BizKey }
 
 /** Bahasa yang memiliki dokumen ini. */
 export function langsOf(ref: DocRef): Lang[] {
   return LANGS.filter((l) => {
     if (!hasPage(l, ref.key)) return false
     if (ref.key === 'articles' && ref.article) return Boolean((ARTICLE_SLUGS[ref.article] as Partial<Record<Lang, string>>)[l])
+    if (ref.key === 'business' && ref.biz) return Boolean((BIZ_SLUGS[ref.biz] as Partial<Record<Lang, string>>)[l])
     return true
   })
 }
@@ -95,6 +104,11 @@ export function pathOf(lang: Lang, ref: DocRef): string {
     const slug = (ARTICLE_SLUGS[ref.article] as Partial<Record<Lang, string>>)[lang]
     if (!slug) throw new Error(`Artikel ${ref.article} tidak ada dalam bahasa ${lang}`)
     return path(lang, 'articles', slug)
+  }
+  if (ref.key === 'business' && ref.biz) {
+    const slug = (BIZ_SLUGS[ref.biz] as Partial<Record<Lang, string>>)[lang]
+    if (!slug) throw new Error(`Halaman ${ref.biz} tidak ada dalam bahasa ${lang}`)
+    return path(lang, 'business', slug)
   }
   return path(lang, ref.key)
 }
@@ -128,6 +142,10 @@ export function parsePath(pathname: string): { lang: Lang; ref: DocRef } | null 
   if (key === 'articles' && parts[1]) {
     const article = articleKeyBySlug(lang, parts[1])
     return article ? { lang, ref: { key, article } } : null
+  }
+  if (key === 'business' && parts[1]) {
+    const biz = bizKeyBySlug(lang, parts[1])
+    return biz ? { lang, ref: { key, biz } } : null
   }
   return { lang, ref: { key } as DocRef }
 }

@@ -4,7 +4,7 @@ import { PRICES_UPDATED } from './lib/packages'
 import { PORTALS } from './lib/portals'
 import { LANG_INFO } from './i18n/config'
 import { SEGMENTS, langsOf, urlOf, type DocRef, type PageKey } from './i18n/routes'
-import { SERVICE_KEYS, ARTICLE_KEYS } from './i18n/slugs'
+import { SERVICE_KEYS, ARTICLE_KEYS, BIZ_KEYS } from './i18n/slugs'
 import { getArticle } from './content/articles'
 import { LEGAL_UPDATED_ISO } from './content/legal'
 
@@ -28,6 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     glossary: [0.6, 'monthly'],
     founder: [0.5, 'yearly'],
     payment: [0.6, 'monthly'],
+    business: [0.8, 'monthly'],
+    cityKediri: [0.7, 'monthly'],
+    cityBlitar: [0.7, 'monthly'],
+    cityTrenggalek: [0.7, 'monthly'],
     privacy: [0.2, 'yearly'],
     terms: [0.2, 'yearly'],
   }
@@ -38,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return { ref: { key } as DocRef, priority, freq, modified }
   })
   for (const service of SERVICE_KEYS) entries.push({ ref: { key: 'services', service }, priority: 0.8, freq: 'monthly', modified: CONTENT_UPDATED })
+  for (const biz of BIZ_KEYS) entries.push({ ref: { key: 'business', biz }, priority: 0.7, freq: 'monthly', modified: CONTENT_UPDATED })
   for (const article of ARTICLE_KEYS) {
     const a = getArticle('id', article)
     entries.push({ ref: { key: 'articles', article }, priority: 0.7, freq: 'monthly', modified: a.updated })

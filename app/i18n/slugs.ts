@@ -59,3 +59,21 @@ export const serviceKeyBySlug = (lang: Lang, slug: string) =>
 
 export const articleKeyBySlug = (lang: Lang, slug: string) =>
   ARTICLE_KEYS.find((k) => (ARTICLE_SLUGS[k] as Partial<Record<Lang, string>>)[lang] === slug)
+
+/** Halaman "Website untuk <jenis usaha>" (30 Okt 2026): hanya ada dalam ID & EN, seperti artikel. Isinya di content/business.ts. */
+export const BIZ_SLUGS = {
+  'kafe-restoran': { id: 'kafe-restoran', en: 'cafe-restaurant' },
+  'klinik-kesehatan': { id: 'klinik-kesehatan', en: 'clinic-health' },
+  'sekolah-kursus': { id: 'sekolah-kursus', en: 'school-course' },
+  'kos-properti-penginapan': { id: 'kos-properti-penginapan', en: 'rental-property-lodging' },
+  'toko-umkm-produk': { id: 'toko-umkm-produk', en: 'online-shop-product-business' },
+  'salon-laundry-jasa': { id: 'salon-laundry-jasa', en: 'salon-laundry-services' },
+  'acara-undangan': { id: 'acara-undangan', en: 'events-invitations' },
+  'komunitas-masjid': { id: 'komunitas-masjid', en: 'community-mosque' },
+} satisfies Record<string, Partial<Record<Lang, string>>>
+
+export type BizKey = keyof typeof BIZ_SLUGS
+export const BIZ_KEYS = Object.keys(BIZ_SLUGS) as BizKey[]
+
+export const bizKeyBySlug = (lang: Lang, slug: string) =>
+  BIZ_KEYS.find((k) => (BIZ_SLUGS[k] as Partial<Record<Lang, string>>)[lang] === slug)

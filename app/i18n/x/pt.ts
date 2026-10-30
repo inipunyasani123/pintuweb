@@ -375,6 +375,8 @@ const pt: Pack = {
     ['Como funciona o pagamento?', c.facts.payment],
     ['E se eu não ficar satisfeito com o resultado?', 'Você aprova o design antes de o desenvolvimento começar, com o número de revisões definido pelo seu pacote. Os 50% restantes só são pagos quando o site estiver pronto e aprovado por você, então você nunca paga o valor total por um trabalho que ainda não está certo.'],
     ['Vocês oferecem desconto para startups ou pequenas empresas?', 'Os preços dos pacotes já foram pensados para serem acessíveis a pequenos negócios. Para projetos grandes ou vários sites de uma vez, podemos montar um orçamento especial. Fale conosco para conversarmos.'],
+    [`O preço inclui impostos? Posso pedir nota fiscal?`, `Sempre enviamos a fatura antes de você pagar, então dá para conferir o detalhamento da cobrança. Se você precisa de nota fiscal ou de outros documentos para uma empresa ou instituição, avise na consulta para conversarmos antes de aceitar o orçamento.`],
+    [`Inclui e-mail profissional com meu próprio domínio (nome@seunegocio.com)?`, `Os pacotes não incluem e-mail com domínio próprio. O que está incluído são o domínio e a hospedagem do site no primeiro ano. Se você quer um endereço como nome@seunegocio.com, avise na consulta e conversamos juntos.`],
     // Processo
     ['Quanto tempo leva para construir um site?', c.listed('Prazo estimado por pacote, depois que o seu conteúdo estiver completo:', c.durations, 'Pode ser mais rápido ou mais demorado, dependendo de quão completo está o seu conteúdo e da complexidade dos recursos.')],
     ['O que eu preciso preparar?', 'Obrigatório: o nome do seu negócio, uma descrição da sua atividade e os dados de contato. Ajuda bastante: um logotipo, fotos dos seus produtos ou serviços e exemplos de sites de que você gosta. Se faltar algo, ajudamos você a preparar.'],
@@ -382,6 +384,7 @@ const pt: Pack = {
     ['Posso pedir revisões do design?', 'Sim. O número de revisões depende do seu pacote (por exemplo, 2 revisões de design nos pacotes Padrão PME e Loja online simples). Pequenas alterações, como textos, fotos ou dados de contato, são gratuitas durante o período de manutenção.'],
     ['Posso acompanhar o andamento?', 'Sim. Enviamos uma prévia do site que você mesmo pode abrir e atualizamos você pelo WhatsApp em cada etapa.'],
     ['E se eu precisar de recursos extras no meio do projeto?', 'Pequenos acréscimos normalmente podem ser incluídos na hora. Recursos maiores, como uma loja online ou um sistema de reservas, recebem um orçamento separado e são construídos depois da sua aprovação.'],
+    [`Posso ver o design antes de pagar?`, `Antes da entrada, você pode testar nossas demos e receber um orçamento por escrito. O design inicial é feito depois da entrada de 50% e você precisa aprová-lo antes de o site ser construído. Os 50% restantes são pagos quando o site estiver pronto e aprovado por você.`],
     // Técnico
     ['O site é responsivo (adaptado ao celular)?', 'Sim. Todos os nossos sites são projetados primeiro para o celular e testados em vários tamanhos de tela, de telefones a computadores. Isso também conta para o seu posicionamento no Google.'],
     ['Que tecnologia vocês usam?', 'Next.js, React e Tailwind CSS, com hospedagem em nuvem sobre CDN. Para sites que precisam de dados, usamos bancos de dados como o PostgreSQL, conforme o projeto.'],
@@ -396,6 +399,7 @@ const pt: Pack = {
     ['E se o meu site tiver um problema ou sair do ar?', `Mande uma mensagem pelo WhatsApp. ${c.facts.response}, no horário comercial (${c.facts.hours}). As correções são gratuitas durante a garantia de ${c.days} dias e, como o código fica no Git, uma versão anterior sempre pode ser restaurada.`],
     ['Vocês podem migrar o meu site antigo?', 'Sim. Transferimos o seu conteúdo, configuramos redirecionamentos dos endereços antigos para não perder o seu posicionamento em SEO e ajudamos a transferir o domínio, se necessário.'],
     ['Ainda posso ter ajuda depois que o site estiver pronto?', `Claro. Você pode continuar falando conosco pelo WhatsApp para orientações, correções ou manutenção contínua. ${c.facts.response}.`],
+    [`O que acontece se eu não renovar o domínio ou a hospedagem?`, `O site é totalmente seu, mas o domínio e a hospedagem precisam ser renovados para ele continuar no ar. Sem renovação, o site sai do ar quando o período ativo termina, e o nome de domínio pode ser registrado por outra pessoa depois do período de carência. ${c.facts.renewal}`],
   ],
 }
 

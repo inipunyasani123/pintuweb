@@ -9,6 +9,7 @@ import { LANGS, LANG_INFO, type Lang } from '../i18n/config'
 import { hasPage, path, pathOf } from '../i18n/routes'
 import { SERVICES, serviceText } from '../content/services'
 import { localText } from '../content/local'
+import { bizUi } from '../content/business'
 import { paymentText } from '../content/payment'
 import { PayLogoRow } from './PaymentLogos'
 import { HlText } from './Bits'
@@ -53,6 +54,8 @@ export default function Footer({ lang }: { lang: Lang }) {
         { label: t.links.faq, href: path(lang, 'faq') },
         // halaman lokal (kota di lib/site.ts)
         { label: localText(lang).footerLink, href: path(lang, 'local') },
+        // "Website untuk usahamu" (hanya id/en)
+        ...(hasPage(lang, 'business') ? [{ label: bizUi(lang).footerLink, href: path(lang, 'business') }] : []),
       ],
     },
     {
