@@ -1,7 +1,7 @@
 // Berkas harga resmi: https://www.pintuweb.id/harga.json
 // Dibaca 11 portal galeri saat build (scripts/ambil-harga.mjs di tiap portal), supaya harga cukup diubah di
 // app/lib/packages.ts. Setelah PintuWeb live dan harga berubah, jalankan `node scripts/bangun-ulang-portal.mjs`.
-import { PACKAGES, PRICES_UPDATED, isPriced } from '../lib/packages'
+import { ADDONS, PACKAGES, PRICES_UPDATED, isPriced } from '../lib/packages'
 import { GUARANTEE_DAYS, PERF_TARGET, WA_DISPLAY, WA_NUMBER } from '../lib/site'
 
 export const dynamic = 'force-static'
@@ -27,6 +27,8 @@ export function GET() {
       garansiHari: GUARANTEE_DAYS,
       targetSkor: PERF_TARGET,
       paket,
+      // biaya tambahan per satuan (halaman, maintenance, artikel); portal Company Profile menampilkan "halaman tambahan"
+      tambahan: Object.fromEntries(ADDONS.map((a) => [a.slug, { nama: a.title, mulai: a.minPrice, sampai: a.maxPrice, satuan: a.unit }])),
     },
     { headers: { 'Cache-Control': 'public, max-age=0, s-maxage=3600' } },
   )
