@@ -13,12 +13,12 @@ const id = {
   meta: {
     homeTitle: `Jasa Pembuatan Website Murah mulai ${rpMulai('landing-page')} | PintuWeb`,
     homeDescription: (n: number) =>
-      `Jasa pembuatan website murah & profesional sejak ${FOUNDED_YEAR}: landing page, company profile, toko online, undangan digital, aplikasi. Lihat ${n} demo langsung.`,
+      `Jasa pembuatan website murah sejak ${FOUNDED_YEAR}: landing page, company profile, toko online, undangan digital, aplikasi. Coba ${n} demo langsung.`,
     ogHomeDescription: (n: number) =>
-      `Studio web di ${CITY} sejak ${FOUNDED_YEAR}. Website cepat dan siap SEO untuk UMKM, toko, dan personal brand. Lihat ${n} demo langsung.`,
+      `Studio web di ${CITY} sejak ${FOUNDED_YEAR}. Website cepat dan mudah ditemukan di Google untuk UMKM dan toko. Coba ${n} demo.`,
     ogAlt: 'PintuWeb — Jasa Pembuatan Website Profesional',
     keywords: ['jasa pembuatan website', 'jasa website profesional', 'bikin website murah', 'website UMKM', 'landing page', 'company profile', 'undangan digital', 'link in bio', `web developer ${CITY}`, 'PintuWeb'],
-    orgDescription: "Jasa pembuatan website profesional, cepat, dan SEO-friendly, serta aplikasi Android & iOS.",
+    orgDescription: "Jasa pembuatan website yang cepat dan mudah ditemukan di Google, serta aplikasi Android & iOS.",
   },
   common: {
     skip: 'Lewati ke konten',
@@ -41,7 +41,7 @@ const id = {
     logoAlt: 'Logo PintuWeb',
     mainNav: 'Navigasi utama',
     mobileNav: 'Navigasi mobile',
-    guarantee: 'Garansi & Support',
+    guarantee: 'Garansi & bantuan',
     consult: 'Konsultasi',
     consultFree: 'Konsultasi Gratis',
     openMenu: 'Buka menu',
@@ -54,7 +54,7 @@ const id = {
     notAvailable: 'belum tersedia',
     // Menu "Layanan" (panel desktop & sub-daftar lembar menu ponsel)
     allServices: 'Semua layanan',
-    allServicesLead: 'Bandingkan semua layanan beserta harga dan lama pengerjaannya.',
+    allServicesLead: 'Lihat semua layanan beserta harga dan lama pengerjaannya.',
   },
   // Bilah WhatsApp lengket (ponsel) dan komponen rating Google (tampil hanya bila GOOGLE_REVIEWS di lib/site.ts terisi)
   conv: {
@@ -71,7 +71,7 @@ const id = {
     aria: 'Kontak dan info PintuWeb',
     kicker: 'Mulai dari obrolan',
     title: ['Ceritakan usahamu. Kami bantu ', 'pikirkan websitenya', '.'] as Hl,
-    lead: (response: string) => `Konsultasi lewat WhatsApp gratis dan tidak mewajibkan apa pun. ${response}.`,
+    lead: (response: string) => `Konsultasi lewat WhatsApp gratis, tanpa kewajiban. ${response}.`,
     waText: 'Halo PintuWeb, saya mau konsultasi website.',
     chat: 'Chat WhatsApp',
     seePackages: 'Lihat harga',
@@ -117,7 +117,7 @@ const id = {
     kicker: `Studio web · ${CITY}, Jawa Timur`,
     meta: (n: number) => `Sejak ${FOUNDED_YEAR} · ${CLIENT_PROJECTS} proyek klien · ${n} demo online`,
     title: ['Setiap usaha butuh ', 'pintu depan', ' yang layak.'] as Hl,
-    lead: "Website, toko online, sampai aplikasi web dan Android/iOS untuk mengelola usaha. Cepat dibuka di ponsel, mudah ditemukan, dan sepenuhnya milikmu.",
+    lead: "Website, toko online, sampai aplikasi Android dan iOS. Cepat dibuka di HP, mudah ditemukan di Google, dan sepenuhnya milikmu.",
     // Satu baris penawaran di bawah paragraf pembuka; harga & durasi paket Landing Page dari lib/packages.ts.
     offer: (price: string, duration: string) => `Landing page mulai ${price}, selesai dalam ${duration}. Bayar 50% di awal, sisanya setelah website jadi.`,
     // layar ≥768px: harga & lama pengerjaan pindah ke label gantungan pintu di gambar hero, kalimatnya tinggal bagian bayar
@@ -125,7 +125,7 @@ const id = {
     ctaConsult: 'Konsultasi gratis',
     ctaDemos: (n: number) => `Lihat ${n} demo`,
     facade: (n: number) => `${capFirst(numberWord('id', n))} jenis website & aplikasi yang kami buat`,
-    facadeHint: 'Arahkan kursor untuk pratinjau, klik untuk membuka galerinya',
+    facadeHint: 'Arahkan kursor untuk melihat, klik untuk membuka galeri',
     openGallery: (t: string) => `Buka galeri ${t}`,
     // Tautan kedua tiap jenis: halaman layanan / kartu paketnya. kindDetailFor = nama aksesibel (unik per baris).
     kindDetail: 'Detail & harga',
@@ -133,19 +133,19 @@ const id = {
   },
   portfolio: {
     eyebrow: 'Demo pilihan',
-    title: ['Demo sungguhan yang bisa kamu buka dan coba sendiri, ', 'di HP, tablet, maupun laptop', '.'] as Hl,
-    lead: (n: number) => `Lima dari ${n} situs demo yang kami bangun dan biarkan tetap online. Nama usahanya rekaan; tampilan dan isinya bisa disesuaikan untuk usahamu.`,
+    title: ['Demo yang bisa kamu coba sendiri, ', 'di HP maupun laptop', '.'] as Hl,
+    lead: (n: number) => `Lima dari ${n} demo yang kami buat dan biarkan tetap online. Nama usahanya rekaan, dan tampilannya bisa disesuaikan untuk usahamu.`,
     galleries: {
-      landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, sales, promo' },
-      toko: { title: 'Toko Online', tagline: 'Katalog, keranjang, checkout, dan dasbor pesanan' },
-      menu: { title: 'Menu Digital', tagline: 'Menu QR untuk kafe & warung, pesanan lewat WhatsApp' },
+      landing: { title: 'Landing Page', tagline: 'Satu halaman untuk promo atau jualan' },
+      toko: { title: 'Toko Online', tagline: 'Katalog, keranjang, dan kelola pesanan' },
+      menu: { title: 'Menu Digital', tagline: 'Menu QR untuk kafe dan warung, pesan lewat WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu tautan untuk semua kanalmu' },
-      kontes: { title: 'Konsep Desain', tagline: 'Beberapa konsep untuk satu brief kontes desain' },
-      undangan: { title: 'Undangan Digital', tagline: 'Undangan online untuk momen spesial' },
-      portfolio: { title: 'Portofolio Pribadi', tagline: 'Personal branding yang berkesan' },
-      reservasi: { title: 'Reservasi & Booking', tagline: 'Sistem pemesanan online multi-industri' },
-      properti: { title: 'Properti', tagline: 'Marketplace & katalog properti' },
-      todo: { title: 'To-Do & Produktivitas', tagline: 'Aplikasi web untuk kelola tugas' },
+      kontes: { title: 'Konsep Desain', tagline: 'Beberapa konsep untuk satu permintaan desain' },
+      undangan: { title: 'Undangan Digital', tagline: 'Undangan online untuk acara spesial' },
+      portfolio: { title: 'Portofolio Pribadi', tagline: 'Etalase karya dan dirimu' },
+      reservasi: { title: 'Reservasi & Booking', tagline: 'Pesan meja, kamar, atau jadwal online' },
+      properti: { title: 'Properti', tagline: 'Katalog dan pasar properti' },
+      todo: { title: 'To-Do & Produktivitas', tagline: 'Aplikasi web untuk mengatur tugas' },
       mobile: { title: "Aplikasi Mobile", tagline: "Aplikasi Android & iOS dari satu kode" },
     },
     // satuan di belakang jumlah demo tiap galeri: selalu "demo" (bukan tema/varian/entri) — satu istilah untuk satu hal
@@ -154,13 +154,13 @@ const id = {
     open: 'Buka demo',
     galleryLang: '',
     allDemos: (n: number) => `Lihat semua ${n} demo`,
-    hoverHint: 'Arahkan kursor ke salah satu kartu untuk melihat halamannya bergulir di ketiga layar, klik untuk membuka situs demonya.',
+    hoverHint: 'Arahkan kursor ke kartu untuk melihat halamannya bergulir, klik untuk membuka demonya.',
   },
   // Proyek klien: beranda (sesudah Demo pilihan), Tentang (#proyek-klien), dan halaman layanan terkait.
   // Isi tiap proyek (bidang, masalah, solusi, yang diserahkan) ada di content/clients.ts.
   clients: {
     title: 'Proyek klien',
-    lead: 'Sebagian sistem dan website yang kami kerjakan untuk usaha klien.',
+    lead: 'Sebagian proyek yang kami kerjakan untuk klien.',
     client: (name: string) => `Klien: ${name}`,
     problem: 'Masalah',
     solution: 'Solusi',
@@ -191,8 +191,8 @@ const id = {
   },
   process: {
     eyebrow: 'Cara kerja',
-    title: ['Empat tahap, dan kamu selalu tahu ', 'sedang di tahap mana', '.'] as Hl,
-    lead: 'Tidak ada yang dibangun sebelum kamu setuju, dan tidak ada tagihan yang muncul tiba-tiba.',
+    title: ['Empat langkah, ', 'tanpa kejutan', '.'] as Hl,
+    lead: 'Tidak ada yang dibangun sebelum kamu setuju.',
     pay: {
       deposit: ['DP 50%', 'untuk memulai'],
       final: ['Pelunasan', 'setelah kamu setujui'],
@@ -201,43 +201,43 @@ const id = {
     steps: [
       {
         title: 'Ngobrol dulu',
-        desc: 'Ceritakan usaha dan kebutuhanmu lewat WhatsApp. Kami usulkan paket yang pas dan mengirim penawaran tertulis.',
+        desc: 'Ceritakan usahamu lewat WhatsApp. Kami usulkan paket dan kirim penawaran tertulis.',
       },
       {
         title: 'Rancang',
-        desc: 'Kami susun struktur halaman dan desain awal. Kamu setujui arah tampilannya sebelum kami mulai membangun.',
+        desc: 'Kami buat desain awal. Kamu setujui dulu sebelum kami mulai membangun.',
       },
       {
         title: 'Bangun',
-        desc: 'Website dibangun agar cepat dibuka di ponsel dan siap SEO. Progresnya kami kabarkan lewat WhatsApp.',
+        desc: 'Website dibuat supaya cepat dibuka di HP. Progresnya kami kabari lewat WhatsApp.',
       },
       {
         title: 'Online',
-        desc: `Website online dan sepenuhnya milikmu. Bug kami perbaiki gratis selama ${GUARANTEE_DAYS} hari.`,
+        desc: `Website online dan sepenuhnya milikmu. Bug diperbaiki gratis selama ${GUARANTEE_DAYS} hari.`,
       },
     ],
   },
   why: {
     eyebrow: 'Yang kami janjikan',
-    title: ['Enam hal yang ', 'bisa kamu tagih', ' dari kami.'] as Hl,
-    lead: 'Semuanya juga tertulis di halaman harga, FAQ, serta syarat & ketentuan.',
+    title: ['Enam hal yang ', 'bisa kamu pegang', ' dari kami.'] as Hl,
+    lead: 'Semuanya tertulis di halaman harga, FAQ, dan syarat & ketentuan.',
     promises: [
-      { fig: `${PACKAGES.length}`, unit: 'paket', proof: 'Tertulis di halaman harga', title: 'Harga ditulis di depan', body: 'Kisaran harga paket ada di situs ini, kecuali Website Custom yang dihitung sesuai kebutuhan. Angka pastinya tertulis di penawaran sebelum kami mulai.' },
-      { fig: '50%', unit: 'DP', proof: 'Tertulis di FAQ', title: 'Bayar separuh dulu', body: 'DP 50% untuk memulai. Sisanya dibayar setelah website selesai dan kamu setujui.' },
-      { fig: '100%', unit: 'milikmu', proof: 'Tertulis di syarat & ketentuan', title: 'Milikmu sepenuhnya', body: 'Untuk paket website: setelah lunas, kode sumber, domain, hosting, dan akses admin diserahkan kepadamu.' },
-      { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Tertulis di FAQ', title: 'Cepat dibuka di ponsel', body: `Setiap website kami optimalkan dengan target skor PageSpeed ${PERF_TARGET}. Itu target kerja, bukan klaim rata-rata.` },
-      { fig: `${GUARANTEE_DAYS}`, unit: 'hari', proof: 'Tertulis di syarat & ketentuan', title: `Garansi ${GUARANTEE_DAYS} hari`, body: `Bug diperbaiki gratis selama ${GUARANTEE_DAYS} hari setelah website online, ditambah maintenance sesuai paket.` },
-      { fig: '24', unit: 'jam', proof: 'Tertulis di FAQ', title: 'Dibalas di hari kerja', body: `Pesan kami balas maksimal 24 jam di hari kerja, Senin–Sabtu pukul ${dotTime(OPENS)}–${dotTime(CLOSES)} WIB.` },
+      { fig: `${PACKAGES.length}`, unit: 'paket', proof: 'Tertulis di halaman harga', title: 'Harga ditulis di depan', body: 'Kisaran harga tiap paket ada di situs ini. Angka pastinya tertulis di penawaran sebelum kami mulai. Website Custom dihitung sesuai kebutuhan.' },
+      { fig: '50%', unit: 'DP', proof: 'Tertulis di FAQ', title: 'Bayar separuh dulu', body: 'DP 50% untuk memulai. Sisanya setelah website selesai dan kamu setujui.' },
+      { fig: '100%', unit: 'milikmu', proof: 'Tertulis di syarat & ketentuan', title: 'Milikmu sepenuhnya', body: 'Untuk paket website, setelah lunas kode, domain, hosting, dan akses admin jadi milikmu.' },
+      { fig: PERF_TARGET, unit: 'PageSpeed', proof: 'Tertulis di FAQ', title: 'Cepat dibuka di ponsel', body: `Kami menargetkan skor PageSpeed ${PERF_TARGET}. Ini target kerja, bukan klaim rata-rata.` },
+      { fig: `${GUARANTEE_DAYS}`, unit: 'hari', proof: 'Tertulis di syarat & ketentuan', title: `Garansi ${GUARANTEE_DAYS} hari`, body: `Bug diperbaiki gratis selama ${GUARANTEE_DAYS} hari setelah online, lalu maintenance sesuai paket.` },
+      { fig: '24', unit: 'jam', proof: 'Tertulis di FAQ', title: 'Dibalas di hari kerja', body: `Pesan dibalas maksimal 24 jam di hari kerja, Senin–Sabtu pukul ${dotTime(OPENS)}–${dotTime(CLOSES)} WIB.` },
     ],
   },
   pricing: {
     eyebrow: 'Harga',
     title: ['Harga ditulis di depan, ', 'bukan setelah kamu bertanya', '.'] as Hl,
-    lead: 'Semua paket sudah termasuk desain dan pengerjaan; paket website juga mencakup SEO dasar. Biaya berkala dari kami hanya perpanjangan domain & hosting mulai tahun kedua.',
+    lead: 'Harga sudah termasuk desain dan pengerjaan. Biaya berkala hanya perpanjangan domain dan hosting mulai tahun kedua.',
     colPrice: 'Kisaran harga',
     colPackage: 'Paket',
     openNote: 'Ekor titik-titik berarti harganya bisa lebih, tergantung fitur.',
-    rangeNote: 'Posisi harga dalam kisaran bergantung pada jumlah halaman, fitur, dan materi yang perlu kami siapkan; angka pastinya tertulis di penawaran sebelum mulai.',
+    rangeNote: 'Harga pastinya tergantung jumlah halaman, fitur, dan bahan yang perlu kami siapkan. Angkanya tertulis di penawaran sebelum mulai.',
     seeAll: (n: number) => `Rincian semua ${n} paket`,
     depositTitle: 'Pembayaran',
     depositBody: 'DP 50% untuk memulai, pelunasan setelah website selesai dan kamu setujui.',
@@ -261,14 +261,14 @@ const id = {
   faqUi: {
     eyebrow: 'Pertanyaan umum',
     title: ['Pertanyaan yang ', 'sering masuk', '.'] as Hl,
-    lead: 'Jawaban untuk hal yang paling sering ditanyakan sebelum memesan website.',
+    lead: 'Jawaban untuk pertanyaan yang paling sering muncul sebelum memesan.',
     search: 'Cari pertanyaan',
     searchPh: 'Cari pertanyaan…',
     categories: 'Kategori pertanyaan',
     all: 'Semua',
     none: 'Tidak ada pertanyaan yang cocok. Coba kata lain, atau tanyakan langsung lewat WhatsApp.',
     unanswered: 'Belum terjawab?',
-    askLead: 'Tanyakan langsung, konsultasinya gratis.',
+    askLead: 'Tanya langsung, konsultasinya gratis.',
     allN: (n: number) => `Semua ${n} pertanyaan`,
     askWa: 'Tanya lewat WhatsApp',
     waText: 'Halo PintuWeb, saya punya pertanyaan soal pembuatan website.',
