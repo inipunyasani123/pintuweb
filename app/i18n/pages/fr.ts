@@ -237,6 +237,7 @@ const pages: Pages = {
     kindsLead: "Les types de sites et d’applis que je réalise, chacun avec des démos à ouvrir et à essayer.",
     kinds: {
       landing: 'Pour lancements, événements et publicités',
+      profil: 'Pour entrepreneurs, artisans, loueurs et prestataires de services',
       toko: 'Pour les boutiques aux nombreux produits',
       menu: 'Pour cafés, stands de restauration et restaurants',
       linkinbio: 'Pour créateurs, musiciens et petits commerces',

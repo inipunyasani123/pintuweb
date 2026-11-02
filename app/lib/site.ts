@@ -8,7 +8,7 @@ export const SITE = 'https://www.pintuweb.id'
 export const FOUNDED_YEAR = 2018
 export const CLIENT_PROJECTS = '30+'
 /** Jumlah jenis website & aplikasi/kategori demo (= DEMO_CATEGORIES di lib/demos.ts; beranda menggagalkan build bila berbeda). */
-export const CATEGORY_COUNT = 11
+export const CATEGORY_COUNT = 12
 /** Kota tempat PintuWeb berlokasi; kalimat lokasi berhuruf Latin (id/en/ms/es/fr/pt), JSON-LD, FAQ & llms.txt dirakit dari sini. */
 export const CITY = 'Tulungagung'
 export const LOCATION = `${CITY}, Jawa Timur`
@@ -62,7 +62,7 @@ export const GUARANTEE_DAYS = 30
  * Tanggal terakhir fakta di file ini (kontak, jam kerja, angka) berubah. NAIKKAN setiap kali mengubahnya:
  * tanggal berlaku dokumen legal dan lastmod sitemap mengikuti tanggal ini.
  */
-export const FACTS_UPDATED = '2026-10-30'
+export const FACTS_UPDATED = '2026-11-02'
 
 /** Tanggal ISO (YYYY-MM-DD) yang paling baru. */
 export const latest = (...dates: string[]) => dates.reduce((a, b) => (b > a ? b : a))

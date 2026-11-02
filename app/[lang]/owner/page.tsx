@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {
   ArrowRight,
   ArrowUpRight,
+  Building2,
   CalendarCheck,
   Github,
   House,
@@ -42,6 +43,7 @@ const NAME = FOUNDER_NAME
 // di beranda (AudienceSection). Kalimat "untuk siapa" ada di founder.kinds, nama jenisnya di portfolio.galleries.
 const KIND_ICON: Record<DemoCategory, LucideIcon> = {
   landing: Megaphone,
+  profil: Building2,
   toko: ShoppingCart,
   linkinbio: Link2,
   undangan: MailOpen,
@@ -56,8 +58,9 @@ const KIND_ICON: Record<DemoCategory, LucideIcon> = {
 
 /**
  * Petak lebar di bento: sekian jenis dengan demo terbanyak, cukup untuk mengisi penuh kisi 3 kolom (mulai 640px).
- * 10 jenis → 2 petak lebar, 11 jenis (sejak aplikasi mobile, 23 Okt 2026) → 1. Bila jumlah jenis ganjil, petak lebar juga
- * dibentang di kisi 2 kolom ponsel supaya baris terakhir tidak bolong.
+ * 10 jenis → 2 petak lebar, 11 jenis (sejak aplikasi mobile, 23 Okt 2026) → 1, 12 jenis (sejak company profile, 2 Nov 2026)
+ * → 0 (kisi 3 kolom sudah penuh). Bila jumlah jenis ganjil, petak lebar juga dibentang di kisi 2 kolom ponsel supaya baris
+ * terakhir tidak bolong.
  */
 const WIDE = (3 - (DEMO_CATEGORIES.length % 3)) % 3
 const WIDE_PHONE = DEMO_CATEGORIES.length % 2 === 1

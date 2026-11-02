@@ -17,6 +17,7 @@ const dayWord = (n: number) => plural('ar', n, { one: 'يوم', two: 'يومان
 const demoWord = (n: number) => plural('ar', n, { few: 'عروض تجريبية', many: 'عرضًا تجريبيًا', other: 'عرض تجريبي' })
 const siteWord = (n: number) => plural('ar', n, { few: 'مواقع حيّة', many: 'موقعًا حيًّا', other: 'موقع حيّ' })
 const demoSiteWord = (n: number) => plural('ar', n, { few: 'مواقع تجريبية', many: 'موقعًا تجريبيًا', other: 'موقع تجريبي' })
+const categoryWord = (n: number) => plural('ar', n, { few: 'فئات', many: 'فئةً', other: 'فئة' })
 const pkgCount = (n: number) => (n === 1 ? 'باقة واحدة' : n === 2 ? 'باقتان' : `${n} ${plural('ar', n, { few: 'باقات', many: 'باقة', other: 'باقة' })}`)
 const days = `${GUARANTEE_DAYS} ${dayWord(GUARANTEE_DAYS)}`
 const termCount = (n: number) => (n === 1 ? 'مصطلح واحد' : n === 2 ? 'مصطلحان' : `${n} ${plural('ar', n, { few: 'مصطلحات', many: 'مصطلحًا', other: 'مصطلح' })}`)
@@ -210,7 +211,7 @@ const pages: Pages = {
     now: 'اليوم',
     timeline: (n: number) => [
       { year: `${FOUNDED_YEAR}`, title: 'ولادة PintuWeb', body: `بدأنا في ${LOC}، نساعد المشاريع الصغيرة المحلية التي لم يكن لديها موقع بعد.` },
-      { year: 'اليوم', title: `${ltr(CLIENT_PROJECTS)} مشروعًا للعملاء`, body: `${n} ${demoSiteWord(n)} في ${CATEGORY_COUNT} فئات على الإنترنت، جاهزة للتجربة.` },
+      { year: 'اليوم', title: `${ltr(CLIENT_PROJECTS)} مشروعًا للعملاء`, body: `${n} ${demoSiteWord(n)} في ${CATEGORY_COUNT} ${categoryWord(CATEGORY_COUNT)} على الإنترنت، جاهزة للتجربة.` },
     ],
     founderTitle: 'من يقف خلف PintuWeb',
     beliefTitle: ['ما ', 'نتمسك به'] as Hl,
@@ -299,6 +300,7 @@ const pages: Pages = {
     kindsLead: "أنواع المواقع والتطبيقات التي أصنعها، ولكل نوع عروض تجريبية يمكنك فتحها وتجربتها.",
     kinds: {
       landing: 'لإطلاق المنتجات والفعاليات والإعلانات',
+      profil: 'للمقاولين والحرفيين وشركات التأجير والخدمات',
       toko: 'للمتاجر ذات المنتجات الكثيرة',
       menu: 'للمقاهي وأكشاك الطعام والمطاعم',
       linkinbio: 'لصنّاع المحتوى والموسيقيين والمشاريع الصغيرة',

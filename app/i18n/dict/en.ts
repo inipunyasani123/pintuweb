@@ -127,6 +127,7 @@ const en: Dict = {
     lead: (n: number) => `Five of the ${n} demo sites we built and keep online. The businesses are fictional; the look and content can be tailored to yours.`,
     galleries: {
       landing: { title: 'Landing Pages', tagline: 'Pages that sell: webinars, sales, promotions' },
+      profil: { title: 'Company Profiles', tagline: 'Several pages that introduce your business' },
       toko: { title: 'Online Store', tagline: 'Catalogue, cart, checkout and an order dashboard' },
       menu: { title: 'Digital Menus', tagline: 'QR menus for cafés & eateries, orders via WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'One link for all your channels' },

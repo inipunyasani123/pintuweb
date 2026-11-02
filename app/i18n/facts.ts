@@ -232,7 +232,7 @@ function demoCount(category: string) {
  * Mengisi penanda harga/fakta di teks (artikel, halaman layanan):
  * {{from:slug}} {{price:slug}} {{max:slug}} {{duration:slug}} {{renewal}} {{guarantee}} {{demos}} {{demos:kategori}}
  * {{perf}} {{pricetable}}. {{demos:kategori}} = jumlah demo kategori itu (id DemoCategory di lib/demos.ts: landing,
- * toko, menu, undangan, linkinbio, portfolio, reservasi, properti, todo, kontes). Penanda yang tidak dikenal menggagalkan build supaya tidak ada angka yang lolos
+ * profil, toko, mobile, menu, undangan, linkinbio, portfolio, reservasi, properti, todo, kontes). Penanda yang tidak dikenal menggagalkan build supaya tidak ada angka yang lolos
  * tanpa sumber.
  */
 export function fillFacts(lang: Lang, s: string): string {

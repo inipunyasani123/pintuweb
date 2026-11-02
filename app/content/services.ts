@@ -41,8 +41,7 @@ export const SERVICES: Service[] = [
   {
     key: 'landing-page',
     packages: ['landing-page'],
-    // menu digital QR dijual sebagai paket Landing Page: demonya ikut tampil di sini (cissycoffee & citarasa sudah
-    // tampil di Company Profile)
+    // menu digital QR dijual sebagai paket Landing Page: demonya ikut tampil di sini
     demoCategories: ['landing', 'menu'],
     demoSlugs: ['bribu', 'eduplay', 'elevinar', 'lumicast', 'kopi', 'bakso'],
     articles: ['landing-vs-compro', 'biaya', 'seo-checklist'],
@@ -112,8 +111,9 @@ export const SERVICES: Service[] = [
   {
     key: 'company-profile',
     packages: ['standar-umkm'],
-    demoCategories: ['landing'],
-    demoSlugs: ['cissycoffee', 'citarasa', 'woodora', 'rasanusantara'],
+    // enam demo company profile (portal /website-company-profile); sebelum 2 Nov 2026 halaman ini meminjam demo landing
+    demoCategories: ['profil'],
+    demoSlugs: ['kontraktor', 'marmer', 'telur', 'rental', 'las', 'ac'],
     articles: ['landing-vs-compro', 'website-umkm', 'domain-hosting'],
     text: {
       id: {

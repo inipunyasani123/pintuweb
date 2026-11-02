@@ -137,6 +137,7 @@ const id = {
     lead: (n: number) => `Lima dari ${n} demo yang kami buat dan biarkan tetap online. Nama usahanya rekaan, dan tampilannya bisa disesuaikan untuk usahamu.`,
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Satu halaman untuk promo atau jualan' },
+      profil: { title: 'Company Profile', tagline: 'Beberapa halaman untuk memperkenalkan usahamu' },
       toko: { title: 'Toko Online', tagline: 'Katalog, keranjang, dan kelola pesanan' },
       menu: { title: 'Menu Digital', tagline: 'Menu QR untuk kafe dan warung, pesan lewat WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu tautan untuk semua kanalmu' },

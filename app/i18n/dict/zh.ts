@@ -127,6 +127,7 @@ const zh: Dict = {
     lead: (n: number) => `这是我们搭建并保持在线的 ${n} 个演示网站中的五个。其中的商家均为虚构；外观和内容会按您的业务调整。`,
     galleries: {
       landing: { title: '落地页', tagline: '能卖货的页面：研讨会、销售、促销' },
+      profil: { title: '企业官网', tagline: '用多个页面介绍一家企业' },
       toko: { title: '网店', tagline: '商品目录、购物车、结账和订单后台' },
       menu: { title: '数字菜单', tagline: '咖啡馆和小餐馆的二维码菜单，通过 WhatsApp 下单' },
       linkinbio: { title: 'Link in Bio', tagline: '一个链接，通往您的所有渠道' },

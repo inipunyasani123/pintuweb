@@ -1,6 +1,6 @@
 # PintuWeb
 
-Situs studio web PintuWeb (berlokasi di Tulungagung, Jawa Timur): layanan pembuatan website, 14 paket harga, galeri 65 demo live, FAQ, artikel, kamus istilah, dan formulir kontak (WhatsApp/email, tanpa backend).
+Situs studio web PintuWeb (berlokasi di Tulungagung, Jawa Timur): layanan pembuatan website, 14 paket harga, galeri 89 demo live, FAQ, artikel, kamus istilah, dan formulir kontak (WhatsApp/email, tanpa backend).
 
 Live: https://www.pintuweb.id
 
@@ -56,11 +56,11 @@ Angka bisnis hanya ditulis di dua file:
 
 Teks halaman, layanan, dan artikel mengambil angka lewat fungsi di `app/i18n/facts.ts` atau penanda seperti `{{from:landing-page}}`, `{{duration:toko-online-simple}}`, `{{renewal}}`, `{{pricetable}}`; penanda yang tidak dikenal menggagalkan build. Angka yang sama ditulis manual di 8 portal dan formulir 6 demo undangan (repo terpisah), jadi perbarui juga di sana. Sampul artikel `biaya` dan `pilih-jasa` berupa tangkapan layar harga: buat ulang bila harga berubah.
 
-Demo: daftar 65 demo di `app/lib/demos.ts` (`pkg` = paket harga lain dari paket kategorinya, `noPrice` = kartu tanpa harga).
+Demo: daftar 89 demo di `app/lib/demos.ts` (`pkg` = paket harga lain dari paket kategorinya, `noPrice` = kartu tanpa harga).
 
 ## Portal (multi-zone)
 
-Delapan katalog demo adalah project Next.js terpisah (`portal-*.pintuweb.id`, masing-masing dengan `basePath`) yang tayang di bawah domain ini lewat rewrite `beforeFiles` di `next.config.ts`. Path dan origin-nya di `app/lib/portals.ts`: `/landing-page`, `/link-in-bio`, `/kontes-desain`, `/undangan-digital`, `/website-portofolio`, `/website-reservasi`, `/website-properti`, `/aplikasi-to-do`. Tautan ke portal memakai `<a>` biasa, bukan `next/link`.
+Dua belas katalog demo adalah project Next.js terpisah (`portal-*.pintuweb.id`, masing-masing dengan `basePath`) yang tayang di bawah domain ini lewat rewrite `beforeFiles` di `next.config.ts`. Path dan origin-nya di `app/lib/portals.ts`: `/landing-page`, `/website-company-profile`, `/link-in-bio`, `/kontes-desain`, `/undangan-digital`, `/website-portofolio`, `/website-reservasi`, `/website-properti`, `/aplikasi-to-do`, `/menu-digital`, `/toko-online`, `/aplikasi-mobile`. Tautan ke portal memakai `<a>` biasa, bukan `next/link`.
 
 ## Gambar OG
 

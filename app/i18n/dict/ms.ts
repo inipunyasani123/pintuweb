@@ -127,6 +127,7 @@ const ms: Dict = {
     lead: (n: number) => `Lima daripada ${n} laman demo yang kami bina dan kekalkan dalam talian. Nama perniagaannya rekaan; rupa dan isinya boleh disesuaikan untuk perniagaan anda.`,
     galleries: {
       landing: { title: 'Landing Page', tagline: 'Halaman yang menjual: webinar, jualan, promosi' },
+      profil: { title: 'Profil Syarikat', tagline: 'Beberapa halaman yang memperkenalkan perniagaan' },
       toko: { title: 'Kedai Dalam Talian', tagline: 'Katalog, troli, pembayaran dan papan pemuka pesanan' },
       menu: { title: 'Menu Digital', tagline: 'Menu QR untuk kafe & kedai makan, pesanan melalui WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Satu pautan untuk semua saluran anda' },

@@ -4,10 +4,13 @@
 // kartu 1200:630) + <slug>-360/-480/-1080.webp untuk srcset, supaya galeri ringan dan tidak bergantung pada domain demo.
 // Demo baru: `node scripts/demo-mockups.mjs all <slug>` lalu naikkan THUMB_V.
 
-export type DemoCategory = 'landing' | 'toko' | 'mobile' | 'menu' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
+export type DemoCategory = 'landing' | 'profil' | 'toko' | 'mobile' | 'menu' | 'undangan' | 'linkinbio' | 'portfolio' | 'reservasi' | 'properti' | 'todo' | 'kontes'
 
 export const DEMO_CATEGORIES: { id: DemoCategory; label: string }[] = [
   { id: 'landing', label: 'Landing Page' },
+  // Company profile untuk usaha jasa & produksi (kontraktor, perajin, agen grosir, rental, bengkel, servis): dijual sebagai
+  // paket Standar UMKM (PACKAGE_FOR_CATEGORY di lib/portals.ts); portalnya /website-company-profile.
+  { id: 'profil', label: 'Company Profile' },
   { id: 'toko', label: 'Toko Online' },
   // Aplikasi Android & iOS (React Native + Expo, 23 Okt 2026); galeri memakai versi web hasil `expo export -p web`.
   { id: 'mobile', label: 'Aplikasi Mobile' },
@@ -54,6 +57,13 @@ export const DEMOS: Demo[] = [
   { slug: "tastycorner", name: "Tasty Corner", tagline: "Struk Mingguan untuk Usaha Makanan", category: 'landing', url: "https://landing-tastycorner.pintuweb.id" },
   { slug: "woodora", name: "Woodora", tagline: "Furnitur Kayu Solid Sesuai Ukuran", category: 'landing', url: "https://landing-woodora.pintuweb.id" },
   { slug: "zychrome", name: "Zychrome", tagline: "Webinar yang Bisa Membalas Anda", category: 'landing', url: "https://landing-zychrome.pintuweb.id" },
+  // Company profile: paketnya Standar UMKM lewat PACKAGE_FOR_CATEGORY (lib/portals.ts)
+  { slug: "kontraktor", name: "Bowplank", tagline: "Kontraktor Renovasi Rumah yang Mengukur Dulu", category: 'profil', url: "https://profil-kontraktor.pintuweb.id" },
+  { slug: "marmer", name: "Urat Batu", tagline: "Perajin Marmer dan Onyx dari Tulungagung", category: 'profil', url: "https://profil-marmer.pintuweb.id" },
+  { slug: "telur", name: "Pagi Kuning", tagline: "Telur Ayam Grosir untuk Warung, Toko Kue, dan Katering", category: 'profil', url: "https://profil-telur.pintuweb.id" },
+  { slug: "rental", name: "Sewu Roda", tagline: "Rental Mobil dan Bus untuk Keliling Yogyakarta", category: 'profil', url: "https://profil-rental.pintuweb.id" },
+  { slug: "las", name: "Gurat Baja", tagline: "Kanopi dan Pagar Besi yang Digambar Sebelum Dilas", category: 'profil', url: "https://profil-las.pintuweb.id" },
+  { slug: "ac", name: "PK Pas", tagline: "Servis dan Pasang AC dengan PK yang Pas", category: 'profil', url: "https://profil-ac.pintuweb.id" },
   { slug: "tanur", name: "Tanur", tagline: "Keramik Buatan Tangan untuk Meja Sehari-hari", category: 'toko', url: "https://toko-tanur.pintuweb.id", pkg: 'toko-online-full' },
   { slug: "takar", name: "Takar", tagline: "Perawatan Kulit Berkadar Jelas, Takaran Pakainya Jujur", category: 'toko', url: "https://toko-takar.pintuweb.id", pkg: 'toko-online-full' },
   { slug: "lungsin", name: "Lungsin", tagline: "Pakaian Harian dari Kain Lurik Tenun, Dijahit di Klaten", category: 'toko', url: "https://toko-lungsin.pintuweb.id", pkg: 'toko-online-full' },
@@ -125,7 +135,7 @@ export const DEMOS: Demo[] = [
 
 /** Versi thumbnail public/demos: naikkan setiap kali thumbnail ditangkap ulang. Nama berkasnya tetap (<slug>.webp)
  *  sedangkan CDN & peramban menyimpannya 7 hari, jadi versi ini yang membuat tampilan baru langsung terlihat. */
-export const THUMB_V = '20261030b'
+export const THUMB_V = '20261102'
 export const demoThumb = (slug: string) => `/demos/${slug}.webp?v=${THUMB_V}`
 export const demoImage = (d: Demo) => demoThumb(d.slug)
 

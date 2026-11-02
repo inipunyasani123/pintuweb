@@ -1,8 +1,8 @@
-// Deploy ulang produksi 11 project portal tanpa commit baru, supaya mereka membaca harga.json terbaru
+// Deploy ulang produksi 12 project portal tanpa commit baru, supaya mereka membaca harga.json terbaru
 // (scripts/ambil-harga.mjs berjalan di prebuild tiap portal). Jalankan SETELAH PintuWeb live dengan harga baru.
 //
 //   node scripts/bangun-ulang-portal.mjs --coba      cetak rencana saja, tidak memicu apa pun
-//   node scripts/bangun-ulang-portal.mjs             picu deploy ulang ke-11 portal
+//   node scripts/bangun-ulang-portal.mjs             picu deploy ulang ke-12 portal
 //   node scripts/bangun-ulang-portal.mjs portal-bio  hanya project yang disebut
 //
 // Memakai deployment produksi READY terakhir tiap project. Ingat batas paket Hobby: 100 deploy per hari
@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url'
 
 const PORTAL = [
   'portal-bio', 'portal-kontes', 'portal-landing', 'portal-menu', 'portal-mobile', 'portal-porto',
-  'portal-properti', 'portal-reservasi', 'portal-todo', 'portal-toko', 'portal-undangan',
+  'portal-profil', 'portal-properti', 'portal-reservasi', 'portal-todo', 'portal-toko', 'portal-undangan',
 ]
 const args = process.argv.slice(2)
 const coba = args.includes('--coba')

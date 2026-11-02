@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
   ArrowUpRight,
+  Building2,
   CalendarCheck,
   House,
   Images,
@@ -36,6 +37,7 @@ type Params = { params: Promise<{ lang: string }> }
 // Urutan baku galeri; nama menurut kebiasaan orang mencari (bukan nama teknis kategori).
 const GALLERIES: { id: DemoCategory; label: string; icon: LucideIcon }[] = [
   { id: 'landing', label: 'Landing Page', icon: Megaphone },
+  { id: 'profil', label: 'Company Profile', icon: Building2 },
   { id: 'toko', label: 'Toko Online', icon: ShoppingCart },
   { id: 'mobile', label: 'Aplikasi Mobile', icon: Smartphone },
   { id: 'menu', label: 'Menu Digital', icon: QrCode },

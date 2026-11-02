@@ -1,5 +1,5 @@
 // Berkas harga resmi: https://www.pintuweb.id/harga.json
-// Dibaca 11 portal galeri saat build (scripts/ambil-harga.mjs di tiap portal), supaya harga cukup diubah di
+// Dibaca 12 portal galeri saat build (scripts/ambil-harga.mjs di tiap portal), supaya harga cukup diubah di
 // app/lib/packages.ts. Setelah PintuWeb live dan harga berubah, jalankan `node scripts/bangun-ulang-portal.mjs`.
 import { ADDONS, PACKAGES, PRICES_UPDATED, isPriced } from '../lib/packages'
 import { GUARANTEE_DAYS, PERF_TARGET, WA_DISPLAY, WA_NUMBER } from '../lib/site'

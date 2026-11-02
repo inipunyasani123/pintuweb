@@ -127,6 +127,7 @@ const es: Dict = {
     lead: (n: number) => `Cinco de los ${n} sitios de demostración que construimos y mantenemos en línea. Los negocios son ficticios; el aspecto y el contenido se adaptan al tuyo.`,
     galleries: {
       landing: { title: 'Landing pages', tagline: 'Páginas que venden: webinars, ventas, promociones' },
+      profil: { title: 'Perfil de empresa', tagline: 'Varias páginas que presentan tu negocio' },
       toko: { title: 'Tienda en línea', tagline: 'Catálogo, carrito, pago y panel de pedidos' },
       menu: { title: 'Menús digitales', tagline: 'Menús QR para cafeterías y restaurantes, pedidos por WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Un enlace para todos tus canales' },

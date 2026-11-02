@@ -138,6 +138,7 @@ const ru: Dict = {
     lead: (n: number) => `Пять из ${n} демо-сайтов, которые мы создали и держим онлайн. Компании вымышленные; оформление и контент адаптируются под ваш бизнес.`,
     galleries: {
       landing: { title: 'Лендинги', tagline: 'Страницы, которые продают: вебинары, продажи, акции' },
+      profil: { title: 'Сайт компании', tagline: 'Несколько страниц, которые представляют бизнес' },
       toko: { title: 'Интернет-магазин', tagline: 'Каталог, корзина, оформление заказа и панель заказов' },
       menu: { title: 'Цифровые меню', tagline: 'QR-меню для кафе и закусочных, заказ через WhatsApp' },
       linkinbio: { title: 'Link in Bio', tagline: 'Одна ссылка на все ваши каналы' },
@@ -150,7 +151,7 @@ const ru: Dict = {
       mobile: { title: "Мобильные приложения", tagline: "Приложения для Android и iOS из одного кода" },
     },
     // «демо» не склоняется, поэтому подходит к любому числу в каждой галерее
-    unit: { landing: 'демо', toko: 'демо', menu: 'демо', linkinbio: 'демо', kontes: 'демо', undangan: 'демо', portfolio: 'демо', reservasi: 'демо', properti: 'демо', todo: 'демо', mobile: 'демо' },
+    unit: { landing: 'демо', profil: 'демо', toko: 'демо', menu: 'демо', linkinbio: 'демо', kontes: 'демо', undangan: 'демо', portfolio: 'демо', reservasi: 'демо', properti: 'демо', todo: 'демо', mobile: 'демо' },
     previewAlt: (t: string) => `Превью галереи «${t}»`,
     open: 'Открыть демо',
     galleryLang: 'Галереи и демо — на индонезийском языке',

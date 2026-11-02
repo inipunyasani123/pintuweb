@@ -5,6 +5,7 @@ import type { DemoCategory } from './demos'
 /** Paket harga untuk tiap kategori demo/portal (slug di lib/packages.ts). */
 export const PACKAGE_FOR_CATEGORY: Record<DemoCategory, string> = {
   landing: 'landing-page',
+  profil: 'standar-umkm',
   toko: 'toko-online-simple',
   mobile: 'aplikasi-mobile',
   menu: 'landing-page',
@@ -24,6 +25,10 @@ export const PACKAGE_FOR_CATEGORY: Record<DemoCategory, string> = {
  */
 export const CATEGORY_COLOR: Record<DemoCategory, { color: string; to: string; tint: string }> = {
   landing: { color: '#c2410c', to: '#e11d48', tint: '#fff1e6' }, // jingga -> mawar
+  // zaitun -> perunggu: satu-satunya rona di celah antara cokelat-jingga reservasi (OKLCH h 38-46) dan hijau limau kontes
+  // (h 132-166). Kontras putih >= 5,28:1 di sepanjang gradasi (terendah di ujung perunggu; zaitun 6,19:1), kontras
+  // color di atas tint 5,35:1; jarak OKLab terdekat ke warna lain 0,075 (hijau limau kontes) dan 0,090 (reservasi).
+  profil: { color: '#666408', to: '#8e6410', tint: '#eff1cf' }, // zaitun -> perunggu
   toko: { color: '#be185d', to: '#7c3aed', tint: '#fdeef5' }, // merah muda -> ungu
   mobile: { color: '#334155', to: '#0369a1', tint: '#e7eff7' }, // grafit ponsel -> biru langit
   // hijau pindai; ujung gradasinya #138548 (bukan #17a35b yang lebih terang: putih di atasnya hanya 3,3:1)
@@ -39,6 +44,7 @@ export const CATEGORY_COLOR: Record<DemoCategory, { color: string; to: string; t
 
 export const PORTALS: { path: string; origin: string; category: DemoCategory; image: string }[] = [
   { path: 'landing-page', origin: 'https://portal-landing.pintuweb.id', category: 'landing', image: '/images/galeri/landing.jpg' },
+  { path: 'website-company-profile', origin: 'https://portal-profil.pintuweb.id', category: 'profil', image: '/images/galeri/profil.jpg' },
   { path: 'link-in-bio', origin: 'https://portal-bio.pintuweb.id', category: 'linkinbio', image: '/images/galeri/bio.jpg' },
   { path: 'kontes-desain', origin: 'https://portal-kontes.pintuweb.id', category: 'kontes', image: '/images/galeri/kontes.jpg' },
   { path: 'undangan-digital', origin: 'https://portal-undangan.pintuweb.id', category: 'undangan', image: '/images/galeri/undangan.jpg' },
@@ -60,16 +66,17 @@ export const portalOf = (c: DemoCategory) => PORTALS.find((p) => p.category === 
  */
 export const KIND_ORDER: Record<DemoCategory, number> = {
   landing: 1,
-  toko: 2,
-  mobile: 3,
-  menu: 4,
-  linkinbio: 5,
-  kontes: 6,
-  undangan: 7,
-  portfolio: 8,
-  reservasi: 9,
-  properti: 10,
-  todo: 11,
+  profil: 2,
+  toko: 3,
+  mobile: 4,
+  menu: 5,
+  linkinbio: 6,
+  kontes: 7,
+  undangan: 8,
+  portfolio: 9,
+  reservasi: 10,
+  properti: 11,
+  todo: 12,
 }
 
 /** #rrggbb -> rgb(r g b / a): lapisan tembus pandang dari warna jenis */

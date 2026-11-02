@@ -285,6 +285,7 @@ const pages: Pages = {
     kindsLead: "Os tipos de site e app que eu construo, cada um com demos que você pode abrir e testar.",
     kinds: {
       landing: 'Para lançamentos, eventos e anúncios',
+      profil: 'Para empreiteiros, artesãos, locadoras e prestadores de serviços',
       toko: 'Para lojas com muitos produtos',
       menu: 'Para cafés, barracas de comida e restaurantes',
       linkinbio: 'Para criadores, músicos e pequenos negócios',

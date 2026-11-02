@@ -233,6 +233,7 @@ const pages: Pages = {
     kindsLead: "Jenis laman web dan aplikasi yang saya bina, setiap satunya dengan demo yang boleh anda buka dan cuba.",
     kinds: {
       landing: 'Untuk promosi produk, acara dan iklan',
+      profil: 'Untuk kontraktor, pengrajin, sewaan dan perniagaan perkhidmatan',
       toko: 'Untuk kedai yang menjual banyak produk',
       menu: 'Untuk kafe, gerai makan dan restoran',
       linkinbio: 'Untuk pencipta kandungan, pemuzik dan PKS',
