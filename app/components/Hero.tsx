@@ -103,7 +103,7 @@ export default function Hero({ lang }: { lang: Lang }) {
               name={landing.title}
               from={d.common.from}
               currency={currencyCode(lang)}
-              amount={landing.priceFrom.replace(/[⁦⁩]/g, '').replace(/^(Rp|IDR\s)/, '')}
+              amount={landing.priceFrom.replace(/[\u2066\u2069]/g, '').replace(/^(Rp|IDR\s)/, '')}
               duration={landingDuration}
             />
 

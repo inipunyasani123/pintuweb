@@ -103,15 +103,16 @@ export default async function DemoPage({ params }: Params) {
         pricingHref={path(lang, 'pricing')}
         thumbSrcSet={demoSrcSet('{slug}')}
         thumbSrc={demoThumb('{slug}')}
-      />
-      {/* tautan ke halaman "Website untuk usahamu" (hanya id/en) */}
-      {hasPage(lang, 'business') && (
-        <p className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-          <Link href={path(lang, 'business')} className="link inline-flex items-center gap-1.5 py-2 text-[0.9375rem] font-semibold">
-            {bizUi(lang).demoPageLink}
-          </Link>
-        </p>
-      )}
+      >
+        {/* tautan ke halaman "Website untuk usahamu" (hanya id/en); di dalam <main> lewat children DemoGallery */}
+        {hasPage(lang, 'business') && (
+          <p className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+            <Link href={path(lang, 'business')} className="link inline-flex items-center gap-1.5 py-2 text-[0.9375rem] font-semibold">
+              {bizUi(lang).demoPageLink}
+            </Link>
+          </p>
+        )}
+      </DemoGallery>
     </>
   )
 }

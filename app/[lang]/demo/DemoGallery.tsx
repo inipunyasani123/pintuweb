@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ArrowUpRight, Search } from 'lucide-react'
 import type { Demo, DemoCategory } from '../../lib/demos'
@@ -58,7 +58,7 @@ const vars = (c: DemoCategory) => ({ '--k': CATEGORY_COLOR[c].color, '--k2': CAT
 // dan kisi kartu. Kategori tercermin di hash URL (/demo#undangan) supaya halaman lain bisa menautkannya.
 // thumbSrcSet / thumbSrc = pola srcset & src dengan {slug} (demoSrcSet / demoThumb di lib/demos.ts, sudah berversi), supaya
 // data demo tidak ikut ke bundel klien.
-export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, thumbSrcSet, thumbSrc }: { demos: (Demo & { from?: string })[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string; thumbSrcSet: string; thumbSrc: string }) {
+export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, thumbSrcSet, thumbSrc, children }: { demos: (Demo & { from?: string })[]; cats: DemoCat[]; t: DemoGalleryText; contactHref: string; pricingHref: string; thumbSrcSet: string; thumbSrc: string; children?: ReactNode }) {
   const catOf = useMemo(() => Object.fromEntries(cats.map((c) => [c.id, c])) as Record<DemoCategory, DemoCat>, [cats])
   const [filter, setFilterState] = useState<Filter>('semua')
   const [query, setQuery] = useState('')
@@ -302,6 +302,8 @@ export default function DemoGallery({ demos, cats, t, contactHref, pricingHref, 
           </div>
         </div>
       </section>
+      {/* konten tambahan dari halaman (tautan di bawah galeri) tetap di dalam landmark <main> */}
+      {children}
     </main>
   )
 }

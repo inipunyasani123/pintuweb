@@ -1047,7 +1047,7 @@ const TEXT: Record<Lang, LocalText> = {
 function fill(lang: Lang, s: string): string {
   if (!s.includes('{{')) return s
   const f = facts(lang)
-  const iso = (x: string) => (LANG_INFO[lang].dir === 'rtl' ? `⁦${x}⁩` : x)
+  const iso = (x: string) => (LANG_INFO[lang].dir === 'rtl' ? `\u2066${x}\u2069` : x)
   return fillFacts(
     lang,
     s
