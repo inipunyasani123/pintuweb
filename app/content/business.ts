@@ -552,10 +552,10 @@ export const BIZ: Biz[] = [
           'aplikasi-mobile': 'An order-status or cashier app on a phone.',
         },
         faq: [
-          { q: 'Can people book online without an app?', a: 'Yes. The Online Reservation System package is a website with a calendar and slots, so customers just open a link. Our article on online booking systems explains more.' },
+          { q: 'Can people book online without an app?', a: 'Yes. The Online Booking System package is a website with a calendar and slots, so customers just open a link. Our article on online booking systems explains more.' },
           { q: 'Does an AC service or rental business need online booking?', a: 'Not necessarily. If customers usually ask first and then order by WhatsApp, a profile website with your services, service area and a WhatsApp button already helps. The Small Business Standard package covers that in 3–5 pages; the PK Pas (AC service) and Sewu Roda (rental) demos are examples. Extra pages, such as a calculator, are charged separately.' },
           { q: 'Does a small laundry need an app?', a: 'Not necessarily. A service page with prices and a WhatsApp button is often enough. A status app helps when customers keep asking where their laundry is.' },
-          { q: 'Can a deposit be paid online?', a: 'The Online Reservation System package includes an online deposit option through a payment gateway. Talk to us about your needs in the consultation.' },
+          { q: 'Can a deposit be paid online?', a: 'The Online Booking System package includes an online deposit option through a payment gateway. Talk to us about your needs in the consultation.' },
         ],
         wa: 'Hello PintuWeb, I run a service business (salon/laundry/other) and would like to ask about a website (Website for Salons, Laundries & Services page).',
       },
