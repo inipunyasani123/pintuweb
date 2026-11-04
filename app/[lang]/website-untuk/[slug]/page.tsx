@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight, Check, MessageCircle } from 'lucide-react'
 import { Breadcrumbs, HlText, JsonLd } from '../../../components/Bits'
-import { DemoCard, FaqList, H2, WaCta } from '../../../components/BizBits'
+import { DemoCard, FaqList, H2, WaCta, gridDemo, gridPaket } from '../../../components/BizBits'
 import { articlesIn } from '../../../content/articles'
 import { BIZ, BIZ_LANGS, bizText, bizUi } from '../../../content/business'
 import { faqJsonLd } from '../../../content/faq'
@@ -57,6 +57,7 @@ export default async function BizPage({ params }: Params) {
   const lead = bySlug(biz.pkgs[0])
   const tone = CATEGORY_COLOR[biz.tone]
   const shown = biz.demos.map((s) => demos.find((x) => x.slug === s)!).filter(Boolean)
+  const demoGrid = gridDemo(shown.length)
   const galleries = [...new Set(shown.map((x) => x.category))].map((c) => portalOf(c)).filter((p): p is NonNullable<typeof p> => Boolean(p))
   const related = articlesIn(lang).filter((a) => biz.articles.includes(a.key))
   const others = BIZ.filter((b) => b.key !== biz.key)
@@ -149,18 +150,19 @@ export default async function BizPage({ params }: Params) {
             <p className="mt-3 text-[1.0625rem] leading-relaxed text-[color:var(--text-tertiary)]">{u.demosLead}</p>
             {d.common.demoLangNote && <p className="mt-1 text-sm text-[color:var(--text-tertiary)]">{d.common.demoLangNote}</p>}
           </div>
-          <ul className="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 sm:mt-10 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3">
+          <ul className={`mt-6 grid grid-cols-2 gap-x-3 gap-y-6 sm:mt-10 sm:gap-x-6 sm:gap-y-10 ${demoGrid.kelas}`}>
             {shown.map((dm) => (
-              <DemoCard key={dm.slug} demo={dm} why={t.demoWhy[dm.slug]} open={u.demoLabel} newTab={d.common.newTab} />
+              <DemoCard key={dm.slug} demo={dm} why={t.demoWhy[dm.slug]} open={u.demoLabel} newTab={d.common.newTab} cols={demoGrid.kolom} />
             ))}
           </ul>
           {galleries.length > 0 && (
             <ul className="mt-8 flex flex-wrap gap-2 border-t border-[color:var(--border-light)] pt-6 sm:mt-12">
               {galleries.map((g) => (
                 <li key={g.path}>
-                  <Link href={`/${g.path}`} className="btn btn-line btn-sm">
+                  {/* portal = zona lain (rewrite ke project terpisah): <a> biasa, bukan <Link>, supaya tidak di-prefetch sebagai rute app ini */}
+                  <a href={`/${g.path}`} hrefLang="id" className="btn btn-line btn-sm">
                     {u.galleryLabel(d.portfolio.galleries[g.category].title)} <ArrowRight size={15} className="arw" aria-hidden="true" />
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -175,7 +177,7 @@ export default async function BizPage({ params }: Params) {
             <h2 id="pkg-title" className={`mt-2 sm:mt-3 ${H2}`}>{u.pkgTitle}</h2>
             <p className="mt-3 text-[1.0625rem] leading-relaxed text-[color:var(--text-tertiary)]">{u.pkgLead}</p>
           </div>
-          <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+          <ul className={`mt-8 grid grid-cols-1 gap-3 sm:gap-4 ${gridPaket(biz.pkgs.length)}`}>
             {biz.pkgs.map((s) => {
               const p = bySlug(s)
               return (

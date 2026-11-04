@@ -5,7 +5,29 @@ import { demoSrcSet, demoThumb } from '../lib/demos'
 
 export const H2 = 'text-[1.75rem] leading-tight text-[color:var(--text-primary)] sm:text-[2.25rem]'
 
-export function DemoCard({ demo, why, open, newTab }: { demo: Demo; why: string; open: string; newTab: string }) {
+/** Lebar kartu demo per tata letak: 2 kolom di bawah 1024px, lalu 3 atau 4 kolom (lihat gridDemo). */
+const DEMO_SIZES = {
+  3: '(min-width: 1152px) 352px, (min-width: 1024px) calc(33vw - 32px), (min-width: 640px) calc(50vw - 36px), calc(50vw - 22px)',
+  4: '(min-width: 1152px) 258px, (min-width: 1024px) calc(25vw - 30px), (min-width: 640px) calc(50vw - 36px), calc(50vw - 22px)',
+} as const
+
+/**
+ * Kolom daftar demo di layar lebar: kelipatan 4 (4, 8) jadi 4 kolom supaya tidak ada baris yang pincang
+ * (8 demo = dua baris penuh, bukan 3+3+2); selain itu 3 kolom. Di bawah 1024px selalu 2 kolom.
+ */
+export function gridDemo(jumlah: number) {
+  const kolom = jumlah > 0 && jumlah % 4 === 0 ? 4 : 3
+  return { kolom, kelas: kolom === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3' } as const
+}
+
+/**
+ * Kolom daftar paket: 4 paket = 2x2 dari 640px lalu 4 sebaris dari 1280px (bukan 3+1); selain itu 3 kolom dari 640px
+ * (1 kolom di bawahnya). Empat sebaris baru dari xl: kartu 264px (lebar tetap kontainer) cukup untuk harga dan waktu
+ * berdampingan, sedangkan di bawah itu harga seperti "IDR 3,000,000" terpotong ke dua baris.
+ */
+export const gridPaket = (jumlah: number) => (jumlah === 4 ? 'sm:grid-cols-2 xl:grid-cols-4' : 'sm:grid-cols-3')
+
+export function DemoCard({ demo, why, open, newTab, cols = 3 }: { demo: Demo; why: string; open: string; newTab: string; cols?: 3 | 4 }) {
   return (
     <li className="flex flex-col">
       <a href={demo.url} target="_blank" rel="noopener noreferrer" className="group block">
@@ -13,7 +35,7 @@ export function DemoCard({ demo, why, open, newTab }: { demo: Demo; why: string;
         <img
           src={demoThumb(demo.slug)}
           srcSet={demoSrcSet(demo.slug)}
-          sizes="(min-width: 1152px) 352px, (min-width: 1024px) calc(33vw - 32px), (min-width: 640px) calc(50vw - 36px), calc(50vw - 22px)"
+          sizes={DEMO_SIZES[cols]}
           alt=""
           width={720}
           height={378}
