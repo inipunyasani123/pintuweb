@@ -202,7 +202,7 @@ export const CITIES: City[] = [
         eyebrow: 'Serving Blitar online',
         h1: ['Website design for businesses in ', 'Blitar', ', no office visit needed.'],
         answerLead: 'PintuWeb is based in {{city}} and serves businesses in Blitar online.',
-        answer: 'A business profile website (SME Standard) starts at {{from:standar-umkm}} ({{duration:standar-umkm}}) and a landing page at {{from:landing-page}}. Everything runs over WhatsApp: tell us about your business, get a written quote, and start after a 50% deposit.',
+        answer: 'A business profile website (Small Business Standard) starts at {{from:standar-umkm}} ({{duration:standar-umkm}}) and a landing page at {{from:landing-page}}. Everything runs over WhatsApp: tell us about your business, get a written quote, and start after a 50% deposit.',
         onlineTitle: 'What if we never meet in person?',
         onlineBody: 'Consultation, design, revisions and handover are all online through WhatsApp and email. PintuWeb has no office in Blitar and does not need a face-to-face meeting. All you prepare is photos, product details and the story of your business.',
         sectorsTitle: 'Websites that suit businesses in Blitar',

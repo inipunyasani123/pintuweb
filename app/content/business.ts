@@ -202,7 +202,7 @@ export const BIZ: Biz[] = [
         faq: [
           { q: 'Can the clinic staff manage the appointments?', a: 'Yes. The Online Reservation System package includes an admin panel for schedules and bookings, plus rules for opening hours and capacity.' },
           { q: 'Do patients need to create an account?', a: 'That can be set up to suit you. We talk through the flow in the consultation; in the demo, patients just pick a doctor and a time.' },
-          { q: 'Is there a simpler website to start with?', a: 'Yes. The SME Standard package covers a clinic profile, a list of services and contact details. Appointments can be added later.' },
+          { q: 'Is there a simpler website to start with?', a: 'Yes. The Small Business Standard package covers a clinic profile, a list of services and contact details. Appointments can be added later.' },
         ],
         wa: 'Hello PintuWeb, I run a clinic/health business and would like to ask about a website (Website for Clinics & Health page).',
       },
@@ -507,7 +507,7 @@ export const BIZ: Biz[] = [
         },
         pkgWhy: {
           'sistem-reservasi': 'Booking dengan kalender, slot, dan panel admin.',
-          'standar-umkm': 'Profil, daftar layanan, area, dan pesan lewat WhatsApp, bila tidak perlu booking.',
+          'standar-umkm': 'Beberapa halaman: profil, daftar layanan, area, dan pesan lewat WhatsApp, bila tidak perlu booking.',
           'landing-page': 'Satu halaman layanan dan harga bila booking lewat WhatsApp sudah cukup.',
           'aplikasi-mobile': 'Aplikasi status pesanan atau kasir di HP.',
         },
@@ -547,7 +547,7 @@ export const BIZ: Biz[] = [
         },
         pkgWhy: {
           'sistem-reservasi': 'Booking with a calendar, slots and an admin panel.',
-          'standar-umkm': 'A profile, services, service area and ordering by WhatsApp, if you do not need booking.',
+          'standar-umkm': 'Several pages: a profile, services, service area and ordering by WhatsApp, if you do not need booking.',
           'landing-page': 'One page of services and prices if booking by WhatsApp is enough.',
           'aplikasi-mobile': 'An order-status or cashier app on a phone.',
         },

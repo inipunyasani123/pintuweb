@@ -131,7 +131,7 @@ export const SERVICES: Service[] = [
         suits: 'UMKM, usaha jasa',
         faq: [
           { q: 'Berapa halaman yang saya dapat?', a: 'Paket Standar UMKM berisi 3–5 halaman, biasanya Beranda, Profil, Layanan, Blog, dan Kontak. Halaman tambahan bisa ditambah sesuai kebutuhan.' },
-          { q: 'Apakah saya bisa menulis artikel blog sendiri?', a: 'Bisa diatur. Kirim tulisanmu lewat WhatsApp, kami yang unggah. Kalau mau mengelola sendiri, CMS bisa ditambahkan.' },
+          { q: 'Apakah saya bisa menulis artikel blog sendiri?', a: 'Bisa diatur. Selama masa perawatan, kirim tulisanmu lewat WhatsApp, kami yang unggah. Kalau mau mengelola sendiri, CMS bisa ditambahkan.' },
           { q: 'Apakah domain .com sudah termasuk?', a: 'Ya. Domain .com, hosting, dan SSL tahun pertama sudah termasuk. Biaya perpanjangan mulai tahun kedua tertulis di halaman Paket.' },
           { q: 'Bagaimana kalau saya belum punya foto dan teks?', a: 'Kami bantu menulis teksnya dan bisa memakai foto stok berlisensi. Foto asli usahamu lebih meyakinkan, jadi kami juga bisa menyarankan fotografer.' },
         ],
