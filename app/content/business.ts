@@ -126,7 +126,7 @@ export const BIZ: Biz[] = [
         faq: [
           { q: 'What is the difference between a QR menu and a cafe website?', a: 'A QR menu is a menu page opened by scanning a code on the table. A cafe website can hold that menu plus your story, hours, map and promos. Both can be built in one Landing Page package.' },
           { q: 'If a menu price changes, do I have to ask PintuWeb?', a: 'Who updates the content is agreed during the consultation, depending on the package you choose. Tell us what you need and we will suggest the easiest way.' },
-          { q: 'Can the website take orders or bookings?', a: 'Bookings, yes. The Online Reservation System package includes table booking with confirmation by WhatsApp or email and an admin panel. Delivery ordering can be built as an app.' },
+          { q: 'Can the website take orders or bookings?', a: 'Bookings, yes. The Online Booking System package includes table booking with confirmation by WhatsApp or email and an admin panel. Delivery ordering can be built as an app.' },
         ],
         wa: 'Hello PintuWeb, I run a cafe/restaurant and would like to ask about a website (Website for Cafes & Restaurants page).',
       },
@@ -200,7 +200,7 @@ export const BIZ: Biz[] = [
           'standar-umkm': 'A 3–5 page website if a profile, services and contact are enough.',
         },
         faq: [
-          { q: 'Can the clinic staff manage the appointments?', a: 'Yes. The Online Reservation System package includes an admin panel for schedules and bookings, plus rules for opening hours and capacity.' },
+          { q: 'Can the clinic staff manage the appointments?', a: 'Yes. The Online Booking System package includes an admin panel for schedules and bookings, plus rules for opening hours and capacity.' },
           { q: 'Do patients need to create an account?', a: 'That can be set up to suit you. We talk through the flow in the consultation; in the demo, patients just pick a doctor and a time.' },
           { q: 'Is there a simpler website to start with?', a: 'Yes. The Small Business Standard package covers a clinic profile, a list of services and contact details. Appointments can be added later.' },
         ],
@@ -367,7 +367,7 @@ export const BIZ: Biz[] = [
         },
         faq: [
           { q: 'Can I add many listings myself?', a: 'Yes. The Property Website package includes an admin panel to manage listings, with SEO for each listing.' },
-          { q: 'What about a small guesthouse or homestay?', a: 'The Online Reservation System package fits: an availability calendar, price and capacity rules, and confirmation by WhatsApp or email. See also our article on tourism and homestay websites.' },
+          { q: 'What about a small guesthouse or homestay?', a: 'The Online Booking System package fits: an availability calendar, price and capacity rules, and confirmation by WhatsApp or email. See also our article on tourism and homestay websites.' },
           { q: 'Is there an app for boarding-house owners?', a: 'The Grendel Kos demo shows one: rent bills and damage reports. The features you need are discussed and go into the quote.' },
         ],
         wa: 'Hello PintuWeb, I run a rental/property/lodging business and would like to ask about a website (Website for Rentals, Property & Lodging page).',
