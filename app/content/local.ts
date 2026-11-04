@@ -15,7 +15,7 @@ export type SectorKey = 'marmer' | 'fashion' | 'kuliner' | 'wisata' | 'jasa' | '
 
 /** Urutan petak sektor, paket yang disarankan (slug packages.ts), dan warna aksen (palet CATEGORY_COLOR). */
 export const LOCAL_SECTORS: { key: SectorKey; pkg: string; tone: DemoCategory }[] = [
-  { key: 'marmer', pkg: 'toko-online-simple', tone: 'properti' },
+  { key: 'marmer', pkg: 'standar-umkm', tone: 'properti' },
   { key: 'kuliner', pkg: 'landing-page', tone: 'menu' },
   { key: 'wisata', pkg: 'sistem-reservasi', tone: 'portfolio' },
   { key: 'fashion', pkg: 'toko-online-simple', tone: 'toko' },
