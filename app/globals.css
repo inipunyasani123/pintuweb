@@ -343,12 +343,13 @@
   .aud-panggung { grid-area: card; position: relative; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .4s ease; align-self: start; height: 13rem; margin-top: 1.25rem; }
   .aud-panggung canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   .aud-3d .aud-panggung { opacity: 1; }
-  @media (max-width: 639.98px) { .aud-3d .aud-card { padding-top: 13.25rem; } }
+  /* -siap: tempat dipesan selagi di luar layar, sebelum 3D-nya siap (pakai3D.ts), jadi isi tidak terdorong saat terlihat */
+  @media (max-width: 639.98px) { .aud-3d-siap .aud-card { padding-top: 13.25rem; } }
   @media (min-width: 640px) {
     .aud-panggung { align-self: end; justify-self: end; width: 47%; height: auto; aspect-ratio: 1; margin-top: 0; }
     .aud-panggung canvas { inset: auto; left: -22%; top: -6%; width: 144%; height: 112%; }
-    .aud-3d .aud-card ul { max-width: 56%; }
-    .aud-3d .aud-act { max-width: 52%; }
+    .aud-3d-siap .aud-card ul { max-width: 56%; }
+    .aud-3d-siap .aud-act { max-width: 52%; }
   }
 
   /* Panggung 3D cara kerja (Proses3D.tsx): tidak mengambil tempat sampai 3D aktif, jadi tanpa 3D bagian ini tampil seperti
@@ -358,11 +359,11 @@
   @media (min-width: 640px) { .proses-panggung { margin-inline: -1.5rem; } }
   .proses-panggung canvas { position: absolute; left: 0; top: 0; width: 100%; height: 12rem; opacity: 0; transition: opacity .4s ease; pointer-events: none; }
   .proses-3d .proses-panggung canvas { opacity: 1; }
-  .proses-3d .proses-panggung { position: sticky; top: 0; z-index: 20; height: 12rem; margin-bottom: 1.25rem; background: linear-gradient(#fff 90%, rgb(255 255 255 / 0)); }
+  .proses-3d-siap .proses-panggung { position: sticky; top: 0; z-index: 20; height: 12rem; margin-bottom: 1.25rem; background: linear-gradient(#fff 90%, rgb(255 255 255 / 0)); }
   @media (min-width: 1024px) {
     .proses-panggung { margin-inline: 0; }
     .proses-panggung canvas { height: auto; aspect-ratio: 1104 / 250; }
-    .proses-3d .proses-panggung { position: relative; top: auto; z-index: auto; height: auto; aspect-ratio: 1104 / 250; margin-bottom: 1rem; background: none; }
+    .proses-3d-siap .proses-panggung { position: relative; top: auto; z-index: auto; height: auto; aspect-ratio: 1104 / 250; margin-bottom: 1rem; background: none; }
   }
 
   /* Cara kerja: lintasan yang terisi mengikuti gulir. Ponsel/tablet = tegak, tiap tahap (.proc-step) punya garis

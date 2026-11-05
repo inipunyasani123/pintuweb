@@ -26,13 +26,14 @@ export function layak3D() {
   return (hasil ??= periksa())
 }
 
-/** menjalankan f saat elemen mendekat dan halaman sedang menganggur; mengembalikan pembatal */
-export function saatMendekat(el: Element, f: () => void, jarak = '600px 0px') {
+/** menjalankan f saat elemen mendekat dan halaman sedang menganggur (`segera` tanpa menunggu menganggur); mengembalikan pembatal */
+export function saatMendekat(el: Element, f: () => void, segera?: () => void, jarak = '600px 0px') {
   let batal = false
   const io = new IntersectionObserver(
     (ent) => {
       if (!ent.some((e) => e.isIntersecting)) return
       io.disconnect()
+      segera?.()
       const jalan = () => {
         if (!batal) f()
       }

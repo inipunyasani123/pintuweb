@@ -218,7 +218,8 @@ function lepaskan(p: Panggung) {
   s.ro.disconnect()
   s.io.disconnect()
   aktif.delete(p)
-  p.akar.classList.remove(p.kelas)
+  // termasuk tempat yang sudah dipesan (usePakai3D), supaya tidak tersisa ruang kosong
+  p.akar.classList.remove(p.kelas, p.kelas + '-siap')
   p.lepas?.()
 }
 
