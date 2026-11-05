@@ -3,7 +3,7 @@
 // kanvas GL lalu disalin ke kanvas 2D miliknya di halaman, jadi ikut tumpukan & gulir elemen itu tanpa jeda.
 // Digambar hanya saat ada yang berubah dan panggungnya terlihat: diam = nol kerja GPU. Bila rata-rata di atas BATAS_MS
 // per bingkai atau konteks hilang, semua panggung dilepas dan tampilan biasa kembali; perangkat itu diingat selama sesi.
-import { BackSide, BoxGeometry, Color, Mesh, MeshBasicMaterial, PMREMGenerator, Scene, WebGLRenderer, type Camera, type WebGLRenderTarget } from 'three'
+import { BackSide, BoxGeometry, Color, Mesh, MeshBasicMaterial, NeutralToneMapping, PMREMGenerator, Scene, VSMShadowMap, WebGLRenderer, type Camera, type WebGLRenderTarget } from 'three'
 import { aturLingkungan, bersihkanPerangkat, jeda } from './perangkat'
 import { KUNCI_LAMBAT } from './layak'
 
@@ -54,6 +54,9 @@ function buatLingkungan(renderer: WebGLRenderer) {
   papan([1.9, 2, 2.2], [-11, 3, 3], [0.2, 8, 7])
   papan([2.4, 2.5, 2.7], [11, 2, 1], [0.2, 9, 2.4])
   papan([0.26, 0.32, 0.5], [0, -10, 0], [20, 0.2, 20])
+  // di belakang kamera, tempat kaca layar memantul: jendela lebar & satu lajur tipis, supaya pantulannya bergeser saat perangkat menoleh
+  papan([3.4, 3.4, 3.6], [-7, 5, 11.5], [5, 5, 0.2])
+  papan([4.2, 4.2, 4.4], [5.5, 2.5, 11.5], [0.9, 11, 0.2])
   const pm = new PMREMGenerator(renderer)
   const rt = pm.fromScene(env, 0.025, 0.1, 40)
   pm.dispose()
@@ -73,6 +76,11 @@ export function nyalakan() {
     rend.setPixelRatio(1)
     rend.setClearColor(0x000000, 0)
     rend.setScissorTest(true)
+    // layar demo tetap berwarna asli (toneMapped: false); hanya bodi & benda yang kena tone mapping
+    rend.toneMapping = NeutralToneMapping
+    rend.shadowMap.enabled = true
+    // VSM: tepi bayangan bisa diburamkan lebar, seperti cahaya softbox; peta kecil sudah cukup
+    rend.shadowMap.type = VSMShadowMap
     envRT = buatLingkungan(rend)
     aturLingkungan(envRT.texture, Math.min(8, rend.capabilities.getMaxAnisotropy()))
     canvas.addEventListener('webglcontextlost', (e) => {

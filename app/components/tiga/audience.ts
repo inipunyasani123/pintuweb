@@ -4,31 +4,28 @@
 import { Group, PerspectiveCamera, Scene } from 'three'
 import LAYAR from './layar.json'
 import { nyalakan, pasang } from './mesin'
-import { D2R, bayanganLantai, belum, buatLaptop, buatPonsel, buatTablet, campur, halus, klem, muatTekstur, pegas, redam, sudutTutup, type Laptop, type Pipih, type Layar } from './perangkat'
+import { D2R, bayanganLantai, belum, buatLaptop, buatPonsel, buatTablet, cahayaStudio, campur, halus, klem, lantaiBayang, lentur, muatTekstur, pegas, sudutTutup, type Laptop, type Pipih, type Layar } from './perangkat'
 
 type Alat = 'laptop' | 'tablet' | 'ponsel'
 type Isi = { alat: Alat; berkas: string; ukuran: number[]; host?: string; top?: string; fg?: string }
 const BUTUH = LAYAR as unknown as Record<string, Isi>
 
-const FOV = 16
-const ELEVASI = 9 * D2R
+const FOV = 21
+const ELEVASI = 10 * D2R
 const CONDONG = -6 * D2R
 const CY = 1.08
 /** lebar & tinggi dunia yang harus muat di kanvas */
 const MUAT_W = 3.6
 const MUAT_H = 2.6
+// mulai 640px kanvas lebih besar dari tempatnya (lihat .aud-panggung canvas), supaya laptop yang berputar tidak terpotong
+const MUAT_W_LEGA = 5.18
+const MUAT_H_LEGA = 4.03
 const RUPA: Record<Alat, { s: number; yaw: number }> = {
-  laptop: { s: 1.02, yaw: 0.2 },
-  tablet: { s: 0.98, yaw: -0.16 },
-  ponsel: { s: 1.56, yaw: -0.16 },
+  laptop: { s: 1.02, yaw: 0.28 },
+  tablet: { s: 0.98, yaw: -0.26 },
+  ponsel: { s: 1.56, yaw: -0.3 },
 }
 const urlDari = (k: string) => `/layar/${BUTUH[k].berkas}.webp`
-// berputar masuk dengan sedikit lewat lalu kembali
-const lewat = (t: number) => {
-  const c = 1.15
-  return 1 + (c + 1) * (t - 1) ** 3 + c * (t - 1) ** 2
-}
-
 export async function pasangAudience(kanvas: HTMLCanvasElement, batal: () => boolean): Promise<(() => void) | null> {
   const akar = kanvas.closest('section') as HTMLElement | null
   const daftar = akar?.querySelector('[role="tablist"]')
@@ -48,7 +45,10 @@ export async function pasangAudience(kanvas: HTMLCanvasElement, batal: () => boo
   const rig = new Group()
   const putar = new Group()
   rig.add(putar)
+  rig.add(lantaiBayang(6, 5))
   scene.add(rig)
+  const cahaya = cahayaStudio({ dari: [3, 7, 6], rim: '#7f9dff', kotak: [-3.4, 3.4, 3.4, -2.4], peta: window.innerWidth < 640 ? [384, 384] : [512, 512] })
+  scene.add(cahaya.g)
   const camera = new PerspectiveCamera(FOV, 1, 1, 50)
 
   const alat: Partial<Record<Alat, { root: Group; layar: Layar; lap?: Laptop; pipih?: Pipih }>> = {}
@@ -62,18 +62,18 @@ export async function pasangAudience(kanvas: HTMLCanvasElement, batal: () => boo
     } else {
       if (d.alat === 'laptop') {
         const lap = buatLaptop({ warna: '#d3d9e2', host: d.host ?? '', halaman: tx, ukuran: d.ukuran })
-        lap.root.add(bayanganLantai(3.75, 2.9, 0.02))
+        lap.root.add(bayanganLantai(3.75, 2.9, 0.02, 0.7))
         lap.root.position.z = -0.3
         a = { root: lap.root, layar: lap.layar, lap }
       } else if (d.alat === 'tablet') {
         const pipih = buatTablet({ halaman: tx, ukuran: d.ukuran })
         pipih.miring.rotation.x = CONDONG
-        pipih.root.add(bayanganLantai(2.5, 0.75, 0.04, 0.85))
+        pipih.root.add(bayanganLantai(2.3, 0.6, 0.04, 0.7))
         a = { root: pipih.root, layar: pipih.layar, pipih }
       } else {
         const pipih = buatPonsel({ top: d.top ?? '#fff', fg: d.fg ?? '#000', halaman: tx, ukuran: d.ukuran })
         pipih.miring.rotation.x = CONDONG
-        pipih.root.add(bayanganLantai(1.2, 0.55, 0.05, 0.9))
+        pipih.root.add(bayanganLantai(1.1, 0.46, 0.05, 0.7))
         a = { root: pipih.root, layar: pipih.layar, pipih }
       }
       a.root.scale.setScalar(RUPA[d.alat].s)
@@ -89,16 +89,24 @@ export async function pasangAudience(kanvas: HTMLCanvasElement, batal: () => boo
   const ry = pegas()
   const rx = pegas()
   const buka = pegas(1)
+  const geserX = pegas()
+  const geserY = pegas()
+  const kamera = pegas()
+  const tekan = pegas()
+  // sudut putar: pegas yang sasarannya berubah kapan saja, jadi pilihan berikutnya bisa menyela di tengah putaran
+  const putarS = pegas()
   let px = 0
   let py = 0
-  let fase: 'diam' | 'keluar' | 'tunggu' | 'masuk' = 'diam'
-  let mulai = 0
-  let sudut = 0
+  let ditekan = false
   let berikut: string | null = null
+  let menunggu = false
+  let jarak = 10
   // gulir pelan isi layar setelah perangkat tiba
   let panMulai = performance.now() + 500
   const PAN_LAMA = 3600
   const PAN_KE = 0.6
+  const SISI = 90 * D2R
+  const TUKAR = 74 * D2R
   const adaSorot = matchMedia('(hover: hover)').matches
 
   const panggung = await pasang({
@@ -111,95 +119,94 @@ export async function pasangAudience(kanvas: HTMLCanvasElement, batal: () => boo
     ukuran(w, h) {
       camera.aspect = w / h
       const t = Math.tan((FOV / 2) * D2R)
-      const d = Math.max(MUAT_W / 2 / (t * camera.aspect), MUAT_H / 2 / t)
-      camera.position.set(0, CY + d * Math.sin(ELEVASI), d * Math.cos(ELEVASI))
-      camera.lookAt(0, CY, 0)
+      const lega = window.innerWidth >= 640
+      jarak = Math.max((lega ? MUAT_W_LEGA : MUAT_W) / 2 / (t * camera.aspect), (lega ? MUAT_H_LEGA : MUAT_H) / 2 / t)
       camera.updateProjectionMatrix()
     },
     langkah(now, dt, pertama) {
       const vh = window.innerHeight
       const r = kanvas.getBoundingClientRect()
       const lintas = klem((vh / 2 - (r.top + r.height / 2)) / (vh / 2 + r.height / 2), -1, 1)
-      const sRy = lintas * 0.16 + px * 0.2
-      const sRx = py * 0.06
+      const sRy = lintas * 0.16 + px * 0.22
+      const sRx = py * 0.07
+      const sTekan = ditekan ? 1 : 0
       if (pertama) {
         ry.x = sRy
         rx.x = sRx
+        kamera.x = lintas
       }
-      redam(ry, sRy, 0.3, dt)
-      redam(rx, sRx, 0.3, dt)
+      lentur(ry, sRy, 0.46, 0.88, dt)
+      lentur(rx, sRx, 0.46, 0.88, dt)
+      lentur(geserX, px, 0.5, 0.95, dt)
+      lentur(geserY, py, 0.5, 0.95, dt)
+      lentur(kamera, lintas, 0.5, 1, dt)
+      lentur(tekan, sTekan, ditekan ? 0.16 : 0.4, ditekan ? 1 : 0.68, dt)
       rig.rotation.set(rx.x, ry.x, 0)
+      rig.scale.setScalar(1 - tekan.x * 0.03)
 
-      let hidup = belum(ry, sRy) || belum(rx, sRx)
-      if (fase === 'keluar') {
-        const t = klem((now - mulai) / 210)
-        sudut = t * t * 90 * D2R
-        hidup = true
-        if (t >= 1) {
-          fase = 'tunggu'
-          const k = berikut as string
-          berikut = null
-          muatTekstur(urlDari(k))
-            .then((tx) => {
-              tampil = pakai(k, tx)
-              kini = k
-              buka.x = 0.35
-              fase = 'masuk'
-              mulai = performance.now()
-              panMulai = mulai + 700
-              // pilihan sudah berganti lagi selama gambar dimuat
-              const a = kunciAktif()
-              if (a !== k && BUTUH[a]) berikut = a
-              panggung?.minta()
-            })
-            .catch(() => {
-              fase = 'masuk'
-              mulai = performance.now()
-              panggung?.minta()
-            })
-        }
-      } else if (fase === 'masuk') {
-        const t = klem((now - mulai) / 560)
-        sudut = (-90 * D2R) * (1 - lewat(t))
-        hidup = true
-        if (t >= 1) {
-          sudut = 0
-          fase = 'diam'
-          if (berikut && berikut !== kini) mulaiKeluar()
-        }
+      // keluar: berputar sampai hampir menyamping; isinya ditukar di situ (nyaris tak terlihat), lalu masuk dari sisi
+      // sebaliknya dengan kecepatan yang sama dan sedikit melewati posisi akhir, karena pilihan itu aksi yang bertenaga.
+      const ingin = berikut && berikut !== kini
+      const sPutar = ingin || menunggu ? SISI : 0
+      lentur(putarS, sPutar, sPutar ? 0.36 : 0.56, sPutar ? 1 : 0.8, dt)
+      if (ingin && !menunggu && putarS.x >= TUKAR) {
+        menunggu = true
+        const k = berikut as string
+        muatTekstur(urlDari(k))
+          .then((tx) => {
+            tampil = pakai(k, tx)
+            kini = k
+            buka.x = 0.32
+            buka.v = 0
+            putarS.x = -putarS.x
+            panMulai = performance.now() + 700
+          })
+          .catch(() => {
+            // gambar gagal dimuat: tetap kembali ke isi yang lama
+            putarS.x = -putarS.x
+            kini = k
+          })
+          .finally(() => {
+            menunggu = false
+            if (berikut === k) berikut = null
+            panggung?.minta()
+          })
       }
-      putar.rotation.y = sudut
+      const sin = Math.sin(Math.abs(putarS.x))
+      putar.rotation.y = putarS.x
+      putar.position.y = sin * 0.1
+      putar.scale.setScalar(1 - sin * 0.05)
 
+      let hidup = belum(ry, sRy) || belum(rx, sRx) || belum(geserX, px) || belum(geserY, py) || belum(kamera, lintas) || belum(tekan, sTekan) || belum(putarS, sPutar)
       if (tampil.lap) {
-        redam(buka, 1, 0.3, dt)
-        tampil.lap.tutup.rotation.x = sudutTutup(campur(66, 105, buka.x))
+        lentur(buka, 1, 0.62, 0.8, dt)
+        tampil.lap.tutup.rotation.x = sudutTutup(campur(58, 105, buka.x))
         if (belum(buka, 1)) hidup = true
       }
       const tPan = klem((now - panMulai) / PAN_LAMA)
       tampil.layar.atur(halus(tPan) * PAN_KE)
       if (tPan < 1) hidup = true
+
+      const el = ELEVASI - kamera.x * 3.4 * D2R - geserY.x * 1.4 * D2R
+      camera.position.set(geserX.x * 0.28, CY + jarak * Math.sin(el), jarak * Math.cos(el))
+      camera.lookAt(0, CY, 0)
+      cahaya.utama.position.set(cahaya.dari[0] + geserX.x * 2.2, cahaya.dari[1] - geserY.x * 1.2, cahaya.dari[2])
       return hidup
     },
     lepas() {
       window.setTimeout(lepasPeristiwa)
+      cahaya.lepas()
       for (const n of Object.keys(alat) as Alat[]) (alat[n]!.lap ?? alat[n]!.pipih)?.lepas()
     },
   })
   if (!panggung) return null
 
-  function mulaiKeluar() {
-    fase = 'keluar'
-    mulai = performance.now()
-    panggung?.minta()
-  }
   const mo = new MutationObserver(() => {
     const k = kunciAktif()
-    if (!BUTUH[k] || k === kini) {
-      if (k === kini) berikut = null
-      return
-    }
-    berikut = k
-    if (fase === 'diam') mulaiKeluar()
+    if (!BUTUH[k]) return
+    // memilih lagi isi yang sedang tampil: putaran berbalik dari posisinya saat ini
+    berikut = k === kini ? null : k
+    panggung.minta()
   })
   mo.observe(daftar, { subtree: true, attributes: true, attributeFilter: ['aria-selected'] })
   // gambar diunduh saat tombol disorot/difokus, supaya sudah siap ketika dipilih
@@ -209,6 +216,20 @@ export async function pasangAudience(kanvas: HTMLCanvasElement, batal: () => boo
   }
   daftar.addEventListener('pointerover', onSiapkan, { passive: true })
   daftar.addEventListener('focusin', onSiapkan)
+  // tanggapan sejak tombol ditekan, bukan saat dilepas
+  const onTekan = (ev: Event) => {
+    onSiapkan(ev)
+    if (!(ev.target as Element | null)?.closest?.('[role="tab"]')) return
+    ditekan = true
+    panggung.minta()
+    window.addEventListener('pointerup', onLepasTekan, { once: true })
+    window.addEventListener('pointercancel', onLepasTekan, { once: true })
+  }
+  const onLepasTekan = () => {
+    ditekan = false
+    panggung.minta()
+  }
+  daftar.addEventListener('pointerdown', onTekan, { passive: true })
   const onGerak = (ev: PointerEvent) => {
     if (ev.pointerType === 'touch') return
     const k = kanvas.getBoundingClientRect()
@@ -228,6 +249,7 @@ export async function pasangAudience(kanvas: HTMLCanvasElement, batal: () => boo
   function lepasPeristiwa() {
     mo.disconnect()
     daftar?.removeEventListener('pointerover', onSiapkan)
+    daftar?.removeEventListener('pointerdown', onTekan)
     daftar?.removeEventListener('focusin', onSiapkan)
     akar?.removeEventListener('pointermove', onGerak)
     akar?.removeEventListener('pointerleave', onKeluar)

@@ -119,7 +119,7 @@ export default function AudienceSection({ lang }: { lang: Lang }) {
   })
 
   return (
-    <section id="untuk-siapa" aria-labelledby="audience-title" className="section-y bg-[color:var(--surface-soft)]">
+    <section id="untuk-siapa" aria-labelledby="audience-title" className="section-y overflow-x-clip bg-[color:var(--surface-soft)]">
       {/* ponsel: judul, pilihan, kartu, ajakan; desktop: judul + pilihan + ajakan di kiri, kartu di kanan */}
       <div className="mx-auto grid max-w-6xl grid-cols-1 px-4 [grid-template-areas:'head'_'tabs'_'card'_'other'] sm:px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[auto_auto_1fr] lg:gap-x-12 lg:[grid-template-areas:'head_card'_'tabs_card'_'other_card']">
         <div className="[grid-area:head]">

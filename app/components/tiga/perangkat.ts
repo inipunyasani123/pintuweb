@@ -2,11 +2,13 @@
 // VideoPromo/src/kreasi/perangkat-apple.tsx (ukuran resmi dalam mm, tanpa logo). Geometri & bahan dipakai bersama oleh
 // semua panggung di mesin.ts; bersihkanPerangkat() melepas semuanya saat panggung terakhir pergi.
 import {
+  AdditiveBlending,
   BoxGeometry,
   BufferGeometry,
   CanvasTexture,
   Color,
   CylinderGeometry,
+  DirectionalLight,
   Float32BufferAttribute,
   Group,
   InstancedMesh,
@@ -18,6 +20,7 @@ import {
   PlaneGeometry,
   Quaternion,
   Shape,
+  ShadowMaterial,
   ShapeGeometry,
   SRGBColorSpace,
   Texture,
@@ -47,6 +50,20 @@ export function redam(s: Pegas, sasaran: number, waktu: number, dt: number) {
   const t = (s.v + o * d) * dt
   s.v = (s.v - o * t) * e
   s.x = sasaran + (d + t) * e
+}
+/**
+ * Pegas bergaya response + damping: response = lama satu ayunan (dtk), damping 1 = tanpa lewat, < 1 = sedikit melewati
+ * sasaran. Mulai dari nilai & kecepatan saat ini, jadi gerak bisa disela dan dibalik kapan saja tanpa patah.
+ */
+export function lentur(s: Pegas, sasaran: number, response: number, damping: number, dt: number) {
+  const w = (2 * PI) / response
+  const k = w * w
+  const c = 2 * damping * w
+  for (let t = dt; t > 0; t -= 1 / 240) {
+    const h = Math.min(t, 1 / 240)
+    s.v += (-k * (s.x - sasaran) - c * s.v) * h
+    s.x += s.v * h
+  }
 }
 export const belum = (s: Pegas, sasaran: number) => Math.abs(s.x - sasaran) > 0.0004 || Math.abs(s.v) > 0.0008
 
@@ -373,6 +390,77 @@ export const kacaHitam = () => simpan('kaca', () => new MeshStandardMaterial({ c
 export const dop = (warna: string, kasar = 0.7) => simpan(`dop|${warna}|${kasar}`, () => new MeshStandardMaterial({ color: warna, metalness: 0, roughness: kasar, envMap: ENV, envMapIntensity: 0.55 }))
 /** bahan warna rata untuk benda buatan (gelembung, potongan halaman): putihnya tetap putih di studio ini */
 export const rata = (warna: string, kasar = 0.5) => simpan(`rata|${warna}|${kasar}`, () => new MeshStandardMaterial({ color: warna, metalness: 0, roughness: kasar, envMap: ENV, envMapIntensity: 1.06 }))
+/** pantulan studio di kaca layar: hanya kilap (hitam + aditif), jadi isi layar tetap berwarna asli dan pantulannya bergeser saat perangkat menoleh */
+const pantulKaca = () =>
+  simpan('pantul', () => {
+    const b = new MeshStandardMaterial({ color: '#000000', metalness: 0, roughness: 0.07, envMap: ENV, envMapIntensity: 0.34, transparent: true, blending: AdditiveBlending, depthWrite: false, toneMapped: false })
+    // kubah studio yang merata dibuang: hanya softbox terang yang memantul, kalau tidak warna layar jadi pucat
+    b.onBeforeCompile = (sh) => {
+      sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', '#include <dithering_fragment>\ngl_FragColor.rgb = max(gl_FragColor.rgb - 0.13, vec3(0.0));')
+    }
+    return b
+  })
+/** bayangan benda lain yang jatuh ke layar */
+const bayangLayar = () => simpan('bayang-layar', () => new ShadowMaterial({ color: '#0a1230', opacity: 0.3, depthWrite: false, toneMapped: false }))
+function lapisKaca(induk: Group, geo: BufferGeometry, x: number, y: number, z: number) {
+  const b = new Mesh(geo, bayangLayar())
+  b.position.set(x, y, z + 0.03)
+  b.receiveShadow = true
+  b.renderOrder = 1
+  const k = new Mesh(geo, pantulKaca())
+  k.position.set(x, y, z + 0.06)
+  k.renderOrder = 2
+  induk.add(b, k)
+}
+
+/**
+ * Cahaya studio satu panggung: lampu utama berbayang + lampu tepi di belakang (warna jenis demonya). Lampu diam di tempat
+ * saat perangkat menoleh, jadi kilap & bayangannya ikut berubah. `dari` = arah lampu utama; `kotak` = batas bayangan
+ * [kiri, kanan, atas, bawah]; `peta` = resolusi peta bayangan (w, h).
+ */
+export function cahayaStudio(o: { dari: [number, number, number]; rim?: string; kotak: [number, number, number, number]; peta: [number, number]; kuat?: number; kuatRim?: number; lembut?: number }) {
+  const g = new Group()
+  const utama = new DirectionalLight('#fff4e6', o.kuat ?? 1.05)
+  utama.position.set(...o.dari)
+  utama.castShadow = true
+  utama.shadow.mapSize.set(o.peta[0], o.peta[1])
+  utama.shadow.radius = o.lembut ?? 9
+  utama.shadow.blurSamples = 14
+  utama.shadow.bias = -0.0009
+  const c = utama.shadow.camera
+  ;[c.left, c.right, c.top, c.bottom] = o.kotak
+  c.near = 0.5
+  c.far = 32
+  // lampu tepi rendah & setengah putih: menyentuh sisi bodi saja, tidak mewarnai permukaan atas seperti keyboard
+  const rim = new DirectionalLight(new Color(o.rim ?? '#bcd0ff').lerp(new Color('#ffffff'), 0.55), o.kuatRim ?? 0.75)
+  rim.position.set(-o.dari[0] * 0.9, 1.5, -7)
+  g.add(utama, utama.target, rim)
+  return { g, utama, dari: o.dari, lepas: () => utama.shadow.dispose() }
+}
+
+/** lantai tak terlihat yang hanya menampilkan bayangan benda di atasnya; memudar ke tepinya supaya tak terpotong kanvas */
+export function lantaiBayang(w: number, d: number, opasitas = 0.17) {
+  const m = new Mesh(
+    simpan('geo-bidang1', () => new PlaneGeometry(1, 1)),
+    simpan('lantai|' + opasitas, () => {
+      const b = new ShadowMaterial({ color: '#10204f', opacity: opasitas, depthWrite: false, toneMapped: false })
+      b.onBeforeCompile = (sh) => {
+        sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec2 vLantai;').replace('#include <begin_vertex>', '#include <begin_vertex>\nvLantai = position.xy;')
+        sh.fragmentShader = sh.fragmentShader
+          .replace('#include <common>', '#include <common>\nvarying vec2 vLantai;')
+          .replace('#include <tonemapping_fragment>', 'gl_FragColor.a *= smoothstep(0.5, 0.24, length(vLantai));\n#include <tonemapping_fragment>')
+      }
+      return b
+    }),
+  )
+  m.scale.set(w, d, 1)
+  m.rotation.x = -PI / 2
+  m.position.y = 0.001
+  m.receiveShadow = true
+  m.renderOrder = -1
+  return m
+}
+
 export const geoSimpan = <T extends { dispose(): void }>(k: string, buat: () => T) => simpan('geo|' + k, buat)
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -420,7 +508,8 @@ const isiLayar = () => new MeshBasicMaterial({ toneMapped: false })
 // ---------------------------------------------------------------------------------------------------------------------
 // MacBook Air 13"
 // ---------------------------------------------------------------------------------------------------------------------
-const MB = { W: 304.1, Dp: 215, kaki: 0.8, tb: 7.4, celah: 0.3, tl: 3.6, Ld: 207.4, R: 10.5, layarW: 290.29, layarH: 188.69, bezelAtas: 6.2, poni: 6.3 }
+// tebal alas & tutup sedikit dilebihkan: tebal aslinya hanya ±1 piksel di ukuran kartu, jadi perangkat terasa seperti kertas
+const MB = { W: 304.1, Dp: 215, kaki: 0.8, tb: 8.6, celah: 0.3, tl: 4.6, Ld: 207.4, R: 10.5, layarW: 290.29, layarH: 188.69, bezelAtas: 6.2, poni: 6.3 }
 const MB_DEK = MB.kaki + MB.tb
 const MB_ENGSEL: [number, number, number] = [0, MB_DEK + MB.celah, -MB.Dp / 2 + 7.6]
 const P_TUTS = 18.9
@@ -475,6 +564,8 @@ export function buatLaptop(o: { warna: string; host: string; halaman: Texture; u
     [al, poles],
   )
   alas.rotation.x = -PI / 2
+  alas.castShadow = true
+  alas.receiveShadow = true
   mm.add(alas)
 
   // sumur keyboard + tuts (satu InstancedMesh) + trackpad
@@ -482,6 +573,7 @@ export function buatLaptop(o: { warna: string; host: string; halaman: Texture; u
     const b = new Mesh(g, m)
     b.position.set(0, y, z)
     b.rotation.x = -PI / 2
+    b.receiveShadow = true
     mm.add(b)
   }
   dekDatar(
@@ -540,8 +632,7 @@ export function buatLaptop(o: { warna: string; host: string; halaman: Texture; u
   const tutup = new Group()
   tutup.position.set(...MB_ENGSEL)
   mm.add(tutup)
-  tutup.add(
-    new Mesh(
+  const badanTutup = new Mesh(
       geoSimpan('mb-tutup', () =>
         sapuan(
           garisLuar(W, Ld, R, 12, 0, Ld / 2),
@@ -566,8 +657,9 @@ export function buatLaptop(o: { warna: string; host: string; halaman: Texture; u
         ),
       ),
       [al, poles],
-    ),
-  )
+    )
+  badanTutup.castShadow = true
+  tutup.add(badanTutup)
   tutup.add(
     new Mesh(
       geoSimpan('mb-kaca', () => sapuan(garisLuar(W - 1.9, Ld - 1.9, R - 0.95, 12, 0, Ld / 2), [{ t: [[0, -0.45], ...busur(-0.2, -0.2, 0.2, 0, 90, 3)], m: 0 }], { akhir: 0 })),
@@ -591,6 +683,13 @@ export function buatLaptop(o: { warna: string; host: string; halaman: Texture; u
   )
   hal.position.set(0, DASAR_MB + HAL_MB / 2, 0.06)
   tutup.add(hal)
+  lapisKaca(
+    tutup,
+    geoSimpan('mb-seluruh', () => new PlaneGeometry(layarW, PUNCAK_MB - DASAR_MB)),
+    0,
+    (PUNCAK_MB + DASAR_MB) / 2,
+    0.06,
+  )
 
   return {
     root,
@@ -616,8 +715,7 @@ function badanPipih(kunci: string, W: number, H: number, D: number, R: number, w
   const h = D / 2
   const { al, poles } = bahanLogam(warna)
   const g = new Group()
-  g.add(
-    new Mesh(
+  const badan = new Mesh(
       geoSimpan(kunci + '-badan', () =>
         sapuan(
           garisLuar(W, H, R, 12),
@@ -642,8 +740,9 @@ function badanPipih(kunci: string, W: number, H: number, D: number, R: number, w
         ),
       ),
       [al, poles],
-    ),
-  )
+    )
+  badan.castShadow = true
+  g.add(badan)
   g.add(
     new Mesh(
       geoSimpan(kunci + '-kaca', () => sapuan(garisLuar(W - tepiKaca, H - tepiKaca, R - tepiKaca / 2, 12), [{ t: [[0, h - 0.6], ...busur(-0.35, h - 0.35, 0.35, 0, 90, 3)], m: 0 }], { akhir: 0 })),
@@ -669,7 +768,7 @@ export function buatTablet(o: { warna?: string; halaman: Texture; ukuran: number
   // iPad Pro 11"
   const W = 177.5
   const H = 249.7
-  const D = 5.3
+  const D = 7.4 // asli 5,3; dilebihkan
   const lw = 160.48
   const lh = 232.83
   const { g } = badanPipih('tab', W, H, D, 11.9, o.warna ?? '#d9dde3', 0.9)
@@ -681,6 +780,7 @@ export function buatTablet(o: { warna?: string; halaman: Texture; ukuran: number
   )
   m.position.z = D / 2 + 0.06
   g.add(m)
+  lapisKaca(g, m.geometry, 0, 0, D / 2 + 0.06)
   return { ...bungkus(g, H), layar, lepas: () => layar.lepas() }
 }
 
@@ -688,7 +788,7 @@ export function buatPonsel(o: { warna?: string; top: string; fg: string; halaman
   // iPhone 17 Pro
   const W = 71.9
   const H = 150
-  const D = 8.75
+  const D = 10.5 // asli 8,75; dilebihkan
   const lw = 66.59
   const lh = 144.78
   const r = 10.2
@@ -718,6 +818,7 @@ export function buatPonsel(o: { warna?: string; top: string; fg: string; halaman
   )
   hal.position.z = D / 2 + 0.09
   g.add(hal)
+  lapisKaca(g, dasar.geometry, 0, 0, D / 2 + 0.1)
   // tombol samping
   const tombol = geoSimpan('pho-tombol', () => new BoxGeometry(1.3, 1, 2.9))
   ;[
@@ -727,6 +828,7 @@ export function buatPonsel(o: { warna?: string; top: string; fg: string; halaman
     [W / 2 - 0.1, H / 2 - 48.5, 17.5],
   ].forEach(([x, y, l]) => {
     const t = new Mesh(tombol, al)
+    t.castShadow = true
     t.position.set(x, y, 0.55)
     t.scale.y = l
     g.add(t)

@@ -346,6 +346,7 @@
   @media (max-width: 639.98px) { .aud-3d .aud-card { padding-top: 13.25rem; } }
   @media (min-width: 640px) {
     .aud-panggung { align-self: end; justify-self: end; width: 47%; height: auto; aspect-ratio: 1; margin-top: 0; }
+    .aud-panggung canvas { inset: auto; left: -22%; top: -6%; width: 144%; height: 112%; }
     .aud-3d .aud-card ul { max-width: 56%; }
     .aud-3d .aud-act { max-width: 52%; }
   }

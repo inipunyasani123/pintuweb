@@ -3,7 +3,7 @@
 // (layar sentuh: mengikuti gulir). Bila gagal atau tak layak, trio CSS (DeviceTrio.tsx) tetap tampil.
 import { Group, PerspectiveCamera, Scene } from 'three'
 import { pasang, nyalakan } from './mesin'
-import { D2R, bayanganLantai, belum, buatLaptop, buatPonsel, buatTablet, campur, halus, jeda, klem, muatTekstur, pegas, redam, sudutTutup } from './perangkat'
+import { D2R, bayanganLantai, belum, buatLaptop, buatPonsel, buatTablet, cahayaStudio, campur, halus, jeda, klem, lantaiBayang, lentur, muatTekstur, pegas, sudutTutup } from './perangkat'
 
 export type Dev = 'desktop' | 'tablet' | 'phone'
 export type IsiTrio = {
@@ -28,40 +28,41 @@ const GAYA: Record<string, Gaya> = {
     lap: '#d3d9e2',
     tab: '#d9dde3',
     pho: '#35425c',
-    lega: { lebar: 5.3, cy: 0.86, lap: { x: -1.03, z: -0.72, yaw: 0.09, s: 1 }, tab: { x: 0.98, z: 0.46, yaw: -0.13, s: 0.74 }, pho: { x: 1.86, z: 1.0, yaw: -0.22, s: 0.94 } },
-    rapat: { lebar: 4.45, cy: 0.92, lap: { x: -0.56, z: -0.75, yaw: 0.07, s: 1 }, tab: { x: 0.62, z: 0.58, yaw: -0.1, s: 0.72 }, pho: { x: 1.4, z: 1.08, yaw: -0.18, s: 1 } },
+    lega: { lebar: 5.6, cy: 0.84, lap: { x: -1.14, z: -0.86, yaw: 0.16, s: 1 }, tab: { x: 0.8, z: 0.34, yaw: -0.2, s: 0.74 }, pho: { x: 1.66, z: 1.02, yaw: -0.36, s: 0.9 } },
+    rapat: { lebar: 4.6, cy: 0.9, lap: { x: -0.58, z: -0.86, yaw: 0.12, s: 1 }, tab: { x: 0.58, z: 0.5, yaw: -0.16, s: 0.72 }, pho: { x: 1.38, z: 1.12, yaw: -0.3, s: 0.96 } },
   },
   // menu digital dibuka di ponsel: ponsel paling depan & besar
   bakso: {
     lap: '#d8d4cc',
     tab: '#d9dde3',
     pho: '#e8742f',
-    rapat: { lebar: 4.5, cy: 0.98, lap: { x: -0.72, z: -0.9, yaw: 0.12, s: 0.96 }, tab: { x: 0.36, z: 0.1, yaw: -0.06, s: 0.68 }, pho: { x: 1.22, z: 1.12, yaw: -0.2, s: 1.3 } },
+    rapat: { lebar: 4.65, cy: 0.96, lap: { x: -0.74, z: -1.0, yaw: 0.18, s: 0.96 }, tab: { x: 0.34, z: 0.0, yaw: -0.1, s: 0.68 }, pho: { x: 1.2, z: 1.12, yaw: -0.3, s: 1.24 } },
   },
   // reservasi: laptop di tengah, diapit tablet & ponsel
   hotel: {
     lap: '#d3d9e2',
     tab: '#e1dccf',
     pho: '#dcdddd',
-    rapat: { lebar: 4.7, cy: 0.9, lap: { x: 0.02, z: -0.8, yaw: 0, s: 1 }, tab: { x: -1.42, z: 0.5, yaw: 0.26, s: 0.66 }, pho: { x: 1.5, z: 0.72, yaw: -0.3, s: 1 } },
+    rapat: { lebar: 4.85, cy: 0.88, lap: { x: 0.02, z: -0.9, yaw: 0, s: 1 }, tab: { x: -1.42, z: 0.5, yaw: 0.34, s: 0.66 }, pho: { x: 1.5, z: 0.72, yaw: -0.4, s: 0.98 } },
   },
   // link in bio: satu ponsel di tengah, yang lain di belakangnya
   jajan: {
     lap: '#d6d2e4',
     tab: '#d9dde3',
     pho: '#35425c',
-    rapat: { lebar: 4.5, cy: 1.02, lap: { x: -0.98, z: -1.0, yaw: 0.24, s: 0.92 }, tab: { x: 1.2, z: -0.2, yaw: -0.3, s: 0.68 }, pho: { x: 0.14, z: 1.05, yaw: -0.04, s: 1.42 } },
+    rapat: { lebar: 4.65, cy: 1.0, lap: { x: -1.0, z: -1.1, yaw: 0.3, s: 0.92 }, tab: { x: 1.22, z: -0.32, yaw: -0.38, s: 0.68 }, pho: { x: 0.14, z: 1.05, yaw: -0.12, s: 1.36 } },
   },
   // properti mewah: susunan cermin kartu Tanur, laptop gelap
   lumora: {
     lap: '#2f3642',
     tab: '#343436',
     pho: '#dcdddd',
-    rapat: { lebar: 4.45, cy: 0.92, lap: { x: 0.56, z: -0.75, yaw: -0.09, s: 1 }, tab: { x: -0.62, z: 0.58, yaw: 0.1, s: 0.72 }, pho: { x: -1.42, z: 1.08, yaw: 0.2, s: 1 } },
+    rapat: { lebar: 4.6, cy: 0.9, lap: { x: 0.58, z: -0.86, yaw: -0.14, s: 1 }, tab: { x: -0.6, z: 0.5, yaw: 0.18, s: 0.72 }, pho: { x: -1.4, z: 1.12, yaw: 0.32, s: 0.96 } },
   },
 }
-const FOV = 16
-const ELEVASI = 9 * D2R
+// lensa lebih lebar dari foto produk biasa: yang dekat terasa lebih dekat
+const FOV = 21
+const ELEVASI = 10 * D2R
 const CONDONG = -6 * D2R
 
 /** Menyalakan trio 3D di `kanvas` (anak .trio). Mengembalikan pelepas, atau null bila gagal/dibatalkan. */
@@ -88,26 +89,46 @@ export async function pasangTrio3D(kanvas: HTMLCanvasElement, isi: IsiTrio, bata
   const pho = buatPonsel({ warna: gaya.pho, top: isi.top, fg: isi.fg, halaman: txP, ukuran: isi.ukuran.phone })
   tab.miring.rotation.x = CONDONG
   pho.miring.rotation.x = CONDONG
-  lap.root.add(bayanganLantai(3.75, 2.9, 0.02))
-  tab.root.add(bayanganLantai(2.5, 0.75, 0.04, 0.85))
-  pho.root.add(bayanganLantai(1.2, 0.55, 0.05, 0.9))
+  lap.root.add(bayanganLantai(3.75, 2.9, 0.02, 0.7))
+  tab.root.add(bayanganLantai(2.3, 0.6, 0.04, 0.7))
+  pho.root.add(bayanganLantai(1.1, 0.46, 0.05, 0.7))
 
   const scene = new Scene()
   const rig = new Group()
-  rig.add(lap.root, tab.root, pho.root)
+  rig.add(lap.root, tab.root, pho.root, lantaiBayang(8.4, 6.4))
   scene.add(rig)
+  // lampu utama dari sisi perangkat terdepan, supaya bayangannya jatuh ke perangkat di belakangnya;
+  // lampu tepi berwarna jenis demonya (--k pada kartu)
+  const utama = isi.slug === 'hotel' ? 0.6 : isi.slug === 'lumora' ? -1 : 1
+  const rendah = window.innerWidth < 640
+  const cahaya = cahayaStudio({
+    dari: [3.2 * utama, 7, 6],
+    rim: getComputedStyle(kartu).getPropertyValue('--k').trim() || undefined,
+    kotak: [-4.4, 4.4, 3.4, -2.4],
+    peta: rendah ? [448, 360] : [640, 512],
+  })
+  scene.add(cahaya.g)
   const camera = new PerspectiveCamera(FOV, 2, 1, 50)
 
   let L = gaya.rapat
   const ry = pegas()
   const rx = pegas()
   const buka = pegas()
+  const masukT = pegas()
+  const masukP = pegas()
   const angkat = pegas()
-  const geser = pegas()
+  const geserX = pegas()
+  const geserY = pegas()
   const panSentuh = pegas()
+  const kamera = pegas()
+  const miring = pegas()
+  const tekan = pegas()
+  let jarak = 10
+  let yLalu = window.scrollY
   let px = 0
   let py = 0
   let disorot = false
+  let ditekan = false
   const adaSorot = matchMedia('(hover: hover)').matches
   const gulir = [
     { l: lap.layar, x: 0, dari: 0, ke: 0, mulai: 0, lama: 1, tunggu: 0.15, dur: 6 },
@@ -133,44 +154,72 @@ export async function pasangTrio3D(kanvas: HTMLCanvasElement, isi: IsiTrio, bata
       pho.root.rotation.y = L.pho.yaw
       pho.root.scale.setScalar(L.pho.s)
       camera.aspect = w / h
-      const d = L.lebar / 2 / (Math.tan((FOV / 2) * D2R) * camera.aspect)
-      camera.position.set(0, L.cy + d * Math.sin(ELEVASI), d * Math.cos(ELEVASI))
-      camera.lookAt(0, L.cy, 0)
+      jarak = L.lebar / 2 / (Math.tan((FOV / 2) * D2R) * camera.aspect)
       camera.updateProjectionMatrix()
     },
     langkah(now, dt, pertama) {
       const vh = window.innerHeight
       const r = akar.getBoundingClientRect()
       const c = r.top + r.height / 2
-      // p: 0 saat trio baru masuk dari bawah, 1 saat tengahnya mencapai 60% tinggi layar
+      // p: 0 saat trio baru masuk dari bawah, 1 saat tengahnya mencapai 60% tinggi layar; tiap perangkat menyusul bergantian
       const p = klem((vh * 1.02 - c) / (vh * 0.42))
-      const e = 1 - (1 - p) ** 3
+      const e = 1 - (1 - klem(p / 0.7)) ** 3
+      const eT = 1 - (1 - klem((p - 0.14) / 0.7)) ** 3
+      const eP = 1 - (1 - klem((p - 0.28) / 0.72)) ** 3
       // -1..1 sepanjang trio melintasi layar
       const lintas = klem((vh / 2 - c) / (vh / 2 + r.height / 2), -1, 1)
+      // laju gulir: seluruh trio condong sedikit, seakan punya bobot, lalu kembali
+      const y = window.scrollY
+      const laju = pertama ? 0 : klem((y - yLalu) / Math.max(dt, 1 / 120) / 2600, -1, 1)
+      yLalu = y
 
       // kartu dengan laptop di kanan menoleh ke arah sebaliknya saat masuk
       const arah = L.lap.x > 0 ? -1 : 1
-      const sRy = -0.05 * arah + lintas * 0.12 * arah - (1 - e) * 0.2 * arah + px * 0.16
+      const sRy = -0.03 * arah + lintas * 0.12 * arah - (1 - e) * 0.2 * arah + px * 0.13
       const sRx = py * 0.06
       const sAngkat = disorot ? 1 : 0
+      const sTekan = ditekan ? 1 : 0
       if (pertama) {
         ry.x = sRy
         rx.x = sRx
         buka.x = e
+        masukT.x = eT
+        masukP.x = eP
+        kamera.x = lintas
       }
-      redam(ry, sRy, 0.3, dt)
-      redam(rx, sRx, 0.3, dt)
-      redam(buka, e, 0.22, dt)
-      redam(angkat, sAngkat, 0.26, dt)
-      redam(geser, px, 0.3, dt)
+      lentur(ry, sRy, 0.46, 0.88, dt)
+      lentur(rx, sRx, 0.46, 0.88, dt)
+      lentur(buka, e, 0.6, 0.84, dt)
+      lentur(masukT, eT, 0.56, 0.82, dt)
+      lentur(masukP, eP, 0.52, 0.8, dt)
+      lentur(angkat, sAngkat, 0.42, 0.78, dt)
+      lentur(geserX, px, 0.5, 0.95, dt)
+      lentur(geserY, py, 0.5, 0.95, dt)
+      lentur(kamera, lintas, 0.5, 1, dt)
+      lentur(miring, laju, 0.36, 0.72, dt)
+      // menekan menanggapi seketika, melepas memantul pelan
+      lentur(tekan, sTekan, ditekan ? 0.16 : 0.4, ditekan ? 1 : 0.68, dt)
 
-      rig.rotation.set(rx.x, ry.x, 0)
-      lap.tutup.rotation.x = sudutTutup(campur(68, 106, buka.x))
-      const u = 1 - buka.x
+      rig.rotation.set(rx.x + miring.x * 0.05, ry.x, 0)
+      rig.scale.setScalar(1 - tekan.x * 0.022)
+      lap.tutup.rotation.x = sudutTutup(campur(62, 106, buka.x))
       const sisi = Math.sign(L.tab.x - L.lap.x) || 1
-      tab.root.position.set(L.tab.x + sisi * u * 0.5 + geser.x * 0.03, angkat.x * 0.03, L.tab.z - u * 0.45 + angkat.x * 0.1)
       const sisiP = Math.sign(L.pho.x - L.lap.x) || 1
-      pho.root.position.set(L.pho.x + sisiP * u * 0.85 + geser.x * 0.06, angkat.x * 0.05, L.pho.z - u * 0.7 + angkat.x * 0.2)
+      const uT = 1 - masukT.x
+      const uP = 1 - masukP.x
+      // yang lebih dekat bergeser & menoleh lebih banyak; saat disorot trio sedikit merenggang
+      tab.root.position.set(L.tab.x + sisi * (uT * 0.55 + angkat.x * 0.03) + geserX.x * 0.02, 0, L.tab.z - uT * 0.5 + angkat.x * 0.14)
+      tab.root.rotation.y = L.tab.yaw + geserX.x * 0.05 + sisi * uT * 0.5
+      pho.root.position.set(L.pho.x + sisiP * (uP * 0.9 + angkat.x * 0.05) + geserX.x * 0.03, 0, L.pho.z - uP * 0.75 + angkat.x * 0.3)
+      pho.root.rotation.y = L.pho.yaw + geserX.x * 0.12 + sisiP * uP * 0.75
+      pho.root.rotation.x = miring.x * 0.05
+
+      // kamera: pandangan sedikit naik-turun mengikuti posisi kartu di layar, dan bergeser mengikuti kursor
+      const el = ELEVASI - kamera.x * 3.4 * D2R - geserY.x * 1.4 * D2R
+      camera.position.set(geserX.x * 0.3, L.cy + jarak * Math.sin(el), jarak * Math.cos(el))
+      camera.lookAt(0, L.cy, 0)
+      // lampu utama mengikuti kursor: kilap & bayangan ikut bergerak
+      cahaya.utama.position.set(cahaya.dari[0] + geserX.x * 2.2, cahaya.dari[1] - geserY.x * 1.2, cahaya.dari[2])
 
       let hidup = false
       if (adaSorot) {
@@ -184,14 +233,15 @@ export async function pasangTrio3D(kanvas: HTMLCanvasElement, isi: IsiTrio, bata
         // layar sentuh: isi layar mengikuti lintasan kartu, seperti view-timeline trio CSS
         const k = kartu.getBoundingClientRect()
         const s = klem((vh - k.bottom) / Math.max(1, vh - k.height))
-        redam(panSentuh, s, 0.2, dt)
+        lentur(panSentuh, s, 0.4, 1, dt)
         for (const g of gulir) g.l.atur(panSentuh.x)
         if (belum(panSentuh, s)) hidup = true
       }
-      return hidup || belum(ry, sRy) || belum(rx, sRx) || belum(buka, e) || belum(angkat, sAngkat) || belum(geser, px)
+      return hidup || belum(ry, sRy) || belum(rx, sRx) || belum(buka, e) || belum(masukT, eT) || belum(masukP, eP) || belum(angkat, sAngkat) || belum(geserX, px) || belum(geserY, py) || belum(kamera, lintas) || belum(miring, laju) || belum(tekan, sTekan)
     },
     lepas() {
       window.setTimeout(lepasPeristiwa)
+      cahaya.lepas()
       lap.lepas()
       tab.lepas()
       pho.lepas()
@@ -230,7 +280,20 @@ export async function pasangTrio3D(kanvas: HTMLCanvasElement, isi: IsiTrio, bata
   }
   kartu.addEventListener('focusin', onKeluar)
   kartu.addEventListener('focusout', onKeluar)
+  // tanggapan sejak jari/kursor menekan, bukan saat dilepas
+  const onTekan = () => {
+    ditekan = true
+    panggung.minta()
+    window.addEventListener('pointerup', onLepasTekan, { once: true })
+    window.addEventListener('pointercancel', onLepasTekan, { once: true })
+  }
+  const onLepasTekan = () => {
+    ditekan = false
+    panggung.minta()
+  }
+  kartu.addEventListener('pointerdown', onTekan, { passive: true })
   function lepasPeristiwa() {
+    kartu.removeEventListener('pointerdown', onTekan)
     kartu.removeEventListener('pointermove', onGerak)
     kartu.removeEventListener('pointerleave', onKeluar)
     kartu.removeEventListener('focusin', onKeluar)
