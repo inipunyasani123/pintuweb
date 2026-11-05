@@ -44,6 +44,10 @@ export default function Process({ lang }: { lang: Lang }) {
 
                 <h3 className="pt-3 text-[1.25rem] leading-tight text-[color:var(--text-primary)] sm:pt-2 sm:text-[1.375rem] lg:pt-0">{s.title}</h3>
                 <p className="mt-1.5 max-w-xl text-[0.9375rem] leading-[1.6] text-[color:var(--text-tertiary)] sm:mt-2 sm:text-base sm:leading-relaxed lg:pe-2">{s.desc}</p>
+                {/* ponsel & tablet: panggung 3D tahap ini, tepat di bawah penjelasannya (hanya tampil bila perangkatnya mampu) */}
+                <span className="proses-langkah" aria-hidden="true">
+                  <canvas />
+                </span>
 
                 {flag && (
                   // titik bayar: di ponsel di bawah tahapnya, di desktop tepat di tengah ruas lintasan

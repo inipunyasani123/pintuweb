@@ -4,7 +4,8 @@
 //   2 Rancang : tablet berisi sketsa tata letak yang tergambar sedikit demi sedikit oleh pensil
 //   3 Bangun  : laptop membuka, potongan halaman terbang masuk dan tersusun di layarnya
 //   4 Online  : logo PintuWeb sebagai pintu sungguhan yang membuka, di baliknya situs yang sudah jadi
-// Desktop: keempatnya berjajar sesuai kolom tahap. Ponsel/tablet: kamera berpindah dari satu perhentian ke berikutnya.
+// Desktop: keempatnya berjajar di satu panggung sesuai kolom tahap. Ponsel/tablet: tiap tahap punya panggung sendiri di
+// kolom teksnya (.proses-langkah), tepat di bawah penjelasannya, sehingga mengikuti susunan lintasan tegak.
 // Tanpa indikator "online" palsu, titik ping, atau animasi mengetik.
 import { BoxGeometry, ConeGeometry, CylinderGeometry, DoubleSide, ExtrudeGeometry, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PerspectiveCamera, PlaneGeometry, Scene, Shape, ShapeGeometry, SphereGeometry, Texture, type Material } from 'three'
 import LAYAR from './layar.json'
@@ -48,6 +49,9 @@ const JARAK = 3 // jarak antarperhentian (satuan dunia)
 const FOV = 17
 const ELEVASI = 9 * D2R
 const CY = 1.22
+const FOV_TAHAP = 22
+const ELEVASI_TAHAP = 9 * D2R
+const CY_TAHAP = 1.16
 
 /** pelat tipis bertepi bulat menghadap +z (gelembung, potongan halaman) */
 const pelat = (w: number, h: number, r: number, tebal = 0.03) =>
@@ -280,282 +284,204 @@ function buatPintu(situs: Texture, ukuran: number[]) {
 export async function pasangProses(kanvas: HTMLCanvasElement, batal: () => boolean): Promise<(() => void) | null> {
   const akar = kanvas.closest('.proses-wadah') as HTMLElement | null
   const daftar = akar?.querySelector('.proc') as HTMLElement | null
-  if (!akar || !daftar || !nyalakan()) return null
-  const langkahEl = [...daftar.querySelectorAll<HTMLElement>('.proc-step')]
-  const situs = LAYAR.toko
-  let txSitus: Texture
-  try {
-    txSitus = await muatTekstur(`/layar/${situs.berkas}.webp`)
-  } catch {
-    return null
-  }
-  if (batal()) return null
+  if (!akar || !daftar) return null
+  const kanvasTahap = [...daftar.querySelectorAll<HTMLCanvasElement>('.proses-langkah canvas')]
   const rtl = getComputedStyle(akar).direction === 'rtl'
 
-  const scene = new Scene()
-  const rig = new Group()
-  scene.add(rig)
-  const camera = new PerspectiveCamera(FOV, 4, 1, 80)
-  const pos = (i: number) => ((rtl ? -1 : 1) * (i - 1.5)) * JARAK
+  /** membangun semua perhentian: `jajar` = satu panggung selebar empat kolom; selain itu satu panggung di dalam tiap tahap */
+  const bangun = async (jajar: boolean): Promise<(() => void) | null> => {
+    if (!nyalakan()) return null
+    akar.classList.add('proses-3d-siap')
+    const situs = LAYAR.toko
+    let txSitus: Texture
+    try {
+      txSitus = await muatTekstur(`/layar/${situs.berkas}.webp`)
+    } catch {
+      return null
+    }
+    if (batal()) return null
 
-  // 1 Ngobrol
-  const txObrolan = teksturObrolan()
-  const ponsel = buatPonsel({ top: SAFIR, fg: '#ffffff', halaman: txObrolan, ukuran: [402, 800] })
-  ponsel.miring.rotation.x = -5 * D2R
-  ponsel.root.scale.setScalar(1.48)
-  const st1 = new Group()
-  st1.add(ponsel.root, bayanganLantai(1.7, 0.7, 0.05, 0.9))
-  // gelembung: pesan pengunjung (safir, kanan), jawaban (putih, kiri); tanpa kata
-  const gelembung = ([
-    { x: 0.2, y: 1.58, w: 0.9, warna: SAFIR, isi: '#ffffff', m: [0.56, 0.34] },
-    { x: -0.24, y: 1.14, w: 0.96, warna: '#ffffff', isi: '#9fb0d2', m: [0.62, 0.42] },
-    { x: 0.22, y: 0.7, w: 0.74, warna: SAFIR, isi: '#ffffff', m: [0.44] },
-  ] as const).map((b, i) => {
-    const h = 0.12 + b.m.length * 0.11
-    const k = new Group()
-    k.position.set(b.x, b.y, 0.24 + i * 0.05)
-    const badan = new Mesh(pelat(b.w, h, 0.09, 0.05), rata(b.warna, 0.42))
-    badan.castShadow = true
-    k.add(badan)
-    b.m.forEach((w, j) => {
-      const g = garisTeks(w, b.isi)
-      g.position.set(-(b.w - w) / 2 + 0.07, (b.m.length - 1) * 0.055 - j * 0.11, 0.004)
-      k.add(g)
+    // 1 Ngobrol
+    const txObrolan = teksturObrolan()
+    const ponsel = buatPonsel({ top: SAFIR, fg: '#ffffff', halaman: txObrolan, ukuran: [402, 800] })
+    ponsel.miring.rotation.x = -5 * D2R
+    ponsel.root.scale.setScalar(1.48)
+    const st1 = new Group()
+    st1.add(ponsel.root, bayanganLantai(1.7, 0.7, 0.05, 0.9))
+    // gelembung: pesan pengunjung (safir, kanan), jawaban (putih, kiri); tanpa kata
+    const gelembung = ([
+      { x: 0.2, y: 1.58, w: 0.9, warna: SAFIR, isi: '#ffffff', m: [0.56, 0.34] },
+      { x: -0.24, y: 1.14, w: 0.96, warna: '#ffffff', isi: '#9fb0d2', m: [0.62, 0.42] },
+      { x: 0.22, y: 0.7, w: 0.74, warna: SAFIR, isi: '#ffffff', m: [0.44] },
+    ] as const).map((b, i) => {
+      const h = 0.12 + b.m.length * 0.11
+      const k = new Group()
+      k.position.set(b.x, b.y, 0.24 + i * 0.05)
+      const badan = new Mesh(pelat(b.w, h, 0.09, 0.05), rata(b.warna, 0.42))
+      badan.castShadow = true
+      k.add(badan)
+      b.m.forEach((w, j) => {
+        const g = garisTeks(w, b.isi)
+        g.position.set(-(b.w - w) / 2 + 0.07, (b.m.length - 1) * 0.055 - j * 0.11, 0.004)
+        k.add(g)
+      })
+      k.scale.setScalar(0.001)
+      st1.add(k)
+      return k
     })
-    k.scale.setScalar(0.001)
-    st1.add(k)
-    return k
-  })
 
-  // 2 Rancang
-  const sketsa = buatSketsa()
-  const tablet = buatTablet({ halaman: sketsa.t, ukuran: [480, 700] })
-  tablet.miring.rotation.x = -7 * D2R
-  tablet.root.scale.setScalar(0.86)
-  const st2 = new Group()
-  st2.add(tablet.root, bayanganLantai(2.3, 0.72, 0.05, 0.85))
-  // pensil: titik asal di ujungnya, condong ke kanan atas
-  const pensil = new Group()
-  const batang = new Mesh(
-    geoSimpan('pensil-batang', () => new CylinderGeometry(0.036, 0.036, 0.92, 14)),
-    rata(SAFIR, 0.4),
-  )
-  batang.position.y = 0.6
-  const ujung = new Mesh(
-    geoSimpan('pensil-ujung', () => new ConeGeometry(0.036, 0.14, 14)),
-    rata('#f4f5f8', 0.5),
-  )
-  ujung.rotation.x = PI
-  ujung.position.y = 0.07
-  batang.castShadow = true
-  ujung.castShadow = true
-  pensil.add(batang, ujung)
-  pensil.rotation.set(0.38, 0, -0.62)
-  st2.add(pensil)
+    // 2 Rancang
+    const sketsa = buatSketsa()
+    const tablet = buatTablet({ halaman: sketsa.t, ukuran: [480, 700] })
+    tablet.miring.rotation.x = -7 * D2R
+    tablet.root.scale.setScalar(0.86)
+    const st2 = new Group()
+    st2.add(tablet.root, bayanganLantai(2.3, 0.72, 0.05, 0.85))
+    // pensil: titik asal di ujungnya, condong ke kanan atas
+    const pensil = new Group()
+    const batang = new Mesh(
+      geoSimpan('pensil-batang', () => new CylinderGeometry(0.036, 0.036, 0.92, 14)),
+      rata(SAFIR, 0.4),
+    )
+    batang.position.y = 0.6
+    const ujung = new Mesh(
+      geoSimpan('pensil-ujung', () => new ConeGeometry(0.036, 0.14, 14)),
+      rata('#f4f5f8', 0.5),
+    )
+    ujung.rotation.x = PI
+    ujung.position.y = 0.07
+    batang.castShadow = true
+    ujung.castShadow = true
+    pensil.add(batang, ujung)
+    pensil.rotation.set(0.38, 0, -0.62)
+    st2.add(pensil)
 
-  // 3 Bangun
-  const { c: cPutih, g: gPutih } = kanvas2d(16, 16, 1)
-  gPutih.fillStyle = '#f7f9fe'
-  gPutih.fillRect(0, 0, 16, 16)
-  const txPutih = teksturKanvas(cPutih)
-  const laptop = buatLaptop({ warna: '#d3d9e2', host: 'usahamu.id', halaman: txPutih, ukuran: [16, 16] })
-  laptop.root.scale.setScalar(0.8)
-  laptop.root.position.z = -0.2
-  const st3 = new Group()
-  st3.add(laptop.root)
-  laptop.root.add(bayanganLantai(3.75, 2.9, 0.02))
-  // potongan halaman: mendarat rata di layar, koordinat mm di tutup laptop (bilangan w, h = pecahan layar halaman)
-  const LW = UKURAN_LAYAR_LAPTOP.w / MM
-  const LH = UKURAN_LAYAR_LAPTOP.h / MM
-  const LC = UKURAN_LAYAR_LAPTOP.cy / MM
-  const potongan = ([
-    { x: 0, y: 0.44, w: 1, h: 0.1, warna: '#ffffff', dari: [-40, 90, 120] },
-    { x: -0.2, y: 0.12, w: 0.54, h: 0.44, warna: SAFIR, dari: [-150, 40, 140] },
-    { x: 0.29, y: 0.12, w: 0.36, h: 0.44, warna: MUDA, dari: [150, 60, 130] },
-    { x: -0.32, y: -0.3, w: 0.28, h: 0.28, warna: '#ffffff', dari: [-120, -70, 120] },
-    { x: 0, y: -0.3, w: 0.28, h: 0.28, warna: '#ffffff', dari: [0, -110, 150] },
-    { x: 0.32, y: -0.3, w: 0.28, h: 0.28, warna: '#ffffff', dari: [120, -70, 120] },
-  ] as const).map((p) => {
-    const w = p.w * LW * 0.94
-    const h = p.h * LH * 0.9
-    const m = new Mesh(pelat(w * MM, h * MM, 0.03, 0.02), rata(p.warna, 0.5))
-    m.castShadow = true
-    m.scale.setScalar(1 / MM)
-    const k = new Group()
-    k.add(m)
-    laptop.tutup.add(k)
-    return { k, x: p.x * LW, y: LC + p.y * LH, dari: p.dari }
-  })
+    // 3 Bangun
+    const { c: cPutih, g: gPutih } = kanvas2d(16, 16, 1)
+    gPutih.fillStyle = '#f7f9fe'
+    gPutih.fillRect(0, 0, 16, 16)
+    const txPutih = teksturKanvas(cPutih)
+    const laptop = buatLaptop({ warna: '#d3d9e2', host: 'usahamu.id', halaman: txPutih, ukuran: [16, 16] })
+    laptop.root.scale.setScalar(jajar ? 0.8 : 0.96)
+    laptop.root.position.z = -0.2
+    const st3 = new Group()
+    st3.add(laptop.root)
+    laptop.root.add(bayanganLantai(3.75, 2.9, 0.02))
+    // potongan halaman: mendarat rata di layar, koordinat mm di tutup laptop (bilangan w, h = pecahan layar halaman)
+    const LW = UKURAN_LAYAR_LAPTOP.w / MM
+    const LH = UKURAN_LAYAR_LAPTOP.h / MM
+    const LC = UKURAN_LAYAR_LAPTOP.cy / MM
+    const potongan = ([
+      { x: 0, y: 0.44, w: 1, h: 0.1, warna: '#ffffff', dari: [-40, 90, 120] },
+      { x: -0.2, y: 0.12, w: 0.54, h: 0.44, warna: SAFIR, dari: [-150, 40, 140] },
+      { x: 0.29, y: 0.12, w: 0.36, h: 0.44, warna: MUDA, dari: [150, 60, 130] },
+      { x: -0.32, y: -0.3, w: 0.28, h: 0.28, warna: '#ffffff', dari: [-120, -70, 120] },
+      { x: 0, y: -0.3, w: 0.28, h: 0.28, warna: '#ffffff', dari: [0, -110, 150] },
+      { x: 0.32, y: -0.3, w: 0.28, h: 0.28, warna: '#ffffff', dari: [120, -70, 120] },
+    ] as const).map((p) => {
+      const w = p.w * LW * 0.94
+      const h = p.h * LH * 0.9
+      const m = new Mesh(pelat(w * MM, h * MM, 0.03, 0.02), rata(p.warna, 0.5))
+      m.castShadow = true
+      m.scale.setScalar(1 / MM)
+      const k = new Group()
+      k.add(m)
+      laptop.tutup.add(k)
+      return { k, x: p.x * LW, y: LC + p.y * LH, dari: p.dari }
+    })
 
-  // 4 Online
-  const pintu = buatPintu(txSitus, situs.ukuran)
-  pintu.root.scale.setScalar(0.98)
-  const st4 = new Group()
-  st4.add(pintu.root)
+    // 4 Online
+    const pintu = buatPintu(txSitus, situs.ukuran)
+    pintu.root.scale.setScalar(0.98)
+    const st4 = new Group()
+    st4.add(pintu.root)
 
-  const rendah = window.innerWidth < 1024
-  const cahaya = cahayaStudio({ dari: [rtl ? 2.6 : -2.6, 8, 6], rim: '#8fa8ff', kotak: [-7.4, 7.4, 3.6, -2.6], peta: rendah ? [1024, 448] : [1600, 640], lembut: 5 })
-  scene.add(cahaya.g)
-  rig.add(lantaiBayang(19, 6.4, 0.15))
+    const perhentian = [st1, st2, st3, st4]
+    const yawDasar = [0.24, -0.1, 0.06, -0.3].map((y) => (rtl ? -y : y))
+    const hidupkan = perhentian.map(() => pegas())
+    const isi = perhentian.map(() => pegas())
+    const gelembungS = gelembung.map(() => pegas())
+    const potonganS = potongan.map(() => pegas())
+    const pintuS = pegas()
+    const tutupS = pegas()
+    const penaX = pegas()
+    const penaY = pegas(1.8)
 
-  const perhentian = [st1, st2, st3, st4]
-  perhentian.forEach((s, i) => {
-    s.position.x = pos(i)
-    rig.add(s)
-  })
-  const yawDasar = [0.24, -0.1, 0.06, -0.3].map((y) => (rtl ? -y : y))
-
-  let mode: 'jajar' | 'pindah' = 'jajar'
-  let jarak = 12
-  const hidupkan = perhentian.map(() => pegas())
-  const isi = perhentian.map(() => pegas())
-  const gelembungS = gelembung.map(() => pegas())
-  const potonganS = potongan.map(() => pegas())
-  const pintuS = pegas()
-  const tutupS = pegas()
-  const penaX = pegas()
-  const penaY = pegas(1.8)
-  const fokus = pegas(0)
-  const geserX = pegas()
-  const geserY = pegas()
-  const kamera = pegas()
-  let px = 0
-  let py = 0
-  const adaSorot = matchMedia('(hover: hover)').matches
-
-  const panggung = await pasang({
-    kanvas,
-    akar,
-    kelas: 'proses-3d',
-    scene,
-    camera,
-    ikutGulir: true,
-    ukuran(w, h) {
-      mode = window.innerWidth >= 1024 ? 'jajar' : 'pindah'
-      camera.aspect = w / h
-      const t = Math.tan((FOV / 2) * D2R)
-      const lebar = mode === 'jajar' ? 12 : 5.4
-      jarak = Math.max(lebar / 2 / (t * camera.aspect), (mode === 'jajar' ? 2.86 : 2.66) / 2 / t)
-      camera.updateProjectionMatrix()
-    },
-    langkah(_now, dt, pertama) {
-      const vh = window.innerHeight
-      // t: 0..4 sepanjang empat tahap, seirama dengan lintasan .proc
-      let t = 0
-      if (mode === 'jajar') {
-        const r = daftar.getBoundingClientRect()
-        t = klem((0.92 * vh - r.top) / (0.12 * vh + r.height)) * 4
-      } else {
-        const garis = 0.55 * vh
-        t = langkahEl.length
-        for (let i = 0; i < langkahEl.length; i++) {
-          const r = langkahEl[i].getBoundingClientRect()
-          if (r.top > garis) {
-            t = i
-            break
-          }
-          if (r.bottom > garis) {
-            t = i + (garis - r.top) / r.height
-            break
-          }
-        }
-      }
-      const rk = kanvas.getBoundingClientRect()
-      const lintas = klem((vh / 2 - (rk.top + rk.height / 2)) / (vh / 2 + rk.height / 2), -1, 1)
-
+    /** memperbarui satu perhentian; q = kemajuan tahapnya (< 0 belum sampai, 1 selesai). true = masih bergerak. */
+    const perbarui = (i: number, q: number, dt: number, pertama: boolean, tambahYaw: number) => {
       let hidup = false
       const lihat = (s: { x: number; v: number }, sasaran: number) => {
         if (belum(s, sasaran)) hidup = true
       }
-      const sasaran = (i: number) => (t > i - 0.04 ? 1 : 0)
+      const bangunkan = q > -0.04 ? 1 : 0
+      const kemajuan = klem(q)
       if (pertama) {
-        perhentian.forEach((_, i) => {
-          hidupkan[i].x = sasaran(i)
-          isi[i].x = klem(t - i)
+        hidupkan[i].x = bangunkan
+        isi[i].x = kemajuan
+        if (i === 2) tutupS.x = bangunkan
+        if (i === 3) pintuS.x = klem(q / 0.92)
+      }
+      // bangun dari posisi tidur dengan sedikit melewati posisi akhir
+      lentur(hidupkan[i], bangunkan, 0.56, 0.74, dt)
+      lentur(isi[i], kemajuan, 0.34, 1, dt)
+      lihat(hidupkan[i], bangunkan)
+      lihat(isi[i], kemajuan)
+      const a = hidupkan[i].x
+      const s = perhentian[i]
+      s.rotation.y = campur(yawDasar[i] + (rtl ? 0.7 : -0.7) * (i === 3 ? 0 : 1), yawDasar[i], a) + tambahYaw
+      s.scale.setScalar(campur(0.84, 1, a))
+
+      if (i === 0) {
+        // gelembung muncul bergantian, masing-masing dengan pegasnya sendiri
+        gelembung.forEach((g, j) => {
+          const on = isi[0].x > 0.1 + j * 0.27 ? 1 : 0
+          lentur(gelembungS[j], on, 0.42, 0.62, dt)
+          g.scale.setScalar(Math.max(0.001, gelembungS[j].x))
+          g.rotation.y = (1 - gelembungS[j].x) * (j % 2 ? -0.5 : 0.5)
+          lihat(gelembungS[j], on)
         })
-        fokus.x = klem(t - 0.5, 0, 3)
-        kamera.x = lintas
-        tutupS.x = sasaran(2)
-        pintuS.x = klem((t - 3) / 0.92)
+      } else if (i === 1) {
+        // sketsa tergambar; pensil mengikuti garis yang sedang dibuat, lalu menyingkir
+        const b2 = isi[1].x
+        if (sketsa.gambar(Math.round(b2 * SKETSA.length))) tablet.layar.segarkan()
+        const jalan = b2 * SKETSA.length
+        const [pu, pv] = PENA[Math.min(SKETSA.length - 1, Math.floor(jalan))]
+        const selesai = b2 > 0.96
+        const sPx = selesai ? 0.98 : (pu - 0.5) * 1.3 + Math.sin(jalan * Math.PI * 2) * 0.26
+        const sPy = selesai ? 0.56 : 1.06 + (0.5 - pv) * 1.9
+        lentur(penaX, sPx, 0.3, 0.92, dt)
+        lentur(penaY, sPy, 0.3, 0.92, dt)
+        pensil.position.set(penaX.x, penaY.x, 0.32)
+        lihat(penaX, sPx)
+        lihat(penaY, sPy)
+      } else if (i === 2) {
+        // laptop membuka, potongan terbang masuk melengkung dan mendarat bergantian
+        lentur(tutupS, bangunkan, 0.7, 0.8, dt)
+        lihat(tutupS, bangunkan)
+        laptop.tutup.rotation.x = sudutTutup(campur(6, 104, tutupS.x))
+        potongan.forEach((p, j) => {
+          const on = isi[2].x > 0.08 + j * 0.13 ? 1 : 0
+          lentur(potonganS[j], on, 0.56, 0.82, dt)
+          lihat(potonganS[j], on)
+          const u = potonganS[j].x
+          const lain = 1 - u
+          p.k.visible = u > 0.002
+          p.k.position.set(p.x + lain * p.dari[0], p.y + lain * p.dari[1] + Math.sin(klem(u) * PI) * 14, 0.5 + lain * p.dari[2])
+          p.k.rotation.set(lain * 0.5, lain * (p.dari[0] > 0 ? -0.7 : 0.7), 0)
+          p.k.scale.setScalar(campur(0.72, 1, u))
+        })
+      } else {
+        // pintu berayun membuka mendekati bentuk logo, punya bobot, dan cahaya jatuh ke lantai
+        const sPintu = klem(q / 0.92)
+        lentur(pintuS, sPintu, 0.82, 0.74, dt)
+        lihat(pintuS, sPintu)
+        pintu.engsel.rotation.y = -campur(0, 66, pintuS.x) * D2R
+        pintu.bahanSinar.opacity = klem(pintuS.x) * 0.9
       }
-      perhentian.forEach((s, i) => {
-        // bangun dari posisi tidur dengan sedikit melewati posisi akhir
-        lentur(hidupkan[i], sasaran(i), 0.56, 0.74, dt)
-        lentur(isi[i], klem(t - i), 0.34, 1, dt)
-        const a = hidupkan[i].x
-        s.rotation.y = campur(yawDasar[i] + (rtl ? 0.7 : -0.7) * (i === 3 ? 0 : 1), yawDasar[i], a) + geserX.x * 0.07
-        s.scale.setScalar(campur(0.84, 1, a))
-        lihat(hidupkan[i], sasaran(i))
-        lihat(isi[i], klem(t - i))
-      })
-
-      // 1: gelembung muncul bergantian, masing-masing dengan pegasnya sendiri
-      const b1 = isi[0].x
-      gelembung.forEach((g, i) => {
-        const on = b1 > 0.1 + i * 0.27 ? 1 : 0
-        lentur(gelembungS[i], on, 0.42, 0.62, dt)
-        g.scale.setScalar(Math.max(0.001, gelembungS[i].x))
-        g.rotation.y = (1 - gelembungS[i].x) * (i % 2 ? -0.5 : 0.5)
-        lihat(gelembungS[i], on)
-      })
-      // 2: sketsa tergambar; pensil mengikuti garis yang sedang dibuat, lalu menyingkir
-      const b2 = isi[1].x
-      if (sketsa.gambar(Math.round(b2 * SKETSA.length))) tablet.layar.segarkan()
-      const jalan = b2 * SKETSA.length
-      const ke = Math.min(SKETSA.length - 1, Math.floor(jalan))
-      const [pu, pv] = PENA[ke]
-      const selesai = b2 > 0.96
-      const sPx = selesai ? 0.98 : (pu - 0.5) * 1.3 + Math.sin(jalan * Math.PI * 2) * 0.26
-      const sPy = selesai ? 0.56 : 1.06 + (0.5 - pv) * 1.9
-      lentur(penaX, sPx, 0.3, 0.92, dt)
-      lentur(penaY, sPy, 0.3, 0.92, dt)
-      pensil.position.set(penaX.x, penaY.x, 0.32)
-      lihat(penaX, sPx)
-      lihat(penaY, sPy)
-      // 3: laptop membuka, potongan terbang masuk melengkung dan mendarat bergantian
-      const b3 = isi[2].x
-      lentur(tutupS, sasaran(2), 0.7, 0.8, dt)
-      lihat(tutupS, sasaran(2))
-      laptop.tutup.rotation.x = sudutTutup(campur(6, 104, tutupS.x))
-      potongan.forEach((p, i) => {
-        const on = b3 > 0.08 + i * 0.13 ? 1 : 0
-        lentur(potonganS[i], on, 0.56, 0.82, dt)
-        lihat(potonganS[i], on)
-        const u = potonganS[i].x
-        const lain = 1 - u
-        p.k.visible = u > 0.002
-        p.k.position.set(p.x + lain * p.dari[0], p.y + lain * p.dari[1] + Math.sin(klem(u) * PI) * 14, 0.5 + lain * p.dari[2])
-        p.k.rotation.set(lain * 0.5, lain * (p.dari[0] > 0 ? -0.7 : 0.7), 0)
-        p.k.scale.setScalar(campur(0.72, 1, u))
-      })
-      // 4: pintu berayun membuka mendekati bentuk logo, punya bobot, dan cahaya jatuh ke lantai
-      const sPintu = klem((t - 3) / 0.92)
-      lentur(pintuS, sPintu, 0.82, 0.74, dt)
-      lihat(pintuS, sPintu)
-      pintu.engsel.rotation.y = -campur(0, 66, pintuS.x) * D2R
-      pintu.bahanSinar.opacity = klem(pintuS.x) * 0.9
-
-      lentur(geserX, px, 0.5, 0.95, dt)
-      lentur(geserY, py, 0.5, 0.95, dt)
-      lentur(kamera, lintas, 0.5, 1, dt)
-      lihat(geserX, px)
-      lihat(geserY, py)
-      lihat(kamera, lintas)
-      const el = ELEVASI - kamera.x * 2.6 * D2R - geserY.x * 1.2 * D2R
-      let x = geserX.x * 0.5
-      if (mode === 'pindah') {
-        const f = klem(t - 0.5, 0, 3)
-        lentur(fokus, f, 0.7, 1, dt)
-        lihat(fokus, f)
-        x = pos(fokus.x)
-      }
-      camera.position.set(x, CY + jarak * Math.sin(el), jarak * Math.cos(el))
-      camera.lookAt(mode === 'pindah' ? x : 0, CY, 0)
-      cahaya.utama.position.set(cahaya.dari[0] + geserX.x * 3, cahaya.dari[1] - geserY.x * 1.2, cahaya.dari[2])
       return hidup
-    },
-    lepas() {
-      window.setTimeout(lepasPeristiwa)
+    }
+
+    const lepasBendaBersama = () => {
       ponsel.lepas()
       tablet.lepas()
       laptop.lepas()
@@ -566,31 +492,159 @@ export async function pasangProses(kanvas: HTMLCanvasElement, batal: () => boole
       pintu.bahanIsi.dispose()
       pintu.bahanDaun.dispose()
       pintu.bahanSinar.dispose()
-      cahaya.lepas()
       pintu.bahanKusen.dispose()
-    },
-  })
-  if (!panggung) return null
+    }
 
-  const onGerak = (ev: PointerEvent) => {
-    if (ev.pointerType === 'touch') return
-    const r = akar.getBoundingClientRect()
-    px = klem(((ev.clientX - r.left) / r.width) * 2 - 1, -1, 1)
-    py = klem(((ev.clientY - r.top) / r.height) * 2 - 1, -1, 1)
-    panggung.minta()
+    if (!jajar) {
+      // ponsel & tablet: tiap tahap punya panggung sendiri di kolom teksnya. Perangkatnya hidup saat panggung itu sendiri
+      // melintasi layar, jadi selalu seirama dengan tahap yang sedang dibaca.
+      const lepasan: (() => void)[] = []
+      let sisa = perhentian.length
+      for (let i = 0; i < perhentian.length; i++) {
+        const kanvasI = kanvasTahap[i]
+        if (!kanvasI) continue
+        const scene = new Scene()
+        const camera = new PerspectiveCamera(FOV_TAHAP, 1.6, 1, 60)
+        const cahaya = cahayaStudio({ dari: [rtl ? 2.6 : -2.6, 8, 6], rim: '#8fa8ff', kotak: [-3.2, 3.2, 3.4, -2.4], peta: [640, 640], lembut: 3 })
+        scene.add(perhentian[i], cahaya.g, lantaiBayang(6.2, 4.8, 0.15))
+        const kamera = pegas()
+        let jarak = 10
+        const p = await pasang({
+          kanvas: kanvasI,
+          akar,
+          kelas: 'proses-3d',
+          scene,
+          camera,
+          ikutGulir: true,
+          ukuran(w, h) {
+            camera.aspect = w / h
+            const t = Math.tan((FOV_TAHAP / 2) * D2R)
+            jarak = Math.max(3.5 / 2 / (t * camera.aspect), 2.68 / 2 / t)
+            camera.updateProjectionMatrix()
+          },
+          langkah(_now, dt, pertama) {
+            const vh = window.innerHeight
+            const r = kanvasI.getBoundingClientRect()
+            // 0 saat panggung baru masuk dari bawah, 1 saat puncaknya di sepertiga atas layar
+            const q = (0.96 * vh - r.top) / (0.62 * vh)
+            const lintas = klem((vh / 2 - (r.top + r.height / 2)) / (vh / 2 + r.height / 2), -1, 1)
+            if (pertama) kamera.x = lintas
+            lentur(kamera, lintas, 0.5, 1, dt)
+            const hidup = perbarui(i, q, dt, pertama, kamera.x * 0.14)
+            const el = ELEVASI_TAHAP - kamera.x * 3 * D2R
+            camera.position.set(0, CY_TAHAP + jarak * Math.sin(el), jarak * Math.cos(el))
+            camera.lookAt(0, CY_TAHAP, 0)
+            return hidup || belum(kamera, lintas)
+          },
+          lepas() {
+            cahaya.lepas()
+            if (--sisa === 0) lepasBendaBersama()
+          },
+        })
+        if (p) lepasan.push(p.lepas)
+      }
+      return lepasan.length ? () => lepasan.forEach((l) => l()) : null
+    }
+
+    // desktop: satu panggung, keempat perhentian berjajar sesuai kolom tahap
+    const scene = new Scene()
+    const rig = new Group()
+    scene.add(rig)
+    const camera = new PerspectiveCamera(FOV, 4, 1, 80)
+    const cahaya = cahayaStudio({ dari: [rtl ? 2.6 : -2.6, 8, 6], rim: '#8fa8ff', kotak: [-7.4, 7.4, 3.6, -2.6], peta: [1600, 640], lembut: 5 })
+    scene.add(cahaya.g)
+    rig.add(lantaiBayang(19, 6.4, 0.15))
+    perhentian.forEach((s, i) => {
+      s.position.x = ((rtl ? -1 : 1) * (i - 1.5)) * JARAK
+      rig.add(s)
+    })
+    let jarak = 12
+    const geserX = pegas()
+    const geserY = pegas()
+    const kamera = pegas()
+    let px = 0
+    let py = 0
+    const panggung = await pasang({
+      kanvas,
+      akar,
+      kelas: 'proses-3d',
+      scene,
+      camera,
+      ikutGulir: true,
+      ukuran(w, h) {
+        camera.aspect = w / h
+        const t = Math.tan((FOV / 2) * D2R)
+        jarak = Math.max(12 / 2 / (t * camera.aspect), 2.86 / 2 / t)
+        camera.updateProjectionMatrix()
+      },
+      langkah(_now, dt, pertama) {
+        const vh = window.innerHeight
+        // t: 0..4 sepanjang empat tahap, seirama dengan lintasan .proc
+        const r = daftar.getBoundingClientRect()
+        const t = klem((0.92 * vh - r.top) / (0.12 * vh + r.height)) * 4
+        const rk = kanvas.getBoundingClientRect()
+        const lintas = klem((vh / 2 - (rk.top + rk.height / 2)) / (vh / 2 + rk.height / 2), -1, 1)
+        if (pertama) kamera.x = lintas
+        lentur(geserX, px, 0.5, 0.95, dt)
+        lentur(geserY, py, 0.5, 0.95, dt)
+        lentur(kamera, lintas, 0.5, 1, dt)
+        let hidup = belum(geserX, px) || belum(geserY, py) || belum(kamera, lintas)
+        perhentian.forEach((_, i) => {
+          if (perbarui(i, t - i, dt, pertama, geserX.x * 0.07)) hidup = true
+        })
+        const el = ELEVASI - kamera.x * 2.6 * D2R - geserY.x * 1.2 * D2R
+        camera.position.set(geserX.x * 0.5, CY + jarak * Math.sin(el), jarak * Math.cos(el))
+        camera.lookAt(0, CY, 0)
+        cahaya.utama.position.set(cahaya.dari[0] + geserX.x * 3, cahaya.dari[1] - geserY.x * 1.2, cahaya.dari[2])
+        return hidup
+      },
+      lepas() {
+        window.setTimeout(lepasPeristiwa)
+        cahaya.lepas()
+        lepasBendaBersama()
+      },
+    })
+    if (!panggung) return null
+
+    const onGerak = (ev: PointerEvent) => {
+      if (ev.pointerType === 'touch') return
+      const r = akar.getBoundingClientRect()
+      px = klem(((ev.clientX - r.left) / r.width) * 2 - 1, -1, 1)
+      py = klem(((ev.clientY - r.top) / r.height) * 2 - 1, -1, 1)
+      panggung.minta()
+    }
+    const onKeluar = () => {
+      px = 0
+      py = 0
+      panggung.minta()
+    }
+    if (matchMedia('(hover: hover)').matches) {
+      akar.addEventListener('pointermove', onGerak, { passive: true })
+      akar.addEventListener('pointerleave', onKeluar)
+    }
+    function lepasPeristiwa() {
+      akar?.removeEventListener('pointermove', onGerak)
+      akar?.removeEventListener('pointerleave', onKeluar)
+    }
+    return panggung.lepas
   }
-  const onKeluar = () => {
-    px = 0
-    py = 0
-    panggung.minta()
+
+  // susunan berganti di 1024px (mis. tablet diputar): adegannya dibangun ulang untuk susunan yang baru
+  const mq = matchMedia('(min-width: 1024px)')
+  let lepasAktif = await bangun(mq.matches)
+  if (!lepasAktif) return null
+  const onUbah = () => {
+    lepasAktif?.()
+    lepasAktif = null
+    bangun(mq.matches)
+      .then((l) => {
+        lepasAktif = l
+      })
+      .catch(() => {})
   }
-  if (adaSorot) {
-    akar.addEventListener('pointermove', onGerak, { passive: true })
-    akar.addEventListener('pointerleave', onKeluar)
+  mq.addEventListener('change', onUbah)
+  return () => {
+    mq.removeEventListener('change', onUbah)
+    lepasAktif?.()
   }
-  function lepasPeristiwa() {
-    akar?.removeEventListener('pointermove', onGerak)
-    akar?.removeEventListener('pointerleave', onKeluar)
-  }
-  return panggung.lepas
 }
