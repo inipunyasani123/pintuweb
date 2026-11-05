@@ -12,6 +12,7 @@ import { quoteText } from '../i18n/facts'
 import SectionHead from './SectionHead'
 import { LogoMark } from './Logo'
 import Tabs from './Tabs'
+import Audience3D from './Audience3D'
 
 // "Untuk siapa" di beranda = PEMILIH KEBUTUHAN (keputusan pemilik 22 Okt 2026: bagian ini dulu daftar panjang yang
 // membingungkan orang awam). Deretan tombol kebutuhan pendek; mengetuk satu menampilkan SATU kartu jawaban: kalimat
@@ -136,6 +137,7 @@ export default function AudienceSection({ lang }: { lang: Lang }) {
           offClass="bg-white text-[color:var(--text-secondary)] ring-1 ring-[color:var(--border-light)] hover:text-[color:var(--primary-700)] hover:ring-[color:var(--primary-300)]"
           panelsClass="mt-5 [grid-area:card] sm:mt-6 lg:mt-0"
         />
+        <Audience3D />
         <p className="mt-5 text-[0.9375rem] leading-relaxed text-[color:var(--text-tertiary)] [grid-area:other] lg:mt-6">
           {t.otherTitle}{' '}
           <a href={wa(t.otherWa)} target="_blank" rel="noopener noreferrer" className="link inline-flex items-center gap-1 font-semibold">

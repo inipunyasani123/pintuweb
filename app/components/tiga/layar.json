@@ -1,0 +1,84 @@
+{
+ "promo": {
+  "alat": "laptop",
+  "berkas": "cissycoffee-desktop",
+  "ukuran": [
+   640,
+   700
+  ],
+  "host": "landing-cissycoffee.pintuweb.id"
+ },
+ "profil": {
+  "alat": "laptop",
+  "berkas": "kontraktor-desktop",
+  "ukuran": [
+   640,
+   700
+  ],
+  "host": "profil-kontraktor.pintuweb.id"
+ },
+ "jualan": {
+  "alat": "ponsel",
+  "berkas": "lungsin-phone",
+  "ukuran": [
+   256,
+   788
+  ],
+  "top": "#dfdee0",
+  "fg": "#111827"
+ },
+ "toko": {
+  "alat": "tablet",
+  "berkas": "tanur-tablet",
+  "ukuran": [
+   384,
+   702
+  ]
+ },
+ "tautan": {
+  "alat": "ponsel",
+  "berkas": "jajan-phone",
+  "ukuran": [
+   256,
+   731
+  ],
+  "top": "#ffb703",
+  "fg": "#111827"
+ },
+ "undangan": {
+  "alat": "ponsel",
+  "berkas": "wedding-phone",
+  "ukuran": [
+   256,
+   554
+  ],
+  "top": "#f6eae5",
+  "fg": "#111827"
+ },
+ "portofolio": {
+  "alat": "tablet",
+  "berkas": "aria-tablet",
+  "ukuran": [
+   384,
+   702
+  ]
+ },
+ "booking": {
+  "alat": "tablet",
+  "berkas": "hotel-tablet",
+  "ukuran": [
+   384,
+   702
+  ]
+ },
+ "hp": {
+  "alat": "ponsel",
+  "berkas": "kasir-phone",
+  "ukuran": [
+   256,
+   554
+  ],
+  "top": "#141513",
+  "fg": "#ffffff"
+ }
+}

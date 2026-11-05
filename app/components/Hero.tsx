@@ -10,6 +10,7 @@ import { path, pathOf } from '../i18n/routes'
 import type { ServiceKey } from '../i18n/slugs'
 import type { Lang } from '../i18n/config'
 import Kinds, { type Kind } from './Kinds'
+import HeroDalam from './HeroDalam'
 
 const count = (c: DemoCategory) => DEMOS.filter((d) => d.category === c).length
 
@@ -127,6 +128,8 @@ export default function Hero({ lang }: { lang: Lang }) {
           {/* sizes di bawah 768px sengaja kecil (270px, bukan lebar tampilnya): di ponsel gambar tertutup tabir putih
               72–98%, jadi varian 640w/828w sudah cukup dan LCP ponsel tidak menunggu berkas 1080w/1920w. */}
           <Image src="/images/bgutama.png" alt={t.artAlt} fill priority fetchPriority="high" sizes="(min-width: 1280px) 63vw, (min-width: 1024px) 66vw, (min-width: 768px) 58vw, 270px" className="object-cover" />
+          {/* gambar yang sama, tetapi berkedalaman (mengikuti kursor & gulir); tampil di atas <img> hanya bila perangkatnya mampu */}
+          <HeroDalam />
           <span className="hero-veil absolute -inset-0.5 md:hidden" aria-hidden="true" />
           <span className="absolute -inset-y-0.5 -left-0.5 hidden w-[46%] [background-image:linear-gradient(to_right,#fff_0%,#fff_55%,rgb(255_255_255/0)_100%)] md:block" aria-hidden="true" />
           <span className="absolute -inset-x-0.5 -top-0.5 hidden h-[18%] [background-image:linear-gradient(to_bottom,#fff_0%,#fff_25%,rgb(255_255_255/0)_100%)] md:block" aria-hidden="true" />

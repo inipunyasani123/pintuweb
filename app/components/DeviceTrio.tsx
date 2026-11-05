@@ -91,19 +91,18 @@ export default function DeviceTrio({ slug, main, host, stage }: { slug: TrioSlug
           </span>
         </span>
       </span>
-      {/* kartu utama: versi 3D di atas trio CSS ini, hanya bila perangkatnya mampu (Trio3D.tsx) */}
-      {main && (
-        <Trio3D
-          host={host}
-          top={s.top}
-          fg={s.fg}
-          ukuran={s}
-          gambar={(dev, lebar) => {
-            const ws = WIDTHS[dev]
-            return staticImageLoader({ src: `/images/karya/${slug}-${dev}.webp`, width: ws.find((x) => x >= lebar) ?? ws[ws.length - 1] })
-          }}
-        />
-      )}
+      {/* versi 3D di atas trio CSS ini, hanya bila perangkatnya mampu (Trio3D.tsx) */}
+      <Trio3D
+        slug={slug}
+        host={host}
+        top={s.top}
+        fg={s.fg}
+        ukuran={s}
+        gambar={(dev, lebar) => {
+          const ws = WIDTHS[dev]
+          return staticImageLoader({ src: `/images/karya/${slug}-${dev}.webp`, width: ws.find((x) => x >= lebar) ?? ws[ws.length - 1] })
+        }}
+      />
     </span>
   )
 }

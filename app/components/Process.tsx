@@ -3,6 +3,7 @@ import { getDict } from '../i18n'
 import type { Lang } from '../i18n/config'
 import SectionHead from './SectionHead'
 import { HlText } from './Bits'
+import Proses3D from './Proses3D'
 
 // Cara kerja sebagai satu lintasan: empat tahap, dua titik bayar di antaranya (DP setelah tahap 1, pelunasan
 // setelah tahap 3), lalu garis putus-putus masa garansi setelah online. Lintasannya terisi mengikuti gulir
@@ -17,7 +18,9 @@ export default function Process({ lang }: { lang: Lang }) {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHead eyebrow={t.eyebrow} id="process-title" title={<HlText parts={t.title} />} lead={t.lead} />
 
-        <ol className="proc mt-9 grid grid-cols-1 sm:mt-12 lg:mt-16 lg:grid-cols-4 lg:gap-x-8">
+        <div className="proses-wadah mt-9 sm:mt-12 lg:mt-16">
+        <Proses3D />
+        <ol className="proc grid grid-cols-1 lg:grid-cols-4 lg:gap-x-8">
           {t.steps.map((s, i) => {
             const flag = flagAfter[i]
             return (
@@ -59,6 +62,7 @@ export default function Process({ lang }: { lang: Lang }) {
             )
           })}
         </ol>
+        </div>
       </div>
     </section>
   )

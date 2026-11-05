@@ -332,6 +332,38 @@
   .trio-3d .dv { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s .4s; }
   .trio-3d::after { opacity: 0; }
 
+  /* Efek kedalaman gambar utama hero (HeroDalam.tsx); saat diam hasilnya sama persis dengan <img> di bawahnya. */
+  .hero-dalam { display: none; position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+  .hero-dalam-on { opacity: 1; }
+  @media (min-width: 768px) { .hero-dalam { display: block; } }
+
+  /* Perangkat 3D pemilih kebutuhan (Audience3D.tsx). Sekelompok dengan kartu jawaban di sel grid yang sama, tak menangkap
+     klik. Ponsel: pita di puncak kartu. Mulai 640px: sudut bawah kartu, daftar isi & tombolnya memberi ruang. Tanpa kelas
+     .aud-3d (perangkat tak layak) kartunya seperti biasa. */
+  .aud-panggung { grid-area: card; position: relative; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .4s ease; align-self: start; height: 13rem; margin-top: 1.25rem; }
+  .aud-panggung canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .aud-3d .aud-panggung { opacity: 1; }
+  @media (max-width: 639.98px) { .aud-3d .aud-card { padding-top: 13.25rem; } }
+  @media (min-width: 640px) {
+    .aud-panggung { align-self: end; justify-self: end; width: 47%; height: auto; aspect-ratio: 1; margin-top: 0; }
+    .aud-3d .aud-card ul { max-width: 56%; }
+    .aud-3d .aud-act { max-width: 52%; }
+  }
+
+  /* Panggung 3D cara kerja (Proses3D.tsx): tidak mengambil tempat sampai 3D aktif, jadi tanpa 3D bagian ini tampil seperti
+     biasa. Kanvasnya sudah berukuran sebelum itu supaya bingkai pertama bisa digambar. Desktop: pita selebar keempat kolom
+     di atas lintasan. Ponsel/tablet: menempel di atas tahap yang sedang dibaca. */
+  .proses-panggung { position: relative; height: 0; margin-inline: -1rem; }
+  @media (min-width: 640px) { .proses-panggung { margin-inline: -1.5rem; } }
+  .proses-panggung canvas { position: absolute; left: 0; top: 0; width: 100%; height: 12rem; opacity: 0; transition: opacity .4s ease; pointer-events: none; }
+  .proses-3d .proses-panggung canvas { opacity: 1; }
+  .proses-3d .proses-panggung { position: sticky; top: 0; z-index: 20; height: 12rem; margin-bottom: 1.25rem; background: linear-gradient(#fff 90%, rgb(255 255 255 / 0)); }
+  @media (min-width: 1024px) {
+    .proses-panggung { margin-inline: 0; }
+    .proses-panggung canvas { height: auto; aspect-ratio: 1104 / 250; }
+    .proses-3d .proses-panggung { position: relative; top: auto; z-index: auto; height: auto; aspect-ratio: 1104 / 250; margin-bottom: 1rem; background: none; }
+  }
+
   /* Cara kerja: lintasan yang terisi mengikuti gulir. Ponsel/tablet = tegak, tiap tahap (.proc-step) punya garis
      waktunya sendiri terhadap pita tipis di 55% tinggi layar, jadi ujung isian mengikuti posisi baca. Desktop =
      mendatar, memakai satu garis waktu milik daftar (.proc) yang dibagi rata per ruas. --i = nomor ruas (0-2).

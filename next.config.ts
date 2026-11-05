@@ -43,6 +43,7 @@ const nextConfig: NextConfig = {
       { source: "/:path*", headers: securityHeaders },
       { source: "/demos/:path*", headers: assetCache },
       { source: "/images/:path*", headers: assetCache },
+      { source: "/layar/:path*", headers: assetCache },
       { source: "/_img/:path*", headers: immutable },
       { source: "/fonts/:path*", headers: immutable },
     ];
