@@ -10,6 +10,7 @@
 // beranda tetap seberat sebelumnya; tiap ±0,5 KB gzip tambahan menggeser FCP simulasi Lighthouse ponsel.
 import SCREENS from '../content/karya.json'
 import staticImageLoader from '../../image-loader'
+import Trio3D from './Trio3D'
 
 export type TrioSlug = keyof typeof SCREENS
 type Dev = 'desktop' | 'tablet' | 'phone'
@@ -90,6 +91,19 @@ export default function DeviceTrio({ slug, main, host, stage }: { slug: TrioSlug
           </span>
         </span>
       </span>
+      {/* kartu utama: versi 3D di atas trio CSS ini, hanya bila perangkatnya mampu (Trio3D.tsx) */}
+      {main && (
+        <Trio3D
+          host={host}
+          top={s.top}
+          fg={s.fg}
+          ukuran={s}
+          gambar={(dev, lebar) => {
+            const ws = WIDTHS[dev]
+            return staticImageLoader({ src: `/images/karya/${slug}-${dev}.webp`, width: ws.find((x) => x >= lebar) ?? ws[ws.length - 1] })
+          }}
+        />
+      )}
     </span>
   )
 }

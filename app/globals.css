@@ -324,6 +324,13 @@
       .shot { animation: shot-pan linear both; animation-timeline: --work; animation-range: contain 0% contain 100%; transition: none; }
     }
   }
+  /* Trio 3D kartu utama (Trio3D.tsx): kanvas tak terlihat sampai bingkai pertamanya siap, lalu menggantikan trio CSS.
+     Sedikit lebih besar dari .trio supaya perangkat yang menoleh tidak terpotong. Tanpa kelas .trio-3d (perangkat
+     lemah, hemat data, gerak dikurangi, tanpa JS) trio CSS tampil seperti biasa. */
+  .trio-kanvas { position: absolute; left: -3%; top: -4%; width: 106%; height: 114%; pointer-events: none; opacity: 0; transition: opacity .4s ease; }
+  .trio-3d .trio-kanvas { opacity: 1; }
+  .trio-3d .dv { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s .4s; }
+  .trio-3d::after { opacity: 0; }
 
   /* Cara kerja: lintasan yang terisi mengikuti gulir. Ponsel/tablet = tegak, tiap tahap (.proc-step) punya garis
      waktunya sendiri terhadap pita tipis di 55% tinggi layar, jadi ujung isian mengikuti posisi baca. Desktop =
